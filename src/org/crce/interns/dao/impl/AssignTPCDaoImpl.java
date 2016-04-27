@@ -1,4 +1,3 @@
-
 package org.crce.interns.dao.impl;
 
 import java.util.List;
@@ -17,8 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/*@Repository
-@Transactional*/
 /*@Repository
 @Transactional*/
 @Repository("assignTPCDao")
@@ -52,7 +49,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		//return entityManager.createQuery("select u from UserDetails u",UserDetails.class).getResultList();
 	
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY = "from UserDetails as u";
+		String SQL_QUERY = "from UserDetails as u order by u.roleId";
 
 		Query query = session.createQuery(SQL_QUERY);
 		List<UserDetails> listUserDetails = query.list();
@@ -65,7 +62,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		// return entityManager.createQuery("select u from FacultyUser u", FacultyUser.class).getResultList();
 		
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY = "from FacultyUser as f";
+		String SQL_QUERY = "from FacultyUser as f order by f.userName";
 
 		Query query = session.createQuery(SQL_QUERY);
 		List<FacultyUser> listUserDetails = query.list();
@@ -102,6 +99,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 
 		if (result == null) {
 			System.out.println("Error : User not present in Faculty Table");
+			return null;
 		}
 		System.out.println("UserName in DAO IMPL after query:" + result.getUserName());
 		System.out.println("UserWork in DAO IMPL after query:" + result.getUserWork());
@@ -135,6 +133,5 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		sessionFactory.getCurrentSession().update(user);
 	//	 entityManager.merge(user);
 	}
-
 
 }
