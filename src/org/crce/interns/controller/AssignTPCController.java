@@ -1,4 +1,3 @@
-
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -71,15 +70,6 @@ public class AssignTPCController {
 		return new ModelAndView("assignTPC");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "/RemoveTPC", method = RequestMethod.GET)
 	public ModelAndView removeTPC(@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TPC\n");
@@ -97,8 +87,23 @@ public class AssignTPCController {
 		//System.out.println("Task Assigned is "+fuserBean.getUserWork());
 		int a;
 		a=userService.assignTPC(userBean);
-		FacultyUserBean fuserBean= new FacultyUserBean();
-			
+	//	FacultyUserBean fuserBean= new FacultyUserBean();
+			System.out.println("Value Returned from Service: "+a);
+			if(a==0)
+			{
+				return new ModelAndView("noUser");
+			}
+			if(a==3)
+			{
+				return new ModelAndView("notStud");	
+			}
+			if(a==4)
+			{
+				return new ModelAndView("notFac");
+			}
+			if(a==34){
+				return new ModelAndView("alTPC");
+			}
 		return new ModelAndView("redirect:/ViewUsersT");
 		//return new ModelAndView("redirect:/TPOHome");
 	}
@@ -115,8 +120,15 @@ public class AssignTPCController {
 			return new ModelAndView("insertWork");
 		}
 		System.out.println("Username in Controller :"+fuserBean.getUserName());
-		userService.insertWork(fuserBean);
-
+		int a;
+		a=userService.insertWork(fuserBean);
+		
+		System.out.println("Value Returned from Service: "+a);
+		if(a==0)
+		{
+			return new ModelAndView("noUser");
+		}
+		
 		return new ModelAndView("redirect:/ViewFacultyTasks");
 	}
 		
@@ -129,10 +141,19 @@ public class AssignTPCController {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("removeTPC");
 		}
-		userService.removeTPC(userBean);
+		int a;
+		a=userService.removeTPC(userBean);
+		System.out.println("Value Returned from Service: "+a);
+		if(a==0)
+		{
+			return new ModelAndView("noUser");
+		}
+		if(a==33)
+		{
+			return new ModelAndView("notTPC");
+		}
 		return new ModelAndView("redirect:/ViewUsersT");
 	//	return new ModelAndView("redirect:/TPOHome");
 	}
 
 }
-
