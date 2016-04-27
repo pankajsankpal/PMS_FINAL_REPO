@@ -16,6 +16,8 @@ public interface AssignTPCDao {
 	public List<UserDetails> viewUsers();
 	public void removeTPC(UserDetails user);
 	public UserDetails getUser(UserDetails checkUser);
+	public void assignTPCFac(UserDetails user);
+	public void removeTPCFac(UserDetails user);
 
 }
 
