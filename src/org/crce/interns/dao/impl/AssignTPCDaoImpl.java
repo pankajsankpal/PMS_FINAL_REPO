@@ -32,6 +32,9 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 	@Override
 	public void assignTPC(UserDetails user) {
 		sessionFactory.getCurrentSession().update(user);
+		
+		
+		//sessionFactory.getCurrentSession().
 		//entityManager.merge(user);
 	}
 	
@@ -127,6 +130,30 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 	public void removeTPC(UserDetails user) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().update(user);
+	//	 entityManager.merge(user);
+	}
+
+	@Override
+	public void assignTPCFac(UserDetails user) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().update(user);
+		FacultyUser fuser = new FacultyUser();
+		System.out.println(user.getUserName());
+		fuser.setUserName(user.getUserName());
+		fuser.setUserWork("Null");
+		sessionFactory.getCurrentSession().save(fuser);
+		
+	}
+	
+	@Override
+	public void removeTPCFac(UserDetails user) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().update(user);
+		FacultyUser fuser = new FacultyUser();
+		System.out.println(user.getUserName());
+		fuser.setUserName(user.getUserName());
+		fuser= getFacultyUser(fuser);
+		sessionFactory.getCurrentSession().delete(fuser);
 	//	 entityManager.merge(user);
 	}
 
