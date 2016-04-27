@@ -71,7 +71,7 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 				System.out.println("Before update Faculty Role ID : " + checkUser.getRoleId() + "\n");
 				checkUser.setRoleId("4");
 				System.out.println("After update Faculty Role ID : " + checkUser.getRoleId() + "\n");
-				assignTPCDao.assignTPC(checkUser);
+				assignTPCDao.assignTPCFac(checkUser);
 				return 1;
 			} else {
 				System.out.println("Invalid Input : Faculty" + "\n");
@@ -152,7 +152,7 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 			System.out.println("Before update Faculty Role : " + checkUser.getRoleId() + "\n");
 			checkUser.setRoleId("2");// 2 is faculty & 4 is Fac tpc
 			System.out.println("After update Faculty Role : " + checkUser.getRoleId() + "\n");
-			assignTPCDao.removeTPC(checkUser);
+			assignTPCDao.removeTPCFac(checkUser);
 			return 1;
 		}
 		else {
