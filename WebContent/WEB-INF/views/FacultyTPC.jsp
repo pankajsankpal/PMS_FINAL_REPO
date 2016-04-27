@@ -59,6 +59,9 @@
 			<td><a href="AssignTPCF.html">Assign TPC</a></td>
 		</tr>
 		<tr>
+			<td><a href="RemoveTPCF.html">Remove Student TPC</a></td>
+		</tr>
+		<tr>
 			<td><a href="ViewUsersF.html">View Users</a></td>
 		</tr>
 		<tr>
