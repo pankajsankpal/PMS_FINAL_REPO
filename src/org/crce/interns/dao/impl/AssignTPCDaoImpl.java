@@ -26,7 +26,6 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 	/* @PersistenceContext 
 	 private EntityManager entityManager;
 	 */
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -123,9 +122,6 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 
 		return list.get(0);
 	}
-
-	
-	
 	
 	@Override
 	public void removeTPC(UserDetails user) {
