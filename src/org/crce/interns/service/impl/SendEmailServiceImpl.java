@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import org.crce.interns.dao.SendEmailDAO;
 
 import org.crce.interns.service.SendEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class SendEmailServiceImpl implements SendEmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Autowired
+    private SendEmailDAO sendEmailDAO;
+
     @Override
     public ModelAndView sendMail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) {
@@ -32,7 +36,7 @@ public class SendEmailServiceImpl implements SendEmailService {
         System.out.println(request.getParameter("subject"));
         System.out.println(request.getParameter("receiver"));
 
-        String path = "C:\\";
+        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp\\";
         if (file.length > 0 && file != null) {
             System.out.println("Inside If");
             for (CommonsMultipartFile f : file) {
@@ -47,33 +51,9 @@ public class SendEmailServiceImpl implements SendEmailService {
                 }
             }
         }
-        String CompsFTPC, CompsSTPC, ProdSTPC, ProdFTPC, ElexFTPC, ElexSTPC, ITFTPC, ITSTPC, compsClass, itClass, prodClass, elexClass;
-        compsClass = "leonsurajd69@gmail.com";
-        itClass = "dsouza.nevil45@gmail.com";
-        prodClass = "cuthinho.crystal95@gmail.com";
-        elexClass = "melwyn95@gmail.com";
+        String compsClass = "leonsurajd69@gmail.com", itClass = "dsouza.nevil45@gmail.com", prodClass = "cuthinho.crystal95@gmail.com", elexClass = "melwyn95@gmail.com";
+        String allClass = compsClass + " " + itClass + " " + prodClass + " " + elexClass;
 
-        //Comps TPCs
-        CompsFTPC = "dsouza.nevil45@gmail.com cuthinho.crystal95@gmail.com leonsurajd69@gmail.com";
-        CompsSTPC = "sankpal22pankaj@gmail.com adarshgupta139@gmail.com leonsurajd69@gmail.com";
-        //CompsSTPC = "leonsurajd69@gmail.com";
-        //Prod TPCs
-        ProdFTPC = "leonsurajd69@gmail.com adarshgupta139@gmail.com leonsurajd69@gmail.com";
-        ProdSTPC = "rashmisri1995@gmail.com fionalobo23@gmail.com leonsurajd69@gmail.com";
-
-        //Elex TPCs
-        ElexFTPC = "frcrcecompsinterns@gmail.com leonsurajd69@gmail.com";
-        ElexSTPC = "andreaf2395@gmail.com leonsurajd69@gmail.com";
-
-        //IT TPCs
-        ITFTPC = "anuissac1202@gmail.com leonsurajd69@gmail.com";
-        ITSTPC = "leonsurajd69@gmail.com lillitarhea@gmail.com";
-        //ITSTPC = "leonsurajd69@gmail.com";
-
-        String allSTPC = CompsSTPC + " " + ElexSTPC + " " + ProdSTPC + " " + ITSTPC;
-        String allFTPC = CompsFTPC + " " + ElexFTPC + " " + ProdFTPC + " " + ITFTPC;
-        String allTPC = allSTPC + " " + allFTPC;
-        String allClass = prodClass + " " + elexClass + " " + itClass + " " + compsClass;
         String keywordReceivers = request.getParameter("receiver");
 
         String[] keywordReceiversSplit = keywordReceivers.split(" ");
@@ -88,12 +68,13 @@ public class SendEmailServiceImpl implements SendEmailService {
 
         //boolean t=loweredList.contains("itstpc");
         //System.out.println(t);
-        loweredList.remove(",");
+        loweredList.indexOf(",");
         //System.out.println(loweredList);
         if (loweredList.contains("compsstpc,")) {
             //System.out.println("compsstpc,");
             int pos = loweredList.indexOf("compsstpc,");
             //System.out.println(pos);
+            String CompsSTPC = sendEmailDAO.fetchCompsSTPC();
             loweredList.remove("compsstpc,");
             loweredList.add(pos, CompsSTPC);
             //System.out.println(loweredList);
@@ -101,6 +82,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("compsstpc");
             int pos = loweredList.indexOf("compsstpc");
             // System.out.println(pos);
+            String CompsSTPC = sendEmailDAO.fetchCompsSTPC();
             loweredList.remove("compsstpc");
             loweredList.add(pos, CompsSTPC);
             System.out.println(loweredList);
@@ -109,12 +91,14 @@ public class SendEmailServiceImpl implements SendEmailService {
             //System.out.println("itstpcstpc,");
             int pos = loweredList.indexOf("itstpc,");
             //System.out.println(pos);
+            String ITSTPC = sendEmailDAO.fetchITSTPC();
             loweredList.remove("itstpc,");
             loweredList.add(pos, ITSTPC);
             // System.out.println(loweredList);
         } else if (loweredList.contains("itstpc")) {
             // System.out.println("itstpc");
             int pos = loweredList.indexOf("itstpc");
+            String ITSTPC = sendEmailDAO.fetchITSTPC();
             // System.out.println(pos);
             loweredList.remove("itstpc");
             loweredList.add(pos, ITSTPC);
@@ -124,6 +108,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("prodstpc,");
             int pos = loweredList.indexOf("prodstpc,");
             // System.out.println(pos);
+            String ProdSTPC = sendEmailDAO.fetchProdSTPC();
             loweredList.remove("prodstpc,");
             loweredList.add(pos, ProdSTPC);
             // System.out.println(loweredList);
@@ -131,6 +116,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("prodstpc");
             int pos = loweredList.indexOf("prodstpc");
             //System.out.println(pos);
+            String ProdSTPC = sendEmailDAO.fetchProdSTPC();
             loweredList.remove("prodstpc");
             loweredList.add(pos, ProdSTPC);
             // System.out.println(loweredList);
@@ -139,6 +125,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("elexstpc,");
             int pos = loweredList.indexOf("elexstpc,");
             // System.out.println(pos);
+            String ElexSTPC = sendEmailDAO.fetchElexSTPC();
             loweredList.remove("elexstpc,");
             loweredList.add(pos, ElexSTPC);
             // System.out.println(loweredList);
@@ -147,6 +134,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("elexstpc");
             // System.out.println(pos);
             loweredList.remove("elexstpc");
+            String ElexSTPC = sendEmailDAO.fetchElexSTPC();
             loweredList.add(pos, ElexSTPC);
             // System.out.println(loweredList);
         }
@@ -154,6 +142,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             //  System.out.println("compsftpc,");
             int pos = loweredList.indexOf("compsftpc,");
             // System.out.println(pos);
+            String CompsFTPC = sendEmailDAO.fetchCompsFTPC();
             loweredList.remove("compsftpc,");
             loweredList.add(pos, CompsFTPC);
             // System.out.println(loweredList);
@@ -161,6 +150,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("compsftpc");
             int pos = loweredList.indexOf("compsftpc");
             // System.out.println(pos);
+            String CompsFTPC = sendEmailDAO.fetchCompsFTPC();
             loweredList.remove("compsftpc");
             loweredList.add(pos, CompsFTPC);
             // System.out.println(loweredList);
@@ -170,11 +160,13 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("prodftpc,");
             // System.out.println(pos);
             loweredList.remove("prodftpc,");
+            String ProdFTPC = sendEmailDAO.fetchProdFTPC();
             loweredList.add(pos, ProdFTPC);
             // System.out.println(loweredList);
         } else if (loweredList.contains("prodftpc")) {
             // System.out.println("compsstpc");
             int pos = loweredList.indexOf("prodftpc");
+            String ProdFTPC = sendEmailDAO.fetchProdFTPC();
             // System.out.println(pos);
             loweredList.remove("prodftpc");
             loweredList.add(pos, ProdFTPC);
@@ -184,14 +176,17 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("elexftpc,");
             int pos = loweredList.indexOf("elexftpc,");
             // System.out.println(pos);
+            String ElexFTPC = sendEmailDAO.fetchElexFTPC();
             loweredList.remove("elexftpc,");
             loweredList.add(pos, ElexFTPC);
+
             // System.out.println(loweredList);
         } else if (loweredList.contains("elexftpc")) {
             // System.out.println("elexftpc");
             int pos = loweredList.indexOf("elexftpc");
             //  System.out.println(pos);
             loweredList.remove("elexftpc");
+            String ElexFTPC = sendEmailDAO.fetchElexFTPC();
             loweredList.add(pos, ElexFTPC);
             // System.out.println(loweredList);
         }
@@ -199,6 +194,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             //  System.out.println("itftpc,");
             int pos = loweredList.indexOf("itftpc,");
             //  System.out.println(pos);
+            String ITFTPC = sendEmailDAO.fetchITFTPC();
             loweredList.remove("itftpc,");
             loweredList.add(pos, ITFTPC);
             // System.out.println(loweredList);
@@ -206,6 +202,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             // System.out.println("itftpc");
             int pos = loweredList.indexOf("itftpc");
             // System.out.println(pos);
+            String ITFTPC = sendEmailDAO.fetchITFTPC();
             loweredList.remove("itftpc");
             loweredList.add(pos, ITFTPC);
             // System.out.println(loweredList);
@@ -215,6 +212,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("stpc,");
             System.out.println(pos);
             loweredList.remove("stpc,");
+            String allSTPC = sendEmailDAO.fetchCompsSTPC() + " " + sendEmailDAO.fetchElexSTPC() + " " + sendEmailDAO.fetchITSTPC() + " " + sendEmailDAO.fetchProdSTPC();
             loweredList.add(pos, allSTPC);
             System.out.println(loweredList);
         } else if (loweredList.contains("stpc")) {
@@ -222,6 +220,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("stpc");
             System.out.println(pos);
             loweredList.remove("stpc");
+            String allSTPC = sendEmailDAO.fetchCompsSTPC() + " " + sendEmailDAO.fetchElexSTPC() + " " + sendEmailDAO.fetchITSTPC() + " " + sendEmailDAO.fetchProdSTPC();
             loweredList.add(pos, allSTPC);
             System.out.println(loweredList);
         }
@@ -230,6 +229,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("ftpc,");
             System.out.println(pos);
             loweredList.remove("ftpc,");
+            String allFTPC = sendEmailDAO.fetchCompsFTPC() + " " + sendEmailDAO.fetchElexFTPC() + " " + sendEmailDAO.fetchITFTPC() + " " + sendEmailDAO.fetchProdFTPC();
             loweredList.add(pos, allFTPC);
             System.out.println(loweredList);
         } else if (loweredList.contains("ftpc")) {
@@ -237,6 +237,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("ftpc");
             System.out.println(pos);
             loweredList.remove("ftpc");
+            String allFTPC = sendEmailDAO.fetchCompsFTPC() + " " + sendEmailDAO.fetchElexFTPC() + " " + sendEmailDAO.fetchITFTPC() + " " + sendEmailDAO.fetchProdFTPC();
             loweredList.add(pos, allFTPC);
             System.out.println(loweredList);
         }
@@ -245,6 +246,8 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("tpc,");
             System.out.println(pos);
             loweredList.remove("tpc,");
+            //loweredList.add(pos, allTPC);
+            String allTPC = sendEmailDAO.fetchCompsSTPC() + " " + sendEmailDAO.fetchElexSTPC() + " " + sendEmailDAO.fetchITSTPC() + " " + sendEmailDAO.fetchProdSTPC() + " " + sendEmailDAO.fetchCompsFTPC() + " " + sendEmailDAO.fetchElexFTPC() + " " + sendEmailDAO.fetchITFTPC() + " " + sendEmailDAO.fetchProdFTPC();
             loweredList.add(pos, allTPC);
             System.out.println(loweredList);
         } else if (loweredList.contains("tpc")) {
@@ -252,6 +255,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("tpc");
             System.out.println(pos);
             loweredList.remove("tpc");
+            String allTPC = sendEmailDAO.fetchCompsSTPC() + " " + sendEmailDAO.fetchElexSTPC() + " " + sendEmailDAO.fetchITSTPC() + " " + sendEmailDAO.fetchProdSTPC() + " " + sendEmailDAO.fetchCompsFTPC() + " " + sendEmailDAO.fetchElexFTPC() + " " + sendEmailDAO.fetchITFTPC() + " " + sendEmailDAO.fetchProdFTPC();
             loweredList.add(pos, allTPC);
             System.out.println(loweredList);
         }
@@ -358,13 +362,14 @@ public class SendEmailServiceImpl implements SendEmailService {
         // System.out.println("input array");
         input = loweredList.toArray(input);
         String finalList = Arrays.toString(input).replace("[", "").replace("]", "");
+        finalList = finalList.replace(",", " ");
         System.out.println("Final List");
         System.out.println(finalList);
         String stream = Arrays.toString(input);
         System.out.println("Stream");
         System.out.println(stream);
 
-        String[] emailIds = finalList.split(" ");
+        String[] emailIds = finalList.split("\\s+");
 
         javaMailSender.send(new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage)
@@ -396,7 +401,7 @@ public class SendEmailServiceImpl implements SendEmailService {
      Function: Checks for Files
      */
     public boolean checkFile(String name) {
-        String path = "C:\\";
+        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp";
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -413,7 +418,7 @@ public class SendEmailServiceImpl implements SendEmailService {
      Function: Deletes the copy of the file made for uploading in Email_Temp directory
      */
     public void deleteFiles() {
-        String path = "C:\\";
+        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp";
         File folder = new File(path);
         File[] files = folder.listFiles();
         for (File f : files) {
