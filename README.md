@@ -2,3 +2,58 @@
 
 #### fork this project. add your files.
 #### mention the added modules here in README.md
+
+
+>This is Nevil aka ZNevzz editing the README.md
+
+The below controller list refers to the respective modules integrated in this repo
+
++AddUserController
+>Add User via CSV file module
+
++AssignTPCController
+>assign STPC and FTPC module
+
++AssignTPOController
+>assign tpo role module
+
++DownloadController
+>download file module
+
++EventController
+>view event monthwise module
+
++FeedbackController
+>feedback module
+
++LoginController
+>login module
+
++ManageAllotment
+>room allotment module
+
++ManageProfile
+>add and view job module with eligibility criteria module
+
++ManageUserController
+>add student and faculty manually.
+
++RegistrationValidation
+>kushal's demo. is it required kushal??
+
++ResumeUploadController
+>upload resume module
+
++SearchController
+>search user and company module
+
++SendEmailController
+>email sending module
+
++UpdateProfileController
+>edit and view student profile module. for student. user_details,professional_profile,personal_profile
+
++
+>
+
+
