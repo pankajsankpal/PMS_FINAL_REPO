@@ -1,4 +1,4 @@
 /target/
 /.project
 /.classpath
-/database.properties
+/WEB-INF/database.properties
