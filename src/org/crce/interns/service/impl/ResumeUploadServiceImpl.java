@@ -72,7 +72,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		 //If this pathname does not denote a directory, then listFiles() returns null. 
 
 		 for (File file : files) {
-		     if (file.isFile() && file.getName().endsWith(".cv")) {
+		     if (file.isFile() && file.getName().endsWith(".csv")|| file.getName().endsWith(".pdf") || file.getName().endsWith(".doc") || file.getName().endsWith(".docx")) {
 		         results.add(file.getName());
 		     }
 		 }
