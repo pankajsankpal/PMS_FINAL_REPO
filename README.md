@@ -53,7 +53,10 @@ The below controller list refers to the respective modules integrated in this re
 +UpdateProfileController
 >edit and view student profile module. for student. user_details,professional_profile,personal_profile
 
-+
->
++ManageApplicantsController
+>Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
+
++EventDetailsController
+>Adds an event and event type in event_schema
 
 
