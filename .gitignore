@@ -1,3 +1,3 @@
 /target/
-/messages.properties
-
+/WEB-INF/messages.properties
+/WEB-INF/dispatcher-servelt.xml
