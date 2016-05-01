@@ -30,19 +30,21 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		
 		Criteria c=null;
 		 try {
-			c= (Criteria)sessionFactory.openSession().createQuery("select c from Criteria c where criteria_id = :cid").setParameter("cid", criteria_id).uniqueResult();
+			c= (Criteria)sessionFactory.getCurrentSession().createQuery("select c from Criteria c where criteria_id = :cid").setParameter("cid", criteria_id).uniqueResult();
 		} catch (HibernateException e) {
 	
 			e.printStackTrace();
 		}
-		 sessionFactory.close();
+		
 		 return c;
 	}
 	
 	public ProfessionalProfile getProfessionalProfile(String username){	
 		ProfessionalProfile p=null;
+	
 		try {
-			p=(ProfessionalProfile) sessionFactory.openSession().createQuery("select new ProfessionalProfile(username,branch,status,year) from ProfessionalProfile where username = :uid").setParameter("uid",username).uniqueResult();
+			p=(ProfessionalProfile) sessionFactory.getCurrentSession().createQuery("select new ProfessionalProfile(userName,branch,status,year) from ProfessionalProfile where userName = :uid").setParameter("uid",username).uniqueResult();
+			
 		} catch (HibernateException e) {
 			
 			e.printStackTrace();
@@ -55,7 +57,7 @@ public class EligibilityDaoImpl implements EligibilityDao {
 	{
 		Qualification q=null;
 		try {
-			 q=(Qualification) sessionFactory.openSession().createQuery("select new Qualification( username,ssc_per , hsc_or_dip_per,s6_kt, deg_per, deg_kt,drops) from Qualification where username = :uid").setParameter("uid",username).uniqueResult();
+			 q=(Qualification) sessionFactory.getCurrentSession().createQuery("select new Qualification( username,ssc_per , hsc_or_dip_per,s6_kt, deg_per, deg_kt,drops) from Qualification where username = :uid").setParameter("uid",username).uniqueResult();
 		} catch (HibernateException e) {
 		
 			e.printStackTrace();
@@ -68,14 +70,26 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		
 		Company company= null;
 		try {
-			Company_job cj= (Company_job)sessionFactory.openSession().createQuery("select c from Company_job c where job_id = :job_id").setParameter("job_id", job_id).uniqueResult();;
-			company = (Company) sessionFactory.openSession().createQuery("select c from Company c where company_id = :c_id").setParameter("c_id", cj.getCompany_id()).uniqueResult();
+			Company_job cj= (Company_job)sessionFactory.getCurrentSession().createQuery("select c from Company_job c where job_id = :job_id").setParameter("job_id", job_id).uniqueResult();;
+			company = (Company) sessionFactory.getCurrentSession().createQuery("select c from Company c where company_id = :c_id").setParameter("c_id", cj.getCompany_id()).uniqueResult();
+			
 		} catch (NonUniqueResultException e) {
 			e.printStackTrace();
 		}
-		
+	
 		return company.getCriteriaId();
 	}
 	
+	public String getJobCategory(String job_id)
+	{
+		String s=(String) sessionFactory.getCurrentSession().createQuery("select job_category from Job where job_id= :jid").setParameter("jid", job_id).uniqueResult();
+		
+		return s;
+	}
 	
+	public String getStudentJob(String u_name){
+		String s=(String) sessionFactory.getCurrentSession().createQuery("select job_id from Professional_Profile_job where username= :x").setParameter("x", u_name).uniqueResult();
+
+		return s;
+	}
 }

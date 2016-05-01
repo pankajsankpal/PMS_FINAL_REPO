@@ -27,12 +27,12 @@ public class EligibiltyCheckImpl implements EligibilityService{
 	
 
 
-	public CriteriaBean getCriteria(int company_id)  {
-		Criteria criteria = edao.getCriterias(company_id);
+	public CriteriaBean getCriteria(int c_id)  {
+		
+		Criteria criteria = edao.getCriterias(c_id);
+		
 		CriteriaBean criteriaBean = new CriteriaBean();
 		BeanUtils.copyProperties(criteria, criteriaBean);
-		
-		
 		return criteriaBean;
 	}
 	
@@ -64,7 +64,7 @@ public class EligibiltyCheckImpl implements EligibilityService{
 	}
 	
 	
-	public boolean checkCriteria(String username,int criteria_id){
+	public boolean checkCriteria(String username,int criteria_id,String job_id){
 		CriteriaBean c=getCriteria(criteria_id);
 		Date cur_date=new Date();
 		if(cur_date.compareTo(c.getLast_date_to_apply())<=0)
@@ -72,13 +72,28 @@ public class EligibiltyCheckImpl implements EligibilityService{
 			ProfessionalProfileBean p=getProfessionalProfile(username);
 			
 			//check if placed????????????????????????
-			if(!p.getStatus().equalsIgnoreCase("placed"))
+			if(p.getStatus().equalsIgnoreCase("placed"))
 			{
-				System.out.println("inside here");
+				String job_category=edao.getJobCategory(job_id);
+				
+				String student_job_category=edao.getJobCategory(edao.getStudentJob(username));
+				
+				if(job_category.equalsIgnoreCase("dream") && student_job_category.equalsIgnoreCase("dream"))
+				
+					return false;
+				
+				if(job_category.equalsIgnoreCase("nondream") && student_job_category.equalsIgnoreCase("dream"))
+					 return false;
+				
+			}
+			//if student is not placed
+			{
+				
 				String branch=p.getBranch();
-				String criteria_br[]=c.getEligible_branches().split(" ");
+				String criteria_br[]=c.getEligible_branches().split(",");
 				for(int i=0;i<criteria_br.length;i++)
 				{
+			
 					if(branch.equalsIgnoreCase(criteria_br[i]))
 					{
 						QualificationBean q=getQualifications(username);
@@ -89,7 +104,7 @@ public class EligibiltyCheckImpl implements EligibilityService{
 					//check for dead and live kt????????
 				
 								)
-						{System.out.println("inside 2");
+						{
 							return true;
 						}
 					}
@@ -99,6 +114,8 @@ public class EligibiltyCheckImpl implements EligibilityService{
 		}
 			return false;
 	}
+
+
 
 	}
 

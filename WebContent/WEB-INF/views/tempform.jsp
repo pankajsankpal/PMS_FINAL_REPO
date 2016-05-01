@@ -8,7 +8,7 @@
 </head>
 <body>
 <form method="post" action="/PMS_v1/applyforjob">
-		Name : <input type="text" name="username"> <br/>
+	
 		job_id <input type="text" name="job_id"> <br/>
 		<input type="submit" value="APPLY">
 	</form>

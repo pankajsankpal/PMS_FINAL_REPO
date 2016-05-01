@@ -23,30 +23,18 @@ public class EligibilityController {
         return new ModelAndView("tempform");
     }
 	
-	/*@RequestMapping("/applyforjob")
-	public ModelAndView  criteriaCheck(@RequestParam(value="username")String username,@RequestParam(value="job_id")String job_id,Model model){
-		System.out.println("here is user:"+username+"   and job_id: "+job_id);
-	
-		int criteria_id=E_service.getCriteriaId(job_id);
-		
-		if(E_service.checkCriteria(username, criteria_id))
-			return new ModelAndView("eligible");//System.out.println("You are eligible and applied for the job");
-		else
-				System.out.println("oopsie!!  you dont meet the criteria ");
-		
-		return new ModelAndView("fail");
-	}*/	
 	
 	@RequestMapping("/applyforjob")
 	public ModelAndView  criteriaCheck(HttpServletRequest request,@RequestParam(value="job_id")String job_id,Model model){
 		HttpSession session=request.getSession();
 		String username=(String)session.getAttribute("userName");
-		System.out.println("here is user:"+username+"   and job_id: "+job_id);
+		System.out.println("This is user:"+username+"   and job_id: "+job_id);
 	
 		int criteria_id=E_service.getCriteriaId(job_id);
 		
-		if(E_service.checkCriteria(username, criteria_id))
-			return new ModelAndView("eligible");//System.out.println("You are eligible and applied for the job");
+		if(E_service.checkCriteria(username, criteria_id,job_id))
+			return new ModelAndView("eligible");
+		//System.out.println("You are eligible and applied for the job");
 		else
 				System.out.println("oopsie!!  you dont meet the criteria ");
 		

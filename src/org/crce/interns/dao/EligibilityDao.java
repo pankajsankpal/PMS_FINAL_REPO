@@ -18,5 +18,8 @@ public Qualification getQualification(String username);
 
 public int getCriteriaId(String job_id);
 
+public String getJobCategory(String job_id);
+
+public String getStudentJob(String u_name);
 
 }

@@ -14,7 +14,9 @@ public interface EligibilityService {
 	
 	public QualificationBean getQualifications(String username);
 	
-	public boolean checkCriteria(String username,int company_id);
+	public boolean checkCriteria(String username,int criteria_id,String job_id);
 
 	public int getCriteriaId(String job_id);
+	
+	
 }
