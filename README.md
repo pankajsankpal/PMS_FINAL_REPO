@@ -53,7 +53,10 @@ The below controller list refers to the respective modules integrated in this re
 +UpdateProfileController
 >edit and view student profile module. for student. user_details,professional_profile,personal_profile
 
-+
->
++EligibilityController
+>checks whether a student is eligible for a particular job
+
++resumeUploadController
+>added a method to display list of cv files 
 
 
