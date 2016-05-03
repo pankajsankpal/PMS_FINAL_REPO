@@ -64,8 +64,10 @@ public class UpdateProfileController {
 	public ModelAndView login(HttpServletRequest request,@ModelAttribute("u")String id) {
 		
 		System.out.println("Inside Controller");
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
+		//HttpSession session=request.getSession(true);
+		
+		String roleId=(String)request.getSession(true).getAttribute("roleId");
+		
 		if(!crService.checkRole("UpdateProfile", roleId))
 			return new ModelAndView("403");
 		else

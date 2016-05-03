@@ -14,9 +14,9 @@ public class FunctionMaster {
 	@Column(name = "function_id" )
 	int functionId;
 	
-	
 	@Column(name = "function_name" )
 	String functionName;
+	
 	@Column(name = "function_url" )
 	String functionUrl;
 	@Column(name = "created_by" )

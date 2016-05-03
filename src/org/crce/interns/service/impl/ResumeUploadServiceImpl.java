@@ -1,6 +1,8 @@
 package org.crce.interns.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -60,5 +62,21 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		}
 		
 		resumeUploadDao.addNewResume(username,fullPath);
+	}
+	
+	public List<String> displayCVList(String pathname){
+		 List<String> results = new ArrayList<String>();
+
+
+		 File[] files = new File("pathname").listFiles();
+		 //If this pathname does not denote a directory, then listFiles() returns null. 
+
+		 for (File file : files) {
+		     if (file.isFile() && file.getName().endsWith(".csv")|| file.getName().endsWith(".pdf") || file.getName().endsWith(".doc") || file.getName().endsWith(".docx")) {
+		         results.add(file.getName());
+		     }
+		 }
+		       //  System.out.println(results);
+		         return results;
 	}
 }
