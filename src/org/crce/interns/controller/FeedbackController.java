@@ -152,12 +152,12 @@ public class FeedbackController {
 	}
 	
 	
-	@RequestMapping(value = "/test_feedback", method = RequestMethod.POST)  
+	@RequestMapping(value = "/test_feedback", method = RequestMethod.GET)  
 	 public ModelAndView test_feedback() { 
 		return new ModelAndView("feedback");
 	 }
 	
-	@RequestMapping(value = "/test_feedbacks", method = RequestMethod.POST)  
+	@RequestMapping(value = "/test_feedbacks", method = RequestMethod.GET)  
 	 public ModelAndView test_feedbacks() { 
 		return new ModelAndView("feedbacks");
 	 }  
