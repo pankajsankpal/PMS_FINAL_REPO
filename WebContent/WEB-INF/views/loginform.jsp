@@ -5,15 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<SCRIPT type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
-</SCRIPT>
+
 <title>Placement Management System</title>
 </head>
-<bodyonload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload=""onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<body>
+
 <h3>Login Form</h3>
 <FONT color="blue">
 User Name="UserName" and password="password"
@@ -27,7 +23,8 @@ User Name="UserName" and password="password"
 			<td><form:input path="userName" /></td>
 		</tr>
 		<tr>
-			<td>Password:<FONT color="red"><form:errors
+			<td>Password:<FONT color="red">
+			<form:errors
 				path="password" /></FONT></td>
 		</tr>
 		<tr>

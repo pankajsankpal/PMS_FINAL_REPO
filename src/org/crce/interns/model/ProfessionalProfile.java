@@ -58,6 +58,21 @@ public class ProfessionalProfile {
 	private String modifiedBy;
 
 	
+	
+	
+	public ProfessionalProfile() {
+		super();
+	}
+
+
+	public ProfessionalProfile(String username, String branch,String status, Integer year)
+    {
+        this.userName= username;
+        this.branch = branch ;
+        this.status =status;
+        this.year=year;
+    }
+    
 
 	public String getUserName() {
 		return userName;
