@@ -14,5 +14,6 @@ Edit User List:<select name="option">
 </select>
 <input type=submit value=submit /><br />
 </form>
+<a href="view.html">View Applicants' List</a>
 </body>
 </html>

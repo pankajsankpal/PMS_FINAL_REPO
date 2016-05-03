@@ -9,6 +9,6 @@
 <body>
 Entry Deleted.
 <br />
-<a href="view-candidate.html">Back</a>
+<a href="view.html">View Applicants' List</a>
 </body>
 </html>
