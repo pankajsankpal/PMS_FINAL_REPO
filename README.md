@@ -59,4 +59,10 @@ The below controller list refers to the respective modules integrated in this re
 +EventDetailsController
 >Adds an event and event type in event_schema
 
++EligibilityController
+>checks whether a student is eligible for a particular job
+
++resumeUploadController
+>added a method to display list of cv files 
+
 
