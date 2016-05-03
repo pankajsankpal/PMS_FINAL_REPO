@@ -16,7 +16,7 @@ Company:<form:input name="company" id="company_id" path="company" />
 <br>
 <input type="submit" value="Add"/><br />
 </form:form>
-<a href="view-candidate.html">Back</a>
+<a href="view.html">View Applicants' List</a>
 <!-- 
 <script>
 var arr=[];
