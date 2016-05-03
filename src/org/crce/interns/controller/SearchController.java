@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.crce.interns.model.Company;
-import org.crce.interns.model.UserDetails;
+import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,7 @@ public class SearchController {
 	@RequestMapping(value = "/SearchUser", method = RequestMethod.GET) 
 	public ModelAndView searchUser(@RequestParam("searchString")String searchString) {
 		System.out.println(searchString);
-		List<UserDetails> userDetailsList = null;
+		List<PersonalProfile> userDetailsList = null;
 		if (!searchString.equals(""))
 			userDetailsList = searchService.searchUser(searchString);	
 		Map<String, Object> modelMap = new HashMap<>();
