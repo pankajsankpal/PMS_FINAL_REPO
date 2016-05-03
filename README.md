@@ -43,6 +43,7 @@ The below controller list refers to the respective modules integrated in this re
 
 +ResumeUploadController
 >upload resume module
+>added a method to display list of cv files  - Andrea
 
 +SearchController
 >search user and company module
@@ -62,7 +63,5 @@ The below controller list refers to the respective modules integrated in this re
 +EligibilityController
 >checks whether a student is eligible for a particular job
 
-+resumeUploadController
->added a method to display list of cv files 
 
 
