@@ -36,6 +36,8 @@
 	<bean id="addTPCTaskValidator" class="org.crce.interns.validators.AddTPCTaskValidator" />
 	<bean id="rvmTPCValidator" class="org.crce.interns.validators.RemoveTPCValidator" />
 	<bean id="feedbackValidator" class="org.crce.interns.validators.FeedbackFormValidator" />
+	<bean id="addApplicantsValidator" class="org.crce.interns.validators.AddApplicantsValidator" />
+	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
