@@ -85,6 +85,10 @@
 					Users</a><br /></td>
 		</tr>
 		<tr>
+			<td><a href="getjob">click here to check eligibility</a><br /></td>
+		</tr>
+		
+		<tr>
 			<td><a href="form">Logout</a></td>
 		</tr>
 
