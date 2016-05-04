@@ -12,6 +12,10 @@ The below controller list refers to the respective modules integrated in this re
 >Add User via CSV file module
 >**dev by CRYSTAL @Crystal21**
 
++AssignRoleController
+>manage ftpc special role
+>**dev by ADARSH @darshgup139**
+
 +AssignTPCController
 >assign STPC and FTPC module
 >**dev by ADARSH @darshgup139**
@@ -20,6 +24,14 @@ The below controller list refers to the respective modules integrated in this re
 >assign tpo role module
 >**dev by ADARSH @darshgup139**
 
++Company
+>Allows the admin to add company and criteria details
+>**dev by ANU @AnuIssac**
+
++Criteria
+>Allows the admin to add company and criteria details
+>**dev by ANU @AnuIssac**
+
 +DownloadController
 >download file module
 >**dev by MELWYN @melwyn95**
@@ -27,6 +39,14 @@ The below controller list refers to the respective modules integrated in this re
 +EventController
 >view event monthwise module
 >**dev by ADARSH @darshgup139**
+
++EventDetailsController
+>Adds an event and event type in event_schema
+>**dev by RASHMI @RashmiSri**
+
++EligibilityController
+>checks whether a student is eligible for a particular job
+>**dev by ANDREA @Andreaf2395**
 
 +FeedbackController
 >feedback module
@@ -42,10 +62,14 @@ The below controller list refers to the respective modules integrated in this re
 >room allotment module
 >**dev by CHERYL @**
 
++ManageApplicantsController
+>Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
+>**dev by RASHMI @RashmiSri**
 
 +ManageProfile
 >add and view job module with eligibility criteria module
 >**dev by CHERYL @Crystal21**
+
 
 +ManageUserController
 >add student and faculty manually.
@@ -73,25 +97,7 @@ The below controller list refers to the respective modules integrated in this re
 >edit and view student profile module. for student. user_details,professional_profile,personal_profile
 >**dev by NEVIL @ZNevzz**
 
-+ManageApplicantsController
->Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
->**dev by RASHMI @RashmiSri**
 
-+EventDetailsController
->Adds an event and event type in event_schema
->**dev by RASHMI @RashmiSri**
-
-+EligibilityController
->checks whether a student is eligible for a particular job
->**dev by ANDREA @Andreaf2395**
-
-+Add Company
->Allows the admin to add company and criteria details
->**dev by ANU @AnuIssac**
-
-+Add Company
->Allows the admin to add company and criteria details
->**dev by ANU @AnuIssac**
 
 
 
