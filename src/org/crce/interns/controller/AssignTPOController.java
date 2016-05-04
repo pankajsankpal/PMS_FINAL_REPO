@@ -49,7 +49,7 @@ public class AssignTPOController {
 		System.out.println("In Faculty TPC Home Page\n");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("FacultyTPC");
@@ -73,7 +73,7 @@ public class AssignTPOController {
 	public ModelAndView viewUsersF(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		{
@@ -89,7 +89,7 @@ public class AssignTPOController {
 		System.out.println("In Assign TPC\n");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 			return new ModelAndView("assignTPCF");
@@ -110,7 +110,7 @@ public class AssignTPOController {
 		System.out.println("In Remove TPCF\n");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("removeTPCF");
