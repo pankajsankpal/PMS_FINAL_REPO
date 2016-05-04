@@ -1,22 +1,13 @@
 package org.crce.interns.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.CriteriaBean;
-import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
-import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.CriteriaService;
 import org.crce.interns.validators.CriteriaFormValidator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CriteriaController {
 	
 	@Autowired
-    CriteriaFormValidator validator;
+    CriteriaFormValidator criteriaValidator;
 	
 
 	@Autowired
@@ -46,7 +37,7 @@ public class CriteriaController {
 	 @RequestMapping(value = "/saveCriteria", method = RequestMethod.POST)  
 	 public ModelAndView saveEmployee(@ModelAttribute("criteriaBean") CriteriaBean criteriaBean,BindingResult result) throws Exception { 
 		 
-		 validator.validate(criteriaBean, result);
+		 criteriaValidator.validate(criteriaBean, result);
 			if (result.hasErrors()) {
 		System.out.println("Error in form");
      
@@ -61,6 +52,7 @@ public class CriteriaController {
 	   	
 	
 	 }
+	 
 	private Criteria prepareCriteriaModel(CriteriaBean criteriaBean){
 		Criteria criteria =new Criteria();
 		BeanUtils.copyProperties(criteriaBean, criteria);

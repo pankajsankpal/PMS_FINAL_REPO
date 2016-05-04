@@ -45,10 +45,16 @@ public class CompanyDaoImpl implements CompanyDao{
 		try{
 			sessionFactory.getCurrentSession().saveOrUpdate(company);
 			System.out.println("after dao");
-			int cid=company.getCompany_id();
+			//int cid=company.getCompany_id();
+			
+			int cid=company.getCompanyId();
+			
 			System.out.println("after dao1");
 			System.out.println(cid);
-			company.setCriteria_id(cid);
+			
+			//company.setCriteria_id(cid);
+			company.setCriteriaId(cid);
+			
 			sessionFactory.getCurrentSession().saveOrUpdate(company);
 			
 			}

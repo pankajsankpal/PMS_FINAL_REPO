@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CompanyController {
 
 	@Autowired
-    CompanyFormValidator validator;
+    CompanyFormValidator companyValidator;
 	
 	@Autowired
 	private CompanyService companyService;
@@ -39,6 +39,7 @@ public class CompanyController {
 			BeanUtils.copyProperties(companyBean, company);
 			return company;
 		}
+	 
 	 private Criteria prepareCriteriaModel(CriteriaBean criteriaBean){
 			Criteria criteria =new Criteria();
 			BeanUtils.copyProperties(criteriaBean, criteria);
@@ -59,7 +60,7 @@ public class CompanyController {
 				BindingResult result) {
 		 
 		 
-		 validator.validate(companyBean, result);
+		 companyValidator.validate(companyBean, result);
 			if (result.hasErrors()) {
 		System.out.println("Error in form");
      
