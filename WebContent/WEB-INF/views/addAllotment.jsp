@@ -11,17 +11,22 @@
 <title>Room Allotment</title>
 </head>
 <body>
-
-
+<jsp:directive.include file="Header.jsp" />
+<div class="main-content">
+				<div class="main-content-inner">
+					<div class="page-content">
 <form:form method="POST" enctype="multipart/form-data" modelAttribute="allotmentBean" action="saveAllotment">
-	<h2><u>Room Allotment Details</u></h2>
-		<table>
-		
+	<h2 align="center"><u>Room Allotment Details</u></h2>
+		<table align="center" cellspacing="20" cellpadding="20">
 			 <tr>
 				
 				<td><form:input path="allotment_id" type="hidden" /></td>
 			</tr> 
-			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr>
 				<td>Company Name:</td>
 				<td><form:select path="company_name">
@@ -29,7 +34,7 @@
     				try{
 							Class.forName("org.postgresql.Driver").newInstance();
 							Connection connection = DriverManager.getConnection
-            				("jdbc:postgresql://localhost:5432/placementdb?user=postgres&password=dsouza");
+            				("jdbc:postgresql://localhost:5432/placementdb?user=postgres&password=root");
 
        						Statement statement = connection.createStatement() ;
 
@@ -47,42 +52,101 @@
 				%>
 					</form:select></td>
 			</tr>
-			
-			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>		
 			
 			<tr>
 				<td>Round No. :</td>
 				<td><form:input path="round_no" /></td>
 			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr>
 				<td>Room No. :</td>
 				<td><form:input path="room_no" /></td>
 			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr>
 				<td>Description :</td>
 				<td><form:textarea path="job_description" /></td>
 			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr>
 				<td>Drive date :</td>
 				<td><form:input path="drive_date" placeholder="yyyy/mm/dd"/></td>
 			</tr>
-			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr>
 				<td>Upload File :</td>
 				<td><form:input type="file" path="fileUpload"/></td> 
 			</tr>
-			
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
+			<tr>
+			<td><br/></td>
+			<td><br/></td>
+			<td><br/></td>
+			</tr>
 			<tr></tr><tr></tr>
 			
 			<tr>
 			
-				<td colspan="2"><input type="submit" value="Save"></td>
+				<td colspan="2"><input type="submit" value="Save" class="btn btn-info"/></td>
+				<td ><input type="reset" value="Reset" class="btn btn-info"/></td>
 			</tr>
 		</table>
 	</form:form>
-
+</div>
+</div>
+</div>
 </body>
 </html>
