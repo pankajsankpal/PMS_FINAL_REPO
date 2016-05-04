@@ -63,5 +63,8 @@ The below controller list refers to the respective modules integrated in this re
 +EligibilityController
 >checks whether a student is eligible for a particular job
 
++Add Company
+>Allows the admin to add company and criteria details
+
 
 
