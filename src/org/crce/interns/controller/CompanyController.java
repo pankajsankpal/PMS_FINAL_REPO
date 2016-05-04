@@ -36,17 +36,12 @@ public class CompanyController {
 	}
 	 private Company prepareCompanyModel(CompanyBean companyBean){
 			Company company = new Company();
-			BeanUtils.copyProperties(companyBean, company);
+			company.setCompanyAddress(companyBean.getCompany_address());
+			company.setCompanyName(companyBean.getCompany_name());
 			return company;
 		}
 	 
-	 private Criteria prepareCriteriaModel(CriteriaBean criteriaBean){
-			Criteria criteria =new Criteria();
-			BeanUtils.copyProperties(criteriaBean, criteria);
-			
-			return criteria;
-		}
-	
+	 
 	 @RequestMapping(value = "/addCompany", method = RequestMethod.GET)
 		public ModelAndView addCompany(Model model) {
 		 
