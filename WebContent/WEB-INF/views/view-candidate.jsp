@@ -10,7 +10,7 @@
 <body>
 <form action="viewclist.html" method="post" >
 	Company:<select name="company" >
-	<option value="JPMC" >JPMC</option>
+	<option value="JP Morgan" >JPMC</option>
 	<option value="Accenture" >Accenture</option>
 	<option value="TCS" >TCS</option>
 	</select><br>
