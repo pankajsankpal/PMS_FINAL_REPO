@@ -54,7 +54,7 @@
 					Users</a><br /></td>
 		</tr>
 		<tr>
-			<td>10.<a href="view-candidate.html">Manage List of Applicants of all Companies</a><br /></td>
+			<td>10.<a href="manage.html">Manage List of Applicants of all Companies</a><br /></td>
 		</tr>
 		<tr>
 			<td>11.<a href="getEventForm.html">Add Events</a><br /></td>
