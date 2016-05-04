@@ -12,6 +12,8 @@ import javax.persistence.Table;
 @Table(name = "company", catalog = "job_schema")
 public class Company {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "company_id")
 	private int companyId;
 	@Column(name = "criteria_id")
