@@ -10,61 +10,100 @@ The below controller list refers to the respective modules integrated in this re
 
 +AddUserController
 >Add User via CSV file module
+>**dev by CRYSTAL @Crystal21**
+
++AssignRoleController
+>manage ftpc special role
+>**dev by ADARSH @darshgup139**
 
 +AssignTPCController
 >assign STPC and FTPC module
+>**dev by ADARSH @darshgup139**
 
 +AssignTPOController
 >assign tpo role module
+>**dev by ADARSH @darshgup139**
+
++Company
+>Allows the admin to add company and criteria details
+>**dev by ANU @AnuIssac**
+
++Criteria
+>Allows the admin to add company and criteria details
+>**dev by ANU @AnuIssac**
 
 +DownloadController
 >download file module
+>**dev by MELWYN @melwyn95**
 
 +EventController
 >view event monthwise module
-
-+FeedbackController
->feedback module
-
-+LoginController
->login module
-
-+ManageAllotment
->room allotment module
-
-+ManageProfile
->add and view job module with eligibility criteria module
-
-+ManageUserController
->add student and faculty manually.
-
-+RegistrationValidation
->kushal's demo. is it required kushal??
-
-+ResumeUploadController
->upload resume module
->added a method to display list of cv files  - Andrea
-
-+SearchController
->search user and company module
-
-+SendEmailController
->email sending module
-
-+UpdateProfileController
->edit and view student profile module. for student. user_details,professional_profile,personal_profile
-
-+ManageApplicantsController
->Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
+>**dev by ADARSH @darshgup139**
 
 +EventDetailsController
 >Adds an event and event type in event_schema
+>**dev by RASHMI @RashmiSri**
 
 +EligibilityController
 >checks whether a student is eligible for a particular job
+>**dev by ANDREA @Andreaf2395**
 
-+Add Company
->Allows the admin to add company and criteria details
++FeedbackController
+>feedback module
+>**dev by ANU @AnuIssac**
+>added code to check if student is applicant of the company. Only then student is allowed to give feedback - RASHMI
+
++LoginController
+>login module
+>**dev by KHUSAAL @Jugal69**
+>added logout code to invalidate session. - NEVIL
+
++ManageAllotment
+>room allotment module
+>**dev by CHERYL @**
+
++ManageApplicantsController
+>Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
+>**dev by RASHMI @RashmiSri**
+
++ManageProfile
+>add and view job module with eligibility criteria module
+>**dev by CHERYL @Crystal21**
+
+
++ManageUserController
+>add student and faculty manually.
+>**dev by CRYSTAL @Crystal21**
+
++RegistrationValidation
+>kushal's demo. is it required kushal??
+>**dev by KHUSAAL @Jugal69**
+
++ResumeUploadController
+>upload resume module
+>**dev by CRYSTAL @Crystal21**
+>added a method to display list of cv files  - ANDREA
+
+
++SearchController
+>search user by name and username both & company module
+>**dev by MELWYN @melwyn95**
+
++SendEmailController
+>email sending module
+>**dev by LEON @LeonDsouza**
+
++UpdateProfileController
+>edit and view student profile module. for student. user_details,professional_profile,personal_profile
+>**dev by NEVIL @ZNevzz**
+
+____________________________________________________________________
+
+SERVICES
+
++CheckRoleService
+>check role and authorized urls for logged in user
+>**dev by KHUSAAL @Jugal69**
 
 
 
