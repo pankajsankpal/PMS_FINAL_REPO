@@ -69,7 +69,7 @@ public class CompanyController {
 			Company company = prepareCompanyModel(companyBean);
 			
 			companyService.addCompany(company);
-			return new ModelAndView("redirect:/addCriteria");
+			return new ModelAndView("companysuccess");
 		}
 
 }
