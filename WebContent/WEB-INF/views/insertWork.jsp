@@ -37,10 +37,7 @@
 			</tr>
 		</table>
 	</form:form>
-	<tr>
-		<td><a href="TPOHome">Home</a></td>
-	</tr>
-	
+
 </body>
 </html>
 
