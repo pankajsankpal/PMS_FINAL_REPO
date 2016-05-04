@@ -3,11 +3,11 @@ package org.crce.interns.service;
 import java.util.List;
 
 import org.crce.interns.model.Company;
-import org.crce.interns.model.UserDetails;
+import org.crce.interns.model.PersonalProfile;
+
 
 public interface SearchService {
 
-	public List<UserDetails> searchUser(String searchString);
-	public UserDetails viewProfile(String userName);
+	public List<PersonalProfile> searchUser(String searchString);
 	public List<Company> searchCompany(String searchString);
 }

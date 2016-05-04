@@ -150,7 +150,17 @@ public class FeedbackController {
 		}
 		return beans;
 	}
-
+	
+	
+	@RequestMapping(value = "/test_feedback", method = RequestMethod.GET)  
+	 public ModelAndView test_feedback() { 
+		return new ModelAndView("feedback");
+	 }
+	
+	@RequestMapping(value = "/test_feedbacks", method = RequestMethod.GET)  
+	 public ModelAndView test_feedbacks() { 
+		return new ModelAndView("feedbacks");
+	 }  
 	
 	
 }
