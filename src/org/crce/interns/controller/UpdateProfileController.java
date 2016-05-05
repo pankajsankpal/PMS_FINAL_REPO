@@ -285,7 +285,7 @@ public class UpdateProfileController {
 		return model;
 	}
 	
-	
+	//-----------------------------------------------------
 	// extra
 	@RequestMapping(value="/nevz-feedback", method = RequestMethod.GET)
 	public ModelAndView f(HttpServletRequest request) {
@@ -323,6 +323,13 @@ public class UpdateProfileController {
 				
 		return model;
 		}
+	}
+	
+	//-----------------------------------------------------
+	// AJAX test controller method
+	@RequestMapping("/test")
+	public ModelAndView helloajax(){
+		return new ModelAndView("test","message","Spring with ajax and jquery");
 	}
 }
 
