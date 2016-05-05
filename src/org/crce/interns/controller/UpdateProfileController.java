@@ -6,6 +6,8 @@
  */
 package org.crce.interns.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +17,17 @@ import javax.servlet.http.HttpSession;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ProfileService;
+import org.crce.interns.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -34,6 +39,11 @@ public class UpdateProfileController {
 	private ProfileService profileService;
 	@Autowired
 	private CheckRoleService crService;
+	@Autowired
+	private SearchService searchService;
+	
+	
+	
 	/*
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -330,6 +340,25 @@ public class UpdateProfileController {
 	@RequestMapping("/test")
 	public ModelAndView helloajax(){
 		return new ModelAndView("test","message","Spring with ajax and jquery");
+	}
+	
+	@RequestMapping(value="/ajaxtest", method = RequestMethod.GET)
+	public @ResponseBody
+	String getanswer(@RequestParam(value = "num1") int n1,
+			@RequestParam(value = "num2") int n2){
+		int n3 = n1+n2;
+		String result = "result is" + n3;
+		return result;
+	}
+	
+	@RequestMapping("/looseSearch")
+	//public @ResponseBody List<PersonalProfile> loosesearch(@RequestParam("CHARS") String chars){
+	public @ResponseBody PersonalProfile loosesearch(@RequestParam("CHARS") String chars){
+		List<PersonalProfile> userDetailsList = new ArrayList<PersonalProfile>();
+		userDetailsList = searchService.searchUser(chars);
+		System.out.println(userDetailsList.size());
+
+		return userDetailsList.get(0);
 	}
 }
 
