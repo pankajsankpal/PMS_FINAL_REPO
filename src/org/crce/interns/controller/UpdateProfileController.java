@@ -353,12 +353,16 @@ public class UpdateProfileController {
 	
 	@RequestMapping("/looseSearch")
 	//public @ResponseBody List<PersonalProfile> loosesearch(@RequestParam("CHARS") String chars){
-	public @ResponseBody PersonalProfile loosesearch(@RequestParam("CHARS") String chars){
+//	public @ResponseBody PersonalProfile loosesearch(@RequestParam("CHARS") String chars){
+	public @ResponseBody String loosesearch(@RequestParam("CHARS") String chars){
 		List<PersonalProfile> userDetailsList = new ArrayList<PersonalProfile>();
 		userDetailsList = searchService.searchUser(chars);
 		System.out.println(userDetailsList.size());
 
-		return userDetailsList.get(0);
+		//ObjectMapper obj= new ObjectMapper();
+		
+		//return userDetailsList.get(0);
+		return userDetailsList.toString();
 	}
 }
 
