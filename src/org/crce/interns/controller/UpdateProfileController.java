@@ -30,6 +30,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
+
 @Controller
 public class UpdateProfileController {
 	
@@ -362,7 +365,8 @@ public class UpdateProfileController {
 		//ObjectMapper obj= new ObjectMapper();
 		
 		//return userDetailsList.get(0);
-		return userDetailsList.toString();
+		
+		return new Gson().toJson(userDetailsList);
 	}
 }
 
