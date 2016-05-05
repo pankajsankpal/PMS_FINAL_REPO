@@ -26,6 +26,7 @@
 	 				{CHARS:$('#searchbox').val()},
 	 				
 	 				function(data){
+	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
 	 						$('#searchresult').append('<p>'+data[index].userName+'<p>');
