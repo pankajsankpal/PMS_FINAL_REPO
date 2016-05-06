@@ -1,10 +1,15 @@
-<html>
+<html data-ng-app>
 <head>
 <TITLE>Spring MVC Example with AJAX call</TITLE>
  
 
-<script type="text/javascript"
-    src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+
+
+
+
 <script type="text/javascript">
     function Ajax() {
     	
@@ -29,11 +34,60 @@
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<p>'+data[index].userName+'<p>');
+	 						$('#searchresult').append('<p>'+data[index].userName+'-'+data[index].name+'<p>');
 	 					}
 	 				});
  		}
 </script>
+
+ <script>
+    
+ 
+ function AJAXCtrl($scope,$http){
+ 	
+            
+            console.log("inside Ctrl");
+           
+            $http({
+                method: "GET",
+                url: url + "/looseSearch",
+                params: {
+                    CHARS : $('#mysearch').val()
+                }
+            }).then(function(response) {
+                            	
+            	console.log("inside THEN");
+                $scope.names = response.data;
+            });
+    
+ 	}
+    	/*
+    	console.log("called");
+      
+      var nameApp = angular.module("testAJAX");
+      
+      /* 
+      nameApp.controller('AJAXCtrl', function ($scope,$http){
+  		  	  
+        //$scope.names = ['Larry', 'Curly', 'Moe'];
+        console.log("inside Ctrl");
+       
+        $http({
+            method: "GET",
+            url: url + "/looseSearch",
+            params: {
+                CHARS : $('#mysearch').val()
+            }
+        }).then(function(response) {
+                        	
+        	console.log("inside THEN");
+            $scope.names = response.data;
+        });
+      });
+    } */
+    
+    
+    </script>
 
 </head>
  
@@ -51,5 +105,17 @@
         <div id="searchresult"></div>
       
     </div>
+    
+      
+    <div data-ng-controller="AJAXCtrl">
+    <br><br>
+        <input type ="text" id="mysearch" onKeyUp="AJAXCtrl();" data-ng-model="my"/>
+        
+    <br>{{my}}<br>    
+    <ul>
+      <li data-ng-repeat="name in names">{{name.userName}} - {{name.name}}</li>
+    </ul>
+    </div>
+    
 </body>
 </html>

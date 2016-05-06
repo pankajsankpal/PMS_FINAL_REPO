@@ -110,6 +110,9 @@ public class UpdateProfileController {
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
 		//*/
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			
 			return model;
 		}
 	}
