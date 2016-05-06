@@ -6,6 +6,7 @@
  */
 package org.crce.interns.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -110,6 +111,13 @@ public class UpdateProfileController {
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
 		//*/
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			
+			
+			
+			
+			
 			return model;
 		}
 	}
@@ -368,6 +376,8 @@ public class UpdateProfileController {
 		
 		return new Gson().toJson(userDetailsList);
 	}
+	
+	
 }
 
 
