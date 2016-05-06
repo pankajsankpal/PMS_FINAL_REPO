@@ -9,10 +9,12 @@
 package org.crce.interns.service.impl;
 
 
+
+
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
-import org.crce.interns.dao.impl.ProfileDAOImpl;
+import org.crce.interns.dao.ProfileDAO;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.UserDetails;
@@ -30,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService{
 	
 	
 	@Autowired
-	private ProfileDAOImpl profileDAO;
+	private ProfileDAO profileDAO;
 	
 	
 	/**	GET details from database
@@ -183,4 +185,7 @@ public class ProfileServiceImpl implements ProfileService{
 		BeanUtils.copyProperties(result,userDetailsBean);
 		return userDetailsBean;
 	}
+	
+	
+	
 }
