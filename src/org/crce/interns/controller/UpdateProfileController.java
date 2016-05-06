@@ -89,14 +89,12 @@ public class UpdateProfileController {
 			ModelAndView model=null;
 
 		///*
-			UserDetailsBean userDetailsBean= new UserDetailsBean();
-			userDetailsBean.setUserName(id);
+			UserDetailsBean userDetailsBean= new UserDetailsBean();			
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 		
 		
 			userDetailsBean.setUserName(id);
-		//professionalProfileBean.setUserName(id);
 			professionalProfileBean.setUserName(id);
 			personalProfileBean.setUserName(id);
 		

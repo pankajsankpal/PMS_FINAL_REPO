@@ -20,9 +20,11 @@ import javax.servlet.http.HttpSession;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.Notification;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.NfService;
+import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,11 +43,32 @@ public class NfController {
 	@Autowired
 	private NfService nfService;
 	
+	@Autowired
+	private ProfileService profileService;
+	
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
 	public ModelAndView checkNf() {
 		
 		System.out.println("Inside NfController");
 		nfService.checkNf();
+		String id="7000";
+		
+		
+		UserDetailsBean userDetailsBean= new UserDetailsBean();			
+		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+	
+	
+		userDetailsBean.setUserName(id);
+		professionalProfileBean.setUserName(id);
+		personalProfileBean.setUserName(id);
+	
+	
+		userDetailsBean = profileService.getProfile(userDetailsBean);
+		professionalProfileBean = profileService.getProfile(professionalProfileBean);
+		personalProfileBean = profileService.getProfile(personalProfileBean);	
+	
+		List<Notification> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
 		
 		ModelAndView model=null;
 		
