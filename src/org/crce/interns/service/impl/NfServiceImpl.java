@@ -32,6 +32,7 @@ public class NfServiceImpl implements NfService{
 	public void checkNf() {
 		System.out.print("inside Nf service");
 		nfDAO.checkNf();
+		nfDAO.displayXmlDatabaseInConsole();
 		
 	}
 }

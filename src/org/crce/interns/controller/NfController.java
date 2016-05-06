@@ -54,10 +54,5 @@ public class NfController {
 		return model;
 	}
 	
-	// test method definition
-	public static void checkFile(){
-		String FILE = "./src/resources/database.xml";
-		File file = new File(FILE);
-		System.out.print(file);
-	}
+	
 }
