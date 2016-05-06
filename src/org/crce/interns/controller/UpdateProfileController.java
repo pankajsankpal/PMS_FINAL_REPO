@@ -6,6 +6,7 @@
  */
 package org.crce.interns.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -88,14 +89,12 @@ public class UpdateProfileController {
 			ModelAndView model=null;
 
 		///*
-			UserDetailsBean userDetailsBean= new UserDetailsBean();
-			userDetailsBean.setUserName(id);
+			UserDetailsBean userDetailsBean= new UserDetailsBean();			
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 		
 		
 			userDetailsBean.setUserName(id);
-		//professionalProfileBean.setUserName(id);
 			professionalProfileBean.setUserName(id);
 			personalProfileBean.setUserName(id);
 		
@@ -110,6 +109,13 @@ public class UpdateProfileController {
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
 		//*/
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			
+			
+			
+			
+			
 			return model;
 		}
 	}
@@ -368,6 +374,8 @@ public class UpdateProfileController {
 		
 		return new Gson().toJson(userDetailsList);
 	}
+	
+	
 }
 
 
