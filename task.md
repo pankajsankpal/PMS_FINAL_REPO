@@ -91,4 +91,7 @@
 <br/>
 
 **VIEW PROFILE MODULE**
-<br?>
+<br/>
+1. Add and display Qualification of User on Profile page
+<br/>
+
