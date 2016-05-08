@@ -23,6 +23,8 @@
 <br/>
 9.Also integrate Email Notification wherever required
 <br/>
+10.Add Maps to Notification, which Map Notification String and url
+<br/>
 
 **FEEDBACK MODULE**
 <br/>
@@ -87,3 +89,6 @@
 <br/>
 3.Mention @author in any JQuery added by individual
 <br/>
+
+**VIEW PROFILE MODULE**
+<br?>
