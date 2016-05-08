@@ -1,3 +1,10 @@
+/**
+ * @author Nevil Dsouza
+ *
+ *	Main dao 
+ *	DEPENDENCIES: , , 
+ */
+
 package org.crce.interns.dao;
 
 import org.crce.interns.model.PersonalProfile;

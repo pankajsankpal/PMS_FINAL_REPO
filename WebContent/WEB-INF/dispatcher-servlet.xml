@@ -45,7 +45,13 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:resources/messages" />
 	</bean>
+	
+	<bean id="fr"
+		class="org.crce.interns.beans.FileReader">
+		<property name="file" value="classpath:resources/database.xml" />
+	</bean>
 		
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}" />
