@@ -17,7 +17,12 @@
 <br/>
 6.Write logic for AJAX Call
 <br/>
-
+7.Write "Add notification" logic.
+<br/>
+8.Call the add notification logic at appropriate places
+<br/>
+9.Also integrate Email Notification wherever required
+<br/>
 
 **FEEDBACK MODULE**
 <br/>
@@ -59,11 +64,26 @@
 <br/>
 5.Login module with LDAP
 <br/>
+6.Decide working modules, and present to client/mentor. Document changes to be done via review
+<br/>
 
 
 
+**TASKS FOR developers**
+<br/>
+1.Add @author, @params, @return in each module written. Also mention the dependencies i.e. class files which the current class file depends on.
+<br/>
+2.Document testing for blank,invalid and correct inputs for all forms with Screen-shots
+<br/>
+3.Write algorithm applied for every method defined in module
+<br/>
 
 
-
-
-
+**TASKS FOR designers**
+<br/>
+1.Add @author in jsp pages
+<br/>
+2.Add Controller names which interact with jsp, alongwith the URLs
+<br/>
+3.Mention @author in any JQuery added by individual
+<br/>
