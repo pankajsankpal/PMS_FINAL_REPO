@@ -95,3 +95,10 @@
 1. Add and display Qualification of User on Profile page
 <br/>
 
+**VIEW PROFILE MODULE**
+
+
+1.Add JQUERY to append results as an list with href url
+
+
+2.Logic of redirecting href url to person's profile page
