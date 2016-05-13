@@ -95,10 +95,38 @@
 1. Add and display Qualification of User on Profile page
 <br/>
 
-**VIEW PROFILE MODULE**
-
+**SEARCH USER MODULE**
 
 1.Add JQUERY to append results as an list with href url
 
-
 2.Logic of redirecting href url to person's profile page
+
+**PROJECT MANAGEMENT LIFE CYCLE STRATEGY**
+
+*Needs of the hour: *
+
+1.UI Integration
+
+2.Refactor invalid, incomplete, unlinked modules
+
+3.Add new modules
+
+4.Remoting
+
+5.Deployment as WAR and on linux machine
+
+6.Unit, Integration, System Testing
+
+>ACTION PLAN: Division of tasks-
+
+**TEAM 1**:Version1 TEAM
+
+-Proceeding ahead with current version of project i.e. version 1
+
+-Presentation of version1 to stakeholders and owners & collecting review for changes in version 2
+
+-Deployment planning and execution either on PaaS or Linux machine
+
+-Using Spring Remoting & establishing Web Server and App Server modules
+
+
