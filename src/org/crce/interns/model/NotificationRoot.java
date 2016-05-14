@@ -4,7 +4,7 @@
 package org.crce.interns.model;
 
 /**
- * @author Dsouza
+ * @author Nevil Dsouza
  *
  */
 import java.util.List;

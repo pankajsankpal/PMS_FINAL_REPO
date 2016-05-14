@@ -17,11 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.beans.NotificationBean;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
-import org.crce.interns.model.Notification;
-import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
@@ -50,7 +49,7 @@ public class NfController {
 	public ModelAndView checkNf() {
 		
 		System.out.println("Inside NfController");
-		nfService.checkNf();
+		//nfService.checkNf();
 		String id="7000";
 		
 		
@@ -68,7 +67,7 @@ public class NfController {
 		professionalProfileBean = profileService.getProfile(professionalProfileBean);
 		personalProfileBean = profileService.getProfile(personalProfileBean);	
 	
-		List<Notification> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
 		
 		ModelAndView model=null;
 		

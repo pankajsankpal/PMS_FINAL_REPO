@@ -5,9 +5,9 @@
 <br/>
 **NOTIFICATIONS MODULE**
 <br/>
-1.Create beans for Notification, NotificationRoot
+**1.Create beans for Notification, NotificationRoot**
 <br/>
-2.Change corresponding Service,ServiceImpl using CopyProperties and return Bean instead of model
+**2.Change corresponding Service,ServiceImpl using CopyProperties and return Bean instead of model**
 <br/>
 3.Add userName,branch,roleId checking criteria in ServiceImpl
 <br/>

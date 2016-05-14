@@ -31,19 +31,19 @@ public class NfDAOImpl implements NfDAO{
 	NotificationRoot root = new NotificationRoot();	
 	List<Notification> notifications = new ArrayList<Notification>();
 	Notification n = new Notification();
-	
+	//-----------------------------------------------------------------------------------------------------------
 	public void checkNf(){
 		System.out.print("inside nf dao");
 		//checkFile();
 	}
-	
+	//-----------------------------------------------------------------------------------------------------------
 	// test method definition
 	public static void checkFile(){
 	//	String FILE = "./src/resources/database.xml";
 	//	File file = new File(FILE);
 		System.out.print(new NfDAOImpl().fr.getFile());
 	}
-	
+	//-----------------------------------------------------------------------------------------------------------	
 	public NotificationRoot getNotificationDatabase(){
 		
 		//unmarshall
@@ -62,7 +62,7 @@ public class NfDAOImpl implements NfDAO{
 		return root;
 	
 	}
-	
+	//-----------------------------------------------------------------------------------------------------------
 	public void displayXmlDatabaseInConsole (){
 		
 		root = getNotificationDatabase();
