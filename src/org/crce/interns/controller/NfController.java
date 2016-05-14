@@ -72,7 +72,8 @@ public class NfController {
 		
 		ModelAndView model=null;
 		
-		model = new ModelAndView("index");
+		model = new ModelAndView("nftest");
+		model.addObject("nf",nfList);
 		
 		return model;
 	}
