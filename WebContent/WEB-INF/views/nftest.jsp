@@ -14,7 +14,9 @@
 <c:if test="${!empty nf}">
 
 <c:forEach items="${nf}" var="a">
-${a.type}<br>
+${a.dateTime}<br/>
+${a.type} notification for ${a.userOrGroupId}:<br/>
+${a.message}<br/>
 </c:forEach>
 
 </c:if>
