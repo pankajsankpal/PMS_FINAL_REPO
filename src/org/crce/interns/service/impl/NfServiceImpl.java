@@ -54,7 +54,7 @@ public class NfServiceImpl implements NfService{
 		
 	}*/
 	
-	
+	//-----------------------------------------------------------------------------------------------------------
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public List<NotificationBean> getNf
 	(UserDetailsBean userDetailsBean,ProfessionalProfileBean professionalProfileBean,
@@ -71,6 +71,7 @@ public class NfServiceImpl implements NfService{
 			NotificationBean temp = new NotificationBean();			
 			BeanUtils.copyProperties(i, temp);
 			
+			//BeanUtils.copyProperties(source, target);
 			
 			// ALL USERS
 			if(temp.getType().equals("ALL")){
@@ -115,7 +116,7 @@ public class NfServiceImpl implements NfService{
 		return nfBeanList; 
 	}
 	
-	
+	//-----------------------------------------------------------------------------------------------------------
 	public List<NotificationBean> sortByDate(List<NotificationBean> dateUnSorted){
 		
 		
@@ -139,9 +140,21 @@ public class NfServiceImpl implements NfService{
 		return dateUnSorted;
 		
 	}
-	
-	public List<NotificationBean> sortByTime(List<NotificationBean> timeUnSorted){
-		return timeUnSorted;
+	//-----------------------------------------------------------------------------------------------------------
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotification(NotificationBean n){
+		
+		Notification temp = new Notification();
+		BeanUtils.copyProperties(n, temp);
+		
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
 	}
 	
 	
