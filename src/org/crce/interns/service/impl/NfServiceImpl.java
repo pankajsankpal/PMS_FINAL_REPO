@@ -123,15 +123,12 @@ public class NfServiceImpl implements NfService{
 		
 		Collections.sort(dateUnSorted, new Comparator<NotificationBean>() {
 	        
-		 	DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+		 	DateFormat f = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 	        @Override
 	        public int compare(NotificationBean n1, NotificationBean n2) {
-	            try {
-	            	
-	            	String o1=n1.getDate();
-	            	String o2=n2.getDate();
+	            try {	            		            
 	            			
-	                return f.parse(o1).compareTo(f.parse(o2));
+	                return f.parse(n1.getDateTime()).compareTo(f.parse(n2.getDateTime()));
 	            } catch (ParseException e) {
 	                throw new IllegalArgumentException(e);
 	            }
@@ -144,7 +141,6 @@ public class NfServiceImpl implements NfService{
 	}
 	
 	public List<NotificationBean> sortByTime(List<NotificationBean> timeUnSorted){
-	
 		return timeUnSorted;
 	}
 	

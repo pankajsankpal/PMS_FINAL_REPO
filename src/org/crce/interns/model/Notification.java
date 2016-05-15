@@ -29,11 +29,8 @@ public class Notification {
 	private String message ;
 
 	@XmlElement
-	private String date ;
-	
-	@XmlElement
-	private String time ;
-	
+	private String dateTime ;
+			
 	@XmlElement
 	private String url ;
 
@@ -69,20 +66,12 @@ public class Notification {
 		this.message = message;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDateTime() {
+		return dateTime;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public String getUrl() {
@@ -92,7 +81,6 @@ public class Notification {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
 	
 	
 }

@@ -6,8 +6,7 @@
             <category>JOB</category>
             <type>GROUP</type>
             <message>JP morgan job interviews</message>
-            <date>25-04-2016</date>
-            <time>02:59:19</time>
+            <dateTime>15-05-2016 22:59:19</dateTime>
             <url>/</url>
         </notification>
         <notification>
@@ -15,8 +14,7 @@
             <category>EVENT</category>
             <type>GROUP</type>
             <message>TCS T &amp; P Talk</message>
-            <date>29-04-2016</date>
-            <time>02:59:19</time>
+            <dateTime>15-05-2016 12:59:19</dateTime>            
             <url>/</url>
         </notification>
         <notification>
@@ -24,17 +22,15 @@
             <category>ELIGIBLE</category>
             <type>USER</type>
             <message>Candidate for GOOGLE</message>
-            <date>05-05-2016</date>
-            <time>02:59:19</time>
+            <dateTime>15-05-2016 12:58:19</dateTime>            
             <url>/</url>
         </notification>
         <notification>
             <userOrGroupId>Computer Engineering</userOrGroupId>
             <category>JOB</category>
             <type>GROUP</type>
-            <message>morgan stanley job interviews</message>
-            <date>15-05-2016</date>
-            <time>02:59:19</time>
+            <message>morgan stanley job interviews</message>            
+            <dateTime>15-05-2016 14:59:19</dateTime>
             <url>/</url>
         </notification>
         <notification>
@@ -42,8 +38,7 @@
             <category>ELIGIBLE</category>
             <type>USER</type>
             <message>Candidate for FACEBOOK</message>
-            <date>15-05-2016</date>
-            <time>02:59:19</time>
+            <dateTime>15-05-2016 14:58:19</dateTime>            
             <url>/</url>
         </notification>
         <notification>
@@ -51,8 +46,7 @@
             <category>WELCOME</category>
             <type>ALL</type>
             <message>Welcome to Placement Cell FR.CRCE. We are always there to solve any queries or difficulties if any</message>
-            <date>21-02-2016</date>
-            <time>02:59:19</time>
+            <dateTime>21-02-2016 02:59:19</dateTime>            
             <url>/</url>
         </notification>
     </notifications>
