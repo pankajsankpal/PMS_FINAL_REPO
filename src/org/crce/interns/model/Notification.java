@@ -29,8 +29,14 @@ public class Notification {
 	private String message ;
 
 	@XmlElement
-	private String dateTime ;
+	private String date ;
 	
+	@XmlElement
+	private String time ;
+	
+	@XmlElement
+	private String url ;
+
 	public String getUserOrGroupId() {
 		return userOrGroupId;
 	}
@@ -62,13 +68,31 @@ public class Notification {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
-	public String getDateTime() {
-		return dateTime;
-	}
-
-	public void setDateTime(String dateTime) {
-		this.dateTime = dateTime;
-	}
-
+	
+	
 }

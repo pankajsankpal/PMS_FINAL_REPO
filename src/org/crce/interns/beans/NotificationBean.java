@@ -3,6 +3,7 @@
  */
 package org.crce.interns.beans;
 
+
 /**
  * @author Nevil Dsouza
  *
@@ -25,8 +26,14 @@ public class NotificationBean {
 	private String message ;
 
 	
-	private String dateTime ;
+	private String date ;
 	
+	
+	private String time ;
+	
+	
+	private String url ;
+
 	public String getUserOrGroupId() {
 		return userOrGroupId;
 	}
@@ -58,14 +65,29 @@ public class NotificationBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	public String getDateTime() {
-		return dateTime;
+
+	public String getDate() {
+		return date;
 	}
 
-	public void setDateTime(String dateTime) {
-		this.dateTime = dateTime;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 }
