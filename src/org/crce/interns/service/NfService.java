@@ -22,5 +22,11 @@ public interface NfService {
 	public List<NotificationBean> getNf
 	(UserDetailsBean userDetailsBean,ProfessionalProfileBean professionalProfileBean,
 			PersonalProfileBean personalProfileBean);
+	
+	public List<NotificationBean> sortByDate(List<NotificationBean> dateUnSorted);
+	
+	public List<NotificationBean> sortByTime(List<NotificationBean> timeUnSorted);
+	
+	
 
 }

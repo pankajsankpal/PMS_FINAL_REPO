@@ -112,5 +112,16 @@ public class NfServiceImpl implements NfService{
 	}
 	
 	
+	public List<NotificationBean> sortByDate(List<NotificationBean> dateUnSorted){
+		
+		return dateUnSorted;
+	}
+	
+	public List<NotificationBean> sortByTime(List<NotificationBean> timeUnSorted){
+	
+		return timeUnSorted;
+	}
+	
+	
 	
 }
