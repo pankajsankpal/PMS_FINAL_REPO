@@ -70,6 +70,8 @@ public class NfController {
 		personalProfileBean = profileService.getProfile(personalProfileBean);	
 	
 		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		nfList = nfService.sortByDate(nfList);
+		
 		
 		ModelAndView model=null;
 		
