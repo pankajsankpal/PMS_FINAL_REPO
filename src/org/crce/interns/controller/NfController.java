@@ -46,12 +46,14 @@ public class NfController {
 	private ProfileService profileService;
 	
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
-	public ModelAndView checkNf() {
+	public ModelAndView checkNf(HttpServletRequest request) {
 		
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
 		String id="7000";
 		
+		String username=(String)request.getSession(true).getAttribute("userName");
+		String roleId=(String)request.getSession(true).getAttribute("roleId");		
 		
 		UserDetailsBean userDetailsBean= new UserDetailsBean();			
 		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
@@ -68,6 +70,8 @@ public class NfController {
 		personalProfileBean = profileService.getProfile(personalProfileBean);	
 	
 		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		nfList = nfService.sortByDate(nfList);
+		
 		
 		ModelAndView model=null;
 		
