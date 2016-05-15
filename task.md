@@ -9,9 +9,11 @@
 <br/>
 **2.Change corresponding Service,ServiceImpl using CopyProperties and return Bean instead of model**
 <br/>
-3.Add userName,branch,roleId checking criteria in ServiceImpl
+**3.Add userName,branch,roleId checking criteria in ServiceImpl**
 <br/>
-4.Add sort method -- sort according to date and time in descending order "use Randomized Quicksort in compare()"
+4.a.delete dateTime, add date, time, url fields in model.Notification
+<br/>
+4.b.Add sort method -- sort according to date and time in descending order "use Randomized Quicksort in compare()"
 <br/>
 5.Add authorization
 <br/>

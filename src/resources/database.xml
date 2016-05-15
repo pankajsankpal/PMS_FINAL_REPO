@@ -2,39 +2,46 @@
 <root>
     <notifications>
         <notification>
-            <userOrGroupId>COMPS</userOrGroupId>
+            <userOrGroupId>Computer Engineering</userOrGroupId>
             <category>JOB</category>
             <type>GROUP</type>
             <message>JP morgan job interviews</message>
             <dateTime>25-04-2016 02:59:19</dateTime>
         </notification>
         <notification>
-            <userOrGroupId>IT</userOrGroupId>
+            <userOrGroupId>Information Technology</userOrGroupId>
             <category>EVENT</category>
             <type>GROUP</type>
             <message>TCS T &amp; P Talk</message>
             <dateTime>25-04-2016 02:29:19</dateTime>
         </notification>
         <notification>
-            <userOrGroupId>7059</userOrGroupId>
+            <userOrGroupId>7000</userOrGroupId>
             <category>ELIGIBLE</category>
             <type>USER</type>
             <message>Candidate for GOOGLE</message>
             <dateTime>21-04-2016 15:13:19</dateTime>
         </notification>
         <notification>
-            <userOrGroupId>COMPS</userOrGroupId>
+            <userOrGroupId>Computer Engineering</userOrGroupId>
             <category>JOB</category>
             <type>GROUP</type>
             <message>morgan stanley job interviews</message>
             <dateTime>23-04-2016 22:00:19</dateTime>
         </notification>
         <notification>
-            <userOrGroupId>7059</userOrGroupId>
+            <userOrGroupId>7000</userOrGroupId>
             <category>ELIGIBLE</category>
             <type>USER</type>
             <message>Candidate for FACEBOOK</message>
             <dateTime>22-04-2016 12:34:19</dateTime>
+        </notification>
+        <notification>
+            <userOrGroupId></userOrGroupId>
+            <category>WELCOME</category>
+            <type>ALL</type>
+            <message>Welcome to Placement Cell FR.CRCE. We are always there to solve any queries or difficulties if any</message>
+            <dateTime>14-05-2016 02:59:19</dateTime>
         </notification>
     </notifications>
 </root>

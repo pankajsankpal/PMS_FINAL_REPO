@@ -61,12 +61,50 @@ public class NfServiceImpl implements NfService{
 
 		nfList = nfDAO.getNotificationDatabase().getNotifications();
 		
+		// filteration FOR LOOP
 		for(Notification i: nfList){
 
-			NotificationBean temp = new NotificationBean();		
+			NotificationBean temp = new NotificationBean();			
 			BeanUtils.copyProperties(i, temp);
-			nfBeanList.add(temp);
+			
+			
+			// ALL USERS
+			if(temp.getType().equals("ALL")){
+				nfBeanList.add(temp);
+			}
+			
+			// PARTICULAR USER
+			else if(temp.getType().equals("USER")){
+				if(temp.getUserOrGroupId().equals(userDetailsBean.getUserName())){
+					nfBeanList.add(temp);
+				
+				}
+			}
+			
+			
+			// USER GROUP
+			else if(temp.getType().equals("GROUP")){
+				
+				// USER BRANCH
+				if(temp.getUserOrGroupId().equals(professionalProfileBean.getBranch())){
+					nfBeanList.add(temp);
+					
+				}
+				
+				// USER ROLE
+				else if(temp.getUserOrGroupId().equals(userDetailsBean.getRoleId())){
+					nfBeanList.add(temp);
+					
+				}
+				
+			}
+			
+			
+			//nfBeanList.add(temp);
 		}
+		
+		
+
 		
 //		System.out.println(nfList.size());
 
