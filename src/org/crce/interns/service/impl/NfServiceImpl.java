@@ -123,7 +123,7 @@ public class NfServiceImpl implements NfService{
 		
 		Collections.sort(dateUnSorted, new Comparator<NotificationBean>() {
 	        
-		 	DateFormat f = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		 	DateFormat f = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
 	        @Override
 	        public int compare(NotificationBean n1, NotificationBean n2) {
 	            try {	            		            
