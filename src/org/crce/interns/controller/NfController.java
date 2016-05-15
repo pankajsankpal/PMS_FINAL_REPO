@@ -9,7 +9,9 @@ package org.crce.interns.controller;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -81,5 +83,31 @@ public class NfController {
 		return model;
 	}
 	
+	
+	@RequestMapping(value="/addNf", method = RequestMethod.GET)
+	public ModelAndView addNf(HttpServletRequest request) {
+		
+		NotificationBean add=new NotificationBean(); 
+		add.setType("USER");
+		add.setCategory("TEST");
+		add.setUrl("/");
+		add.setUserOrGroupId("7000");
+		add.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+		add.setMessage("ADDED NOTIFICATION 2. Congratulations");
+		
+		ModelAndView model=null;
+		//model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/");
+		
+		if(nfService.addNotification(add)){
+			System.out.println("notification added");
+		}
+		else{
+			System.out.println("notification not added");
+		}
+
+		return model;
+		
+	}
 	
 }

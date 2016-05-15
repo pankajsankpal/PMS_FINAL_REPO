@@ -24,9 +24,7 @@ public interface NfService {
 			PersonalProfileBean personalProfileBean);
 	
 	public List<NotificationBean> sortByDate(List<NotificationBean> dateUnSorted);
-	
-	public List<NotificationBean> sortByTime(List<NotificationBean> timeUnSorted);
-	
-	
+			
+	public boolean addNotification(NotificationBean n);
 
 }

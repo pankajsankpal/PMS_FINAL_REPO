@@ -11,22 +11,21 @@
 <br/>
 **3.Add userName,branch,roleId checking criteria in ServiceImpl**
 <br/>
-4.a.delete dateTime, add date, time, url fields in model.Notification
+**4.a.delete dateTime, add date, time, url fields in model.Notification**
 <br/>
-4.b.Add sort method -- sort according to date and time in descending order "use Randomized Quicksort in compare()"
+**4.b.Add sort method -- sort according to date and time in descending order "use Randomized Quicksort in compare()"**
 <br/>
-5.Add authorization
+5.Add authorization -*will do later or keep written in comments*
 <br/>
 6.Write logic for AJAX Call
 <br/>
-7.Write "Add notification" logic.
+**7.Write "Add notification" logic.**
 <br/>
 8.Call the add notification logic at appropriate places
 <br/>
 9.Also integrate Email Notification wherever required
 <br/>
-10.Add Maps to Notification, which Map Notification String and url
-<br/>
+
 
 **FEEDBACK MODULE**
 <br/>
