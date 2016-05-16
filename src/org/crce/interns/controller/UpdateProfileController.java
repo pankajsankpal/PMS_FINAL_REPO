@@ -110,7 +110,7 @@ public class UpdateProfileController {
 			model.addObject("personalProfile",personalProfileBean);
 		//*/
 			request.getSession(true).setAttribute("name",personalProfileBean.getName());
-			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			//request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
 			
 			
 			
@@ -344,13 +344,14 @@ public class UpdateProfileController {
 		}
 	}
 	
-	//-----------------------------------------------------
+	//----------------------------------------------------------------------------------------------
 	// AJAX test controller method
 	@RequestMapping("/test")
 	public ModelAndView helloajax(){
 		return new ModelAndView("test","message","Spring with ajax and jquery");
 	}
-	
+
+	//----------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/ajaxtest", method = RequestMethod.GET)
 	public @ResponseBody
 	String getanswer(@RequestParam(value = "num1") int n1,
@@ -360,6 +361,7 @@ public class UpdateProfileController {
 		return result;
 	}
 	
+	//----------------------------------------------------------------------------------------------
 	@RequestMapping("/looseSearch")
 	//public @ResponseBody List<PersonalProfile> loosesearch(@RequestParam("CHARS") String chars){
 //	public @ResponseBody PersonalProfile loosesearch(@RequestParam("CHARS") String chars){

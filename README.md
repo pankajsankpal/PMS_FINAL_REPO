@@ -75,6 +75,10 @@ The below controller list refers to the respective modules integrated in this re
 >add student and faculty manually.
 >**dev by CRYSTAL @Crystal21**
 
++NfController
+>User-based view notification and add notification testd
+>**dev by NEVIL @ZNevzz**
+
 +RegistrationValidation
 >kushal's demo. is it required kushal??
 >**dev by KHUSAAL @Jugal69**
