@@ -26,10 +26,6 @@
 		</table>
 	</c:if>
 	
-	<tr>
-		<td><a href="TPOHome">Home</a></td>
-	</tr>
-	
 </body>
 
 </html>

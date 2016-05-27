@@ -28,7 +28,14 @@ public class ManageApplicantsController {
 	@Autowired
 	private DeleteApplicantsValidator deleteApplicantsValidator;
 	
-	@RequestMapping(value = "/view-candidate.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/manage.html", method = RequestMethod.GET)
+	public ModelAndView gotomanagelist() {
+		ModelAndView model = null;
+		model = new ModelAndView("manage-list");
+		return model;
+	}
+	
+	@RequestMapping(value = "/view.html", method = RequestMethod.GET)
 	public ModelAndView gotoviewcandidate() {
 		ModelAndView model = null;
 		model = new ModelAndView("view-candidate");
@@ -52,7 +59,7 @@ public class ManageApplicantsController {
 		return model;
 	}
 
-	@RequestMapping(value = "/showlist.html", method = RequestMethod.POST )
+	@RequestMapping(value = "/managelist.html", method = RequestMethod.POST )
 	public ModelAndView cruddetails(@RequestParam(value = "option") String option) {
 		ModelAndView model;
 		UserCompanyBean userBean = new UserCompanyBean();

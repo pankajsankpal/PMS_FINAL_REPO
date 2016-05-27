@@ -76,17 +76,21 @@
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<form:input path="userName"  class="form-control" placeholder="Username" />
-															<FONT color="red"><form:errors path="userName" /></FONT>
+															
 															<i class="ace-icon fa fa-user"></i>
 														</span>
+														<FONT color="red"><form:errors path="userName" /></FONT>
 													</label>
  
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<form:password path="password" class="form-control" placeholder="Password" />
-															<FONT color="red"><form:errors path="password" /></FONT>
-															<i class="ace-icon fa fa-lock"></i>
+
+															
+															<i class="ace-icon fa fa-lock">															
+															</i>
 														</span>
+														<FONT color="red"><form:errors path="password" /></FONT>
 													</label>
 
 													<div class="space"></div>
