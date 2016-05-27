@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- 
+All notifications added will be written to database.xml file stored in server directory, and not the one in your 
+project directory.
+To check contents of database.xml file, go to :
+C:\Users\user-name\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\PMS\WEB-INF\classes\resources
+user-name : is your User folder name in your Windows PC.
+
+Still if any doubts, contact Nevil
+-->
+<root>
+    <notifications>
+        <notification>
+            <userOrGroupId>Computer Engineering</userOrGroupId>
+            <category>JOB</category>
+            <type>GROUP</type>
+            <message>JP morgan job interviews</message>
+            <dateTime>15-04-2016 10:59 AM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>Information Technology</userOrGroupId>
+            <category>EVENT</category>
+            <type>GROUP</type>
+            <message>TCS T &amp; P Talk</message>
+            <dateTime>09-04-2016 12:59 PM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>7000</userOrGroupId>
+            <category>ELIGIBLE</category>
+            <type>USER</type>
+            <message>Candidate for GOOGLE</message>
+            <dateTime>05-04-2016 12:58 PM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>Computer Engineering</userOrGroupId>
+            <category>JOB</category>
+            <type>GROUP</type>
+            <message>morgan stanley job interviews</message>
+            <dateTime>15-05-2016 12:59 PM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>7000</userOrGroupId>
+            <category>ELIGIBLE</category>
+            <type>USER</type>
+            <message>Candidate for FACEBOOK</message>
+            <dateTime>15-05-2016 12:58 PM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId></userOrGroupId>
+            <category>WELCOME</category>
+            <type>ALL</type>
+            <message>Welcome to Placement Cell FR.CRCE. We are always there to solve any queries or difficulties if any</message>
+            <dateTime>21-02-2016 02:59 AM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>7000</userOrGroupId>
+            <category>TEST</category>
+            <type>USER</type>
+            <message>ADDED NOTIFICATION. Congratulations</message>
+            <dateTime>15-05-2016 08:25 PM</dateTime>
+            <url>/</url>
+        </notification>
+        <notification>
+            <userOrGroupId>7000</userOrGroupId>
+            <category>TEST</category>
+            <type>USER</type>
+            <message>ADDED NOTIFICATION 2. Congratulations</message>
+            <dateTime>15-05-2016 09:49 PM</dateTime>
+            <url>/</url>
+        </notification>
+    </notifications>
+</root>

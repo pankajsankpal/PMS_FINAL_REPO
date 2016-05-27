@@ -34,7 +34,7 @@ public class CheckRoleDAOImpl implements CheckRoleDAO{
 			return false;
 		
 		//Query using Hibernate Query Language
-		String SQL_QUERY ="from FunctionRole as f where f.roleId=? and f.functionId=(select u.functionId from FunctionMaster as u where u.functionName=?)";
+		String SQL_QUERY ="from FunctionRole as f where f.roleId=? and f.functionId=(select u.functionId from FunctionMaster as u where u.functionUrl=?)";
 		
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter(1,functionName);

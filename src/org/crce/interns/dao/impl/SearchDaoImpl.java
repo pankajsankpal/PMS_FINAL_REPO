@@ -1,15 +1,13 @@
 package org.crce.interns.dao.impl;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.crce.interns.dao.SearchDao;
 import org.crce.interns.model.Company;
-import org.crce.interns.model.UserDetails;
-import org.crce.interns.service.SearchService;
+import org.crce.interns.model.PersonalProfile;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,27 +30,24 @@ public class SearchDaoImpl implements SearchDao {
 	}
 
 	@Override
-	public List<UserDetails> searchUser(String searchString) {
+	public List<PersonalProfile> searchUser(String searchString) {
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY ="from UserDetails as u where u.userName like :s";
+		
+		String regex = "^\\d.+";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(searchString);
+		
+		String SQL_QUERY = null;
+		if (matcher.matches())
+			SQL_QUERY ="from PersonalProfile as u where u.userName like :s";
+		else 
+			SQL_QUERY ="from PersonalProfile as u where u.name like :s";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter("s", "%"+searchString+"%");
-		List<UserDetails> userDetailsList = query.list();
+		List<PersonalProfile> userDetailsList = query.list();
 		session.close();
 		
 		return userDetailsList;
-	}
-
-	@Override
-	public UserDetails viewProfile(String userName) {
-		Session session = sessionFactory.openSession();
-		String SQL_QUERY ="from UserDetails as u where u.userName = ?";
-		Query query = session.createQuery(SQL_QUERY);
-		query.setParameter(0, userName);
-		List<UserDetails> userDetailsList = query.list();
-		UserDetails userDetails = userDetailsList.get(0);
-		session.close();
-		return userDetails;
 	}
 	
 	@Override

@@ -27,6 +27,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	private SessionFactory sessionFactory;
 	Session session=null;
 	Transaction tx=null;
+	
 	public void createDetails(UserCompany user){
 		session=this.sessionFactory.openSession();			
 		Session s = sessionFactory.openSession();
