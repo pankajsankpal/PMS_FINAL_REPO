@@ -1,3 +1,15 @@
+/*
+ * AssignTPOController Class contains the various methods like 
+ * Redirect to Admin Home Page
+ * Redirect to FTPC Home Page
+ * Assign STPC by FTPC
+ * Remove STPC by FTPC
+ * Assign TPO by Admin
+ * View Users(for Admin and FTPC)
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -33,7 +45,7 @@ public class AssignTPOController {
 	@Autowired
 	AddTPOValidator validator;
 
-	@RequestMapping(value = "/AdminHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/AdminHome", method = RequestMethod.GET)	//Admin Home Page
 	public ModelAndView goAdminHome(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Admin Home Page\n");
 		HttpSession session=request.getSession();
@@ -44,7 +56,7 @@ public class AssignTPOController {
 		return new ModelAndView("Admin");
 	}
 	
-	@RequestMapping(value = "/FTPCHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/FTPCHome", method = RequestMethod.GET)	//FTPC Home page	
 	public ModelAndView goFTPCHome(HttpServletRequest request,@ModelAttribute("notify") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Faculty TPC Home Page\n");
 		HttpSession session=request.getSession();
