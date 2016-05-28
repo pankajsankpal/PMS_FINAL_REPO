@@ -7,11 +7,16 @@ package org.crce.interns.beans;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author Leon
  */
 public class DirectoryPathBean {
+	
+	
+	
     int year = Calendar.getInstance().get(Calendar.YEAR);
     private final String rootContext="C:\\PMS\\"+year;
     private final String studentFolder=rootContext + "\\Users\\Student";
