@@ -67,7 +67,7 @@ public class AssignTPOController {
 		return new ModelAndView("FacultyTPC");
 	}
 	
-	@RequestMapping(value="/ViewUsersA", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewUsersA", method = RequestMethod.GET)//View Users for Admin
 	public ModelAndView viewUsers(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
@@ -81,7 +81,7 @@ public class AssignTPOController {
 		}
 	}
 	
-	@RequestMapping(value="/ViewUsersF", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewUsersF", method = RequestMethod.GET)//View Users for FTPC
 	public ModelAndView viewUsersF(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
@@ -96,7 +96,7 @@ public class AssignTPOController {
 	}
 
 
-	@RequestMapping(value = "/AssignTPCF", method = RequestMethod.GET)
+	@RequestMapping(value = "/AssignTPCF", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView assignTPCF(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Assign TPC\n");
 		HttpSession session=request.getSession();
@@ -107,7 +107,7 @@ public class AssignTPOController {
 			return new ModelAndView("assignTPCF");
 	}
 	
-	@RequestMapping(value = "/AssignTPO", method = RequestMethod.GET)
+	@RequestMapping(value = "/AssignTPO", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView assignTPO(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Assign TPO\n");
 		HttpSession session=request.getSession();
@@ -117,7 +117,7 @@ public class AssignTPOController {
 		else
 		return new ModelAndView("assignTPO");	}
 
-	@RequestMapping(value = "/RemoveTPCF", method = RequestMethod.GET)
+	@RequestMapping(value = "/RemoveTPCF", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView removeTPCF(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TPCF\n");
 		HttpSession session=request.getSession();
@@ -128,7 +128,7 @@ public class AssignTPOController {
 		return new ModelAndView("removeTPCF");
 	}
 
-	@RequestMapping(value = "/RemoveTPO", method = RequestMethod.GET)
+	@RequestMapping(value = "/RemoveTPO", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView removeTPO(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TP0\n");
 		HttpSession session=request.getSession();
@@ -149,15 +149,15 @@ public class AssignTPOController {
 		int a;
 		a=userService.assignTPO(userBean);
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==5)
+		if(a==5)//A Non-Faculty user attempted to be assigned as TPO
 		{
 			return new ModelAndView("notFac");
 		}
-		if(a==55){
+		if(a==55){  //Already assigned TPO user attempted to be assigned as TPO
 			return new ModelAndView("alTPO");
 		}
 		return new ModelAndView("redirect:/ViewUsersA");
@@ -174,15 +174,15 @@ public class AssignTPOController {
 		int a;
 		a=userService.assignTPCF(userBean);
 		//return new ModelAndView("redirect:/FTPCHome");
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==3)
+		if(a==3)//A Non-Student user attempted to be assigned as STPC
 		{
 			return new ModelAndView("notStud");	
 		}
-		if(a==34){
+		if(a==34){  //Already assigned STPC or FTPC user attempted to be assigned as TPC
 			return new ModelAndView("alTPC");
 		}
 		return new ModelAndView("redirect:/ViewUsersF");
@@ -202,11 +202,11 @@ public class AssignTPOController {
 		int a;
 		a=userService.removeTPO(userBean);
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==55)
+		if(a==55)//User attempted to be removed as TPO is not a TPO
 		{
 			return new ModelAndView("notTPO");
 		}
@@ -227,11 +227,11 @@ public class AssignTPOController {
 		int a;
 		a=userService.removeTPCF(userBean);
 		System.out.println("in Remove TPCF:Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==55)
+		if(a==33)//User attempted to be removed is not a STPC
 		{
 			return new ModelAndView("notTPC");
 		}
