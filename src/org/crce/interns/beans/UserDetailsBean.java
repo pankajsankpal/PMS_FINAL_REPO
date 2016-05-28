@@ -1,3 +1,7 @@
+/**
+ * @author Nevil Dsouza ZNevzz
+ * 	Description : POJO bean for model.ProfessionalProfile
+ */
 
 package org.crce.interns.beans;
 
