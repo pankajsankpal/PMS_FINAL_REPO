@@ -1,7 +1,7 @@
 /**
  * @author Nevil Dsouza ZNevzz
  *	Description: handles all notification related functions
- *
+ *	View pages : nftest.jsp
  *	DEPENDENCIES: 
  *	beans-	NotificationBean,PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
  *	service-CheckRoleService;NfService;ProfileService;
