@@ -15,29 +15,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.crce.interns.service.CheckRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+/*
+*commented - melwyn95
+*This class has 3 methods
+*1>downloadResume
+*2>viewFiles
+*3>getRole
+*/
 @Controller
 public class DownloadController extends HttpServlet{
-
+	@Autowired
+	private CheckRoleService crService;
+	/*
+	The base path would be the root directory of all the folders
+	the year field will be added soon so final basePath would look 
+	like PMS/year
+	*/
 	private String basePath = "C:\\Users\\Melwyn\\Desktop\\PMS";
-	
-	//The base path would be the root directory of all the folders
 	
 	private static final int BUFFER_SIZE = 4096;
 	
+	/*
+	This method constructs the path of the file the user wants to download
+	download path = basePath/role/userName
+	and downloads the file the code is pretty much standard 
+	not much of modification done to standard code availabe online
+	*/
 	@RequestMapping("/downloadResume")
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response, @RequestParam("fileName")String fileName) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		
 		String fileToBeDownloaded = basePath + "\\" + role + "\\" + userName + "\\" + fileName;
 		System.out.println(fileToBeDownloaded);
-		
 		
 		ServletContext context = request.getServletContext();
 		
@@ -48,58 +64,72 @@ public class DownloadController extends HttpServlet{
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-        String mimeType = context.getMimeType(fileToBeDownloaded);
-        if (mimeType == null) {
-            mimeType = "application/octet-stream";
-        }
+        	String mimeType = context.getMimeType(fileToBeDownloaded);
+	 	if (mimeType == null) {
+            		mimeType = "application/octet-stream";
+        	}
         
-        response.setContentType(mimeType);
-        response.setContentLength((int) downloadFile.length());
-        String headerKey = "Content-Disposition";
-        String headerValue = String.format("attachment; filename=\"%s\"",
-                downloadFile.getName());
-        response.setHeader(headerKey, headerValue);
+        	response.setContentType(mimeType);
+        	response.setContentLength((int) downloadFile.length());
+        	String headerKey = "Content-Disposition";
+        	String headerValue = String.format("attachment; filename=\"%s\"",
+                	downloadFile.getName());
+        	response.setHeader(headerKey, headerValue);
         
-        OutputStream outStream = null;
-        try {
-        	byte[] buffer = new byte[BUFFER_SIZE];
-            int bytesRead = -1;
+        	OutputStream outStream = null;
+        	try {
+        		byte[] buffer = new byte[BUFFER_SIZE];
+            		int bytesRead = -1;
 			outStream = response.getOutputStream();
 			while ((bytesRead = inputStream.read(buffer)) != -1) {
-	            outStream.write(buffer, 0, bytesRead);
-	        }
+	            		outStream.write(buffer, 0, bytesRead);
+	        	}
 	 
-	        inputStream.close();
-	        outStream.close();
+	        	inputStream.close();
+	        	outStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    
 	}
 	
+	/*
+	This method lists all the files in the folder selected by the user 
+	and puts them is a list and sends the list to be displayed on the UI
+	*/
 	@RequestMapping("/viewResumes")
 	public ModelAndView viewFiles(HttpServletRequest request, HttpServletResponse response) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		String directoryPath = basePath + "\\" + role + "\\" + userName;
-		File directory = new File(directoryPath);
-		File[] listOfFiles = directory.listFiles();
+		String roleId=(String) request.getSession().getAttribute("roleId");
+		if(!crService.checkRole("Download", roleId))
+			return new ModelAndView("403");
+		else
+		{
+			String directoryPath = basePath + "\\" + role + "\\" + userName;
+			File directory = new File(directoryPath);
+			File[] listOfFiles = directory.listFiles();
 		
-		System.out.println(directoryPath);
+			System.out.println(directoryPath);
 		
-		List<String> fileList = new ArrayList<String>();
-		for (File file : listOfFiles) {
-			if (file.isFile()) {
-				System.out.println("FILE : " + file.getName());
-				fileList.add(file.getName());
-			} else 
+			List<String> fileList = new ArrayList<String>();
+			for (File file : listOfFiles) {
+				if (file.isFile()) {
+					System.out.println("FILE : " + file.getName());
+					fileList.add(file.getName());
+				} else 
 				System.out.println("DIRECTORY : " + file.getName());
+			}
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("fileList", fileList);
+			return new ModelAndView("viewResumes", modelMap);
 		}
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("fileList", fileList);
-		return new ModelAndView("viewResumes", modelMap);
 	}
 	
+	/*
+	This method converts roleId into roleName
+	This is used while accessing directory both
+	while viewing and downloading
+	*/
 	public String getRole(String role) {
 		if (role.equals("1"))
 			return "Student";

@@ -9,25 +9,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.AddUserDao;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
 
-	public void loadCopyFile(String tableName, String year) throws SQLException, IOException {
+
+	public void loadCopyFile(String tableName,String timeStamp) throws SQLException, IOException {
 		CopyManager copyManager;
 		InputStream inStream = null;
 		File copyFile;
 		// String tableName;
-
+		String year =  Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "school16");
+
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "root");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -35,7 +40,9 @@ public class AddUserDaoImpl implements AddUserDao {
 		}
 		System.out.println("Opened database successfully");
 
-		copyFile = new File("C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/csv/ce.csv");
+                DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
+		copyFile = new File(directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\"+"/ce.csv");
+
 		// tableName = "loader_schema.loader";
 	
 		InputStream bufferedInStream;
@@ -51,6 +58,8 @@ public class AddUserDaoImpl implements AddUserDao {
 		Statement st1 = c.createStatement();
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
 		System.out.println(year);
+		st1.executeUpdate("delete from loader_schema.loader where name='Name'");
+
 		st1.executeUpdate("insert into user_schema.userdetails(username) select roll_no from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.personal_profile(username,name,gender,dob,mobile_no,email_id) select roll_no,name,gender,dob,mobile,email from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.professional_profile(username,branch) select roll_no,branch from loader_schema.loader");

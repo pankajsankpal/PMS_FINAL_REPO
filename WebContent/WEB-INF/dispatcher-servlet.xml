@@ -1,3 +1,4 @@
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -14,7 +15,7 @@
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-	<context:property-placeholder location="/WEB-INF/database.properties" />
+	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -35,13 +36,23 @@
 	<bean id="addTPCValidator" class="org.crce.interns.validators.AddTPCValidator" />
 	<bean id="addTPCTaskValidator" class="org.crce.interns.validators.AddTPCTaskValidator" />
 	<bean id="rvmTPCValidator" class="org.crce.interns.validators.RemoveTPCValidator" />
-	
+	<bean id="feedbackValidator" class="org.crce.interns.validators.FeedbackFormValidator" />
+	<bean id="addApplicantsValidator" class="org.crce.interns.validators.AddApplicantsValidator" />
+	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
+	<bean id="companyValidator" class="org.crce.interns.validators.CompanyFormValidator" />
+	<bean id="criteriaValidator" class="org.crce.interns.validators.CriteriaFormValidator" />
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:resources/messages" />
 	</bean>
+	
+	<bean id="fr"
+		class="org.crce.interns.beans.FileReader">
+		<property name="file" value="classpath:resources/database.xml" />
+	</bean>
 		
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}" />
@@ -50,7 +61,7 @@
 		<property name="password" value="${database.password}" />
 	</bean>
 
-<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />	
 		<property name="packagesToScan" value="org.crce.interns.model" />
 		
@@ -74,7 +85,7 @@
 	</bean>
 	
 	  <!-- email bean id -->
-        <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="frcrcecompsinterns@gmail.com" />
@@ -88,7 +99,7 @@
 		</property>
 	</bean>
 	
-	<bean id="feedbackValidator" class="org.crce.interns.validators.FeedbackFormValidator" />
+	
 
 
 	<bean id="hibernateTransactionManager"
@@ -106,8 +117,6 @@
  
     </bean>
 
-
-	
 
 	
 </beans>

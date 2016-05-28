@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import org.crce.interns.beans.FeedbackBean;
 import org.crce.interns.model.Feedback;
+import org.crce.interns.model.UserCompany;
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.FeedbackService;
+import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.validators.FeedbackFormValidator;
 
 @Controller
@@ -36,6 +41,12 @@ public class FeedbackController {
 	
 	@Autowired
     FeedbackFormValidator validator;
+	
+	@Autowired
+	private CheckRoleService crService;
+	
+	@Autowired
+	private ManageApplicantsService crudService;
 	/*@InitBinder
 	private void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
@@ -43,19 +54,44 @@ public class FeedbackController {
 */
    
 	@RequestMapping(value="/feedback", method = RequestMethod.GET)
-	public ModelAndView listFeedback() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("feedback",prepareListofBean(feedbackService.listFeedback()));
+	public ModelAndView listFeedback(HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
+		if(!crService.checkRole("Feedback", roleId))
+			return new ModelAndView("403");
+		else
+		{
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("feedback",prepareListofBean(feedbackService.listFeedback()));
 		
-		return new ModelAndView("feedbackList", model);
+			return new ModelAndView("feedbackList", model);
+		}
 	}
 	@RequestMapping(value = "/addFeedback", method = RequestMethod.GET)
-	public ModelAndView saveEmployee(@ModelAttribute("command") FeedbackBean feedbackBean, 
+	public ModelAndView saveEmployee(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 
 			BindingResult result) {
 		System.out.println("in controller1");
 		//Feedback feedback = prepareModel(feedbackBean);
 		//feedbackService.addFeedback(feedback);
 		//System.out.println("in controller1");
+		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
+		 List<UserCompany> userList=new ArrayList<UserCompany>();
+		 userList.addAll(crudService.retreiveDetails("TCS"));
+		// HttpSession session=request.getSession();
+		String user=(String)session.getAttribute("userName");
+		boolean flag=false;
+		for(UserCompany d:userList ){
+			if(d.getUsername().matches(user)) { flag=true; break; }
+		}
+		if(flag)
+		System.out.println(user);
+		else
+			System.out.println(user+"Not there in list!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		
+		if(!crService.checkRole("Feedback", roleId))
+			return new ModelAndView("403");
+		else
 		return new ModelAndView("addFeedback");
 	}
 
@@ -132,7 +168,17 @@ public class FeedbackController {
 		}
 		return beans;
 	}
-
+	
+	
+	@RequestMapping(value = "/test_feedback", method = RequestMethod.GET)  
+	 public ModelAndView test_feedback() { 
+		return new ModelAndView("feedback");
+	 }
+	
+	@RequestMapping(value = "/test_feedbacks", method = RequestMethod.GET)  
+	 public ModelAndView test_feedbacks() { 
+		return new ModelAndView("feedbacks");
+	 }  
 	
 	
 }

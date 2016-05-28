@@ -1,5 +1,7 @@
 package org.crce.interns.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
@@ -47,4 +49,14 @@ public class ResumeUploadController {
 		}
 		return new ModelAndView("ResumeUpload");
 	}
+	
+	@RequestMapping(value = "/dispCV", method = RequestMethod.POST)
+	public ModelAndView displayCV(){
+		String directory_path="";//give the directory path
+		List<String> listcv=resumeUploadService.displayCVList(directory_path);
+		ModelAndView model=new ModelAndView("listCV");
+		model.addObject("listcv",listcv);
+		return model;
+	}
+	
 }

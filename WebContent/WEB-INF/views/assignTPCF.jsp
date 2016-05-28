@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-	<h2>Assign TPC</h2>
+	<h2>Assign Student TPC</h2>
 	<form:form method="POST" action="SubmitAssignTPCF">
 		<table>
 			<tr>

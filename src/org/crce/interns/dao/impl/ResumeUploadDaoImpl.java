@@ -17,7 +17,7 @@ public class ResumeUploadDaoImpl implements ResumeUploadDao {
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "school16");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "root");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
