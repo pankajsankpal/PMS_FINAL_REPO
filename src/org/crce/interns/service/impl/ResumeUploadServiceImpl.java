@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.ResumeUploadDao;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
@@ -25,10 +26,14 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	@Autowired
 	private ResumeUploadDao resumeUploadDao;
 
-	private String saveDirectory = "C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/Resume/";
+	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
+
+	
 	
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username)
 			throws Exception {
+		
+		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Resume\\";
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
 		if (!fileUpload.isEmpty()) {
 			

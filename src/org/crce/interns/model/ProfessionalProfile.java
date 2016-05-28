@@ -24,7 +24,7 @@ public class ProfessionalProfile {
 	private String status;
 	
 	@Column(name = "year")
-	private Integer year;
+	private String year;
 
 	@Column(name = "field_of_interest")
 	private String fieldOfInterest;
@@ -65,7 +65,7 @@ public class ProfessionalProfile {
 	}
 
 
-	public ProfessionalProfile(String username, String branch,String status, Integer year)
+	public ProfessionalProfile(String username, String branch,String status, String year)
     {
         this.userName= username;
         this.branch = branch ;
@@ -98,11 +98,11 @@ public class ProfessionalProfile {
 		this.status = status;
 	}
 
-	public Integer getYear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
