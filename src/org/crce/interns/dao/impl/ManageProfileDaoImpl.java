@@ -23,6 +23,7 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	
 	/*
 	public void createProfile(Profile profile) {
 		// TODO Auto-generated method stub
@@ -30,6 +31,7 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 		sessionFactory.getCurrentSession().saveOrUpdate(profile);	
 	}
 	*/
+	
 	
 	public void createProfile(Job job) {
 		// TODO Auto-generated method stub
