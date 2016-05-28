@@ -7,6 +7,7 @@ import org.crce.interns.service.CheckRoleService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.crce.interns.service.DirectoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class AddUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
+        @Autowired
+        private DirectoryService directoryService;
 	@RequestMapping(value="/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -35,7 +38,7 @@ public class AddUserController {
 			return new ModelAndView("AddUserViaCSV");
 	}
 
-	
+	   
 	
 	
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
@@ -47,11 +50,11 @@ public class AddUserController {
 		
 		addUserService.handleFileUpload(request,fileUpload,year);
 		// loadCopyFile("user_schema.userdetails");
-		
+		directoryService.createStudentFolder();
 		// returns to the same index page
 		return "AddUserViaCSV";
 	}
 
-	
+        
 
 }
