@@ -2,8 +2,12 @@ package org.crce.interns.controller;
 
 
 
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.service.AddUserService;
 import org.crce.interns.service.CheckRoleService;
+
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,18 +46,34 @@ public class AddUserController {
 	
 	
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@RequestParam("year")String year)
+	public ModelAndView addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload)
 			throws Exception {
 
+		ModelAndView model = new ModelAndView("AddUserViaCSV");
+		try {
+			//System.out.println(year);
+			
+			addUserService.handleFileUpload(request,fileUpload);
+			// loadCopyFile("user_schema.userdetails");
+			directoryService.createStudentFolder();
+			// returns to the same index page
+			
+			//model.addObject("year",Calendar.getInstance().get(Calendar.YEAR));
+		} catch (IncorrectFileFormatException e) {
+			
+			System.out.println(e);
+			
+			model.addObject("error", 1);
+			
+			
+		} catch (MaxFileSizeExceededError m) {
+			System.out.println(m);
+			
+			model.addObject("error1", 1);
+			
+		}
 		
-		//System.out.println(year);
-		
-		addUserService.handleFileUpload(request,fileUpload,year);
-		// loadCopyFile("user_schema.userdetails");
-		directoryService.createStudentFolder();
-		// returns to the same index page
-		return "AddUserViaCSV";
-	}
+		return model;	}
 
         
 

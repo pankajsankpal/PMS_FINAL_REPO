@@ -1,3 +1,4 @@
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -14,7 +15,7 @@
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-	<context:property-placeholder location="/WEB-INF/database.properties" />
+	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -43,16 +44,12 @@
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-            <!-- others uncomment this line and comment the following one - Leon
-		<property name="basename" value="classpath:resources/messages" />  -->
-                <property name="basename" value="classpath:resources/messages" />
-        </bean>
+		<property name="basename" value="classpath:resources/messages" />
+	</bean>
 	
 	<bean id="fr"
 		class="org.crce.interns.beans.FileReader">
-            <!-- others uncomment this line and comment the following one- Leon
-		<property name="file" value="classpath:resources/database.xml" />  -->
-                <property name="file" value="/WEB-INF/database.xml" />
+		<property name="file" value="classpath:resources/database.xml" />
 	</bean>
 		
 	
