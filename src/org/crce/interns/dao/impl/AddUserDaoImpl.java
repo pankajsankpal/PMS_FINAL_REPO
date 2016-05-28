@@ -9,11 +9,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.AddUserDao;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
@@ -27,7 +27,9 @@ public class AddUserDaoImpl implements AddUserDao {
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
+
 			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "root");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -35,7 +37,9 @@ public class AddUserDaoImpl implements AddUserDao {
 		}
 		System.out.println("Opened database successfully");
 
-		copyFile = new File("C:/Users/Crystal/git/PMS_FINAL_REPO/src/resources/csv/ce.csv");
+                DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
+		copyFile = new File(directoryPathBean.getCsvFolder()+"/ce.csv");
+
 		// tableName = "loader_schema.loader";
 	
 		InputStream bufferedInStream;
