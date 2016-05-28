@@ -1,4 +1,10 @@
-
+/*
+ * UserDetailsBean Class contains the various attributes of the 
+ * user_schema.userdetails table and their getters and setters
+ *
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.beans;
 
 import java.io.Serializable;
