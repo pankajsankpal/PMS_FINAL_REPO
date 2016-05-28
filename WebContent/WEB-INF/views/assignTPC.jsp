@@ -4,6 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- This JSP is a form to allow a person to input Username and Select RoleID of the User to be assigned as TPC(STPC or FTPC)
+
+ @author Adarsh
+ -->
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
