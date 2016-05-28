@@ -93,7 +93,7 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 		}
 		else {
 			System.out.println("Service :Invalid Input : Student");
-			return 3;	//Return 33 if User is not a Student
+			return 3;	//Return 3 if User is not a Student
 		}
 	}
 	
@@ -171,7 +171,7 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 		}
 		else {
 			System.out.println("Service: Error(LE): No Such User Exists");
-			return 55;	//Return 33 if User is not a STPC
+			return 55;	//Return 55 if User is not a STPC
 		}
 	
 	}
