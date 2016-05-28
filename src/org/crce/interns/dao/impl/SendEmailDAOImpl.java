@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+* @author Leon
+* Task: Communicates with database to get group values
+* Dependency: -
+*/
 package org.crce.interns.dao.impl;
 
 import java.util.Arrays;
