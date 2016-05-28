@@ -171,7 +171,7 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 		}
 		else {
 			System.out.println("Service: Error(LE): No Such User Exists");
-			return 55;	//Return 55 if User is not a STPC
+			return 33; 	//Return 33 if User is not a STPC
 		}
 	
 	}
