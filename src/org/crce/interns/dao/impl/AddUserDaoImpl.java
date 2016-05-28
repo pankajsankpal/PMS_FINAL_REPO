@@ -20,7 +20,8 @@ import org.springframework.stereotype.Repository;
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
 
-	public void loadCopyFile(String tableName) throws SQLException, IOException {
+
+	public void loadCopyFile(String tableName,String timeStamp) throws SQLException, IOException {
 		CopyManager copyManager;
 		InputStream inStream = null;
 		File copyFile;
@@ -40,7 +41,7 @@ public class AddUserDaoImpl implements AddUserDao {
 		System.out.println("Opened database successfully");
 
                 DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
-		copyFile = new File(directoryPathBean.getCsvFolder()+"/ce.csv");
+		copyFile = new File(directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\"+"/ce.csv");
 
 		// tableName = "loader_schema.loader";
 	
@@ -57,6 +58,8 @@ public class AddUserDaoImpl implements AddUserDao {
 		Statement st1 = c.createStatement();
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
 		System.out.println(year);
+		st1.executeUpdate("delete from loader_schema.loader where name='Name'");
+
 		st1.executeUpdate("insert into user_schema.userdetails(username) select roll_no from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.personal_profile(username,name,gender,dob,mobile_no,email_id) select roll_no,name,gender,dob,mobile,email from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.professional_profile(username,branch) select roll_no,branch from loader_schema.loader");
