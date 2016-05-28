@@ -19,7 +19,9 @@ public class DirectoryPathBean {
 	
 	
 	
-    int year = Calendar.getInstance().get(Calendar.YEAR);
+
+    String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-"+ Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
+
     private final String rootContext="C:\\PMS\\"+year;
     private final String studentFolder=rootContext + "\\Users\\Student";
     private final String facultyFolder=rootContext + "\\Users\\Faculty";
