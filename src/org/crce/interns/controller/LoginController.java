@@ -5,17 +5,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.NotifyForm;
-import org.crce.interns.beans.PersonalProfileBean;
-import org.crce.interns.beans.ProfessionalProfileBean;
-import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.LoginService;
-import org.crce.interns.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -32,10 +28,15 @@ public class LoginController extends HttpServlet{
 	
 	@Autowired
 	private CheckRoleService crService;
-	
+        
+        @Autowired
+        private DirectoryService directoryService;
+        
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 		System.out.println("return model");
+                //just for the time being, the logic behind automatic generation is a little difficult
+                directoryService.createSystemFolders();
 		return new ModelAndView("index");
 	}
 	

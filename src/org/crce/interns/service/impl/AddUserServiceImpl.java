@@ -3,6 +3,7 @@ package org.crce.interns.service.impl;
 
 import java.io.File;
 import javax.servlet.http.HttpServletRequest;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.AddUserDao;
 import org.crce.interns.service.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,9 @@ public class AddUserServiceImpl implements AddUserService {
 	@Autowired
 	private AddUserDao addUserDao;
 	
-	private String saveDirectory = "C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/csv/";
-	
+        DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+	private String saveDirectory = directoryPathBean.getCsvFolder()+"\\";
+
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String year)
 			throws Exception {
 		if (!fileUpload.isEmpty()) {

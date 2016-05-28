@@ -17,10 +17,11 @@ import java.util.List;
 
 
 import java.util.List;
-
+/*
+Task: Interface for creating directories
+*/
 public interface DirectoryService{    
 	//public String checkLogin(String userName, String userPassword);
-        
         public void createStudentFolder();
         public void createFacultyFolder();
         public void createTpoFolder();
