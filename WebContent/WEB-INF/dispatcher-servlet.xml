@@ -38,12 +38,24 @@
 	<bean id="feedbackValidator" class="org.crce.interns.validators.FeedbackFormValidator" />
 	<bean id="addApplicantsValidator" class="org.crce.interns.validators.AddApplicantsValidator" />
 	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
+	<bean id="companyValidator" class="org.crce.interns.validators.CompanyFormValidator" />
+	<bean id="criteriaValidator" class="org.crce.interns.validators.CriteriaFormValidator" />
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:resources/messages" />
+            <!-- others uncomment this line and comment the following one - Leon
+		<property name="basename" value="classpath:resources/messages" />  -->
+                <property name="basename" value="classpath:resources/messages" />
+        </bean>
+	
+	<bean id="fr"
+		class="org.crce.interns.beans.FileReader">
+            <!-- others uncomment this line and comment the following one- Leon
+		<property name="file" value="classpath:resources/database.xml" />  -->
+                <property name="file" value="/WEB-INF/database.xml" />
 	</bean>
 		
+	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}" />
