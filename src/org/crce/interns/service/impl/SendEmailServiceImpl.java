@@ -1,3 +1,9 @@
+/*
+* @author Leon
+* Task: Sends Email To group values retrieved from Database 
+* Dependency: SendEmailDAOImpl.java
+*/
+
 package org.crce.interns.service.impl;
 
 import java.io.File;
@@ -8,6 +14,7 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.SendEmailDAO;
 
 import org.crce.interns.service.SendEmailService;
@@ -28,15 +35,17 @@ public class SendEmailServiceImpl implements SendEmailService {
 
     @Autowired
     private SendEmailDAO sendEmailDAO;
-
+    
+    DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+    
     @Override
     public ModelAndView sendMail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) {
         System.out.println(request.getParameter("message"));
         System.out.println(request.getParameter("subject"));
         System.out.println(request.getParameter("receiver"));
-
-        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp\\";
+        DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+        String path = directoryPathBean.getEmailFolder()+"\\";
         if (file.length > 0 && file != null) {
             System.out.println("Inside If");
             for (CommonsMultipartFile f : file) {
@@ -401,7 +410,7 @@ public class SendEmailServiceImpl implements SendEmailService {
      Function: Checks for Files
      */
     public boolean checkFile(String name) {
-        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp";
+        String path = directoryPathBean.getEmailFolder()+"\\";
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -418,7 +427,7 @@ public class SendEmailServiceImpl implements SendEmailService {
      Function: Deletes the copy of the file made for uploading in Email_Temp directory
      */
     public void deleteFiles() {
-        String path = "C:\\Users\\Leon\\Desktop\\Email_Temp";
+        String path = directoryPathBean.getEmailFolder()+"\\";
         File folder = new File(path);
         File[] files = folder.listFiles();
         for (File f : files) {

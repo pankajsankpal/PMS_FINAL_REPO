@@ -2,11 +2,16 @@ package org.crce.interns.controller;
 
 
 
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.service.AddUserService;
 import org.crce.interns.service.CheckRoleService;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.crce.interns.service.DirectoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +30,8 @@ public class AddUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
+        @Autowired
+        private DirectoryService directoryService;
 	@RequestMapping(value="/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -35,23 +42,39 @@ public class AddUserController {
 			return new ModelAndView("AddUserViaCSV");
 	}
 
-	
+	   
 	
 	
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@RequestParam("year")String year)
+	public ModelAndView addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload)
 			throws Exception {
 
+		ModelAndView model = new ModelAndView("AddUserViaCSV");
+		try {
+			//System.out.println(year);
+			
+			addUserService.handleFileUpload(request,fileUpload);
+			// loadCopyFile("user_schema.userdetails");
+			directoryService.createStudentFolder();
+			// returns to the same index page
+			
+			//model.addObject("year",Calendar.getInstance().get(Calendar.YEAR));
+		} catch (IncorrectFileFormatException e) {
+			
+			System.out.println(e);
+			
+			model.addObject("error", 1);
+			
+			
+		} catch (MaxFileSizeExceededError m) {
+			System.out.println(m);
+			
+			model.addObject("error1", 1);
+			
+		}
 		
-		//System.out.println(year);
-		
-		addUserService.handleFileUpload(request,fileUpload,year);
-		// loadCopyFile("user_schema.userdetails");
-		
-		// returns to the same index page
-		return "AddUserViaCSV";
-	}
+		return model;	}
 
-	
+        
 
 }

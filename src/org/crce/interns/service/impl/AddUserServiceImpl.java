@@ -3,7 +3,12 @@ package org.crce.interns.service.impl;
 
 import java.io.File;
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FilenameUtils;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.AddUserDao;
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.service.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,20 +23,45 @@ public class AddUserServiceImpl implements AddUserService {
 	@Autowired
 	private AddUserDao addUserDao;
 	
-	private String saveDirectory = "C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/csv/";
-	
-	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String year)
+
+        DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+	private String saveDirectory = directoryPathBean.getCsvFolder()+"\\";
+
+
+	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload)
 			throws Exception {
+		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
 		if (!fileUpload.isEmpty()) {
 
+			
+			IncorrectFileFormatException e = new IncorrectFileFormatException();
+			MaxFileSizeExceededError m = new MaxFileSizeExceededError();
+			
+			
+			//File file = new File(fileUpload.getOriginalFilename());
+			final String extension = FilenameUtils.getExtension(fullPath);
+				
+				
+			
+			
+			if(!(extension.equals("csv")))
+				throw e;
+			
+			//final long size = FileUtils.sizeOf(file);
+			final long size = fileUpload.getSize();
+			System.out.println(size);
+			if(size > 1212520)
+				throw m;
+			
 			System.out.println("Saving file: " + fileUpload.getOriginalFilename());
-
+			System.out.println(extension);	
+			
 			if (!fileUpload.getOriginalFilename().equals(""))
 
 				fileUpload.transferTo(new File(saveDirectory + fileUpload.getOriginalFilename()));
 
 		}
-		addUserDao.loadCopyFile("loader_schema.loader",year);
+		addUserDao.loadCopyFile("loader_schema.loader");
 	}
 	
 	
