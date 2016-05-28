@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
 
+
 	public void loadCopyFile(String tableName,String timeStamp) throws SQLException, IOException {
 		CopyManager copyManager;
 		InputStream inStream = null;
@@ -58,6 +59,7 @@ public class AddUserDaoImpl implements AddUserDao {
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
 		System.out.println(year);
 		st1.executeUpdate("delete from loader_schema.loader where name='Name'");
+
 		st1.executeUpdate("insert into user_schema.userdetails(username) select roll_no from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.personal_profile(username,name,gender,dob,mobile_no,email_id) select roll_no,name,gender,dob,mobile,email from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.professional_profile(username,branch) select roll_no,branch from loader_schema.loader");

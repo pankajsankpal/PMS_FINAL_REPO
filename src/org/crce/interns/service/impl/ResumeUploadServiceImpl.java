@@ -34,6 +34,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username)
 			throws Exception {
 		
+
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Resume\\";
@@ -41,6 +42,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		
 		
 	
+
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
 		int lastDot = fullPath.lastIndexOf('.');
 		if (!fileUpload.isEmpty()) {
