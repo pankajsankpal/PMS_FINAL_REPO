@@ -16,6 +16,16 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+/*
+ * Author: Cheryl
+ * Classes Used: Job,Criteria,Company
+ * 
+ * Description: This DAO is used to save data entries for 3 
+ * 				different tables job,criteria and company.
+ * 				It also returns values in case of view Profile
+ */
+
 @Repository("manageProfileDao")
 
 public class ManageProfileDaoImpl implements ManageProfileDao{

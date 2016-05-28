@@ -20,6 +20,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageProfileDao,JobCriteria,Company,JobBean,CriteriaBean,CompanyBean
+ * 
+ * Description: Handles the copyProperties for bean
+ */
 
 @Service("manageProfileService")
 
