@@ -27,7 +27,7 @@ public class AddUserDaoImpl implements AddUserDao {
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "school16");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/placementdb", "postgres", "root");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -35,7 +35,7 @@ public class AddUserDaoImpl implements AddUserDao {
 		}
 		System.out.println("Opened database successfully");
 
-		copyFile = new File("C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/csv/ce.csv");
+		copyFile = new File("C:/Users/Crystal/git/PMS_FINAL_REPO/src/resources/csv/ce.csv");
 		// tableName = "loader_schema.loader";
 	
 		InputStream bufferedInStream;

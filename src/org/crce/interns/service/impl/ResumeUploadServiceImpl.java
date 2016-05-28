@@ -25,7 +25,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	@Autowired
 	private ResumeUploadDao resumeUploadDao;
 
-	private String saveDirectory = "C:/Users/Crystal/workspace1/PMS_v2_Working-master/PMS_v2-master(edited)/src/resources/Resume/";
+	private String saveDirectory = "C:/Users/Crystal/git/PMS_FINAL_REPO/src/resources/resume/";
 	
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username)
 			throws Exception {
