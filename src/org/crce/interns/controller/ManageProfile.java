@@ -42,23 +42,34 @@ public class ManageProfile extends HttpServlet{
 	private ManageProfileService manageProfileService;
 	@Autowired
 	private CheckRoleService crService;
+	
 	/*
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 		return new ModelAndView("index");
 	}
 	*/
+	
+	
 
-	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+	// Save new job profile
+		@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+		
 	// public ModelAndView addProfile(@ModelAttribute("profileBean")ProfileBean
 	// profileBean,BindingResult result) {
+		
+		
 	public ModelAndView addProfile(@RequestParam Map<String, String> r) throws Exception {
-		// manageProfileService.addProfile(profileBean);
+		
+			// manageProfileService.addProfile(profileBean);
 
+		// Create instance of JobBean, CriteriaBean, CompanyBean
+			
 		JobBean jobBean = new JobBean();
 		CriteriaBean criteriaBean = new CriteriaBean();
 		CompanyBean companyBean = new CompanyBean();
 
+		//Set values for JobBean
 		jobBean.setJob_id(r.get("job_id"));
 		jobBean.setEvent_id(r.get("event_id"));
 		jobBean.setJob_description(r.get("job_description"));
@@ -67,9 +78,15 @@ public class ManageProfile extends HttpServlet{
 		jobBean.setSkills_required(r.get("skills_required"));
 		jobBean.setDocs_required(r.get("docs_required"));
 
+		/* Modified_date cannot be added initially hence null else
+		 * error occurs during database insertion
+		 */
 		jobBean.setModified_date(null);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		
+		/** Below comments are trials for fixing the date accepting issue....ignore them*/
+		
 		//Date sdf=new Date();
 		//DateFormat sdf = new SimpleDateFormat("");
 		//DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -79,13 +96,19 @@ public class ManageProfile extends HttpServlet{
 		//	jobBean.setDrive_date(null);
 		
 		//else
+		
+		
 		jobBean.setDrive_date(sdf.parse(r.get("drive_date")));
 				
 		jobBean.setCreated_by(r.get("created_by"));
 		jobBean.setCreated_date(sdf.parse(r.get("created_date")));
 		jobBean.setModified_by(r.get("modified_by"));
+		
 		//jobBean.setModified_date(sdf.parse(r.get("modified_date")));
 
+		
+		//Set values for CriteriaBean
+		
 		criteriaBean.setCriteria_id(Integer.parseInt(r.get("criteria_id")));
 		criteriaBean.setEligible_branches(r.get("eligible_branches"));
 		criteriaBean.setEligible_branches(r.get("eligible_branches"));
@@ -100,10 +123,20 @@ public class ManageProfile extends HttpServlet{
 		criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 		criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
 		
+		
+		//Set values for CompanyBean
+		
 		companyBean.setCompany_id(Integer.parseInt(r.get("company_id")));
 		companyBean.setCompany_name(r.get("company_name"));
 		companyBean.setCompany_address(r.get("company_address"));
+		
+		/*
+		 * Since criteria_id is foreign key for company it has to be
+		 * set by fetching it from criteriaBean
+		 */
+		
 		companyBean.setCriteria_id(criteriaBean.getCriteria_id());
+		
 		//companyBean.setCriteria(criteriaBean.getCriteria_id());
 		
 		
@@ -114,9 +147,13 @@ public class ManageProfile extends HttpServlet{
 		return new ModelAndView("TPO");
 	}
 
+		
+	//Create new job profile
 	@RequestMapping(value = "/addProfile", method = RequestMethod.GET)
 	public ModelAndView createProfile(HttpServletRequest request,Model model) {
+		
 		// ProfileBean profileBean = new ProfileBean();
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("ManageProfile", roleId))
@@ -136,8 +173,14 @@ public class ManageProfile extends HttpServlet{
 		}
 	}
 	
+	
+	//Method to view the job profile
+	
 	@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
+	
 	public ModelAndView listProfile(HttpServletRequest request) {
+		
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("ManageProfile", roleId))
@@ -167,6 +210,7 @@ public class ManageProfile extends HttpServlet{
 				bean.setCtc(profile.getCtc());
 				bean.setSkills_required(profile.getSkills_required());
 				bean.setDocs_required(profile.getDocs_required());
+				
 				//bean.setJob_id(profile.getDrive_date());
 				//bean.setJob_id(profile.getCreated_date());
 				//bean.setJob_id(profile.getCreated_by());

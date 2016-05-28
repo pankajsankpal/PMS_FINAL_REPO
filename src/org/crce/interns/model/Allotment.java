@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Entries of rom_allotment.allotment
+
 @Entity
 @Table(name = "room_allotment.allotment")
 
@@ -38,7 +40,7 @@ public class Allotment implements Serializable{
 	@Column(name="drive_date")
 	private Date drive_date;
 	
-	
+	//No entries are made in room_path it is needed though because of file upload function
 	@Column(name="room_path")
 	private String fileUpload;
 	
