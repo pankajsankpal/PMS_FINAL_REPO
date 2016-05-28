@@ -1,8 +1,10 @@
 /**
- * @author Nevil Dsouza
+ * @author Nevil Dsouza ZNevzz
+ *	Description: handles all notification related functions
  *
- *	Main controller
- *	DEPENDENCIES: , , 
+ *	DEPENDENCIES: 
+ *	beans-	NotificationBean,PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
+ *	service-CheckRoleService;NfService;ProfileService;
  */
 
 package org.crce.interns.controller;
