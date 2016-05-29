@@ -1,3 +1,16 @@
+/*
+ * AssignTPCServiceImpl Class contains all logic related operations.
+ * 
+ * AssignTPCServiceImpl Class contains the implementations for various methods like 
+ * 
+ * Assign TPC(for STPC and FTPC)
+ * Remove TPC(for STPC and FTPC)
+ * Assign special task to FTPC
+ * View Users and View Tasks
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.service.impl;
 
 import java.util.ArrayList;
@@ -30,12 +43,12 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
-		checkUser = assignTPCDao.getUser(checkUser);
+		checkUser = assignTPCDao.getUser(checkUser);//Call to fetch User by his Username
 
 		System.out.println("User Role ID from JSP : " + userBean.getRoleId() + "\n");
 		String roleID = userBean.getRoleId();
 		System.out.println(roleID);
-		rmuser = assignTPCDao.getUserRole(roleID);
+		rmuser = assignTPCDao.getUserRole(roleID);//Call to fetch User by his RoleID
 
 		System.out.println("User Id in RM Table: " + rmuser.getRole_id());
 		System.out.println("User Role in RM Table: " + rmuser.getUserRole());
@@ -51,35 +64,35 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 		 */
 		st = userBean.getRoleId();
 		if (checkUser.getRoleId().equalsIgnoreCase("3")||checkUser.getRoleId().equalsIgnoreCase("4")) {
-			return 34;
+			return 34;	//Return 34 if User is already a TPC
 		}
-		else if (st.equalsIgnoreCase("1")) {
+		else if (st.equalsIgnoreCase("1")) {	//Check if User is a Student
 
 			if (checkUser.getRoleId().equalsIgnoreCase(userBean.getRoleId())) {
 				System.out.println("Before update Student Role ID : " + checkUser.getRoleId() + "\n");
-				checkUser.setRoleId("3");
+				checkUser.setRoleId("3");	//Update RoleID to make him STPC
 				System.out.println("After update Student Role ID : " + checkUser.getRoleId() + "\n");
 				assignTPCDao.assignTPC(checkUser);
-				return 1;
+				return 1;	//Return 1 for normal execution
 			} else {
 				System.out.println("Invalid Input: Student" + "\n");
-				return 3;
+				return 3;	//Return 3 if not a Student
 			}
-		} else if (st.equalsIgnoreCase("2")) {
+		} else if (st.equalsIgnoreCase("2")) {	//Check if User is a Student
 			System.out.println(userBean.getRoleId());
 			if (checkUser.getRoleId().equalsIgnoreCase(userBean.getRoleId())) {
 				System.out.println("Before update Faculty Role ID : " + checkUser.getRoleId() + "\n");
-				checkUser.setRoleId("4");
+				checkUser.setRoleId("4");	//Update RoleID to make him FTPC
 				System.out.println("After update Faculty Role ID : " + checkUser.getRoleId() + "\n");
 				assignTPCDao.assignTPCFac(checkUser);
-				return 1;
+				return 1;	//Return 1 for normal execution
 			} else {
 				System.out.println("Invalid Input : Faculty" + "\n");
-				return 4;
+				return 4;	//Return 4 if not a Faculty
 			}
 		} else {
 			System.out.println("Error : No Such User Exists");
-			return 0;
+			return 0;	//Return 0 if no such User exists
 		}
 
 	}
@@ -94,7 +107,7 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 		System.out.println(fuser);
 		if (fuser == null) {
 			System.out.println("Error: No such User Defined" + "\n");
-			return 0;
+			return 0;	//Return 0 if no such User exists
 		}
 		
 		System.out.println("UserWorkk in Service with Bean: " + fuserBean.getUserWork());
@@ -103,7 +116,7 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 		System.out.println("UserWork in Service IMPL :" + fuser.getUserWork());
 
 		assignTPCDao.insertWork(fuser);
-		return 1;
+		return 1;	//Return 1 for normal execution
 		
 	}
 
@@ -139,7 +152,7 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 
 		if (checkUser == null) {
 			System.out.println("Error: No User Defined" + "\n");
-			return 0;
+			return 0;	//Return 0 if no such User exists
 		}
 
 		if (checkUser.getRoleId().equalsIgnoreCase("3")) {
@@ -147,17 +160,17 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 			checkUser.setRoleId("1");// 1 is Student & 3 is Student tpc
 			System.out.println("After update Student Role : " + checkUser.getRoleId() + "\n");
 			assignTPCDao.removeTPC(checkUser);
-			return 1;
+			return 1;	//Return 1 for normal execution
 		} else if (checkUser.getRoleId().equalsIgnoreCase("4")) {
 			System.out.println("Before update Faculty Role : " + checkUser.getRoleId() + "\n");
 			checkUser.setRoleId("2");// 2 is faculty & 4 is Fac tpc
 			System.out.println("After update Faculty Role : " + checkUser.getRoleId() + "\n");
 			assignTPCDao.removeTPCFac(checkUser);
-			return 1;
+			return 1;	//Return 1 for normal execution
 		}
 		else {
 			System.out.println("Service :Error (LE) : No Such User Exists Last Error");
-			return 33;
+			return 33;	//Return 33 if User is not a TPC
 		}
 	}
 

@@ -1,4 +1,12 @@
-
+/*
+ * EventDaoImpl Class contains all database related operations.
+ * EventDaoImpl Interface Class contains the implementation for method
+ * 
+ * View Events based on month
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.dao.impl;
 
 import java.sql.Date;
@@ -38,6 +46,7 @@ public class EventDaoImpl implements EventDao {
 		return allEvents;*/
 		Session session = sessionFactory.openSession();
 		List<Event_details> edList = session.createQuery("select ed from Event_details ed where month(ed.dates) = :m order by ed.dates").setParameter("m", months).list();
+			//Query to extract month from date(yyyy-mm-dd) and sort events in that month in ascending order based on date (dd)
 		if(edList.isEmpty())
 			return null;
 		
