@@ -79,16 +79,16 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				
 				f1.renameTo(f2);
 				fileUpload.transferTo(f2);
-				
+				resumeUploadDao.addNewResume(username,fullPath);
 			}
 				
 			
 				
 		}
 		else{
-			
+			System.out.println("No file chosen to upload!");
 		}
-		resumeUploadDao.addNewResume(username,fullPath);
+		
 	}
 	
 	public List<String> displayCVList(String pathname){
