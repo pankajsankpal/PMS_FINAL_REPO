@@ -9,8 +9,13 @@
 </head>
 <body>
 <form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
-Name:<form:input name="name" type="text" path="username" /><br>
-Company:<form:input name="company" type="text" path="company" /><br>
+Name:<form:input name="name" type="text" path="username" />
+<form:errors path="username" cssClass="error"/><br/>
+Company:<form:input name="company" type="text" path="company" />
+<form:errors path="company" cssClass="error"/>
+<br/>
+${msg}
+<br/> 
 <input type="submit" value="Delete"/>
 </form:form><br />
 </body>
