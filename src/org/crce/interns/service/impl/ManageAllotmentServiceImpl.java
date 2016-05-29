@@ -18,6 +18,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+
+/*
+ * Author: Cheryl
+ * Classes Used: ManageAllotmentDao,AllotmentBean,Allotment
+ * 
+ * Description: Handles the file upload function and copyProperties
+ */
+
 @Service("manageAllotmentService")
 
 //The below line is required else code doesn't work...common error of skipping this line

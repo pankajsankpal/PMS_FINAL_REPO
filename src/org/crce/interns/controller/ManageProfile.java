@@ -29,6 +29,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageProfileService, CheckRoleService
+ * 				 Job,Criteria,Company,JobBean,CriteriaBean,ComanyBean
+ * 
+ * Description: This controller is used to add,save and view Job Profiles by TPO.
+ * 				Also the date entries need to be done differently since database 
+ * 				value is of type date. This controller manages data entries for 3 
+ * 				different tables job,criteria and company
+ */
 
 @Controller
 public class ManageProfile extends HttpServlet{

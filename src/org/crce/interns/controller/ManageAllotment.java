@@ -26,6 +26,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageAllotmentService, CheckRoleService, LoginService 
+ * 				 Allotment,AllotmentBean
+ * Description: This controller is used to add,save and view room allotment by faculty TPC
+ */
 
 @Controller
 public class ManageAllotment extends HttpServlet{
