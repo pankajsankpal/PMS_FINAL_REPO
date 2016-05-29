@@ -1,4 +1,19 @@
-
+/*
+ * AssignTPCDao Interface Class contains the interface for various methods like 
+ * 
+ * Assign TPC(for STPC)
+ * Remove TPC(for STPC)
+ * Assign TPCFac(for FTPC)
+ * Remove TPC(for FTPC)
+ * Assign special task to FTPC
+ * View Users and View Tasks
+ * Fetch User based on Username
+ * Fetch Faculty User based on Username
+ * Fetch UserRole based on RoleID
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.dao;
 
 import java.util.List;

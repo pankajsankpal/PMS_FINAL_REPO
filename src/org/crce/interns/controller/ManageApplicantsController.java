@@ -8,6 +8,7 @@ import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.validators.AddApplicantsValidator;
 import org.crce.interns.validators.DeleteApplicantsValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+*
+* @author Rashmi
+* Task: Adds/Deletes Applicant entries from list of applicants for a job
+* Dependency: ManageApplicantsService.java
+*/
+
 @Controller("manageUsersController")
 public class ManageApplicantsController {
 
@@ -23,9 +31,11 @@ public class ManageApplicantsController {
 	private ManageApplicantsService crudService;
 
 	@Autowired
+	@Qualifier("addApplicantsValidator")
 	private AddApplicantsValidator addApplicantsValidator;
 	
 	@Autowired
+	@Qualifier("deleteApplicantsValidator")
 	private DeleteApplicantsValidator deleteApplicantsValidator;
 	
 	@RequestMapping(value = "/manage.html", method = RequestMethod.GET)
@@ -77,39 +87,68 @@ public class ManageApplicantsController {
 	@RequestMapping(value = "/addcandidate.html", method = RequestMethod.POST)
 	public ModelAndView addcandidate(@ModelAttribute("userBean") UserCompanyBean userBean, BindingResult bindingResult) {
 		ModelAndView model;
-	//	UserCompanyBean userBean = new UserCompanyBean();
-	//	userBean.setUsername(name);
-	//	userBean.setCompany(company);
-	//	System.out.println(userBean.getUsername());
-		crudService.createDetails(userBean);
+		String msg="";
 		addApplicantsValidator.validate(userBean, bindingResult);
+		
 		if (bindingResult.hasErrors()) {
 			System.out.println("Binding Errors are present...");
 			model = new ModelAndView("add-candidate");
-		} else
-		model = new ModelAndView("add-success");
-		//model.addAttribute(userBean);
+		} else{
+			int c=crudService.createDetails(userBean);
+			if(c==1) {
+				model=new ModelAndView("add-candidate");
+				msg+="This entry already exists. No Worries!";
+				model.addObject("msg",msg);
+			}
+			else if(c==2){
+				model=new ModelAndView("add-candidate");
+				msg+="This company isn't enrolled with us. (Something wrong with company name?)";
+				model.addObject("msg",msg);
+				
+			}
+			else if(c==3){
+				model=new ModelAndView("add-candidate");
+				msg+="This user account doesn't exist. (Something wrong with user name?)";
+				model.addObject("msg",msg);
+				
+			}
+			else
+			model = new ModelAndView("add-success");
+		}
 		return model;
+
 	}
 
 	@RequestMapping(value = "/deletecandidate.html", method = RequestMethod.POST)
 	public ModelAndView deletecandidate(@ModelAttribute("userBean") UserCompanyBean userBean, BindingResult bindingResult) {
 		ModelAndView model;
-		//UserCompanyBean userBean = new UserCompanyBean();
-		//UserCompanyId uci=new UserCompanyId();
-		//uci.setUsername(name);
-	//	uci.setCompany_id();
-	//	userBean.setId(uci);
-		//userBean.setUsername(name);
-		//userBean.setCompany(company);
-		crudService.deleteDetails(userBean);
-		addApplicantsValidator.validate(userBean, bindingResult);
+		int c=0;
+		String msg="";
+		deleteApplicantsValidator.validate(userBean, bindingResult);
+	
 		if (bindingResult.hasErrors()) {
 			System.out.println("Binding Errors are present...");
 			model = new ModelAndView("delete-candidate");
-		} else
-		model = new ModelAndView("delete-success");
-		return model;
+		} else{
+			
+			c=crudService.deleteDetails(userBean);
+
+			if(c==2){
+				model=new ModelAndView("delete-candidate");
+				msg+="This company isn't enrolled with us. (Something wrong with company name?)";
+				model.addObject("msg",msg);
+				
+			}
+			else if(c==3){
+				model=new ModelAndView("delete-candidate");
+				msg+="This user account doesn't exist. (Something wrong with user name?)";
+				model.addObject("msg",msg);
+				
+			}
+			else
+				model = new ModelAndView("delete-success");
+		}
+			return model;
 	}
 
 }
