@@ -1,8 +1,10 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main controller
- *	DEPENDENCIES: ProfileServiceImpl, Profile, ProfileDAOImpl
+ * @author Nevil Dsouza ZNevzz
+ *	Description : Handles all functions related to view and edit student profile. 
+ *	View pages : Called by LoginController when student logs in
+ *	DEPENDENCIES: 
+ * 	beans-	PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
+ * 	service-ProfileService;CheckRoleService;SearchService;
  */
 package org.crce.interns.controller;
 

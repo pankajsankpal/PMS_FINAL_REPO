@@ -2,6 +2,8 @@ package org.crce.interns.beans;
 
 import java.util.Date;
 
+// Room Allotment Entries(room_allotment.allotment)
+
 public class AllotmentBean {
 
 	private Integer allotment_id;

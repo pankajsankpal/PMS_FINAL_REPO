@@ -1,8 +1,8 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main service
- *	DEPENDENCIES: , , 
+ * @author Nevil Dsouza ZNevzz
+ *	Description : Service interface for notification related operations
+ *	DEPENDENCIES: 
+ * 	brans and model-	PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;NotificationBean;
  */
 
 package org.crce.interns.service;

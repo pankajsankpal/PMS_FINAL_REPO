@@ -9,6 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
+/*
+ * Author: Cheryl
+ * Classes Used: Allotment
+ * 
+ * Description: This DAO is used to save data entries for room allotment
+ * 				table. It also returns values in case of view Allotment
+ */
+
+
 @Repository("manageAllotmentDao")
 public class ManageAllotmentDaoImpl implements ManageAllotmentDao{
 

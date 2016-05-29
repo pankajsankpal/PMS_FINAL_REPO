@@ -2,6 +2,8 @@ package org.crce.interns.beans;
 
 import java.util.Date;
 
+//job_schema.job entries
+
 public class JobBean {
 
 	private String job_id;

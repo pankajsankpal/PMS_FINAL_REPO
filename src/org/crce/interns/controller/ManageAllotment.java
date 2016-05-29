@@ -26,6 +26,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageAllotmentService, CheckRoleService, LoginService 
+ * 				 Allotment,AllotmentBean
+ * Description: This controller is used to add,save and view room allotment by faculty TPC
+ */
 
 @Controller
 public class ManageAllotment extends HttpServlet{
@@ -34,18 +40,25 @@ public class ManageAllotment extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 3205005179545325725L;
+	
 	@Autowired
 	private ManageAllotmentService manageAllotmentService;
+	
 	@Autowired
 	private CheckRoleService crService;
+	
 	@Autowired
 	public LoginService loginService;
+	
 	/*
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 				return new ModelAndView("index");
 	}
 	*/
+	
+	
+	//Method to save allotment details
 	
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
 	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) {
@@ -54,6 +67,7 @@ public class ManageAllotment extends HttpServlet{
 		manageAllotmentService.handleFileUpload(request,fileUpload);
 		return new ModelAndView("FacultyTPC");
 	}
+	
 	
 	/*
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
@@ -66,6 +80,8 @@ public class ManageAllotment extends HttpServlet{
 	}
 	*/
 	
+	
+	//Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
@@ -85,6 +101,9 @@ public class ManageAllotment extends HttpServlet{
 		}
 	}
 
+	
+	//Method to view allotment details
+	
 	@RequestMapping(value="/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -98,6 +117,9 @@ public class ManageAllotment extends HttpServlet{
 			return new ModelAndView("viewAllotment", model);
 		}
 	}
+	
+	
+	//Used to display information regarding allotment
 	
 	private List<AllotmentBean> prepareListofBean(List<Allotment> allotments) {
 		
@@ -121,6 +143,7 @@ public class ManageAllotment extends HttpServlet{
 		return beans;
 	}
 
+	//Ignore the below code
 	/*
 	 
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
