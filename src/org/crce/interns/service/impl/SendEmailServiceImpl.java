@@ -1,3 +1,9 @@
+/*
+* @author Leon
+* Task: Sends Email To group values retrieved from Database 
+* Dependency: SendEmailDAOImpl.java
+*/
+
 package org.crce.interns.service.impl;
 
 import java.io.File;

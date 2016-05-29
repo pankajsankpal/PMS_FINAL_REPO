@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Leon
+ * Task: Makes it easier for people dealing with file handling operations to get paths
+ * Dependency: -
  */
 public class DirectoryPathBean {
 	
