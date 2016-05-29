@@ -47,6 +47,7 @@ public class NfController {
 	@Autowired
 	private ProfileService profileService;
 	
+	//------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
 		
@@ -83,7 +84,7 @@ public class NfController {
 		return model;
 	}
 	
-	
+	//------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/addNf", method = RequestMethod.GET)
 	public ModelAndView addNf(HttpServletRequest request) {
 		
