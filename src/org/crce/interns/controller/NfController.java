@@ -55,9 +55,9 @@ public class NfController {
 		
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
-		String id="7000";
+		//String id="7000";
 		
-		String username=(String)request.getSession(true).getAttribute("userName");
+		String userName=(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");		
 		
 		UserDetailsBean userDetailsBean= new UserDetailsBean();			
@@ -65,9 +65,9 @@ public class NfController {
 		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 	
 	
-		userDetailsBean.setUserName(id);
-		professionalProfileBean.setUserName(id);
-		personalProfileBean.setUserName(id);
+		userDetailsBean.setUserName(userName);
+		professionalProfileBean.setUserName(userName);
+		personalProfileBean.setUserName(userName);
 	
 	
 		userDetailsBean = profileService.getProfile(userDetailsBean);
