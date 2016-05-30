@@ -1,3 +1,11 @@
+/*
+ * UserDetails Class contains the various attributes of the 
+ * user_schema.userdetails table and their getters and setters
+ * and various annotations above them
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.model;
 
 import java.io.Serializable;

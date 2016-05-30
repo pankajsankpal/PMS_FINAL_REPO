@@ -2,14 +2,20 @@ package org.crce.interns.controller;
 
 
 
-import org.crce.interns.service.AddUserService;
-import org.crce.interns.service.CheckRoleService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
+import org.crce.interns.model.FileUpload;
+import org.crce.interns.service.AddUserService;
+import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
+import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +31,12 @@ public class AddUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
+	@Autowired
+    FileUploadValidator validator;
+	
+	
+        @Autowired
+        private DirectoryService directoryService;
 	@RequestMapping(value="/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -35,23 +47,50 @@ public class AddUserController {
 			return new ModelAndView("AddUserViaCSV");
 	}
 
-	
-	
+
 	
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@RequestParam("year")String year)
+	public ModelAndView addUser(HttpServletRequest request,@RequestParam CommonsMultipartFile fileUpload, @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
 			throws Exception {
 
 		
-		//System.out.println(year);
 		
-		addUserService.handleFileUpload(request,fileUpload,year);
-		// loadCopyFile("user_schema.userdetails");
 		
-		// returns to the same index page
-		return "AddUserViaCSV";
-	}
+		ModelAndView model = new ModelAndView("AddUserViaCSV");
+		try {
+						
+			//boolean flag = false;
+			fileUpload1.setFile(fileUpload);
+			System.out.println(fileUpload1.getFile().getSize());
+			validator.validate(fileUpload1, result);
+			if (fileUpload1.getFile().getSize() == 0) {
+				System.out.println("Error in form");
+	            
+	            return new ModelAndView("AddUserViaCSV");
+			}
+			
+			addUserService.handleFileUpload(request,fileUpload);
+			// loadCopyFile("user_schema.userdetails");
+			directoryService.createStudentFolder();
+			// returns to the same index page
+			
+			
+		} catch (IncorrectFileFormatException e) {
+			
+			System.out.println(e);
+			
+			model.addObject("error", 1);
+			
+			
+		} catch (MaxFileSizeExceededError m) {
+			System.out.println(m);
+			
+			model.addObject("error1", 1);
+			
+		}
+		
+		return model;	}
 
-	
+        
 
 }

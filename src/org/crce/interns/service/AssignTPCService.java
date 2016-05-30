@@ -1,3 +1,14 @@
+/*
+ * AssignTPCService Interface Class contains the interface for various methods like 
+ * 
+ * Assign TPC(for STPC and FTPC)
+ * Remove TPC(for STPC and FTPC)
+ * Assign special task to FTPC
+ * View Users and View Tasks
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.service;
 
 import java.util.List;

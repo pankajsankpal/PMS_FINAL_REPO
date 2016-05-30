@@ -1,4 +1,11 @@
-
+/*
+ * EventService Interface Class contains the interface for method
+ * 
+ * View Events based on month
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.service;
 
 import java.util.List;

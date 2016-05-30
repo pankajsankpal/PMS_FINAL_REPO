@@ -1,4 +1,10 @@
-
+/*
+ * EventController Class contains the various methods like 
+ * Insert month to view event details
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -29,7 +35,7 @@ public class EventController {
 	@Autowired
 	private EventService eventService;
 
-	@RequestMapping(value = "/InsertMonth", method = RequestMethod.GET)
+	@RequestMapping(value = "/InsertMonth", method = RequestMethod.GET)//Call to jsp to get the month number
 	public ModelAndView insertMonth(@ModelAttribute("command") Event_detailsBean edBean,BindingResult result) {
 		return new ModelAndView("insertMonth");
 	}
@@ -41,7 +47,7 @@ public class EventController {
 		return new ModelAndView("redirect:/ViewEvents");
 	}
 
-	@RequestMapping(value="/ViewEvents", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewEvents", method = RequestMethod.GET)//View event details
 	public ModelAndView viewEvents() {
 		System.out.println("In View Events: " + months);
 		Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -50,7 +56,7 @@ public class EventController {
 			System.out.println("Error no Model map, Model map is null");
 			return new ModelAndView("403");
 		}
-		if(modelMap.containsValue(null))
+		if(modelMap.containsValue(null))//If no events in the selected month display this
 			{
 			System.out.println("No events in selected month");
 			return new ModelAndView("noEvents");

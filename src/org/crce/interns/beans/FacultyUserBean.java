@@ -1,4 +1,10 @@
-
+/*
+ * FacultyUserBean Class contains the various attributes of the 
+ * role_function_schema.ftpc_special_role table and their getters and setters
+ *
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.beans;
 
 import java.io.Serializable;

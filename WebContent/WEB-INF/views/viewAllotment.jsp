@@ -14,19 +14,18 @@
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="page-content">
-<h1 align="center"><u>List Allotments</u></h1>
-<br/>
-<br/>
-<h3 align="center"><a href="addAllotment.html">Add New Allotment</a></h3>
-
-<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
-     url="jdbc:postgresql://localhost:5432/placementdb"
-     user="postgres"  password="root"/>
-
-<sql:query dataSource="${snapshot}" var="allotments">
-SELECT * from room_allotment.allotment;
-</sql:query>
-
+					<h1 align="center"><u>List Allotments</u></h1>
+					<br/><br/>
+					<h3 align="center"><a href="addAllotment.html">Add New Allotment</a></h3>
+					<!-- connect to database -->
+					<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+					     url="jdbc:postgresql://localhost:5432/placementdb"
+					     user="postgres"  password="root"/>
+					<!-- write query -->
+					<sql:query dataSource="${snapshot}" var="allotments">
+					SELECT * from room_allotment.allotment;
+					</sql:query>
+					<!-- header-->
 	<table align="center" border="5" width="1500" cellspacing="0" cellpadding="0" height="600">
 		<tr>
 			<td align="center"><b><u>Allotment ID</u></b></td>
@@ -35,10 +34,9 @@ SELECT * from room_allotment.allotment;
 			<td align="center"><b><u>Room No.</u></b></td>
 			<td align="center"><b><u>Job Description</u></b></td>
 			<td align="center"><b><u>Drive Date</u></b></td>
-	<!--	<th>Edit Or Delete</th> 	-->
 		</tr>
 
-
+			<!--view contents -->
 		<c:forEach items="${allotments.rows}" var="allotment">
 			<tr>
 				<td align="center"><c:out value="${allotment.allotment_id}"/></td>
@@ -47,7 +45,6 @@ SELECT * from room_allotment.allotment;
 				<td align="center"><c:out value="${allotment.room_no}"/></td>
 				<td align="center"><c:out value="${allotment.job_description}"/></td>
 				<td align="center"><c:out value="${allotment.drive_date}"/></td>
-<%-- 				<td align="center"><a href="edit.html?id=${employee.id}">Edit</a> | <a href="delete.html?id=${employee.id}">Delete</a></td> --%>
 			</tr>
 		</c:forEach>
 	</table>

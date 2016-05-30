@@ -1,4 +1,11 @@
-
+/*
+ * FacultyUser Class contains the various attributes of the 
+ * role_function_schema.ftpc_special_role table and their getters and setters
+ * and various annotations above them
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.model;
 
 import java.io.Serializable;

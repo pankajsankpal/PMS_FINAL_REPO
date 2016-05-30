@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<form:form method="POST" action="/AaC3/saveCompany" modelAttribute="companyBean">  
+<form:form method="POST" action="saveCompany" modelAttribute="companyBean">  
   <table>
    
    

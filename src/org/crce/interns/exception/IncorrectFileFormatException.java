@@ -8,6 +8,6 @@ public class IncorrectFileFormatException extends Exception {
 	}*/
 
 	public String toString(){
-		return("Failed to upload...File format can be docx/pdf/odt only!");
+		return("Failed to upload...Incorrect file format!");
 	}
 }

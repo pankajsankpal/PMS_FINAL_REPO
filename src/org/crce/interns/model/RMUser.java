@@ -1,4 +1,11 @@
-
+/*
+ * RMUser Class contains the various attributes of the 
+ * role_function_schema.role_master table and their getters and setters
+ * and various annotations above them
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.model;
 
 import java.io.Serializable;

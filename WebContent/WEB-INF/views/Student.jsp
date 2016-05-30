@@ -7,19 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <SCRIPT type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
-</SCRIPT> -->
-<title>Student</title>
+
+<title>Student Profile</title>
 </head>
-<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
-	onunload="">
-	<h3>Welcome To the STUDENT page !!!!!</h3>
+
+	<h3>Welcome  ${sessionScope.name}To the profile page </h3>
 	
 	<h2>
-		Logged in as
-		<core:out value="${userDetails.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleId} from  ${sessionScope.branch} branch with roll no  ${sessionScope.userName}
 	</h2>
 	<br />
 	<p>
