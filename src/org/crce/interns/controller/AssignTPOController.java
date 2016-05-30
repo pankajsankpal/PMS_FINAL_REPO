@@ -18,14 +18,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.NotifyForm;
+import org.crce.interns.beans.PersonalProfileBean;
+import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.AssignTPOService;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.GetBranchService;
 import org.crce.interns.validators.AddTPOValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +46,8 @@ public class AssignTPOController {
 	private AssignTPOService userService;
 	@Autowired
 	private CheckRoleService crService;
+	@Autowired
+	private GetBranchService gbService;
 	@Autowired
 	AddTPOValidator validator;
 
@@ -98,8 +104,10 @@ public class AssignTPOController {
 
 	@RequestMapping(value = "/AssignTPCF", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView assignTPCF(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
-		System.out.println("In Assign TPC\n");
+		System.out.println("In Assign TPCF\n");
 		HttpSession session=request.getSession();
+		String userName = (String) session.getAttribute("userName");
+		System.out.println(userName);
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
@@ -165,11 +173,19 @@ public class AssignTPOController {
 	}
 		
 	@RequestMapping(value = "/SubmitAssignTPCF", method = RequestMethod.POST)
-	public ModelAndView createTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+	public ModelAndView createTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult,HttpServletRequest request, HttpServletResponse response) {
 		validator.validate(userBean, bindingResult);
 		if (bindingResult.hasErrors()) {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("assignTPCF");
+		}
+		HttpSession session=request.getSession();
+		String fUserName=(String)session.getAttribute("userName");
+		String branch1=gbService.getBranch(userBean.getUserName());
+		String branch2=gbService.getBranch(fUserName);
+		if(!branch1.equalsIgnoreCase(branch2)){
+			System.out.println("Branch not same...");
+			return new ModelAndView("notAuth");
 		}
 		int a;
 		a=userService.assignTPCF(userBean);
@@ -215,7 +231,7 @@ public class AssignTPOController {
 	}
 	
 	@RequestMapping(value = "/SubmitRemoveTPCF", method = RequestMethod.POST)
-	public ModelAndView deleteTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+	public ModelAndView deleteTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult,HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println("In Submit RemoveTPCF");
 		validator.validate(userBean, bindingResult);
@@ -223,6 +239,14 @@ public class AssignTPOController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("removeTPCF");
+		}
+		HttpSession session=request.getSession();
+		String fUserName=(String)session.getAttribute("userName");
+		String branch1=gbService.getBranch(userBean.getUserName());
+		String branch2=gbService.getBranch(fUserName);
+		if(!branch1.equalsIgnoreCase(branch2)){
+			System.out.println("Branch not same...");
+			return new ModelAndView("notAuth");
 		}
 		int a;
 		a=userService.removeTPCF(userBean);
