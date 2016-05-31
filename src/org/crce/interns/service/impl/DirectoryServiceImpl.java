@@ -11,6 +11,8 @@ import java.util.Calendar;
 /**
  *
  * @author Leon
+ * Task: Creates folders for users after users for their File operations
+ * Dependency: DirectoryDAO.java
  */
 
 
