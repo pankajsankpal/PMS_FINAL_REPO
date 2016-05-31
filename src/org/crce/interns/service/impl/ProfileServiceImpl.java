@@ -46,21 +46,24 @@ public class ProfileServiceImpl implements ProfileService{
 	public UserDetailsBean getProfile(UserDetailsBean userDetailsBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
 		
-		UserDetails userDetails=new UserDetails();
-		userDetails.setUserName(userDetailsBean.getUserName());
 		
 		
-		UserDetails result = profileDAO.getProfile(userDetails);
+			UserDetails userDetails=new UserDetails();
+			userDetails.setUserName(userDetailsBean.getUserName());
+			
+			
+			UserDetails result = profileDAO.getProfile(userDetails);
+			
+			
+			if(result == null){
+				System.out.println("Returned NULL");
+			}
+			
+			BeanUtils.copyProperties(result,userDetailsBean);
+			
+			
+			return userDetailsBean;
 		
-		
-		if(result == null){
-			System.out.println("Returned NULL");
-		}
-		
-		BeanUtils.copyProperties(result,userDetailsBean);
-		
-		
-		return userDetailsBean;
 	}
 	
 	/**	GET details from database

@@ -1,13 +1,17 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main controller
- *	DEPENDENCIES: ProfileServiceImpl, Profile, ProfileDAOImpl
+ * @author Nevil Dsouza ZNevzz
+ *	Description : Handles all functions related to view and edit student profile. 
+ *	View pages : Called by LoginController when student logs in
+ *	DEPENDENCIES: 
+ * 	beans-	PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
+ * 	service-ProfileService;CheckRoleService;SearchService;
  */
 package org.crce.interns.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
@@ -75,11 +80,13 @@ public class UpdateProfileController {
 	
 	
 	@RequestMapping(value="/viewprofile", method = RequestMethod.GET)
-	public ModelAndView login(HttpServletRequest request,@ModelAttribute("u")String id) {
+	
+	public ModelAndView login(HttpServletRequest request) {
 		
 		System.out.println("Inside Controller");
 		//HttpSession session=request.getSession(true);
 		
+		String userName =(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		
 		if(!crService.checkRole("UpdateProfile", roleId))
@@ -89,17 +96,30 @@ public class UpdateProfileController {
 			ModelAndView model=null;
 
 		///*
-			UserDetailsBean userDetailsBean= new UserDetailsBean();			
+			UserDetailsBean userDetailsBean= new UserDetailsBean();									
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
-		
-		
-			userDetailsBean.setUserName(id);
-			professionalProfileBean.setUserName(id);
-			personalProfileBean.setUserName(id);
-		
-		
+					
+			userDetailsBean.setUserName(userName);			
 			userDetailsBean = profileService.getProfile(userDetailsBean);
+			
+			System.out.println("password "+userDetailsBean.getUserPassword());
+			
+			userDetailsBean.setAccountActive("YES");
+			userDetailsBean.setCurrentState("LOGGED IN");
+			userDetailsBean.setLastLogin(new Date());
+			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
+			userDetailsBean.setModifiedDate(new Date());
+			
+			professionalProfileBean.setUserName(userName);
+			personalProfileBean.setUserName(userName);
+		
+			
+		
+			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
+			
+			System.out.println("password "+userDetailsBean.getUserPassword());
+			
 			professionalProfileBean = profileService.getProfile(professionalProfileBean);
 			personalProfileBean = profileService.getProfile(personalProfileBean);	
 		
@@ -111,10 +131,6 @@ public class UpdateProfileController {
 		//*/
 			request.getSession(true).setAttribute("name",personalProfileBean.getName());
 			//request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
-			
-			
-			
-			
 			
 			return model;
 		}
@@ -217,6 +233,39 @@ public class UpdateProfileController {
 	
 	
 	
+	//-----------------------------------------------------------------------------------------//
+	@RequestMapping(value="/sign-out" , method = RequestMethod.GET)  
+  	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		
+		try{
+			
+		
+			System.out.println("Inside Controller");
+			LoginForm loginForm = new LoginForm();
+			ModelAndView model=null;
+			
+			UserDetailsBean userDetailsBean= new UserDetailsBean();
+			userDetailsBean.setUserName((String)request.getSession(true).getAttribute("userName"));
+			userDetailsBean = profileService.getProfile(userDetailsBean);
+			
+			userDetailsBean.setCurrentState("LOGGED OUT");
+			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
+			userDetailsBean.setModifiedDate(new Date());
+			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
+			
+			request.getSession(true).invalidate();
+			
+			model = new ModelAndView("Login");
+			model.addObject("loginForm", loginForm);
+		
+			return model;
+		}
+		catch(Exception e){
+			System.out.println(e);
+			return new ModelAndView("403");			
+		}
+		
+	}
 	
 	
 	

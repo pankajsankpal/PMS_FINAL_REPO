@@ -27,38 +27,38 @@ public class UserDetails implements Serializable{
 	
 	@Id
 	@Column(name = "username" )
-	String userName;
+	private String userName;
 	
 	@Column(name = "user_password" )
-	String userPassword;
+	private String userPassword;
 	
 	@Column(name = "account_active" )
-	String accountActive;
+	private String accountActive;
 	
 	@Column(name = "current_state" )
-	String currentState;
+	private String currentState;
 	
 	@Column(name = "last_login" )
-	Date lastLogin;
+	private Date lastLogin;
 	
 	@Column(name = "role_id" )
-	String roleId;
+	private String roleId;
 
 	
 	@Column(name = "created_by" )
-	String createdBy;
+	private String createdBy;
 	
 	@Column(name = "created_date" )
-	Date createdDate;
+	private Date createdDate;
 	
 	@Column(name = "modified_by" )
-	String modifiedBy;
+	private String modifiedBy;
 	
 	@Column(name = "modified_date" )
-	Date modifiedDate;
+	private Date modifiedDate;
 	
 	@Column(name = "notified" )
-	boolean notified;
+	private boolean notified;
 	
 	public boolean isNotified() {
 		return notified;
@@ -122,11 +122,11 @@ public class UserDetails implements Serializable{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserPassWord() {
+	public String getUserPassword() {
 		return userPassword;
 	}
 
-	public void setUserPassWord(String userPassword) {
+	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
 	public String getAccountActive() {

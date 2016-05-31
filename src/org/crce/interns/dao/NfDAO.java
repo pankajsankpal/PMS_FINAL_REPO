@@ -1,8 +1,8 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main dao 
- *	DEPENDENCIES: , , 
+ * @author Nevil Dsouza ZNevzz
+ *	Description : DAO interface for notification related CRUD operations
+ *	DEPENDENCIES: 
+ * 	model-	Notification;NotificationRoot;
  */
 
 package org.crce.interns.dao;
