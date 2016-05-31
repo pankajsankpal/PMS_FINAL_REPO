@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-/*
- * UserDetailsBean Class contains the various attributes of the 
- * user_schema.userdetails table and their getters and setters
- *
- * @author Adarsh
- * 
- * */
-=======
+
+
 /**
  * @author Nevil Dsouza ZNevzz
  * 	Description : POJO bean for model.UserDetails
  */
 
->>>>>>> 76b420e70327235e1b9abfab8f89294da6890950
+
 package org.crce.interns.beans;
 
 import java.io.Serializable;
