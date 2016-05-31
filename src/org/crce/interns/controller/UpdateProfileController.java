@@ -262,8 +262,9 @@ public class UpdateProfileController {
 		return model;
 	}
 	*/
-	//-----------------------------------------------------------------------------------------//
 
+	//-----------------------------------------------------
+	// extra
 	@RequestMapping(value="/update-password", method = RequestMethod.POST)
 	public ModelAndView updateUserDetails(@RequestParam("username") String username,@RequestParam("password") String password) {
 		
@@ -324,6 +325,9 @@ public class UpdateProfileController {
 		return model;
 		}
 	}
+	
+	//-----------------------------------------------------
+	// extra
 	@RequestMapping(value="/nevz-feedbacks", method = RequestMethod.GET)
 	public ModelAndView fs(HttpServletRequest request) {
 		
