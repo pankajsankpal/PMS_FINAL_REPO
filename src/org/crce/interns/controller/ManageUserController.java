@@ -1,3 +1,22 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ManageUserController.java	
+* 	
+* Classes used by code: ManageUserService, CheckRoleService,StudentBean,FacultyBean
+* 
+* Tabes used: User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This controller is used to add student/add faculty/remove user .
+* 				Can be done only by tpo/admin.
+* 
+* Functions: addStudent(), addFaculty() ,welcomeStudent(),welcomeFaculty(),removeUser(), removeUser1()		
+*
+*/
+
+
+
 package org.crce.interns.controller;
 
 import java.util.HashMap;
@@ -23,10 +42,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-
-
-
-
 @Controller
 public class ManageUserController {
 
@@ -34,10 +49,7 @@ public class ManageUserController {
 	private ManageUserService manageUserService;
 	@Autowired
 	private CheckRoleService crService;
-	/*@RequestMapping("/")
-	public ModelAndView welcome() {
-				return new ModelAndView("index");
-	}*/
+	
 	
 	
 	//actually adding student
@@ -54,6 +66,8 @@ public class ManageUserController {
 		return new ModelAndView("addFaculty");
 	}
 	
+	
+	//to navigate to addStudent.jsp 
 	@RequestMapping(value = "/addstudent", method = RequestMethod.GET)
 	public ModelAndView welcomeStudent(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
@@ -70,6 +84,7 @@ public class ManageUserController {
 		}
 	}
 	
+	//to navigate to addFaculty.jsp
 	@RequestMapping(value = "/addfaculty", method = RequestMethod.GET)
 	public ModelAndView welcomeFaculty(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
@@ -86,12 +101,7 @@ public class ManageUserController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+	//to navigate to removeUser.jsp
 	@RequestMapping(value = "/removeuser", method = RequestMethod.GET)
 	public ModelAndView removeUser(HttpServletRequest request) {
 		HttpSession session=request.getSession();

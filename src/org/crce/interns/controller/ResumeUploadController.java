@@ -1,3 +1,21 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ResumeUploadController.java	
+* 	
+* Classes used by code: ResumeUploadService, CheckRoleService,FileUploadValidator,FileUpload
+* 
+* Tabes used: User_schema.professional_profile_resume
+* 
+* Description: This controller is used to upload resume by student
+* 
+* Functions: welcome(), resumeUpload() ,displayCV()	
+*
+*/
+
+
+
 package org.crce.interns.controller;
 
 import java.util.List;
@@ -29,11 +47,13 @@ public class ResumeUploadController {
 	@Autowired
     FileUploadValidator validator;
 
+	//used to navigate to ResumeUpload.jsp
 	@RequestMapping("resumeUpload")
 	public ModelAndView welcome() {
 		return new ModelAndView("ResumeUpload");
 	}
 
+	//used to actually upload the file
 	@RequestMapping(value = "/uploadResume", method = RequestMethod.POST)
 	public ModelAndView resumeUpload(HttpServletRequest request,
 			@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
@@ -41,28 +61,39 @@ public class ResumeUploadController {
 
 		try {
 			
+			//fileUpload1 : this is the request parameter model attribute of FileUpload type
 			fileUpload1.setFile(fileUpload);
 			System.out.println(fileUpload1.getFile().getSize());
+			
 			validator.validate(fileUpload1, result);
+			
+			//if no file is uploaded
 			if (fileUpload1.getFile().getSize() == 0) {
 				System.out.println("Error in form");
 	            
 	            return new ModelAndView("ResumeUpload");
 			}
-			 String username = (String)request.getSession(true).getAttribute("userName");
+			
+			String username = (String)request.getSession(true).getAttribute("userName");
 			System.out.println("in try");
+			
+			//calls the service to actually upload the file
 			resumeUploadService.handleFileUpload(request, fileUpload, username);
+			
+			
 		} catch (IncorrectFileFormatException e) {
 			System.out.println(e);
 			ModelAndView model = new ModelAndView("ResumeUpload");
-			model.addObject("error", 1);
+			model.addObject("error", 1);	// so that the jsp catches the error
 			return model;
+			
 		} catch (MaxFileSizeExceededError m) {
 			System.out.println(m);
 			ModelAndView model = new ModelAndView("ResumeUpload");
-			model.addObject("error1", 1);
+			model.addObject("error1", 1); 	// so that the jsp catches the error
 			return model;
 		}
+		
 		return new ModelAndView("ResumeUpload");
 	}
 	

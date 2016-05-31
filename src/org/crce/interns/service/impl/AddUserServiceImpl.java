@@ -1,3 +1,22 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: AddUserServiceImpl.java	
+* 	
+* Classes used by code: AddUserService, AddUserDao,FileUploadValidator,DirectoryPathBean, IncorrectFileFormatException,MaxFileSizeExceededError
+* 
+* Tabes used: Loader_schema.loader,User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This service implementation is used to implement the methods in AddUserService.java
+* 
+* Functions: handleFileUpload()	
+*
+*/
+
+
+
 package org.crce.interns.service.impl;
 
 
@@ -34,46 +53,44 @@ public class AddUserServiceImpl implements AddUserService {
 	@Autowired
     FileUploadValidator validator;
 
-        DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+	//in order to get the path to save the csv file
+    DirectoryPathBean directoryPathBean = new DirectoryPathBean();
 	//private String saveDirectory = directoryPathBean.getCsvFolder()+"\\";
         
-
+    // actually uploads the file
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload)
 			throws Exception {
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		String saveDirectory = directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\";
 		
-		 
-
         
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
 		if (!fileUpload.isEmpty()) {
 
-			//validator.validate(fileUpload, result);
+			// user defined exceptions
 			IncorrectFileFormatException e = new IncorrectFileFormatException();
 			MaxFileSizeExceededError m = new MaxFileSizeExceededError();
 			
 			
 			//File file = new File(fileUpload.getOriginalFilename());
 			final String extension = FilenameUtils.getExtension(fullPath);
-				
-				
-			
-			
-			if(!(extension.equals("csv")))
+									
+			if(!(extension.equals("csv")))	// if the file format is not .csv
 				throw e;
 			
-			//final long size = FileUtils.sizeOf(file);
+			
 			final long size = fileUpload.getSize();
 			System.out.println(size);
-			if(size > 1212520)
+			if(size > 1212520)			// if the file size exceeds 1MB
 				throw m;
 			
 			System.out.println("Saving file: " + fileUpload.getOriginalFilename());
 			System.out.println(extension);	
 			
 			boolean created = false;
+			
+			//creating folders in the specified path
 			File files = new File(saveDirectory);
 	        if (!files.exists()) {
 	            System.out.println("Something doesnt exist");

@@ -1,3 +1,15 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ManageUserDao.java	
+* 
+* Description: This dao is an interface which only declares method names which are implemented in ManageUserDaoImpl.java
+* 
+* Functions: createStudent()	, createFaculty(), deleteUser()
+*
+*/
+
 package org.crce.interns.dao;
 
 import org.crce.interns.beans.StudentBean;
