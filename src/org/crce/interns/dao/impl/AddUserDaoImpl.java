@@ -20,7 +20,8 @@ import org.springframework.stereotype.Repository;
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
 
-	public void loadCopyFile(String tableName) throws SQLException, IOException {
+
+	public void loadCopyFile(String tableName,String timeStamp) throws SQLException, IOException {
 		CopyManager copyManager;
 		InputStream inStream = null;
 		File copyFile;
@@ -40,7 +41,7 @@ public class AddUserDaoImpl implements AddUserDao {
 		System.out.println("Opened database successfully");
 
                 DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
-		copyFile = new File(directoryPathBean.getCsvFolder()+"/ce.csv");
+		copyFile = new File(directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\"+"/ce.csv");
 
 		// tableName = "loader_schema.loader";
 	
@@ -57,13 +58,15 @@ public class AddUserDaoImpl implements AddUserDao {
 		Statement st1 = c.createStatement();
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
 		System.out.println(year);
+		st1.executeUpdate("delete from loader_schema.loader where name='Name'");
+
 		st1.executeUpdate("insert into user_schema.userdetails(username) select roll_no from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.personal_profile(username,name,gender,dob,mobile_no,email_id) select roll_no,name,gender,dob,mobile,email from loader_schema.loader");
 		st1.executeUpdate("insert into user_schema.professional_profile(username,branch) select roll_no,branch from loader_schema.loader");
 		st1.executeUpdate("update user_schema.professional_profile set year='" + year +"' where year is NULL");
 		st1.executeUpdate("insert into user_schema.qualification(username,ssc_per,hsc_or_dip,hsc_or_dip_per,s1_mark,s1_max,s1_per,s1_res,s1_kt,s2_mark,s2_max,s2_per,s2_res,s2_kt,s3_mark,s3_max,s3_per,s3_res,s3_kt,s4_mark,s4_max,s4_per,s4_res,s4_kt,s5_mark,s5_max,s5_per,s5_res,s5_kt,s6_mark,s6_max,s6_per,s6_res,s6_kt,s7_mark,s7_max,s7_per,s7_res,s7_kt,s8_mark,s8_max,s8_per,s8_res,s8_kt,deg_per,deg_kt,drops) select roll_no,ssc_per,hsc_or_dip,hsc_or_dip_per,s1_mark,s1_max,s1_per,s1_res,s1_kt,s2_mark,s2_max,s2_per,s2_res,s2_kt,s3_mark,s3_max,s3_per,s3_res,s3_kt,s4_mark,s4_max,s4_per,s4_res,s4_kt,s5_mark,s5_max,s5_per,s5_res,s5_kt,s6_mark,s6_max,s6_per,s6_res,s6_kt,s7_mark,s7_max,s7_per,s7_res,s7_kt,s8_mark,s8_max,s8_per,s8_res,s8_kt,deg_per,deg_kt,drops from loader_schema.loader");
 		st1.executeUpdate("update user_schema.userdetails set role_id='1' where role_id is NULL");
-		
+		st1.executeUpdate("delete from loader_schema.loader");
 
 		//rs.close();
 		st.close();

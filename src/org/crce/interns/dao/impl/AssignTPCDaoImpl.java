@@ -1,3 +1,21 @@
+/*
+ * AssignTPCDaoImpl Class contains all database related operations.
+ * 
+ * AssignTPCDaoImpl Class contains the implementations for various methods like 
+ * 
+ * Assign TPC(for STPC)
+ * Remove TPC(for STPC)
+ * Assign TPCFac(for FTPC)
+ * Remove TPC(for FTPC)
+ * Assign special task to FTPC
+ * View Users and View Tasks
+ * Fetch User based on Username
+ * Fetch Faculty User based on Username
+ * Fetch UserRole based on RoleID
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.dao.impl;
 
 import java.util.List;
@@ -31,7 +49,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 
 	@Override
 	public void assignTPC(UserDetails user) {
-		sessionFactory.getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
 		
 		
 		//sessionFactory.getCurrentSession().
@@ -41,7 +59,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 	 @Override 
 	 public void insertWork(FacultyUser fuser) {
 	// entityManager.merge(fuser); // TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(fuser);
+		sessionFactory.getCurrentSession().update(fuser);//Update task in ftpc_special_role Table
 	 }
 	
 
@@ -51,7 +69,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		//return entityManager.createQuery("select u from UserDetails u",UserDetails.class).getResultList();
 	
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY = "from UserDetails as u order by u.roleId";
+		String SQL_QUERY = "from UserDetails as u order by u.roleId";//Sort in ascending order by RoleID order by u.userName
 
 		Query query = session.createQuery(SQL_QUERY);
 		List<UserDetails> listUserDetails = query.list();
@@ -64,7 +82,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		// return entityManager.createQuery("select u from FacultyUser u", FacultyUser.class).getResultList();
 		
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY = "from FacultyUser as f order by f.userName";
+		String SQL_QUERY = "from FacultyUser as f order by f.userName";//Sort in alphabetical order by Username
 
 		Query query = session.createQuery(SQL_QUERY);
 		List<FacultyUser> listUserDetails = query.list();
@@ -101,7 +119,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 
 		if (result == null) {
 			System.out.println("Error : User not present in Faculty Table");
-			return null;
+			return null;//Return if User not present in ftpc_special_role Table
 		}
 		System.out.println("UserName in DAO IMPL after query:" + result.getUserName());
 		System.out.println("UserWork in DAO IMPL after query:" + result.getUserWork());
@@ -129,19 +147,19 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 	@Override
 	public void removeTPC(UserDetails user) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
 	//	 entityManager.merge(user);
 	}
 
 	@Override
 	public void assignTPCFac(UserDetails user) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
 		FacultyUser fuser = new FacultyUser();
 		System.out.println(user.getUserName());
 		fuser.setUserName(user.getUserName());
 		fuser.setUserWork("Null");
-		sessionFactory.getCurrentSession().save(fuser);
+		sessionFactory.getCurrentSession().save(fuser);//Insert user in ftpc_special_role Table
 		
 	}
 	

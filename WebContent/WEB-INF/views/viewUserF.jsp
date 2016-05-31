@@ -6,6 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- This JSP displays the List of the Users from UserDetails Table (For FTPC)
+
+ @author Adarsh
+ -->
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,7 +28,27 @@
 			<c:forEach items="${users}" var="user">
 				<tr>
 					<td><c:out value="${user.userName}" /></td>
-					<td><c:out value="${user.roleId}" /></td>
+					<td><c:choose>
+							<c:when test="${user.roleId=='1'}">
+								<c:out value="Student" />
+							</c:when>
+							<c:when test="${user.roleId=='2'}">
+								<c:out value="Faculty" />
+							</c:when>
+							<c:when test="${user.roleId=='3'}">
+								<c:out value="Student-TPC" />
+							</c:when>
+							<c:when test="${user.roleId=='4'}">
+								<c:out value="Faculty-TPC" />
+							</c:when>
+							<c:when test="${user.roleId=='5'}">
+								<c:out value="TPO" />
+							</c:when>
+							<c:otherwise>
+								<c:out value="Admin" />
+							</c:otherwise>
+						</c:choose></td>
+					<%-- <td><c:out value="${user.roleId}" /></td> --%>
 				</tr>
 			</c:forEach>
 		</table>

@@ -1,3 +1,14 @@
+/*
+ * AssignTPCController Class contains the various methods like 
+ * Redirect to TPO Home Page
+ * Assign TPC
+ * Remove TPC
+ * Assign special task to FTPC
+ * View Users and View Tasks
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -44,7 +55,7 @@ public class AssignTPCController {
 	@Autowired
 	private GetBranchService gbService;
 
-	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET)	//Home Page of TPO
 	public ModelAndView goTPOHome(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In TPO Home Page\n");
 		HttpSession session=request.getSession();
@@ -55,7 +66,7 @@ public class AssignTPCController {
 		return new ModelAndView("TPO");
 	}
 	
-	@RequestMapping(value="/ViewUsersT", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewUsersT", method = RequestMethod.GET)//View Users for TPO
 	public ModelAndView viewUsers(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
@@ -69,7 +80,7 @@ public class AssignTPCController {
 		}
 	}
 	
-	@RequestMapping(value="/ViewFacultyTasks", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewFacultyTasks", method = RequestMethod.GET)//View tasks assigned to FTPC
 	public ModelAndView viewFacultyTasks(HttpServletRequest request) {
 		System.out.println("In View TPC Tasks\n");
 		HttpSession session=request.getSession();
@@ -85,7 +96,7 @@ public class AssignTPCController {
 	}
 	
 	
-	@RequestMapping(value = "/InsertWork", method = RequestMethod.GET)
+	@RequestMapping(value = "/InsertWork", method = RequestMethod.GET)//Call to jsp to get the task
 	public ModelAndView createUserWork(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Assign TPC Work\n");
 		HttpSession session=request.getSession();
@@ -96,7 +107,7 @@ public class AssignTPCController {
 		return new ModelAndView("insertWork");
 	}
 	
-	@RequestMapping(value = "/AssignTPC", method = RequestMethod.GET)
+	@RequestMapping(value = "/AssignTPC", method = RequestMethod.GET)//Call to jsp to get username and role
 	public ModelAndView assignTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Assign TPC\n");
 		HttpSession session=request.getSession();
@@ -107,7 +118,7 @@ public class AssignTPCController {
 		return new ModelAndView("assignTPC");
 	}
 	
-	@RequestMapping(value = "/RemoveTPC", method = RequestMethod.GET)
+	@RequestMapping(value = "/RemoveTPC", method = RequestMethod.GET)//Call to jsp to get usernam
 	public ModelAndView removeTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TPC\n");
 		HttpSession session=request.getSession();
@@ -126,30 +137,30 @@ public class AssignTPCController {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("assignTPC");
 		}
-		HttpSession session=request.getSession();
+		/*HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
 		String branch1=gbService.getBranch(userBean.getUserName());
 		String branch2=gbService.getBranch(user);
 		//System.out.println("Task Assigned is "+fuserBean.getUserWork());
 		if(!branch1.equalsIgnoreCase(branch2))
-			return new ModelAndView("assignTPC");
+			return new ModelAndView("assignTPC");*/
 		int a;
 		a=userService.assignTPC(userBean);
 	//	FacultyUserBean fuserBean= new FacultyUserBean();
 			System.out.println("Value Returned from Service: "+a);
-			if(a==0)
+			if(a==0)//No such user exists in UserDetails Table
 			{
 				return new ModelAndView("noUser");
 			}
-			if(a==3)
+			if(a==3)//A Non-Student user attempted to be assigned as STPC
 			{
 				return new ModelAndView("notStud");	
 			}
-			if(a==4)
+			if(a==4)//A Non-Faculty user attempted to be assigned as STPC
 			{
 				return new ModelAndView("notFac");
 			}
-			if(a==34){
+			if(a==34){	//Already assigned STPC or FTPC user attempted to be assigned as TPC
 				return new ModelAndView("alTPC");
 			}
 		return new ModelAndView("redirect:/ViewUsersT");
@@ -172,7 +183,7 @@ public class AssignTPCController {
 		a=userService.insertWork(fuserBean);
 		
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in Table
 		{
 			return new ModelAndView("noUser");
 		}
@@ -192,11 +203,11 @@ public class AssignTPCController {
 		int a;
 		a=userService.removeTPC(userBean);
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==33)
+		if(a==33)//User attempted to be removed is not a TPC
 		{
 			return new ModelAndView("notTPC");
 		}

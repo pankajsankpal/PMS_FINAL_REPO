@@ -1,4 +1,11 @@
-
+/*
+ * EventServiceImpl Class contains the implementation for method
+ * 
+ * View Events based on month
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.service.impl;
 
 import java.util.ArrayList;
@@ -18,7 +25,7 @@ public class EventServiceImpl implements EventService {
 	@Autowired
 	private EventDao eventDao;
 
-	public List<Event_detailsBean> convertToBean(List<Event_details> eventList) {
+	public List<Event_detailsBean> convertToBean(List<Event_details> eventList) {	//Method to convert to bean
 		List<Event_detailsBean> edBeanList = new ArrayList<Event_detailsBean>();
 		for (Event_details ed : eventList) {
 			Event_detailsBean edBean = new Event_detailsBean();
@@ -33,7 +40,7 @@ public class EventServiceImpl implements EventService {
 		System.out.println("Month in Service Impl :" + months);
 		List<Event_details> eventList = eventDao.viewEvents(months);
 		if (eventList == null) {
-			return null;
+			return null;	//Return null if no events happening in the given month
 		}
 		return convertToBean(eventList);
 	}
