@@ -1,11 +1,3 @@
-
-
-/**
- * @author Nevil Dsouza ZNevzz
- * 	Description : POJO bean for model.UserDetails
- */
-
-
 package org.crce.interns.beans;
 
 import java.io.Serializable;
