@@ -1,5 +1,9 @@
 package org.crce.interns.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
@@ -33,10 +37,35 @@ public class LoginController extends HttpServlet{
         private DirectoryService directoryService;
         
 	@RequestMapping("/")
-	public ModelAndView welcome() {
+	public ModelAndView welcome() throws ParseException {
 		System.out.println("return model");
-                //just for the time being, the logic behind automatic generation is a little difficult
+                /**
+                 * Year changing logic
+                 * @author Leon
+                 * Starts here
+                 * Have taken 25th May(month is 0-based) and 25th July as threshold date
+                 * As by this time all placement activities are done
+                 * and system is fed with data for the next batch
+                 * Works perfectly fine and . If any issues, Please tell me.
+                 */
+                String startDate = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-04-25";
+                String endDate = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-06-25";
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date d1 = sdf.parse(startDate);
+                Date d2 = sdf.parse(endDate);
+                /*
+                if(d1.compareTo(d2)<0){
+                    System.out.println("d1 is after");
+                }*/
+                //Timestamp basis for logging
+                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+                Date currentDate = new Date(); //gets current date
+                if((currentDate.after(d1)) && (currentDate.before(d2))){
                 directoryService.createSystemFolders();
+                }
+                /**
+                 * End of @author Leon's code
+                 */
 		return new ModelAndView("index");
 	}
 	

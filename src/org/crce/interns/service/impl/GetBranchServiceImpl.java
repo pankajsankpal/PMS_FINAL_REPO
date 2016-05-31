@@ -15,7 +15,9 @@ public class GetBranchServiceImpl implements GetBranchService{
 	public String getBranch(String userName){
         
 		   System.out.println("In Service class...Check Login");
-        
-		   return gbDao.getBranch(userName);
+         
+		   String branch=gbDao.getBranch(userName);
+		   System.out.println(userName+"'s "+branch+" in GB ServiceIMPL");
+		   return branch;
 	   }
 }

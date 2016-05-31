@@ -137,13 +137,13 @@ public class AssignTPCController {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("assignTPC");
 		}
-		HttpSession session=request.getSession();
+		/*HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
 		String branch1=gbService.getBranch(userBean.getUserName());
 		String branch2=gbService.getBranch(user);
 		//System.out.println("Task Assigned is "+fuserBean.getUserWork());
 		if(!branch1.equalsIgnoreCase(branch2))
-			return new ModelAndView("assignTPC");
+			return new ModelAndView("assignTPC");*/
 		int a;
 		a=userService.assignTPC(userBean);
 	//	FacultyUserBean fuserBean= new FacultyUserBean();
