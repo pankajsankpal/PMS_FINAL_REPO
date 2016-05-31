@@ -14,17 +14,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+*
+* @author Rashmi
+* Task: Adds/Deletes Applicant entries from list of applicants for a job
+* Dependency: ManageApplicantsDao.java
+*/
+
 //import org.crce.interns.service;
 @Service("crudService")
 @Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 	@Autowired
 	private ManageApplicantsDao crudDao;
-	public void createDetails(UserCompanyBean userBean){
+	public int createDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
 		BeanUtils.copyProperties(userBean, user);
-		//System.out.println("Service "+user.getUsername()+user.getCompany_id());
+		int c=crudDao.checkDetails(user);
+		if(c==0)
 		crudDao.createDetails(user);
+		return c;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -34,16 +43,15 @@ public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 		return userList;
 	}
 	
-	public List<Company> retrieveCompany_id(){
-		List<Company> list=new ArrayList<Company>();
-		list.addAll(crudDao.retrieveCompany_id());
-		return list;
-	}
-	public void deleteDetails(UserCompanyBean userBean){
+	
+	public int deleteDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
 		BeanUtils.copyProperties(userBean, user);
-		crudDao.deleteDetails(user);
-	}
+		int c=crudDao.checkDetails(user);
+		System.out.println("c="+c);
+		if(c==0||c==1)
+			crudDao.deleteDetails(user);
+		return c;	}
 
 
 }
