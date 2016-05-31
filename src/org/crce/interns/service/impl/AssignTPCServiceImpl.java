@@ -111,7 +111,22 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 		}
 		
 		System.out.println("UserWorkk in Service with Bean: " + fuserBean.getUserWork());
-		fuser.setUserWork(fuserBean.getUserWork());
+		if(fuserBean.getUserWork().equalsIgnoreCase("01"))
+		{
+			fuser.setUserWork("PLACEMENT_REPORT");
+		}
+		if(fuserBean.getUserWork().equalsIgnoreCase("02"))
+		{
+			fuser.setUserWork("ROOM_ALLOTMENT");
+		}
+		if(fuserBean.getUserWork().equalsIgnoreCase("03"))
+		{
+			fuser.setUserWork("COUNSELLING_REPORT");
+		}
+		if(fuserBean.getUserWork().equalsIgnoreCase("04"))
+		{
+			fuser.setUserWork("FEEDBACK_REPORT");
+		}
 		System.out.println("Username in Service IMPL :" + fuser.getUserName());
 		System.out.println("UserWork in Service IMPL :" + fuser.getUserWork());
 
