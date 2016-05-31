@@ -1,12 +1,18 @@
 package org.crce.interns.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
+import org.crce.interns.model.FileUpload;
 import org.crce.interns.service.ResumeUploadService;
+import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +25,9 @@ public class ResumeUploadController {
 
 	@Autowired
 	private ResumeUploadService resumeUploadService;
+	
+	@Autowired
+    FileUploadValidator validator;
 
 	@RequestMapping("resumeUpload")
 	public ModelAndView welcome() {
@@ -27,10 +36,19 @@ public class ResumeUploadController {
 
 	@RequestMapping(value = "/uploadResume", method = RequestMethod.POST)
 	public ModelAndView resumeUpload(HttpServletRequest request,
-			@RequestParam(required = false) CommonsMultipartFile fileUpload)
+			@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
 					throws Exception {
 
 		try {
+			
+			fileUpload1.setFile(fileUpload);
+			System.out.println(fileUpload1.getFile().getSize());
+			validator.validate(fileUpload1, result);
+			if (fileUpload1.getFile().getSize() == 0) {
+				System.out.println("Error in form");
+	            
+	            return new ModelAndView("ResumeUpload");
+			}
 			 String username = (String)request.getSession(true).getAttribute("userName");
 			System.out.println("in try");
 			resumeUploadService.handleFileUpload(request, fileUpload, username);
@@ -47,4 +65,14 @@ public class ResumeUploadController {
 		}
 		return new ModelAndView("ResumeUpload");
 	}
+	
+	@RequestMapping(value = "/dispCV", method = RequestMethod.POST)
+	public ModelAndView displayCV(){
+		String directory_path="";//give the directory path
+		List<String> listcv=resumeUploadService.displayCVList(directory_path);
+		ModelAndView model=new ModelAndView("listCV");
+		model.addObject("listcv",listcv);
+		return model;
+	}
+	
 }

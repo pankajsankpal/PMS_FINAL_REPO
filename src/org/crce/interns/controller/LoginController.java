@@ -5,17 +5,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.NotifyForm;
-import org.crce.interns.beans.PersonalProfileBean;
-import org.crce.interns.beans.ProfessionalProfileBean;
-import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.LoginService;
-import org.crce.interns.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -32,10 +28,15 @@ public class LoginController extends HttpServlet{
 	
 	@Autowired
 	private CheckRoleService crService;
-	
+        
+        @Autowired
+        private DirectoryService directoryService;
+        
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 		System.out.println("return model");
+                //just for the time being, the logic behind automatic generation is a little difficult
+                directoryService.createSystemFolders();
 		return new ModelAndView("index");
 	}
 	
@@ -46,6 +47,22 @@ public class LoginController extends HttpServlet{
 		System.out.println("Inside Controller");
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
+		model = new ModelAndView("Login");
+		model.addObject("loginForm", loginForm);
+		
+		return model;	
+		
+	}
+	
+	@RequestMapping(value="/logged-out" , method = RequestMethod.GET)  
+  	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println("Inside Controller");
+		LoginForm loginForm = new LoginForm();
+		ModelAndView model=null;
+		
+		request.getSession(true).invalidate();
+		
 		model = new ModelAndView("Login");
 		model.addObject("loginForm", loginForm);
 		
@@ -69,10 +86,11 @@ public class LoginController extends HttpServlet{
 		
 		if(role.equals("Student")){
 			
-			model = new ModelAndView("Student");
+			model = new ModelAndView("redirect:/viewprofile");
 			
 			//model = new ModelAndView("redirect:/viewprofile");
-			HttpSession session=request.getSession();
+
+			
 			String id =  request.getParameter("userName");
 		    System.out.println("UserName: " + id); // Here it prints the username properly
 		    
@@ -83,7 +101,8 @@ public class LoginController extends HttpServlet{
 		    System.out.println("Logged in as what????: " + id);
 		    boolean b=loginService.getNotification(loginForm.getUserName());
 		    model.addObject("b", b);
-		    model.addObject("u", id);		    
+		    model.addObject("u", id);
+		    
 		    return model;
 		}
 		
@@ -92,7 +111,7 @@ public class LoginController extends HttpServlet{
 			model = new ModelAndView("FacultyTPC");
 			NotifyForm notify=new NotifyForm();
 			model.addObject("notify", notify);
-			HttpSession session=request.getSession();
+			
 			String name =  request.getParameter("userName");
 		    System.out.println("UserName: " + name); // Here it prints the username properly
 		    
@@ -106,7 +125,7 @@ public class LoginController extends HttpServlet{
 		else if(role.equals("StudentTPC"))
 		{
 			model = new ModelAndView("StudentTPC");
-			HttpSession session=request.getSession();
+			
 			String name =  request.getParameter("userName");
 		    System.out.println("UserName: " + name); // Here it prints the username properly
 		    
@@ -121,7 +140,7 @@ public class LoginController extends HttpServlet{
 		else if(role.equals("TPO"))
 		{
 			model = new ModelAndView("TPO");
-			HttpSession session=request.getSession();
+			
 			String name =  request.getParameter("userName");
 		    System.out.println("UserName: " + name); // Here it prints the username properly
 		    
@@ -134,7 +153,7 @@ public class LoginController extends HttpServlet{
 		else if(role.equals("Admin"))
 		{
 			model = new ModelAndView("Admin");
-			HttpSession session=request.getSession();
+			
 			String name =  request.getParameter("userName");
 		    System.out.println("UserName: " + name); // Here it prints the username properly
 		    request.getSession(true).setAttribute("userName", name );
@@ -155,9 +174,10 @@ public class LoginController extends HttpServlet{
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
 	{
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		String user=(String)session.getAttribute("userName");
+		
+		String roleId=(String)request.getSession(true).getAttribute("roleId");
+		String user=(String)request.getSession(true).getAttribute("userName");
+		
 		String name=loginService.checkSR(user);
 		
 		
@@ -167,7 +187,8 @@ public class LoginController extends HttpServlet{
 		{
 			String userName=notify.getUserName();
 			int update=loginService.getStudentByid(userName);
-		//System.out.println("hello");
+
+			//System.out.println("hello");
 			if(update==0)
 			{
 				model.put("notify",notify);

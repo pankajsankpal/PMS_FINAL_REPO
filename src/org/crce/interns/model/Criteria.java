@@ -29,6 +29,8 @@ public class Criteria implements Serializable{
 	private static final long serialVersionUID = -6251953336559583204L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name="criteria_id")
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer criteria_id;
