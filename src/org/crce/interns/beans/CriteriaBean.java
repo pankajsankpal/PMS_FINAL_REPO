@@ -4,6 +4,8 @@ import java.util.Date;
 
 //import java.util.Date;
 
+//job-schema.criteria etres
+
 public class CriteriaBean {
 
 	

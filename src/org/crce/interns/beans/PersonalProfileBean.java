@@ -1,3 +1,8 @@
+/**
+ * @author Nevil Dsouza ZNevzz
+ * 	Description : POJO bean for model.PersonalProfile
+ */
+
 package org.crce.interns.beans;
 
 import java.util.Date;

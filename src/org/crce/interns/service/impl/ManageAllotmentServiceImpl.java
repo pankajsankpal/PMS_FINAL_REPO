@@ -18,13 +18,26 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+
+/*
+ * Author: Cheryl
+ * Classes Used: ManageAllotmentDao,AllotmentBean,Allotment
+ * 
+ * Description: Handles the file upload function and copyProperties
+ */
+
 @Service("manageAllotmentService")
+
+//The below line is required else code doesn't work...common error of skipping this line
+
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 
 public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 
 	@Autowired
 	private ManageAllotmentDao manageAllotmentDao;
+	
+	//Path of directory in which the file should be uploaded
 	
 	private String saveDirectory = "C:/work/";
 
@@ -34,6 +47,14 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 		
 		allotmentBean.setFileUpload(saveDirectory);
 		Allotment allotment = new Allotment();
+		
+		/*
+		 * Copies values from Allotment in model class 
+		 * to AllotmentBean.
+		 * Hence beans will hold light weight data which is better to 
+		 * store in database.
+		 */
+		
 		BeanUtils.copyProperties(allotmentBean, allotment);
 		//profile.setRole_id("1");
 

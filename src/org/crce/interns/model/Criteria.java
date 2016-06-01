@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/** Entries of job.schema_criteria
+ * Here job_schema.company is secondary table used to auto insert criteria_id(pk of criteria) as fk in company
+*/
 @Entity
 @Table(name = "job_schema.criteria")
 @SecondaryTables({

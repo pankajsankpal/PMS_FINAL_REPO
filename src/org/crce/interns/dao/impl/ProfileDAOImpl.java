@@ -1,9 +1,10 @@
 /**
- * @author Nevil Dsouza
- *
- *	Profile DAO
- *	DEPENDENCIES: ProfileServiceImpl, UpdateProfileController, Profile
+ * @author Nevil Dsouza ZNevzz
+ *	Description : DAO impl for profile related CRUD operations
+ *	DEPENDENCIES: 
+ * 	model-	PersonalProfile;ProfessionalProfile;UserDetails;
  */
+ 
 package org.crce.interns.dao.impl;
 
 import org.crce.interns.dao.ProfileDAO;

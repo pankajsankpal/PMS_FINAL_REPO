@@ -1,10 +1,10 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main service impl
- *	DEPENDENCIES: , , 
+ * @author Nevil Dsouza ZNevzz
+ *	Description : Service impl for notification related operations
+ *	DEPENDENCIES: 
+ * 	brans and model-	PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;NotificationBean;
+ * 	DAO-	NfDAO
  */
-
 package org.crce.interns.service.impl;
 
 
