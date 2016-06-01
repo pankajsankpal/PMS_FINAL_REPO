@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.Company;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ProfileService;
@@ -350,6 +351,11 @@ public class UpdateProfileController {
 	public ModelAndView helloajax(){
 		return new ModelAndView("test","message","Spring with ajax and jquery");
 	}
+	
+	@RequestMapping("/test2")
+	public ModelAndView helloajax2(){
+		return new ModelAndView("test2","message","Spring with ajax and jquery");
+	}
 
 	//----------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/ajaxtest", method = RequestMethod.GET)
@@ -377,8 +383,24 @@ public class UpdateProfileController {
 		return new Gson().toJson(userDetailsList);
 	}
 	
+	//this is for company dynamic dropdown
+	@RequestMapping("/looseSearch2")
+	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
+		List<Company> companyList = new ArrayList<Company>();
+		companyList = searchService.searchCompany(chars);
+		System.out.println(companyList.size());
+
+		//ObjectMapper obj= new ObjectMapper();
+		
+		//return userDetailsList.get(0);
+		
+		return new Gson().toJson(companyList);
+	}
+	
 	
 }
+
+
 
 
 /*
