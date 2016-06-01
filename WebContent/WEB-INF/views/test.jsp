@@ -34,7 +34,7 @@
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<option>'+data[index].userName+'-'+data[index].name+'</option>');
+	 						$('#searchresult').append('<p>'+data[index].userName+'-'+data[index].name+'</p>');
 	 					}
 	 				});
  		}
@@ -102,7 +102,7 @@
         <br>
         <br><br>
         <input type ="text" id="searchbox" onKeyUp="doSearch();">
-        <select id="searchresult"></select>
+        <div id="searchresult"></div>
       
     </div>
     
