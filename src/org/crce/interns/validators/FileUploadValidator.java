@@ -1,3 +1,23 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: FileUploadValidator.java	
+* 
+* Classes used: FileUpload
+* 	
+* Modules using this validator class: AddUserViaCSV file, Resume Upload
+* 
+* Description: This validator class overrides the methods of the Validator class.
+* 				It handles the condition when no file is selected for upload.
+* 				It uses messages.properties file
+* 
+* Functions: supports(), valdate()
+*
+*/
+
+
 package org.crce.interns.validators;
 
 
@@ -21,15 +41,11 @@ public class FileUploadValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		
+		//casts the Object type to FileUpload type
 		FileUpload fileUpload1 = (FileUpload)target;
-		/*
-		//File file1 = (File) target;
+	
 		
-		//System.out.println(file1.getFile());
-		if(file.getFile().getSize() == 0){
-			errors.rejectValue("file", "required.fileUpload");
-		}*/
-		
+		//gets the size of the CommonsMultiPart type file
 		if(fileUpload1.getFile().getSize() == 0){
 			System.out.println("empty");
 			errors.rejectValue("file", "required.fileUpload");

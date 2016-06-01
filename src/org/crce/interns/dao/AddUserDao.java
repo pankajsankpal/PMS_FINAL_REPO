@@ -1,3 +1,18 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: AddUserDao.java	
+* 
+* Description: This dao is an interface which only declares method names which are implemented in AddUserDaoImpl.java
+* 
+* Functions: loadCopyFile()	
+*
+*/
+
+
+
 package org.crce.interns.dao;
 
 import java.io.IOException;
