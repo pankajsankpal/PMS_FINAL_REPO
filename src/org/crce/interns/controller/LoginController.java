@@ -33,9 +33,10 @@ public class LoginController extends HttpServlet{
 	@Autowired
 	private CheckRoleService crService;
         
-        @Autowired
-        private DirectoryService directoryService;
-        
+   	@Autowired
+    private DirectoryService directoryService;
+    
+   	//----------------------------------------------------------------------------------------------------------
 	@RequestMapping("/")
 	public ModelAndView welcome() throws ParseException {
 		System.out.println("return model");
@@ -69,7 +70,7 @@ public class LoginController extends HttpServlet{
 		return new ModelAndView("index");
 	}
 	
-
+   	//----------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/form" , method = RequestMethod.GET)  
   	public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -82,28 +83,24 @@ public class LoginController extends HttpServlet{
 		return model;	
 		
 	}
-	
+
+	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/logged-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
 		
-		System.out.println("Inside Controller");
-		LoginForm loginForm = new LoginForm();
-		ModelAndView model=null;
-		
-		request.getSession(true).invalidate();
-		
-		model = new ModelAndView("Login");
-		model.addObject("loginForm", loginForm);
-		
+		System.out.println("Inside Controller");		
+		ModelAndView model=null;		
+		model = new ModelAndView("redirect:/sign-out");				
 		return model;	
 		
 	}
-	
+   	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/logged" ,method = RequestMethod.POST)
 	public ModelAndView processForm(HttpServletRequest request, HttpServletResponse response, @Valid LoginForm loginForm, BindingResult result) {
 
 		System.out.println("Inside Controller");
 		ModelAndView model=null;	
+		
 		/*if (result.hasErrors()) {
 			return "loginform";
 		}*/
@@ -116,21 +113,11 @@ public class LoginController extends HttpServlet{
 		if(role.equals("Student")){
 			
 			model = new ModelAndView("redirect:/viewprofile");
-			
-			//model = new ModelAndView("redirect:/viewprofile");
-
-			
-			String id =  request.getParameter("userName");
-		    System.out.println("UserName: " + id); // Here it prints the username properly
-		    
-		    request.getSession(true).setAttribute("userName", id );
+								    
+		    request.getSession(true).setAttribute("userName", request.getParameter("userName") );
 		    request.getSession(true).setAttribute("roleId", "1" );
-		    
-		    // System.out.println(session.getAttribute("userName"));
-		    System.out.println("Logged in as what????: " + id);
+		    		    
 		    boolean b=loginService.getNotification(loginForm.getUserName());
-		    model.addObject("b", b);
-		    model.addObject("u", id);
 		    
 		    return model;
 		}
@@ -198,7 +185,7 @@ public class LoginController extends HttpServlet{
 			return model;
 		}
 	}
-	
+   	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
@@ -228,5 +215,5 @@ public class LoginController extends HttpServlet{
 		}
 	}
 	
-
+   	//----------------------------------------------------------------------------------------------------------
 }

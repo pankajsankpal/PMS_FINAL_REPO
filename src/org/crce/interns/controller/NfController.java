@@ -1,8 +1,10 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main controller
- *	DEPENDENCIES: , , 
+ * @author Nevil Dsouza ZNevzz
+ *	Description: handles all notification related functions
+ *	View pages : nftest.jsp
+ *	DEPENDENCIES: 
+ *	beans-	NotificationBean,PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
+ *	service-CheckRoleService;NfService;ProfileService;
  */
 
 package org.crce.interns.controller;
@@ -23,6 +25,7 @@ import org.crce.interns.beans.NotificationBean;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
@@ -47,14 +50,15 @@ public class NfController {
 	@Autowired
 	private ProfileService profileService;
 	
+	//------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
 		
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
-		String id="7000";
+		//String id="7000";
 		
-		String username=(String)request.getSession(true).getAttribute("userName");
+		String userName=(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");		
 		
 		UserDetailsBean userDetailsBean= new UserDetailsBean();			
@@ -62,9 +66,9 @@ public class NfController {
 		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 	
 	
-		userDetailsBean.setUserName(id);
-		professionalProfileBean.setUserName(id);
-		personalProfileBean.setUserName(id);
+		userDetailsBean.setUserName(userName);
+		professionalProfileBean.setUserName(userName);
+		personalProfileBean.setUserName(userName);
 	
 	
 		userDetailsBean = profileService.getProfile(userDetailsBean);
@@ -83,7 +87,7 @@ public class NfController {
 		return model;
 	}
 	
-	
+	//------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/addNf", method = RequestMethod.GET)
 	public ModelAndView addNf(HttpServletRequest request) {
 		
@@ -110,4 +114,35 @@ public class NfController {
 		
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	@RequestMapping("/looseNotification")
+	public @ResponseBody String looseNotification(HttpServletRequest request){
+		
+		System.out.println("Inside NfController");
+		//nfService.checkNf();
+		//String id="7000";
+		
+		String userName=(String)request.getSession(true).getAttribute("userName");
+		String roleId=(String)request.getSession(true).getAttribute("roleId");		
+		
+		UserDetailsBean userDetailsBean= new UserDetailsBean();			
+		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+	
+	
+		userDetailsBean.setUserName(userName);
+		professionalProfileBean.setUserName(userName);
+		personalProfileBean.setUserName(userName);
+	
+	
+		userDetailsBean = profileService.getProfile(userDetailsBean);
+		professionalProfileBean = profileService.getProfile(professionalProfileBean);
+		personalProfileBean = profileService.getProfile(personalProfileBean);	
+	
+		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		nfList = nfService.sortByDate(nfList);
+	
+		return new Gson().toJson(nfList);
+	}
+
 }
