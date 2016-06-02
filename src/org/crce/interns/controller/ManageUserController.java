@@ -8,7 +8,7 @@
 * 
 * Tabes used: User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
 * 
-* Description: This controller is used to add student/add faculty/remove user .
+* Description: This controller is used to add student/add faculty (as well as create directories for them)/remove user .
 * 				Can be done only by tpo/admin.
 * 
 * Functions: addStudent(), addFaculty() ,welcomeStudent(),welcomeFaculty(),removeUser(), removeUser1()		
@@ -29,6 +29,7 @@ import org.crce.interns.beans.FacultyBean;
 import org.crce.interns.beans.StudentBean;
 import org.crce.interns.model.Student;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.ManageUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,12 +51,14 @@ public class ManageUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
-	
+	 @Autowired
+	 private DirectoryService directoryService;
 	
 	//actually adding student
 	@RequestMapping(value = "/registerStudent", method = RequestMethod.POST)
 	public ModelAndView addStudent(@ModelAttribute("studentBean")StudentBean studentBean,BindingResult result) {
 		manageUserService.addStudent(studentBean);
+		directoryService.createStudentFolder();
 		return new ModelAndView("addStudent");
 	}
 	
@@ -63,6 +66,7 @@ public class ManageUserController {
 	@RequestMapping(value = "/registerFaculty", method = RequestMethod.POST)
 	public ModelAndView addFaculty(@ModelAttribute("facultyBean")FacultyBean facultyBean,BindingResult result) {
 		manageUserService.addFaculty(facultyBean);
+		directoryService.createFacultyFolder();
 		return new ModelAndView("addFaculty");
 	}
 	
