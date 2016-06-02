@@ -26,7 +26,7 @@ public class StatisticsController {
 	@Autowired
 	private StatisticsService statisticsService;
 	
-	@RequestMapping(value="/addStatistics", method = RequestMethod.POST)
+	@RequestMapping(value="/addStatistics", method = RequestMethod.GET)
 	public ModelAndView addStatistics(HttpServletRequest request) {
 		
 		PlacementStatisticsBean statisticsBean = new PlacementStatisticsBean();
