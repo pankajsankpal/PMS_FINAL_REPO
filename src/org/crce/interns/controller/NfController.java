@@ -88,7 +88,7 @@ public class NfController {
 	}
 	
 	//------------------------------------------------------------------------------------------------	
-	@RequestMapping(value="/addNf", method = RequestMethod.GET)
+	@RequestMapping(value="/addNf", method = RequestMethod.POST)
 	public ModelAndView addNf(HttpServletRequest request) {
 		
 		NotificationBean add=new NotificationBean(); 
