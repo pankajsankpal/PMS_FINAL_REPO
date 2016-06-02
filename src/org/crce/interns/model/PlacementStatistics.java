@@ -13,7 +13,7 @@ import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "company", catalog = "placement_statistics_schema")
+@Table(name = "placement_statistics", catalog = "placement_statistics_schema")
 @SecondaryTables({	
 	@SecondaryTable(name = "job_schema.company", pkJoinColumns = @PrimaryKeyJoinColumn(name = "company_id") ) 
 	})
