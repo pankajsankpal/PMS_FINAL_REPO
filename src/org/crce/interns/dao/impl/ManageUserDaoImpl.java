@@ -54,6 +54,8 @@ public class ManageUserDaoImpl implements ManageUserDao{
 			session.close();*/
 			student.setRollno(username);
 			sessionFactory.getCurrentSession().delete(student);
+			//sessionFactory.getCurrentSession().delete("username", username);
+			//sessionFactory.getCurrentSession().flush();
 		}
 		catch(HibernateException e){
 			System.out.println(e);
