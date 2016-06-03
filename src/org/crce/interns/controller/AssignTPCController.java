@@ -11,9 +11,7 @@
  * */
 package org.crce.interns.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,6 @@ import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.UserDetailsBean;
-import org.crce.interns.model.UserDetails;
 import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.GetBranchService;
@@ -34,7 +31,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
