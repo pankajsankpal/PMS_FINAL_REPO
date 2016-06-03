@@ -32,7 +32,7 @@ public class StatisticsController {
 		PlacementStatisticsBean statisticsBean = new PlacementStatisticsBean();
 		
 		statisticsBean.setBranch("Computer Engineering");
-		statisticsBean.setCompanyId(1);
+		statisticsBean.setCompanyId(1010);
 		statisticsBean.setCreatedBy((String)request.getSession(true).getAttribute("userName"));
 		statisticsBean.setCreatedDate(new Date());
 		statisticsBean.setModifiedBy("");
@@ -47,6 +47,11 @@ public class StatisticsController {
 		statisticsService.add(statisticsBean);
 		
 		return null;		
+		
+	}
+	
+	@RequestMapping(value="/viewStatistics", method = RequestMethod.GET)
+	public ModelAndView viewStatistics(HttpServletRequest request) {
 		
 	}
 	

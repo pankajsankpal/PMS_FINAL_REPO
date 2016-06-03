@@ -1,5 +1,6 @@
 package org.crce.interns.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.crce.interns.beans.PlacementStatisticsBean;
@@ -23,10 +24,27 @@ public class StatisticsServiceImpl implements StatisticsService {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public List<PlacementStatisticsBean> list() {
 		// TODO Auto-generated method stub
-		return null;
+		List<PlacementStatisticsBean> listBean
+		= new ArrayList<PlacementStatisticsBean>();
+		
+		List<PlacementStatistics> list = statisticsDAO.list();
+		
+		
+		
+		
+		
+		for( PlacementStatistics ps: list){
+			
+			PlacementStatisticsBean temp = new PlacementStatisticsBean();			
+			BeanUtils.copyProperties(ps,temp);
+			listBean.add(temp);
+			
+		}
+		
+		return listBean;
 	}
 
-	@Override
+	@Override 
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void add(PlacementStatisticsBean placementStatisticsBean) {
 		// TODO Auto-generated method stub

@@ -21,7 +21,7 @@ public class PlacementStatistics {
 	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.AUTO)	
 	@Column(name = "placment_stats_id")
 	private int placmentStatsId;
 	
