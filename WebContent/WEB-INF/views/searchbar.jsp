@@ -11,7 +11,7 @@ description: contains serach field for searching any user or a company available
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Faculty Tpc | HOME</title>
+<title>Search Something..</title>
 <style>
 .error {
 	color: #ff0000;

@@ -10,7 +10,7 @@ description: contain field for removing the student tpc -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Faculty Tpc | HOME</title>
+<title>View Events	</title>
 <style>
 .error {
 	color: #ff0000;

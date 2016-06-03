@@ -257,6 +257,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 															</div>
 														</div>
 													</div>
+													
+													
 													<br><br>
 													
 														
@@ -269,7 +271,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 												<div id="notification" class="tab-pane">
 													
-												<<div class="col-xs-10 widget-container-col">
+												<div class="col-xs-10 widget-container-col">
 														
 															<div class="widget-box">
 															<div class="widget-header widget-header-large">

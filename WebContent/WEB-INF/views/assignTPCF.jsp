@@ -11,7 +11,7 @@ description: contains field for assigning a student tpc  -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Faculty Tpc | HOME</title>
+<title>Assign Student Tpc</title>
 <style>
 .error {
 	color: #ff0000;
