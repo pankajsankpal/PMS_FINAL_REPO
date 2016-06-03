@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 
 @Controller
 public class NfController {
@@ -50,6 +51,10 @@ public class NfController {
 	@Autowired
 	private ProfileService profileService;
 	
+        @Autowired
+        private EmailNotificationServiceImpl emailNotificationService;
+
+        
 	//------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
@@ -140,6 +145,11 @@ public class NfController {
 	
 		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
 		nfList = nfService.sortByDate(nfList);
+                
+                
+                NotificationBean notificationBean = new NotificationBean();
+                emailNotificationService.sendEmailNotification(notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
+
 	
 		return new Gson().toJson(nfList);
 	}
