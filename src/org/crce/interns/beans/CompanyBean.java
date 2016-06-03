@@ -2,6 +2,8 @@ package org.crce.interns.beans;
 
 import org.crce.interns.model.Criteria;
 
+//job_schema.company entries
+
 public class CompanyBean {
 
 	

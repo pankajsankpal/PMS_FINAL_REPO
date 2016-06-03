@@ -1,3 +1,9 @@
+<!--
+ Filename : ResumeUpload.jsp
+ Author name: Crystal Cuthinho
+ Description: used for resume upload by student. Mapping goes to ResumeUploadController
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -21,7 +27,7 @@
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Upload CSV</title>
+<title>Upload Resume</title>
 </head>
 <body>
 
@@ -34,10 +40,10 @@
 		File to upload: <input type="file" name="fileUpload"><br />
 		
 		<c:if test="${error==1}">
-			<p>Failed to upload...File format can be docx/pdf/odt only!</p>
+			<p style="color:red;">Failed to upload...File format can be docx/pdf/odt only!</p>
 		</c:if>
 		<c:if test="${error1==1}">
-			<p>Failed to upload...File size can be only upto 512KB</p>
+			<p style="color:red;">Failed to upload...File size can be only upto 512KB</p>
 		</c:if>
 		  <input type="submit" value="Upload"> Press here to upload the file!
 		  <span><form:errors path="file" cssClass="error" />

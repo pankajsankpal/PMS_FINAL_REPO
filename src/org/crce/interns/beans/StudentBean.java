@@ -1,6 +1,17 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: StudentBean.java	
+* 	
+* Module using this bean : ManageUser
+* 
+* Description: This bean is used to create a student user along with its attributes and getters and setters		
+*
+*/
+
+
 package org.crce.interns.beans;
-
-
 
 public class StudentBean {
 	

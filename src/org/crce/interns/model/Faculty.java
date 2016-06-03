@@ -1,3 +1,18 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: Faculty.java	
+* 	
+* Module using this model : ManageUser
+* 
+* Description: This model is used to create an entity of the faculty user for mapping into tables using hibernate.	
+* 				This mapping is done to 3 tables using SecondaryTables annotation.
+* 				
+* Tables mapped: user_schema.userdetails,	user_schema.personal_profile,user_schema.professional_profile
+*
+*/
+
 package org.crce.interns.model;
 
 import javax.persistence.Column;

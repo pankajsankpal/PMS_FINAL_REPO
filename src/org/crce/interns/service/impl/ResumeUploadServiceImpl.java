@@ -1,3 +1,21 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ResumeUploadServiceImpl.java	
+* 	
+* Classes used by code: ResumeUploadService, ResumeUploadDao,FileUploadValidator,DirectoryPathBean, IncorrectFileFormatException,MaxFileSizeExceededError
+* 
+* Tabes used: Loader_schema.loader,User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This service implementation is used to implement the methods in AddUserService.java
+* 
+* Functions: handleFileUpload()	,displayCVList()
+*
+*/
+
+
+
 package org.crce.interns.service.impl;
 
 import java.io.File;
@@ -28,40 +46,31 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	private ResumeUploadDao resumeUploadDao;
 
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
-
-	
 	
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username)
 			throws Exception {
 		
-
-		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+		
+		//get the path for saving the resume
 		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Resume\\";
 		
-		
-		
-	
 
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
 		int lastDot = fullPath.lastIndexOf('.');
 		if (!fileUpload.isEmpty()) {
 			
-			
 			IncorrectFileFormatException e = new IncorrectFileFormatException();
 			MaxFileSizeExceededError m = new MaxFileSizeExceededError();
-			
 			
 			//File file = new File(fileUpload.getOriginalFilename());
 			final String extension = FilenameUtils.getExtension(fullPath);
 				
-				
-			
-			
+			// throws IncorrectFileFormatException if the uploaded file is not of the desired extension/type
 			if(!(extension.equals("pdf") || extension.equals("docx") || extension.equals("odt")))
 				throw e;
 			
-			//final long size = FileUtils.sizeOf(file);
+			//throws MaxFileSizeExceededError if the uploaded file exceeds the expected size limit
 			final long size = fileUpload.getSize();
 			System.out.println(size);
 			if(size > 512520)
@@ -73,21 +82,20 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 			if (!fileUpload.getOriginalFilename().equals("")){
 				File f1 = new File(fullPath);
 							
+				//newName : It is the entire path of the uploaded file with the timestamp of upload appended
 				String newName = fullPath.substring(0,lastDot) + "-" + timeStamp + fullPath.substring(lastDot);
 				File f2 = new File(newName);
 				System.out.println("Saving file: " + newName);
 				
 				f1.renameTo(f2);
 				fileUpload.transferTo(f2);
-				resumeUploadDao.addNewResume(username,fullPath);
+				//call to the dao 
+				resumeUploadDao.addNewResume(username,newName);
 			}
-				
-			
+					
 				
 		}
-		else{
-			System.out.println("No file chosen to upload!");
-		}
+		
 		
 	}
 	

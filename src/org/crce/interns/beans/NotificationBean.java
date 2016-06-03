@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Nevil Dsouza ZNevzz
+ * 	Description : POJO bean for model.Notification
  */
 package org.crce.interns.beans;
 

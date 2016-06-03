@@ -1,3 +1,18 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: Student.java	
+* 	
+* Module using this model : ManageUser
+* 
+* Description: This model is used to create an entity of the student user for mapping into tables using hibernate.	
+* 				This mapping is done to 4 tables using SecondaryTables annotation.
+* 				
+* Tables mapped: user_schema.userdetails,	user_schema.personal_profile,user_schema.professional_profile,user_schema.qualification
+*
+*/
+
 package org.crce.interns.model;
 
 import java.io.Serializable;
@@ -9,6 +24,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "user_schema.userdetails")

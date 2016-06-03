@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@ page import="java.sql.*" %>
 <%ResultSet resultset =null;%>
     
@@ -24,7 +24,8 @@
 		<script src="assets/js/respond.min.js"></script>
 		<script src="assets/js/jquery.js"></script>
 		<script type="text/javascript">
-		$(document).ready(function() {<!-- form validation--> 
+		<!--form validation--> 
+		$(document).ready(function() { 
 		$("#validation-form").validate({
 		    rules: {
     				round: "required",
@@ -212,7 +213,8 @@
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	<script>
-			jQuery(function($) {		<!-- date picker-->
+	<!-- date picker-->
+			jQuery(function($) {		
 				$('.date-picker').datepicker({
 					autoclose: true,
 					todayHighlight: true
@@ -220,7 +222,7 @@
 				.next().on(ace.click_event, function(){
 					$(this).prev().focus();
 				});
-				$('#file').ace_file_input({		<!-- file upload-->
+				$('#file').ace_file_input({		//file upload
 					no_file:'No File ...',
 					btn_choose:'Choose',
 					btn_change:'Change',
