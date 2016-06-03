@@ -8,15 +8,12 @@
  */
 package org.crce.interns.controller;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.LoginForm;
@@ -27,9 +24,9 @@ import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SearchService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +40,7 @@ import com.google.gson.Gson;
 public class UpdateProfileController {
 	
 	
-	//private ProfileService profileService;
+
 	@Autowired
 	private ProfileService profileService;
 	@Autowired
@@ -52,28 +49,15 @@ public class UpdateProfileController {
 	private SearchService searchService;
 	
 	
-	
-	/*
-	@RequestMapping(value="/", method = RequestMethod.GET)
-	public ModelAndView index() {
-		
-		System.out.println("Inside Controller");
-		
-		ModelAndView model=null;
-		
-		model = new ModelAndView("index");
-				
-		return model;
-	}
-	*/
 //------------------------------------------------------------------------------------------------------ //
 	
-	/**	GET details from database
+	/**	GET details from database + POST login details
 	*	
-	*	Creates hardcoded user by setName and setID on user.This value is supposed to be retrieved from Session.
-	*	This enhancement will be added later
-	*	@param	None
-	*	@return MOdelAndView viewprofile page with name
+	*	@author Nevil Dsouza
+	*	@param	HttpServletRequest
+	*	@return MOdelAndView RoleName.jsp
+	*
+	*	returns data from userdetails,personal,professional tables
 	*
 	*/
 	
@@ -83,27 +67,25 @@ public class UpdateProfileController {
 	
 	public ModelAndView login(HttpServletRequest request) {
 		
-		System.out.println("Inside Controller");
-		//HttpSession session=request.getSession(true);
+		System.out.println("Inside UpdateProfile Controller");
+		
 		
 		String userName =(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 			ModelAndView model=null;
 
-		///*
+			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();									
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 					
 			userDetailsBean.setUserName(userName);			
-			userDetailsBean = profileService.getProfile(userDetailsBean);
-			
-			System.out.println("password "+userDetailsBean.getUserPassword());
+			userDetailsBean = profileService.getProfile(userDetailsBean);					
 			
 			userDetailsBean.setAccountActive("YES");
 			userDetailsBean.setCurrentState("LOGGED IN");
@@ -114,42 +96,72 @@ public class UpdateProfileController {
 			professionalProfileBean.setUserName(userName);
 			personalProfileBean.setUserName(userName);
 		
-			
-		
 			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
-			
-			System.out.println("password "+userDetailsBean.getUserPassword());
 			
 			professionalProfileBean = profileService.getProfile(professionalProfileBean);
 			personalProfileBean = profileService.getProfile(personalProfileBean);	
+			
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			request.getSession(true).setAttribute("year",professionalProfileBean.getYear());			
+			
+			String roleName = (String)request.getSession(true).getAttribute("roleName");
+			
+			if(roleName.equals("Student")){
+				model = new ModelAndView("Student");
+				
+			}else if(roleName.equals("StudentTPC")){
+				
+				model = new ModelAndView("StudentTPC");
+				
+			}else if(roleName.equals("Faculty")){
+				model = new ModelAndView("Faculty");
+				
+			}else if(roleName.equals("FacultyTPC")){
+				model = new ModelAndView("FacultyTPC");
+				
+			}else if(roleName.equals("TPO")){
+				model = new ModelAndView("TPO");
+				
+			}else if(roleName.equals("Admin")){
+				model = new ModelAndView("Admin");
+			}
 		
-			model = new ModelAndView("Student");
-		
+			
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
-		//*/
-			request.getSession(true).setAttribute("name",personalProfileBean.getName());
-			//request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+
+			
 			
 			return model;
-		}
+		//}
 	}
 	
 	
 		
 //-----------------------------------------------------------------------------------------//
+	/**	GET form to edit profile
+	*	
+	*	@author Nevil Dsouza
+	*	@param	HttpServletRequest
+	*	@return MOdelAndView viewprofile.jsp
+	*
+	*	returns form to edit personal,professional tables
+	*
+	*/
+	
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
-	public ModelAndView editProfessionalProfile(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView editProfessionalProfile(HttpServletRequest request) {
 		
-		HttpSession session=request.getSession();
-		String id = (String) session.getAttribute("userName");
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			System.out.println("Inside Controller");
+		
+		String id = (String) request.getSession(true).getAttribute("userName");
+		String roleId=(String)request.getSession(true).getAttribute("roleId");
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
+			System.out.println("Inside UpdateProfile Controller");
 		
 			ModelAndView model=null;		
 
@@ -173,28 +185,35 @@ public class UpdateProfileController {
 
 		
 			return model;
-		}
+		//}
 	}
 	
 	
 	
 	
 //------------------------------------------------------------------------------------------------------------------
-	
+	/**	POST edit profile form to database
+	*	
+	*	@author Nevil Dsouza
+	*	@param	HttpServletRequest,@RequestParam Map<String, String>,HttpServletResponse
+	*	@return MOdelAndView Student.jsp
+	*
+	*	persists values from form to database
+	*
+	*/
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public ModelAndView updateProfessionalProfile(
-			@RequestParam Map<String, String> r,
-			HttpServletRequest request, HttpServletResponse response) {
+			@RequestParam Map<String, String> r,HttpServletRequest request) {
 		
-		System.out.println("Inside Controller");
+		System.out.println("Inside UpdateProfile Controller");
 	
-		HttpSession session=request.getSession();
-		String id = (String) session.getAttribute("userName");
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		
+		String id = (String) request.getSession(true).getAttribute("userName");
+		String roleId= (String) request.getSession(true).getAttribute("roleId");
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 		ModelAndView model=null;
 		
 		ProfessionalProfileBean professionalProfileBean = new ProfessionalProfileBean();
@@ -214,33 +233,41 @@ public class UpdateProfileController {
 		professionalProfileBean.setInternships(r.get("internships"));
 		professionalProfileBean.setCoCurricularActivities(r.get("coCurricularActivities"));		
 		professionalProfileBean.setExtraCurricularActivities(r.get("extraCurricularActivities"));
+		professionalProfileBean.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
+		professionalProfileBean.setModifiedDate(new Date());
 		
 		personalProfileBean.setCorrespondenceAddress(r.get("correspondenceAddress"));
 		personalProfileBean.setPermanentAddress(r.get("permanentAddress"));		
-		
-		userDetailsBean = profileService.getProfile(userDetailsBean);		
+		personalProfileBean.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
+		personalProfileBean.setModifiedDate(new Date());
+				
 		personalProfileBean = profileService.updatePersonalProfile(personalProfileBean);			
 		professionalProfileBean = profileService.updateProfessionalProfile(professionalProfileBean);				
 		
-		model = new ModelAndView("Student");
-		model.addObject("userDetails",userDetailsBean);
-		model.addObject("professionalProfile",professionalProfileBean);
-		model.addObject("personalProfile",personalProfileBean);			
-		
+		model = new ModelAndView("redirect:/viewprofile");		
 		return model;
-		}
+		//}
 	}
 	
 	
 	
 	//-----------------------------------------------------------------------------------------//
+	/**	POST logout details in database
+	*	
+	*	@author Nevil Dsouza
+	*	@param	HttpServletRequest
+	*	@return MOdelAndView Login.jsp
+	*
+	*	invalidates Session and persists logout details in database
+	*
+	*/
 	@RequestMapping(value="/sign-out" , method = RequestMethod.GET)  
-  	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+  	public ModelAndView logout(HttpServletRequest request) {
 		
 		try{
 			
 		
-			System.out.println("Inside Controller");
+			System.out.println("Inside UpdateProfile Controller");
 			LoginForm loginForm = new LoginForm();
 			ModelAndView model=null;
 			
@@ -273,47 +300,11 @@ public class UpdateProfileController {
 	//-----------------------------------------------------------------------------------------//
 	
 
-	/*
-	@RequestMapping(value="/update-personal", method = RequestMethod.POST)
-	public ModelAndView updatePersonalProfile(
-			@RequestParam Map<String, String> r,
-			HttpServletRequest request, HttpServletResponse response) {
-		
-		System.out.println("Inside Controller");
 	
-		HttpSession session=request.getSession();
-		String id = (String) session.getAttribute("userName");
-		ModelAndView model=null;
-		
-		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();		
-		UserDetailsBean userDetailsBean= new UserDetailsBean();
-		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
-		
-		personalProfileBean.setUserName(id);
-		userDetailsBean.setUserName(id);		
-		professionalProfileBean.setUserName(id);
-		
-		personalProfileBean = profileService.getProfile(personalProfileBean);
-		//set values from Map to Bean
-		
-		
-		
-		
-		userDetailsBean = profileService.getProfile(userDetailsBean);
-		professionalProfileBean = profileService.getProfile(professionalProfileBean);
-		personalProfileBean = profileService.updatePersonalProfile(personalProfileBean);
-				
-		model = new ModelAndView("Student");
-		model.addObject("userDetails",userDetailsBean);
-		model.addObject("professionalProfile",professionalProfileBean);
-		model.addObject("personalProfile",personalProfileBean);			
-		
-		return model;
-	}
-	*/
 
 	//-----------------------------------------------------
 	// extra
+	/*
 	@RequestMapping(value="/update-password", method = RequestMethod.POST)
 	public ModelAndView updateUserDetails(@RequestParam("username") String username,@RequestParam("password") String password) {
 		
@@ -353,13 +344,13 @@ public class UpdateProfileController {
 		
 		return model;
 	}
-	
+	*/
 	//-----------------------------------------------------
 	// extra
 	@RequestMapping(value="/nevz-feedback", method = RequestMethod.GET)
 	public ModelAndView f(HttpServletRequest request) {
 		
-		System.out.println("Inside Controller");
+		System.out.println("Inside UpdateController");
 		HttpSession session=request.getSession();
 		String id = (String) session.getAttribute("userName");
 		String roleId=(String)session.getAttribute("roleId");

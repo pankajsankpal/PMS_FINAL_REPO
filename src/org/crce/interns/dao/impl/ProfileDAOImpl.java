@@ -37,9 +37,9 @@ public class ProfileDAOImpl implements ProfileDAO{
 	*
 	*/
 	public UserDetails getProfile(UserDetails user) {
-		System.out.println("before get");
+		
 		UserDetails result = (UserDetails)sessionFactory.getCurrentSession().get(UserDetails.class, user.getUserName());
-		System.out.println("after get");
+		
 		return result;
 	}
 	
@@ -50,9 +50,9 @@ public class ProfileDAOImpl implements ProfileDAO{
 	*
 	*/
 	public ProfessionalProfile getProfile(ProfessionalProfile professionalProfile) {
-		System.out.println("before get");
+		
 		ProfessionalProfile result = (ProfessionalProfile)sessionFactory.getCurrentSession().get(ProfessionalProfile.class, professionalProfile.getUserName());
-		System.out.println("after get");
+		
 		return result;
 	}
 	
@@ -63,9 +63,9 @@ public class ProfileDAOImpl implements ProfileDAO{
 	*
 	*/
 	public PersonalProfile getProfile(PersonalProfile personalProfile) {
-		System.out.println("before get");
+		
 		PersonalProfile result = (PersonalProfile)sessionFactory.getCurrentSession().get(PersonalProfile.class, personalProfile.getUserName());
-		System.out.println("after get");
+		
 		return result;
 	}
 		

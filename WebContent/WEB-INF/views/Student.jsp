@@ -11,12 +11,12 @@
 <title>Student Profile</title>
 </head>
 
+<body>	
 	
-	
-	<h3>Welcome  ${sessionScope.name}To the profile page </h3>
+	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
 	
 	<h2>
-		My name is ${sessionScope.name} , I am a  ${sessionScope.roleId} from  ${sessionScope.branch} branch with roll no  ${sessionScope.userName}
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
 	<br />
 	<p>

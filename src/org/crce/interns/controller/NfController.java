@@ -56,7 +56,6 @@ public class NfController {
 		
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
-		//String id="7000";
 		
 		String userName=(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");		
@@ -88,7 +87,7 @@ public class NfController {
 	}
 	
 	//------------------------------------------------------------------------------------------------	
-	@RequestMapping(value="/addNf", method = RequestMethod.GET)
+	@RequestMapping(value="/addNf", method = RequestMethod.POST)
 	public ModelAndView addNf(HttpServletRequest request) {
 		
 		NotificationBean add=new NotificationBean(); 
