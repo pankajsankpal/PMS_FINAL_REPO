@@ -17,35 +17,15 @@
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();"
 	onunload="">
-	
-	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+<h3>Welcome  ${sessionScope.name} to the profile page </h3>
 	
 	<h2>
 		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
-	<br />	<br />
-	
 	<br />
-	<br />
-	<!-- <a href="StudentTPC.jsp">Student</a> -->
 
-	<!-- <h2><a href="addAllotment">
-	<button>Allot New Room </button>
-	</a></h2>
-	
-	<h2><a href="viewAllotment">
-	<button>View Allotment List </button>
-	</a></h2> -->
 	<table>
-		<tr>
-			<td><a href="AssignTPCF.html">Assign Student TPC</a></td>
-		</tr>
-		<tr>
-			<td><a href="RemoveTPCF.html">Remove Student TPC</a></td>
-		</tr>
-		<tr>
-			<td><a href="ViewUsersF.html">View Users</a></td>
-		</tr>
+		
 		<tr>
 			<td><a href="InsertMonth.html">Insert Month to view
 					Events Users</a><br /></td>
@@ -53,15 +33,11 @@
 		<tr>
 			<td><a href="searchHome">Click here to search for something</a></td>
 		</tr>
-		<tr>
-			<td><a href="sendMail">Click here to send an email</a></td>
-		</tr>
-		<tr>
-			<td><a href="addAllotment">Add Room Allotment</a></td>
-		</tr>
+		
 		<tr>
 			<td><a href="viewAllotment">View Room Allotment</a></td>
 		</tr>
+		
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
