@@ -3,7 +3,10 @@ package org.crce.interns.service.impl;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.crce.interns.beans.CompanyBean;
@@ -14,6 +17,7 @@ import org.crce.interns.dao.ManageProfileDao;
 import org.crce.interns.dao.StatisticsDAO;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.PlacementStatistics;
+import org.crce.interns.model.UserCompany;
 import org.crce.interns.service.StatisticsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,13 +83,18 @@ public class StatisticsServiceImpl implements StatisticsService {
 		List<Company> companyList= companyDao.getCompany();		
 		Set<Integer> companySet = new HashSet<Integer>();
 		Set<Integer> applicantSet = new HashSet<Integer>();
+		Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
+		Map<Integer, Integer> noAppliedMap = new LinkedHashMap<Integer, Integer>();
+		List<UserCompany> noAppliedList = null;
 		
 		System.out.println("size="+companyList.size());
 		
 		for(Company cb: companyList){
-			System.out.println("id="+cb.getCompanyId());
+			
 			companySet.add(cb.getCompanyId());
+			companyMap.put(cb.getCompanyId(), cb.getCompanyName());
 		}
+		
 		System.out.println("from company = "+companySet.toString());
 		
 		//generate set of company id in applicant_company
@@ -103,12 +112,22 @@ public class StatisticsServiceImpl implements StatisticsService {
 		}
 		
 		
+		System.out.println("RESULT = "+companySet.toString());		
 		
-		System.out.println("RESULT = "+companySet.toString());
-
-		//generate set of company id in list
-		//eliminate which are already present in list
 		//continue calculations
+		// no applied
+		
+		//Iterator<Entry<Integer, String>> j = companyMap.entrySet().iterator();
+		companySet = companyMap.keySet();
+		i = companySet.iterator();
+		
+		while(i.hasNext()){
+			noAppliedMap.put(i.next(), crudDao.retreiveDetails(companyMap.get(i.next())).size()); 
+			
+		}
+		
+		System.out.println("noAppliedMap = "+noAppliedMap.toString());
+		
 		
 	}
 
