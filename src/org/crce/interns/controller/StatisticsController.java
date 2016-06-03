@@ -53,6 +53,7 @@ public class StatisticsController {
 	@RequestMapping(value="/viewStatistics", method = RequestMethod.GET)
 	public ModelAndView viewStatistics(HttpServletRequest request) {
 		
+		return null;
 	}
 	
 }
