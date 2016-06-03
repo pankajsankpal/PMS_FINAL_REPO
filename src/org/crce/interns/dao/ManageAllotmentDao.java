@@ -7,7 +7,7 @@ import org.crce.interns.model.Allotment;
 public interface ManageAllotmentDao {
 
 	public void createAllotment(Allotment allotment);
-
+	
 	public List<Allotment> listAllotment();
 	
 
