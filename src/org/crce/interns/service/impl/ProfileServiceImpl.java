@@ -42,6 +42,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public UserDetailsBean getProfile(UserDetailsBean userDetailsBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
@@ -73,6 +74,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public ProfessionalProfileBean getProfile(ProfessionalProfileBean professionalProfileBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
@@ -98,6 +100,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public PersonalProfileBean getProfile(PersonalProfileBean personalProfileBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
@@ -122,6 +125,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public ProfessionalProfileBean updateProfessionalProfile(ProfessionalProfileBean professionalProfileBean) {
 		
@@ -146,6 +150,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public PersonalProfileBean updatePersonalProfile(PersonalProfileBean personalProfileBean) {
 		
@@ -171,7 +176,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
-	
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public UserDetailsBean updateUserDetails(UserDetailsBean userDetailsBean) {
 		
