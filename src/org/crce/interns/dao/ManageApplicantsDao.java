@@ -1,4 +1,5 @@
 package org.crce.interns.dao;
+import java.util.HashSet;
 import java.util.List;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.UserCompany;
@@ -9,7 +10,7 @@ public interface ManageApplicantsDao {
 	public int checkDetails(UserCompany user);
 	public List<UserCompany> retreiveDetails(String company);
 	public void deleteDetails(UserCompany user);
-	
+	public HashSet<Integer> retrieveCompanyId();
 }
 
 

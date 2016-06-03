@@ -5,6 +5,7 @@ import org.crce.interns.dao.CompanyDao;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.service.CompanyService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,8 +32,17 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	
 	@Override  
-	 public List<CompanyBean> getCompany() {  
-	  return companyDao.getCompany();  
+	 public List<CompanyBean> getCompany() {
+		List<CompanyBean> temp = new LinkedList<CompanyBean>();
+		List<Company> result = companyDao.getCompany();
+		
+		for( Company c: result){
+			CompanyBean cb= new CompanyBean();
+			BeanUtils.copyProperties(c, cb);
+			temp.add(cb);
+			
+		}
+		return temp;
 	 }  
 	
 }

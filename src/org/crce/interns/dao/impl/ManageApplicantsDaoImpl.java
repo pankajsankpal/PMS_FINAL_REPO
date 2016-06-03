@@ -1,7 +1,9 @@
 package org.crce.interns.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.crce.interns.dao.ManageApplicantsDao;
 //import org.apache.commons.collections.list.LazyList;
@@ -15,6 +17,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 //import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,6 +40,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	
 	// to create an entry 
 	public void createDetails(UserCompany user){
+		
 		session=this.sessionFactory.openSession();			
 		Session s = sessionFactory.openSession();
 		String sql = "from Company as c where c.companyName = :n";
@@ -133,6 +137,27 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		return userList;
 	}
 	
+	/*
+	 * 
+	 * @author Nevil Dsouza
+	 * 
+	 * added by Nevil to get company id present in applicant_company
+	 */
+	
+	public HashSet<Integer> retrieveCompanyId(){
+		session=this.sessionFactory.openSession();			
+		//Session s = sessionFactory.openSession();
+		//String sql = "from Company as c where c.companyName = :n";
+		//String sql = "Select distinct Company.companyId from Company C";
+		
+		//Query q = session.createQuery(sql);
+		
+		Criteria cr = session.createCriteria(UserCompany.class);
+		cr.setProjection(Projections.countDistinct("company_id"));
+		return new HashSet<Integer>(cr.list());
+	}
+	
+	@SuppressWarnings("unchecked")	
 	public void deleteDetails(UserCompany user){
 		
 		Session s = sessionFactory.openSession();
