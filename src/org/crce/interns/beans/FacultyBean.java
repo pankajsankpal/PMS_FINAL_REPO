@@ -1,3 +1,15 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: FacultyBean.java	
+* 	
+* Module using this bean : ManageUser
+* 
+* Description: This bean is used to create a faculty user along with its attributes and getters and setters		
+*
+*/
+
 package org.crce.interns.beans;
 
 public class FacultyBean {

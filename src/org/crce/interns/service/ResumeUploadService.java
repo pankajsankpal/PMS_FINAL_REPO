@@ -1,3 +1,16 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ResumeUploadService.java	
+* 
+* Description: This service is an interface which only declares method names which are implemented in ResumeUploadServiceImpl.java
+* 
+* Functions: handleFileUpload()	,displayCVList()
+*
+*/
+
+
 package org.crce.interns.service;
 
 import java.util.List;
