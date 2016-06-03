@@ -1,3 +1,22 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ResumeUploadDaoImpl.java	
+* 	
+* Classes used by code:  ResumeUploadDao,DirectoryPathBean
+* 
+* Tabes used: User_schema.professional_profile_resume
+* 
+* Description: This dao implementation is used to implement the methods in ResumeUploadDao.java.
+* 				It uses JDBC connection.
+* 
+* Functions: addNewResume()	
+*
+*/
+
+
 package org.crce.interns.dao.impl;
 
 
@@ -30,6 +49,8 @@ public class ResumeUploadDaoImpl implements ResumeUploadDao {
 
 		// System.out.println(username);
 		// System.out.println(filePath);
+		
+		//stores the username and path of the file uploaded into the database
 		st1.executeUpdate(
 				"insert into user_schema.professional_profile_resume values('" + username + "','" + filePath + "')");
 
