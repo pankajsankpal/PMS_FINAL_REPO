@@ -1,3 +1,18 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: AddUserService.java	
+* 
+* Description: This service is an interface which only declares method names which are implemented in AddUserServiceImpl.java
+* 
+* Functions: handleFileUpload()	
+*
+*/
+
+
+
 package org.crce.interns.service;
 
 import java.io.IOException;
@@ -13,7 +28,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public interface AddUserService {
 
-	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload) throws Exception;
+	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,String userName) throws Exception;
 	
 	
 }

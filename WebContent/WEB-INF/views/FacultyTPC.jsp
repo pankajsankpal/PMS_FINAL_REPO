@@ -28,7 +28,9 @@
 	</h2>
 	<br />
 	<br />
-	<form:form action="notify" commandName="notify">
+	
+	<!-- commented by @Crystal -->
+	<%-- <form:form action="notify" commandName="notify">	
 		<table>
 			<tr>
 				<td>Roll No:<FONT color="red"> <form:errors
@@ -41,7 +43,7 @@
 				<td><input type="submit" value="Notify" /></td>
 			</tr>
 		</table>
-	</form:form>
+	</form:form> --%>
 
 	<br />
 	<br />

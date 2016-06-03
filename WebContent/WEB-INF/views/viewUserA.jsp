@@ -29,16 +29,35 @@
 			<c:forEach items="${users}" var="user">
 				<tr>
 					<td><c:out value="${user.userName}" /></td>
-					<td><c:out value="${user.roleId}" /></td>
+					<td><c:choose>
+							<c:when test="${user.roleId=='1'}">
+								<c:out value="Student" />
+							</c:when>
+							<c:when test="${user.roleId=='2'}">
+								<c:out value="Faculty" />
+							</c:when>
+							<c:when test="${user.roleId=='3'}">
+								<c:out value="Student-TPC" />
+							</c:when>
+							<c:when test="${user.roleId=='4'}">
+								<c:out value="Faculty-TPC" />
+							</c:when>
+							<c:when test="${user.roleId=='5'}">
+								<c:out value="TPO" />
+							</c:when>
+							<c:otherwise>
+								<c:out value="Admin" />
+							</c:otherwise>
+						</c:choose></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
-	
+
 	<tr>
 		<td><a href="AdminHome">Home</a></td>
 	</tr>
-	
+
 </body>
 
 </html>

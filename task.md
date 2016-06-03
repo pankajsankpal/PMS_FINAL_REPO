@@ -26,6 +26,16 @@
 9.Also integrate Email Notification wherever required
 <br/>
 
+**LOGIN MODULE**
+
+**1.When user logs in, set UserDetails table fields**
+
+**2.When user logs out,Invalidate Session and update UserDetails table fields**
+
+
+**EXCEPTION HANDLING MODULE**
+
+**1.Handle Null pointer and other exceptions(demo in logged-out url)**
 
 **FEEDBACK MODULE**
 <br/>

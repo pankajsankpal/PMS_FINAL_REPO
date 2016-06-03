@@ -1,5 +1,22 @@
-package org.crce.interns.controller;
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: AddUserController.java	
+* 	
+* Classes used by code: AddUserService, CheckRoleService,FileUploadValidator,DirectoryService
+* 
+* Tabes used: Loader_schema.loader,User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This controller is used to add users via an uploaded csv file
+* 
+* Functions: indexjsp(), addUser() 		
+*
+*/
 
+
+package org.crce.interns.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,9 +51,10 @@ public class AddUserController {
 	@Autowired
     FileUploadValidator validator;
 	
-	
-        @Autowired
-        private DirectoryService directoryService;
+    @Autowired
+    private DirectoryService directoryService;
+        
+    // this function is used to navigate to AddUserViaCSV.jsp    
 	@RequestMapping(value="/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -48,14 +66,12 @@ public class AddUserController {
 	}
 
 
-	
+	//this function is used to call the AddUserService to actually upload the file 
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
 	public ModelAndView addUser(HttpServletRequest request,@RequestParam CommonsMultipartFile fileUpload, @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
 			throws Exception {
 
-		
-		
-		
+			
 		ModelAndView model = new ModelAndView("AddUserViaCSV");
 		try {
 						
@@ -68,28 +84,28 @@ public class AddUserController {
 	            
 	            return new ModelAndView("AddUserViaCSV");
 			}
-			
-			addUserService.handleFileUpload(request,fileUpload);
+			String userName = request.getSession().getAttribute("userName").toString();
+			System.out.println("");
+			addUserService.handleFileUpload(request,fileUpload,userName);
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();
-			// returns to the same index page
-			
+			// returns to the same index page	
 			
 		} catch (IncorrectFileFormatException e) {
 			
 			System.out.println(e);
-			
 			model.addObject("error", 1);
 			
 			
 		} catch (MaxFileSizeExceededError m) {
-			System.out.println(m);
 			
+			System.out.println(m);
 			model.addObject("error1", 1);
 			
 		}
 		
-		return model;	}
+		return model;	
+		}
 
         
 

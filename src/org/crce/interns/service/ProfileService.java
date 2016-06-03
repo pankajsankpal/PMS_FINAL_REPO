@@ -1,10 +1,9 @@
 /**
- * @author Nevil Dsouza
- *
- *	Main service
- *	DEPENDENCIES: , , 
+ * @author Nevil Dsouza ZNevzz
+ *	Description : Service interface for profile related operations
+ *	DEPENDENCIES: 
+ * 	brans and model-	PersonalProfileBean;ProfessionalProfileBean;UserDetailsBean;
  */
-
 package org.crce.interns.service;
 
 import org.crce.interns.beans.PersonalProfileBean;

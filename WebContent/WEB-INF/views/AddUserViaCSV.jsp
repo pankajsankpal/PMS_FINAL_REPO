@@ -1,3 +1,9 @@
+<!--
+ Filename : AddUserViaCSV.jsp
+ Author name: Crystal Cuthinho
+ Description: used for adding users via csv file at the beginning of the year by tpo/ admin. Mapping goes to AddUserController.
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -34,10 +40,10 @@
 		File to upload: <input type="file" name="fileUpload"><br />
 		
 		<c:if test="${error==1}">
-			<p>Failed to upload...File format can be .csv only!</p>
+			<p style="color:red;">Failed to upload...File format can be .csv only!</p>
 		</c:if>
 		<c:if test="${error1==1}">
-			<p>Failed to upload...File size can be only upto 1MB</p>
+			<p style="color:red;">Failed to upload...File size can be only upto 1MB</p>
 		</c:if>
 		  <input type="submit" value="Upload"> Press here to upload the file!
 		  <span><form:errors path="file" cssClass="error" />

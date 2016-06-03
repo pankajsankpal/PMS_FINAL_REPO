@@ -1,3 +1,18 @@
+/*
+*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ResumeUploadDao.java	
+* 
+* Description: This dao is an interface which only declares method names which are implemented in ResumeUploadDaoImpl.java
+* 
+* Functions: addNewResume()	
+*
+*/
+
+
+
 package org.crce.interns.dao;
 
 import java.io.IOException;

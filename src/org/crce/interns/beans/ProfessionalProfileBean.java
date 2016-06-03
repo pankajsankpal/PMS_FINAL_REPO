@@ -1,3 +1,9 @@
+/**
+ * @author Nevil Dsouza ZNevzz
+ * 	Description : POJO bean for model.ProfessionalProfile
+ */
+
+
 package org.crce.interns.beans;
 
 import java.util.Date;
@@ -17,7 +23,7 @@ public class ProfessionalProfileBean {
 	private String status;
 	
 	
-	private Integer year;
+	private String year;
 
 	
 	private String fieldOfInterest;
@@ -83,12 +89,12 @@ public class ProfessionalProfileBean {
 	}
 
 
-	public Integer getYear() {
+	public String getYear() {
 		return year;
 	}
 
 
-	public void setYear(Integer year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
@@ -194,3 +200,4 @@ public class ProfessionalProfileBean {
 	
 	
 }
+

@@ -1,3 +1,10 @@
+/**
+ * @author Nevil Dsouza ZNevzz
+ *	Description : DAO impl for notification related CRUD operations
+ *	DEPENDENCIES: 
+ * 	model-	Notification;NotificationRoot;
+ */
+
 package org.crce.interns.dao.impl;
 import java.io.File;
 

@@ -20,9 +20,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageProfileDao,JobCriteria,Company,JobBean,CriteriaBean,CompanyBean
+ * 
+ * Description: Handles the copyProperties for bean
+ */
 
 @Service("manageProfileService")
+
+//The below line is required else code doesn't work...common error of skipping this line
+
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+
 public class ManageProfileServiceImpl implements ManageProfileService{
 	
 	@Autowired
@@ -32,6 +42,14 @@ public class ManageProfileServiceImpl implements ManageProfileService{
 	public void addProfile(JobBean jobBean) {
 		// TODO Auto-generated method stub
 		Job job = new Job();
+		
+		/*
+		 * Copies values from Job in model class 
+		 * to JobBean.
+		 * Hence beans will hold light weight data which is better to 
+		 * store in database.
+		 */
+		
 		BeanUtils.copyProperties(jobBean, job);
 		manageProfileDao.createProfile(job);
 	}

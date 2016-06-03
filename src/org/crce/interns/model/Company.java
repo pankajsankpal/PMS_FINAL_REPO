@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+//Entries of job_schema.comany
+
 @Entity
 @Table(name = "company", catalog = "job_schema")
 public class Company {
