@@ -2,6 +2,7 @@ package org.crce.interns.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -92,11 +93,16 @@ public class StatisticsServiceImpl implements StatisticsService {
 		
 		System.out.println("from applicant = "+applicantSet.toString());
 		
-		for(Integer i: companySet){
-			if(!applicantSet.contains(i)){
-				companySet.remove(i);
+		Iterator<Integer> i = companySet.iterator();
+		while(i.hasNext()){
+			if(!applicantSet.contains(i.next())){
+				Integer te = i.next();
+				companySet.remove(i.next());
 			}
+			
 		}
+		
+		
 		
 		System.out.println("RESULT = "+companySet.toString());
 
