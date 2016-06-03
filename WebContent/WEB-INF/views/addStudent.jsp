@@ -9,6 +9,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
@@ -18,6 +19,11 @@
 <body>
 	<form:form method="POST"  modelAttribute="studentBean" action="registerStudent">
 	<h2><u>Add Student</u></h2>
+	<c:if test="${error==1}">
+			<p style="color:red;">This user already exists in the database!</p>
+		</c:if>
+		
+		
 		<table>
 			<tr>
 				<td>Roll no :</td>

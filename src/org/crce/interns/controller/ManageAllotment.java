@@ -88,7 +88,7 @@ public class ManageAllotment extends HttpServlet{
 		String roleId=(String)session.getAttribute("roleId");
 		String user=(String)session.getAttribute("userName");
 		String name=loginService.checkSR(user);
-		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("703")))
+		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
 			return new ModelAndView("403");
 		else
 		{

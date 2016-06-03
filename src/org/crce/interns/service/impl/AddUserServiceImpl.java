@@ -58,7 +58,7 @@ public class AddUserServiceImpl implements AddUserService {
 	//private String saveDirectory = directoryPathBean.getCsvFolder()+"\\";
         
     // actually uploads the file
-	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload)
+	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,String userName)
 			throws Exception {
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -105,7 +105,7 @@ public class AddUserServiceImpl implements AddUserService {
 			if (!fileUpload.getOriginalFilename().equals(""))
 
 				fileUpload.transferTo(new File(saveDirectory + fileUpload.getOriginalFilename()));
-			addUserDao.loadCopyFile("loader_schema.loader",timeStamp);
+			addUserDao.loadCopyFile("loader_schema.loader",timeStamp,userName);
 		}
 		
 
