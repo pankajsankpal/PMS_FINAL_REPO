@@ -72,8 +72,7 @@
 			<td><a href="sendMail">Click here to send an email</a></td>
 		</tr>
 		<tr>
-
-			<td><br /> <br /> <a href="form">Logout</a></td>
+			<td><a href="logged-out">Logout</a></td>
 		</tr>
 	</table>
 </body>

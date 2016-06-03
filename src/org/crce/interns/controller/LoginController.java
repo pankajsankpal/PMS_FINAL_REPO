@@ -98,88 +98,66 @@ public class LoginController extends HttpServlet{
 	@RequestMapping(value="/logged" ,method = RequestMethod.POST)
 	public ModelAndView processForm(HttpServletRequest request, HttpServletResponse response, @Valid LoginForm loginForm, BindingResult result) {
 
-		System.out.println("Inside Controller");
+		System.out.println("Inside Login Controller");
 		ModelAndView model=null;	
+		// get role
+		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());		
 		
-		/*if (result.hasErrors()) {
-			return "loginform";
-		}*/
-		
-		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());
-			
-		System.out.println("Role is:" +role);
 	
+		/**
+		 * @author Nevil Dsouza @ZNevzz
+		 * below code if changed by me, because role checking will be done in
+		 * UpdateProfileController since,
+		 * page re direction is done from UpdateProfileController.login() method actor-wise
+		 */
+		model = new ModelAndView("redirect:/viewprofile");
 		
 		if(role.equals("Student")){
-			
-			model = new ModelAndView("redirect:/viewprofile");
-								    
+							    
 		    request.getSession(true).setAttribute("userName", request.getParameter("userName") );
-		    request.getSession(true).setAttribute("roleId", "1" );
-		    		    
-		    boolean b=loginService.getNotification(loginForm.getUserName());
-		    
+		    request.getSession(true).setAttribute("roleId", "1" );		    
+		    request.getSession(true).setAttribute("roleName", "Student" );
 		    return model;
-		}
-		
-		else if(role.equals("FacultyTPC"))
-		{
-			model = new ModelAndView("FacultyTPC");
-			NotifyForm notify=new NotifyForm();
-			model.addObject("notify", notify);
+		    
+		}else if(role.equals("FacultyTPC")){
 			
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
-		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "4" );
-		    
-		    System.out.println("Logged in as what????: " + name);
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "4" );		    
+		    request.getSession(true).setAttribute("roleName", "FacultyTPC" );
 		    
 			return model;
-		}
-		else if(role.equals("StudentTPC"))
-		{
-			model = new ModelAndView("StudentTPC");
 			
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
+		}else if(role.equals("StudentTPC")){
+			
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "3" );		    
+		    request.getSession(true).setAttribute("roleName", "FacultyTPC" );
 		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "3" );
-		    
-		    System.out.println("Logged in as what????: " + name);
-		    boolean b=loginService.getNotification(loginForm.getUserName());
-		    model.addObject("b", b);
 			return model;
 		}
 		else if(role.equals("TPO"))
 		{
-			model = new ModelAndView("TPO");
-			
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
-		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "5" );
-		    
-		    System.out.println("Logged in as what????: " + name);
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "5" );		    
+		    request.getSession(true).setAttribute("roleName", "TPO" );
 			return model;
 		}
 		else if(role.equals("Admin"))
 		{
-			model = new ModelAndView("Admin");
-			
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "6" );
-		 
-		    
-		    System.out.println("Logged in as what????: " + name);
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "6" );		    
+		    request.getSession(true).setAttribute("roleName", "Admin");
+			return model;
+		}
+		else if(role.equals("Faculty"))
+		{
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "2" );		    
+		    request.getSession(true).setAttribute("roleName", "Faculty");
 			return model;
 		}
 		else{
+			
 			result.rejectValue("userName","invaliduser");
 			model = new ModelAndView("Login");
 			return model;

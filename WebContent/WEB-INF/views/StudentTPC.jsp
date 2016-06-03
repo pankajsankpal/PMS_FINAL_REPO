@@ -7,35 +7,101 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <SCRIPT type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
-</SCRIPT> -->
-<title>Student TPC</title>
+
+<title>Student Profile</title>
 </head>
-<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
-	onunload="">
-	<h3>Welcome To the STUDENT TPC page !!!!!</h3>
+
+<body>	
+	
+	<h3>Welcome  ${sessionScope.name}To the profile page </h3>
+	
 	<h2>
-		Logged in as
-		<core:out value="${loginForm.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with roll no  ${sessionScope.userName}
 	</h2>
 	<br />
+	<p>
+	BRANCH:${professionalProfile.branch}
+	<br><BR>
+	
+	GENDER:<BR>
+	${personalProfile.gender}<BR><BR>
+	
+	DATE OF BIRTH:<BR>
+	${personalProfile.dob}<BR>
+	
+	<BR><BR>
+	EMAIL : ${personalProfile.emailId}
+	<br><BR>
+	
+	MOBILE CONTACT:<BR>
+	${personalProfile.mobileNo}<BR><BR>
+	
+	CORRESPONDENCE ADDRESS:<BR>
+	${personalProfile.correspondenceAddress}<br><BR>
+	
+	PERMANENT ADDRESS:<BR>
+	${personalProfile.permanentAddress}<br><BR>
+	
+
+	YEAR OF PASSING: ${professionalProfile.year}
+	<BR><BR>
+	
+	PLACEMENT STATUS:<BR>
+	${professionalProfile.status}<BR><BR>
+	
+	FIELDS OF INTEREST:<br>
+	${professionalProfile.fieldOfInterest}<br><BR>
+	
+	ACHIEVEMENTS:<br>
+	${professionalProfile.achievements}<br><BR>
+	
+	PROJECTS:<br>
+	${professionalProfile.projects}<br><BR>
+	
+	INTERNSHIPS:<br>
+	${professionalProfile.internships}<br><BR>
+	
+	CO-CURRICULAR ACTIVITIES:<br>
+	${professionalProfile.coCurricularActivities}<br><BR>
+		
+	EXTRA CURRICULAR ACTIVITIES:<br>
+	${professionalProfile.extraCurricularActivities}<br><BR>
+	
+	</p>
+	<br>
 	<c:if test="${b==true }">
 		<p>You have been selected for conselling round</p>
 	</c:if>
 	<br />
 	<table>
 		<tr>
+			<td><a href="edit">Click here to edit your profile</a></td>
+		</tr>
+		<tr>
 			<td><a href="resumeUpload">Click here to upload Resume</a></td>
 		</tr>
 		<tr>
-			<td><a href="InsertMonth.html">Insert Month to view
-					Events Users</a><br /></td>
+			<td><a href="viewResumes">Click here to view/download Resume</a></td>
 		</tr>
 		<tr>
-			<td><a href="form">Logout</a></td>
+			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
+		<tr>
+			<td><a href="searchHome">Click here to search for something</a></td>
+		</tr>
+		<tr>
+			<td><a href="InsertMonth.html">Insert Month to view Events
+					Users</a><br /></td>
+		</tr>
+		<tr>
+			<td><a href="getjob">click here to apply for job</a><br /></td>
+		</tr>
+		
+		<tr>
+			<td><a href="logged-out">Logout</a></td>
+		</tr>
+
 	</table>
+
 </body>
 </html>
