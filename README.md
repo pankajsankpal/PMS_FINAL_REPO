@@ -113,4 +113,6 @@ SERVICES
 >creates directories
 >**dev by Leon @LeonDsouza**
 
-
++EmailNotificationService
+>sends e-mail notifications
+>**dev by Leon @LeonDsouza**
