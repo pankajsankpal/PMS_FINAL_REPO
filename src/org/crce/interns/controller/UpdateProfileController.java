@@ -73,10 +73,10 @@ public class UpdateProfileController {
 		String userName =(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 			ModelAndView model=null;
 
 			
@@ -111,6 +111,7 @@ public class UpdateProfileController {
 				model = new ModelAndView("Student");
 				
 			}else if(roleName.equals("StudentTPC")){
+				System.out.println("TR");
 				model = new ModelAndView("StudentTPC");
 				
 			}else if(roleName.equals("Faculty")){
@@ -126,6 +127,7 @@ public class UpdateProfileController {
 				model = new ModelAndView("Admin");
 			}
 		
+			System.out.println("year ="+professionalProfileBean.getYear());
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
@@ -133,7 +135,7 @@ public class UpdateProfileController {
 			
 			
 			return model;
-		}
+		//}
 	}
 	
 	
@@ -152,13 +154,13 @@ public class UpdateProfileController {
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
 	public ModelAndView editProfessionalProfile(HttpServletRequest request) {
 		
-		HttpSession session=request.getSession();
-		String id = (String) session.getAttribute("userName");
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		
+		String id = (String) request.getSession(true).getAttribute("userName");
+		String roleId=(String)request.getSession(true).getAttribute("roleId");
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 			System.out.println("Inside Controller");
 		
 			ModelAndView model=null;		
@@ -183,7 +185,7 @@ public class UpdateProfileController {
 
 		
 			return model;
-		}
+		//}
 	}
 	
 	
@@ -205,13 +207,13 @@ public class UpdateProfileController {
 		
 		System.out.println("Inside Controller");
 	
-		HttpSession session=request.getSession();
-		String id = (String) session.getAttribute("userName");
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("UpdateProfile", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		
+		String id = (String) request.getSession(true).getAttribute("userName");
+		String roleId= (String) request.getSession(true).getAttribute("roleId");
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 		ModelAndView model=null;
 		
 		ProfessionalProfileBean professionalProfileBean = new ProfessionalProfileBean();
@@ -231,21 +233,20 @@ public class UpdateProfileController {
 		professionalProfileBean.setInternships(r.get("internships"));
 		professionalProfileBean.setCoCurricularActivities(r.get("coCurricularActivities"));		
 		professionalProfileBean.setExtraCurricularActivities(r.get("extraCurricularActivities"));
+		professionalProfileBean.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
+		professionalProfileBean.setModifiedDate(new Date());
 		
 		personalProfileBean.setCorrespondenceAddress(r.get("correspondenceAddress"));
 		personalProfileBean.setPermanentAddress(r.get("permanentAddress"));		
-		
-		userDetailsBean = profileService.getProfile(userDetailsBean);		
+		personalProfileBean.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
+		personalProfileBean.setModifiedDate(new Date());
+				
 		personalProfileBean = profileService.updatePersonalProfile(personalProfileBean);			
 		professionalProfileBean = profileService.updateProfessionalProfile(professionalProfileBean);				
 		
-		model = new ModelAndView("Student");
-		model.addObject("userDetails",userDetailsBean);
-		model.addObject("professionalProfile",professionalProfileBean);
-		model.addObject("personalProfile",personalProfileBean);			
-		
+		model = new ModelAndView("redirect:/viewprofile");		
 		return model;
-		}
+		//}
 	}
 	
 	

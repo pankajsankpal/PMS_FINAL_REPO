@@ -74,7 +74,7 @@ public class LoginController extends HttpServlet{
 	@RequestMapping(value="/form" , method = RequestMethod.GET)  
   	public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response) {
 		
-		System.out.println("Inside Controller");
+		System.out.println("Inside Login Controller");
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
 		model = new ModelAndView("Login");
@@ -131,7 +131,7 @@ public class LoginController extends HttpServlet{
 			
 			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
 		    request.getSession(true).setAttribute("roleId", "3" );		    
-		    request.getSession(true).setAttribute("roleName", "FacultyTPC" );
+		    request.getSession(true).setAttribute("roleName", "StudentTPC" );
 		    
 			return model;
 		}

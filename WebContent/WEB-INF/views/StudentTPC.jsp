@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Student Profile</title>
+<title>StudentTPC</title>
 </head>
 
 <body>	
@@ -16,7 +16,7 @@
 	<h3>Welcome  ${sessionScope.name}To the profile page </h3>
 	
 	<h2>
-		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with roll no  ${sessionScope.userName}
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
 	<br />
 	<p>

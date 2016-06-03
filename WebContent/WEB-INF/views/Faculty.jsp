@@ -17,29 +17,13 @@
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();"
 	onunload="">
-	<h3>
-		Welcome To the Faculty page !!!!!
-		<%-- <core:out value="${loginForm.userName}" /> --%>
-	</h3>
-
+<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
 	<h2>
-		Logged in as
-		<core:out value="${loginForm.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
 	<br />
-	<br />
-	
-	<br />
-	<br />
-	<!-- <a href="StudentTPC.jsp">Student</a> -->
 
-	<!-- <h2><a href="addAllotment">
-	<button>Allot New Room </button>
-	</a></h2>
-	
-	<h2><a href="viewAllotment">
-	<button>View Allotment List </button>
-	</a></h2> -->
 	<table>
 		
 		<tr>

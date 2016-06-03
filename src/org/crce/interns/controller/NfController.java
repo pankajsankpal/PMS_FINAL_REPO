@@ -56,7 +56,6 @@ public class NfController {
 		
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
-		//String id="7000";
 		
 		String userName=(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");		
