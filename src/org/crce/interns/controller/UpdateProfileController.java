@@ -111,7 +111,7 @@ public class UpdateProfileController {
 				model = new ModelAndView("Student");
 				
 			}else if(roleName.equals("StudentTPC")){
-				System.out.println("TR");
+				
 				model = new ModelAndView("StudentTPC");
 				
 			}else if(roleName.equals("Faculty")){
@@ -127,7 +127,7 @@ public class UpdateProfileController {
 				model = new ModelAndView("Admin");
 			}
 		
-			System.out.println("year ="+professionalProfileBean.getYear());
+			
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
@@ -161,7 +161,7 @@ public class UpdateProfileController {
 			//return new ModelAndView("403");
 		//else
 		//{
-			System.out.println("Inside Controller");
+			System.out.println("Inside UpdateProfile Controller");
 		
 			ModelAndView model=null;		
 
@@ -205,7 +205,7 @@ public class UpdateProfileController {
 	public ModelAndView updateProfessionalProfile(
 			@RequestParam Map<String, String> r,HttpServletRequest request) {
 		
-		System.out.println("Inside Controller");
+		System.out.println("Inside UpdateProfile Controller");
 	
 		
 		String id = (String) request.getSession(true).getAttribute("userName");
@@ -267,7 +267,7 @@ public class UpdateProfileController {
 		try{
 			
 		
-			System.out.println("Inside Controller");
+			System.out.println("Inside UpdateProfile Controller");
 			LoginForm loginForm = new LoginForm();
 			ModelAndView model=null;
 			
@@ -350,7 +350,7 @@ public class UpdateProfileController {
 	@RequestMapping(value="/nevz-feedback", method = RequestMethod.GET)
 	public ModelAndView f(HttpServletRequest request) {
 		
-		System.out.println("Inside Controller");
+		System.out.println("Inside UpdateController");
 		HttpSession session=request.getSession();
 		String id = (String) session.getAttribute("userName");
 		String roleId=(String)session.getAttribute("roleId");
