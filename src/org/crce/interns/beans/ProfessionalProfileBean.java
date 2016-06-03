@@ -23,7 +23,7 @@ public class ProfessionalProfileBean {
 	private String status;
 	
 	
-	private Integer year;
+	private String year;
 
 	
 	private String fieldOfInterest;
@@ -89,12 +89,12 @@ public class ProfessionalProfileBean {
 	}
 
 
-	public Integer getYear() {
+	public String getYear() {
 		return year;
 	}
 
 
-	public void setYear(Integer year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
