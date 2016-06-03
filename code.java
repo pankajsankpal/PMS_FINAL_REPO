@@ -50,18 +50,29 @@ public class EventController {
 	@RequestMapping(value="/ViewEvents", method = RequestMethod.GET)//View event details
 	public ModelAndView viewEvents() {
 		System.out.println("In View Events: " + months);
+		
 		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		// get all events acc to month
 		List<Event_detailsBean> eventList = eventService.viewEvents(months);
 		modelMap.put("events", eventList);
-		List<String> companyNames = new ArrayList<>();
+		
+		//List<String> companyNames = new ArrayList<>();
+		//key of map is integer if id is int, else String ok?!
+		Map<Integer,String> companyMap = new HashMap<Integer,String>();
+		
 		for (Event_detailsBean i : eventList) {
 			//i.getCompany_id();write a service to get company name from company id
-			String companyName = null;
-			companyNames.add(eventService.getCompanyName(i.getCompany_id()));
+			//String companyName = null;
+			//companyNames.add(eventService.getCompanyName(i.getCompany_id()));
+			
+			companyMap.put(i.getCompany_id(), eventService.getCompanyName(i.getCompany_id())))
 			
 		}
 		System.out.println("###########################################"+companyNames.size());
-		modelMap.put("companyNames", companyNames);
+		//modelMap.put("companyNames", companyNames);
+		modelMap.put("companyMap", companyMap);
+		
 		if (modelMap.isEmpty()) {
 			System.out.println("Error no Model map, Model map is null");
 			return new ModelAndView("403");
@@ -74,6 +85,21 @@ public class EventController {
 
 		return new ModelAndView("viewEvents", modelMap);
 	}
+	
+	
+	/*
+	CODE IN FRONT END:
+	
+	
+	convert it in jsp
+	
+	for ( event e : events){
+		
+		// to print company name from company id
+		SOP(companyMap[e.company_Id])
+	}
+	
+	*/
 
 
 }
