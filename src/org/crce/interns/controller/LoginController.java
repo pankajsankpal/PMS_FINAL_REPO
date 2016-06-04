@@ -35,14 +35,25 @@ public class LoginController extends HttpServlet{
 	
 	@RequestMapping("/")
 	public ModelAndView welcome() {
-		System.out.println("return model");
-		return new ModelAndView("index");
+		try
+		{
+			System.out.println("return model");
+			return new ModelAndView("index");
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "Welcome page");
+			return model;
+		}
 	}
 	
 
 	@RequestMapping(value="/form" , method = RequestMethod.GET)  
   	public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response) {
-		
+	try
+	{
 		System.out.println("Inside Controller");
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
@@ -50,12 +61,20 @@ public class LoginController extends HttpServlet{
 		model.addObject("loginForm", loginForm);
 		
 		return model;	
-		
+	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "loginForm");
+		return model;
+	}
 	}
 	
 	@RequestMapping(value="/logged" ,method = RequestMethod.POST)
 	public ModelAndView processForm(HttpServletRequest request, HttpServletResponse response, @Valid LoginForm loginForm, BindingResult result) {
-
+	try
+	{
 		System.out.println("Inside Controller");
 		ModelAndView model=null;	
 		/*if (result.hasErrors()) {
@@ -150,31 +169,49 @@ public class LoginController extends HttpServlet{
 			return model;
 		}
 	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "Logged page");
+		return model;
+	}
+}
 	
 	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
 	{
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		String user=(String)session.getAttribute("userName");
-		String name=loginService.checkSR(user);
-		
-		
-		if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
-			return new ModelAndView("403");
-		else
+		try
 		{
-			String userName=notify.getUserName();
-			int update=loginService.getStudentByid(userName);
-		//System.out.println("hello");
-			if(update==0)
-			{
-				model.put("notify",notify);
-				return new ModelAndView("FacultyTPC");
-			}
+			HttpSession session=request.getSession();
+			String roleId=(String)session.getAttribute("roleId");
+			String user=(String)session.getAttribute("userName");
+			String name=loginService.checkSR(user);
+		
+		
+			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
+				return new ModelAndView("403");
 			else
-				return new ModelAndView("success");
+			{
+				String userName=notify.getUserName();
+				int update=loginService.getStudentByid(userName,user);
+		//System.out.println("hello");
+				if(update==0)
+				{
+					model.put("notify",notify);
+					return new ModelAndView("FacultyTPC");
+				}
+				else
+					return new ModelAndView("success");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "Notify form");
+			return model1;
 		}
 	}
 	
