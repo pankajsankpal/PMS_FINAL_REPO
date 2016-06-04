@@ -8,10 +8,7 @@ import org.crce.interns.dao.ManageApplicantsDao;
 import org.crce.interns.model.Company;
 //import org.crce.interns.model.User;
 import org.crce.interns.model.UserCompany;
-<<<<<<< HEAD
 import org.crce.interns.model.UserDetails;
-=======
->>>>>>> origin/master
 //import org.crce.interns.model.UserCompanyId;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -23,15 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
+
 /**
 *
 * @author Rashmi
 * Task: Adds/Deletes Applicant entries from list of applicants for a job
 */
 
-=======
->>>>>>> origin/master
+
 @Repository("crudDao")
 @Transactional
 public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
@@ -40,11 +36,10 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	private SessionFactory sessionFactory;
 	Session session=null;
 	Transaction tx=null;
-<<<<<<< HEAD
+
 	
 	// to create an entry 
-=======
->>>>>>> origin/master
+
 	public void createDetails(UserCompany user){
 		session=this.sessionFactory.openSession();			
 		Session s = sessionFactory.openSession();
@@ -61,7 +56,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		
 	}
 		
-<<<<<<< HEAD
+
 	//check for errors and handle
 		@SuppressWarnings("unchecked")
 		public int checkDetails(UserCompany user){
@@ -122,9 +117,9 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		
 		//to retrieve and print the list
 		
-=======
+
 	
->>>>>>> origin/master
+
 	@SuppressWarnings("unchecked")
 	public List<UserCompany> retreiveDetails(String company){
 		System.out.println("company= "+company);
@@ -146,8 +141,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		return userList;
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public List<Company> retrieveCompany_id(){
 		List<Company> list=new ArrayList<Company>();
 		session=this.sessionFactory.openSession();
@@ -156,7 +150,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		list.addAll(criteria.list());
 		return list;
 	}
->>>>>>> origin/master
+
 	public void deleteDetails(UserCompany user){
 		
 		Session s = sessionFactory.openSession();

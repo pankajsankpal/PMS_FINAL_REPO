@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
 /**
 *
 * @author Rashmi
@@ -22,15 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 * Dependency: ManageApplicantsDao.java
 */
 
-=======
->>>>>>> origin/master
+
+
 //import org.crce.interns.service;
 @Service("crudService")
 @Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 	@Autowired
 	private ManageApplicantsDao crudDao;
-<<<<<<< HEAD
+
 	public int createDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
 		BeanUtils.copyProperties(userBean, user);
@@ -38,13 +37,13 @@ public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 		if(c==0)
 		crudDao.createDetails(user);
 		return c;
-=======
+/*
 	public void createDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
 		BeanUtils.copyProperties(userBean, user);
 		//System.out.println("Service "+user.getUsername()+user.getCompany_id());
 		crudDao.createDetails(user);
->>>>>>> origin/master
+*/
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -54,7 +53,7 @@ public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 		return userList;
 	}
 	
-<<<<<<< HEAD
+
 	
 	public int deleteDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
@@ -64,18 +63,19 @@ public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 		if(c==0||c==1)
 			crudDao.deleteDetails(user);
 		return c;	}
-=======
+
 	public List<Company> retrieveCompany_id(){
 		List<Company> list=new ArrayList<Company>();
 		list.addAll(crudDao.retrieveCompany_id());
 		return list;
 	}
-	public void deleteDetails(UserCompanyBean userBean){
+	
+/*	public void deleteDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();
 		BeanUtils.copyProperties(userBean, user);
 		crudDao.deleteDetails(user);
 	}
->>>>>>> origin/master
+*/
 
 
 }

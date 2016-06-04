@@ -15,20 +15,13 @@ table, th, td {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+
 <table style="width:100%">
 			<tr>
 				<th>Applicant :</th>
 				<th>Company :</th>
 			</tr>
-<c:forEach items="${userList}" var="user">
-			<tr>
-				<td>
-				<c:out value="${user.username}" /></td>
-				<td>
-				<c:out value="${user.company}" /></td>
-			</tr>
-=======
+
 <form action="showlist.html" method=POST>
 			   <table style="width:100%">
 				<tr>
@@ -42,14 +35,14 @@ table, th, td {
 					<td>
 					<c:out value="${user.company}" /></td>
 				</tr>
->>>>>>> origin/master
+
 				
 </c:forEach>
 </table>
 <br><br>
-<<<<<<< HEAD
+
 <a href="view.html">Back</a>
-=======
+
 Edit User List:<select name="option">
 	<option value="Add" >Add</option>
 	<option value="Delete" >Delete</option>
@@ -57,6 +50,6 @@ Edit User List:<select name="option">
 <input type=submit value=submit /><br />
 </form>
 <a href="view-candidate.html">Back</a>
->>>>>>> origin/master
+
 </body>
 </html>

@@ -1,17 +1,12 @@
 package org.crce.interns.controller;
 
-<<<<<<< HEAD
+
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-=======
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
->>>>>>> origin/master
 import javax.validation.Valid;
-
 import org.crce.interns.beans.AssignRoleBean;
 import org.crce.interns.model.FunctionMaster;
 import org.crce.interns.model.FunctionRole;
@@ -29,11 +24,10 @@ public class AssignRoleController {
 	
 	@RequestMapping(value="/AssignRole", method = RequestMethod.GET)
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) {
-<<<<<<< HEAD
+
 	try
 	{
-=======
->>>>>>> origin/master
+
 		System.out.println("return model");
 		AssignRoleBean assignRole=new AssignRoleBean();
 		ModelAndView model=null;
@@ -41,7 +35,7 @@ public class AssignRoleController {
 		model.addObject("assignRole",assignRole);
 		return model;
 	}
-<<<<<<< HEAD
+
 	catch(Exception e)
 	{
 		System.out.println(e);
@@ -52,19 +46,14 @@ public class AssignRoleController {
 	}
 	
 	@RequestMapping(value="/roleAssigned")
-	public ModelAndView assignRole(HttpServletRequest request, HttpServletResponse response, @Valid AssignRoleBean arb,BindingResult result) {
+	public ModelAndView assignRole(HttpServletRequest request, HttpServletResponse response, 
+			@Valid AssignRoleBean arb,BindingResult result) {
 	try
 	{
 		System.out.println("return model");
 		HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
 		
-=======
-	
-	@RequestMapping(value="/roleAssigned")
-	public ModelAndView assignRole(HttpServletRequest request, HttpServletResponse response, @Valid AssignRoleBean arb,BindingResult result) {
-		System.out.println("return model");
->>>>>>> origin/master
 		if (result.hasErrors())
 		{
 			ModelAndView model=new ModelAndView("AssignRole");
@@ -75,11 +64,9 @@ public class AssignRoleController {
 		FunctionRole fr=new FunctionRole();
 		fm.setFunctionName(arb.getFunctionName());
 		fm.setFunctionUrl(arb.getFunctionURL());
-<<<<<<< HEAD
+
 		fm.setCreatedBy(user);
 		fm.setCreatedDate(new Date());
-=======
->>>>>>> origin/master
 		fr.setRoleId(arb.getRoleId());
 		int a=ars.checkFunction(arb.getFunctionName());
 		
@@ -87,7 +74,7 @@ public class AssignRoleController {
 		System.out.println("Success");
 		return new ModelAndView("roleAssigned");
 	}
-<<<<<<< HEAD
+	
 	catch(Exception e)
 	{
 		System.out.println(e);
@@ -96,7 +83,6 @@ public class AssignRoleController {
 		return model;
 	}
 	}
-	
-=======
->>>>>>> origin/master
+
+
 }

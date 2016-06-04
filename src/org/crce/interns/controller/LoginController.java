@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController extends HttpServlet{
+public class LoginController{
 
 	
 	@Autowired
@@ -37,22 +37,10 @@ public class LoginController extends HttpServlet{
     private DirectoryService directoryService;
     
    	//----------------------------------------------------------------------------------------------------------
+	
+
+	
 	@RequestMapping("/")
-<<<<<<< HEAD
-	public ModelAndView welcome() {
-		try
-		{
-			System.out.println("return model");
-			return new ModelAndView("index");
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
-			model.addObject("exception", "Welcome page");
-			return model;
-		}
-=======
 	public ModelAndView welcome() throws ParseException {
 		System.out.println("return model");
                 /**
@@ -83,20 +71,20 @@ public class LoginController extends HttpServlet{
                  * End of @author Leon's code
                  */
 		return new ModelAndView("index");
->>>>>>> origin/master
+
 	}
 	
    	//----------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/form" , method = RequestMethod.GET)  
   	public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response) {
-<<<<<<< HEAD
+
 	try
 	{
 		System.out.println("Inside Controller");
-=======
+
 		
 		System.out.println("Inside Login Controller");
->>>>>>> origin/master
+
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
 		model = new ModelAndView("Login");
@@ -125,15 +113,13 @@ public class LoginController extends HttpServlet{
 	}
    	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/logged" ,method = RequestMethod.POST)
-	public ModelAndView processForm(HttpServletRequest request, HttpServletResponse response, @Valid LoginForm loginForm, BindingResult result) {
-<<<<<<< HEAD
+	public ModelAndView processForm(HttpServletRequest request,
+			 @Valid LoginForm loginForm, BindingResult result) {
+
 	try
 	{
 		System.out.println("Inside Controller");
-=======
 
-		System.out.println("Inside Login Controller");
->>>>>>> origin/master
 		ModelAndView model=null;	
 		// get role
 		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());		
@@ -198,7 +184,7 @@ public class LoginController extends HttpServlet{
 			return model;
 		}
 	}
-<<<<<<< HEAD
+
 	catch(Exception e)
 	{
 		System.out.println(e);
@@ -208,14 +194,14 @@ public class LoginController extends HttpServlet{
 	}
 }
 	
-=======
+
    	//----------------------------------------------------------------------------------------------------------	
->>>>>>> origin/master
+	/*
 	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
 	{
-<<<<<<< HEAD
+
 		try
 		{
 			HttpSession session=request.getSession();
@@ -227,8 +213,7 @@ public class LoginController extends HttpServlet{
 			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
 				return new ModelAndView("403");
 			else
-=======
-		
+
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		String user=(String)request.getSession(true).getAttribute("userName");
 		
@@ -266,6 +251,7 @@ public class LoginController extends HttpServlet{
 			return model1;
 		}
 	}
+	*/
 	
    	//----------------------------------------------------------------------------------------------------------
 }
