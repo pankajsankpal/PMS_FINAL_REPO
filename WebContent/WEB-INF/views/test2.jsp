@@ -34,7 +34,7 @@
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<option>'+data[index].companyName+'</option>');
+	 						$('#searchresult').append('<option name="'+data[index].companyId+'">'+data[index].companyId+data[index].companyName+'</option>');
 	 					}
 	 				});
  		}
