@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+* @author Leon
+* Task: Communicates with database to get group values
+* Dependency: -
+*/
 package org.crce.interns.dao.impl;
 
 import java.util.Arrays;
@@ -301,6 +306,55 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         System.out.println("final senderList " + senderList);
 
         session.close();
+        return senderList;
+    }
+    /**
+     * 
+     * @param receivers
+     * @return 
+     */
+    @Override
+    public String fetchStudentEmailId(String receivers){
+        Session session = sessionFactory.openSession();
+        
+        String SQL_QUERY = "Select emailId from PersonalProfile where userName like '" + receivers + "'";
+        Query query = session.createQuery(SQL_QUERY);
+        List list = query.list();
+        if(!list.isEmpty()){
+            System.out.println(list);
+        }
+        session.close();
+        return list.toString();
+    }
+    
+    /**
+     * 
+     * @param receivers
+     * @return 
+     */
+    @Override
+    public String fetchStreamStudents(String receivers){
+        Session session = sessionFactory.openSession();
+        
+        String senderList="";
+         String SQL_QUERY = "Select userName from ProfessionalProfile where branch like '" + receivers + "'";
+         Query query = session.createQuery(SQL_QUERY);
+         List list = query.list();
+         if(!list.isEmpty()){
+            System.out.println(list);
+        }
+         for (Object list1 : list) {
+            System.out.println("senderList at start of loop " + senderList);
+            System.out.println(list1);
+            String recipient = list1.toString();
+            SQL_QUERY = "select emailId from PersonalProfile where userName like '" + recipient + "'";
+            query = session.createQuery(SQL_QUERY);
+            list = query.list();
+            recipient = list.toString();
+            senderList = senderList.concat(recipient + " ");
+
+        }
+        System.out.println("final senderList " + senderList);
         return senderList;
     }
 

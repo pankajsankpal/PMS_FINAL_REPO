@@ -1,3 +1,22 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ManageUserController.java	
+* 	
+* Classes used by code: ManageUserService, CheckRoleService,StudentBean,FacultyBean
+* 
+* Tabes used: User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This controller is used to add student/add faculty (as well as create directories for them)/remove user .
+* 				Can be done only by tpo/admin.
+* 
+* Functions: addStudent(), addFaculty() ,welcomeStudent(),welcomeFaculty(),removeUser(), removeUser1()		
+*
+*/
+
+
+
 package org.crce.interns.controller;
 
 import java.util.HashMap;
@@ -10,6 +29,7 @@ import org.crce.interns.beans.FacultyBean;
 import org.crce.interns.beans.StudentBean;
 import org.crce.interns.model.Student;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.ManageUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,10 +43,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-
-
-
-
 @Controller
 public class ManageUserController {
 
@@ -34,26 +50,45 @@ public class ManageUserController {
 	private ManageUserService manageUserService;
 	@Autowired
 	private CheckRoleService crService;
-	/*@RequestMapping("/")
-	public ModelAndView welcome() {
-				return new ModelAndView("index");
-	}*/
 	
+	 @Autowired
+	 private DirectoryService directoryService;
 	
 	//actually adding student
 	@RequestMapping(value = "/registerStudent", method = RequestMethod.POST)
 	public ModelAndView addStudent(@ModelAttribute("studentBean")StudentBean studentBean,BindingResult result) {
-		manageUserService.addStudent(studentBean);
-		return new ModelAndView("addStudent");
+		
+		ModelAndView model = new ModelAndView("addStudent"); 
+		try {
+			manageUserService.addStudent(studentBean);
+			directoryService.createStudentFolder();
+		} catch (org.springframework.dao.DataIntegrityViolationException e) {
+			
+			System.out.println(e.toString());
+			model.addObject("error", 1);
+		}
+		return model;
 	}
 	
 	//actually adding faculty
 	@RequestMapping(value = "/registerFaculty", method = RequestMethod.POST)
 	public ModelAndView addFaculty(@ModelAttribute("facultyBean")FacultyBean facultyBean,BindingResult result) {
+		
+		ModelAndView model = new ModelAndView("addFaculty");
+		try{
 		manageUserService.addFaculty(facultyBean);
-		return new ModelAndView("addFaculty");
+		directoryService.createFacultyFolder();
+		} catch (org.springframework.dao.DataIntegrityViolationException e) {
+			
+			System.out.println(e.toString());
+			model.addObject("error", 1);
+		}
+		return model;
+		
 	}
 	
+	
+	//to navigate to addStudent.jsp 
 	@RequestMapping(value = "/addstudent", method = RequestMethod.GET)
 	public ModelAndView welcomeStudent(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
@@ -70,6 +105,7 @@ public class ManageUserController {
 		}
 	}
 	
+	//to navigate to addFaculty.jsp
 	@RequestMapping(value = "/addfaculty", method = RequestMethod.GET)
 	public ModelAndView welcomeFaculty(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
@@ -86,12 +122,7 @@ public class ManageUserController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+	//to navigate to removeUser.jsp
 	@RequestMapping(value = "/removeuser", method = RequestMethod.GET)
 	public ModelAndView removeUser(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -106,6 +137,7 @@ public class ManageUserController {
 	@RequestMapping(value = "/removeUser", method = RequestMethod.POST)
 	public ModelAndView removeUser1(@ModelAttribute("command")  StudentBean studentBean,
 			BindingResult result, @RequestParam("username")String username) {
+		
 		manageUserService.removeUser(studentBean, username);
 		return new ModelAndView("removeUser");
 	}

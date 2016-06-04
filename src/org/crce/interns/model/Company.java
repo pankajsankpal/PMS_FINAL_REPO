@@ -4,30 +4,43 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+//Entries of job_schema.comany
 
 @Entity
 @Table(name = "company", catalog = "job_schema")
 public class Company {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "company_id")
 	private int companyId;
+	
 	@Column(name = "criteria_id")
 	private int criteriaId;
+	
 	@Column(name = "company_name")
 	private String companyName;
+	
 	@Column(name = "company_address")
 	private String companyAddress;
+	
 	@Column(name = "created_date")
 	private Date createdDate;
+	
 	@Column(name = "created_by")
 	private String createdBy;
+	
 	@Column(name = "modified_date")
 	private Date modifiedDate;
+	
 	@Column(name = "modified_by")
 	private String modifiedBy;
+	
 	public int getCompanyId() {
 		return companyId;
 	}

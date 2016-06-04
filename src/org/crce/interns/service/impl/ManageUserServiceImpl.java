@@ -1,3 +1,19 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ManageUserServiceImpl.java	
+* 	
+* Classes used by code: ManageUserService, ManageUserDao,Faculty, Student
+* 
+* Tabes used: User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This service implementation is used to implement the methods in ManageUserService.java
+* 
+* Functions: addStudent(), addFaculty(), removeUser()
+*
+*/
+
 package org.crce.interns.service.impl;
 
 import org.crce.interns.beans.FacultyBean;
@@ -24,15 +40,21 @@ public class ManageUserServiceImpl implements ManageUserService {
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addStudent(StudentBean studentBean) {
+		
 		Student student = new Student();
+		
+		//converts bean to model
 		BeanUtils.copyProperties(studentBean, student);
 		student.setRole_id("1");
+		
 		manageUserDao.createStudent(student);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addFaculty(FacultyBean facultyBean) {
 		Faculty faculty = new Faculty();
+		
+		//converts bean to model
 		BeanUtils.copyProperties(facultyBean, faculty);
 		faculty.setRole_id("2");
 		manageUserDao.createFaculty(faculty);
@@ -42,6 +64,7 @@ public class ManageUserServiceImpl implements ManageUserService {
 	public void removeUser(StudentBean studentBean, String username){
 		
 		Student student = new Student();
+		//converts bean to model
 		BeanUtils.copyProperties(studentBean, student);
 		
 		manageUserDao.deleteUser(student, username);

@@ -15,11 +15,14 @@
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();"
 	onunload="">
-	<h3>Welcome To the TPO page !!!!!</h3>
+	
+	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
 	<h2>
-		Logged in as
-		<core:out value="${loginForm.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
+	<br />
+	
 	<table>
 
 		<tr>
@@ -35,10 +38,10 @@
 			<td>3. <a href="removeuser.html">Remove User</a></td>
 		</tr>
 		<tr>
-			<td>4. <a href="AssignTPCF.html">Assign TPC</a></td>
+			<td>4. <a href="AssignTPC.html">Assign TPC</a></td>
 		</tr>
 		<tr>
-			<td>5. <a href="RemoveTPCF.html">Remove TPC</a></td>
+			<td>5. <a href="RemoveTPC.html">Remove TPC</a></td>
 		</tr>
 		<tr>
 			<td>6. <a href="InsertWork.html">Assign Task</a></td>
@@ -54,7 +57,7 @@
 					Users</a><br /></td>
 		</tr>
 		<tr>
-			<td>10.<a href="view-candidate.html">Manage List of Applicants of all Companies</a><br /></td>
+			<td>10.<a href="manage.html">Manage List of Applicants of all Companies</a><br /></td>
 		</tr>
 		<tr>
 			<td>11.<a href="getEventForm.html">Add Events</a><br /></td>
@@ -78,7 +81,7 @@
 			<td><a href="sendMail">Click here to send an email</a></td>
 		</tr>
 		<tr>
-			<td><a href="form">Logout</a></td>
+			<td><a href="logged-out">Logout</a></td>
 		</tr>
 	</table>
 </body>

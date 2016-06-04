@@ -9,10 +9,12 @@
 package org.crce.interns.service.impl;
 
 
+
+
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
-import org.crce.interns.dao.impl.ProfileDAOImpl;
+import org.crce.interns.dao.ProfileDAO;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.UserDetails;
@@ -30,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService{
 	
 	
 	@Autowired
-	private ProfileDAOImpl profileDAO;
+	private ProfileDAO profileDAO;
 	
 	
 	/**	GET details from database
@@ -40,25 +42,29 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public UserDetailsBean getProfile(UserDetailsBean userDetailsBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
 		
-		UserDetails userDetails=new UserDetails();
-		userDetails.setUserName(userDetailsBean.getUserName());
 		
 		
-		UserDetails result = profileDAO.getProfile(userDetails);
+			UserDetails userDetails=new UserDetails();
+			userDetails.setUserName(userDetailsBean.getUserName());
+			
+			
+			UserDetails result = profileDAO.getProfile(userDetails);
+			
+			
+			if(result == null){
+				System.out.println("Returned NULL");
+			}
+			
+			BeanUtils.copyProperties(result,userDetailsBean);
+			
+			
+			return userDetailsBean;
 		
-		
-		if(result == null){
-			System.out.println("Returned NULL");
-		}
-		
-		BeanUtils.copyProperties(result,userDetailsBean);
-		
-		
-		return userDetailsBean;
 	}
 	
 	/**	GET details from database
@@ -68,6 +74,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public ProfessionalProfileBean getProfile(ProfessionalProfileBean professionalProfileBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
@@ -93,6 +100,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public PersonalProfileBean getProfile(PersonalProfileBean personalProfileBean) {
 		//Profile result = profileDAOImpl.getProfile(user);
@@ -117,6 +125,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public ProfessionalProfileBean updateProfessionalProfile(ProfessionalProfileBean professionalProfileBean) {
 		
@@ -141,6 +150,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public PersonalProfileBean updatePersonalProfile(PersonalProfileBean personalProfileBean) {
 		
@@ -166,7 +176,7 @@ public class ProfileServiceImpl implements ProfileService{
 	*	@return Profile result 
 	*
 	*/
-	
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public UserDetailsBean updateUserDetails(UserDetailsBean userDetailsBean) {
 		
@@ -183,4 +193,7 @@ public class ProfileServiceImpl implements ProfileService{
 		BeanUtils.copyProperties(result,userDetailsBean);
 		return userDetailsBean;
 	}
+	
+	
+	
 }

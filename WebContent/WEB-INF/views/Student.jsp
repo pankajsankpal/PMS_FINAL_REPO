@@ -7,33 +7,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- <SCRIPT type="text/javascript">
-    window.history.forward();
-    function noBack() { window.history.forward(); }
-</SCRIPT> -->
-<title>Student</title>
+
+<title>Student Profile</title>
 </head>
-<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
-	onunload="">
-	<h3>Welcome To the STUDENT page !!!!!</h3>
+
+<body>	
+	
+	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
 	
 	<h2>
-		Logged in as
-		<core:out value="${userDetails.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
 	<br />
 	<p>
 	BRANCH:${professionalProfile.branch}
 	<br><BR>
+	
 	GENDER:<BR>
 	${personalProfile.gender}<BR><BR>
+	
 	DATE OF BIRTH:<BR>
 	${personalProfile.dob}<BR>
+	
 	<BR><BR>
 	EMAIL : ${personalProfile.emailId}
 	<br><BR>
+	
 	MOBILE CONTACT:<BR>
 	${personalProfile.mobileNo}<BR><BR>
+	
 	CORRESPONDENCE ADDRESS:<BR>
 	${personalProfile.correspondenceAddress}<br><BR>
 	
@@ -43,18 +45,25 @@
 
 	YEAR OF PASSING: ${professionalProfile.year}
 	<BR><BR>
+	
 	PLACEMENT STATUS:<BR>
 	${professionalProfile.status}<BR><BR>
+	
 	FIELDS OF INTEREST:<br>
 	${professionalProfile.fieldOfInterest}<br><BR>
+	
 	ACHIEVEMENTS:<br>
 	${professionalProfile.achievements}<br><BR>
+	
 	PROJECTS:<br>
 	${professionalProfile.projects}<br><BR>
+	
 	INTERNSHIPS:<br>
 	${professionalProfile.internships}<br><BR>
+	
 	CO-CURRICULAR ACTIVITIES:<br>
-	${professionalProfile.coCurricularActivities}<br><BR>	
+	${professionalProfile.coCurricularActivities}<br><BR>
+		
 	EXTRA CURRICULAR ACTIVITIES:<br>
 	${professionalProfile.extraCurricularActivities}<br><BR>
 	
@@ -85,7 +94,11 @@
 					Users</a><br /></td>
 		</tr>
 		<tr>
-			<td><a href="form">Logout</a></td>
+			<td><a href="getjob">click here to check eligibility</a><br /></td>
+		</tr>
+		
+		<tr>
+			<td><a href="logged-out">Logout</a></td>
 		</tr>
 
 	</table>

@@ -15,11 +15,13 @@
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();"
 	onunload="">
-	<h3>Welcome To the Admin page !!!!!</h3>
+	
+	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
 	<h2>
-		Logged in as
-		<core:out value="${loginForm.userName}" />
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 	</h2>
+	<br />
 	<table>
 
 		<tr>
@@ -44,11 +46,17 @@
 		<tr>
 			<td>4. <a href="RemoveTPO.html">Remove TPO</a><br /></td>
 		</tr>
-		<tr>
-			<td>5. <a href="ViewUsersA.html">View Users</a><br /></td>
+	<tr>
+			<td>5. <a href="InsertWork.html">Assign Task</a></td>
 		</tr>
 		<tr>
-			<td>6. <a href="InsertMonth.html">Insert Month to view
+			<td>6. <a href="ViewFacultyTasks.html">View Faculty Tasks</a></td>
+		</tr>
+		<tr>
+			<td>7. <a href="ViewUsersA.html">View Users</a><br /></td>
+		</tr>
+		<tr>
+			<td>8. <a href="InsertMonth.html">Insert Month to view
 					Events Users</a><br /></td>
 		</tr>
 		<tr>
@@ -66,8 +74,7 @@
 			<td><a href="sendMail">Click here to send an email</a></td>
 		</tr>
 		<tr>
-
-			<td><br /> <br /> <a href="form">Logout</a></td>
+			<td><a href="logged-out">Logout</a></td>
 		</tr>
 	</table>
 </body>

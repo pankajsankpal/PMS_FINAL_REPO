@@ -1,4 +1,14 @@
-
+/*
+ * AssignTPODao Interface Class contains the interface for various methods like 
+ * 
+ * Assign TPO(for FTPC)
+ * Remove TPO(for FTPC)
+ * View Users
+ * Fetch User based on Username
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.dao;
 
 import java.util.List;

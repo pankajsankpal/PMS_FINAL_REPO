@@ -10,13 +10,17 @@
 <title>Add Candidate</title>
 </head>
 <body>
+
 <form:form action="addcandidate.html" modelAttribute="userBean" method="post">
-Name:<form:input name="name" type="text" path="username" /><br>
+Name:<form:input name="name" type="text" path="username" /> 
+<form:errors path="username" cssClass="error"/><br/>
 Company:<form:input name="company" id="company_id" path="company" />
 <br>
+${msg}
+<form:errors path="company" cssClass="error"/><br/>
 <input type="submit" value="Add"/><br />
 </form:form>
-<a href="view-candidate.html">Back</a>
+
 <!-- 
 <script>
 var arr=[];

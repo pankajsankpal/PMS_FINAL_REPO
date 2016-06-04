@@ -1,21 +1,21 @@
 package org.crce.interns.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.NotifyForm;
-import org.crce.interns.beans.PersonalProfileBean;
-import org.crce.interns.beans.ProfessionalProfileBean;
-import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.LoginService;
-import org.crce.interns.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -32,8 +32,13 @@ public class LoginController extends HttpServlet{
 	
 	@Autowired
 	private CheckRoleService crService;
-	
+        
+   	@Autowired
+    private DirectoryService directoryService;
+    
+   	//----------------------------------------------------------------------------------------------------------
 	@RequestMapping("/")
+<<<<<<< HEAD
 	public ModelAndView welcome() {
 		try
 		{
@@ -47,14 +52,51 @@ public class LoginController extends HttpServlet{
 			model.addObject("exception", "Welcome page");
 			return model;
 		}
+=======
+	public ModelAndView welcome() throws ParseException {
+		System.out.println("return model");
+                /**
+                 * Year changing logic
+                 * @author Leon
+                 * Starts here
+                 * Have taken 25th May(month is 0-based) and 25th July as threshold date
+                 * As by this time all placement activities are done
+                 * and system is fed with data for the next batch
+                 * Works perfectly fine and . If any issues, Please tell me.
+                 */
+                String startDate = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-04-25";
+                String endDate = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-06-25";
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date d1 = sdf.parse(startDate);
+                Date d2 = sdf.parse(endDate);
+                /*
+                if(d1.compareTo(d2)<0){
+                    System.out.println("d1 is after");
+                }*/
+                //Timestamp basis for logging
+                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+                Date currentDate = new Date(); //gets current date
+                if((currentDate.after(d1)) && (currentDate.before(d2))){
+                directoryService.createSystemFolders();
+                }
+                /**
+                 * End of @author Leon's code
+                 */
+		return new ModelAndView("index");
+>>>>>>> origin/master
 	}
 	
-
+   	//----------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/form" , method = RequestMethod.GET)  
   	public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response) {
+<<<<<<< HEAD
 	try
 	{
 		System.out.println("Inside Controller");
+=======
+		
+		System.out.println("Inside Login Controller");
+>>>>>>> origin/master
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
 		model = new ModelAndView("Login");
@@ -70,105 +112,93 @@ public class LoginController extends HttpServlet{
 		return model;
 	}
 	}
-	
+
+	//----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/logged-out" , method = RequestMethod.GET)  
+  	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println("Inside Controller");		
+		ModelAndView model=null;		
+		model = new ModelAndView("redirect:/sign-out");				
+		return model;	
+		
+	}
+   	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/logged" ,method = RequestMethod.POST)
 	public ModelAndView processForm(HttpServletRequest request, HttpServletResponse response, @Valid LoginForm loginForm, BindingResult result) {
+<<<<<<< HEAD
 	try
 	{
 		System.out.println("Inside Controller");
+=======
+
+		System.out.println("Inside Login Controller");
+>>>>>>> origin/master
 		ModelAndView model=null;	
-		/*if (result.hasErrors()) {
-			return "loginform";
-		}*/
+		// get role
+		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());		
 		
-		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());
-			
-		System.out.println("Role is:" +role);
 	
+		/**
+		 * @author Nevil Dsouza @ZNevzz
+		 * below code if changed by me, because role checking will be done in
+		 * UpdateProfileController since,
+		 * page re direction is done from UpdateProfileController.login() method actor-wise
+		 */
+		model = new ModelAndView("redirect:/viewprofile");
 		
 		if(role.equals("Student")){
-			
-			model = new ModelAndView("Student");
-			
-			//model = new ModelAndView("redirect:/viewprofile");
-			HttpSession session=request.getSession();
-			String id =  request.getParameter("userName");
-		    System.out.println("UserName: " + id); // Here it prints the username properly
-		    
-		    request.getSession(true).setAttribute("userName", id );
-		    request.getSession(true).setAttribute("roleId", "1" );
-		    
-		    // System.out.println(session.getAttribute("userName"));
-		    System.out.println("Logged in as what????: " + id);
-		    boolean b=loginService.getNotification(loginForm.getUserName());
-		    model.addObject("b", b);
-		    model.addObject("u", id);		    
+							    
+		    request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "1" );		    
+		    request.getSession(true).setAttribute("roleName", "Student" );
 		    return model;
-		}
-		
-		else if(role.equals("FacultyTPC"))
-		{
-			model = new ModelAndView("FacultyTPC");
-			NotifyForm notify=new NotifyForm();
-			model.addObject("notify", notify);
-			HttpSession session=request.getSession();
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
 		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "4" );
-		    
-		    System.out.println("Logged in as what????: " + name);
+		}else if(role.equals("FacultyTPC")){
+			
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "4" );		    
+		    request.getSession(true).setAttribute("roleName", "FacultyTPC" );
 		    
 			return model;
-		}
-		else if(role.equals("StudentTPC"))
-		{
-			model = new ModelAndView("StudentTPC");
-			HttpSession session=request.getSession();
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
+			
+		}else if(role.equals("StudentTPC")){
+			
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "3" );		    
+		    request.getSession(true).setAttribute("roleName", "StudentTPC" );
 		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "3" );
-		    
-		    System.out.println("Logged in as what????: " + name);
-		    boolean b=loginService.getNotification(loginForm.getUserName());
-		    model.addObject("b", b);
 			return model;
 		}
 		else if(role.equals("TPO"))
 		{
-			model = new ModelAndView("TPO");
-			HttpSession session=request.getSession();
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
-		    
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "5" );
-		    
-		    System.out.println("Logged in as what????: " + name);
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "5" );		    
+		    request.getSession(true).setAttribute("roleName", "TPO" );
 			return model;
 		}
 		else if(role.equals("Admin"))
 		{
-			model = new ModelAndView("Admin");
-			HttpSession session=request.getSession();
-			String name =  request.getParameter("userName");
-		    System.out.println("UserName: " + name); // Here it prints the username properly
-		    request.getSession(true).setAttribute("userName", name );
-		    request.getSession(true).setAttribute("roleId", "6" );
-		 
-		    
-		    System.out.println("Logged in as what????: " + name);
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "6" );		    
+		    request.getSession(true).setAttribute("roleName", "Admin");
+			return model;
+		}
+		else if(role.equals("Faculty"))
+		{
+			request.getSession(true).setAttribute("userName", request.getParameter("userName") );
+		    request.getSession(true).setAttribute("roleId", "2" );		    
+		    request.getSession(true).setAttribute("roleName", "Faculty");
 			return model;
 		}
 		else{
+			
 			result.rejectValue("userName","invaliduser");
 			model = new ModelAndView("Login");
 			return model;
 		}
 	}
+<<<<<<< HEAD
 	catch(Exception e)
 	{
 		System.out.println(e);
@@ -178,10 +208,14 @@ public class LoginController extends HttpServlet{
 	}
 }
 	
+=======
+   	//----------------------------------------------------------------------------------------------------------	
+>>>>>>> origin/master
 	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
 	{
+<<<<<<< HEAD
 		try
 		{
 			HttpSession session=request.getSession();
@@ -193,6 +227,24 @@ public class LoginController extends HttpServlet{
 			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
 				return new ModelAndView("403");
 			else
+=======
+		
+		String roleId=(String)request.getSession(true).getAttribute("roleId");
+		String user=(String)request.getSession(true).getAttribute("userName");
+		
+		String name=loginService.checkSR(user);
+		
+		
+		if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
+			return new ModelAndView("403");
+		else
+		{
+			String userName=notify.getUserName();
+			int update=loginService.getStudentByid(userName);
+
+			//System.out.println("hello");
+			if(update==0)
+>>>>>>> origin/master
 			{
 				String userName=notify.getUserName();
 				int update=loginService.getStudentByid(userName,user);
@@ -215,5 +267,5 @@ public class LoginController extends HttpServlet{
 		}
 	}
 	
-
+   	//----------------------------------------------------------------------------------------------------------
 }

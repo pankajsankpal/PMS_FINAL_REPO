@@ -1,3 +1,10 @@
+/**
+ * @author Nevil Dsouza ZNevzz
+ *	Description : DAO interface for profile related CRUD operations
+ *	DEPENDENCIES: 
+ * 	model-	ProfessionalProfile;PersonalProfile;UserDetails
+ */
+
 package org.crce.interns.dao;
 
 import org.crce.interns.model.PersonalProfile;

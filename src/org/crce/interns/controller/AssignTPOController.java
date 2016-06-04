@@ -1,3 +1,15 @@
+/*
+ * AssignTPOController Class contains the various methods like 
+ * Redirect to Admin Home Page
+ * Redirect to FTPC Home Page
+ * Assign STPC by FTPC
+ * Remove STPC by FTPC
+ * Assign TPO by Admin
+ * View Users(for Admin and FTPC)
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -6,14 +18,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.NotifyForm;
+import org.crce.interns.beans.PersonalProfileBean;
+import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.AssignTPOService;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.GetBranchService;
 import org.crce.interns.validators.AddTPOValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +47,11 @@ public class AssignTPOController {
 	@Autowired
 	private CheckRoleService crService;
 	@Autowired
+	private GetBranchService gbService;
+	@Autowired
 	AddTPOValidator validator;
 
-	@RequestMapping(value = "/AdminHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/AdminHome", method = RequestMethod.GET)	//Admin Home Page
 	public ModelAndView goAdminHome(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Admin Home Page\n");
 		HttpSession session=request.getSession();
@@ -44,18 +62,18 @@ public class AssignTPOController {
 		return new ModelAndView("Admin");
 	}
 	
-	@RequestMapping(value = "/FTPCHome", method = RequestMethod.GET)
+	@RequestMapping(value = "/FTPCHome", method = RequestMethod.GET)	//FTPC Home page	
 	public ModelAndView goFTPCHome(HttpServletRequest request,@ModelAttribute("notify") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Faculty TPC Home Page\n");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("FacultyTPC");
 	}
 	
-	@RequestMapping(value="/ViewUsersA", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewUsersA", method = RequestMethod.GET)//View Users for Admin
 	public ModelAndView viewUsers(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
@@ -69,11 +87,11 @@ public class AssignTPOController {
 		}
 	}
 	
-	@RequestMapping(value="/ViewUsersF", method = RequestMethod.GET)
+	@RequestMapping(value="/ViewUsersF", method = RequestMethod.GET)//View Users for FTPC
 	public ModelAndView viewUsersF(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		{
@@ -84,18 +102,20 @@ public class AssignTPOController {
 	}
 
 
-	@RequestMapping(value = "/AssignTPCF", method = RequestMethod.GET)
+	@RequestMapping(value = "/AssignTPCF", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView assignTPCF(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
-		System.out.println("In Assign TPC\n");
+		System.out.println("In Assign TPCF\n");
 		HttpSession session=request.getSession();
+		String userName = (String) session.getAttribute("userName");
+		System.out.println(userName);
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 			return new ModelAndView("assignTPCF");
 	}
 	
-	@RequestMapping(value = "/AssignTPO", method = RequestMethod.GET)
+	@RequestMapping(value = "/AssignTPO", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView assignTPO(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Assign TPO\n");
 		HttpSession session=request.getSession();
@@ -105,18 +125,18 @@ public class AssignTPOController {
 		else
 		return new ModelAndView("assignTPO");	}
 
-	@RequestMapping(value = "/RemoveTPCF", method = RequestMethod.GET)
+	@RequestMapping(value = "/RemoveTPCF", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView removeTPCF(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TPCF\n");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("AssignTPO", roleId))
+		if(!crService.checkRole("AssignTPCF", roleId))
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("removeTPCF");
 	}
 
-	@RequestMapping(value = "/RemoveTPO", method = RequestMethod.GET)
+	@RequestMapping(value = "/RemoveTPO", method = RequestMethod.GET)//Call to jsp to get username
 	public ModelAndView removeTPO(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
 		System.out.println("In Remove TP0\n");
 		HttpSession session=request.getSession();
@@ -137,15 +157,15 @@ public class AssignTPOController {
 		int a;
 		a=userService.assignTPO(userBean);
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==5)
+		if(a==5)//A Non-Faculty user attempted to be assigned as TPO
 		{
 			return new ModelAndView("notFac");
 		}
-		if(a==55){
+		if(a==55){  //Already assigned TPO user attempted to be assigned as TPO
 			return new ModelAndView("alTPO");
 		}
 		return new ModelAndView("redirect:/ViewUsersA");
@@ -153,24 +173,32 @@ public class AssignTPOController {
 	}
 		
 	@RequestMapping(value = "/SubmitAssignTPCF", method = RequestMethod.POST)
-	public ModelAndView createTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+	public ModelAndView createTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult,HttpServletRequest request, HttpServletResponse response) {
 		validator.validate(userBean, bindingResult);
 		if (bindingResult.hasErrors()) {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("assignTPCF");
 		}
+		HttpSession session=request.getSession();
+		String fUserName=(String)session.getAttribute("userName");
+		String branch1=gbService.getBranch(userBean.getUserName());
+		String branch2=gbService.getBranch(fUserName);
+		if(!branch1.equalsIgnoreCase(branch2)){
+			System.out.println("Branch not same...");
+			return new ModelAndView("notAuth");
+		}
 		int a;
 		a=userService.assignTPCF(userBean);
 		//return new ModelAndView("redirect:/FTPCHome");
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==3)
+		if(a==3)//A Non-Student user attempted to be assigned as STPC
 		{
 			return new ModelAndView("notStud");	
 		}
-		if(a==34){
+		if(a==34){  //Already assigned STPC or FTPC user attempted to be assigned as TPC
 			return new ModelAndView("alTPC");
 		}
 		return new ModelAndView("redirect:/ViewUsersF");
@@ -190,11 +218,11 @@ public class AssignTPOController {
 		int a;
 		a=userService.removeTPO(userBean);
 		System.out.println("Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==55)
+		if(a==55)//User attempted to be removed as TPO is not a TPO
 		{
 			return new ModelAndView("notTPO");
 		}
@@ -203,7 +231,7 @@ public class AssignTPOController {
 	}
 	
 	@RequestMapping(value = "/SubmitRemoveTPCF", method = RequestMethod.POST)
-	public ModelAndView deleteTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+	public ModelAndView deleteTPCF(@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult,HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println("In Submit RemoveTPCF");
 		validator.validate(userBean, bindingResult);
@@ -212,14 +240,22 @@ public class AssignTPOController {
 			System.out.println("Binding Errors are present...");
 			return new ModelAndView("removeTPCF");
 		}
+		HttpSession session=request.getSession();
+		String fUserName=(String)session.getAttribute("userName");
+		String branch1=gbService.getBranch(userBean.getUserName());
+		String branch2=gbService.getBranch(fUserName);
+		if(!branch1.equalsIgnoreCase(branch2)){
+			System.out.println("Branch not same...");
+			return new ModelAndView("notAuth");
+		}
 		int a;
 		a=userService.removeTPCF(userBean);
 		System.out.println("in Remove TPCF:Value Returned from Service: "+a);
-		if(a==0)
+		if(a==0)//No such user exists in UserDetails Table
 		{
 			return new ModelAndView("noUser");
 		}
-		if(a==55)
+		if(a==33)//User attempted to be removed is not a STPC
 		{
 			return new ModelAndView("notTPC");
 		}

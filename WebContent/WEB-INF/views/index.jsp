@@ -50,7 +50,7 @@
 		</script>
 
 		
-		
+		<a href="form">LOGIN</a>
 
 		<jsp:directive.include file="Footer.jsp" />
 

@@ -1,4 +1,11 @@
-
+/*
+ * Event_details Class contains the various attributes of the 
+ * event_schema.event_details table and their getters and setters
+ * and various annotations above them
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.model;
 
 import java.io.Serializable;

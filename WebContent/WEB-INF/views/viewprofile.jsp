@@ -17,6 +17,9 @@ PERSONAL DETAILS:<BR>
 
 <form action="update" method="post">
 
+NAME:<BR>
+${personalProfile.name}<BR>
+<BR>
 
 GENDER:<BR>
 ${personalProfile.gender}<BR>

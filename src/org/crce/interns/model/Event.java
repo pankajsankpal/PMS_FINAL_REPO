@@ -1,6 +1,5 @@
 package org.crce.interns.model;
 import java.io.Serializable;
-import java.sql.Time;
 //import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Column;
@@ -9,12 +8,10 @@ import javax.persistence.Entity;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
-import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.NotNull;
-import com.sun.istack.internal.NotNull;
+
 
 @Entity
 @Table(name="event_schema.event_details")

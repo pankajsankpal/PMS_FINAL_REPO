@@ -1,4 +1,16 @@
-
+/*
+ * AssignTPODaoImpl Class contains all database related operations.
+ * 
+ * AssignTPODaoImpl Interface Class contains the implementations for various methods like 
+ * 
+ * Assign TPO(for FTPC)
+ * Remove TPO(for FTPC)
+ * View Users
+ * Fetch User based on Username
+ * 
+ * @author Adarsh
+ * 
+ * */
 package org.crce.interns.dao.impl;
 
 import java.util.List;
@@ -26,7 +38,7 @@ public class AssignTPODaoImpl implements AssignTPODao {
 	
 	@Override
 	public void assignTPO(UserDetails user) {
-		sessionFactory.getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
 		// entityManager.merge(user);
 	}
 
@@ -35,7 +47,7 @@ public class AssignTPODaoImpl implements AssignTPODao {
 		// TODO Auto-generated method stub
 	//return entityManager.createQuery("select u from UserDetails u", UserDetails.class).getResultList();
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY = "from UserDetails as u";
+		String SQL_QUERY = "from UserDetails as u order by u.roleId";
 
 		Query query = session.createQuery(SQL_QUERY);
 		List<UserDetails> listUserDetails = query.list();
@@ -60,7 +72,7 @@ public class AssignTPODaoImpl implements AssignTPODao {
 	@Override
 	public void removeTPO(UserDetails user) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(user);
+		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
 		// entityManager.merge(user);
 	}
 

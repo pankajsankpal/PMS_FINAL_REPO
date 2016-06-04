@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.AllotmentBean;
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.LoginService;
@@ -26,6 +28,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
+/*
+ * Author: Cheryl
+ * Classes Used: ManageAllotmentService, CheckRoleService, LoginService 
+ * 				 Allotment,AllotmentBean
+ * Description: This controller is used to add,save and view room allotment by faculty TPC
+ */
 
 @Controller
 public class ManageAllotment extends HttpServlet{
@@ -34,12 +42,16 @@ public class ManageAllotment extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 3205005179545325725L;
+	
 	@Autowired
 	private ManageAllotmentService manageAllotmentService;
+	
 	@Autowired
 	private CheckRoleService crService;
+	
 	@Autowired
 	public LoginService loginService;
+	
 	/*
 	@RequestMapping("/")
 	public ModelAndView welcome() {
@@ -47,13 +59,35 @@ public class ManageAllotment extends HttpServlet{
 	}
 	*/
 	
+	//changes made @Crystal
+	//Method to save allotment details
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
-	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) {
+	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) throws Exception {
+		
+		ModelAndView model =  new ModelAndView("addAllotment");
+		try{
+			
+		
+		//System.out.println("after db entry");
+		manageAllotmentService.handleFileUpload(request,fileUpload);
 		
 		manageAllotmentService.addAllotment(allotmentBean);
-		manageAllotmentService.handleFileUpload(request,fileUpload);
-		return new ModelAndView("FacultyTPC");
+		
+		} catch (IncorrectFileFormatException e) {
+		
+			System.out.println(e);
+			model.addObject("error", 1);
+		
+		
+		} catch (MaxFileSizeExceededError m) {
+		
+			System.out.println(m);
+			model.addObject("error1", 1);
+		
+		}
+		return model;
 	}
+	
 	
 	/*
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
@@ -66,13 +100,15 @@ public class ManageAllotment extends HttpServlet{
 	}
 	*/
 	
+	
+	//Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		String user=(String)session.getAttribute("userName");
 		String name=loginService.checkSR(user);
-		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("703")))
+		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
 			return new ModelAndView("403");
 		else
 		{
@@ -85,6 +121,9 @@ public class ManageAllotment extends HttpServlet{
 		}
 	}
 
+	
+	//Method to view allotment details
+	
 	@RequestMapping(value="/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request) {
 		HttpSession session=request.getSession();
@@ -98,6 +137,9 @@ public class ManageAllotment extends HttpServlet{
 			return new ModelAndView("viewAllotment", model);
 		}
 	}
+	
+	
+	//Used to display information regarding allotment
 	
 	private List<AllotmentBean> prepareListofBean(List<Allotment> allotments) {
 		
@@ -121,6 +163,7 @@ public class ManageAllotment extends HttpServlet{
 		return beans;
 	}
 
+	//Ignore the below code
 	/*
 	 
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
