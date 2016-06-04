@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
 *
 * @author Rashmi
 * Task: Adds/Deletes Applicant entries from list of applicants for a job
 * Dependency: ManageApplicantsService.java
 */
+
 
 @Controller("manageUsersController")
 public class ManageApplicantsController {
@@ -45,7 +47,9 @@ public class ManageApplicantsController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/view.html", method = RequestMethod.GET)
+//	@RequestMapping(value = "/view.html", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/view-candidate.html", method = RequestMethod.GET)
 	public ModelAndView gotoviewcandidate() {
 		ModelAndView model = null;
 		model = new ModelAndView("view-candidate");
@@ -69,7 +73,11 @@ public class ManageApplicantsController {
 		return model;
 	}
 
-	@RequestMapping(value = "/managelist.html", method = RequestMethod.POST )
+
+//	@RequestMapping(value = "/managelist.html", method = RequestMethod.POST )
+
+	@RequestMapping(value = "/showlist.html", method = RequestMethod.POST )
+
 	public ModelAndView cruddetails(@RequestParam(value = "option") String option) {
 		ModelAndView model;
 		UserCompanyBean userBean = new UserCompanyBean();
@@ -87,6 +95,7 @@ public class ManageApplicantsController {
 	@RequestMapping(value = "/addcandidate.html", method = RequestMethod.POST)
 	public ModelAndView addcandidate(@ModelAttribute("userBean") UserCompanyBean userBean, BindingResult bindingResult) {
 		ModelAndView model;
+
 		String msg="";
 		addApplicantsValidator.validate(userBean, bindingResult);
 		
@@ -116,6 +125,23 @@ public class ManageApplicantsController {
 			model = new ModelAndView("add-success");
 		}
 		return model;
+
+	//	UserCompanyBean userBean = new UserCompanyBean();
+	//	userBean.setUsername(name);
+	//	userBean.setCompany(company);
+	//	System.out.println(userBean.getUsername());
+/*
+		crudService.createDetails(userBean);
+		addApplicantsValidator.validate(userBean, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Binding Errors are present...");
+			model = new ModelAndView("add-candidate");
+		} else
+		model = new ModelAndView("add-success");
+		//model.addAttribute(userBean);
+		return model;
+		
+	*/	
 
 	}
 
@@ -149,6 +175,23 @@ public class ManageApplicantsController {
 				model = new ModelAndView("delete-success");
 		}
 			return model;
+/*
+		//UserCompanyBean userBean = new UserCompanyBean();
+		//UserCompanyId uci=new UserCompanyId();
+		//uci.setUsername(name);
+	//	uci.setCompany_id();
+	//	userBean.setId(uci);
+		//userBean.setUsername(name);
+		//userBean.setCompany(company);
+		crudService.deleteDetails(userBean);
+		addApplicantsValidator.validate(userBean, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Binding Errors are present...");
+			model = new ModelAndView("delete-candidate");
+		} else
+		model = new ModelAndView("delete-success");
+		return model;
+*/
 	}
 
 }
