@@ -23,50 +23,54 @@ import org.crce.interns.model.FacultyUser;
 import org.crce.interns.model.RMUser;
 import org.crce.interns.model.UserDetails;
 import org.crce.interns.service.AssignTPCService;
+import org.crce.interns.service.ConstantValues;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AssignTPCServiceImpl implements AssignTPCService {
+public class AssignTPCServiceImpl implements AssignTPCService,ConstantValues {
 	@Autowired
 	private AssignTPCDao assignTPCDao;
 
 	/* Methods to Insert the data */
 	@Override
 	public int assignTPC(UserDetailsBean userBean) {
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Assign TPC");
+	
 		UserDetails checkUser = new UserDetails();
 		RMUser rmuser = new RMUser();
 
 		String st;
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = assignTPCDao.getUser(checkUser);//Call to fetch User by his Username
-
-		System.out.println("User Role ID from JSP : " + userBean.getRoleId() + "\n");
-		String roleID = userBean.getRoleId();
-		System.out.println(roleID);
-		rmuser = assignTPCDao.getUserRole(roleID);//Call to fetch User by his RoleID
-
-		System.out.println("User Id in RM Table: " + rmuser.getRole_id());
-		System.out.println("User Role in RM Table: " + rmuser.getUserRole());
-
 		if (checkUser == null) {
 			System.out.println("Error:No User Defined" + "\n");
 			return 0;
 		}
-
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
+		
+		System.out.println("User Role ID from JSP : " + userBean.getRoleId() + "\n");
+		
+		String roleID = userBean.getRoleId();
+		rmuser = assignTPCDao.getUserRole(roleID);//Call to fetch User by his RoleID
+		
+		System.out.println("User Id in RM Table: " + rmuser.getRole_id());
+		System.out.println("User Role in RM Table: " + rmuser.getUserRole());
 		System.out.println("User Role ID from DB : " + checkUser.getRoleId() + "\n");
+	
+		st = userBean.getRoleId();
+		
 		/*
 		 * 1-Student 2-Faculty 3-Student-TPC 4-Faculty-TPC
 		 */
-		st = userBean.getRoleId();
-		if (checkUser.getRoleId().equalsIgnoreCase("3")||checkUser.getRoleId().equalsIgnoreCase("4")) {
+		
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.STPCId)||checkUser.getRoleId().equalsIgnoreCase(ConstantValues.FTPCId)) {
 			return 34;	//Return 34 if User is already a TPC
-		}
-		else if (st.equalsIgnoreCase("1")) {	//Check if User is a Student
+		}		
+		else if (st.equalsIgnoreCase(ConstantValues.StudentId)) {	//Check if User is a Student
 
 			if (checkUser.getRoleId().equalsIgnoreCase(userBean.getRoleId())) {
 				System.out.println("Before update Student Role ID : " + checkUser.getRoleId() + "\n");
@@ -78,7 +82,8 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 				System.out.println("Invalid Input: Student" + "\n");
 				return 3;	//Return 3 if not a Student
 			}
-		} else if (st.equalsIgnoreCase("2")) {	//Check if User is a Student
+		} 
+		else if (st.equalsIgnoreCase(ConstantValues.FacultyId)) {	//Check if User is a Student
 			System.out.println(userBean.getRoleId());
 			if (checkUser.getRoleId().equalsIgnoreCase(userBean.getRoleId())) {
 				System.out.println("Before update Faculty Role ID : " + checkUser.getRoleId() + "\n");
@@ -90,53 +95,58 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 				System.out.println("Invalid Input : Faculty" + "\n");
 				return 4;	//Return 4 if not a Faculty
 			}
-		} else {
+		}
+		else {
 			System.out.println("Error : No Such User Exists");
 			return 0;	//Return 0 if no such User exists
 		}
-
 	}
 
 	@Override
 	public int insertWork(FacultyUserBean fuserBean) {
+		System.out.println("In ServiceImpl: Assign Task");
+		
 		FacultyUser fuser = new FacultyUser();
-
 		fuser.setUserName(fuserBean.getUserName());
 
 		fuser = assignTPCDao.getFacultyUser(fuser);
-		System.out.println(fuser);
+		
 		if (fuser == null) {
 			System.out.println("Error: No such User Defined" + "\n");
 			return 0;	//Return 0 if no such User exists
 		}
 		
-		System.out.println("UserWorkk in Service with Bean: " + fuserBean.getUserWork());
+		System.out.println("UserWork in Service with Bean: " + fuserBean.getUserWork());
+		
 		if(fuserBean.getUserWork().equalsIgnoreCase("01"))
 		{
-			fuser.setUserWork("PLACEMENT_REPORT");
+			fuser.setUserWork(ConstantValues.task1);
 		}
 		if(fuserBean.getUserWork().equalsIgnoreCase("02"))
 		{
-			fuser.setUserWork("ROOM_ALLOTMENT");
+			fuser.setUserWork(ConstantValues.task2);
 		}
 		if(fuserBean.getUserWork().equalsIgnoreCase("03"))
 		{
-			fuser.setUserWork("COUNSELLING_REPORT");
+			fuser.setUserWork(ConstantValues.task3);
 		}
 		if(fuserBean.getUserWork().equalsIgnoreCase("04"))
 		{
-			fuser.setUserWork("FEEDBACK_REPORT");
+			fuser.setUserWork(ConstantValues.task4);
 		}
+		
 		System.out.println("Username in Service IMPL :" + fuser.getUserName());
 		System.out.println("UserWork in Service IMPL :" + fuser.getUserWork());
 
 		assignTPCDao.insertWork(fuser);
 		return 1;	//Return 1 for normal execution
-		
 	}
 
 	public List<UserDetailsBean> convertToBean(List<UserDetails> userList) {
+		System.out.println("In ServiceImpl: Convert to Bean : UserDetails ");
+		
 		List<UserDetailsBean> userBeanList = new ArrayList<UserDetailsBean>();
+		
 		for (UserDetails user : userList) {
 			UserDetailsBean userBean = new UserDetailsBean();
 			BeanUtils.copyProperties(user, userBean);
@@ -146,7 +156,10 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 	}
 
 	public List<FacultyUserBean> convertToBeanFaculty(List<FacultyUser> userList) {
+		System.out.println("In ServiceImpl: Convert to Bean :FTPC Special Role User ");
+		
 		List<FacultyUserBean> userBeanList = new ArrayList<FacultyUserBean>();
+		
 		for (FacultyUser fuser : userList) {
 			FacultyUserBean fuserBean = new FacultyUserBean();
 			BeanUtils.copyProperties(fuser, fuserBean);
@@ -157,26 +170,28 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 
 	@Override
 	public int removeTPC(UserDetailsBean userBean) {
-		// TODO Auto-generated method stub
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Remove TPC");
+		
 		UserDetails checkUser = new UserDetails();
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = assignTPCDao.getUser(checkUser);
-
+		
 		if (checkUser == null) {
 			System.out.println("Error: No User Defined" + "\n");
 			return 0;	//Return 0 if no such User exists
 		}
+		
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
 
-		if (checkUser.getRoleId().equalsIgnoreCase("3")) {
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.STPCId)) { //Check if STPC
 			System.out.println("Before update Student Role : " + checkUser.getRoleId() + "\n");
 			checkUser.setRoleId("1");// 1 is Student & 3 is Student tpc
 			System.out.println("After update Student Role : " + checkUser.getRoleId() + "\n");
 			assignTPCDao.removeTPC(checkUser);
 			return 1;	//Return 1 for normal execution
-		} else if (checkUser.getRoleId().equalsIgnoreCase("4")) {
+		} else if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.FTPCId)) { //Check if FTPC
 			System.out.println("Before update Faculty Role : " + checkUser.getRoleId() + "\n");
 			checkUser.setRoleId("2");// 2 is faculty & 4 is Fac tpc
 			System.out.println("After update Faculty Role : " + checkUser.getRoleId() + "\n");
@@ -191,15 +206,19 @@ public class AssignTPCServiceImpl implements AssignTPCService {
 
 	@Override
 	public List<UserDetailsBean> viewUsers() {
-		// TODO Auto-generated method stub
+		System.out.println("In ServiceImpl: View Users");
+		
 		List<UserDetails> userList = assignTPCDao.viewUsers();
+		
 		return convertToBean(userList);
 	}
 
 	@Override
 	public List<FacultyUserBean> viewFacultyTasks() {
-		// TODO Auto-generated method stub
+		System.out.println("In ServiceImpl: View Tasks");
+		
 		List<FacultyUser> userList = assignTPCDao.viewFacultyTasks();
+		
 		return convertToBeanFaculty(userList);
 	}
 
