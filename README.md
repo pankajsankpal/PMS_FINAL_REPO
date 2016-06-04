@@ -60,7 +60,7 @@ The below controller list refers to the respective modules integrated in this re
 
 +ManageAllotment
 >room allotment module
->**dev by CHERYL @**
+>**dev by CHERYL @** -- upload and directory structure done by Crystal
 
 +ManageApplicantsController
 >Adds/Deletes and retrieves list of Students' name alongwith Company name of applied company to job_schema.applicant_company table
@@ -101,6 +101,9 @@ The below controller list refers to the respective modules integrated in this re
 >edit and view student profile module. for student. user_details,professional_profile,personal_profile
 >**dev by NEVIL @ZNevzz**
 
++CertificateUploadController
+>upload certificate module
+>**dev by CRYSTAL @Crystal21**
 ____________________________________________________________________
 
 SERVICES

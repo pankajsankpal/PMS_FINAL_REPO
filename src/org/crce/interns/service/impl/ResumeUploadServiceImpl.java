@@ -8,7 +8,7 @@
 * 
 * Tabes used: Loader_schema.loader,User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
 * 
-* Description: This service implementation is used to implement the methods in AddUserService.java
+* Description: This service implementation is used to implement the methods in ResumeUploadService.java
 * 
 * Functions: handleFileUpload()	,displayCVList()
 *

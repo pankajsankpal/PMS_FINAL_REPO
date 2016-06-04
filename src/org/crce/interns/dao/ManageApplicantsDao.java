@@ -6,8 +6,13 @@ import org.crce.interns.model.UserCompany;
 public interface ManageApplicantsDao {
 	
 	public void createDetails(UserCompany user);
+
 	public int checkDetails(UserCompany user);
+
 	public List<UserCompany> retreiveDetails(String company);
+
+	public List<Company> retrieveCompany_id();
+
 	public void deleteDetails(UserCompany user);
 	
 }
