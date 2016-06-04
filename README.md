@@ -101,6 +101,9 @@ The below controller list refers to the respective modules integrated in this re
 >edit and view student profile module. for student. user_details,professional_profile,personal_profile
 >**dev by NEVIL @ZNevzz**
 
++CertificateUploadController
+>upload certificate module
+>**dev by CRYSTAL @Crystal21**
 ____________________________________________________________________
 
 SERVICES

@@ -84,6 +84,9 @@
 			<td><a href="viewResumes">Click here to view/download Resume</a></td>
 		</tr>
 		<tr>
+			<td><a href="certificateUpload">Click here to upload certificates!</a></td>
+		</tr>
+		<tr>
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
 		<tr>
