@@ -23,7 +23,8 @@
 </head>
 <body>
 	<h2>Assign TPC</h2>
-	<form:form method="POST" action="SubmitAssignTPC"> <%-- modelAttribute="userBean" --%>
+	<form:form method="POST" action="SubmitAssignTPC">
+		<%-- modelAttribute="userBean" --%>
 		<table>
 			<tr>
 				<td><form:label path="userName">User name:</form:label></td>
@@ -32,10 +33,15 @@
 			</tr>
 			<tr>
 				<td><form:label path="roleId">User Role:</form:label></td>
-				<td><form:radiobutton path="roleId" value="1" />
-					Student-TPC <form:radiobutton path="roleId" value="2" />
-					Faculty-TPC</td>
+				<td><form:radiobutton path="roleId" value="1" /> Student-TPC <form:radiobutton
+						path="roleId" value="2" /> Faculty-TPC</td>
+
 				<td><form:errors path="roleId" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<p>
+					<font size="5" color="red" face="verdana">${erroMesg}</font>
+				</p>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>

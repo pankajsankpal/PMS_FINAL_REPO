@@ -1,12 +1,10 @@
-<<<<<<< HEAD
+
 <!--
  Filename : AddUserViaCSV.jsp
  Author name: Crystal Cuthinho
  Description: used for adding users via csv file at the beginning of the year by tpo/ admin. Mapping goes to AddUserController.
  -->
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-=======
 <!-- author: Pankaj sankpal
 description: contains links to manage system users->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -188,9 +186,8 @@ description: contains links to manage system users->
 </body>
 </html>
 
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
->>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
-    pageEncoding="ISO-8859-1"%>
+<%-- 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -198,7 +195,7 @@ description: contains links to manage system users->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<<<<<<< HEAD
+
 <style>
 .error {
 	color: #ff0000;
@@ -212,19 +209,21 @@ description: contains links to manage system users->
 	margin: 16px;
 }
 </style>
-=======
->>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Upload CSV</title>
 </head>
 <body>
 
 
-<<<<<<< HEAD
-<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadFile">
-<%-- <form method="POST" enctype="multipart/form-data" action="uploadFile"> --%>
 
-<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
+
+<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadFile">
+
+<!-- <form method="POST" enctype="multipart/form-data" action="uploadFile"> -->
+
+  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>
 	<form:errors path="*" cssClass="errorblock" element="div" />
 		File to upload: <input type="file" name="fileUpload"><br />
 		
@@ -259,5 +258,6 @@ description: contains links to manage system users->
 	<br/><br/>
 	
 </body>
-</html> --%>
->>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
+</html> 
+
+--%>
