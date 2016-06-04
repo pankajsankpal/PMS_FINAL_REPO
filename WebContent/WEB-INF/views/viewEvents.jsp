@@ -18,26 +18,34 @@
 <body>
 	<c:if test="${!empty events}">
 		<table border="1">
-			<tr>			<!--display header-->
+			<tr>
+				<!--display header-->
 				<th>Event Id</th>
 				<th>Event type</th>
 				<th>Company Id</th>
+				<th>Company Name</th>
 				<th>Approved</th>
 				<th>Date</th>
 				<th>Venue</th>
 				<th>Time</th>
 			</tr>
-			<c:forEach items="${events}" var="ed"><!--display contents-->
+
+			<c:forEach items="${events}" var="ed">
+
+				<!--display contents-->
 				<tr>
+
 					<td><c:out value="${ed.event_id}" /></td>
 					<td><c:out value="${ed.event_type}" /></td>
 					<td><c:out value="${ed.company_id}" /></td>
+					<td><c:out value="${companyMap[ed.company_id]}" /></td>
 					<td><c:out value="${ed.approved}" /></td>
 					<td><c:out value="${ed.date}" /></td>
 					<td><c:out value="${ed.venue}" /></td>
 					<td><c:out value="${ed.times}" /></td>
 				</tr>
 			</c:forEach>
+
 		</table>
 	</c:if>
 

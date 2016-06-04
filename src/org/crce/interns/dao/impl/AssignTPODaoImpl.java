@@ -33,46 +33,55 @@ public class AssignTPODaoImpl implements AssignTPODao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 	/*@PersistenceContext
 	private EntityManager entityManager;*/
 	
 	@Override
 	public void assignTPO(UserDetails user) {
+		System.out.println("In DAOImpl: Assign User");		
+		
 		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
+		
 		// entityManager.merge(user);
 	}
 
 	@Override
 	public List<UserDetails> viewUsers() {
-		// TODO Auto-generated method stub
-	//return entityManager.createQuery("select u from UserDetails u", UserDetails.class).getResultList();
+		System.out.println("In DAOImpl: View Users");
+		
 		Session session = sessionFactory.openSession();
+		
 		String SQL_QUERY = "from UserDetails as u order by u.roleId";
-
 		Query query = session.createQuery(SQL_QUERY);
+		
 		List<UserDetails> listUserDetails = query.list();
+		
 		return listUserDetails;
 	
+		//return entityManager.createQuery("select u from UserDetails u", UserDetails.class).getResultList();
 	}
 
 	public UserDetails getUser(UserDetails checkUser) {
-		// TODO Auto-generated method stub
+		System.out.println("In DAOImpl: Get UserDetails User");
+		
+		UserDetails result = (UserDetails) sessionFactory.getCurrentSession().get(UserDetails.class,
+				checkUser.getUserName());
+		
+		return result;
+		
 		/*String userName = checkUser.getUsername();
 		UserDetails user = (UserDetails) entityManager.createQuery("select u from UserDetails u where u.username = :n")
 				.setParameter("n", userName).getSingleResult();
 		return user;*/
-		
-		System.out.println("before get");
-		UserDetails result = (UserDetails) sessionFactory.getCurrentSession().get(UserDetails.class,
-				checkUser.getUserName());
-		System.out.println("after get");
-		return result;
 	}
 
 	@Override
 	public void removeTPO(UserDetails user) {
-		// TODO Auto-generated method stub
+		System.out.println("In DAOImpl: Remove User");
+		
 		sessionFactory.getCurrentSession().update(user);//Update RoleID in Userdetails Table
+		
 		// entityManager.merge(user);
 	}
 
