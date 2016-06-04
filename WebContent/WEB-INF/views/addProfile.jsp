@@ -1,7 +1,7 @@
 <!-- author: Pankaj sankpal
 description: contains fields to add new faculty member->
 <!-- -------------------------------------------------------------------------------------------------------- -->
-
+<!-- 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -169,6 +169,7 @@ description: contains fields to add new faculty member->
 
 </body>
 </html>
+ -->
 
 
 
