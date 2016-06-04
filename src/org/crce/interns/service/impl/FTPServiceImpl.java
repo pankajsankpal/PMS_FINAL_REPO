@@ -16,6 +16,7 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
+import org.apache.commons.net.ftp.FTPSClient;
 import org.crce.interns.service.FTPService;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Service;
 public class FTPServiceImpl implements FTPService{
 
     //create FTP Client instance for connection
-    FTPClient ftpClient = null;
+    FTPSClient ftpClient = null;
     /**
      * 
      * @param host
@@ -43,7 +44,8 @@ public class FTPServiceImpl implements FTPService{
     //public FTPServiceImpl(String host, int port, String username, String password) throws Exception {
         
     public FTPServiceImpl() throws Exception {    
-        ftpClient = new FTPClient();
+        ftpClient = new FTPSClient("SSL");
+        ftpClient.setAuthValue("SSL");
         ftpClient.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         int reply;
         //.connect + .login in java is equivalent to ftp_login in PHP
@@ -56,7 +58,7 @@ public class FTPServiceImpl implements FTPService{
             ftpClient.disconnect();
             throw new Exception("Exception in connecting to FTP Server");
         }
-        ftpClient.login("PMS", "placement");
+        ftpClient.login("PMS", "place");
         //allow files to be transferred only in Binary
         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
         ftpClient.enterLocalPassiveMode();
