@@ -1,5 +1,6 @@
 package org.crce.interns.model;
 import java.io.Serializable;
+import java.sql.Time;
 //import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Column;
@@ -11,6 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.NotNull;
+
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
+import javax.persistence.Table;
+//import javax.validation.constraints.NotNull;
+//import com.sun.istack.internal.NotNull;
 
 
 @Entity
