@@ -25,7 +25,7 @@ public class PersonalProfileBean {
 	private String dob;
 
 
-	private Long mobileNo;
+	private String mobileNo;
 
 
 	private String emailId;
@@ -97,12 +97,12 @@ public class PersonalProfileBean {
 	}
 
 
-	public Long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
 
-	public void setMobileNo(Long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 

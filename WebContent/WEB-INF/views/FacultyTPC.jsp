@@ -17,14 +17,34 @@
 </head>
 <body onload="noBack();" onpageshow="if (event.persisted) noBack();"
 	onunload="">
-	
-	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
-	
+	<h3>
+		Welcome To the FacultyTPC page !!!!!
+		<%-- <core:out value="${loginForm.userName}" /> --%>
+	</h3>
+
 	<h2>
-		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
+		Logged in as
+		<core:out value="${loginForm.userName}" />
 	</h2>
-	<br />	<br />
+	<br />
+	<br />
 	
+	<!-- commented by @Crystal -->
+	<%-- <form:form action="notify" commandName="notify">	
+		<table>
+			<tr>
+				<td>Roll No:<FONT color="red"> <form:errors
+							path="userName" /></FONT></td>
+			</tr>
+			<tr>
+				<td><form:input path="userName" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Notify" /></td>
+			</tr>
+		</table>
+	</form:form> --%>
+
 	<br />
 	<br />
 	<!-- <a href="StudentTPC.jsp">Student</a> -->
@@ -63,7 +83,7 @@
 			<td><a href="viewAllotment">View Room Allotment</a></td>
 		</tr>
 		<tr>
-			<td><a href="logged-out">Logout</a></td>
+			<td><a href="form">Logout</a></td>
 		</tr>
 	</table>
 </body>

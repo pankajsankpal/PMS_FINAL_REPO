@@ -28,7 +28,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public interface AddUserService {
 
-	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload) throws Exception;
+	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,String userName) throws Exception;
 	
 	
 }

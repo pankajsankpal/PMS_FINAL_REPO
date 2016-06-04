@@ -14,8 +14,6 @@
  http://www.springframework.org/schema/mvc
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
  
- 
-
 
 	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
@@ -47,12 +45,12 @@
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:resources/messages" />
+		<property name="basename" value="/WEB-INF/messages" />
 	</bean>
 	
 	<bean id="fr"
 		class="org.crce.interns.beans.FileReader">
-		<property name="file" value="classpath:resources/database.xml" />
+		<property name="file" value="/WEB-INF/database.xml" />
 	</bean>
 		
 	
@@ -120,6 +118,5 @@
  
     </bean>
 
-
-	
 </beans>
+

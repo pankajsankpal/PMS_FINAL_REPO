@@ -84,8 +84,9 @@ public class AddUserController {
 	            
 	            return new ModelAndView("AddUserViaCSV");
 			}
-			
-			addUserService.handleFileUpload(request,fileUpload);
+			String userName = request.getSession().getAttribute("userName").toString();
+			System.out.println("");
+			addUserService.handleFileUpload(request,fileUpload,userName);
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();
 			// returns to the same index page	
