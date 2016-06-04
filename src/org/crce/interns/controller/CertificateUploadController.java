@@ -18,11 +18,13 @@
 package org.crce.interns.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.FileUpload;
 import org.crce.interns.service.CertificateUploadService;
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ResumeUploadService;
 import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +46,20 @@ public class CertificateUploadController {
 	@Autowired
     FileUploadValidator validator;
 	
+	@Autowired
+	private CheckRoleService crService;
+	
 	//used to navigate to CertificateUpload.jsp
 	
 		@RequestMapping("certificateUpload")
-		public ModelAndView welcome() {
-			return new ModelAndView("UploadCertificate");
+		public ModelAndView welcome(HttpServletRequest request) {
+						
+			HttpSession session=request.getSession();
+			String role =  (String)session.getAttribute("roleId");
+			if(!crService.checkRole("CertificateUpload", role))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("UploadCertificate");
 		}
 
 		//used to actually upload the file

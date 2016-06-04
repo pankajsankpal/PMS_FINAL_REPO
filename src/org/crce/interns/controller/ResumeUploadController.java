@@ -21,10 +21,12 @@ package org.crce.interns.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.FileUpload;
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ResumeUploadService;
 import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +48,20 @@ public class ResumeUploadController {
 	
 	@Autowired
     FileUploadValidator validator;
+	
+	@Autowired
+	private CheckRoleService crService;
 
 	//used to navigate to ResumeUpload.jsp
 	@RequestMapping("resumeUpload")
-	public ModelAndView welcome() {
-		return new ModelAndView("ResumeUpload");
+	public ModelAndView welcome(HttpServletRequest request) {
+		
+		HttpSession session=request.getSession();
+		String role =  (String)session.getAttribute("roleId");
+		if(!crService.checkRole("ResumeUpload", role))
+			return new ModelAndView("403");
+		else
+			return new ModelAndView("ResumeUpload");
 	}
 
 	//used to actually upload the file
