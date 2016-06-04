@@ -46,6 +46,7 @@ public class ManageUserServiceImpl implements ManageUserService {
 		//converts bean to model
 		BeanUtils.copyProperties(studentBean, student);
 		student.setRole_id("1");
+		
 		manageUserDao.createStudent(student);
 	}
 	

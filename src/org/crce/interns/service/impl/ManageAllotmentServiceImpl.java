@@ -3,14 +3,21 @@ package org.crce.interns.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.AllotmentBean;
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.ManageAllotmentDao;
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
 import org.crce.interns.service.ManageAllotmentService;
+import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,14 +44,21 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 	@Autowired
 	private ManageAllotmentDao manageAllotmentDao;
 	
+	@Autowired
+    FileUploadValidator validator;
+	
 	//Path of directory in which the file should be uploaded
 	
-	private String saveDirectory = "C:/work/";
-
+	//private String saveDirectory = "C:/work/";
+	DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+	String saveDirectory = directoryPathBean.getRoomAllotmentFolder()+ "\\";
+	
+	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addAllotment(AllotmentBean allotmentBean) {
 		// TODO Auto-generated method stub
 		
+		System.out.println(saveDirectory);
 		allotmentBean.setFileUpload(saveDirectory);
 		Allotment allotment = new Allotment();
 		
@@ -68,27 +82,51 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 	}
 
 	@Override
-	public void handleFileUpload(HttpServletRequest request, CommonsMultipartFile fileUpload) {
+	public void handleFileUpload(HttpServletRequest request, CommonsMultipartFile fileUpload) throws Exception {
 		// TODO Auto-generated method stub
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
+		int lastDot = fullPath.lastIndexOf('.');
+		
 		if (!fileUpload.isEmpty()) {
-
 			
-			System.out.println("Saving file: " + fileUpload.getOriginalFilename());
+			IncorrectFileFormatException e = new IncorrectFileFormatException();
+			MaxFileSizeExceededError m = new MaxFileSizeExceededError();
+			
+			final String extension = FilenameUtils.getExtension(fullPath);
+			
+			// throws IncorrectFileFormatException if the uploaded file is not of the desired extension/type
+			if(!(extension.equals("pdf") || extension.equals("docx") || extension.equals("odt") || extension.equals("png") || extension.equals("jpg") || extension.equals("jpeg")))
+				throw e;
+			
+			//throws MaxFileSizeExceededError if the uploaded file exceeds the expected size limit
+			final long size = fileUpload.getSize();
+			System.out.println(size);
+			if(size > 2012520)
+				throw m;
 
 			if (!fileUpload.getOriginalFilename().equals(""))
 				try {
-					fileUpload.transferTo(new File(saveDirectory + fileUpload.getOriginalFilename()));
-				} catch (IllegalStateException e) {
+					
+					File f1 = new File(fullPath);
+					String newName = fullPath.substring(0,lastDot) + "-" + timeStamp + fullPath.substring(lastDot);
+					File f2 = new File(newName);
+					System.out.println("Saving file: " + newName);
+					f1.renameTo(f2);
+					fileUpload.transferTo(f2);
+					//fileUpload.transferTo(new File(saveDirectory +fileUpload.getOriginalFilename()));
+					
+				} catch (IllegalStateException n) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
+					n.printStackTrace();
+				} catch (IOException o) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					o.printStackTrace();
 				}
 
 		}
 		
-		//manageAllotmentDao.addNewResume(username,saveDirectory + fileUpload.getOriginalFilename());
+		//manageAllotmentDao.addNewResume(saveDirectory + fileUpload.getOriginalFilename());
 
 	}
 

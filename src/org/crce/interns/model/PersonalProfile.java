@@ -27,8 +27,8 @@ public class PersonalProfile {
 	@Column(name = "dob")
 	private String dob;
 
-	@Column(name = "mobile_no")
-	private Long mobileNo;
+	@Column(name = "mobile_no") // changed to String @Crystal
+	private String mobileNo;
 
 	@Column(name = "email_id")
 	private String emailId;
@@ -91,11 +91,11 @@ public class PersonalProfile {
 		this.dob = dob;
 	}
 
-	public Long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(Long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 

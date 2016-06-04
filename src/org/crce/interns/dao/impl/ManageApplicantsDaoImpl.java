@@ -23,11 +23,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
 /**
 *
 * @author Rashmi
 * Task: Adds/Deletes Applicant entries from list of applicants for a job
 */
+
 
 @Repository("crudDao")
 @Transactional
@@ -37,8 +39,10 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	private SessionFactory sessionFactory;
 	Session session=null;
 	Transaction tx=null;
+
 	
 	// to create an entry 
+
 	public void createDetails(UserCompany user){
 		
 		session=this.sessionFactory.openSession();			
@@ -56,6 +60,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		
 	}
 		
+
 	//check for errors and handle
 		@SuppressWarnings("unchecked")
 		public int checkDetails(UserCompany user){
@@ -116,6 +121,9 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		
 		//to retrieve and print the list
 		
+
+	
+
 	@SuppressWarnings("unchecked")
 	public List<UserCompany> retreiveDetails(String company){
 		System.out.println("company= "+company);
@@ -137,6 +145,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		return userList;
 	}
 	
+
 	/*
 	 * 
 	 * @author Nevil Dsouza
@@ -158,6 +167,16 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	}
 	
 	@SuppressWarnings("unchecked")	
+	public List<Company> retrieveCompany_id(){
+		List<Company> list=new ArrayList<Company>();
+		session=this.sessionFactory.openSession();
+		tx=session.beginTransaction();
+		Criteria criteria=session.createCriteria(Company.class);
+		list.addAll(criteria.list());
+		return list;
+	}
+
+
 	public void deleteDetails(UserCompany user){
 		
 		Session s = sessionFactory.openSession();
