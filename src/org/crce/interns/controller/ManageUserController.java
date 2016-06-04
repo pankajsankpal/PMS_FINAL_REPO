@@ -137,6 +137,7 @@ public class ManageUserController {
 	@RequestMapping(value = "/removeUser", method = RequestMethod.POST)
 	public ModelAndView removeUser1(@ModelAttribute("command")  StudentBean studentBean,
 			BindingResult result, @RequestParam("username")String username) {
+		
 		manageUserService.removeUser(studentBean, username);
 		return new ModelAndView("removeUser");
 	}

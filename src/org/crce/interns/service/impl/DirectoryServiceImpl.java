@@ -250,5 +250,9 @@ public class DirectoryServiceImpl implements DirectoryService {
         csvFiles.mkdirs();
         File emailFiles = new File(directoryPathBean.getEmailFolder());
         emailFiles.mkdirs();
+        
+        //code added @Crystal
+        File roomAllotmentFiles = new File(directoryPathBean.getRoomAllotmentFolder());
+        roomAllotmentFiles.mkdirs();
     }
 }

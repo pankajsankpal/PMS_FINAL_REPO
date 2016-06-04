@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.AllotmentBean;
+import org.crce.interns.exception.IncorrectFileFormatException;
+import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.LoginService;
@@ -57,15 +59,33 @@ public class ManageAllotment extends HttpServlet{
 	}
 	*/
 	
-	
+	//changes made @Crystal
 	//Method to save allotment details
-	
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
-	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) {
+	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) throws Exception {
+		
+		ModelAndView model =  new ModelAndView("addAllotment");
+		try{
+			
+		
+		//System.out.println("after db entry");
+		manageAllotmentService.handleFileUpload(request,fileUpload);
 		
 		manageAllotmentService.addAllotment(allotmentBean);
-		manageAllotmentService.handleFileUpload(request,fileUpload);
-		return new ModelAndView("FacultyTPC");
+		
+		} catch (IncorrectFileFormatException e) {
+		
+			System.out.println(e);
+			model.addObject("error", 1);
+		
+		
+		} catch (MaxFileSizeExceededError m) {
+		
+			System.out.println(m);
+			model.addObject("error1", 1);
+		
+		}
+		return model;
 	}
 	
 	
