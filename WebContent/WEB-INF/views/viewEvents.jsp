@@ -18,7 +18,7 @@
 <body>
 	<c:if test="${!empty events}">
 		<table border="1">
-			<tr>
+			<tr>			<!--display header-->
 				<th>Event Id</th>
 				<th>Event type</th>
 				<th>Company Id</th>
@@ -27,7 +27,7 @@
 				<th>Venue</th>
 				<th>Time</th>
 			</tr>
-			<c:forEach items="${events}" var="ed">
+			<c:forEach items="${events}" var="ed"><!--display contents-->
 				<tr>
 					<td><c:out value="${ed.event_id}" /></td>
 					<td><c:out value="${ed.event_type}" /></td>

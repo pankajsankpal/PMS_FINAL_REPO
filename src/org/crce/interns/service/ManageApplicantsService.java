@@ -14,9 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface ManageApplicantsService {
 	
-	 public void createDetails(UserCompanyBean userBean);
+	public int createDetails(UserCompanyBean userBean);
+	 
+	
+	// public List<Company> retrieveCompany_id();
+	 public int deleteDetails(UserCompanyBean userBean);
+	 
 	 public List<UserCompany> retreiveDetails(String company);
+	 
 	 public List<Company> retrieveCompany_id();
-	 public void deleteDetails(UserCompanyBean userBean);
+	 
+
 	 
 	}

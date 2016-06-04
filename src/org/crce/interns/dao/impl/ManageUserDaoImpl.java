@@ -1,3 +1,21 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: ManageUserDaoImpl.java	
+* 	
+* Classes used by code:  ManageUserDao, Student, Faculty
+* 
+* Tabes used: User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* 
+* Description: This dao implementation is used to implement the methods in ManageUserDao.java.
+* 				It uses hibernate transaction manager.
+* 				
+* 
+* Functions: createStudent()	, createFaculty() , deleteUser()
+*
+*/
+
 package org.crce.interns.dao.impl;
 
 
@@ -20,11 +38,11 @@ public class ManageUserDaoImpl implements ManageUserDao{
 	
 	
 	public void createStudent(Student student) {
-		sessionFactory.getCurrentSession().saveOrUpdate(student);
+		sessionFactory.getCurrentSession().save(student);
 	}
 
 	public void createFaculty(Faculty faculty) {
-		sessionFactory.getCurrentSession().saveOrUpdate(faculty);
+		sessionFactory.getCurrentSession().save(faculty);
 	}
 	
 	public void deleteUser(Student student, String username){
@@ -36,6 +54,8 @@ public class ManageUserDaoImpl implements ManageUserDao{
 			session.close();*/
 			student.setRollno(username);
 			sessionFactory.getCurrentSession().delete(student);
+			//sessionFactory.getCurrentSession().delete("username", username);
+			//sessionFactory.getCurrentSession().flush();
 		}
 		catch(HibernateException e){
 			System.out.println(e);

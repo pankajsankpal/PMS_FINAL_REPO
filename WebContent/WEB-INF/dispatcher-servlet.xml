@@ -13,7 +13,7 @@
  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
  http://www.springframework.org/schema/mvc
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-
+ 
 
 	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
@@ -41,15 +41,16 @@
 	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
 	<bean id="companyValidator" class="org.crce.interns.validators.CompanyFormValidator" />
 	<bean id="criteriaValidator" class="org.crce.interns.validators.CriteriaFormValidator" />
+	<bean id="fileUploadValidator" class="org.crce.interns.validators.FileUploadValidator" />
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:resources/messages" />
+		<property name="basename" value="/WEB-INF/messages" />
 	</bean>
 	
 	<bean id="fr"
 		class="org.crce.interns.beans.FileReader">
-		<property name="file" value="classpath:resources/database.xml" />
+		<property name="file" value="/WEB-INF/database.xml" />
 	</bean>
 		
 	
@@ -117,6 +118,5 @@
  
     </bean>
 
-
-	
 </beans>
+

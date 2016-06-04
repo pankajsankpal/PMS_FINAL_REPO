@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <!-- author: Pankaj sankpal
 description: contains tabs ->  activity ,uploads ,notification -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -789,6 +791,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 
 <%-- 
+>>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -805,6 +808,14 @@ description: contains tabs ->  activity ,uploads ,notification -->
 </SCRIPT> -->
 
 <title>Faculty TPC</title>
+<<<<<<< HEAD
+</head>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
+	onunload="">
+	<h3>
+		Welcome To the FacultyTPC page !!!!!
+		<%-- <core:out value="${loginForm.userName}" /> --%>
+=======
 
 <!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
@@ -824,6 +835,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 	<h3>
 		Welcome To the FacultyTPC page !!!!!
 		<core:out value="${loginForm.userName}" />
+>>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
 	</h3>
 
 	<h2>
@@ -832,7 +844,13 @@ description: contains tabs ->  activity ,uploads ,notification -->
 	</h2>
 	<br />
 	<br />
+<<<<<<< HEAD
+	
+	<!-- commented by @Crystal -->
+	<%-- <form:form action="notify" commandName="notify">	
+=======
 	<form:form action="notify" commandName="notify">
+>>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
 		<table>
 			<tr>
 				<td>Roll No:<FONT color="red"> <form:errors
@@ -845,7 +863,11 @@ description: contains tabs ->  activity ,uploads ,notification -->
 				<td><input type="submit" value="Notify" /></td>
 			</tr>
 		</table>
+<<<<<<< HEAD
+	</form:form> --%>
+=======
 	</form:form>
+>>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f
 
 	<br />
 	<br />
@@ -890,4 +912,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 	</table>
 </body>
 </html>
+<<<<<<< HEAD
+=======
  --%>
+>>>>>>> b7b36101e47e911950c6d7a25fec6a70290a825f

@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+//Entries of rom_allotment.allotment
 
 @Entity
 @Table(name = "room_allotment.allotment")
@@ -19,7 +22,7 @@ public class Allotment implements Serializable{
 	private static final long serialVersionUID = 3924163780669412934L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 	//change made @Crystal
 	@Column(name="allotment_id")
 	private Integer allotment_id;
 	
@@ -38,7 +41,7 @@ public class Allotment implements Serializable{
 	@Column(name="drive_date")
 	private Date drive_date;
 	
-	
+	//No entries are made in room_path it is needed though because of file upload function
 	@Column(name="room_path")
 	private String fileUpload;
 	

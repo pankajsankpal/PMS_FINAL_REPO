@@ -17,6 +17,7 @@ package org.crce.interns.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.AssignTPODao;
 import org.crce.interns.model.UserDetails;

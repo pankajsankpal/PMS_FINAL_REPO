@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+//Entries of job_schema.job
 @Entity
 @Table(name = "job_schema.job")
 
