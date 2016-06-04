@@ -15,11 +15,9 @@ public class FunctionMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "function_id" )
-	private Integer functionId;
-	
+	private Integer functionId;	
 	@Column(name = "function_name" )
 	private String functionName;
-
 	@Column(name = "function_url" )
 	private String functionUrl;
 	@Column(name = "created_by" )
