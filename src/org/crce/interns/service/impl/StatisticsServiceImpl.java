@@ -118,15 +118,21 @@ public class StatisticsServiceImpl implements StatisticsService {
 		// no applied
 		
 		//Iterator<Entry<Integer, String>> j = companyMap.entrySet().iterator();
+		
+		/*
 		companySet = companyMap.keySet();
 		i = companySet.iterator();
 		
 		while(i.hasNext()){
-			noAppliedMap.put(i.next(), crudDao.retreiveDetails(companyMap.get(i.next())).size()); 
+			Integer j = i.next();
+			System.out.println("k : "+j+" v: "+crudDao.retreiveDetails(companyMap.get(j)).size());
+			noAppliedMap.put( j, crudDao.retreiveDetails(companyMap.get(j)).size()); 
 			
 		}
 		
 		System.out.println("noAppliedMap = "+noAppliedMap.toString());
+		*/
+		
 		
 		
 	}
