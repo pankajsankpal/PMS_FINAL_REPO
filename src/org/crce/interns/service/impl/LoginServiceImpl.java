@@ -22,10 +22,10 @@ public class LoginServiceImpl implements LoginService {
 		   return loginDAO.checkLogin(userName, userPassword);
 	   }
 	   
-	   public int getStudentByid(String userName)
+	   public int getStudentByid(String userName,String user)
 		{
 			System.out.println("In Service class...Get Student By ID");
-			return loginDAO.getStudentById(userName);
+			return loginDAO.getStudentById(userName,user);
 		}
 		public boolean getNotification(String userName)
 		{

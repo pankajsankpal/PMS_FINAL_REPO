@@ -32,6 +32,11 @@ public class DirectoryPathBean {
     private final String logFolder = rootContext + "\\System\\Logs";
     private final String emailFolder= rootContext + "\\System\\Email_Temp";
     private final String roomAllotmentFolder = rootContext + "\\System\\Room Allotment"; //code added @Crystal
+    private final String systemFolder = rootContext + "\\System";  //code added @Leon
+    
+    public String getSystemFolder(){
+    	return systemFolder;
+    }
     
     public String getRoomAllotmentFolder() {
 		return roomAllotmentFolder;
