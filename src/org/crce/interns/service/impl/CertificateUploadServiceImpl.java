@@ -2,15 +2,15 @@
 *
 * Author Name: Crystal Cuthinho	
 * 
-* Filename: ResumeUploadServiceImpl.java	
+* Filename: CertificateUploadServiceImpl.java	
 * 	
-* Classes used by code: ResumeUploadService, ResumeUploadDao,FileUploadValidator,DirectoryPathBean, IncorrectFileFormatException,MaxFileSizeExceededError
+* Classes used by code: CertificateUploadService,FileUploadValidator,DirectoryPathBean, IncorrectFileFormatException,MaxFileSizeExceededError
 * 
-* Tabes used: Loader_schema.loader,User_schema.userdetails,User_schema.personal_profile,User_schema.professional_profile,User_schema.qualification
+* Tabes used: None 
 * 
-* Description: This service implementation is used to implement the methods in AddUserService.java
+* Description: This service implementation is used to implement the methods in CertificateUploadService.java
 * 
-* Functions: handleFileUpload()	,displayCVList()
+* Functions: handleFileUpload()	
 *
 */
 

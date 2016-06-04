@@ -1,3 +1,15 @@
+/*
+*
+* Author Name: Crystal Cuthinho	
+* 
+* Filename: CertificateUploadService.java	
+* 
+* Description: This service is an interface which only declares method names which are implemented in CertificateUploadServiceImpl.java
+* 
+* Functions: handleFileUpload()	
+*
+*/
+
 package org.crce.interns.service;
 
 import javax.servlet.http.HttpServletRequest;

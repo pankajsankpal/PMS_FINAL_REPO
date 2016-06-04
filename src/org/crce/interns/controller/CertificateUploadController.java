@@ -4,13 +4,13 @@
 * 
 * Filename: CertificateUploadController.java	
 * 	
-* Classes used by code: ResumeUploadService, CheckRoleService,FileUploadValidator,FileUpload
+* Classes used by code: CertificateUploadService,FileUploadValidator,FileUpload
 * 
-* Tabes used: User_schema.professional_profile_resume
+* Tables used: None
 * 
-* Description: This controller is used to upload resume by student
+* Description: This controller is used to navigate to UploadCertificate.jsp and upload certificates by student
 * 
-* Functions: welcome(), resumeUpload() ,displayCV()	
+* Functions: welcome(), certificateUpload() 
 *
 */
 
@@ -53,7 +53,7 @@ public class CertificateUploadController {
 
 		//used to actually upload the file
 		@RequestMapping(value = "/uploadCertificate", method = RequestMethod.POST)
-		public ModelAndView resumeUpload(HttpServletRequest request,
+		public ModelAndView certificateUpload(HttpServletRequest request,
 				@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
 						throws Exception {
 			
