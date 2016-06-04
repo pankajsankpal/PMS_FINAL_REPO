@@ -44,7 +44,8 @@ public class FTPServiceImpl implements FTPService{
     //public FTPServiceImpl(String host, int port, String username, String password) throws Exception {
         
     public FTPServiceImpl() throws Exception {    
-        ftpClient = new FTPSClient("SSL");
+        /*
+    	ftpClient = new FTPSClient("SSL");
         ftpClient.setAuthValue("SSL");
         ftpClient.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         int reply;
@@ -62,6 +63,7 @@ public class FTPServiceImpl implements FTPService{
         //allow files to be transferred only in Binary
         ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
         ftpClient.enterLocalPassiveMode();
+        */
     }
     
     /**
@@ -76,6 +78,8 @@ public class FTPServiceImpl implements FTPService{
     @Override
     public void uploadFTPFile(String localFileFullName, String fileName, String hostDir)
             throws Exception {
+    	
+    	/*
         try {
             InputStream input = new FileInputStream(new File(localFileFullName));
 
@@ -83,6 +87,7 @@ public class FTPServiceImpl implements FTPService{
         } catch (Exception e) {
 
         }
+        */
     }
     
     /**
@@ -95,11 +100,13 @@ public class FTPServiceImpl implements FTPService{
     
     @Override
     public void downloadFTPFile(String source, String destination) {
+    	/*
         try (FileOutputStream fos = new FileOutputStream(destination)) {
             this.ftpClient.retrieveFile(source, fos);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
     }
     
     /**
@@ -115,6 +122,8 @@ public class FTPServiceImpl implements FTPService{
     @Override
     public boolean listFTPFiles(String directory, String fileName) throws IOException {
         // lists files and directories in the current working directory
+    	
+    	/*
         boolean foundFilename = false;
         FTPFile[] files = ftpClient.listFiles(directory);
         for (FTPFile file : files) {
@@ -130,11 +139,16 @@ public class FTPServiceImpl implements FTPService{
         }
 
         return foundFilename;
+        
+        */
+    	return true;
     }
     
 
     @Override
     public void disconnect() {
+    	
+    	/*
         if (this.ftpClient.isConnected()) {
             try {
                 this.ftpClient.logout();
@@ -143,6 +157,7 @@ public class FTPServiceImpl implements FTPService{
                 // do nothing as file is already saved to server
             }
         }
+        */
     }
 
 }
