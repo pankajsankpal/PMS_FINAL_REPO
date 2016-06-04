@@ -146,6 +146,7 @@ description: contains links to manage system users->
 														<td>5.<a href="searchHome">Search company/Student </a><br/></td>
 													</tr>
 												</table>
+												<br>
 											</div>
 										  </div>
 										  </div>

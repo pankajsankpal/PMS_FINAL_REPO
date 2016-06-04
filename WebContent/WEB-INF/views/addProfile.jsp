@@ -1,40 +1,57 @@
-
-<!-- author: Pankaj sankpal, @author Adarsh
-description: contains field for assigning a student tpc  -->
+<!-- author: Pankaj sankpal
+description: contains fields to add new faculty member->
 <!-- -------------------------------------------------------------------------------------------------------- -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Faculty Tpc | HOME</title>
-<style>
-.error {
-	color: #ff0000;
-	font-style: italic;
-	font-weight: bold;
-}
-</style>
-<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-		<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-		<link rel="stylesheet" href="assets/css/select2.min.css" />
-		
-		<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-		<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
-		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+<title>Add Job Profile.. </title>
+
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="../assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+
+
+
+<!-- text fonts -->
+<link rel="stylesheet" href="../assets/fonts/fonts.googleapis.com.css" />
+
+<!-- ace styles -->
+<link rel="stylesheet" href="../assets/css/ace.min.css"
+	class="ace-main-stylesheet" id="main-ace-style" />
+
+
+
+
+
+<!-- inline styles related to this page -->
+
+<!-- ace settings handler -->
+<script src="../assets/js/ace-extra.min.js"></script>
+
+<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 
 </head>
+<body 	onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
+	<jsp:directive.include file="Header.jsp" />
 
-	<body>
-<jsp:directive.include file="Header.jsp" />
-
-<div class="main-content">
+	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
 						<script type="text/javascript">
@@ -72,42 +89,84 @@ description: contains field for assigning a student tpc  -->
 								<core:out value="${loginForm.userName}" />
 							</h1>
 						</div><!-- /.page-header -->
-
+						
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<div class="widget-box">
-								<div class="widget-body">
-								 <div class="widget-main" align="center">
-									<h2>Assign Student TPC</h2>
-									<form:form method="POST" action="SubmitAssignTPCF" >
-										<table cellpadding="3">
-											<tr>
-												<td><form:label path="userName">User name:</form:label></td>
-												<td><form:input path="userName" /></td>
-												<td><form:errors path="userName" cssClass="error" /></td>
-											</tr>
-											<tr>
-											
-												<td colspan="2" ><input  class="btn btn-sm  btn-primary" type="submit" value="Submit" /></td>
-											</tr>
-										</table>
-									</form:form>
-								  </div>
-								 </div>
-								</div>  
-						
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					
-					</div><!-- /.page-content -->
+								<div class="clearfix">
+								
+										<div class="row">
+										<div class="col-xs-12 ">
+										<div class="widget-box">
+										<div class="widget-body">
+										 <div class="widget-main">
+										 		<h2 align="center">Job Details</h2>
+										 		<br>
+										 		<form method="POST"   action="saveProfile">
+										 		
+										 			<table align="center">
+												 	 <tr>
+															<td>Job Id :</td>
+															<td><input name="job_id" /></td>
+														</tr>
+														
+														<tr>
+															<td>Company Id :</td>
+															<td><input name="company_id"/></td>
+														</tr>
+														<tr>
+															<td>Company name :</td>
+															<td><input name="company_name" /></td>
+														</tr>
+														<tr>
+															<td>Company Address :</td>
+															<td><input name="company_address" /></td>
+														</tr>
+														<tr>
+															<td>Event Id :</td>
+															<td><input name="event_id" /></td>
+														</tr>
+														<tr>
+				<td>Description :</td>
+				<td><textarea name="job_description"></textarea></td>
+			</tr>
+													</table>
+										 		</form>
+											<div>
+												
+											<br><br>
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+
+										
+									</div>
+										
+								
+								
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			
-</div>
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+												
+
+
 	
+		<jsp:directive.include file="scripts.jsp" />
+		<jsp:directive.include file="Footer.jsp" />
+	
+	
+		<!-- /.main-container -->
+
+</div>
+	
+	
+
+
 </body>
 </html>
 
@@ -284,7 +343,7 @@ description: contains field for assigning a student tpc  -->
 			</tr>
 		</table>
 		
-<!-- 		<a href="form">Logout</a> -->
+
 	</form>
 
 

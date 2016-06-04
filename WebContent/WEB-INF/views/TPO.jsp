@@ -90,12 +90,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														Uploads
 													</a>
 												</li>
-												<li>
-													<a data-toggle="tab" href="#notification">
-														<i class="pink ace-icon fa fa-picture-o bigger-120"></i>
-														Notification
-													</a>
-												</li>
+												
 
 											</ul>
 
@@ -179,61 +174,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 													</div><!-- /#feed -->
 
-												<div id="notification" class="tab-pane">
-													
-												
-													<div class="col-xs-10 widget-container-col">
-														
-															<div class="widget-box">
-															<div class="widget-header widget-header-large">
-																<h4 class="widget-title">Job News</h4>
-
-																<div class="widget-toolbar">
-																	<a href="#" data-action="settings">
-																		<i class="ace-icon fa fa-cog"></i>
-																	</a>
-
-																	<a href="#" data-action="reload">
-																		<i class="ace-icon fa fa-refresh"></i>
-																	</a>
-
-																	<a href="#" data-action="collapse">
-																		<i class="ace-icon fa fa-chevron-up"></i>
-																	</a>
-
-																	<a href="#" data-action="close">
-																		<i class="ace-icon fa fa-times"></i>
-																	</a>
-																</div>
-															</div>
-
-															<div class="widget-body">
-																<div class="widget-main padding-4 scrollable" data-size="200">
-																	
-																	<p class="alert alert-info">
-																		TCS Mock Interviews..
-																	</p>
-																	<p class="alert alert-danger">
-																		TCS Pre-placement talk..
-																	</p>
-																	<p class="alert alert-success">
-																		Jp Morgan CODE FOR GOOD Registration.<t>25th march 2016</t>
-																	</p>
-																	<p class="alert alert-primary">
-																		Aptitude test for all BE student.<t></t>22nd may 2016
-																	</p>
-																
-																
-															</div>
-															
-															</div>
-															
-														</div>
-												</div>
-														
-
-												</div><!-- /#placements -->
-
 												<div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
@@ -294,10 +234,10 @@ description: contains tabs ->  activity ,uploads ,notification -->
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/fullcalendar.min.js"></script>
+		
 		<script src="assets/js/bootbox.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
-		<script src="assets/js/bootstrap-datepicker.min.js"></script>
+		
 		<script src="assets/js/jquery.hotkeys.min.js"></script>
 		<script src="assets/js/bootstrap-wysiwyg.min.js"></script>
 		<script src="assets/js/select2.min.js"></script>

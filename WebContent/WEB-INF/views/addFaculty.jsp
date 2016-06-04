@@ -1,5 +1,5 @@
 <!-- author: Pankaj sankpal
-description: contains links to manage system users->
+description: contains fields to add new faculty member->
 <!-- -------------------------------------------------------------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -103,18 +103,18 @@ description: contains links to manage system users->
 											<div>
 													<form:form method="POST"  modelAttribute="facultyBean" action="registerFaculty">
 														<h2 align="center"><u>Add Faculty</u></h2>
-															<table align="center" cellspacing="10px" cellpadding="" >
-																<tr>
+															<table align="center" style="padding-top: 10px"  >
+																<tr >
 																	<td>ID :</td>
 																	<td><form:input path="userId" /></td>
 																</tr><br>
-																<tr>
+																<tr >
 																	<td>Name :</td>
-																	<td><form:input path="name" /></td>
+																	<td style="padding-top: 10px"><form:input path="name" /></td>
 																</tr><br>
-																<tr>
-																	<td>Branch :</td>
-																	<td><form:select path="branch">
+																<tr ">
+																	<td style="padding-top: 10px">Branch :</td>
+																	<td style="padding-top: 10px"><form:select path="branch">
 																			<form:option value="0" label="Select" />
 																			<form:option value="Computer Engineering"  label="Computer" />
 																			<form:option value="IT Engineering" label="IT" />
