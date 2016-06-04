@@ -8,7 +8,10 @@ import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.validators.AddApplicantsValidator;
 import org.crce.interns.validators.DeleteApplicantsValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Qualifier;
+=======
+>>>>>>> origin/master
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 /**
 *
 * @author Rashmi
@@ -24,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 * Dependency: ManageApplicantsService.java
 */
 
+=======
+>>>>>>> origin/master
 @Controller("manageUsersController")
 public class ManageApplicantsController {
 
@@ -31,6 +37,7 @@ public class ManageApplicantsController {
 	private ManageApplicantsService crudService;
 
 	@Autowired
+<<<<<<< HEAD
 	@Qualifier("addApplicantsValidator")
 	private AddApplicantsValidator addApplicantsValidator;
 	
@@ -46,6 +53,14 @@ public class ManageApplicantsController {
 	}
 	
 	@RequestMapping(value = "/view.html", method = RequestMethod.GET)
+=======
+	private AddApplicantsValidator addApplicantsValidator;
+	
+	@Autowired
+	private DeleteApplicantsValidator deleteApplicantsValidator;
+	
+	@RequestMapping(value = "/view-candidate.html", method = RequestMethod.GET)
+>>>>>>> origin/master
 	public ModelAndView gotoviewcandidate() {
 		ModelAndView model = null;
 		model = new ModelAndView("view-candidate");
@@ -69,7 +84,11 @@ public class ManageApplicantsController {
 		return model;
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/managelist.html", method = RequestMethod.POST )
+=======
+	@RequestMapping(value = "/showlist.html", method = RequestMethod.POST )
+>>>>>>> origin/master
 	public ModelAndView cruddetails(@RequestParam(value = "option") String option) {
 		ModelAndView model;
 		UserCompanyBean userBean = new UserCompanyBean();
@@ -87,6 +106,7 @@ public class ManageApplicantsController {
 	@RequestMapping(value = "/addcandidate.html", method = RequestMethod.POST)
 	public ModelAndView addcandidate(@ModelAttribute("userBean") UserCompanyBean userBean, BindingResult bindingResult) {
 		ModelAndView model;
+<<<<<<< HEAD
 		String msg="";
 		addApplicantsValidator.validate(userBean, bindingResult);
 		
@@ -117,11 +137,27 @@ public class ManageApplicantsController {
 		}
 		return model;
 
+=======
+	//	UserCompanyBean userBean = new UserCompanyBean();
+	//	userBean.setUsername(name);
+	//	userBean.setCompany(company);
+	//	System.out.println(userBean.getUsername());
+		crudService.createDetails(userBean);
+		addApplicantsValidator.validate(userBean, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Binding Errors are present...");
+			model = new ModelAndView("add-candidate");
+		} else
+		model = new ModelAndView("add-success");
+		//model.addAttribute(userBean);
+		return model;
+>>>>>>> origin/master
 	}
 
 	@RequestMapping(value = "/deletecandidate.html", method = RequestMethod.POST)
 	public ModelAndView deletecandidate(@ModelAttribute("userBean") UserCompanyBean userBean, BindingResult bindingResult) {
 		ModelAndView model;
+<<<<<<< HEAD
 		int c=0;
 		String msg="";
 		deleteApplicantsValidator.validate(userBean, bindingResult);
@@ -149,6 +185,23 @@ public class ManageApplicantsController {
 				model = new ModelAndView("delete-success");
 		}
 			return model;
+=======
+		//UserCompanyBean userBean = new UserCompanyBean();
+		//UserCompanyId uci=new UserCompanyId();
+		//uci.setUsername(name);
+	//	uci.setCompany_id();
+	//	userBean.setId(uci);
+		//userBean.setUsername(name);
+		//userBean.setCompany(company);
+		crudService.deleteDetails(userBean);
+		addApplicantsValidator.validate(userBean, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Binding Errors are present...");
+			model = new ModelAndView("delete-candidate");
+		} else
+		model = new ModelAndView("delete-success");
+		return model;
+>>>>>>> origin/master
 	}
 
 }

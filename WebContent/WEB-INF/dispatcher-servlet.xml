@@ -15,7 +15,7 @@
  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
  
 
-	<context:property-placeholder location="/WEB-INF/database.properties" />
+	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -36,12 +36,19 @@
 	<bean id="addTPCValidator" class="org.crce.interns.validators.AddTPCValidator" />
 	<bean id="addTPCTaskValidator" class="org.crce.interns.validators.AddTPCTaskValidator" />
 	<bean id="rvmTPCValidator" class="org.crce.interns.validators.RemoveTPCValidator" />
+<<<<<<< HEAD
 	<bean id="feedbackValidator" class="org.crce.interns.validators.FeedbackFormValidator" />
 	<bean id="addApplicantsValidator" class="org.crce.interns.validators.AddApplicantsValidator" />
 	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
 	<bean id="companyValidator" class="org.crce.interns.validators.CompanyFormValidator" />
 	<bean id="criteriaValidator" class="org.crce.interns.validators.CriteriaFormValidator" />
 	<bean id="fileUploadValidator" class="org.crce.interns.validators.FileUploadValidator" />
+=======
+	<bean id="addApplicantsValidator" class="org.crce.interns.validators.AddApplicantsValidator" />
+	<bean id="deleteApplicantsValidator" class="org.crce.interns.validators.DeleteApplicantsValidator" />
+	
+	
+>>>>>>> origin/master
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -118,6 +125,10 @@
  
     </bean>
 
+<<<<<<< HEAD
 
 	
 </beans>
+=======
+</beans>
+>>>>>>> origin/master
