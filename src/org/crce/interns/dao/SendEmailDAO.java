@@ -18,5 +18,6 @@ public interface SendEmailDAO {
     public String fetchElexFTPC();
     public String fetchITFTPC();
     public String fetchProdFTPC();
-    
+    public String fetchStudentEmailId(String receivers);
+    public String fetchStreamStudents(String receivers);
 }
