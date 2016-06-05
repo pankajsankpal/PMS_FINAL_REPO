@@ -58,7 +58,7 @@ public class NfController {
 	//------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
-		
+	try{
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
 		
@@ -90,11 +90,20 @@ public class NfController {
 		
 		return model;
 	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/checkNf");
+		return model;
+	}
+	}
 	
 	//------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/addNf", method = RequestMethod.POST)
 	public ModelAndView addNf(HttpServletRequest request) {
+	try{
 		
+	
 		NotificationBean add=new NotificationBean(); 
 		add.setType("USER");
 		add.setCategory("TEST");
@@ -115,13 +124,20 @@ public class NfController {
 		}
 
 		return model;
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/addNf");
+		return model;
+	}
 		
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	@RequestMapping("/looseNotification")
 	public @ResponseBody String looseNotification(HttpServletRequest request){
-		
+	try{
 		System.out.println("Inside NfController");
 		//nfService.checkNf();
 		//String id="7000";
@@ -152,6 +168,13 @@ public class NfController {
 
 	
 		return new Gson().toJson(nfList);
+	}
+	catch(Exception e){
+		System.out.println(e);
+		//ModelAndView model=new ModelAndView("500");
+		//model.addObject("exception", "/viewprofile");
+		return "exception at looseNotification";
+	}
 	}
 
 }
