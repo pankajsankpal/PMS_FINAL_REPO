@@ -42,7 +42,9 @@ public class LoginController{
 	
 	@RequestMapping("/")
 	public ModelAndView welcome() throws ParseException {
-		System.out.println("return model");
+		
+		try{
+				System.out.println("return model");
                 /**
                  * Year changing logic
                  * @author Leon
@@ -70,7 +72,14 @@ public class LoginController{
                 /**
                  * End of @author Leon's code
                  */
-		return new ModelAndView("index");
+                return new ModelAndView("index");
+		}
+		catch(Exception e){
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/");
+			return model;
+		}
 
 	}
 	
@@ -104,11 +113,18 @@ public class LoginController{
 	//----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/logged-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
-		
+	try{
 		System.out.println("Inside Controller");		
 		ModelAndView model=null;		
 		model = new ModelAndView("redirect:/sign-out");				
-		return model;	
+		return model;
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/logged-out");
+		return model;
+	}
 		
 	}
    	//----------------------------------------------------------------------------------------------------------	
@@ -229,7 +245,7 @@ public class LoginController{
 
 			//System.out.println("hello");
 			if(update==0)
->>>>>>> origin/master
+
 			{
 				String userName=notify.getUserName();
 				int update=loginService.getStudentByid(userName,user);
