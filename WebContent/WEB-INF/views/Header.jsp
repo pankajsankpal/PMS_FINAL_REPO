@@ -4,9 +4,32 @@
 <html>
 <head>
 
+<script>
+function checkNewNoti(){
+	console.log("inside check");
+	
+	$.getJSON("looseNotification",
+				
+				{CHARS:''},
+				
+				function(data){
+					console.log(data);
+					//$('#noti').text('');
+					for(var index in data){
+						$('#noti').append('<li><a href="'+data[index].url+'"><div class=/"clearfix/"><span class=/"pull-left/"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'
+								+data[index].type+'<br/>Sent on'+data[index].dateTime+'<br/>'+
+								data[index].message+'<br/></span><span class="pull-right badge badge-info">+12</span></div></a></li>'
+						);
+					}
+				});
+	
+}
+
+</script>
+
 </head>
 
-<body class="skin-3 no-skin">
+<body onload="checkNewNoti()" class="skin-3 no-skin">
 	<jsp:directive.include file="scripts.jsp" />
 	
 	<div id="navbar" class="navbar navbar-default">
@@ -40,17 +63,17 @@
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">8</span>
+								<span class="badge badge-important">${sessionScope.newNoti}</span>
 							</a>
 
-							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+							<ul id="noti" class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									8 Notifications
+									${sessionScope.newNoti} Notifications
 								</li>
 
 								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink">
+									<ul id="noti" class="dropdown-menu dropdown-navbar navbar-pink">
 										<li>
 											<a href="#">
 												<div class="clearfix">

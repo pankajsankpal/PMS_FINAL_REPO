@@ -164,13 +164,14 @@ public class NfController {
                 
                 
                 NotificationBean notificationBean = new NotificationBean();
-                emailNotificationService.sendEmailNotification(notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
+                emailNotificationService.sendEmailNotification(
+                		notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
 
 	
 		return new Gson().toJson(nfList);
 	}
 	catch(Exception e){
-		System.out.println(e);
+		System.out.println(e.getLocalizedMessage());
 		//ModelAndView model=new ModelAndView("500");
 		//model.addObject("exception", "/viewprofile");
 		return "exception at looseNotification";
