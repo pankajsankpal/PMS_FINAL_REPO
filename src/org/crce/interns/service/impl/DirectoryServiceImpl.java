@@ -254,5 +254,11 @@ public class DirectoryServiceImpl implements DirectoryService {
         //code added @Crystal
         File roomAllotmentFiles = new File(directoryPathBean.getRoomAllotmentFolder());
         roomAllotmentFiles.mkdirs();
+        
+        File counselingReportStudentFiles = new File(directoryPathBean.getCounselingReportStudentFolder());
+        counselingReportStudentFiles.mkdirs();
+        
+        File counselingReportFtpcFiles = new File(directoryPathBean.getCounselingReportFtpcFolder());
+        counselingReportFtpcFiles.mkdirs();
     }
 }

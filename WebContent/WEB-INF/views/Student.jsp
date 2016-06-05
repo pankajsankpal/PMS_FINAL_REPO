@@ -93,6 +93,9 @@
 		</tr>
 		
 		<tr>
+			<td><a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+		</tr>
+		<tr>
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
 		<tr>

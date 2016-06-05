@@ -32,8 +32,18 @@ public class DirectoryPathBean {
     private final String logFolder = rootContext + "\\System\\Logs";
     private final String emailFolder= rootContext + "\\System\\Email_Temp";
     private final String roomAllotmentFolder = rootContext + "\\System\\Room Allotment"; //code added @Crystal
-    private final String systemFolder = rootContext + "\\System";  //code added @Leon
+    private final String counselingReportStudentFolder = rootContext + "\\System\\Counseling Report-Student"; //code added @Crystal
+    private final String counselingReportFtpcFolder = rootContext + "\\System\\Counseling Report-Ftpc"; //code added @Crystal
+	private final String systemFolder = rootContext + "\\System";  //code added @Leon
     
+	public String getCounselingReportStudentFolder() {
+		return counselingReportStudentFolder;
+	}
+
+	public String getCounselingReportFtpcFolder() {
+		return counselingReportFtpcFolder;
+	}
+	
     public String getSystemFolder(){
     	return systemFolder;
     }
