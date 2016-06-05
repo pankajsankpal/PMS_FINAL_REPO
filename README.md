@@ -104,6 +104,10 @@ The below controller list refers to the respective modules integrated in this re
 +CertificateUploadController
 >upload certificate module
 >**dev by CRYSTAL @Crystal21**
+
++OfferLetterUploadController
+>upload offer letters by student module
+>**dev by CRYSTAL @Crystal21**
 ____________________________________________________________________
 
 SERVICES
