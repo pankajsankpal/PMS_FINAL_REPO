@@ -174,7 +174,10 @@ description: contains links to manage system users->
 													</tr>
 													<tr>
 														<td>7.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
-													</tr>			
+													</tr>	
+													<tr>
+														<td>8. <a href="ViewUsersT.html"> View Users </a></td>
+													</tr>		
 												</table>
 												<br>
 											</div>

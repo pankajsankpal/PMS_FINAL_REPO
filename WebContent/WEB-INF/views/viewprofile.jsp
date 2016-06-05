@@ -79,20 +79,7 @@ description: contains Fields to edit  student profile -->
 													</a>
 												</li>
 
-												<li>
-													<a href="Studentuploads.jsp">
-														<i class="orange ace-icon fa fa-upload bigger-120"></i>
-														Uploads
-													</a>
-												</li>
-
 												
-												<li>
-													<a  href="Studentnotificatn.jsp">
-														<i class="pink ace-icon fa fa-check bigger-120"></i>
-														Notification
-													</a>
-												</li>
 
 											</ul>
 											</ul>
