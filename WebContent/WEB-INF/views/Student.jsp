@@ -89,6 +89,10 @@
 		</tr>
 		
 		<tr>
+			<td><a href="offerLetterUpload">Click here to upload Offer Letter</a></td>
+		</tr>
+		
+		<tr>
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
 		<tr>
