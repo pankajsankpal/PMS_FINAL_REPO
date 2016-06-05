@@ -20,6 +20,21 @@ description: contains links to manage system users->
 
 <title>Add User via Csv file..</title>
 
+<style>
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
+
+
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -108,7 +123,7 @@ description: contains links to manage system users->
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div>
-											 &nbsp;&nbsp; <b >Upload CSV file...! </b>
+											  <h4>Upload CSV file...! </h4>
 												<form method="POST" enctype="multipart/form-data" action="uploadFile">
 												<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
 														File to upload: <input class="btn btn-sm btn-primary" type="file" name="fileUpload"><br />
@@ -122,6 +137,7 @@ description: contains links to manage system users->
 														  <input class="btn btn-sm btn-warning" type="submit" value="Upload"> Press here to upload the file!
 												</form>
 											</div>
+											<br>
 											</div>
 											</div>
 											</div>
@@ -145,6 +161,7 @@ description: contains links to manage system users->
 													<tr>
 														<td>3.<a  href="removeuser">Remove User</a><br/></td>
 													</tr>
+													
 													<tr>
 														<td>4.<a href="InsertWork.html">Assign Task</a><br/></td>
 													</tr>
@@ -152,6 +169,12 @@ description: contains links to manage system users->
 													<tr>
 														<td>5.<a href="searchHome">Search company/Student </a><br/></td>
 													</tr>
+													<tr>
+														<td>6.<a href="AssignTPC.html">Assign TPC </a><br/></td>
+													</tr>
+													<tr>
+														<td>7.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
+													</tr>			
 												</table>
 												<br>
 											</div>
