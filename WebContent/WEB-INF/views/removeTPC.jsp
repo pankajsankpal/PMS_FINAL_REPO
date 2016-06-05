@@ -33,6 +33,9 @@
 				<td><form:errors path="userName" cssClass="error" /></td>
 			</tr>
 			<tr>
+				<p><font size="5" color="red" face="verdana">${erroMesg}</font></p>
+			</tr>
+			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>
 			</tr>
 		</table>

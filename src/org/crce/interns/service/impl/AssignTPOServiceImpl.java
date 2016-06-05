@@ -22,20 +22,21 @@ import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.AssignTPODao;
 import org.crce.interns.model.UserDetails;
 import org.crce.interns.service.AssignTPOService;
+import org.crce.interns.service.ConstantValues;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AssignTPOServiceImpl implements AssignTPOService {
+public class AssignTPOServiceImpl implements AssignTPOService,ConstantValues {
 	@Autowired
 	private AssignTPODao userDao;
 
 	@Override
 	public int assignTPO(UserDetailsBean userBean) {
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Assign TPO");
+		
 		UserDetails checkUser = new UserDetails();
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = userDao.getUser(checkUser);
@@ -44,16 +45,17 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 			System.out.println("Error:No User Defined" + "\n");
 			return 0;
 		}
+		
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
 
-		/*if (checkUser.getRoleId()==2|| checkUser.getRoleId()==4)*/ 
-		if (checkUser.getRoleId().equalsIgnoreCase("5")) {
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.TPOId)) {
 			return 55;	//Return 55 if User is already a TPO
 		}
 
-		if (checkUser.getRoleId().equalsIgnoreCase("2")	//Check if Faculty or FTPC
-				|| checkUser.getRoleId().equalsIgnoreCase("4")){
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.FacultyId)	//Check if Faculty or FTPC
+				|| checkUser.getRoleId().equalsIgnoreCase(ConstantValues.FTPCId)){
 			System.out.println("Before update Faculty Role ID : " + checkUser.getRoleId() + "\n");
-			//checkUser.setRoleId(5);
 			checkUser.setRoleId("5");	//Update RoleID to make him TPO
 			System.out.println("After update Faculty Role ID : " + checkUser.getRoleId() + "\n");
 			userDao.assignTPO(checkUser);
@@ -68,9 +70,9 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 
 	@Override
 	public int assignTPCF(UserDetailsBean userBean) {
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Assign TPCF");
+	
 		UserDetails checkUser = new UserDetails();
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = userDao.getUser(checkUser); //Get the User
@@ -79,14 +81,15 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 			System.out.println("Error:No User Defined" + "\n");
 			return 0;
 		}
-
-		/*if (checkUser.getRoleId()==2|| checkUser.getRoleId()==4)*/ 
-		if (checkUser.getRoleId().equalsIgnoreCase("3")) {
+		
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
+		
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.STPCId)) {
 			return 34;	//Return 34 if User is already a STPC
 		}
-		else if (checkUser.getRoleId().equalsIgnoreCase("1")){
+		else if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.StudentId)){
 			System.out.println("Before update Student Role ID : " + checkUser.getRoleId() + "\n");
-			//checkUser.setRoleId(5);
 			checkUser.setRoleId("3");	//Update RoleID to make him STPC
 			System.out.println("After update Student Role ID : " + checkUser.getRoleId() + "\n");
 			userDao.assignTPO(checkUser);
@@ -101,27 +104,32 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 	
 	@Override
 	public List<UserDetailsBean> viewUsers() {
-		// TODO Auto-generated method stub
+		System.out.println("In ServiceImpl: View Users");
+		
 		List<UserDetails> userList = userDao.viewUsers();
+		
 		return convertToBean(userList);
 	}
 
 	public List<UserDetailsBean> convertToBean(List<UserDetails> userList) {
+		System.out.println("In ServiceImpl: Convert to Bean : UserDetails ");
+		
 		List<UserDetailsBean> userBeanList = new ArrayList<UserDetailsBean>();
+		
 		for (UserDetails user : userList) {
 			UserDetailsBean userBean = new UserDetailsBean();
 			BeanUtils.copyProperties(user, userBean);
 			userBeanList.add(userBean);
 		}
+		
 		return userBeanList;
 	}
 
 	@Override
 	public int removeTPO(UserDetailsBean userBean) {
-		// TODO Auto-generated method stub
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Remove TPC");
+		
 		UserDetails checkUser = new UserDetails();
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = userDao.getUser(checkUser);
@@ -130,11 +138,12 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 			System.out.println("Service: Error : No User Defined" + "\n");
 			return 0;	//Return 0 if no such User exists
 		}
-
-		/*if (checkUser.getRoleId()==5) */
-		if (checkUser.getRoleId().equalsIgnoreCase("5")) {
+		
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
+		
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.TPOId)) { //Check if TPO
 			System.out.println("Before update Faculty Role : " + checkUser.getRoleId() + "\n");
-			//checkUser.setRoleId(2);
 			checkUser.setRoleId("2");	//Update RoleID to make him Faculty
 			System.out.println("After update Faculty Role : " + checkUser.getRoleId() + "\n");
 			userDao.removeTPO(checkUser);
@@ -148,10 +157,9 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 
 	@Override
 	public int removeTPCF(UserDetailsBean userBean) {
-		// TODO Auto-generated method stub
-		UserDetails user = new UserDetails();
+		System.out.println("In ServiceImpl: Remove TPCF");
+				
 		UserDetails checkUser = new UserDetails();
-		BeanUtils.copyProperties(userBean, user);
 		checkUser.setUserName(userBean.getUserName());
 
 		checkUser = userDao.getUser(checkUser);
@@ -161,10 +169,11 @@ public class AssignTPOServiceImpl implements AssignTPOService {
 			return 0;	//Return 0 if no such User exists
 		}
 
-		/*if (checkUser.getRoleId()==5) */
-		if (checkUser.getRoleId().equalsIgnoreCase("3")) {
+		checkUser.setModifiedBy(userBean.getModifiedBy());
+		checkUser.setModifiedDate(userBean.getModifiedDate());
+		
+		if (checkUser.getRoleId().equalsIgnoreCase(ConstantValues.STPCId)) {
 			System.out.println("Before update Faculty Role : " + checkUser.getRoleId() + "\n");
-			//checkUser.setRoleId(2);
 			checkUser.setRoleId("1");	//Update RoleID to make him Student
 			System.out.println("After update Faculty Role : " + checkUser.getRoleId() + "\n");
 			userDao.removeTPO(checkUser);
