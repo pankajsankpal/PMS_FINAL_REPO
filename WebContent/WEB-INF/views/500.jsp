@@ -8,6 +8,6 @@
 <title>Exception</title>
 </head>
 <body>
-	Sorry,an unwanted error occured while displaying the URL: <c:out value="${exception}"></c:out>
+	Sorry,an unwanted error occured while displaying the URL:<c:out value="${exception}"></c:out>
 </body>
 </html>

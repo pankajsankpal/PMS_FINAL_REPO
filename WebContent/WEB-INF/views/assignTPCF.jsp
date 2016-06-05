@@ -1,4 +1,3 @@
-
 <!-- author: Pankaj sankpal, @author Adarsh
 description: contains field for assigning a student tpc  -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -89,6 +88,11 @@ description: contains field for assigning a student tpc  -->
 												<td><form:errors path="userName" cssClass="error" /></td>
 											</tr>
 											<tr>
+												<p>
+													<font size="5" color="red" face="verdana">${msg}</font>
+												</p>
+											</tr>
+											<tr>
 											
 												<td colspan="2" ><input  class="btn btn-sm  btn-primary" type="submit" value="Submit" /></td>
 											</tr>
@@ -144,6 +148,11 @@ description: contains field for assigning a student tpc  -->
 				<td><form:label path="userName">User name:</form:label></td>
 				<td><form:input path="userName" /></td>
 				<td><form:errors path="userName" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<p>
+					<font size="5" color="red" face="verdana">${msg}</font>
+				</p>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>

@@ -102,8 +102,9 @@ description: contain field for removing the student tpc -->
 													</select></td>
 												</tr>
 												<tr>
-													
-													<td> </td>
+													<p>
+														<font size="5" color="red" face="verdana">${erroMesg}</font>
+													</p>
 												</tr>
 												<tr>
 													<td colspan="2"><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></td>

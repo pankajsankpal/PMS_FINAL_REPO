@@ -16,5 +16,7 @@ public interface EventService {
 
 	public List<Event_detailsBean> viewEvents(Integer months);
 
+	public String getCompanyName(int company_id);
+
 }
 
