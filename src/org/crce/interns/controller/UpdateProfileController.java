@@ -1,3 +1,4 @@
+
 /**
  * @author Nevil Dsouza ZNevzz
  *	Description : Handles all functions related to view and edit student profile. 
@@ -20,6 +21,7 @@ import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.Company;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ProfileService;
@@ -422,9 +424,29 @@ public class UpdateProfileController {
 	}
 	
 	
+
+	
+	//this is for company dynamic dropdown
+	@RequestMapping("/looseSearch2")
+	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
+		List<Company> companyList = new ArrayList<Company>();
+		companyList = searchService.searchCompany(chars);
+		System.out.println(companyList.size());
+
+		//ObjectMapper obj= new ObjectMapper();
+		
+		//return userDetailsList.get(0);
+		
+		return new Gson().toJson(companyList);
+	}
+	
+	
 }
+
+
 
 
 /*
 
 */
+
