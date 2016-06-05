@@ -1,6 +1,6 @@
 <html data-ng-app>
 <head>
-<TITLE>Spring MVC Example with AJAX call</TITLE>
+<TITLE>Company dropdown</TITLE>
  
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -26,15 +26,15 @@
 </script>
 <script type="text/javascript">
  		function doSearch(){
-	 		$.getJSON("looseSearch",
+	 		$.getJSON("looseSearch2",
 	 				
-	 				{CHARS:$('#searchbox').val()},
+	 				{CHARS:''},
 	 				
 	 				function(data){
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<p>'+data[index].userName+'-'+data[index].name+'</p>');
+	 						$('#searchresult').append('<option name="'+data[index].companyId+'">'+data[index].companyId+data[index].companyName+'</option>');
 	 					}
 	 				});
  		}
@@ -91,18 +91,12 @@
 
 </head>
  
-<body>
+<body onLoad="doSearch();">
     <div align="center">
         <br> <br> ${message} <br> <br>
-        <input type="number" value ="1" id="a" onchange="Ajax()"/>
-        <input type="number" value ="2" id="b" onchange="Ajax()"/>
-        <br>
-        <div id="result"></div>
         
-        <br>
-        <br><br>
-        <input type ="text" id="searchbox" onKeyUp="doSearch();">
-        <div id="searchresult"></div>
+       
+        <select id="searchresult"></select>
       
     </div>
     
