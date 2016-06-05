@@ -48,6 +48,7 @@ public class FileUploadValidator implements Validator{
 		//gets the size of the CommonsMultiPart type file
 		if(fileUpload1.getFile().getSize() == 0){
 			System.out.println("empty");
+			
 			errors.rejectValue("file", "required.fileUpload");
 		}
 	}

@@ -26,23 +26,41 @@ public class EventServiceImpl implements EventService {
 	private EventDao eventDao;
 
 	public List<Event_detailsBean> convertToBean(List<Event_details> eventList) {	//Method to convert to bean
+		System.out.println("In ServiceImpl: Convert to Bean : EventDetails ");
+		
 		List<Event_detailsBean> edBeanList = new ArrayList<Event_detailsBean>();
+	
 		for (Event_details ed : eventList) {
 			Event_detailsBean edBean = new Event_detailsBean();
 			BeanUtils.copyProperties(ed, edBean);
 			edBeanList.add(edBean);
 		}
+		
 		return edBeanList;
 	}
 
 	@Override
 	public List<Event_detailsBean> viewEvents(Integer months) {
+		System.out.println("In ServiceImpl: View Events ");
+		
 		System.out.println("Month in Service Impl :" + months);
+		
 		List<Event_details> eventList = eventDao.viewEvents(months);
+		
 		if (eventList == null) {
 			return null;	//Return null if no events happening in the given month
 		}
+		
 		return convertToBean(eventList);
+	}
+
+	@Override
+	public String getCompanyName(int company_id) {
+		System.out.println("In ServiceImpl: Get Company Name");
+		
+		String result =eventDao.getCompanyName(company_id);
+		
+		return result;
 	}
 
 }
