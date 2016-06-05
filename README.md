@@ -9,7 +9,7 @@
 The below controller list refers to the respective modules integrated in this repo
 
 +AddUserController
->Add User via CSV file module
+>Add User(student) via CSV file module
 >**dev by CRYSTAL @Crystal21**
 
 +AssignRoleController
@@ -72,7 +72,7 @@ The below controller list refers to the respective modules integrated in this re
 
 
 +ManageUserController
->add student and faculty manually.
+>add student and faculty manually; remove user.
 >**dev by CRYSTAL @Crystal21**
 
 +NfController
@@ -84,7 +84,7 @@ The below controller list refers to the respective modules integrated in this re
 >**dev by KHUSAAL @Jugal69**
 
 +ResumeUploadController
->upload resume module
+>upload resume by student module
 >**dev by CRYSTAL @Crystal21**
 >added a method to display list of cv files  - ANDREA
 
@@ -102,11 +102,15 @@ The below controller list refers to the respective modules integrated in this re
 >**dev by NEVIL @ZNevzz**
 
 +CertificateUploadController
->upload certificate module
+>upload certificate by student module
 >**dev by CRYSTAL @Crystal21**
 
 +OfferLetterUploadController
 >upload offer letters by student module
+>**dev by CRYSTAL @Crystal21**
+
++CounselingReportUploadController
+>upload counseling reports by student and FTPC module
 >**dev by CRYSTAL @Crystal21**
 ____________________________________________________________________
 
