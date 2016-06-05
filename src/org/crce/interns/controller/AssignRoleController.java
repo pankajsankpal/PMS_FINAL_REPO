@@ -56,7 +56,8 @@ public class AssignRoleController {
 	try
 	{	
 		System.out.println("return model");
-
+		HttpSession session=request.getSession();
+		String user=(String)session.getAttribute("userName");
 		if (result.hasErrors())
 		{
 			ModelAndView model=new ModelAndView("AssignRole");
