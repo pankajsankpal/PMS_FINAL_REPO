@@ -55,7 +55,7 @@ public class UserDetails implements Serializable{
 	private String modifiedBy;
 	
 	@Column(name = "modified_date" )
-	private Date modifiedDate;
+	Date modifiedDate;
 	
 	@Column(name = "notified" )
 	private boolean notified;

@@ -34,7 +34,7 @@
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<p>'+data[index].userName+'-'+data[index].name+'<p>');
+	 						$('#searchresult').append('<p>'+data[index].userName+'-'+data[index].name+'</p>');
 	 					}
 	 				});
  		}
@@ -107,7 +107,7 @@
     </div>
     
       
-    <div data-ng-controller="AJAXCtrl">
+    <!-- <div data-ng-controller="AJAXCtrl">
     <br><br>
         <input type ="text" id="mysearch" onKeyUp="AJAXCtrl();" data-ng-model="my"/>
         
@@ -115,7 +115,7 @@
     <ul>
       <li data-ng-repeat="name in names">{{name.userName}} - {{name.name}}</li>
     </ul>
-    </div>
+    </div> -->
     
 </body>
 </html>

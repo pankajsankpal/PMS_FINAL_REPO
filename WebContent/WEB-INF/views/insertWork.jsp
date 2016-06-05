@@ -32,20 +32,20 @@
 				<td><form:input path="userName" /></td>
 				<td><form:errors path="userName" cssClass="error" /></td>
 			</tr>
-			<tr><td>Month :</td>
-			<td><select name="userWork">
-
+			<tr>
+				<td>Month :</td>
+				<td><select name="userWork">
 						<option value="01">PLACEMENT REPORT</option>
 						<option value="02">ROOM ALLOTMENT</option>
 						<option value="03">COUNSELLING REPORT</option>
 						<option value="04">FEEDBACK REPORT</option>
-
 				</select></td>
-				<%-- <td><form:label path="userWork">Work:</form:label></td>
-				<td><form:input path="userWork" /></td>
-				<td><form:errors path="userWork" cssClass="error" /></td> --%>
 			</tr>
-
+			<tr>
+				<p>
+					<font size="5" color="red" face="verdana">${erroMesg}</font>
+				</p>
+			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>
 			</tr>
