@@ -12,6 +12,8 @@ import org.crce.interns.model.SpecialRole;
 import org.crce.interns.model.UserDetails;
 //import org.crce.interns.model.UserDetails;
 import org.hibernate.Query;
+
+import java.util.Date;
 import java.util.List;
 
 @Repository("loginDAO")
@@ -57,12 +59,14 @@ public class LoginDAOImpl implements LoginDAO{
 		return roleName;
 	}
 	
-	public int getStudentById(String userName) 
+	public int getStudentById(String userName,String user) 
 	{
-		System.out.println("In getStudentById");
+		System.out.println("In getStudentById "+user);
 		Session session = sessionFactory.openSession();
-		int list=session.createQuery("update UserDetails u set u.notified=true where u.userName=? ")
-				.setParameter(0,userName)
+		int list=session.createQuery("update UserDetails u set u.notified=true,u.modifiedBy=?,u.modifiedDate=? where u.userName=? ")
+				.setParameter(0,user)
+				.setParameter(1,new Date())
+				.setParameter(2, userName)
 				.executeUpdate();
 		System.out.println("LIST:"+list);
 		session.close();

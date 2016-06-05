@@ -4,6 +4,8 @@
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -67,6 +69,13 @@
 			<div class="page-content">
 				<form:form method="POST" id="validation-form" enctype="multipart/form-data" modelAttribute="allotmentBean" action="saveAllotment">
 					<h2 align="center"><u>Room Allotment Details</u></h2>
+					
+					<c:if test="${error==1}">
+						<center><p style="color:red;">Failed to upload...File format can be .docx/.odt/.pdf/.png/.jpg/.jpeg only!</p></center>
+					</c:if>
+					<c:if test="${error1==1}">
+						<center><p style="color:red;">Failed to upload...File size can be only upto 2MB!</p></center>>
+					</c:if>
 						<table align="center" cellspacing="20" cellpadding="20">
 			 				<tr><td><form:input path="allotment_id" type="hidden" /></td></tr> 
 							<tr><td><br/></td><td><br/></td>
