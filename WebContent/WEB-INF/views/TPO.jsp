@@ -59,10 +59,15 @@ description: contains tabs ->  activity ,uploads ,notification -->
 					</div>
 					<div class="page-content">
 							<div class="page-header">
-							<h1>
-								 TPO Page. 
-								
-							</h1>
+							
+							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
+							<h2>
+								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
+							</h2>
+							<br />
+	
+							
 							</div><!-- /.page-header -->
 
 						<div class="row">
