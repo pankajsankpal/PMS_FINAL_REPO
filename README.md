@@ -108,6 +108,10 @@ The below controller list refers to the respective modules integrated in this re
 +OfferLetterUploadController
 >upload offer letters by student module
 >**dev by CRYSTAL @Crystal21**
+
++CounselingReportUploadController
+>upload counseling reports by student and FTPC module
+>**dev by CRYSTAL @Crystal21**
 ____________________________________________________________________
 
 SERVICES
