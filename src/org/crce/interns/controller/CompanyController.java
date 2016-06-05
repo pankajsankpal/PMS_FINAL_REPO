@@ -64,7 +64,11 @@ public class CompanyController {
 			Company company = prepareCompanyModel(companyBean);
 			
 			companyService.addCompany(company);
-			return new ModelAndView("companysuccess");
+
+//			return new ModelAndView("companysuccess");
+
+			return new ModelAndView("redirect:/addCompany");
+
 		}
 
 }
