@@ -20,5 +20,5 @@ public interface ManageUserDao {
 
 	public void createStudent(Student student);
 	public void createFaculty(Faculty faculty);
-	public void deleteUser(Student student, String username);
+	public void deleteUser(Student student, String username) ;
 }

@@ -12,10 +12,25 @@ description: contains links to manage system users->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Add User via Csv file..</title>
@@ -108,7 +123,7 @@ description: contains links to manage system users->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${loginForm.userName}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 						<br><br>
@@ -116,28 +131,37 @@ description: contains links to manage system users->
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="clearfix">
-								
+										<c:if test="${success==1}">
+															<p style="color:green;">Users added successfully!</p>
+														</c:if>
 										<div class="row">
 										<div class="col-xs-12 col-lg-6">
 										<div class="widget-box">
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div>
-											  <h4>Upload CSV file...! </h4>
-												<form method="POST" enctype="multipart/form-data" action="uploadFile">
+
+											 &nbsp;&nbsp; <b >Upload CSV file...! </b>
+												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadFile">
 												<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
+												
+												<form:errors path="*" cssClass="errorblock" element="div" />
+
 														File to upload: <input class="btn btn-sm btn-primary" type="file" name="fileUpload"><br />
 														
 														<c:if test="${error==1}">
-															<p>Failed to upload...File format can be .csv only!</p>
+															<p style="color:red;">Failed to upload...File format can be .csv only!</p>
 														</c:if>
 														<c:if test="${error1==1}">
-															<p>Failed to upload...File size can be only upto 1MB</p>
+															<p style="color:red;">Failed to upload...File size can be only upto 1MB</p>
 														</c:if>
+
 														  <input class="btn btn-sm btn-warning" type="submit" value="Upload"> Press here to upload the file!
-												</form>
+														  <span><form:errors path="file" cssClass="error" />
+															</span>
+												</form:form>
 											</div>
-											<br>
+
 											</div>
 											</div>
 											</div>
@@ -212,8 +236,8 @@ description: contains links to manage system users->
 </body>
 </html>
 
-<%-- 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"    pageEncoding="ISO-8859-1"%>
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -249,7 +273,7 @@ description: contains links to manage system users->
 
 <!-- <form method="POST" enctype="multipart/form-data" action="uploadFile"> -->
 
-  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>
+ <!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/> -->
 	<form:errors path="*" cssClass="errorblock" element="div" />
 		File to upload: <input type="file" name="fileUpload"><br />
 		
@@ -266,24 +290,6 @@ description: contains links to manage system users->
 	<br/><br/>
 	
 </body>
-</html>
-=======
+</html> --%>
 
-<form method="POST" enctype="multipart/form-data" action="uploadFile">
-<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
-		File to upload: <input type="file" name="fileUpload"><br />
-		
-		<c:if test="${error==1}">
-			<p>Failed to upload...File format can be .csv only!</p>
-		</c:if>
-		<c:if test="${error1==1}">
-			<p>Failed to upload...File size can be only upto 1MB</p>
-		</c:if>
-		  <input type="submit" value="Upload"> Press here to upload the file!
-	</form>
-	<br/><br/>
-	
-</body>
-</html> 
 
---%>
