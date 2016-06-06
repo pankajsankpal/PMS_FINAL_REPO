@@ -25,6 +25,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 <body>
 
 	<jsp:directive.include file="Header.jsp" />
+	<%--
 	<c:if test="${companyname=='jpmorgan'}">
 		<c:set var="propercompanyname" value="JP Morgan" />
 	</c:if>
@@ -50,7 +51,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 		<c:set var="propercompanyname" value="TCS" />
 	</c:if>
 
-
+ --%>
 	<div class="main-content">
 
 		<div class="main-content-inner">
@@ -138,16 +139,14 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																	<div class="profile-info-name">Name</div>
 
 																	<div class="profile-info-value">
-																		<span>${propercompanyname}</span>
+																		<span>${company.company_name}</span>
 																	</div>
 																</div>
 																<div class="profile-info-row">
 																	<div class="profile-info-name">Address</div>
 
 																	<div class="profile-info-value">
-																		<span>${propercompanyname} India Office,Central
-																			Ave, Hiranandani Gardens, Powai, Mumbai, Maharashtra
-																			400076</span>
+																		<span>${company.company_address}</span>
 																	</div>
 																</div>
 

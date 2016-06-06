@@ -213,9 +213,9 @@ public class ManageProfile extends HttpServlet{
 	@RequestMapping(value="/CompaniesPage", method = RequestMethod.GET)
 	public ModelAndView listProfile() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
+		//model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
 		//return new ModelAndView("viewProfile", model);
-		return new ModelAndView("CompaniesPage", model);
+		return new ModelAndView("CompaniesPage");
 	}
 	
 	@RequestMapping(value="/Company/companyname/{companyname}", method = RequestMethod.GET)
@@ -325,22 +325,26 @@ public class ManageProfile extends HttpServlet{
 		
 		System.out.println(clist.size());
 		
-		System.out.println(clist.size());
+		
+		System.out.println("Company Name "+companyname);
 		
 		for( CompanyBean cb: clist){
 			System.out.println("Clist company name "+cb.getCompany_name());
-			System.out.println("Company Name "+companyname);
+			
+			
 			
 			if(companyname.equals(cb.getCompany_name())){
-		//f(cb.getCompany_name().equalsIgnoreCase(companyname)){
+					
+				System.out.println("inside IF"+cb.getCompany_name());
 				model.addObject("company", cb);
-				System.out.println(cb.getCompany_name());
+				
 			}
 		}
 		
-	
 		
-		model = new ModelAndView("Company");
+		// this was the error why the EL wasn't working. We were creating another object
+		//model = new ModelAndView("Company");
+		
 		return model;
 		   
 		
