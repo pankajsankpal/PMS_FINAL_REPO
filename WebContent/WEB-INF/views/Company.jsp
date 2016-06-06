@@ -89,9 +89,10 @@ description: dynamically creating a page once the Content on companiesPade is cl
 				<div class="page-header">
 
 					<h1>
-						${propercompanyname} <small> <i
+						${company.company_name} <small> <i
 							class="ace-icon fa fa-angle-double-right"></i>
 						</small>
+						<a href="${link}">About us</a>
 					</h1>
 
 				</div>

@@ -19,6 +19,7 @@ import org.crce.interns.beans.JobBean;
 import org.crce.interns.model.Job;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CompanyService;
+import org.crce.interns.service.ConstantValues;
 //import org.crce.interns.model.Allotment;
 //import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
@@ -43,7 +44,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class ManageProfile extends HttpServlet{
+public class ManageProfile extends HttpServlet implements ConstantValues{
 
 	/**
 	 * 
@@ -242,12 +243,14 @@ public class ManageProfile extends HttpServlet{
 			System.out.println("Company Name "+companyname);
 			if(companyname.equalsIgnoreCase(cb.getCompany_name())){
 		//f(cb.getCompany_name().equalsIgnoreCase(companyname)){
+				
 				model.addObject("company", cb);
+				
+				
 			}
 		}
 		
-	
-		
+			
 		model = new ModelAndView("Company");
 		return model;
 		   
@@ -301,7 +304,10 @@ public class ManageProfile extends HttpServlet{
 		}
 		return beans;
 	}
-
+/*
+ * added by @ZNevzz : status = working
+ * 
+ */
 	@RequestMapping(value="/Company", method = RequestMethod.GET)
 	public ModelAndView test(
 			 @RequestParam("companyname") String companyname
@@ -341,7 +347,33 @@ public class ManageProfile extends HttpServlet{
 			}
 		}
 		
-		
+		if(companyname.equals(JPM)){
+			model.addObject("link", JPM_LINK);
+			
+		}else if(companyname.equals(DIRECTI)){
+			model.addObject("link", DIRECTI_LINK);
+			
+		}else if(companyname.equals(MS)){
+			model.addObject("link", MS_LINK);
+			
+		}else if(companyname.equals(TCS)){
+			model.addObject("link", TCS_LINK);
+			
+		}else if(companyname.equals(ACC)){
+			model.addObject("link", ACC_LINE);
+			
+		}else if(companyname.equals(ZS)){
+			model.addObject("link", ZS_LINK);
+			
+		}else if(companyname.equals(GOD)){
+			model.addObject("link", GOD_LINK);
+			
+		}else if(companyname.equals(LNT)){
+			model.addObject("link", LNT_LINK);
+			
+		}
+	
+	
 		// this was the error why the EL wasn't working. We were creating another object
 		//model = new ModelAndView("Company");
 		
