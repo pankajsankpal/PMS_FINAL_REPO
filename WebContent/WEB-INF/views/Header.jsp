@@ -1,12 +1,44 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
+<!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>  -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<script>
+
+function checkNewNoti(){
+	console.log("inside checkNewNoti");
+	
+	
+	$.getJSON("checkNewNoti",
+				
+				{CHARS:''},
+				
+				function(data){
+					console.log(data);
+					console.log("size of list: "+data.length);
+					//$("#notiNumber").text(data.length)
+					//$('#noti').text('');
+					/*
+					for(var index in data){
+						$('#noti').append('<li><a href="'+data[index].url+'"><div class=/"clearfix/"><span class=/"pull-left/"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'
+								+data[index].type+'<br/>Sent on'+data[index].dateTime+'<br/>'+
+								data[index].message+'<br/></span><span class="pull-right badge badge-info">+12</span></div></a></li>'
+						);
+					}
+					*/
+				});
+	
+}
+
+
 </head>
 
-<body class="skin-3 no-skin">
+<body onload="checkNewNoti()" class="skin-3 no-skin">
 	<jsp:directive.include file="scripts.jsp" />
 	
 	<div id="navbar" class="navbar navbar-default">
@@ -151,4 +183,5 @@
 
 		
 </body>
+
 </html>
