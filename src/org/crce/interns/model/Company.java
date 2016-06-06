@@ -18,16 +18,40 @@ public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "company_id")
-	private int companyId;
+	private Integer company_id;
 	
+	public Integer getCompany_id() {
+		return company_id;
+	}
+	public void setCompany_id(Integer company_id) {
+		this.company_id = company_id;
+	}
+	public Integer getCriteria_id() {
+		return criteria_id;
+	}
+	public void setCriteria_id(Integer criteria_id) {
+		this.criteria_id = criteria_id;
+	}
+	public String getCompany_name() {
+		return company_name;
+	}
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
+	}
+	public String getCompany_address() {
+		return company_address;
+	}
+	public void setCompany_address(String company_address) {
+		this.company_address = company_address;
+	}
 	@Column(name = "criteria_id")
-	private int criteriaId;
+	private Integer criteria_id;
 	
 	@Column(name = "company_name")
-	private String companyName;
+	private String company_name;
 	
 	@Column(name = "company_address")
-	private String companyAddress;
+	private String company_address;
 	
 	@Column(name = "created_date")
 	private Date createdDate;
@@ -41,30 +65,7 @@ public class Company {
 	@Column(name = "modified_by")
 	private String modifiedBy;
 	
-	public int getCompanyId() {
-		return companyId;
-	}
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
-	}
-	public int getCriteriaId() {
-		return criteriaId;
-	}
-	public void setCriteriaId(int criteriaId) {
-		this.criteriaId = criteriaId;
-	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-	public String getCompanyAddress() {
-		return companyAddress;
-	}
-	public void setCompanyAddress(String companyAddress) {
-		this.companyAddress = companyAddress;
-	}
+	
 	public Date getCreatedDate() {
 		return createdDate;
 	}
