@@ -113,7 +113,7 @@ public class SendEmailController {
             
             
 
-            return new ModelAndView("Email");
+           // return new ModelAndView("Email");
             //return new ModelAndView("Final");
         } catch (Exception e) {
             System.out.println(e);

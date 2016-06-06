@@ -8,17 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/PMS_v1/dispCV?folder=Resume">Resume</a><br>
+<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>
+<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters</a>
 
-this the list of cv:
 
-<c:if test="${not empty lists}">
 
+
+<c:if test="${not empty indexList}">
+</br>THIS are the files
 		<ul>
-			<c:forEach var="listValue" items="${listcv}">
-				<li>${listValue}</li>
+			<c:forEach var="index" items="${indexList}">
+				
+				<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
 			</c:forEach>
 		</ul>
 
 	</c:if>
+	
 </body>
 </html>

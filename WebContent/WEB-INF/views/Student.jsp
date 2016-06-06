@@ -110,7 +110,7 @@
 		</tr>
                 
 		<tr>
- 			<td><a href="dispCV">display list</a><br /></td>
+ 			<td><a href="displist">display list</a><br /></td>
  		</tr>
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
