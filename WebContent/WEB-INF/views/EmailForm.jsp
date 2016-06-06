@@ -181,7 +181,7 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal" role="form"
-                              action="SubmitEmail" enctype="multipart/form-data" method="post">
+                              action="SendPersonalMail" enctype="multipart/form-data" method="post">
                             <!-- Not Required here
                                     <div class="form-group">
                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>

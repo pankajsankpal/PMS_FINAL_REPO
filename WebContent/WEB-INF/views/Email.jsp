@@ -171,7 +171,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-        <form class="form-horizontal" role="form" action="SubmitEmail" enctype="multipart/form-data" method="post">
+        <form class="form-horizontal" role="form" action="GroupSubmitEmail" enctype="multipart/form-data" method="post">
 
 
 
