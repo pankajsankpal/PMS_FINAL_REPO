@@ -54,6 +54,7 @@ description: contains the list of all the companies -->
 										</a>
 										
 									</li>
+									
 									<li><a href="Company?companyname=larsentoubro"> <img width="200" height="150"
 											alt="150x150" src="assets/images/companies/larsentoubro.jpg" />
 										</a>

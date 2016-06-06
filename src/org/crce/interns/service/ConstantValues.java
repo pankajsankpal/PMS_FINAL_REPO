@@ -83,5 +83,15 @@ public interface ConstantValues {
 	public String HR = "H.R.";
 	public String COD = "Coding";
 
+	// COMPANY ABOUT US URL
+	public String JPM = "JP Morgan";
+	public String DIRECTI = "Direct i";
+	public String MS = "Morgan Stanley";
+	public String TCS = "Tata Consultancy Services";
+	public String ACC = "Accenture";
+	public String ZS = "ZS Associates";
+	public String GOD = "Godrej";
+	public String LNT = "Laursen & Tubro";
+
 	
 }
