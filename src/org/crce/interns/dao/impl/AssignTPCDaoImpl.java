@@ -67,7 +67,7 @@ public class AssignTPCDaoImpl implements AssignTPCDao {
 		
 		Session session = sessionFactory.openSession();
 		
-		String SQL_QUERY = "from UserDetails as u order by u.roleId";//Sort in ascending order by RoleID order by u.userName
+		String SQL_QUERY = "from UserDetails as u where u.roleId<>'1' and u.roleId<>'2' order by u.roleId";//Sort in ascending order by RoleID order by u.userName
 		Query query = session.createQuery(SQL_QUERY);
 		
 		List<UserDetails> listUserDetails = query.list();
