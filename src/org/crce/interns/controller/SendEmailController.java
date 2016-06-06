@@ -88,7 +88,7 @@ public class SendEmailController {
         } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
-            model.addObject("exception", "/SubmitEmail! Email not sent!");
+            model.addObject("exception", "/GroupSubmitEmail! Email not sent!");
             return model;
 
         }
@@ -116,7 +116,7 @@ public class SendEmailController {
         } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
-            model.addObject("exception", "/SubmitEmail");
+            model.addObject("exception", "/GroupSendMail");
             return model;
         }
     }
