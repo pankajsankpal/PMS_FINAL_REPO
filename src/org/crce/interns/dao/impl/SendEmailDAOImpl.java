@@ -357,5 +357,26 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         System.out.println("final senderList " + senderList);
         return senderList;
     }
-
+    
+    @Override
+    public String fetchCompanyStudents(String companyName){
+        
+        String senderList = "";
+        Session session = sessionFactory.openSession();
+        String SQL_QUERY = "Select company_id from Company where company_name like '" + companyName + "'";
+        Query query = session.createQuery(SQL_QUERY);
+        List list = query.list();
+        System.out.println(list.toString());
+        for(Object o : list){
+            String SQL_QUERY1 = "Select userName from QuickStats where companyId = "+ Integer.parseInt(o.toString());
+            Query query1 = session.createQuery(SQL_QUERY1);
+            List list1 = query.list();
+            System.out.println(list1.toString());
+            //String recipient = list.toString();
+            String recipient = "Single" + o.toString() + "@gmail.com";
+            senderList = senderList.concat(recipient + " ");
+        }
+        System.out.println(senderList);
+        return senderList;
+    }
 }

@@ -27,7 +27,8 @@
         <link rel="stylesheet" href="assets/css/google.css">
         <!-- text fonts -->
         <link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
-
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- ace styles -->
         <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
@@ -199,6 +200,25 @@
                         <option value="prodClass">ProdClass</option>
                         <option value="itClass">ITClass</option>
                         <option value="elexClass">ElexClass</option>
+                        <option value="JPMorgan">JP Morgan</option>
+                        <option value="MorganStanley"> Morgan Stanley </option>
+                        <option value="Directi">Directi </option>
+                        <option value ="TCS">TCS</option>
+                        <option value="Accenture">Accenture</option>
+                        <option value="SAP">SAP</option>
+                        <option value="Godrej">Godrej</option>
+                        <option value="Neebal">Neebal</option>
+                        <option value="Seclore">Seclore</option>
+                        <option value="LnTInfoTech"> L&T Infotech</option>
+                        <option value="LntEngineering"> L&T Engineering</option>
+                        <option value="Nerolac"> Nerolac </option>
+                        <option value="Amdocs"> Amdocs</option>
+                        <option value="Patni"> Patni </option>
+                        <option value="Oracle"> Oracle </option>
+                        <option value="TCSDigital"> TCS Digital</option>
+                        <option value="NSE"> NSE </option>
+                        <option value="Siemens">Siemens</option>
+                        <option value="BNP"> BNP Paribas </option>
 
                     </select>
                 </div>

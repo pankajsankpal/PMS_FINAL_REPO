@@ -5,6 +5,8 @@
  */
 package org.crce.interns.dao;
 
+import java.util.List;
+
 /**
  *
  * @author Leon
@@ -20,4 +22,5 @@ public interface SendEmailDAO {
     public String fetchProdFTPC();
     public String fetchStudentEmailId(String receivers);
     public String fetchStreamStudents(String receivers);
+    public String fetchCompanyStudents(String companyName);
 }
