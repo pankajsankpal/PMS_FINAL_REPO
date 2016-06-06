@@ -11,5 +11,13 @@ public interface ConstantValues {
 	public String FTPCId = "4";
 	public String TPOId = "5";
 	public String AdminId = "6";
+	public String StudentName = "Student";
+	public String StudentTPCName = "StudentTPC";
+	public String Faculty = "Faculty";
+	public String FacultyTPC = "FacultyTPC";
+	public String Admin = "Admin";
+	public String TPO = "TPO";
+	
+	//
 	
 }

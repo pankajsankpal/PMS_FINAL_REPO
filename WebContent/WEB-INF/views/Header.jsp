@@ -1,31 +1,40 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
+<!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>  -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
 <script>
+
 function checkNewNoti(){
-	console.log("inside check");
+	console.log("inside checkNewNoti");
 	
-	$.getJSON("looseNotification",
+	
+	$.getJSON("checkNewNoti",
 				
 				{CHARS:''},
 				
 				function(data){
 					console.log(data);
+					console.log("size of list: "+data.length);
+					//$("#notiNumber").text(data.length)
 					//$('#noti').text('');
+					/*
 					for(var index in data){
 						$('#noti').append('<li><a href="'+data[index].url+'"><div class=/"clearfix/"><span class=/"pull-left/"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'
 								+data[index].type+'<br/>Sent on'+data[index].dateTime+'<br/>'+
 								data[index].message+'<br/></span><span class="pull-right badge badge-info">+12</span></div></a></li>'
 						);
 					}
+					*/
 				});
 	
 }
 
-</script>
 
 </head>
 
@@ -63,17 +72,17 @@ function checkNewNoti(){
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">${sessionScope.newNoti}</span>
+								<span class="badge badge-important">8</span>
 							</a>
 
-							<ul id="noti" class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									${sessionScope.newNoti} Notifications
+									8 Notifications
 								</li>
 
 								<li class="dropdown-content">
-									<ul id="noti" class="dropdown-menu dropdown-navbar navbar-pink">
+									<ul class="dropdown-menu dropdown-navbar navbar-pink">
 										<li>
 											<a href="#">
 												<div class="clearfix">
