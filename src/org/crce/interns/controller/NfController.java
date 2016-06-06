@@ -135,7 +135,7 @@ public class NfController {
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	@RequestMapping("/looseNotification")
+	@RequestMapping("/checkNewNoti")
 	public @ResponseBody String looseNotification(HttpServletRequest request){
 	try{
 		System.out.println("Inside NfController");
@@ -160,21 +160,35 @@ public class NfController {
 		personalProfileBean = profileService.getProfile(personalProfileBean);	
 	
 		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		
+		//System.out.println(nfList.get(0).getMessage());
+		
 		nfList = nfService.sortByDate(nfList);
                 
-                
-                NotificationBean notificationBean = new NotificationBean();
-                emailNotificationService.sendEmailNotification(notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
+		request.getSession(true).setAttribute("newNoti", nfList.size());
+               // NotificationBean notificationBean = new NotificationBean();
+                //emailNotificationService.sendEmailNotification(
+                	//	notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
 
 	
 		return new Gson().toJson(nfList);
 	}
 	catch(Exception e){
-		System.out.println(e);
+		System.out.println(e.getLocalizedMessage());
 		//ModelAndView model=new ModelAndView("500");
 		//model.addObject("exception", "/viewprofile");
 		return "exception at looseNotification";
 	}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	@RequestMapping("/onNotiCick")
+	public @ResponseBody String checkNewNoti(HttpServletRequest request){
+		
+		String timestamp = new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date());
+		//request.getSession(true).setAttribute("notiClick", new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+		request.getSession(true).setAttribute("notiClick", timestamp);
+		return timestamp;
 	}
 
 }
