@@ -1,6 +1,7 @@
 package org.crce.interns.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,7 +54,11 @@ public class StatisticsController {
 	@RequestMapping(value="/viewStatistics", method = RequestMethod.GET)
 	public ModelAndView viewStatistics(HttpServletRequest request) {
 		
-		return null;
+		List<PlacementStatisticsBean> result = 
+				statisticsService.list();
+		
+		
+		return new ModelAndView("index");
 	}
 	
 }

@@ -11,5 +11,5 @@ public interface CompanyDao {
 	public void addCriteria(Criteria criteria);
     
 	public void addCompany(Company company);
-	public List<CompanyBean> getCompany();
+	public List<Company> getCompany();
 }
