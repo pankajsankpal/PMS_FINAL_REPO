@@ -67,7 +67,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 					</li>
 
 					<li><a href="CompaniesPage">Companies</a></li>
-					<li class="active">${propercompanyname}</li>
+					<li class="active">${company.company_name}</li>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -168,7 +168,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Job Posts
 															</h4>
-															<br /> <a href="JobPosts?companyname=${companyname}">
+															<br /> <a href="JobPosts?companyname=${company.company_name}">
 																<img style="border: 1" width="400" height="200"
 																alt="150x150" src="assets/images/companies/jobposts.jpg" />
 															</a>
