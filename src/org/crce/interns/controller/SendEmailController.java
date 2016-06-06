@@ -102,14 +102,14 @@ public class SendEmailController {
     public ModelAndView email_welcome(HttpServletRequest request) {
 
         try {
-//            System.out.println("Mapped to /sendMail");
-//            HttpSession session = request.getSession();
-//          String roleId = (String) session.getAttribute("roleId");
-//            if (!crService.checkRole("SendEmail", roleId)) {
-                //return new ModelAndView("403");
-            //}else {
+            System.out.println("Mapped to /sendMail");
+           HttpSession session = request.getSession();
+          String roleId = (String) session.getAttribute("roleId");
+            if (!crService.checkRole("SendEmail", roleId)) {
+                return new ModelAndView("403");
+            }else {
             return new ModelAndView("Email");
-        //}
+        }
 
             //return new ModelAndView("Email");
             //return new ModelAndView("Final");
