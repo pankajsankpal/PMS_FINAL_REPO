@@ -1,28 +1,21 @@
-<!--
-        @author Leon
-        Page : EmailSending
-        Task: Gives UI to send email with receiver, subject, message, attachment and send button
--->	
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Email Sending</title>
+        <title>Email-Sending</title>
 
-        <meta name="description" content="Common form elements and layouts" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
         <!-- bootstrap & fontawesome -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <link rel="stylesheet"
-              href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
 
         <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="assets/css/bootstrap-duallistbox.min.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
+        <link rel="stylesheet" href="assets/css/select2.min.css" />
         <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
         <link rel="stylesheet" href="assets/css/chosen.min.css" />
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
@@ -33,20 +26,18 @@
         <link rel="stylesheet" href="assets/css/colorpicker.min.css" />
         <link rel="stylesheet" href="assets/css/google.css">
         <!-- text fonts -->
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
 
         <!-- ace styles -->
-        <link rel="stylesheet" href="assets/css/ace.min.css"
-              class="ace-main-stylesheet" id="main-ace-style" />
+        <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
         <!--[if lte IE 9]>
-                                <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-                        <![endif]-->
+                <link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+        <![endif]-->
 
         <!--[if lte IE 9]>
-                          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-                        <![endif]-->
+          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+        <![endif]-->
 
         <!-- inline styles related to this page -->
 
@@ -56,13 +47,14 @@
         <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
         <!--[if lte IE 8]>
-                        <script src="assets/js/html5shiv.min.js"></script>
-                        <script src="assets/js/respond.min.js"></script>
-                        <![endif]-->
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
     </head>
 
-    <%@include file="Header.jsp" %>
-    <div class="main-content">
+    <body class="no-skin">
+        <%@include file="Header.jsp" %>
+         <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs" id="breadcrumbs">
                 <script type="text/javascript">
@@ -179,138 +171,121 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form"
-                              action="SendPersonalMail" enctype="multipart/form-data" method="post">
-                            <!-- Not Required here
-                                    <div class="form-group">
-                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
-
-                                            <div class="col-sm-9">
-                                                    <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
-                                            </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Full Length </label>
-
-                                            <div class="col-sm-9">
-                                                    <input type="text" id="form-field-1-1" placeholder="Text Field" class="form-control" />
-                                            </div>
-                                    </div>   
-
-                                    <div class="space-4"></div>
-
-                                    <div class="form-group">
-                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Password Field </label>
-
-                                            <div class="col-sm-9">
-                                                    <input type="password" id="form-field-2" placeholder="Password" class="col-xs-10 col-sm-5" />
-                                                    <span class="help-inline col-xs-12 col-sm-7">
-                                                            <span class="middle">Inline help text</span>
-                                                    </span>
-                                            </div>
-                                    </div> -->
-                            <!--  tag -->
-                            <div class="widget-box">
-                                <div class="widget-header">
-                                    <h4 class="widget-title">Compose e-Mail</h4>
-                                    <span class="widget-toolbar">
-                                        <a href="#" data-action="settings">
-                                            <i class="ace-icon fa fa-cog"></i>
-                                        </a>
-
-                                        <a href="#" data-action="reload">
-                                            <i class="ace-icon fa fa-refresh"></i>
-                                        </a>
-
-                                        <a href="#" data-action="collapse">
-                                            <i class="ace-icon fa fa-chevron-up"></i>
-                                        </a>
-
-                                        <a href="#" data-action="close">
-                                            <i class="ace-icon fa fa-times"></i>
-                                        </a>
-                                    </span>
-                                </div>
-                                <br>					
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"
-                                           for="form-field-tags">To</label>
-
-                                    <div class="col-sm-5">
-                                        <div class="inline">
-                                            <input class="col-xs-10 col-sm-12" type="text" name="receiver" id="form-field-tags"
-                                                   value="" placeholder="Recipients" required onblur="check()"/>
-
-                                        </div>
-
-                                    </div>
-                                    <font color ="red"> ${error1} </font>
-                                </div>
+        <form class="form-horizontal" role="form" action="GroupSubmitEmail" enctype="multipart/form-data" method="post">
 
 
-                                <!--  end of tag -->
-
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"
-                                           for="form-field-1"> Subject </label>
-
-                                    <div class="col-sm-5">
-                                        <input type="text" id="form-field-1" placeholder="Subject"
-                                               class="col-xs-10 col-sm-12" name="subject"/>
-                                    </div>
-                                </div>
-                                <!-- end of Subject field -->
-
-                                <!-- start of message textarea -->
 
 
-                                <div class="form-group">
+
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-3 no-padding-right"> To </label>
+
+                <div class="col-xs-12 col-sm-9">
+                    <select multiple="" id="state" name="receiver" class="select2" data-placeholder="Click to Choose Recipients">
+                        <option value="">&nbsp;</option>
+                        <option value="CompsSTPC">CompsSTPC</option>
+                        <option value="ITSTPC">ITSTPC</option>
+                        <option value="ElexSTPC">ElexSTPC</option>
+                        <option value="ProdSTPC">ProdSTPC</option>
+                        <option value="CompsFTPC">CompsFTPC</option>
+                        <option value="ITFTPC">ITFTPC</option>
+                        <option value="ProdFTPC">ProdFTPC</option>
+                        <option value="ElexFTPC">ElexFTPC</option>
+                        <option value="STPC">STPC</option>
+                        <option value="FTPC">FTPC</option>
+                        <option value="TPC">TPC</option>
+                        <option value="compsClass">CompsClass</option>
+                        <option value="prodClass">ProdClass</option>
+                        <option value="itClass">ITClass</option>
+                        <option value="elexClass">ElexClass</option>
+
+                    </select>
+                </div>
+                <br/> <br/> <br>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right"
+                               for="form-field-1"> Subject </label>
+
+                        <div class="col-sm-5">
+                            <input type="text" id="form-field-1" placeholder="Subject"
+                                   class="col-xs-10 col-sm-12" name="subject"/>
+                        </div>
+                    </div>
+                <center>
+                <div class="form-group" >
+                            
                                     <label class="col-sm-3 control-label no-padding-right"
                                            for="form-field">Message</label>
                                     <div class="col-sm-5">
                                         <textarea id="form-field"
                                                   class="autosize-transition form-control"
-                                                  placeholder="Message" name="message"></textarea>
+                                                  placeholder="Message" name="message" cols="20" rows="10"></textarea>
                                     </div>
                                 </div>
-
-
-                                <!-- end of message textarea -->
-
-                                <div class="form-group">
+                </center>
+                <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right"
                                            for="form-field-2"> Attachments </label>
                                     <div class="col-sm-9">
                                         <input type="file" multiple name="fileUpload" />
                                     </div>
                                 </div>
-
-
-
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button class="btn btn-info" type="submit" id="submit">
-                                        <i class="material-icons">send</i> Send
-                                    </button>
-                                </div> <font color = "green"> ${success} </font>
-
-
-
-                            </div>
-                    </div>
+                
+                    <div class="col-md-offset-3 col-md-9">
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-info" type="submit" id="submit">
+                            <i class="material-icons">send</i> Send
+                        </button>
+                
+                    </div> <font color = "green"> ${success} </font>
+                    
                 </div>
-            </div>
+            
+        </form>
+        </div>
+                    </div>
+        </div>
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+</div><!-- /.page-content -->
+</div>
+</div><!-- /.main-content -->
+
+<div class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+            <span class="bigger-120">
+                <span class="blue bolder">Ace</span>
+                Application &copy; 2013-2014
+            </span>
+
+            &nbsp; &nbsp;
+            <span class="action-buttons">
+                <a href="#">
+                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                </a>
+
+                <a href="#">
+                    <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                </a>
+
+                <a href="#">
+                    <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                </a>
+            </span>
         </div>
     </div>
 </div>
-</form>
 
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+</div><!-- /.main-container -->
 
+<!-- basic scripts -->
 
-
-
-<%@include file="Footer.jsp" %>
 <!--[if !IE]> -->
 <script src="assets/js/jquery.2.1.1.min.js"></script>
 
@@ -322,7 +297,7 @@
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-                                                    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
 </script>
 
 <!-- <![endif]-->
@@ -339,25 +314,11 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
 <script src="assets/js/bootstrap.min.js"></script>
 
 <!-- page specific plugin scripts -->
-
-<!--[if lte IE 8]>
-<script src="assets/js/excanvas.min.js"></script>
-<![endif]-->
-<script src="assets/js/jquery-ui.custom.min.js"></script>
-<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/chosen.jquery.min.js"></script>
-<script src="assets/js/fuelux.spinner.min.js"></script>
-<script src="assets/js/bootstrap-datepicker.min.js"></script>
-<script src="assets/js/bootstrap-timepicker.min.js"></script>
-<script src="assets/js/moment.min.js"></script>
-<script src="assets/js/daterangepicker.min.js"></script>
-<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-<script src="assets/js/bootstrap-colorpicker.min.js"></script>
-<script src="assets/js/jquery.knob.min.js"></script>
-<script src="assets/js/jquery.autosize.min.js"></script>
-<script src="assets/js/jquery.inputlimiter.1.3.1.min.js"></script>
-<script src="assets/js/jquery.maskedinput.min.js"></script>
-<script src="assets/js/bootstrap-tag.min.js"></script>
+<script src="assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="assets/js/jquery.raty.min.js"></script>
+<script src="assets/js/bootstrap-multiselect.min.js"></script>
+<script src="assets/js/select2.min.js"></script>
+<script src="assets/js/typeahead.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -365,6 +326,113 @@ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
+    jQuery(function ($) {
+        var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox({infoTextFiltered: '<span class="label label-purple label-lg">Filtered</span>'});
+        var container1 = demo1.bootstrapDualListbox('getContainer');
+        container1.find('.btn').addClass('btn-white btn-info btn-bold');
+
+        /**var setRatingColors = function() {
+         $(this).find('.star-on-png,.star-half-png').addClass('orange2').removeClass('grey');
+         $(this).find('.star-off-png').removeClass('orange2').addClass('grey');
+         }*/
+        $('.rating').raty({
+            'cancel': true,
+            'half': true,
+            'starType': 'i'
+                    /**,
+                     
+                     'click': function() {
+                     setRatingColors.call(this);
+                     },
+                     'mouseover': function() {
+                     setRatingColors.call(this);
+                     },
+                     'mouseout': function() {
+                     setRatingColors.call(this);
+                     }*/
+        })//.find('i:not(.star-raty)').addClass('grey');
+
+
+
+        //////////////////
+        //select2
+        $('.select2').css('width', '200px').select2({allowClear: true})
+        $('#select2-multiple-style .btn').on('click', function (e) {
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2)
+                $('.select2').addClass('tag-input-style');
+            else
+                $('.select2').removeClass('tag-input-style');
+        });
+
+        //////////////////
+        $('.multiselect').multiselect({
+            enableFiltering: true,
+            buttonClass: 'btn btn-white btn-primary',
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"></button>',
+                ul: '<ul class="multiselect-container dropdown-menu"></ul>',
+                filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
+                filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
+                li: '<li><a href="javascript:void(0);"><label></label></a></li>',
+                divider: '<li class="multiselect-item divider"></li>',
+                liGroup: '<li class="multiselect-item group"><label class="multiselect-group"></label></li>'
+            }
+        });
+
+
+        ///////////////////
+
+        //typeahead.js
+        //example taken from plugin's page at: https://twitter.github.io/typeahead.js/examples/
+        var substringMatcher = function (strs) {
+            return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function (i, str) {
+                    if (substrRegex.test(str)) {
+                        // the typeahead jQuery plugin expects suggestions to a
+                        // JavaScript object, refer to typeahead docs for more info
+                        matches.push({value: str});
+                    }
+                });
+
+                cb(matches);
+            }
+        }
+
+        $('input.typeahead').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            name: 'states',
+            displayKey: 'value',
+            source: substringMatcher(ace.vars['US_STATES'])
+        });
+
+
+        ///////////////
+
+
+        //in ajax mode, remove remaining elements before leaving page
+        $(document).one('ajaxloadstart.page', function (e) {
+            $('[class*=select2]').remove();
+            $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox('destroy');
+            $('.rating').raty('destroy');
+            $('.multiselect').multiselect('destroy');
+        });
+
+    });
     jQuery(function ($) {
         $('#id-disable-check').on('click', function () {
             var inp = $('#form-input-readonly').get(0);

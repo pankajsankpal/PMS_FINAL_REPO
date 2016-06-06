@@ -52,7 +52,7 @@ public class AssignTPODaoImpl implements AssignTPODao {
 		
 		Session session = sessionFactory.openSession();
 		
-		String SQL_QUERY = "from UserDetails as u order by u.roleId";
+		String SQL_QUERY = "from UserDetails as u where u.roleId<>'1' and u.roleId<>'2' order by u.roleId";
 		Query query = session.createQuery(SQL_QUERY);
 		
 		List<UserDetails> listUserDetails = query.list();

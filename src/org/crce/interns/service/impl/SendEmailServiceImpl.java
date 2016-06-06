@@ -60,12 +60,13 @@ public class SendEmailServiceImpl implements SendEmailService {
                 }
             }
         }
-        String compsClass = "leonsurajd69@gmail.com", itClass = "dsouza.nevil45@gmail.com", prodClass = "cuthinho.crystal95@gmail.com", elexClass = "melwyn95@gmail.com";
-        String allClass = compsClass + " " + itClass + " " + prodClass + " " + elexClass;
+        //String compsClass = "leonsurajd69@gmail.com", itClass = "dsouza.nevil45@gmail.com", prodClass = "cuthinho.crystal95@gmail.com", elexClass = "melwyn95@gmail.com";
+        //String allClass = compsClass + " " + itClass + " " + prodClass + " " + elexClass;
 
-        String keywordReceivers = request.getParameter("receiver");
+       // String [] keywordReceivers = request.getParameterValues("receiver");
 
-        String[] keywordReceiversSplit = keywordReceivers.split(" ");
+        //String[] keywordReceiversSplit = keywordReceivers.split(" ");
+        String[] keywordReceiversSplit = request.getParameterValues("receiver");
         List<String> list = new ArrayList<String>();
         List<String> loweredList = new ArrayList<String>();
         list.addAll(Arrays.asList(keywordReceiversSplit));
@@ -271,8 +272,9 @@ public class SendEmailServiceImpl implements SendEmailService {
         if (loweredList.contains("prodclass,")) {
             // System.out.println("tpc,");
             int pos = loweredList.indexOf("prodclass,");
-            //System.out.println(pos);
+            
             loweredList.remove("prodclass,");
+            String prodClass = sendEmailDAO.fetchStreamStudents("Production Engineering");
             loweredList.add(pos, prodClass);
             // System.out.println(loweredList);
         } else if (loweredList.contains("prodclass")) {
@@ -280,6 +282,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("prodclass");
             //System.out.println(pos);
             loweredList.remove("prodclass");
+            String prodClass = sendEmailDAO.fetchStreamStudents("Production Engineering");
             loweredList.add(pos, prodClass);
             // System.out.println(loweredList);
         }
@@ -288,6 +291,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("itclass,");
             System.out.println(pos);
             loweredList.remove("itclass,");
+            String itClass = sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, itClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("itclass")) {
@@ -295,6 +299,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("itclass");
             System.out.println(pos);
             loweredList.remove("itclass");
+            String itClass = sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, itClass);
             System.out.println(loweredList);
         }
@@ -303,6 +308,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("compsclass,");
             System.out.println(pos);
             loweredList.remove("compsclass,");
+            String compsClass = sendEmailDAO.fetchStreamStudents("Computer Engineering");
             loweredList.add(pos, compsClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("compsclass")) {
@@ -310,6 +316,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("compsclass");
             System.out.println(pos);
             loweredList.remove("compsclass");
+            String compsClass = sendEmailDAO.fetchStreamStudents("Computer Engineering");
             loweredList.add(pos, compsClass);
             System.out.println(loweredList);
         }
@@ -318,6 +325,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("elexclass,");
             System.out.println(pos);
             loweredList.remove("elexclass,");
+            String elexClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering");
             loweredList.add(pos, elexClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("elexclass")) {
@@ -325,6 +333,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("elexclass");
             System.out.println(pos);
             loweredList.remove("elexclass");
+            String elexClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering");
             loweredList.add(pos, elexClass);
             System.out.println(loweredList);
         }
@@ -333,6 +342,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("allclasses,");
             System.out.println(pos);
             loweredList.remove("allclasses,");
+            String allClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering") + " " + sendEmailDAO.fetchStreamStudents("Computer Engineering") + " " + sendEmailDAO.fetchStreamStudents("Production Engineering") + " " + sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, allClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("allclasses")) {
@@ -340,6 +350,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             int pos = loweredList.indexOf("allclasses");
             System.out.println(pos);
             loweredList.remove("allclasses");
+            String allClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering") + " " + sendEmailDAO.fetchStreamStudents("Computer Engineering") + " " + sendEmailDAO.fetchStreamStudents("Production Engineering") + " " + sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, allClass);
             System.out.println(loweredList);
         }
@@ -402,7 +413,7 @@ public class SendEmailServiceImpl implements SendEmailService {
         });
 
         deleteFiles();
-        return new ModelAndView("EmailForm");
+        return new ModelAndView("Email");
     }
 
     /*
@@ -434,5 +445,35 @@ public class SendEmailServiceImpl implements SendEmailService {
             f.delete();
         }
     }
+    
+    @Override
+    public ModelAndView sendPersonalMail(HttpServletRequest request,
+            @RequestParam(value = "fileUpload") CommonsMultipartFile[] file){
+        //DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+        String path = directoryPathBean.getEmailFolder()+"\\";
+        String [] emailIds = request.getParameter("receiver").split(" ");
+        
+        javaMailSender.send(new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage)
+                    throws javax.mail.MessagingException, IllegalStateException, IOException {
+                System.out.println("Throws Exception");
+                MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
+                //mimeMessageHelper.setTo(request.getParameter("receiver"));
+                mimeMessageHelper.setTo(emailIds);
+
+                mimeMessageHelper.setSubject(request.getParameter("subject"));
+
+                mimeMessageHelper.setText(request.getParameter("message"));
+
+                for (CommonsMultipartFile f : file) {
+                    if (checkFile(f.getOriginalFilename())) {
+                        mimeMessageHelper.addAttachment(f.getOriginalFilename(), new File(path + f.getOriginalFilename()));
+                    }
+                }
+            }
+        });
+        return new ModelAndView("EmailForm");
+    }
+    
 }

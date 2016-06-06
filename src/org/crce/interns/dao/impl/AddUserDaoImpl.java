@@ -102,9 +102,12 @@ public class AddUserDaoImpl implements AddUserDao {
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
 		System.out.println(year);
 		
+		
+		
+		
+		try{
 		//deletes unnecessary row
 		st1.executeUpdate("delete from loader_schema.loader where name='Name'");
-		
 		//inserts appropriate data from loader table
 		st1.executeUpdate("insert into user_schema.userdetails(username) select roll_no from loader_schema.loader");	
 		st1.executeUpdate("update user_schema.userdetails set created_date='"+ temp +"' where created_date is NULL");
@@ -123,10 +126,18 @@ public class AddUserDaoImpl implements AddUserDao {
 		st1.executeUpdate("insert into user_schema.qualification(username,ssc_per,hsc_or_dip,hsc_or_dip_per,s1_mark,s1_max,s1_per,s1_res,s1_kt,s2_mark,s2_max,s2_per,s2_res,s2_kt,s3_mark,s3_max,s3_per,s3_res,s3_kt,s4_mark,s4_max,s4_per,s4_res,s4_kt,s5_mark,s5_max,s5_per,s5_res,s5_kt,s6_mark,s6_max,s6_per,s6_res,s6_kt,s7_mark,s7_max,s7_per,s7_res,s7_kt,s8_mark,s8_max,s8_per,s8_res,s8_kt,deg_per,deg_kt,drops) select roll_no,ssc_per,hsc_or_dip,hsc_or_dip_per,s1_mark,s1_max,s1_per,s1_res,s1_kt,s2_mark,s2_max,s2_per,s2_res,s2_kt,s3_mark,s3_max,s3_per,s3_res,s3_kt,s4_mark,s4_max,s4_per,s4_res,s4_kt,s5_mark,s5_max,s5_per,s5_res,s5_kt,s6_mark,s6_max,s6_per,s6_res,s6_kt,s7_mark,s7_max,s7_per,s7_res,s7_kt,s8_mark,s8_max,s8_per,s8_res,s8_kt,deg_per,deg_kt,drops from loader_schema.loader");
 		st1.executeUpdate("update user_schema.qualification set created_date='"+ temp +"' where created_date is NULL");
 		st1.executeUpdate("update user_schema.qualification set created_by='"+ userName +"' where created_by is NULL");
+		}
+		catch (org.postgresql.util.PSQLException e) {
+			
+			System.out.println(e.toString());
+			//st1.executeUpdate("update user_schema.qualification set s6_res= s6_res in (select s6_res from loader_schema.loader)");
+			st1.executeUpdate("update user_schema.qualification set s6_res = (select s6_res from loader_schema.loader where user_schema.qualification.username = loader_schema.loader.roll_no)");
+			
+		}
 		
 		//truncates the temporary loader table
 		st1.executeUpdate("delete from loader_schema.loader");
-
+		
 		
 		st.close();
 		st1.close();
