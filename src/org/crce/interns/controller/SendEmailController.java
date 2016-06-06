@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+//import org.crce.interns.validators.SendEmailValidator;
 
 @Controller("sendEmailController")
 public class SendEmailController {
 
 	//@Autowired
     //private JavaMailSender javaMailSender;
-    
     @Autowired
     public SendEmailService sendEmailService;
     @Autowired
@@ -65,20 +65,31 @@ public class SendEmailController {
      Return Type: ModelAndView
      Function: Sends an email along with a attachemnts to multiple recipients
      */
-    
     @RequestMapping(value = "/SubmitEmail", method = RequestMethod.POST)
     public ModelAndView sendEmail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
         try {
-            ModelAndView model = new ModelAndView();
+            String [] receivers = request.getParameterValues("receiver");
+            for(String i : receivers){
+                System.out.println(i);
+            }
+        ModelAndView model = new ModelAndView("Email");
+       // boolean flag = false;
+        //SendEmailValidator sendEmailValidator = new SendEmailValidator();
+        //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
-
+            model.addObject("success", "Email Sent Sucessfully");
             return model;
-        } catch (Exception e) {
-            System.out.println(e);
+        //} else {
+          //  model.addObject("error1", "Group name not proper");
+            //return model;
+        }
+         catch (Exception e) {
+           System.out.println(e);
             ModelAndView model = new ModelAndView("500");
-            model.addObject("exception", "/SubmitEmail");
+            model.addObject("exception", "/SubmitEmail! Email not sent!");
             return model;
+
         }
     }
 
@@ -96,10 +107,13 @@ public class SendEmailController {
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-                return new ModelAndView("EmailForm");
+            return new ModelAndView("EmailForm");
             }
+            
+            
+            
 
-            //return new ModelAndView("EmailForm");
+            return new ModelAndView("Email");
             //return new ModelAndView("Final");
         } catch (Exception e) {
             System.out.println(e);
