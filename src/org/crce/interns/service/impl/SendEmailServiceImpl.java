@@ -63,9 +63,10 @@ public class SendEmailServiceImpl implements SendEmailService {
         //String compsClass = "leonsurajd69@gmail.com", itClass = "dsouza.nevil45@gmail.com", prodClass = "cuthinho.crystal95@gmail.com", elexClass = "melwyn95@gmail.com";
         //String allClass = compsClass + " " + itClass + " " + prodClass + " " + elexClass;
 
-        String keywordReceivers = request.getParameter("receiver");
+       // String [] keywordReceivers = request.getParameterValues("receiver");
 
-        String[] keywordReceiversSplit = keywordReceivers.split(" ");
+        //String[] keywordReceiversSplit = keywordReceivers.split(" ");
+        String[] keywordReceiversSplit = request.getParameterValues("receiver");
         List<String> list = new ArrayList<String>();
         List<String> loweredList = new ArrayList<String>();
         list.addAll(Arrays.asList(keywordReceiversSplit));
