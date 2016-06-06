@@ -78,6 +78,7 @@ public class ManageUserController {
 		ModelAndView model = new ModelAndView("addFaculty");
 		try{
 		manageUserService.addFaculty(facultyBean);
+		model.addObject("success", 1);
 		directoryService.createFacultyFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
 			
@@ -139,8 +140,18 @@ public class ManageUserController {
 	public ModelAndView removeUser1(@ModelAttribute("command")  StudentBean studentBean,
 			BindingResult result, @RequestParam("username")String username) {
 		
+		ModelAndView model = new ModelAndView("removeUser");
+		try{
+		
 		manageUserService.removeUser(studentBean, username);
-		return new ModelAndView("removeUser");
+		model.addObject("success", 1);
+		}	
+		catch (Exception e) {
+			
+			System.out.println(e.toString());
+			model.addObject("error", 1);
+		}
+		return model;
 	}
 
 }
