@@ -61,6 +61,7 @@ public class ManageUserController {
 		ModelAndView model = new ModelAndView("addStudent"); 
 		try {
 			manageUserService.addStudent(studentBean);
+			model.addObject("success", 1);
 			directoryService.createStudentFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
 			
