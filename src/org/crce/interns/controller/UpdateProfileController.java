@@ -1,3 +1,4 @@
+
 /**
  * @author Nevil Dsouza ZNevzz
  *	Description : Handles all functions related to view and edit student profile. 
@@ -20,6 +21,7 @@ import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.Company;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.ProfileService;
@@ -66,7 +68,7 @@ public class UpdateProfileController {
 	@RequestMapping(value="/viewprofile", method = RequestMethod.GET)
 	
 	public ModelAndView login(HttpServletRequest request) {
-		
+		try{
 		System.out.println("Inside UpdateProfile Controller");
 		
 		
@@ -135,7 +137,14 @@ public class UpdateProfileController {
 			
 			
 			return model;
+		}
 		//}
+		catch(Exception e){
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/viewprofile");
+			return model;
+		}
 	}
 	
 	
@@ -154,7 +163,7 @@ public class UpdateProfileController {
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
 	public ModelAndView editProfessionalProfile(HttpServletRequest request) {
 		
-		
+	try{	
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		//if(!crService.checkRole("UpdateProfile", roleId))
@@ -187,6 +196,13 @@ public class UpdateProfileController {
 			return model;
 		//}
 	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/edit");
+		return model;
+	}
+	}
 	
 	
 	
@@ -204,10 +220,10 @@ public class UpdateProfileController {
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public ModelAndView updateProfessionalProfile(
 			@RequestParam Map<String, String> r,HttpServletRequest request) {
-		
+	
 		System.out.println("Inside UpdateProfile Controller");
 	
-		
+	try{	
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId= (String) request.getSession(true).getAttribute("roleId");
 		//if(!crService.checkRole("UpdateProfile", roleId))
@@ -247,6 +263,13 @@ public class UpdateProfileController {
 		model = new ModelAndView("redirect:/viewprofile");		
 		return model;
 		//}
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/update");
+		return model;
+	}
 	}
 	
 	
@@ -289,7 +312,9 @@ public class UpdateProfileController {
 		}
 		catch(Exception e){
 			System.out.println(e);
-			return new ModelAndView("403");			
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/sign-out");
+			return model;
 		}
 		
 	}
@@ -390,6 +415,7 @@ public class UpdateProfileController {
 	
 	//----------------------------------------------------------------------------------------------
 	// AJAX test controller method
+	/*
 	@RequestMapping("/test")
 	public ModelAndView helloajax(){
 		return new ModelAndView("test","message","Spring with ajax and jquery");
@@ -404,12 +430,13 @@ public class UpdateProfileController {
 		String result = "result is" + n3;
 		return result;
 	}
-	
+	*/
 	//----------------------------------------------------------------------------------------------
+	
+	
 	@RequestMapping("/looseSearch")
-	//public @ResponseBody List<PersonalProfile> loosesearch(@RequestParam("CHARS") String chars){
-//	public @ResponseBody PersonalProfile loosesearch(@RequestParam("CHARS") String chars){
 	public @ResponseBody String loosesearch(@RequestParam("CHARS") String chars){
+	try{
 		List<PersonalProfile> userDetailsList = new ArrayList<PersonalProfile>();
 		userDetailsList = searchService.searchUser(chars);
 		System.out.println(userDetailsList.size());
@@ -420,11 +447,46 @@ public class UpdateProfileController {
 		
 		return new Gson().toJson(userDetailsList);
 	}
+	catch(Exception e){
+		System.out.println(e);
+		//ModelAndView model=new ModelAndView("500");
+		//model.addObject("exception", "/viewprofile");
+		return "exception at /looseSearch";
+	}
+	}
 	
 	
-}
+
+	
+	//this is for company dynamic dropdown
+	@RequestMapping("/looseSearch2")
+	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
+	try{
+		
+		List<Company> companyList = new ArrayList<Company>();
+		companyList = searchService.searchCompany(chars);
+		System.out.println(companyList.size());
+
+		//ObjectMapper obj= new ObjectMapper();
+		
+		//return userDetailsList.get(0);
+		
+		return new Gson().toJson(companyList);
+	}
+	catch(Exception e){
+		System.out.println(e);
+		//ModelAndView model=new ModelAndView("500");
+		//model.addObject("exception", "/viewprofile");
+		return "exception at /looseSearch2";
+	}
+	
+	}
+}	
+
+
 
 
 /*
 
 */
+

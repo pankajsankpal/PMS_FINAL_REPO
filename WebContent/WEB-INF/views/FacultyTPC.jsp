@@ -62,10 +62,13 @@ description: contains tabs ->  activity ,uploads ,notification -->
 						
 
 						<div class="page-header">
-							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
-							</h1>
+							
+							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
+							<h2>
+								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
+							</h2>
+							
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -196,6 +199,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
 															  <a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
 															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>
+															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
@@ -203,7 +207,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 															<div class="widget-body">
 															 <div class="widget-main">
 															 <h3>Send notification to user </h3>
-																<form:form action="notify" commandName="notify">
+															<%-- 	<form:form action="notify" commandName="notify">
 																	<table cellpadding="5" cellspacing="10" >
 																		<tr >
 																			<td> Roll No:<FONT color="red"> <form:errors
@@ -216,6 +220,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 																	</table>
 																</form:form>
+																--%>
 															</div>
 															</div>
 															</div>

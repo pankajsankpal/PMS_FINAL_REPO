@@ -39,6 +39,7 @@ public class CompanyDaoImpl implements CompanyDao{
 		}	
 
 	}
+	
 	public void addCompany(Company company) {
 		
 //company.setCriteriaId(company.getCompany_id());
@@ -66,9 +67,10 @@ public class CompanyDaoImpl implements CompanyDao{
 		   System.out.println("error2");
 			
 	   }	
-			}
+	}
+	
 	@SuppressWarnings("unchecked")
-	public List<CompanyBean> getCompany() {  
-		  return (List<CompanyBean>) sessionFactory.getCurrentSession().createCriteria(CompanyBean.class).list();  
+	public List<Company> getCompany() {  
+		  return (List<Company>) sessionFactory.getCurrentSession().createCriteria(Company.class).list();  
 		 }  
 	}

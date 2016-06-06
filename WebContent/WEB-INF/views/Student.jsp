@@ -481,6 +481,13 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 		</tr>
 		
 		<tr>
+			<td><a href="offerLetterUpload">Click here to upload Offer Letter</a></td>
+		</tr>
+		
+		<tr>
+			<td><a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+		</tr>
+		<tr>
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
 		<tr>
@@ -493,7 +500,10 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 		<tr>
 			<td><a href="getjob">click here to check eligibility</a><br /></td>
 		</tr>
-		
+                
+		<tr>
+ 			<td><a href="dispCV">display list</a><br /></td>
+ 		</tr>
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
