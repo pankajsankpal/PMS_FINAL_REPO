@@ -413,7 +413,7 @@ public class SendEmailServiceImpl implements SendEmailService {
         });
 
         deleteFiles();
-        return new ModelAndView("EmailForm");
+        return new ModelAndView("Email");
     }
 
     /*
@@ -445,5 +445,35 @@ public class SendEmailServiceImpl implements SendEmailService {
             f.delete();
         }
     }
+    
+    @Override
+    public ModelAndView sendPersonalMail(HttpServletRequest request,
+            @RequestParam(value = "fileUpload") CommonsMultipartFile[] file){
+        //DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+        String path = directoryPathBean.getEmailFolder()+"\\";
+        String [] emailIds = request.getParameter("receiver").split(" ");
+        
+        javaMailSender.send(new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage)
+                    throws javax.mail.MessagingException, IllegalStateException, IOException {
+                System.out.println("Throws Exception");
+                MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
+                //mimeMessageHelper.setTo(request.getParameter("receiver"));
+                mimeMessageHelper.setTo(emailIds);
+
+                mimeMessageHelper.setSubject(request.getParameter("subject"));
+
+                mimeMessageHelper.setText(request.getParameter("message"));
+
+                for (CommonsMultipartFile f : file) {
+                    if (checkFile(f.getOriginalFilename())) {
+                        mimeMessageHelper.addAttachment(f.getOriginalFilename(), new File(path + f.getOriginalFilename()));
+                    }
+                }
+            }
+        });
+        return new ModelAndView("EmailForm");
+    }
+    
 }

@@ -60,7 +60,7 @@ Still if any doubts, contact Nevil
             <url>/</url>
         </notification>
         <notification>
-            <userOrGroupId>7000</userOrGroupId>
+            <userOrGroupId>702</userOrGroupId>
             <category>TEST</category>
             <type>USER</type>
             <message>ADDED NOTIFICATION. Congratulations</message>
@@ -68,7 +68,7 @@ Still if any doubts, contact Nevil
             <url>/</url>
         </notification>
         <notification>
-            <userOrGroupId>7000</userOrGroupId>
+            <userOrGroupId>702</userOrGroupId>
             <category>TEST</category>
             <type>USER</type>
             <message>ADDED NOTIFICATION 2. Congratulations</message>
