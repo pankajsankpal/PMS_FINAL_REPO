@@ -72,7 +72,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : studentList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getStudentFolder()+"\\" + (l1.toString()) + "\\Letters");
+            File files = new File(directoryPathBean.getStudentFolder()+"\\" + (l1.toString()) + "\\Offer Letters");//folder name changed @Crystal
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -254,5 +254,11 @@ public class DirectoryServiceImpl implements DirectoryService {
         //code added @Crystal
         File roomAllotmentFiles = new File(directoryPathBean.getRoomAllotmentFolder());
         roomAllotmentFiles.mkdirs();
+        
+        File counselingReportStudentFiles = new File(directoryPathBean.getCounselingReportStudentFolder());
+        counselingReportStudentFiles.mkdirs();
+        
+        File counselingReportFtpcFiles = new File(directoryPathBean.getCounselingReportFtpcFolder());
+        counselingReportFtpcFiles.mkdirs();
     }
 }

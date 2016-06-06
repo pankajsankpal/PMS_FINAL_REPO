@@ -788,6 +788,10 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<tr>
 			<td><a href="certificateUpload">Click here to upload certificates!</a></td>
 		</tr>
+		
+		<tr>
+			<td><a href="offerLetterUpload">Click here to upload Offer Letter</a></td>
+		</tr>
 		<tr>
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
