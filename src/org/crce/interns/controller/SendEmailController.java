@@ -75,14 +75,14 @@ public class SendEmailController {
                 System.out.println(i);
             }
             ModelAndView model = new ModelAndView("Email");
-       // boolean flag = false;
+            // boolean flag = false;
             //SendEmailValidator sendEmailValidator = new SendEmailValidator();
             //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
             model.addObject("success", "Email Sent Sucessfully");
             System.out.println(model);
             return model;
-        //} else {
+            //} else {
             //  model.addObject("error1", "Group name not proper");
             //return model;
         } catch (Exception e) {
@@ -103,13 +103,13 @@ public class SendEmailController {
 
         try {
             System.out.println("Mapped to /sendMail");
-           HttpSession session = request.getSession();
-          String roleId = (String) session.getAttribute("roleId");
+            HttpSession session = request.getSession();
+            String roleId = (String) session.getAttribute("roleId");
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
-            }else {
-            return new ModelAndView("Email");
-        }
+            } else {
+                return new ModelAndView("Email");
+            }
 
             //return new ModelAndView("Email");
             //return new ModelAndView("Final");
@@ -123,11 +123,17 @@ public class SendEmailController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/personalMail")
     public ModelAndView individualMail(HttpServletRequest request) {
-        try{
-        System.out.println("Mapped to personalMail");
-        return new ModelAndView("EmailForm");
-        }
-        catch (Exception e) {
+        try {
+            System.out.println("Mapped to personalMail");
+            HttpSession session = request.getSession();
+            String roleId = (String) session.getAttribute("roleId");
+            if (!crService.checkRole("SendEmail", roleId)) {
+                return new ModelAndView("403");
+            } else {
+                return new ModelAndView("Email");
+            }
+            //return new ModelAndView("EmailForm");
+        } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
             model.addObject("exception", "/personalMail!");
@@ -140,20 +146,19 @@ public class SendEmailController {
     @RequestMapping(method = RequestMethod.POST, value = "/SendPersonalMail")
     public ModelAndView submitIndividualMail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
-        try{
-        ModelAndView model = new ModelAndView("EmailForm");
-        PersonalEmailValidator personalEmailValidator = new PersonalEmailValidator();
-        if (personalEmailValidator.validateEmail(request.getParameter("receiver"))) {
-            model = sendEmailService.sendPersonalMail(request, file);
-            model.addObject("success", "Email Sent Sucessfully");
-            System.out.println(model);
-            return model;
-        } else {
-            model.addObject("error1", "One of the email IDs isn't correctly formed");
-            return model;
-        }
-        }
-        catch(Exception e){
+        try {
+            ModelAndView model = new ModelAndView("EmailForm");
+            PersonalEmailValidator personalEmailValidator = new PersonalEmailValidator();
+            if (personalEmailValidator.validateEmail(request.getParameter("receiver"))) {
+                model = sendEmailService.sendPersonalMail(request, file);
+                model.addObject("success", "Email Sent Sucessfully");
+                System.out.println(model);
+                return model;
+            } else {
+                model.addObject("error1", "One of the email IDs isn't correctly formed");
+                return model;
+            }
+        } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
             model.addObject("exception", "/sendPersonalMail! Mail wasn't sent!");

@@ -219,7 +219,7 @@
                         <option value="NSE"> NSE </option>
                         <option value="Siemens">Siemens</option>
                         <option value="BNP"> BNP Paribas </option>
-
+                        <option value ="ZS"> ZS </option>    
                     </select>
                 </div>
                 <br/> <br/> <br>
