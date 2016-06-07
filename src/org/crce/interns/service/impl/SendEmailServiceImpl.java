@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.mail.internet.MimeMessage;
@@ -18,6 +19,7 @@ import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.SendEmailDAO;
 
 import org.crce.interns.service.SendEmailService;
+import org.crce.interns.validators.PersonalEmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -354,6 +356,45 @@ public class SendEmailServiceImpl implements SendEmailService {
             loweredList.add(pos, allClass);
             System.out.println(loweredList);
         }
+            PersonalEmailValidator personalEmailValidator = new PersonalEmailValidator();
+            List copyList = loweredList;
+            Iterator iter = copyList.iterator();
+            try{
+            copyList.stream().map((o) -> {
+                System.out.println(o.toString());
+            return o;
+        }).filter((o) -> (!personalEmailValidator.validateEmail(o.toString().replace("[","").replace("]", "")))).map((o) -> {
+            System.out.println("Entered in for "+ o.toString());
+            return o;
+        }).map((o) -> {
+            int pos = loweredList.indexOf(o.toString());
+            System.out.println(pos);
+            String companyStudents = sendEmailDAO.fetchCompanyStudents(o.toString());
+            System.out.println("fetched DAO");
+            loweredList.remove(o.toString());
+            System.out.println("removed ");
+            loweredList.add(pos, companyStudents);
+            return o;
+        }).forEach((_item) -> {
+            System.out.println(loweredList);
+        });//   
+            }
+            finally{
+//                  while(iter.hasNext()){
+//                    System.out.println(iter.next().toString());
+//                    if(!personalEmailValidator.validateEmail(iter.next().toString().replace("[","").replace("]",""))){
+//                        System.out.println("Entered in for " + iter.next().toString());
+//                        int pos = loweredList.indexOf(iter.next().toString());
+//                    System.out.println(pos);
+//                    loweredList.remove(iter.next().toString());
+//                    System.out.println("removed ");
+//                    String companyStudents = sendEmailDAO.fetchCompanyStudents(iter.next().toString());
+//                    System.out.println("fetched DAO");
+//                    loweredList.add(pos, companyStudents);
+//                    System.out.println(loweredList);
+//                    }
+//                }
+        
 //        if (keywordReceivers.equalsIgnoreCase("CompsSTPC")) {
 //            input = CompsFTPC;
 //        } else if (keywordReceivers.equalsIgnoreCase("ProdSTPC")) {
@@ -413,7 +454,8 @@ public class SendEmailServiceImpl implements SendEmailService {
         });
 
         deleteFiles();
-        return new ModelAndView("EmailForm");
+        return new ModelAndView("Email");
+            }
     }
 
     /*
@@ -445,5 +487,35 @@ public class SendEmailServiceImpl implements SendEmailService {
             f.delete();
         }
     }
+    
+    @Override
+    public ModelAndView sendPersonalMail(HttpServletRequest request,
+            @RequestParam(value = "fileUpload") CommonsMultipartFile[] file){
+        //DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+        String path = directoryPathBean.getEmailFolder()+"\\";
+        String [] emailIds = request.getParameter("receiver").split(" ");
+        
+        javaMailSender.send(new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage)
+                    throws javax.mail.MessagingException, IllegalStateException, IOException {
+                System.out.println("Throws Exception");
+                MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
+                //mimeMessageHelper.setTo(request.getParameter("receiver"));
+                mimeMessageHelper.setTo(emailIds);
+
+                mimeMessageHelper.setSubject(request.getParameter("subject"));
+
+                mimeMessageHelper.setText(request.getParameter("message"));
+
+                for (CommonsMultipartFile f : file) {
+                    if (checkFile(f.getOriginalFilename())) {
+                        mimeMessageHelper.addAttachment(f.getOriginalFilename(), new File(path + f.getOriginalFilename()));
+                    }
+                }
+            }
+        });
+        return new ModelAndView("EmailForm");
+    }
+    
 }
