@@ -69,7 +69,9 @@
 			<div class="page-content">
 				<form:form method="POST" id="validation-form" enctype="multipart/form-data" modelAttribute="allotmentBean" action="saveAllotment">
 					<h2 align="center"><u>Room Allotment Details</u></h2>
-					
+					<c:if test="${success==1}">
+						<center><p style="color:green;">Room Allotment details added successfully!</p></center>
+					</c:if>
 					<c:if test="${error==1}">
 						<center><p style="color:red;">Failed to upload...File format can be .docx/.odt/.pdf/.png/.jpg/.jpeg only!</p></center>
 					</c:if>
@@ -81,7 +83,7 @@
 							<tr><td><br/></td><td><br/></td>
 							<td><br/></td></tr>
 							<tr>
-						<td><label>Company Name:&nbsp&nbsp&nbsp</label></td>
+						<td><label>Company Name&nbsp&nbsp&nbsp</label></td>
 				<td><form:select name="company" id="company" path="company_name">
 				<%
     				try{
@@ -117,7 +119,7 @@
 			</tr>		
 			
 			<tr>
-				<td><label>Round Number</label></td>
+				<td><label>Round Name</label></td>
 				<td><form:input name="round" id="round" path="round_no" /></td>
 			</tr>
 			<tr>
@@ -162,7 +164,7 @@
 			<td><br/></td>
 			</tr>
 			<tr>
-				<td><label>Date:</label></td>
+				<td><label>Date</label></td>
 				<td><form:input path="drive_date" name="date" id="date" class="form-control date-picker" data-date-format="yyyy/mm/dd"/></td>
 			</tr>
 			<tr>
@@ -176,7 +178,7 @@
 			<td><br/></td>
 			</tr>
 			<tr>
-				<td><label>File to upload:</label></td>
+				<td><label>Add an attachment&nbsp;&nbsp;</label></td>
 				<td><form:input type="file" name="file" id="file" path="fileUpload"/></td> 
 			</tr>
 			<tr>

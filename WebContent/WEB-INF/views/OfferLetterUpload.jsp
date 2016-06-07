@@ -111,7 +111,10 @@
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
-													<h2> Select the Offer Letter..! </h2>
+													<h2> Upload the Offer Letter..! </h2>
+													<c:if test="${success==1}">
+															<p style="color:green;">Offer letter uploaded successfully!</p>
+														</c:if>
 													<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadOfferLetter">
 
 													<form:errors path="*" cssClass="errorblock" element="div" />
