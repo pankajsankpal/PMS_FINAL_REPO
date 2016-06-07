@@ -107,6 +107,7 @@ public class SendEmailController {
           String roleId = (String) session.getAttribute("roleId");
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
+
             }else {
             return new ModelAndView("Email");
         }
