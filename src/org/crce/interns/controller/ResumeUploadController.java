@@ -108,9 +108,10 @@ public class ResumeUploadController {
 		return new ModelAndView("ResumeUpload");
 	}
 	
-	@RequestMapping(value = "/dispCV", method = RequestMethod.POST)
+	@RequestMapping(value = "/dispCV", method = RequestMethod.GET)
 	public ModelAndView displayCV(){
-		String directory_path="";//give the directory path
+		//Testing
+		String directory_path="C:\\Users\\Dsouza\\Downloads";//give the directory path
 		List<String> listcv=resumeUploadService.displayCVList(directory_path);
 		ModelAndView model=new ModelAndView("listCV");
 		model.addObject("listcv",listcv);

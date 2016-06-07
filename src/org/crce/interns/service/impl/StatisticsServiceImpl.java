@@ -91,8 +91,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 		
 		for(Company cb: companyList){
 			
-			companySet.add(cb.getCompanyId());
-			companyMap.put(cb.getCompanyId(), cb.getCompanyName());
+			companySet.add(cb.getCompany_id());
+			companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 		}
 		
 		System.out.println("from company = "+companySet.toString());

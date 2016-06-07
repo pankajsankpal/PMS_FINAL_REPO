@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.SendEmailService;
+import org.crce.interns.validators.PersonalEmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller("sendEmailController")
 public class SendEmailController {
 
-	//@Autowired
+    //@Autowired
     //private JavaMailSender javaMailSender;
     @Autowired
     public SendEmailService sendEmailService;
@@ -65,29 +66,29 @@ public class SendEmailController {
      Return Type: ModelAndView
      Function: Sends an email along with a attachemnts to multiple recipients
      */
-    @RequestMapping(value = "/SubmitEmail", method = RequestMethod.POST)
+    @RequestMapping(value = "/GroupSubmitEmail", method = RequestMethod.POST)
     public ModelAndView sendEmail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
         try {
-            String [] receivers = request.getParameterValues("receiver");
-            for(String i : receivers){
+            String[] receivers = request.getParameterValues("receiver");
+            for (String i : receivers) {
                 System.out.println(i);
             }
-        ModelAndView model = new ModelAndView("Email");
+            ModelAndView model = new ModelAndView("Email");
        // boolean flag = false;
-        //SendEmailValidator sendEmailValidator = new SendEmailValidator();
-        //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
+            //SendEmailValidator sendEmailValidator = new SendEmailValidator();
+            //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
             model.addObject("success", "Email Sent Sucessfully");
+            System.out.println(model);
             return model;
         //} else {
-          //  model.addObject("error1", "Group name not proper");
+            //  model.addObject("error1", "Group name not proper");
             //return model;
-        }
-         catch (Exception e) {
-           System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
             ModelAndView model = new ModelAndView("500");
-            model.addObject("exception", "/SubmitEmail! Email not sent!");
+            model.addObject("exception", "/GroupSubmitEmail! Email not sent!");
             return model;
 
         }
@@ -97,31 +98,71 @@ public class SendEmailController {
      Return Type: ModelAndView
      Function: Displays The Compose an e-mail page
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/sendMail")
+    @RequestMapping(method = RequestMethod.GET, value = "/GroupSendMail")
     public ModelAndView email_welcome(HttpServletRequest request) {
 
         try {
             System.out.println("Mapped to /sendMail");
-            HttpSession session = request.getSession();
-            String roleId = (String) session.getAttribute("roleId");
+           HttpSession session = request.getSession();
+          String roleId = (String) session.getAttribute("roleId");
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
-            } else {
-            return new ModelAndView("EmailForm");
-            }
-            
-            
-            
 
-           // return new ModelAndView("Email");
+            }else {
+            return new ModelAndView("Email");
+        }
+
+            //return new ModelAndView("Email");
             //return new ModelAndView("Final");
         } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
-            model.addObject("exception", "/SubmitEmail");
+            model.addObject("exception", "/GroupSendMail");
             return model;
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/personalMail")
+    public ModelAndView individualMail(HttpServletRequest request) {
+        try{
+        System.out.println("Mapped to personalMail");
+        return new ModelAndView("EmailForm");
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            ModelAndView model = new ModelAndView("500");
+            model.addObject("exception", "/personalMail!");
+            return model;
+
+        }
+
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/SendPersonalMail")
+    public ModelAndView submitIndividualMail(HttpServletRequest request,
+            @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
+        try{
+        ModelAndView model = new ModelAndView("EmailForm");
+        PersonalEmailValidator personalEmailValidator = new PersonalEmailValidator();
+        if (personalEmailValidator.validateEmail(request.getParameter("receiver"))) {
+            model = sendEmailService.sendPersonalMail(request, file);
+            model.addObject("success", "Email Sent Sucessfully");
+            System.out.println(model);
+            return model;
+        } else {
+            model.addObject("error1", "One of the email IDs isn't correctly formed");
+            return model;
+        }
+        }
+        catch(Exception e){
+            System.out.println(e);
+            ModelAndView model = new ModelAndView("500");
+            model.addObject("exception", "/sendPersonalMail! Mail wasn't sent!");
+            return model;
+        }
+
+    }
+
     /*
      Return Type: ModelAndView
      Function: Displays The Compose an e-mail page
