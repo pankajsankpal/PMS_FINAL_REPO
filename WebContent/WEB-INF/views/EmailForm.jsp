@@ -1,6 +1,6 @@
 <!--
         @author Leon
-        Page : EmailSending
+        Page : EmailSending Group
         Task: Gives UI to send email with receiver, subject, message, attachment and send button
 -->	
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -181,7 +181,7 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal" role="form"
-                              action="SubmitEmail" enctype="multipart/form-data" method="post">
+                              action="SendPersonalMail" enctype="multipart/form-data" method="post">
                             <!-- Not Required here
                                     <div class="form-group">
                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>

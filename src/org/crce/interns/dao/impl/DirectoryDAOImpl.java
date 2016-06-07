@@ -58,7 +58,11 @@ public class DirectoryDAOImpl implements DirectoryDAO {
      return roleName;
      }
      */
-
+    
+    /**
+     * 
+     * @return List
+     */
     @Override
     public List createStudentFolder() {
         System.out.println("In createstudentfolder");
@@ -80,7 +84,10 @@ public class DirectoryDAOImpl implements DirectoryDAO {
 
         return list;
     }
-
+    /**
+     * 
+     * @return List
+     */
     @Override
     public List createFacultyFolder() {
         System.out.println("In createfacultyfolder");
@@ -102,7 +109,10 @@ public class DirectoryDAOImpl implements DirectoryDAO {
 
         return list;
     }
-
+    /**
+     * 
+     * @return List
+     */
     @Override
     public List createTpoFolder() {
         System.out.println("In createTpofolder");
@@ -124,7 +134,10 @@ public class DirectoryDAOImpl implements DirectoryDAO {
 
         return list;
     }
-
+    /**
+     * 
+     * @return List
+     */
     @Override
     public List createCompanyFolder() {
         System.out.println("In createTpofolder");
@@ -146,7 +159,10 @@ public class DirectoryDAOImpl implements DirectoryDAO {
 
         return list;
     }
-    
+    /**
+     * 
+     * @return List
+     */
     @Override
     public List createAdminFolder(){
         System.out.println("In createAdminfolder");
