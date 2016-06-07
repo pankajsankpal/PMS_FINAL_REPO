@@ -45,21 +45,24 @@ public class AssignRoleController {
 	}
 	}
 	
+	
+	
 	@RequestMapping(value="/roleAssigned")
 	public ModelAndView assignRole(HttpServletRequest request, HttpServletResponse response, 
-			@Valid AssignRoleBean arb,BindingResult result) {
+			@Valid AssignRoleBean arb,BindingResult result){ 
 	try
-	{
+	{	
 		System.out.println("return model");
 		HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
-		
+
 		if (result.hasErrors())
 		{
 			ModelAndView model=new ModelAndView("AssignRole");
 			model.addObject("assignRole",arb);
 			return model;
 		}
+
 		FunctionMaster fm=new FunctionMaster();
 		FunctionRole fr=new FunctionRole();
 		fm.setFunctionName(arb.getFunctionName());
@@ -74,7 +77,6 @@ public class AssignRoleController {
 		System.out.println("Success");
 		return new ModelAndView("roleAssigned");
 	}
-	
 	catch(Exception e)
 	{
 		System.out.println(e);
@@ -83,6 +85,4 @@ public class AssignRoleController {
 		return model;
 	}
 	}
-
-
 }
