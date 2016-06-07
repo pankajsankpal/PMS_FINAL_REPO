@@ -112,6 +112,10 @@ The below controller list refers to the respective modules integrated in this re
 +CounselingReportUploadController
 >upload counseling reports by student and FTPC module
 >**dev by CRYSTAL @Crystal21**
+
++DisplayListController
+>displays a sorted list of files within a folder...(sorted w.r.t date of creation)
+>**dev by ANDREA @Andreaf2395**
 ____________________________________________________________________
 
 SERVICES
