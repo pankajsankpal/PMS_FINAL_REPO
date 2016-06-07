@@ -38,7 +38,7 @@ public class DownloadController extends HttpServlet{
 	the year field will be added soon so final basePath would look 
 	like PMS/year
 	*/
-	private String basePath = "C:\\Users\\Melwyn\\Desktop\\PMS";
+	private String basePath = "C:\\PMS\\2016-2017\\Users";
 	
 	private static final int BUFFER_SIZE = 4096;
 	
@@ -52,7 +52,9 @@ public class DownloadController extends HttpServlet{
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response, @RequestParam("fileName")String fileName) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		String fileToBeDownloaded = basePath + "\\" + role + "\\" + userName + "\\" + fileName;
+		String folderName = (String) request.getSession().getAttribute("folderName");
+		
+		String fileToBeDownloaded = basePath + "\\" + role + "\\" + userName + "\\" + folderName + "\\" + fileName;
 		System.out.println(fileToBeDownloaded);
 		
 		ServletContext context = request.getServletContext();
@@ -69,11 +71,15 @@ public class DownloadController extends HttpServlet{
             		mimeType = "application/octet-stream";
         	}
         
+	 		String downloadFileName = downloadFile.getName();
+	 		
+	 		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+	 	
         	response.setContentType(mimeType);
         	response.setContentLength((int) downloadFile.length());
         	String headerKey = "Content-Disposition";
         	String headerValue = String.format("attachment; filename=\"%s\"",
-                	downloadFile.getName());
+               downloadFileName.substring(0, downloadFileName.indexOf('-'))+ext);
         	response.setHeader(headerKey, headerValue);
         
         	OutputStream outStream = null;
