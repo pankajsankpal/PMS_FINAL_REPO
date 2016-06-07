@@ -13,11 +13,11 @@ public class FunctionRole implements Serializable{
 	@Id
 	@Column(name = "role_id" )
 	private String roleId;
-	
+
 	@Id
 	@Column(name = "function_id" )
 	private Integer functionId;
-	
+
 	public String getRoleId() {
 		return roleId;
 	}

@@ -1,12 +1,9 @@
  <!--
  Filename : ResumeUpload.jsp
- Author name: Crystal Cuthinho
+ Author name: Crystal Cuthinho,Pankaj sankpal
  Description: used for resume upload by student. Mapping goes to ResumeUploadController
  -->
 
-<!-- author: Pankaj sankpal
-description: contains Facility for upload project->
-<!-- -------------------------------------------------------------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
