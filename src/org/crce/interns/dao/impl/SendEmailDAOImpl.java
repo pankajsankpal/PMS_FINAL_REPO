@@ -36,7 +36,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
     protected Session getSession() {
         return sessionFactory.openSession();
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchCompsSTPC() {
         Session session = sessionFactory.openSession();
@@ -70,7 +75,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchElexSTPC() {
         Session session = sessionFactory.openSession();
@@ -104,7 +114,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchITSTPC() {
         Session session = sessionFactory.openSession();
@@ -138,7 +153,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchProdSTPC() {
         Session session = sessionFactory.openSession();
@@ -173,6 +193,11 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         return senderList;
     }
 
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchCompsFTPC() {
         Session session = sessionFactory.openSession();
@@ -206,7 +231,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchElexFTPC() {
         Session session = sessionFactory.openSession();
@@ -240,7 +270,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchITFTPC() {
         Session session = sessionFactory.openSession();
@@ -274,7 +309,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         session.close();
         return senderList;
     }
-
+    
+    /**
+     * 
+     * @return String
+     */
+    
     @Override
     public String fetchProdFTPC() {
         Session session = sessionFactory.openSession();
@@ -357,6 +397,12 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         System.out.println("final senderList " + senderList);
         return senderList;
     }
+    
+    /**
+     * 
+     * @param companyName
+     * @return String
+     */
     
     @Override
     public String fetchCompanyStudents(String companyName){

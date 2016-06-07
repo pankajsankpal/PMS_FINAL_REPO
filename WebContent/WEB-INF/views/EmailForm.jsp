@@ -1,6 +1,6 @@
 <!--
         @author Leon
-        Page : EmailSending
+        Page : EmailSending Group
         Task: Gives UI to send email with receiver, subject, message, attachment and send button
 -->	
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

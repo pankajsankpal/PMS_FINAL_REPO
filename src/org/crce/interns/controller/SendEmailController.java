@@ -3,6 +3,7 @@
  * 			@Melwyn
  * 			@Leon
  * Function: Sending an e-mail
+ * Dependency : SendEmailService.java, CheckRoleService.java, PersonalEmailValidator.java
  */
 package org.crce.interns.controller;
 
@@ -66,6 +67,15 @@ public class SendEmailController {
      Return Type: ModelAndView
      Function: Sends an email along with a attachemnts to multiple recipients
      */
+    
+    /**
+     * 
+     * @param request
+     * @param file
+     * @return ModelAndView
+     * @throws IllegalStateException
+     * @throws IOException 
+     */
     @RequestMapping(value = "/GroupSubmitEmail", method = RequestMethod.POST)
     public ModelAndView sendEmail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
@@ -96,7 +106,13 @@ public class SendEmailController {
 
     /*
      Return Type: ModelAndView
-     Function: Displays The Compose an e-mail page
+     Function: Displays The Compose an e-mail page for group
+     */
+    
+    /**
+     * 
+     * @param request
+     * @return ModelAndView
      */
     @RequestMapping(method = RequestMethod.GET, value = "/GroupSendMail")
     public ModelAndView email_welcome(HttpServletRequest request) {
@@ -120,7 +136,13 @@ public class SendEmailController {
             return model;
         }
     }
-
+    
+    /**
+     * 
+     * @param request
+     * @return ModelAndView
+     */
+    
     @RequestMapping(method = RequestMethod.GET, value = "/personalMail")
     public ModelAndView individualMail(HttpServletRequest request) {
         try {
@@ -142,7 +164,16 @@ public class SendEmailController {
         }
 
     }
-
+    
+    /**
+     * 
+     * @param request
+     * @param file
+     * @return ModelAndView
+     * @throws IllegalStateException
+     * @throws IOException 
+     */
+    
     @RequestMapping(method = RequestMethod.POST, value = "/SendPersonalMail")
     public ModelAndView submitIndividualMail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
