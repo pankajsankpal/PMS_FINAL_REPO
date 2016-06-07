@@ -87,6 +87,7 @@ public class AddUserController {
 			String userName = request.getSession().getAttribute("userName").toString();
 			System.out.println("");
 			addUserService.handleFileUpload(request,fileUpload,userName);
+			model.addObject("success", 1);
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();
 			// returns to the same index page	
