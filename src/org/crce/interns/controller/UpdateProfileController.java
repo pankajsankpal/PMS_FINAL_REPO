@@ -305,8 +305,8 @@ public class UpdateProfileController {
 			
 			request.getSession(true).invalidate();
 			
-			model = new ModelAndView("Login");
-			model.addObject("loginForm", loginForm);
+			model = new ModelAndView("redirect:/form");
+			//model.addObject("loginForm", loginForm);
 		
 			return model;
 		}
