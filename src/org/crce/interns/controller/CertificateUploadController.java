@@ -96,7 +96,7 @@ public class CertificateUploadController {
 				
 				//calls the service to actually upload the file
 				certificateUploadService.handleFileUpload(request, fileUpload, username);
-				
+				model.addObject("success", 1);
 				
 			} catch (IncorrectFileFormatException e) {
 				

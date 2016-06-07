@@ -70,6 +70,7 @@ public class ResumeUploadController {
 			@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
 					throws Exception {
 
+		ModelAndView model = new ModelAndView("ResumeUpload");
 		try {
 			
 			//fileUpload1 : this is the request parameter model attribute of FileUpload type
@@ -82,7 +83,7 @@ public class ResumeUploadController {
 			if (fileUpload1.getFile().getSize() == 0) {
 				System.out.println("Error in form");
 	            
-	            return new ModelAndView("ResumeUpload");
+	            return model;
 			}
 			
 			String username = (String)request.getSession(true).getAttribute("userName");
@@ -90,22 +91,23 @@ public class ResumeUploadController {
 			
 			//calls the service to actually upload the file
 			resumeUploadService.handleFileUpload(request, fileUpload, username);
+			model.addObject("success", 1);
 			
 			
 		} catch (IncorrectFileFormatException e) {
 			System.out.println(e);
-			ModelAndView model = new ModelAndView("ResumeUpload");
+			
 			model.addObject("error", 1);	// so that the jsp catches the error
 			return model;
 			
 		} catch (MaxFileSizeExceededError m) {
 			System.out.println(m);
-			ModelAndView model = new ModelAndView("ResumeUpload");
+			
 			model.addObject("error1", 1); 	// so that the jsp catches the error
 			return model;
 		}
 		
-		return new ModelAndView("ResumeUpload");
+		return model;
 	}
 	
 	@RequestMapping(value = "/dispCV", method = RequestMethod.GET)

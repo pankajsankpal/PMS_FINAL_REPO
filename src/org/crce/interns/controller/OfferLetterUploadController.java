@@ -89,7 +89,7 @@ public class OfferLetterUploadController {
 				
 				//calls the service to actually upload the file
 				offerLetterUploadService.handleFileUpload(request, fileUpload, username);
-				
+				model.addObject("success", 1);
 				
 			} catch (IncorrectFileFormatException e) {
 				System.out.println(e);
