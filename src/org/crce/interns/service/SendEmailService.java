@@ -8,6 +8,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface SendEmailService {
-	public ModelAndView sendMail(HttpServletRequest request,
-			@RequestParam(value = "fileUpload") CommonsMultipartFile[] file);
+
+    public ModelAndView sendMail(HttpServletRequest request,
+            @RequestParam(value = "fileUpload") CommonsMultipartFile[] file);
+
+    public ModelAndView sendPersonalMail(HttpServletRequest request, @RequestParam(value = "fileUpload") CommonsMultipartFile[] file);
+    public void deleteFiles();
+    public boolean checkFile(String name);
 }

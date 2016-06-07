@@ -1,3 +1,14 @@
+/**
+ * Author Name: Andrea Furtado
+ * Filename: EligiblityController.java	
+ * Classes used by code: EligibilityService
+* 
+* Description: This controller is used to check eligibility of student
+* 
+* Functions: criteriaCheck()
+
+ */
+
 package org.crce.interns.controller;
 
 
@@ -24,8 +35,15 @@ public class EligibilityController {
     }
 	
 	
+	
+	/**
+	 * the method check whether the student is eligible and directs to fail or success page accordingly
+	 * @param request
+	 * @param job_id
+	 * @return
+	 */
 	@RequestMapping("/applyforjob")
-	public ModelAndView  criteriaCheck(HttpServletRequest request,@RequestParam(value="job_id")String job_id,Model model){
+	public ModelAndView  criteriaCheck(HttpServletRequest request,@RequestParam(value="job_id")String job_id){
 		HttpSession session=request.getSession();
 		String username=(String)session.getAttribute("userName");
 		System.out.println("This is user:"+username+"   and job_id: "+job_id);
@@ -34,10 +52,9 @@ public class EligibilityController {
 		
 		if(E_service.checkCriteria(username, criteria_id,job_id))
 			return new ModelAndView("eligible");
-		//System.out.println("You are eligible and applied for the job");
+	
 		else
 				System.out.println("oopsie!!  you dont meet the criteria ");
-		
-		return new ModelAndView("fail");
+				return new ModelAndView("fail");
 	}
 }

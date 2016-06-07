@@ -13,7 +13,7 @@ description: contains text fields to add details of student manually->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Add Students Manually </title>
+<title>Add Student Manually </title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -88,7 +88,7 @@ description: contains text fields to add details of student manually->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${loginForm.userName}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -106,6 +106,13 @@ description: contains text fields to add details of student manually->
 											
 											<form:form method="POST"  modelAttribute="studentBean" action="registerStudent">
 											<h2 align="center"><u>Add Student</u></h2>
+											
+											<c:if test="${error==1}">
+												<p style="color:red;">This user already exists in the database!</p>
+											</c:if>
+											<c:if test="${success==1}">
+															<p style="color:green;">Users added successfully!</p>
+											</c:if>
 											<table align="center" style="margin-top: 10px; padding-right: 10px">
 												<tr>
 													<td>Roll no :</td>

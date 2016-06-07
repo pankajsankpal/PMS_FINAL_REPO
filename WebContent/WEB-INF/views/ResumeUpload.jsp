@@ -1,23 +1,20 @@
  <!--
  Filename : ResumeUpload.jsp
- Author name: Crystal Cuthinho
+ Author name: Crystal Cuthinho,Pankaj sankpal
  Description: used for resume upload by student. Mapping goes to ResumeUploadController
  -->
 
-<!-- author: Pankaj sankpal
-description: contains Facility for upload project->
-<!-- -------------------------------------------------------------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Uplaod Resume </title>
+<title>Upload Resume </title>
 <style>
 .error {
 	color: #ff0000;
@@ -104,7 +101,7 @@ description: contains Facility for upload project->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${sessionScope.name}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -119,9 +116,12 @@ description: contains Facility for upload project->
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
-													<h2> Select a Resume..!</h2>
+													<h2> Upload a Resume..!</h2>
+													<c:if test="${success==1}">
+															<p style="color:green;">Resume uploaded successfully!</p>
+														</c:if>
 													<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadResume">
-												<form method="POST" enctype="multipart/form-data" action="uploadFile">
+												
 												
 												<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
 													<form:errors path="*" cssClass="errorblock" element="div" />
