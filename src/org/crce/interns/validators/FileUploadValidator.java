@@ -50,6 +50,7 @@ public class FileUploadValidator implements Validator{
 			System.out.println("empty");
 			
 			errors.rejectValue("file", "required.fileUpload");
+			System.out.println("after reject value");
 		}
 	}
 }

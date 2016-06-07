@@ -75,44 +75,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="clearfix">
-									<!-- <div class="pull-left alert alert-success no-margin">
-										<button type="button" class="close" data-dismiss="alert">
-											<i class="ace-icon fa fa-times"></i>
-										</button>
-
-										<i class="ace-icon fa fa-umbrella bigger-120 blue"></i>
-										Click on the image below or on profile fields to edit them ...
-									</div> -->
-
-									<!-- <div class="pull-right">
-										<span class="green middle bolder">Choose profile: &nbsp;</span>
-
-										<div class="btn-toolbar inline middle no-margin">
-											<div data-toggle="buttons" class="btn-group no-margin">
-												<label class="btn btn-sm btn-yellow">
-													<span class="bigger-110">1</span>
-
-													<input type="radio" value="1" />
-												</label>
-
-												<label class="btn btn-sm btn-yellow active">
-													<span class="bigger-110">2</span>
-
-													<input type="radio" value="2" />
-												</label>
-
-												<label class="btn btn-sm btn-yellow">
-													<span class="bigger-110">3</span>
-
-													<input type="radio" value="3" />
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="hr dotted"></div> -->
-
+									
 							<div class="show">
 									<div id="user-profile-2" class="user-profile">
 										<div class="tabbable">

@@ -6,7 +6,7 @@ description: contains fields to add new faculty member->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -87,7 +87,7 @@ description: contains fields to add new faculty member->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${loginForm.userName}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -104,6 +104,12 @@ description: contains fields to add new faculty member->
 											<div>
 													<form:form method="POST"  modelAttribute="facultyBean" action="registerFaculty">
 														<h2 align="center"><u>Add Faculty</u></h2>
+														<c:if test="${error==1}">
+															<p style="color:red;">This user already exists in the database!</p>
+														</c:if>
+														<c:if test="${success==1}">
+															<p style="color:green;">User added successfully!</p>
+														</c:if>
 															<table align="center" style="padding-top: 10px"  >
 																<tr >
 																	<td>ID :</td>
