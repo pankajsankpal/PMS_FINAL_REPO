@@ -88,7 +88,8 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 
 												
 												<li>
-													<a  href="Studentnotificatn.jsp">
+													<!-- <a  href="Studentnotificatn.jsp">  -->
+														<a  href="checkNf">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
