@@ -239,8 +239,8 @@ public class AssignTPOController {
 		
 		HttpSession session=request.getSession();
 		String fUserName=(String)session.getAttribute("userName");
-		String branch1="null";
-		branch1=gbService.getBranch(userBean.getUserName());
+
+		String branch1=gbService.getBranch(userBean.getUserName());
 		String branch2=gbService.getBranch(fUserName);
 		
 		if(branch1.equalsIgnoreCase(""))
