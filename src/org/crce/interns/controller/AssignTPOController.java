@@ -239,13 +239,25 @@ public class AssignTPOController {
 		
 		HttpSession session=request.getSession();
 		String fUserName=(String)session.getAttribute("userName");
-		
-		String branch1=gbService.getBranch(userBean.getUserName());
+		String branch1="null";
+		branch1=gbService.getBranch(userBean.getUserName());
 		String branch2=gbService.getBranch(fUserName);
+		
+		if(branch1.equalsIgnoreCase(""))
+		{
+			model=new ModelAndView("assignTPCF");
+			erroMesg+="No such user exists";
+			model.addObject("erroMesg",erroMesg);
+			return model;
+		}
 		
 		if(!branch1.equalsIgnoreCase(branch2)){
 			System.out.println("Branch not same...");
-			return new ModelAndView("notAuth");
+			model=new ModelAndView("assignTPCF");
+			erroMesg+="Sorry...! But you are not authorized to assign this Student as STPC";
+			model.addObject("erroMesg",erroMesg);
+			return model;
+			//return new ModelAndView("notAuth");
 		}
 		
 		userBean.setModifiedBy(fUserName);
@@ -270,7 +282,7 @@ public class AssignTPOController {
 		}
 		else if(a==34){  //Already assigned STPC or FTPC user attempted to be assigned as TPC
 			model=new ModelAndView("assignTPCF");
-			erroMesg+="Already assigned STPC or FTPC user attempted to be assigned as TPC";
+			erroMesg+="User attempted to be assigned as TPC is already assigned as STPC";
 			model.addObject("erroMesg",erroMesg);
 			//return new ModelAndView("alTPC");
 		}
@@ -365,9 +377,20 @@ public class AssignTPOController {
 		String branch1=gbService.getBranch(userBean.getUserName());
 		String branch2=gbService.getBranch(fUserName);
 		
+		if(branch1.equalsIgnoreCase(""))
+		{
+			model=new ModelAndView("removeTPCF");
+			erroMesg+="No such user exists";
+			model.addObject("erroMesg",erroMesg);
+			return model;
+		}
+		
 		if(!branch1.equalsIgnoreCase(branch2)){
 			System.out.println("Branch not same...");
-			return new ModelAndView("notAuth");
+			model=new ModelAndView("removeTPCF");
+			erroMesg+="Sorry...! But you are not authorized to remove this Student as STPC";
+			model.addObject("erroMesg",erroMesg);
+			return model;
 		}
 		
 		userBean.setModifiedBy(fUserName);
@@ -379,7 +402,7 @@ public class AssignTPOController {
 		if(a==0)//No such user exists in UserDetails Table
 		{
 			model=new ModelAndView("removeTPCF");
-			erroMesg+="No such user exists";
+			erroMesg="No such user exists";
 			model.addObject("erroMesg",erroMesg);
 			//return new ModelAndView("noUser");
 		}
