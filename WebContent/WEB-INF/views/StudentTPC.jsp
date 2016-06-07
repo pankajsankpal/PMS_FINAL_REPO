@@ -23,7 +23,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 <!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/dropzone.min.css" />
 		<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
 		
 </head>
@@ -95,7 +95,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 												<li>
-													<a data-toggle="tab" href="#notificatn">
+													<a href="StuNoti">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -252,10 +252,6 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				Extar-Curricular Activities :${professionalProfile.extraCurricularActivities}
 																			</p>		
 																		</div>
-
-																		
-																		
-
 																		<div class="profile-skills">
 																			
 																		</div>
@@ -270,59 +266,67 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 												<div id="activity" class="tab-pane">
 												
 													<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="clearfix">
-								
-										<div class="row">
-										<div class="col-xs-12 ">
-										<div class="widget-box">
-										<div class="widget-body">
-										 <div class="widget-main" align="center">
-											<div>
-													<div class="profile-feed row">
-														<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+														<div class="col-xs-12">
+															<!-- PAGE CONTENT BEGINS -->
+															<div class="clearfix">
+															
+																	<div class="row">
+																	<div class="col-xs-12 ">
+																	<div class="widget-box">
+																	<div class="widget-body">
+																	 <div class="widget-main" align="center">
+																		<div>
+																				<div class="profile-feed row">
+																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																				</div>
+																				<br>
+																				<table>
+																			
+																				
+																				<tr>
+																					<td>Links for Quick Access</td>
+																				</tr>
+																				<tr>
+																					<td>1. <a href="resumeUpload">Upload Resume</a></td></tr>
+																			    <tr>
+																					<td>2. <a href="viewResumes">Click to View/Download Resume</a></td>	</tr>
+																				<tr>
+																					<td>3.<a  href="certificateUpload">Click to upload Certificates </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>4.<a href="addFeedback">Give a Feedback</a><br/></td>
+																				</tr>
+																				<tr>
+																					<td>5. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>6. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>7. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+																				</tr>
+																				</table>
+																				
+																			
+																			<br><br>
+																		</div>
+																		</div>
+																		</div>
+																		</div>
+																		<br><br>
+																	</div>
+							
+																	
+																</div>
+																	
+															
+															
+															</div>
+														</div>
 													</div>
-													<br>
-													<table>
-												
-													
-													<tr>
-														<td>Links for Quick Access</td>
-													</tr>
-													<tr>
-														<td>1. <a href="resumeUpload">Upload Resume</a></td></tr>
-												    <tr>
-														<td>2. <a href="viewResumes">Click to View/Download Resume</a></td>	</tr>
-													<tr>
-														<td>3.<a  href="certificateUpload">Click to upload Certificates </a></td>
-													</tr>
-													
-													<tr>
-														<td>4.<a href="addFeedback">Give a Feedback</a><br/></td>
-													</tr>
-													<tr>
-														<td>5. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
-													</tr>
-													</table>
-													
-												
-												<br><br>
-											</div>
-											</div>
-											</div>
-											</div>
-											<br><br>
-										</div>
-
-										
-									</div>
-										
-								
-								
-								</div>
-							</div>
-						</div>
 													
 												</div>	
 												
@@ -412,19 +416,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 															
 														</div>
 												</div>
-												
-													
-															<!-- PAGE CONTENT BEGINS -->
-															<!-- <div class="row">
-																<div class="col-sm-9">
-																	<div class="space"></div>
-
-																	<div id="calendar"></div>
-																</div>
-
-															</div> -->  <!-- end of calander -->
-
-															<!-- PAGE CONTENT ENDS -->
+													<!-- PAGE CONTENT ENDS -->
 														
 
 												</div><!-- /#friends -->
@@ -792,7 +784,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<tr>
 			<td><a href="offerLetterUpload">Click here to upload Offer Letter</a></td>
 		</tr>
-		<tr>
+		<tr>	
 			<td><a href="addFeedback">Click here to give your feedback</a></td>
 		</tr>
 		<tr>

@@ -190,5 +190,15 @@ public class NfController {
 		request.getSession(true).setAttribute("notiClick", timestamp);
 		return timestamp;
 	}
+	
+	// @pankaj added following for notification
+	//--------------------------------------------------------------------
+
+	@RequestMapping("/StuNoti")
+	public String StudentNotification() {
+		return "StudentNoti";
+	}
 
 }
+
+

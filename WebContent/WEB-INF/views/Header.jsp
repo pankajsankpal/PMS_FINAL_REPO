@@ -149,9 +149,6 @@ function checkNewNoti(){
 									${sessionScope.name}
 
 
-
-
-
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
