@@ -100,7 +100,7 @@
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${sessionScope.name}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 						

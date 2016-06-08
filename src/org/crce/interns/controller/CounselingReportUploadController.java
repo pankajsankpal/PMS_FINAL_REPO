@@ -112,4 +112,12 @@ public class CounselingReportUploadController {
 				
 				return model;
 			}
+			
+			// @pankaj added following for upload page
+			//--------------------------------------------------------------------
+
+			@RequestMapping("/StudentUploads")
+			public String StudentNotification() {
+				return "StudentUploads";
+			}
 }
