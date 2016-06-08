@@ -43,8 +43,7 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 
 		<!-- inline styles related to this page -->
 
-		<!-- ace settings handler -->
-		<script src="assets/js/ace-extra.min.js"></script>
+	
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -55,7 +54,7 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 
 
 
-		<script src="assets/js/jquery.2.1.1.min.js"></script>
+		<!-- <script src="assets/js/jquery.2.1.1.min.js"></script>
 
 		<script type="text/javascript">
 			window.jQuery
@@ -63,18 +62,18 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 							+ "<"+"/script>");
 		</script>
 		
-		<!-- <![endif]-->
+		<![endif]
 		
 		
 		<script type="text/javascript">
 			if ('ontouchstart' in document.documentElement)
 				document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
 						+ "<"+"/script>");
-		</script>
+		</script> -->
 		
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-		<script src="assets/js/jquery.2.1.1.min.js"></script>
+		<script src="assets/js/jquery.2.1.1.min.js"></script> 
 
 		<!-- keep this below ace scripts -->
 		<script src="assets/js/bootstrap.min.js"></script>
