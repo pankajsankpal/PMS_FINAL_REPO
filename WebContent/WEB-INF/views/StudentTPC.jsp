@@ -1,7 +1,7 @@
 <!-- author: Pankaj sankpal
 description: contain ALL professional and personal details of STUDENT tpc -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
-
+<%-- 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 
@@ -690,9 +690,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 </body>
 </html>
 
+--%>
 
-
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -801,8 +801,10 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
-
+		<tr>
+			<td><a href="ftpcapplies">apply on behalf of student</a></td>
+		</tr>
 	</table>
 
 </body>
-</html> --%>
+</html> 
