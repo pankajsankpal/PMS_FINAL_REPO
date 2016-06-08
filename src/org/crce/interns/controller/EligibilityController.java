@@ -11,50 +11,130 @@
 
 package org.crce.interns.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.EligibilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EligibilityController {
+	
 	@Autowired
 	private EligibilityService E_service;
 	
-	
+	String msg = "";
+
 	@RequestMapping("/getjob")
-    public ModelAndView start() {
-        return new ModelAndView("tempform");
-    }
+	public ModelAndView start() {
+		return new ModelAndView("tempform");
+	}
+
+	@RequestMapping("/ftpcapplies")
+	public ModelAndView start1() {
+		return new ModelAndView("tempform2");
+	}
 	
-	
-	
+
 	/**
-	 * the method check whether the student is eligible and directs to fail or success page accordingly
+	 * the method check whether the student is eligible and directs to fail or
+	 * success page accordingly
+	 * 
 	 * @param request
 	 * @param job_id
 	 * @return
 	 */
 	@RequestMapping("/applyforjob")
-	public ModelAndView  criteriaCheck(HttpServletRequest request,@RequestParam(value="job_id")String job_id){
-		HttpSession session=request.getSession();
-		String username=(String)session.getAttribute("userName");
-		System.out.println("This is user:"+username+"   and job_id: "+job_id);
+	public ModelAndView criteriaCheck(HttpServletRequest request, @RequestParam(value = "c_id") int c_id,
+			@RequestParam(value = "j_id") String job_id) {
 	
-		int criteria_id=E_service.getCriteriaId(job_id);
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("userName");
 		
-		if(E_service.checkCriteria(username, criteria_id,job_id))
+		System.out.println("This is user:" + username + "   and c_id: " + c_id);
+
+		if (E_service.checkCriteria(username, c_id, job_id))
 			return new ModelAndView("eligible");
-	
+
 		else
-				System.out.println("oopsie!!  you dont meet the criteria ");
-				return new ModelAndView("fail");
+		{
+			System.out.println("oopsie!!  you dont meet the criteria ");
+			String msg = "YOU DONT MEET THE CRITERIA !!";
+			ModelAndView m = new ModelAndView("dispcriteria");
+			m.addObject("msg", msg);
+			return m;
+		}
+			
 	}
+
+	/**
+	 * this method finds the criteria associated to job_id and then returns a
+	 * criteria object
+	 * 
+	 * @param job_id
+	 * @return
+	 */
+	@RequestMapping("/dispcriteria")
+	public ModelAndView displayCriteriaDetails(@RequestParam(value = "job_id") String job_id) {
+		int criteria_id = E_service.getCriteriaId(job_id);
+		
+		System.out.println(criteria_id);
+		
+		ModelAndView model = new ModelAndView("dispcriteria");
+		model.addObject("criteria", E_service.getCriteria(criteria_id));
+		model.addObject("job_id", job_id);
+		
+		return model;
+	}
+
+	@RequestMapping("/applyonbehaloffstudent")
+	public ModelAndView checkCriteriaFromftpc(HttpServletRequest request, @RequestParam(value = "u_name") String uname,
+			@RequestParam(value = "j_id") String job_id) {
+		String userRole = (String) request.getSession(true).getAttribute("roleName");
+		System.out.println(userRole);
+
+		if (userRole.equals(ConstantValues.StudentTPCName)) {
+			int criteria_id = E_service.getCriteriaId(job_id);
+			if (E_service.checkCriteria(uname, criteria_id, job_id))
+				return new ModelAndView("eligible");
+			else {
+				System.out.println("oopsie!!  you dont meet the criteria ");
+				String msg = "THE STUDENT DOES NOT MEET THE CRITERIA !!";
+				ModelAndView m = new ModelAndView("tempform2");
+				m.addObject("msg", msg);
+				return m;
+			}
+		}
+
+		else
+			return new ModelAndView("403");
+	}
+
+	/*
+	 * added for testing
+	 * 
+	 * 
+	 * @RequestMapping("/doCriteriaCheck") public @ResponseBody String
+	 * loosesearch(@RequestParam("CHARS") String chars){ public ModelAndView
+	 * doCriteriaCheck(HttpServletRequest request,@RequestParam(value="c_id")int
+	 * c_id,@RequestParam(value="j_id")String job_id){ HttpSession
+	 * session=request.getSession(); String
+	 * username=(String)session.getAttribute("userName"); System.out.println(
+	 * "This is user:"+username+"   and c_id: "+c_id);
+	 * 
+	 * 
+	 * if(E_service.checkCriteria(username, c_id,job_id)) return new
+	 * ModelAndView("eligible");
+	 * 
+	 * else System.out.println("oopsie!!  you dont meet the criteria "); String
+	 * msg="YOU DONT MEET THE CRITERIA !!"; ModelAndView m = new
+	 * ModelAndView("dispcriteria"); m.addObject("msg",msg); return m; }
+	 */
+
 }
