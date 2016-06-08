@@ -1,7 +1,16 @@
+/**
+ * Author Name: Andrea Furtado
+ *
+ * Filename: EligibilityDaoImpl.java
+ *  
+ *  Description: This dao provides interaction with the tables
+ * 
+ *  Functions: getCriterias(), getProfessionalProfile() ,getQualification(),getCriteriaId(),getJobCategory(),getStudentJob()
+ *  
+ *  Tables used: job_schema.criteria,job_schema.job, job_schema.company_job ,job_schema.company, user_schema.ProfessionalProfile, 
+ *  			user_schema.userdetails,user_schema.Professional_Profile_job, user_schema.qualification,	 
+ */
 package org.crce.interns.dao.impl;
-
-
-
 
 
 import org.crce.interns.dao.EligibilityDao;
@@ -25,7 +34,10 @@ public class EligibilityDaoImpl implements EligibilityDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-
+	/**
+	 * returns the criteria object  having id as 'criteria_id'
+	 * @param  criteria_id
+	 */
 	public Criteria getCriterias(int criteria_id) {
 		
 		Criteria c=null;
@@ -39,6 +51,11 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		 return c;
 	}
 	
+	
+	/**
+	 * returns the ProfessionalProfile object  having id as 'username'
+	 * @param  username
+	 */
 	public ProfessionalProfile getProfessionalProfile(String username){	
 		ProfessionalProfile p=null;
 	
@@ -53,6 +70,11 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		return p;
 	}
 
+	/**
+	 * returns the Qualification object  having id as 'username'
+	 * @param  username
+	 */
+
 	public Qualification getQualification(String username)
 	{
 		Qualification q=null;
@@ -66,6 +88,10 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		return q;
 	}
 
+	
+	/**this method first finds the company which offered the job and then returns the criteria_id of criteria placed by that company
+	 * @param job_id
+	 */
 	public int getCriteriaId(String job_id) {
 		
 		Company company= null;
@@ -80,6 +106,10 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		return company.getCriteria_id();
 	}
 	
+	/**
+	 * this method returns the job_category of a given job
+	 * @param job_id
+	 */
 	public String getJobCategory(String job_id)
 	{
 		String s=(String) sessionFactory.getCurrentSession().createQuery("select job_category from Job where job_id= :jid").setParameter("jid", job_id).uniqueResult();
@@ -87,6 +117,10 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		return s;
 	}
 	
+	/**
+	 * this method returns the job_id of the job that the student has acquired
+	 * @param u_name
+	 */
 	public String getStudentJob(String u_name){
 		String s=(String) sessionFactory.getCurrentSession().createQuery("select job_id from Professional_Profile_job where username= :x").setParameter("x", u_name).uniqueResult();
 
