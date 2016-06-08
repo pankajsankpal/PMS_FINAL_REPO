@@ -12,8 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-/*
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+/*Author melwyn95
  *Commented by melwyn95
  This class contains 3 methods
  1>welcomeSearch
@@ -61,5 +67,43 @@ public class SearchController {
 		Map<String, Object> modelMap = new HashMap<>();
 		modelMap.put("companyList", companyList);
 		return new ModelAndView("searchbar", modelMap);
+	}
+	
+	/*
+	 *This method searches for both students and companies
+	 *and returns a combined list of companies and students in JSON format
+	 *this method works with the autocomplete functionality
+	 */
+	@RequestMapping(value = "/Search", method = RequestMethod.GET) 
+	public @ResponseBody String searchCombined(@RequestParam("CHARS") String searchString) {
+		System.out.println(searchString);
+		List<Company> companyList = null;
+		List<PersonalProfile> userDetailsList = null;
+		
+		if (!searchString.matches("\\s*")) {
+			companyList = searchService.searchCompany(searchString);
+			userDetailsList = searchService.searchUser(searchString);
+		}
+		
+		JsonArray jarray = new JsonArray();
+		for (Company c : companyList) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("name", c.getCompany_name());
+			jobj.addProperty("type", "company");
+			jobj.addProperty("roll-no", "NA");
+			jobj.addProperty("cid", c.getCompany_id());
+			jarray.add(jobj);
+		}
+		for (PersonalProfile p : userDetailsList) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("name", p.getName());
+			jobj.addProperty("type", "student");
+			jobj.addProperty("roll-no", p.getUserName());
+			jobj.addProperty("cid", "NA");
+			jarray.add(jobj);
+		}
+		
+		System.out.println(jarray);
+		return jarray.toString();
 	}
 }
