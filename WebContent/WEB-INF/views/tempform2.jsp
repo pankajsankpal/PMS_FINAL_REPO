@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/PMS_v1/dispcriteria">
+<form method="post" action="/PMS_v1/applyonbehaloffstudent">
 	
-		job_id <input type="text" name="job_id"> <br/>
+		job_id <input type="text" name="j_id"> <br/>
+		USERNAME:<input type="text" name="u_name"> <br/>
 		<input type="submit" value="APPLY">
 	</form>
+	
+	
+	<br>
+	<br>
+	${msg }
 </body>
 </html>

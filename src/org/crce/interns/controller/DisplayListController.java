@@ -9,7 +9,6 @@
 
  */
 
-
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -24,51 +23,52 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DisplayListController {
 
-	DisplayListService dsp= new DisplayListService();
-	//this method is for displaying the list of cv
-	
+	DisplayListService dsp = new DisplayListService();
+	// this method is for displaying the list of cv
+
 	/**
 	 * method simply directs to listCV.jsp
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/displist")
-	public ModelAndView displayCVpage(){
-	return new ModelAndView("listCV");
+	public ModelAndView displayCVpage() {
+		return new ModelAndView("listCV");
 	}
-	
-	
-	
-	
+
 	/**
-	 * this method displays list of files within a particular folder in ascending order 
+	 * this method displays list of files within a particular folder in
+	 * ascending order
+	 * 
 	 * @param request
 	 * @param folder
-	 * @return 
+	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/dispCV")
-	public ModelAndView displayCV(HttpServletRequest request,@RequestParam(value="folder")String folder){
+	public ModelAndView displayCV(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
-		List<String> listFullName=dsp.displayCVList(folder,userName);
-		List<String> list= new ArrayList<String>();;
-		
+		List<String> listFullName = dsp.displayCVList(folder, userName);
+		List<String> list = new ArrayList<String>();
+		;
+
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
-		
-		for(String x:listFullName){
-			int pos=x.indexOf('-');
+
+		for (String x : listFullName) {
+			int pos = x.indexOf('-');
 			list.add(x.substring(0, pos));
 			indexList.add(z);
 			z++;
 		}
-		
+
 		request.getSession().setAttribute("folderName", folder);
-		ModelAndView model=new ModelAndView("listCV");
-	
+		ModelAndView model = new ModelAndView("listCV");
+
 		model.addObject("actualFileNames", listFullName);
-		model.addObject("nameToDisplay",list);
-		model.addObject("indexList",indexList);
-		
+		model.addObject("nameToDisplay", list);
+		model.addObject("indexList", indexList);
+
 		return model;
 	}
 }

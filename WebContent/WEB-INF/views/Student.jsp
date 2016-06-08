@@ -504,7 +504,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 		<tr>
  			<td><a href="displist">display list</a><br /></td>
  		</tr>
-		<tr>
+			<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
 
