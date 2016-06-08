@@ -60,7 +60,7 @@ public class CounselingReportUploadController {
 				String role =  (String)session.getAttribute("roleId");
 				String user=(String)session.getAttribute("userName");
 				String name=loginService.checkSR(user);
-				if(!crService.checkRole("CounselingReportUpload", role)&&name.equals("COUNSELLING_REPORT"))
+				if(!(crService.checkRole("CounselingReportUpload", role)&&name.equals("COUNSELLING_REPORT")))
 					return new ModelAndView("403");
 				else
 					return new ModelAndView("CounselingReportUpload");
@@ -95,7 +95,7 @@ public class CounselingReportUploadController {
 					
 					//calls the service to actually upload the file
 					counselingReportUploadService.handleFileUpload(request, fileUpload, username);
-					
+					model.addObject("success", 1);
 					
 				} catch (IncorrectFileFormatException e) {
 					System.out.println(e);

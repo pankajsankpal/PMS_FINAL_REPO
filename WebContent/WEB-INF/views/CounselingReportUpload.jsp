@@ -113,7 +113,10 @@
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
-													<h2> Select the Counseling Report..! </h2>
+													<h2> Upload the Counseling Report..! </h2>
+													<c:if test="${success==1}">
+															<p style="color:green;">Counseling Report uploaded successfully!</p>
+													</c:if>
 													<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCounselingReport">
 
 													<form:errors path="*" cssClass="errorblock" element="div" />
