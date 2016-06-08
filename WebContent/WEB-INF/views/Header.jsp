@@ -168,6 +168,12 @@ function checkNewNoti(){
 										Sign out
 									</a>
 								</li>
+								<li>
+									<a href="viewprofile">
+										<i class="ace-icon fa fa-user"></i>
+										profile
+									</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
