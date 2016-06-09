@@ -191,6 +191,14 @@ public class NfController implements ConstantValues{
 		request.getSession(true).setAttribute("notiClick", timestamp);
 		return timestamp;
 	}
+	
+	// @pankaj added following for notification
+	//--------------------------------------------------------------------
+
+	@RequestMapping("/StuNoti")
+	public String StudentNotification() {
+		return "StudentNoti";
+	}
 
 	//------------------------------------------------------------------------------------------------
 	
@@ -285,3 +293,5 @@ public class NfController implements ConstantValues{
 	}
 
 }
+
+

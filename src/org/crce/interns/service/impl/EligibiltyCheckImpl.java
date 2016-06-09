@@ -22,6 +22,7 @@ import org.crce.interns.dao.EligibilityDao;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.Qualification;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.EligibilityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,16 +94,16 @@ public class EligibiltyCheckImpl implements EligibilityService {
 			ProfessionalProfileBean p = getProfessionalProfile(username);
 
 			// check if student is placed
-			if (p.getStatus().equalsIgnoreCase("placed")) {
+			if (p.getStatus().equalsIgnoreCase(ConstantValues.PLACED)) {
 				String job_category = edao.getJobCategory(job_id);
 
 				String student_job_category = edao.getJobCategory(edao.getStudentJob(username));
 
-				if (job_category.equalsIgnoreCase("dream") && student_job_category.equalsIgnoreCase("dream")) {
+				if (job_category.equalsIgnoreCase(ConstantValues.DREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
 					System.out.println("you already have a dream job");
 					return false;
 				}
-				if (job_category.equalsIgnoreCase("nondream") && student_job_category.equalsIgnoreCase("dream")) {
+				if (job_category.equalsIgnoreCase(ConstantValues.NONDREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
 					System.out.println("you have a dream job and this is a non-dream");
 					return false;
 

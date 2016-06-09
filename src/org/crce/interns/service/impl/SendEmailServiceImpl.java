@@ -1,7 +1,7 @@
 /*
 * @author Leon
 * Task: Sends Email To group values retrieved from Database 
-* Dependency: SendEmailDAOImpl.java
+* Dependency: SendEmailDAOImpl.java, javaMailSender, DirectoryPathBean.java
 */
 
 package org.crce.interns.service.impl;
@@ -39,6 +39,14 @@ public class SendEmailServiceImpl implements SendEmailService {
     private SendEmailDAO sendEmailDAO;
     
     DirectoryPathBean directoryPathBean = new DirectoryPathBean();
+    
+    /**
+     * 
+     * @param request
+     * @param file
+     * @return ModelAndView 
+     */
+    
     
     @Override
     public ModelAndView sendMail(HttpServletRequest request,
@@ -462,6 +470,13 @@ public class SendEmailServiceImpl implements SendEmailService {
      Return Type: Boolean-True/False
      Function: Checks for Files
      */
+    /**
+     * 
+     * @param name
+     * @return boolean
+     */
+    
+    @Override
     public boolean checkFile(String name) {
         String path = directoryPathBean.getEmailFolder()+"\\";
         File folder = new File(path);
@@ -479,6 +494,9 @@ public class SendEmailServiceImpl implements SendEmailService {
      Return Type: Void
      Function: Deletes the copy of the file made for uploading in Email_Temp directory
      */
+    
+    
+    @Override
     public void deleteFiles() {
         String path = directoryPathBean.getEmailFolder()+"\\";
         File folder = new File(path);
@@ -487,6 +505,13 @@ public class SendEmailServiceImpl implements SendEmailService {
             f.delete();
         }
     }
+    
+    /**
+     * 
+     * @param request
+     * @param file
+     * @return ModelAndView
+     */
     
     @Override
     public ModelAndView sendPersonalMail(HttpServletRequest request,

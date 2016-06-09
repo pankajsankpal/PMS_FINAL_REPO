@@ -103,7 +103,12 @@ public interface ConstantValues {
 	public String ZS = "ZS Associates";
 	public String GOD = "Godrej";
 	public String LNT = "Laursen & Tubro";
-
+	
+	
+	// STUDENT PLACEMENT STATUS
+	public String PLACED = "placed";
+	public String DREAM ="dream";
+	public String NONDREAM ="nondream";
 	
 	public String JOB_URL = "";
 	public String ELIGIBLE_URL = "ELIGIBLE";

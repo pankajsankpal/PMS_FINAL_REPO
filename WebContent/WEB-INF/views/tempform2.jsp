@@ -4,15 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title></title>
+<title>Insert title here</title>
 </head>
 <body>
-Entry Deleted.
-<br />
-<<<<<<< HEAD
-<a href="view.html">View Applicants' List</a>
-=======
-<a href="view-candidate.html">Back</a>
->>>>>>> origin/master
+<form method="post" action="/PMS_v1/applyonbehaloffstudent">
+	
+		job_id <input type="text" name="j_id"> <br/>
+		USERNAME:<input type="text" name="u_name"> <br/>
+		<input type="submit" value="APPLY">
+	</form>
+	
+	
+	<br>
+	<br>
+	${msg }
 </body>
 </html>

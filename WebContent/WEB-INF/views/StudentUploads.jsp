@@ -1,7 +1,7 @@
 <!-- author: Pankaj sankpal
 description: contain ALL professional and personal details of STUDENT tpc -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<%-- 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 
@@ -11,7 +11,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Student TPC| HOME</title>
+<title>Student uploads and downloads</title>
 
 <!-- page specific plugin styles -->
 
@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-								Welcome  ${sessionScope.name} To Student TPC page
+							Logged in as   ${sessionScope.name} 
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -73,16 +73,16 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 										<div class="tabbable">
 											<ul class="nav nav-tabs padding-18">
 												<ul class="nav nav-tabs padding-18">
-												<li class="active">
-													<a data-toggle="tab" href="viewprofile">
+												<li>
+													<a href="viewprofile">
 														<i class="green ace-icon fa fa-user bigger-120"></i>
 														Profile
 													</a>
 												</li>
 												
 
-												<li>
-													<a  href="StudentUploads">
+												<li class="active">
+													<a data-toggle="tab" href="#uploads">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -100,169 +100,12 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 											</ul>
 
 											<div class="tab-content no-border padding-24">
-												<div id="profile" class="tab-pane in active">
-													<div class="row">
-														<div class="col-xs-12 col-sm-3 center">
-															<span class="profile-picture">
-																<img class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="assets/avatars/profile-pic.jpg" />
-															</span>
-
-															
-															<div class="space space-4"></div>
-
-																<a href="edit"><span class="btn btn-md btn-block btn-pink">click here to edit your profile </span></a>
-															
-														</div><!-- /.col -->
-
-														<div class="col-xs-12 col-sm-9">
-															<h4 class="blue">
-																
-
-																<span class="label label-purple arrowed-in-right">
-																	<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-																	online
-																</span>
-															</h4>
-
-															<div class="profile-user-info">
-																<div class="profile-info-row">
-																	<div class="profile-info-name"> Username </div>
-
-																	<div class="profile-info-value">
-																		<span><core:out value=" ${sessionScope.name}" /> </span>
-																	</div>
-																</div>
-
-																<div class="profile-info-row">
-																	<div class="profile-info-name">Gender: </div>
-
-																	<div class="profile-info-value">
-																		
-																		<span><core:out value="${personalProfile.gender}" /> </span>
-																		
-																	</div>
-																</div>
-																<div class="profile-info-row">
-																	<div class="profile-info-name">Year of Passing: </div>
-
-																	<div class="profile-info-value">
-																		
-																		<span><core:out value="${professionalProfile.year}" /> </span>
-																		
-																	</div>
-																</div>
-
-																
-
-																<div class="profile-info-row">
-																	<div class="profile-info-name"> Branch:   </div>
-
-																	<div class="profile-info-value">
-																		<span><core:out value=" ${professionalProfile.branch}" /></span>
-																	</div>
-																</div>
-
-																<div class="profile-info-row">
-																	<div class="profile-info-name"> DOB:  </div>
-
-																	<div class="profile-info-value">
-																		<span><core:out value="${personalProfile.dob}" /></span>
-																	</div>
-																</div>
-															</div>
-
-															<div class="hr hr-8 dotted"></div>
-
-															
-														</div><!-- /.col -->
-													</div><!-- /.row -->
-
-													<div class="space-20"></div>
-
-													<div class="row">
-														<div class="col-xs-12 col-sm-6">
-															<div class="widget-box transparent">
-																<div class="widget-header widget-header-small">
-																	<h4 class="widget-title smaller">
-																		<i class="ace-icon fa fa-check-square-o bigger-110"></i>
-																		Little About Me
-																	</h4>
-																</div>
-
-																<div class="widget-body">
-																	<div class="widget-main">
-																		<p>
-																			<b>Email id</b> :  ${personalProfile.emailId}
-																		</p>
-																		<p>
-																			<b>Contact No. </b> : ${personalProfile.mobileNo}
-																		</p>
-																		<p>
-																			<b>Correspondance Address</b>: ${personalProfile.correspondenceAddress}
-																		</p>
-																		<p>
-																			<b>Permanent Address</b>: ${personalProfile.permanentAddress}
-																		</p>
-																		<p>
-																			Thanks for visiting my profile.
-																		</p>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-xs-12 col-sm-6">
-															<div class="widget-box transparent">
-																<div class="widget-header widget-header-small header-color-blue2">
-																	<h4 class="widget-title smaller">
-																		<i class="ace-icon fa fa-lightbulb-o bigger-120"></i>
-																		My Professional Details
-																	</h4>
-																</div>
-
-																<div class="widget-body">
-																	<div class="widget-main padding-10">
-																		<div class="clearfix">
-																			<p> My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch .I 
-																				am a Web Technology and Coading enthusiasts
-																			</p>
-																			<div class="hr hr-16"></div>
-																			<p>
-																				Placement Status: ${professionalProfile.status}
-																			</p>
-																			<p>
-																				FIELDS OF INTEREST:
-																									${professionalProfile.fieldOfInterest}
-																			</p>
-																			<p> ACHIEVEMENTS: ${professionalProfile.achievements}</p>
-	
-																			<p> PROJECTS Undertaken :
-																						${professionalProfile.projects}</p>
-																			
-																			<p> INTERNSHIPS:${professionalProfile.internships}</p>
-																			<p>
-																			Co-Curricular Activities :${professionalProfile.coCurricularActivities}
-																			</p>	
-																			<p>
-																				Extar-Curricular Activities :${professionalProfile.extraCurricularActivities}
-																			</p>		
-																		</div>
-																		<div class="profile-skills">
-																			
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
 												
-												</div><!-- /#home -->
-												
-												<!-- <div id="activity" class="tab-pane">
+												<div id="activity" class="tab-pane">
 												
 													<div class="row">
 														<div class="col-xs-12">
-															PAGE CONTENT BEGINS
+															<!-- PAGE CONTENT BEGINS -->
 															<div class="clearfix">
 															
 																	<div class="row">
@@ -283,29 +126,93 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				</tr>
 																				<tr>
 																					<td>1. <a href="resumeUpload">Upload Resume</a></td></tr>
+																			    
+																					<td>2.<a  href="certificateUpload">Click to upload Certificates </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>3.<a href="addFeedback">Give a Feedback</a><br/></td>
+																				</tr>
+																				<tr>
+																					<td>4. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>5. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
+																				</tr>
+																				
+																				<tr>
+																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+																				</tr>
+																				
+		
+																				</table>
+																				
+																			<br><br>
+																		</div>
+																		</div>
+																		</div>
+																		</div>
+																		<br><br>
+																	</div>
+							
+																	
+																</div>
+																	
+															
+															
+															</div>
+														</div>
+													</div>
+													
+												</div>	
+												
+												<div id="uploads" class="tab-pane in active">
+													<div class="profile-feed row">
+													
+														<div class="row">
+														<div class="col-xs-12">
+															<!-- PAGE CONTENT BEGINS -->
+															<div class="clearfix">
+															
+																	<div class="row">
+																	<div class="col-xs-12 ">
+																	<div class="widget-box">
+																	<div class="widget-body">
+																	 <div class="widget-main" align="center">
+																		<div>
+																				<div class="profile-feed row">
+																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																				</div>
+																				<br>
+																				<table>
+																			
+																				
+																				<tr>
+																					<td>Links for Quick Access</td>
+																				</tr>
+																				<tr>
+																					<td>1. <a href="resumeUpload">Upload Resume</a></td>
+																				</tr>
 																			    <tr>
-																					<td>2. <a href="viewResumes">Click to View/Download Resume</a></td>	</tr>
-																				<tr>
-																					<td>3.<a  href="certificateUpload">Click to upload Certificates </a></td>
+																					<td>2.<a  href="certificateUpload">Click to upload Certificates </a></td>
 																				</tr>
 																				
 																				<tr>
-																					<td>4.<a href="addFeedback">Give a Feedback</a><br/></td>
+																					<td>3.<a href="addFeedback">Give a Feedback</a><br/></td>
 																				</tr>
 																				<tr>
-																					<td>5. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>6. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
+																					<td>4. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
 																				</tr>
 																				
 																				<tr>
-																					<td>7. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+																					<td>5. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
 																				</tr>
+																				
 																				<tr>
-			<td><a href="getjob">click here to apply for job</a><br /></td>
-		</tr>
+																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
+																				</tr>
+																				
 																				</table>
 																				
 																			
@@ -326,19 +233,13 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 														</div>
 													</div>
 													
-												</div>	
-												 -->
-												 
-												 
-												<!-- <div id="uploads" class="tab-pane">
-													<div class="profile-feed row">
 														<div class="row">
 															<div class="col-xs-12">
-																PAGE CONTENT BEGINS
+																<!-- PAGE CONTENT BEGINS -->
 																
 																	<div class="widget-box widget-color-green2">
 																		<div class="widget-header">
-																			<h4 class="widget-title lighter smaller">Browse Files</h4>
+																			<h4 class="widget-title lighter smaller">Browse Files to Download</h4>
 																		</div>
 							
 																		<div class="widget-body">
@@ -346,29 +247,27 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				<ul id="tree2"></ul>
 																			</div>
 																			
-																			<button class="btn btn-md btn-block btn-primary pull-right">
+																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
 																			<span class="bigger-110">Upload</span>
 		
 																			<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-																		</button>
+																		</button> -->
 																		</div>
 																		
 																	</div>
 																	
 																
-															</div>/.col
-														</div>/.row
+															</div><!-- /.col -->
+														</div><!-- /.row -->
 					
 													
-													</div>/.row
+													</div><!-- /.row -->
 
 													<div class="space-12"></div>
 
-												</div>/#feed
- -->
- 
- 
-												<!-- <div id="notificatn" class="tab-pane">
+												</div><!-- /#feed -->
+
+												<div id="notificatn" class="tab-pane">
 													
 													<div class="col-xs-10 widget-container-col">
 														
@@ -418,12 +317,12 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 															
 														</div>
 												</div>
-													PAGE CONTENT ENDS
+													<!-- PAGE CONTENT ENDS -->
 														
 
-												</div>/#friends
+												</div><!-- /#friends -->
 
- -->
+
 							
 											</div><!-- /#pictures -->
 											</div>
@@ -692,9 +591,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 </body>
 </html>
 
---%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -803,10 +702,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
-		<tr>
-			<td><a href="ftpcapplies">apply on behalf of student</a></td>
-		</tr>
+
 	</table>
 
 </body>
-</html> 
+</html> --%>
