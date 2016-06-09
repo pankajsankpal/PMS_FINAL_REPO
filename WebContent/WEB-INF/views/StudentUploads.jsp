@@ -27,8 +27,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
 		
 </head>
-<body onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<script>
+	
+</script>
+
+<body >
 
 <jsp:directive.include file="Header.jsp" />
 
@@ -90,7 +93,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 												<li>
-													<a href="StuNoti">
+													<a href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -106,6 +109,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 													<div class="row">
 														<div class="col-xs-12">
 															<!-- PAGE CONTENT BEGINS -->
+															
 															<div class="clearfix">
 															
 																	<div class="row">
@@ -113,16 +117,20 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-box">
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
-																		<div>
-																				<div class="profile-feed row">
-																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																		<div >
+																		<c:if test="${sessionScope.roleId eq 3}">
+																				<div  class="profile-feed row">
+																					<button id="apply" type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student</button>
+																					
 																				</div>
+																		</c:if>
+																		
 																				<br>
 																				<table>
 																			
 																				
 																				<tr>
-																					<td>Links for Quick Access</td>
+																					<td> Links for Quick Access</td>
 																				</tr>
 																				<tr>
 																					<td>1. <a href="resumeUpload">Upload Resume</a></td></tr>

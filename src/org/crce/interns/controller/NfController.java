@@ -57,7 +57,7 @@ public class NfController implements ConstantValues{
 
         
 	//------------------------------------------------------------------------------------------------
-	@RequestMapping(value="/checkNf", method = RequestMethod.GET)
+	@RequestMapping(value="/notifications", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
 	try{
 		System.out.println("Inside NfController");

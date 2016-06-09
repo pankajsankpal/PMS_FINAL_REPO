@@ -70,7 +70,7 @@ function checkNewNoti(){
 					<ul class="nav ace-nav">
 						
 						<li class="">
-							<a data-toggle="" class="dropdown-toggle" href="checkNf">
+							<a data-toggle="" class="dropdown-toggle" href="notifications">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>

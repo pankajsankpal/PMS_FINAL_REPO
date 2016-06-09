@@ -89,7 +89,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 												
 												<li>
 
-													<a  href="StuNoti">
+													<a  href="notifications">
 
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
@@ -110,7 +110,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 															
 															<div class="space space-4"></div>
 
-																<a href="edit"><span class="btn btn-md btn-block btn-pink">click here to edit your profile </span></a>
+																<a href="edit"><span class="btn btn-md btn-block btn-pink">Edit Profile Data</span></a>
 															
 														</div><!-- /.col -->
 

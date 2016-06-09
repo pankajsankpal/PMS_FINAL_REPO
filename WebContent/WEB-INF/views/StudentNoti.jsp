@@ -85,7 +85,7 @@ description: contain notification received by student and student tpc -->
 
 												
 												<li  class="active">
-													<a data-toggle="tab" href="#notificatn">
+													<a data-toggle="tab" href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
