@@ -414,15 +414,9 @@ public class UpdateProfileController {
 		//}
 	}
 	
-	//----------------------------------------------------------------------------------------------
-	// AJAX test controller method
-	/*
-	@RequestMapping("/test")
-	public ModelAndView helloajax(){
-		return new ModelAndView("test","message","Spring with ajax and jquery");
-	}
-
+	
 	//----------------------------------------------------------------------------------------------	
+	
 	@RequestMapping(value="/ajaxtest", method = RequestMethod.GET)
 	public @ResponseBody
 	String getanswer(@RequestParam(value = "num1") int n1,
@@ -431,9 +425,21 @@ public class UpdateProfileController {
 		String result = "result is" + n3;
 		return result;
 	}
-	*/
-	//----------------------------------------------------------------------------------------------
 	
+	//----------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------
+		// AJAX test controller method
+		@RequestMapping("/test")
+		public ModelAndView helloajax1(){
+			return new ModelAndView("test","message","Spring with ajax and jquery");
+		}
+		
+		@RequestMapping("/test2")
+		public ModelAndView helloajax2(){
+			return new ModelAndView("test2","message","Spring with ajax and jquery");
+		}
+
+		//----------------------------------------------------------------------------------------------
 	
 	@RequestMapping("/looseSearch")
 	public @ResponseBody String loosesearch(@RequestParam("CHARS") String chars){
@@ -459,11 +465,6 @@ public class UpdateProfileController {
 	
 
 	
-	//this is for company dynamic dropdown
-	@RequestMapping("/test2")
-	public ModelAndView helloajax(){
-		return new ModelAndView("test2","message","Spring with ajax and jquery");
-	}
 	
 	@RequestMapping("/looseSearch2")
 	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
