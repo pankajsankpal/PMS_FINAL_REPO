@@ -71,7 +71,10 @@
 			<td><a href="searchHome">Click here to search for something</a></td>
 		</tr>
 		<tr>
-			<td><a href="sendMail">Click here to send an email</a></td>
+			<td><a href="GroupSendMail">Click here to send an group email</a></td>
+		</tr>
+		<tr>
+			<td><a href="personalMail">Click here to send personal email</a></td>
 		</tr>
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
