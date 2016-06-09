@@ -72,6 +72,7 @@ public class ManageAllotment extends HttpServlet{
 		manageAllotmentService.handleFileUpload(request,fileUpload);
 		
 		manageAllotmentService.addAllotment(allotmentBean);
+		model.addObject("success", 1);
 		
 		} catch (IncorrectFileFormatException e) {
 		

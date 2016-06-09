@@ -28,7 +28,7 @@
  		function doSearch(){
 	 		$.getJSON("looseSearch2",
 	 				
-	 				{CHARS:''},
+	 				{CHARS:'JP'},
 	 				
 	 				function(data){
 	 					console.log(data);

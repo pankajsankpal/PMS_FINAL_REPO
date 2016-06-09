@@ -7,17 +7,26 @@
  
 package org.crce.interns.dao.impl;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.crce.interns.dao.ProfileDAO;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.UserDetails;
+import org.crce.interns.service.ConstantValues;
 import org.hibernate.SessionFactory;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("profileDAO")
 
-public class ProfileDAOImpl implements ProfileDAO{
+public class ProfileDAOImpl implements ProfileDAO, ConstantValues{
 
 //public class ProfileDAOImpl{
 
@@ -99,5 +108,66 @@ public class ProfileDAOImpl implements ProfileDAO{
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Set<String>> totalStudents(){
+		
+		Map<String, Set<String>> result = new HashMap<String, Set<String>>();
+		List<ProfessionalProfile> prof = null;
+		List<String> stud = null;
+		
+		//Set<String> udSet = new HashSet<String>();
+		Set<String> udSet ;
+		Set<String> comps = new LinkedHashSet<String>();
+		Set<String> it = new LinkedHashSet<String>();
+		Set<String> elex = new LinkedHashSet<String>();
+		Set<String> prod = new LinkedHashSet<String>();
+		
+		prof = sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile.class).list();
+						
+		System.out.println("USERS 1= "+prof.size());
+		
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("SELECT U.userName FROM UserDetails U WHERE U.roleId = :role_id1 OR U.roleId = :role_id3");
+		query.setParameter("role_id1", "1");
+		query.setParameter("role_id3", "3");
+		
+		stud = query.list();
+		
+		System.out.println("USERS 2= "+stud.toString());
+		
+		for( ProfessionalProfile i: prof){
+			
+		//	System.out.println("branch = "+i.getBranch());
+			if(!stud.contains(i.getUserName())){
+				continue;
+			}
+			
+			
+			if(i.getBranch().equals(COMPS)){
+				comps.add(i.getUserName());
+				
+			}else if(i.getBranch().equals(IT)){
+				it.add(i.getUserName());
+				
+			}if(i.getBranch().equals(ELEX)){
+				elex.add(i.getUserName());
+				
+			}if(i.getBranch().equals(PROD)){
+				prod.add(i.getUserName());
+				
+			}
+		}
+		
+		result.put(COMPS, comps);
+		result.put(IT, it);
+		result.put(ELEX, elex);
+		result.put(PROD,prod);
+		
+		//listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStatistics.class).list();
+		
+		return result;
+	}
 	
 }
