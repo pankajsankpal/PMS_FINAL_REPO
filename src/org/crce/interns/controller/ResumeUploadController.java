@@ -110,14 +110,5 @@ public class ResumeUploadController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/dispCV", method = RequestMethod.GET)
-	public ModelAndView displayCV(){
-		//Testing
-		String directory_path="C:\\Users\\Dsouza\\Downloads";//give the directory path
-		List<String> listcv=resumeUploadService.displayCVList(directory_path);
-		ModelAndView model=new ModelAndView("listCV");
-		model.addObject("listcv",listcv);
-		return model;
-	}
 	
 }

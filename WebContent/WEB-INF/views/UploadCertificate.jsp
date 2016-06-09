@@ -113,8 +113,8 @@ description: contains Buttons for uploading neccessary docs->
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="clearfix">
 								
-										<div class="row">
-										<div class="col-xs-12 col-sm-6 left">
+										<div class="row col-xs-12" >
+										<div class="col-xs-12 col-md-6 left" >
 										<div class="widget-box">
 										<div class="widget-body">
 										 <div class="widget-main">
@@ -194,7 +194,12 @@ description: contains Buttons for uploading neccessary docs->
 											<br><br>
 										</div>
 										
-										<div class="col-xs-12 col-sm-6 left">
+										</div>
+										
+										
+										<div class="row clo-xs-12">
+										
+										<div class="col-xs-12 col-sm-6 right" >
 										<div class="widget-box">
 										<div class="widget-body">
 										 <div class="widget-main">
@@ -236,7 +241,7 @@ description: contains Buttons for uploading neccessary docs->
 										
 										
 										<div class="col-xs-12 col-sm-6 left">
-										<div class="widget-box">
+										<div class="widget-box" >
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
@@ -274,8 +279,9 @@ description: contains Buttons for uploading neccessary docs->
 											</div>
 											<br><br>
 										</div>
+										</div>
 										
-										
+										<div class="row col-xs-12">
 										<div class="col-xs-12 col-sm-6 left">
 										<div class="widget-box">
 										<div class="widget-body">
@@ -357,10 +363,12 @@ description: contains Buttons for uploading neccessary docs->
 											</div>
 											<br><br>
 										</div>
+										</div>
 										
 										
+										<div class="row col-xs-12">
 										<div class="col-xs-12 col-sm-6 left">
-										<div class="widget-box">
+										<div class="widget-box" style="position: relative;">
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
@@ -438,7 +446,11 @@ description: contains Buttons for uploading neccessary docs->
 											</div>
 											<br><br>
 										</div>
-<div class="col-xs-12 col-sm-6 left">
+
+										</div>
+										
+										<div class="row col-xs-12">
+										<div class="col-xs-12 col-sm-6 left">
 										<div class="widget-box">
 										<div class="widget-body">
 										 <div class="widget-main">
@@ -470,6 +482,7 @@ description: contains Buttons for uploading neccessary docs->
 															</span>
 													  </c:if>
 											</form:form>						
+
 											</div>
 											</div>
 											</div>
@@ -478,6 +491,226 @@ description: contains Buttons for uploading neccessary docs->
 										</div>
 
 										
+										<div id="extra">
+										<div class="col-xs-12 col-sm-6 "  >
+										<div class="widget-box" >
+										<div class="widget-body">
+										 <div class="widget-main">
+											<div align="center" name="extrafield">
+												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
+											<h3><b><u>Extra 1</u></b></h3>
+											<c:if test="${extra1==1}">
+											<c:if test="${success==1}">
+															<p style="color:green;">Certificate uploaded successfully!</p>
+														</c:if>
+												<form:errors path="*" cssClass="errorblock" element="div" />
+											</c:if>
+													<input type="hidden" name="type" value="extra1">
+													Upload extra1 mark sheet : <input class="btn btn-sm btn-success" type="file" name="fileUpload"><br />
+													
+													<c:if test="${extra1==1}">
+													<c:if test="${error==1}">
+														<p style="color:red;">Failed to upload...File format can be png/jpg/jpeg/pdf only!</p>
+													</c:if>
+													<c:if test="${error1==1}">
+														<p style="color:red;">Failed to upload...File size can be only upto 3MB</p>
+													</c:if>
+													</c:if>
+													  <input class="btn btn-sm btn-info" type="submit" value="Upload"> Press here to upload the file!
+													  
+													  <c:if test="${extra1==1}">
+													  		<span><form:errors path="file" cssClass="error" />
+															</span>
+													  </c:if>
+											</form:form>												
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+										
+									</div>
+
+								</div>
+								
+								
+									<div class="row col-xs-12">
+										<div class="col-xs-12 col-sm-6 left">
+										<div class="widget-box">
+										<div class="widget-body">
+										 <div class="widget-main">
+											<div align="center">
+													
+											<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
+											<h3><b><u>Extra2</u></b></h3>
+											<c:if test="${extra2==1}">
+											<c:if test="${success==1}">
+															<p style="color:green;">Certificate uploaded successfully!</p>
+														</c:if>
+												<form:errors path="*" cssClass="errorblock" element="div" />
+											</c:if>
+													<input type="hidden" name="type" value="extra2">
+													Upload extra2 mark sheet : <input class="btn btn-sm btn-success" type="file" name="fileUpload"><br />
+													
+													<c:if test="${extra2==1}">
+													<c:if test="${error==1}">
+														<p style="color:red;">Failed to upload...File format can be png/jpg/jpeg/pdf only!</p>
+													</c:if>
+													<c:if test="${error1==1}">
+														<p style="color:red;">Failed to upload...File size can be only upto 3MB</p>
+													</c:if>
+													</c:if>
+													  <input class="btn btn-sm btn-info" type="submit" value="Upload"> Press here to upload the file!
+													  
+													  <c:if test="${extra2==1}">
+													  		<span><form:errors path="file" cssClass="error" />
+															</span>
+													  </c:if>
+											</form:form>
+
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+
+										
+										<div id="extra">
+										<div class="col-xs-12 col-sm-6 "  >
+										<div class="widget-box" >
+										<div class="widget-body">
+										 <div class="widget-main">
+											<div align="center" name="extrafield">
+												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
+												<h3><b><u>Extra3</u></b></h3>
+												<c:if test="${extra3==1}">
+												<c:if test="${success==1}">
+															<p style="color:green;">Certificate uploaded successfully!</p>
+														</c:if>
+													<form:errors path="*" cssClass="errorblock" element="div" />
+												</c:if>
+														<input type="hidden" name="type" value="extra3">
+														Upload extra3 mark sheet : <input class="btn btn-sm btn-success"  type="file" name="fileUpload"><br />
+														
+														<c:if test="${extra3==1}">
+														<c:if test="${error==1}">
+															<p style="color:red;">Failed to upload...File format can be png/jpg/jpeg/pdf only!</p>
+														</c:if>
+														<c:if test="${error1==1}">
+															<p style="color:red;">Failed to upload...File size can be only upto 3MB</p>
+														</c:if>
+														</c:if>
+														  <input class="btn btn-sm btn-info"  type="submit" value="Upload"> Press here to upload the file!
+														  
+														  <c:if test="${extra3==1}">
+														  		<span><form:errors path="file" cssClass="error" />
+																</span>
+														  </c:if>
+												</form:form>								
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+										
+									</div>
+
+								</div>
+									
+									<div class="row col-xs-12">
+										<div class="col-xs-12 col-sm-6 left">
+										<div class="widget-box">
+										<div class="widget-body">
+										 <div class="widget-main">
+											<div align="center">
+													
+											<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
+											<h3><b><u>Extra4</u></b></h3>
+											<c:if test="${success==1}">
+															<p style="color:green;">Certificate uploaded successfully!</p>
+														</c:if>
+											<c:if test="${extra4==1}">
+												<form:errors path="*" cssClass="errorblock" element="div" />
+											</c:if>
+													<input type="hidden" name="type" value="extra4">
+													Upload extra4 mark sheet : <input  class="btn btn-sm btn-success" type="file" name="fileUpload"><br />
+													
+													<c:if test="${extra4==1}">
+													<c:if test="${error==1}">
+														<p style="color:red;">Failed to upload...File format can be png/jpg/jpeg/pdf only!</p>
+													</c:if>
+													<c:if test="${error1==1}">
+														<p style="color:red;">Failed to upload...File size can be only upto 3MB</p>
+													</c:if>
+													</c:if>
+													  <input  class="btn btn-sm btn-info" type="submit" value="Upload"> Press here to upload the file!
+													  
+													  <c:if test="${extra4==1}">
+													  		<span><form:errors path="file" cssClass="error" />
+															</span>
+													  </c:if>
+											</form:form>
+
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+
+										
+										<div id="extra">
+										<div class="col-xs-12 col-sm-6 "  >
+										<div class="widget-box" >
+										<div class="widget-body">
+										 <div class="widget-main">
+											<div align="center" name="extrafield">
+												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
+												<h3><b><u>Extra5</u></b></h3>
+												<c:if test="${extra5==1}">
+												<c:if test="${success==1}">
+															<p style="color:green;">Certificate uploaded successfully!</p>
+														</c:if>
+													<form:errors path="*" cssClass="errorblock" element="div" />
+												</c:if>
+														<input type="hidden" name="type" value="extra5">
+														Upload extra5 mark sheet : <input  class="btn btn-sm btn-success" type="file" name="fileUpload"><br />
+														
+														<c:if test="${extra5==1}">
+														<c:if test="${error==1}">
+															<p style="color:red;">Failed to upload...File format can be png/jpg/jpeg/pdf only!</p>
+														</c:if>
+														<c:if test="${error1==1}">
+															<p style="color:red;">Failed to upload...File size can be only upto 3MB</p>
+														</c:if>
+														</c:if>
+														  <input   class="btn btn-sm btn-info" type="submit" value="Upload"> Press here to upload the file!
+														  
+														  <c:if test="${extra5==1}">
+														  		<span><form:errors path="file" cssClass="error" />
+																</span>
+														  </c:if>
+												</form:form>						
+											</div>
+											</div>
+											</div>
+											</div>
+											<br><br>
+										</div>
+										
+									</div>
+
+								</div>
+									
+										<!-- <div class="align-center">
+											<button id="id-add-attachment" type="button" class="btn btn-sm btn-danger">
+												<i class="ace-icon fa fa-paperclip bigger-140"></i>
+												Want to attach more doc. ?
+											</button>
+										</div> -->
 									
 									</div>
 										
@@ -497,9 +730,37 @@ description: contains Buttons for uploading neccessary docs->
 		<!-- /.main-container -->
 
 </div>
+<!-- page specific plugin scripts -->
+		<script src="assets/js/bootstrap-tag.min.js"></script>
+		<script src="assets/js/jquery.hotkeys.min.js"></script>
+		<script src="assets/js/bootstrap-wysiwyg.min.js"></script>
 	
-	
-
+	<script type="text/javascript">
+			jQuery(function($){
+	//Add Attachment
+					//the button to add a new file input
+					$('#id-add-attachment')
+					.on('click', function(){
+						var file = $('<div align="center" name="extrafield">').appendTo('#extra');
+						file.ace_file_input();
+						
+						file.closest('.ace-file-input')
+						.addClass('width-90 inline')
+						.wrap('<div class="form-group file-input-container"><div class="col-sm-7"></div></div>')
+						.parent().append('<div class="action-buttons pull-right col-xs-1">\
+							<a href="#" data-action="delete" class="middle">\
+								<i class="ace-icon fa fa-trash-o red bigger-130 middle"></i>\
+							</a>\
+						</div>')
+						.find('a[data-action=delete]').on('click', function(e){
+							//the button that removes the newly inserted file input
+							e.preventDefault();
+							$(this).closest('.file-input-container').hide(300, function(){ $(this).remove() });
+						});
+					});
+			});
+		
+	</script>
 
 </body>
 </html>

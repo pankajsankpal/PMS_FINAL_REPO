@@ -7,49 +7,53 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <title>All Allotments</title>
+<link rel="stylesheet" href="assets/css/table.css">
+<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
-<body>
-<jsp:directive.include file="Header.jsp" />
-	<div class="main-content">
-				<div class="main-content-inner">
-					<div class="page-content">
+<body  class="no-skin">
+		<jsp:directive.include file="Header.jsp" />
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="page-content">
 					<h1 align="center"><u>List Allotments</u></h1>
-					<br/><br/>
-					<h3 align="center"><a href="addAllotment.html">Add New Allotment</a></h3>
 					<!-- connect to database -->
 					<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
 					     url="jdbc:postgresql://localhost:5432/placementdb"
 					     user="postgres"  password="root"/>
 					<!-- write query -->
 					<sql:query dataSource="${snapshot}" var="allotments">
-					SELECT * from room_allotment.allotment;
+						SELECT * from room_allotment.allotment;
 					</sql:query>
 					<!-- header-->
-	<table align="center" border="5" width="1500" cellspacing="0" cellpadding="0" height="600">
-		<tr>
-			<td align="center"><b><u>Allotment ID</u></b></td>
-			<td align="center"><b><u>Company Name</u></b></td>
-			<td align="center"><b><u>Round No.</u></b></td>
-			<td align="center"><b><u>Room No.</u></b></td>
-			<td align="center"><b><u>Job Description</u></b></td>
-			<td align="center"><b><u>Drive Date</u></b></td>
-		</tr>
-
-			<!--view contents -->
-		<c:forEach items="${allotments.rows}" var="allotment">
-			<tr>
-				<td align="center"><c:out value="${allotment.allotment_id}"/></td>
-				<td align="center"><c:out value="${allotment.company_name}"/></td>
-				<td align="center"><c:out value="${allotment.round_no}"/></td>
-				<td align="center"><c:out value="${allotment.room_no}"/></td>
-				<td align="center"><c:out value="${allotment.job_description}"/></td>
-				<td align="center"><c:out value="${allotment.drive_date}"/></td>
-			</tr>
-		</c:forEach>
-	</table>
-</div>
-</div>
-</div>
+					<table border="3" class="table-fill">
+					<thead>
+						<tr>
+							<th class="text-center"><b>Allotment ID</b></td>
+							<th class="text-center"><b>Company Name</b></td>
+							<th class="text-center"><b>Round No.</b></td>
+							<th class="text-center"><b>Room No.</b></td>
+							<th class="text-center"><b>Job Description</b></td>
+							<th class="text-center"><b>Drive Date</b></td>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						<!--view contents -->
+						<c:forEach items="${allotments.rows}" var="allotment">
+						<tr>
+							<td class="text-center"><c:out value="${allotment.allotment_id}"/></td>
+							<td class="text-center"><c:out value="${allotment.company_name}"/></td>
+							<td class="text-center"><c:out value="${allotment.round_no}"/></td>
+							<td class="text-center"><c:out value="${allotment.room_no}"/></td>
+							<td class="text-center"><c:out value="${allotment.job_description}"/></td>
+							<td class="text-center"><c:out value="${allotment.drive_date}"/></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+					</table>
+				</div>
+			</div>	
+		</div>
 </body>
 </html>

@@ -70,14 +70,14 @@ description: contain notification received by student and student tpc -->
 											<ul class="nav nav-tabs padding-18">
 												<ul class="nav nav-tabs padding-18">
 												<li>
-													<a  href="#profile">
+													<a  href="viewprofile">
 														<i class="green ace-icon fa fa-user bigger-120"></i>
 														Profile
 													</a>
 												</li>
 												
 												<li>
-													<a  href="StudentUploads">
+													<a  href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>

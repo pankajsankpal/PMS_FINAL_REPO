@@ -3,9 +3,10 @@ package org.crce.interns.dao.impl;
 import java.util.List;
 
 import org.crce.interns.dao.StatisticsDAO;
-import org.crce.interns.model.Feedback;
-import org.crce.interns.model.PlacementStatistics;
+import org.crce.interns.model.PlacementStats;
+
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,17 +18,16 @@ public class StatisticsDAOImpl implements StatisticsDAO{
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PlacementStatistics> list(){
-		List<PlacementStatistics> listStats=null;
+	public List<PlacementStats> list(){
+		List<PlacementStats> listStats=null;
 		
-		listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStatistics.class).list();
-		
+		listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStats.class).list();		
 		
 		return listStats;
 	}
 	
 	@Override
-	public void add(PlacementStatistics placementStatistics){
-		sessionFactory.getCurrentSession().saveOrUpdate(placementStatistics);
+	public void add(PlacementStats placementStats){
+		sessionFactory.getCurrentSession().saveOrUpdate(placementStats);
 	}
 }

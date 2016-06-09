@@ -74,20 +74,15 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 											<ul class="nav nav-tabs padding-18">
 												<ul class="nav nav-tabs padding-18">
 												<li class="active">
-													<a data-toggle="tab" href="#profile">
+													<a data-toggle="tab" href="viewprofile">
 														<i class="green ace-icon fa fa-user bigger-120"></i>
 														Profile
 													</a>
 												</li>
-												<li>
-													<a data-toggle="tab" href="#activity">
-														<i class="orange ace-icon fa fa-wrench bigger-120"></i>
-														Activity
-													</a>
-												</li>
+												
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a  href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -263,11 +258,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 												
 												</div><!-- /#home -->
 												
-												<div id="activity" class="tab-pane">
+												<!-- <div id="activity" class="tab-pane">
 												
 													<div class="row">
 														<div class="col-xs-12">
-															<!-- PAGE CONTENT BEGINS -->
+															PAGE CONTENT BEGINS
 															<div class="clearfix">
 															
 																	<div class="row">
@@ -308,6 +303,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				<tr>
 																					<td>7. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
 																				</tr>
+																				<tr>
+			<td><a href="getjob">click here to apply for job</a><br /></td>
+		</tr>
 																				</table>
 																				
 																			
@@ -329,12 +327,14 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 													</div>
 													
 												</div>	
-												
-												<div id="uploads" class="tab-pane">
+												 -->
+												 
+												 
+												<!-- <div id="uploads" class="tab-pane">
 													<div class="profile-feed row">
 														<div class="row">
 															<div class="col-xs-12">
-																<!-- PAGE CONTENT BEGINS -->
+																PAGE CONTENT BEGINS
 																
 																	<div class="widget-box widget-color-green2">
 																		<div class="widget-header">
@@ -356,17 +356,19 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	</div>
 																	
 																
-															</div><!-- /.col -->
-														</div><!-- /.row -->
+															</div>/.col
+														</div>/.row
 					
 													
-													</div><!-- /.row -->
+													</div>/.row
 
 													<div class="space-12"></div>
 
-												</div><!-- /#feed -->
-
-												<div id="notificatn" class="tab-pane">
+												</div>/#feed
+ -->
+ 
+ 
+												<!-- <div id="notificatn" class="tab-pane">
 													
 													<div class="col-xs-10 widget-container-col">
 														
@@ -416,12 +418,12 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 															
 														</div>
 												</div>
-													<!-- PAGE CONTENT ENDS -->
+													PAGE CONTENT ENDS
 														
 
-												</div><!-- /#friends -->
+												</div>/#friends
 
-
+ -->
 							
 											</div><!-- /#pictures -->
 											</div>
@@ -691,8 +693,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 </html>
 
 
-
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -801,8 +803,10 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
-
+		<tr>
+			<td><a href="ftpcapplies">apply on behalf of student</a></td>
+		</tr>
 	</table>
 
 </body>
-</html> --%>
+</html>  --%>

@@ -99,19 +99,5 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		
 	}
 	
-	public List<String> displayCVList(String pathname){
-		 List<String> results = new ArrayList<String>();
-
-
-		 File[] files = new File("pathname").listFiles();
-		 //If this pathname does not denote a directory, then listFiles() returns null. 
-
-		 for (File file : files) {
-		     if (file.isFile() && file.getName().endsWith(".csv")|| file.getName().endsWith(".pdf") || file.getName().endsWith(".doc") || file.getName().endsWith(".docx")) {
-		         results.add(file.getName());
-		     }
-		 }
-		       //  System.out.println(results);
-		         return results;
-	}
+	
 }
