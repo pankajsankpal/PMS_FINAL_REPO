@@ -22,6 +22,7 @@ package org.crce.interns.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.exception.IncorrectEncodingTypeException;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.FileUpload;
@@ -91,6 +92,10 @@ public class AddUserController {
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();
 			// returns to the same index page	
+			
+		}catch(IncorrectEncodingTypeException x){
+			System.out.println(x);
+			model.addObject("encoding", 1);
 			
 		} catch (IncorrectFileFormatException e) {
 			

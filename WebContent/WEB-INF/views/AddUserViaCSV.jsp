@@ -141,7 +141,7 @@ description: contains links to manage system users->
 										 <div class="widget-main">
 											<div>
 
-											 &nbsp;&nbsp; <b >Upload CSV file...! </b>
+											 &nbsp;&nbsp; <b >Upload CSV file...! </b>(Please change encoding type of file to UTF-8)
 												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadFile">
 												<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
 												
@@ -154,6 +154,9 @@ description: contains links to manage system users->
 														</c:if>
 														<c:if test="${error1==1}">
 															<p style="color:red;">Failed to upload...File size can be only upto 1MB</p>
+														</c:if>
+														<c:if test="${encoding==1}">
+															<p style="color:red;">Failed to upload...Please change encoding type of the file to UTF-8</p>
 														</c:if>
 
 														  <input class="btn btn-sm btn-warning" type="submit" value="Upload"> Press here to upload the file!
