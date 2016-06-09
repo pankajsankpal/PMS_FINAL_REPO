@@ -1,10 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
 
@@ -72,8 +69,8 @@ function checkNewNoti(){
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						
-						<li class="purple">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<li class="">
+							<a data-toggle="" class="dropdown-toggle" href="checkNf">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
@@ -150,30 +147,28 @@ function checkNewNoti(){
 
 									<small>Welcome</small>
 									${sessionScope.name}
+
+
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<!-- added by ZNevzz -->
-														
 								<li>
-									<a href="form">
-										<i class="ace-icon fa fa-power-off"></i>
-										<!-- Sign In -->
-										Sign in 
-									</a>									
-								</li>								
-														
+									<a href="viewprofile">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+								
 								<li>
 									<a href="logged-out">
 										<i class="ace-icon fa fa-power-off"></i>
-										<!--  Sign out -->
-										Sign out 
+										Sign out
 									</a>
 								</li>
-													
+								
 							</ul>
 						</li>
 					</ul>
