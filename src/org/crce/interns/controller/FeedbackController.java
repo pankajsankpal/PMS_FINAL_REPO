@@ -57,15 +57,15 @@ public class FeedbackController {
 	public ModelAndView listFeedback(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("Feedback", roleId))
-			return new ModelAndView("403");
-		else
-		{
+		//if(!crService.checkRole("Feedback", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("feedback",prepareListofBean(feedbackService.listFeedback()));
 		
 			return new ModelAndView("feedbackList", model);
-		}
+		//}
 	}
 	@RequestMapping(value = "/addFeedback", method = RequestMethod.GET)
 	public ModelAndView saveEmployee(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 

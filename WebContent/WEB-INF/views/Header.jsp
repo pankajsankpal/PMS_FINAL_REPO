@@ -1,7 +1,10 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 
@@ -146,6 +149,7 @@ function checkNewNoti(){
 
 
 									<small>Welcome</small>
+
 									${sessionScope.name}
 
 
@@ -155,19 +159,24 @@ function checkNewNoti(){
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<!-- added by ZNevzz -->
+														
 								<li>
 									<a href="form">
 										<i class="ace-icon fa fa-power-off"></i>
-										Sign In
-									</a>
-								</li>
-								
+										<!-- Sign In -->
+										Sign in 
+									</a>									
+								</li>								
+														
 								<li>
 									<a href="logged-out">
 										<i class="ace-icon fa fa-power-off"></i>
-										Sign out
+										<!--  Sign out -->
+										Sign out 
 									</a>
 								</li>
+								
 								<li>
 									<a href="viewprofile">
 										<i class="ace-icon fa fa-user"></i>
@@ -175,6 +184,7 @@ function checkNewNoti(){
 									</a>
 								</li>
 							</ul>
+							
 						</li>
 					</ul>
 				</div>
@@ -187,4 +197,29 @@ function checkNewNoti(){
 		
 </body>
 
+
 </html>
+
+
+<%--
+<c:choose>							
+							<c:when test=" ${empty sessionScope}">							
+								<li>
+									<a href="form">
+										<i class="ace-icon fa fa-power-off"></i>
+										<!-- Sign In -->
+										Sign in ${sessionScope.name}
+									</a>									
+								</li>								
+							</c:when>
+							<c:otherwise>							
+								<li>
+									<a href="logged-out">
+										<i class="ace-icon fa fa-power-off"></i>
+										<!--  Sign out -->
+										Sign out ${sessionScope.name}
+									</a>
+								</li>
+							</c:otherwise>
+							</c:choose>
+--%>

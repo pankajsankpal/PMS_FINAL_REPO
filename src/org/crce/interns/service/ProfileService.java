@@ -26,5 +26,6 @@ public interface ProfileService {
 	public UserDetailsBean updateUserDetails(UserDetailsBean userDetailsBean);
 	
 	
+	//public Map<>
 
 }
