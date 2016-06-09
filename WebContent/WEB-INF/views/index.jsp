@@ -70,10 +70,7 @@
 		</div>
 	</div>
 
-	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
+	
 
 
 	<!-- inline scripts related to this page -->

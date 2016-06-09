@@ -25,5 +25,5 @@ public interface ResumeUploadService {
 	
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username) throws Exception;
 
-	public List<String> displayCVList(String pathname);
+
 }

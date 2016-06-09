@@ -80,7 +80,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 												</li>
 
 												<li>
-													<a href="Studentuploads.jsp">
+													<a href="StudentUploads">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -88,8 +88,9 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 
 												
 												<li>
-													<!-- <a  href="Studentnotificatn.jsp">  -->
-														<a  href="checkNf">
+
+													<a  href="StuNoti">
+
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -423,7 +424,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 	${personalProfile.dob}<BR>
 	
 	<BR><BR>
-	EMAIL : ${personalProfile.emailId}
+	EMAIL : ${personalProfile.emailId}			
 	<br><BR>
 	
 	MOBILE CONTACT:<BR>
@@ -505,7 +506,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 		<tr>
  			<td><a href="displist">display list</a><br /></td>
  		</tr>
-		<tr>
+			<tr>
 			<td><a href="logged-out">Logout</a></td>
 		</tr>
 

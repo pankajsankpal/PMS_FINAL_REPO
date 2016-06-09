@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/PMS_v1/applyforjob">
+<form method="post" action="/PMS_v1/dispcriteria">
 	
 		job_id <input type="text" name="job_id"> <br/>
 		<input type="submit" value="APPLY">
