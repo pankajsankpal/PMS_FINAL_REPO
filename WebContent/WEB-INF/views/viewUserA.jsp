@@ -16,48 +16,65 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <title>View Users</title>
+<link rel="stylesheet" href="assets/css/table.css">
+<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
-<body>
-	<c:if test="${!empty users}">
-
-		<table align="left" border="1">
-			<tr>
-				<th>User Name</th>
-				<th>User Role</th>
-			</tr>
-			<c:forEach items="${users}" var="user">
-				<tr>
-					<td><c:out value="${user.userName}" /></td>
-					<td><c:choose>
-							<c:when test="${user.roleId=='1'}">
-								<c:out value="Student" />
-							</c:when>
-							<c:when test="${user.roleId=='2'}">
-								<c:out value="Faculty" />
-							</c:when>
-							<c:when test="${user.roleId=='3'}">
-								<c:out value="Student-TPC" />
-							</c:when>
-							<c:when test="${user.roleId=='4'}">
-								<c:out value="Faculty-TPC" />
-							</c:when>
-							<c:when test="${user.roleId=='5'}">
-								<c:out value="TPO" />
-							</c:when>
-							<c:otherwise>
-								<c:out value="Admin" />
-							</c:otherwise>
-						</c:choose></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</c:if>
-
-	<tr>
-		<td><a href="AdminHome">Home</a></td>
-	</tr>
-
+<body class="no-skin">
+			<jsp:directive.include file="Header.jsp" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="page-content">
+						<div class="page-header">
+							<h2 class="widget-title grey lighter">
+								&nbsp; &nbsp; &nbsp; &nbsp; 
+									View Users
+							</h2>
+						</div>
+						<div class="space"></div>
+						<div class="center">
+							<c:if test="${!empty users}">
+								<table align="center" border="2" width="500" class="table-fill">									
+									<thead>
+									<tr>
+										<th class="text-center"><h3 align="center"><b>User Name</b></h3></th>
+										<th class="text-center"><h3 align="center"><b>User Role</b></h3></th>
+									</tr>
+									</thead>
+									<tbody class="table-hover">
+									<c:forEach items="${users}" var="user">
+									<tr>
+										<td class="text-center"><h4><c:out value="${user.userName}" /></h4></td>
+										<td class="text-center"><c:choose>
+										<c:when test="${user.roleId=='1'}">
+											<h4><c:out value="Student" /></h4>
+										</c:when>
+										<c:when test="${user.roleId=='2'}">
+											<h4><c:out value="Faculty" /></h4>
+										</c:when>
+										<c:when test="${user.roleId=='3'}">
+											<h4><c:out value="Student-TPC" /></h4>
+										</c:when>
+										<c:when test="${user.roleId=='4'}">
+											<h4><c:out value="Faculty-TPC" /></h4>
+										</c:when>
+										<c:when test="${user.roleId=='5'}">
+											<h4><c:out value="TPO" /></h4>
+										</c:when>
+										<c:otherwise>
+											<h4><c:out value="Admin" /></h4>
+										</c:otherwise>
+										</c:choose></td>
+									</tr>
+									</c:forEach>
+									</tbody>
+								</table>
+							</c:if>
+						</div>
+				<!-- /.page-header -->
+				</div><!-- /.page-content -->
+			</div>
+		</div><!-- /.main-content -->
 </body>
-
 </html>
