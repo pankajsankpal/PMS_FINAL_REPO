@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.NfDAO;
 import org.crce.interns.model.Notification;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.NfService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("NfService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-public class NfServiceImpl implements NfService{
+public class NfServiceImpl implements NfService, ConstantValues{
 	
 	
 	@Autowired
@@ -157,6 +159,72 @@ public class NfServiceImpl implements NfService{
 		
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForJobApply(String companyName, String userName){
+		Notification temp = new Notification();
+		
+		temp.setType(USER);
+		temp.setCategory(ELIGIBLE);
+		temp.setMessage(ELIGIBLE_M1+companyName+ELIGIBLE_M2);
+		temp.setUrl(ELIGIBLE_URL);
+		temp.setUserOrGroupId(userName);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+		
+		
+		//BeanUtils.copyProperties(n, temp);
+		
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+			
+	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForJobPost(String companyName){
+		Notification temp = new Notification();
+		
+		temp.setType(GROUP);
+		temp.setCategory(JOB);
+		temp.setMessage(JOB_M1+companyName);
+		temp.setUrl(JOB_URL);
+		temp.setUserOrGroupId(ALL);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForEvent(String companyName){
+		Notification temp = new Notification();
+		
+		temp.setType(GROUP);
+		temp.setCategory(EVENT);
+		temp.setMessage(EVENT_M+companyName);
+		temp.setUrl(EVENT_URL);
+		temp.setUserOrGroupId(ALL);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
 	
 	
 }

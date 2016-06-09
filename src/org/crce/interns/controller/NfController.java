@@ -27,6 +27,7 @@ import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SearchService;
@@ -43,7 +44,7 @@ import com.google.gson.Gson;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 
 @Controller
-public class NfController {
+public class NfController implements ConstantValues{
 	
 	@Autowired
 	private NfService nfService;
@@ -114,7 +115,7 @@ public class NfController {
 		
 		ModelAndView model=null;
 		//model = new ModelAndView("redirect:/checkNf");
-		model = new ModelAndView("redirect:/");
+		model = new ModelAndView("redirect:/checkNf");
 		
 		if(nfService.addNotification(add)){
 			System.out.println("notification added");
@@ -181,7 +182,7 @@ public class NfController {
 	}
 	}
 	
-	//------------------------------------------------------------------------------------------------
+
 	@RequestMapping("/onNotiCick")
 	public @ResponseBody String checkNewNoti(HttpServletRequest request){
 		
@@ -189,6 +190,93 @@ public class NfController {
 		//request.getSession(true).setAttribute("notiClick", new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 		request.getSession(true).setAttribute("notiClick", timestamp);
 		return timestamp;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	
+	@RequestMapping(value="/addNfApply", method = RequestMethod.POST)
+	public ModelAndView addNfForJobApply(HttpServletRequest request) {
+	try{
+		
+		ModelAndView model=null;
+		//model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/checkNf");
+		
+		
+		if(nfService.addNotificationForJobApply(TCS, "7001")){
+			System.out.println("notification added");
+		}
+		else{
+			System.out.println("notification not added");
+		}
+		
+		return model;
+
+		
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/addNf");
+		return model;
+	}
+	}
+
+	//------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/addNfPost", method = RequestMethod.POST)
+	public ModelAndView addNfForJobPost(HttpServletRequest request) {
+	try{
+		
+		ModelAndView model=null;
+		//model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/checkNf");
+		
+		
+		if(nfService.addNotificationForJobPost(DIRECTI)){
+			System.out.println("notification added");
+		}
+		else{
+			System.out.println("notification not added");
+		}
+		
+		return model;
+
+		
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/addNf");
+		return model;
+	}
+	}
+
+	@RequestMapping(value="/addNfEvent", method = RequestMethod.POST)
+	public ModelAndView addNfForEvent(HttpServletRequest request) {
+	try{
+		
+		ModelAndView model=null;
+		//model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/checkNf");
+		
+		
+		if(nfService.addNotificationForEvent(TCS)){
+			System.out.println("notification added");
+		}
+		else{
+			System.out.println("notification not added");
+		}
+		
+		return model;
+
+		
+	}
+	catch(Exception e){
+		System.out.println(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/addNf");
+		return model;
+	}
 	}
 
 }

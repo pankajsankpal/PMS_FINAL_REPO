@@ -379,16 +379,17 @@ public class UpdateProfileController {
 		HttpSession session=request.getSession();
 		String id = (String) session.getAttribute("userName");
 		String roleId=(String)session.getAttribute("roleId");
+		/*
 		if(!crService.checkRole("UpdateProfile", roleId))
 			return new ModelAndView("403");
 		else
-		{
+		{*/
 		ModelAndView model=null;
 		
 		model = new ModelAndView("FeedbackForm");
 				
 		return model;
-		}
+		//}
 	}
 	
 	//-----------------------------------------------------
@@ -400,17 +401,17 @@ public class UpdateProfileController {
 		HttpSession session=request.getSession();
 		String id = (String) session.getAttribute("userName");
 		String roleId=(String)session.getAttribute("roleId");
-		
+		/*
 		if(!crService.checkRole("UpdateProfile", roleId))
 			return new ModelAndView("403");
 		else
-		{
+		{*/
 		ModelAndView model=null;
 		
 		model = new ModelAndView("feedbacks");
 				
 		return model;
-		}
+		//}
 	}
 	
 	//----------------------------------------------------------------------------------------------
@@ -459,6 +460,11 @@ public class UpdateProfileController {
 
 	
 	//this is for company dynamic dropdown
+	@RequestMapping("/test2")
+	public ModelAndView helloajax(){
+		return new ModelAndView("test2","message","Spring with ajax and jquery");
+	}
+	
 	@RequestMapping("/looseSearch2")
 	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
 	try{
