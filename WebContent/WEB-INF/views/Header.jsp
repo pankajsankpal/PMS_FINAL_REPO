@@ -168,6 +168,12 @@ function checkNewNoti(){
 										Sign out
 									</a>
 								</li>
+								<li>
+									<a href="viewprofile">
+										<i class="ace-icon fa fa-user"></i>
+										profile
+									</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
@@ -182,3 +188,28 @@ function checkNewNoti(){
 </body>
 
 </html>
+
+
+
+<%--
+<c:choose>							
+							<c:when test=" ${empty sessionScope}">							
+								<li>
+									<a href="form">
+										<i class="ace-icon fa fa-power-off"></i>
+										<!-- Sign In -->
+										Sign in ${sessionScope.name}
+									</a>									
+								</li>								
+							</c:when>
+							<c:otherwise>							
+								<li>
+									<a href="logged-out">
+										<i class="ace-icon fa fa-power-off"></i>
+										<!--  Sign out -->
+										Sign out ${sessionScope.name}
+									</a>
+								</li>
+							</c:otherwise>
+							</c:choose>
+--%>
