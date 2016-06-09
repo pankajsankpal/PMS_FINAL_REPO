@@ -51,7 +51,6 @@ public class MainController {
 	public String addjobpost() {
 		return "addJobPost";
 	}
-
 	
 	@RequestMapping("/CompanyFeedback")
 	public String companyfeedback() {

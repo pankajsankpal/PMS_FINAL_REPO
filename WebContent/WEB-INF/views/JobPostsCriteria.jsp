@@ -203,6 +203,7 @@ description: displays the criteria of the posted jobe-->
 			</div>
 		</div>
 		<!-- /.main-content -->
+		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 
