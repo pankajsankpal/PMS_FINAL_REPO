@@ -28,7 +28,7 @@ description: contains serach field for searching any user or a company available
 <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
 <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 
- 
+
 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
@@ -38,34 +38,88 @@ description: contains serach field for searching any user or a company available
 <script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
 <link href="assets/autocomplete/main.css" rel="stylesheet">
 
-<!-- for searching user -->
+<!-- for searching -->
 <script>
-  $(document).ready(function() {
+	var x = [];
+	$(document).ready(
+			function() {
 
-	$('#dynamicsearchuser').autocomplete({
-		serviceUrl: 'looseSearch',
-		paramName: "CHARS",
-		delimiter: ",",
-	   transformResult: function(response) {
-		    	
-		return {      	
-		  //must convert json to javascript object before process
-		  suggestions: $.map($.parseJSON(response), function(user) {
-		            	
-		      return { value: user.userName, data: user.userId };
-		   })
-		            
-		 };
-		        
-            }
-		    
-	 });
-				
-  });
-  </script>
-  
+				$('#dynamicsearchcomp').autocomplete(
+						{
+							serviceUrl : 'Search',
+							paramName : "CHARS",
+							delimiter : ",",
+							transformResult : function(response) {
 
-		
+								return {
+									suggestions : $.map($.parseJSON(response),
+											function(user) {
+												x.push(user);
+												console.log(x);
+												return {
+													value : user.name,
+													data : user.id
+												};
+
+											})
+
+								};
+
+							}
+
+						});
+
+				/* $('#dynamicsearchcomp').on('change',function(){
+					  //alert(x.name);
+					  alert($(this).val());
+					  
+					  
+					  //window.location.replace("");
+					  
+				  }); */
+				$('#searchbutton').click(
+						function() {
+							var userSelect = $('#dynamicsearchcomp').val();
+							console.log(userSelect);
+							var userSelectId = -1;
+							var companyName = "xyz"
+							var type = "xyz"
+							console.log(x);
+							for (var i = 0; i < x.length; i++) {
+								console.log(x[i].name);
+								if (x[i].name == userSelect) {
+									userSelectId = x[i].id;
+									type = x[i].type;
+									companyName = x[i].name;
+									break;
+								}
+							}
+							console.log(userSelectId);
+							if (userSelectId !== -1) {
+								if (type === 'user') {
+									window.location
+											.replace("/viewProfile?userName="
+													+ userSelectId);// ill tak to nevil tom abt ths url
+								} else {
+									if (companyName !== 'xyz')
+										window.location
+												.replace("Company?companyname="
+														+ companyName);
+									else
+										$('#notfound')
+												.text("No results found.");// not found
+								}
+							} else {
+								$('#notfound').text("No results found.");// k go ahead
+								//window.location.replace("wtf.com");//not found 
+							}
+						});
+
+			});
+</script>
+
+
+
 
 
 </head>
@@ -76,7 +130,7 @@ description: contains serach field for searching any user or a company available
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs" id="breadcrumbs">
-				
+
 
 				<!-- <ul class="breadcrumb">
 							<li>
@@ -121,16 +175,13 @@ description: contains serach field for searching any user or a company available
 								<div class="widget-main" align="center">
 									<h2>Enter Student/Company name to search</h2>
 									<br>
-									<form action="/PMS_v1/SearchUser" method="get">
-										Search User : <input type="text" id="dynamicsearchuser"
-											value=""> <input class="btn btn-sm btn-primary"
-											type="submit" value="Search"> <br />
-									</form>
-									<br>
-									<form action="/PMS_v1/SearchCompany" method="get">
-										Search Company : <input type="text" name="searchString" /> <input
-											class="btn btn-sm btn-primary" type="submit" value="Search">
-									</form>
+
+										<input type="text" id="dynamicsearchcomp" value=""> <input
+											class="btn btn-sm btn-primary" type="button" value="Search"
+											id="searchbutton"> <br>
+										<div id="notfound" style="color: red"></div>
+									
+
 
 									<br />
 									<c:if test="${!empty userList}">
@@ -169,7 +220,7 @@ description: contains serach field for searching any user or a company available
 		</div>
 
 	</div>
-	
+
 	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
