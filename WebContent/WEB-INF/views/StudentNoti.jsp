@@ -77,7 +77,7 @@ description: contain notification received by student and student tpc -->
 												</li>
 												
 												<li>
-													<a  href="StudentUploads">
+													<a  href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
