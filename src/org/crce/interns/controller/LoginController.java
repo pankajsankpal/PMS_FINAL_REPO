@@ -91,9 +91,6 @@ public class LoginController{
 
 	try
 	{
-		System.out.println("Inside Controller");
-
-		
 		System.out.println("Inside Login Controller");
 
 		LoginForm loginForm = new LoginForm();
