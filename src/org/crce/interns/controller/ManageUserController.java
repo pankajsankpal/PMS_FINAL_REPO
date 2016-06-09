@@ -56,11 +56,11 @@ public class ManageUserController {
 	
 	//actually adding student
 	@RequestMapping(value = "/registerStudent", method = RequestMethod.POST)
-	public ModelAndView addStudent(@ModelAttribute("studentBean")StudentBean studentBean,BindingResult result) {
+	public ModelAndView addStudent(HttpServletRequest request, @ModelAttribute("studentBean")StudentBean studentBean,BindingResult result) {
 		
 		ModelAndView model = new ModelAndView("addStudent"); 
 		try {
-			manageUserService.addStudent(studentBean);
+			manageUserService.addStudent(request, studentBean);
 			model.addObject("success", 1);
 			directoryService.createStudentFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
@@ -73,11 +73,11 @@ public class ManageUserController {
 	
 	//actually adding faculty
 	@RequestMapping(value = "/registerFaculty", method = RequestMethod.POST)
-	public ModelAndView addFaculty(@ModelAttribute("facultyBean")FacultyBean facultyBean,BindingResult result) {
+	public ModelAndView addFaculty(HttpServletRequest request,@ModelAttribute("facultyBean")FacultyBean facultyBean,BindingResult result) {
 		
 		ModelAndView model = new ModelAndView("addFaculty");
 		try{
-		manageUserService.addFaculty(facultyBean);
+		manageUserService.addFaculty(request, facultyBean);
 		model.addObject("success", 1);
 		directoryService.createFacultyFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
