@@ -11,20 +11,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-	/*
-	@RequestMapping("/CompaniesPage")
+	
+	/*@RequestMapping("/CompaniesPage")
 	public String companiespage() {
 		return "CompaniesPage";
 	}
-*/
-	/*
+
+	
 	@RequestMapping("/JobPosts")
 	public ModelAndView JobPosts(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("JobPosts");
 		model.addObject("companyname", request.getParameter("companyname"));
 		return model;
-	}
-*/
+	}*/
+
 	@RequestMapping("/JobApplicants")
 	public ModelAndView JobApplicants(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("JobApplicants");
@@ -51,12 +51,14 @@ public class MainController {
 	public String addjobpost() {
 		return "addJobPost";
 	}
-
 	
 	@RequestMapping("/CompanyFeedback")
 	public String companyfeedback() {
 		return "CompanyFeedback";
 	}
 
-
+	@RequestMapping("/EventsPage")
+	public String eventspage() {
+		return "EventsPage";
+	}
 }

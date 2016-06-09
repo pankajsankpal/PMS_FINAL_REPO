@@ -11,8 +11,7 @@ description: contains links to manage system users->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	
+
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -200,7 +199,7 @@ description: contains links to manage system users->
 														<td>7.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
 													</tr>	
 													<tr>
-														<td>8. <a href="ViewUsersT.html"> View Users </a></td>
+														<td>8. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
 													</tr>		
 												</table>
 												<br>

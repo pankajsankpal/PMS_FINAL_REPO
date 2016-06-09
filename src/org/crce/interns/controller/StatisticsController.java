@@ -2,10 +2,12 @@ package org.crce.interns.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.crce.interns.beans.PlacementStatisticsBean;
+import org.crce.interns.beans.PlacementStatsBean;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.StatisticsService;
 import org.crce.interns.service.ProfileService;
@@ -30,22 +32,12 @@ public class StatisticsController {
 	@RequestMapping(value="/addStatistics", method = RequestMethod.GET)
 	public ModelAndView addStatistics(HttpServletRequest request) {
 		
-		PlacementStatisticsBean statisticsBean = new PlacementStatisticsBean();
+		PlacementStatsBean statisticsBean = new PlacementStatsBean();
 		
-		statisticsBean.setBranch("Computer Engineering");
-		statisticsBean.setCompanyId(1010);
-		statisticsBean.setCreatedBy((String)request.getSession(true).getAttribute("userName"));
-		statisticsBean.setCreatedDate(new Date());
-		statisticsBean.setModifiedBy("");
-		statisticsBean.setModifiedDate(null);
-		statisticsBean.setNoApplied(3);
-		statisticsBean.setNoDualPlaced(1);
-		statisticsBean.setNoJoined(3);		
-		statisticsBean.setTotalNoOfStudents(2);
+		statisticsBean.setCompanyId(1010);		
 		statisticsBean.setYear("2016");
-		
-		
-		statisticsService.add(statisticsBean);
+
+		statisticsService.addOnce(statisticsBean);
 		
 		return null;		
 		
@@ -54,11 +46,15 @@ public class StatisticsController {
 	@RequestMapping(value="/viewStatistics", method = RequestMethod.GET)
 	public ModelAndView viewStatistics(HttpServletRequest request) {
 		
-		List<PlacementStatisticsBean> result = 
+		ModelAndView model = new ModelAndView("viewStats");
+		
+		Map<Integer, Map<String, PlacementStatsBean>> result = 
 				statisticsService.list();
 		
+		//model.addObject("companyMap", statisticsService.getCompanyMap());
+		model.addObject("table", result);
 		
-		return new ModelAndView("index");
+		return model;
 	}
 	
 }

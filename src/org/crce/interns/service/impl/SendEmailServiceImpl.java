@@ -384,6 +384,7 @@ public class SendEmailServiceImpl implements SendEmailService {
             loweredList.add(pos, companyStudents);
             return o;
         }).forEach((_item) -> {
+            System.out.println("LoweredList");
             System.out.println(loweredList);
         });//   
             }
