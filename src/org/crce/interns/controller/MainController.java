@@ -31,6 +31,12 @@ public class MainController {
 		model.addObject("companyname", request.getParameter("companyname"));
 		return model;
 	}
+	
+	@RequestMapping("/EventsPages")
+	public ModelAndView EventsPage(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView("EventsPage");
+		return model;
+	}
 
 	/*@RequestMapping("/Company")
 	public ModelAndView company(HttpServletRequest request) {

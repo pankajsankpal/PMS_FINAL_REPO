@@ -8,8 +8,7 @@
 <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>  -->
 
 
-<script>
-
+<script type="text/javascript">
 function checkNewNoti(){
 	console.log("inside checkNewNoti");
 	
@@ -35,7 +34,7 @@ function checkNewNoti(){
 	
 }
 
-
+</script>
 </head>
 
 <body onload="checkNewNoti()" class="skin-3 no-skin">
@@ -43,7 +42,7 @@ function checkNewNoti(){
 	
 	<div id="navbar" class="navbar navbar-default">
 			<script type="text/javascript">
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 			</script>
 
 			<div class="navbar-container " id="navbar-container">

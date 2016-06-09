@@ -20,29 +20,65 @@ description: contains serach field for searching any user or a company available
 }
 </style>
 <!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-		<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-		<link rel="stylesheet" href="assets/css/select2.min.css" />
-		<link rel="stylesheet" href="assets/css/datepicker.min.css" />
-		<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-		<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
-		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
+<link rel="stylesheet" href="assets/css/select2.min.css" />
+<link rel="stylesheet" href="assets/css/datepicker.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
+<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 
+ 
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+
+<!-- for autocomplete -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
+<link href="assets/autocomplete/main.css" rel="stylesheet">
+
+<!-- for searching user -->
+<script>
+  $(document).ready(function() {
+
+	$('#dynamicsearchuser').autocomplete({
+		serviceUrl: 'looseSearch',
+		paramName: "CHARS",
+		delimiter: ",",
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(user) {
+		            	
+		      return { value: user.userName, data: user.userId };
+		   })
+		            
+		 };
+		        
+            }
+		    
+	 });
+				
+  });
+  </script>
+  
+
+		
 
 
 </head>
 
-	<body>
-<jsp:directive.include file="Header.jsp" />
+<body>
+	<jsp:directive.include file="Header.jsp" />
 
-<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+				
 
-						<!-- <ul class="breadcrumb">
+				<!-- <ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
@@ -54,49 +90,55 @@ description: contains serach field for searching any user or a company available
 							<li class="active">User Profile</li>
 						</ul>/.breadcrumb -->
 
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<div class="nav-search" id="nav-search">
+					<form class="form-search">
+						<span class="input-icon"> <input type="text"
+							placeholder="Search ..." class="nav-search-input"
+							id="nav-search-input" autocomplete="on" /> <i
+							class="ace-icon fa fa-search nav-search-icon"></i>
+						</span>
+					</form>
+				</div>
+				<!-- /.nav-search -->
+			</div>
 
-					<div class="page-content">
-						
+			<div class="page-content">
 
-						<div class="page-header">
-							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
-							</h1>
-						</div><!-- /.page-header -->
 
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="widget-box">
-								<div class="widget-body">
-								 <div class="widget-main" align="center">
-									<h2>Enter Student/Company name to search</h2><br>
-										<form action="/PMS_v1/SearchUser" method="get">
-										 	Search User : <input type="text" name="searchString" /> <input class="btn btn-sm btn-primary" type="submit"
-												value="Search"> <br/>
-										</form>
-										<br>
-										<form action="/PMS_v1/SearchCompany" method="get">
-											Search Company : <input type="text" name="searchString" /> <input class="btn btn-sm btn-primary" type="submit"
-												value="Search">
-										</form>
-									
+				<div class="page-header">
+					<h1>
+						Logged in as
+						<core:out value="${loginForm.userName}" />
+					</h1>
+				</div>
+				<!-- /.page-header -->
+
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="widget-box">
+							<div class="widget-body">
+								<div class="widget-main" align="center">
+									<h2>Enter Student/Company name to search</h2>
+									<br>
+									<form action="/PMS_v1/SearchUser" method="get">
+										Search User : <input type="text" id="dynamicsearchuser"
+											value=""> <input class="btn btn-sm btn-primary"
+											type="submit" value="Search"> <br />
+									</form>
+									<br>
+									<form action="/PMS_v1/SearchCompany" method="get">
+										Search Company : <input type="text" name="searchString" /> <input
+											class="btn btn-sm btn-primary" type="submit" value="Search">
+									</form>
+
 									<br />
 									<c:if test="${!empty userList}">
 										<c:forEach items="${userList}" var="user">
-											<table align="center" >
+											<table align="center">
 												<tr>
-													<td>${user.userName}<td>
+													<td>${user.userName}
+													<td>
 													<td>${user.name}</td>
 												</tr>
 											</table>
@@ -104,28 +146,36 @@ description: contains serach field for searching any user or a company available
 									</c:if>
 									<c:if test="${!empty companyList}">
 										<c:forEach items="${companyList}" var="company">
-											<table align="center" >
+											<table align="center">
 												<tr>
-													<td>${company.company_name}<td>
+													<td>${company.company_name}
+													<td>
 												</tr>
 											</table>
 										</c:forEach>
 									</c:if>
-								  </div>
-								 </div>
-								</div>  
-						
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					
-					</div><!-- /.page-content -->
+								</div>
+							</div>
+						</div>
+
+						<!-- PAGE CONTENT ENDS -->
+					</div>
+					<!-- /.col -->
 				</div>
-			
-</div>
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+				<!-- /.row -->
+
+			</div>
+			<!-- /.page-content -->
+		</div>
+
+	</div>
 	
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
+	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
+
 </body>
 </html>
 

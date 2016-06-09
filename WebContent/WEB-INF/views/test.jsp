@@ -2,11 +2,13 @@
 <head>
 <TITLE>Spring MVC Example with AJAX call</TITLE>
  
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
 
+<!-- for autocomplete -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
+<link href="assets/autocomplete/main.css" rel="stylesheet">
 
 
 
@@ -88,10 +90,61 @@
     
     
     </script>
+    <script>
+  $(document).ready(function() {
+
+	$('#dynamicsearchcomp').autocomplete({
+		serviceUrl: 'looseSearch2',
+		paramName: "CHARS",
+		delimiter: ",",
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(comp) {
+		            	
+		      return { value: comp.companyName, data: comp.companyId };
+		   })
+		            
+		 };
+		        
+            }
+		    
+	 });
+				
+  });
+  </script>
+  
+  <script>
+  $(document).ready(function() {
+
+	$('#dynamicsearchuser').autocomplete({
+		serviceUrl: 'looseSearch',
+		paramName: "CHARS",
+		delimiter: ",",
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(user) {
+		            	
+		      return { value: user.userName, data: user.userId };
+		   })
+		            
+		 };
+		        
+            }
+		    
+	 });
+				
+  });
+  </script>
 
 </head>
  
 <body>
+<jsp:directive.include file="scripts.jsp" />
+
     <div align="center">
         <br> <br> ${message} <br> <br>
         <input type="number" value ="1" id="a" onchange="Ajax()"/>
@@ -102,7 +155,14 @@
         <br>
         <br><br>
         <input type ="text" id="searchbox" onKeyUp="doSearch();">
-        <div id="searchresult"></div>
+        <br>Normal search : <div id="searchresult"></div>
+        
+        <br>AutoComplete search Company : 
+        <input type ="text" id="dynamicsearchcomp" value="">
+        
+        <br>AutoComplete search User: 
+        <input type ="text" id="dynamicsearchuser" value="">
+        
       
     </div>
     
