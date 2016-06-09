@@ -46,7 +46,7 @@ DirectoryPathBean directoryPathBean = new DirectoryPathBean();
 		String userName=(String)request.getSession().getAttribute("userName");
 		String saveDirectory = "";
 		
-		if(role.equals("1"))
+		if(role.equals("1") || role.equals("3"))
 			saveDirectory = directoryPathBean.getCounselingReportStudentFolder() + "\\";
 		else
 			saveDirectory = directoryPathBean.getCounselingReportFtpcFolder()+ "\\";

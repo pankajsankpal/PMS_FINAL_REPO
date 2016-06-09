@@ -41,6 +41,7 @@ public class LoginController{
 
 	
 	@RequestMapping("/")
+
 	public ModelAndView welcome() throws ParseException {
 		
 		try{
@@ -81,6 +82,7 @@ public class LoginController{
 			return model;
 		}
 
+
 	}
 	
    	//----------------------------------------------------------------------------------------------------------
@@ -89,9 +91,6 @@ public class LoginController{
 
 	try
 	{
-		System.out.println("Inside Controller");
-
-		
 		System.out.println("Inside Login Controller");
 
 		LoginForm loginForm = new LoginForm();
@@ -132,10 +131,11 @@ public class LoginController{
 	public ModelAndView processForm(HttpServletRequest request,
 			 @Valid LoginForm loginForm, BindingResult result) {
 
+
+
 	try
 	{
 		System.out.println("Inside Controller");
-
 		ModelAndView model=null;	
 		// get role
 		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());		
@@ -212,7 +212,11 @@ public class LoginController{
 	
 
    	//----------------------------------------------------------------------------------------------------------	
+
 	/*
+=======
+
+>>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
 	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
 	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
 			Map model) 
@@ -229,6 +233,7 @@ public class LoginController{
 			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
 				return new ModelAndView("403");
 			else
+<<<<<<< HEAD
 
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		String user=(String)request.getSession(true).getAttribute("userName");
@@ -246,14 +251,19 @@ public class LoginController{
 			//System.out.println("hello");
 			if(update==0)
 
+=======
+>>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
 			{
 				String userName=notify.getUserName();
-				int update=loginService.getStudentByid(userName,user);
-		//System.out.println("hello");
+				int update=loginService.getStudentByid(userName);
+
+			//System.out.println("hello");
 				if(update==0)
+
 				{
-					model.put("notify",notify);
-					return new ModelAndView("FacultyTPC");
+					
+						model.put("notify",notify);
+						return new ModelAndView("FacultyTPC");
 				}
 				else
 					return new ModelAndView("success");

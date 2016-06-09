@@ -7,6 +7,9 @@
 
 package org.crce.interns.dao;
 
+import java.util.Map;
+import java.util.Set;
+
 import org.crce.interns.model.PersonalProfile;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.UserDetails;
@@ -24,6 +27,8 @@ public interface ProfileDAO {
 	
 	public PersonalProfile updatePersonalProfile(PersonalProfile personalProfile);
 	
-	public UserDetails updateUserDetails(UserDetails userDetails);		
+	public UserDetails updateUserDetails(UserDetails userDetails);
+	
+	public Map<String, Set<String>> totalStudents();
 	
 }

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 
 	
-	@RequestMapping("/CompaniesPage")
+	/*@RequestMapping("/CompaniesPage")
 	public String companiespage() {
 		return "CompaniesPage";
 	}
@@ -23,7 +23,7 @@ public class MainController {
 		ModelAndView model = new ModelAndView("JobPosts");
 		model.addObject("companyname", request.getParameter("companyname"));
 		return model;
-	}
+	}*/
 
 	@RequestMapping("/JobApplicants")
 	public ModelAndView JobApplicants(HttpServletRequest request) {
@@ -32,13 +32,13 @@ public class MainController {
 		return model;
 	}
 
-	@RequestMapping("/Company")
+	/*@RequestMapping("/Company")
 	public ModelAndView company(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("Company");
 		model.addObject("companyname", request.getParameter("companyname"));
 		return model;
 	}
-
+*/
 	@RequestMapping("/JobPostsCriteria")
 	public ModelAndView JobPostsCriteria(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView("JobPostsCriteria");
@@ -58,5 +58,8 @@ public class MainController {
 		return "CompanyFeedback";
 	}
 
-
+	@RequestMapping("/EventsPage")
+	public String eventspage() {
+		return "EventsPage";
+	}
 }

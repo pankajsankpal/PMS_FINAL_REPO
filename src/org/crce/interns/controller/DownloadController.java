@@ -19,6 +19,7 @@ import org.crce.interns.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,7 +39,7 @@ public class DownloadController extends HttpServlet{
 	the year field will be added soon so final basePath would look 
 	like PMS/year
 	*/
-	private String basePath = "C:\\Users\\Melwyn\\Desktop\\PMS";
+	private String basePath = "C:\\PMS\\2016-2017";
 	
 	private static final int BUFFER_SIZE = 4096;
 	
@@ -52,7 +53,9 @@ public class DownloadController extends HttpServlet{
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response, @RequestParam("fileName")String fileName) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		String fileToBeDownloaded = basePath + "\\" + role + "\\" + userName + "\\" + fileName;
+		String folderName = (String) request.getSession().getAttribute("folderName");
+		
+		String fileToBeDownloaded = basePath + "\\Users" + "\\" + role + "\\" + userName + "\\" + folderName + "\\" + fileName;
 		System.out.println(fileToBeDownloaded);
 		
 		ServletContext context = request.getServletContext();
@@ -69,11 +72,15 @@ public class DownloadController extends HttpServlet{
             		mimeType = "application/octet-stream";
         	}
         
+	 		String downloadFileName = downloadFile.getName();
+	 		
+	 		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+	 	
         	response.setContentType(mimeType);
         	response.setContentLength((int) downloadFile.length());
         	String headerKey = "Content-Disposition";
         	String headerValue = String.format("attachment; filename=\"%s\"",
-                	downloadFile.getName());
+               downloadFileName.substring(0, downloadFileName.indexOf('-'))+ext);
         	response.setHeader(headerKey, headerValue);
         
         	OutputStream outStream = null;
@@ -144,5 +151,75 @@ public class DownloadController extends HttpServlet{
 		else if (role.equals("6"))
 			return "Admin";
 		return null;
+	}
+	
+	@RequestMapping("/viewCSV")
+	public ModelAndView viewCV(HttpServletRequest request, HttpServletResponse response) {
+		String directoryPath = basePath + "\\System\\CSV";
+		File directory = new File(directoryPath);
+		File[] listOfFiles = directory.listFiles();
+		
+		System.out.println(directoryPath);
+		System.out.println(listOfFiles);
+	
+		List<String> fileList = new ArrayList<String>();
+		if (listOfFiles != null) {
+			for (File file : listOfFiles) {
+				if (file.isFile()) {
+					System.out.println("FILE : " + file.getName());
+					fileList.add(file.getName());
+				} else 
+				System.out.println("DIRECTORY : " + file.getName());
+			}
+		}
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("fileList", fileList);
+		return new ModelAndView("viewCSV", modelMap);
+	}
+	
+	@RequestMapping("/downloadCSV")
+	public void downloadCSV(HttpServletRequest request, HttpServletResponse response, @RequestParam("fileName")String fileName) {
+		String fileToBeDownloaded = basePath + "\\System\\CSV" + "\\" + fileName;
+		System.out.println(fileToBeDownloaded);
+		
+		ServletContext context = request.getServletContext();
+		
+		File downloadFile = new File(fileToBeDownloaded);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(downloadFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        	String mimeType = context.getMimeType(fileToBeDownloaded);
+	 	if (mimeType == null) {
+            		mimeType = "application/octet-stream";
+        	}
+        
+	 		String downloadFileName = downloadFile.getName();
+	 		
+	 		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+	 	
+        	response.setContentType(mimeType);
+        	response.setContentLength((int) downloadFile.length());
+        	String headerKey = "Content-Disposition";
+        	String headerValue = String.format("attachment; filename=\"%s\"",
+               downloadFileName.substring(0, downloadFileName.indexOf('-'))+ext);
+        	response.setHeader(headerKey, headerValue);
+        
+        	OutputStream outStream = null;
+        	try {
+        		byte[] buffer = new byte[BUFFER_SIZE];
+            		int bytesRead = -1;
+			outStream = response.getOutputStream();
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+	            		outStream.write(buffer, 0, bytesRead);
+	        	}
+	 
+	        	inputStream.close();
+	        	outStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

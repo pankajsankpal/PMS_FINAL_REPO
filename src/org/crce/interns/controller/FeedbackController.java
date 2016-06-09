@@ -1,3 +1,4 @@
+
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -54,18 +56,37 @@ public class FeedbackController {
 */
    
 	@RequestMapping(value="/feedback", method = RequestMethod.GET)
-	public ModelAndView listFeedback(HttpServletRequest request) {
+	public ModelAndView listFeedback(HttpServletRequest request, 
+			@RequestParam("companyname") String companyname
+			)
+	{	System.out.println(companyname);
+	System.out.println("Hi");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("Feedback", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("feedback",prepareListofBean(feedbackService.listFeedback()));
 		
-			return new ModelAndView("feedbackList", model);
-		}
+			//Map<String, Object> model = new HashMap<String, Object>();
+			List<FeedbackBean> list = prepareListofBean(feedbackService.listFeedback()) ;
+			FeedbackBean fb = new FeedbackBean();
+			List<FeedbackBean> list1 =  new ArrayList<FeedbackBean>();
+			for(FeedbackBean fbl: list){
+				//System.out.println(fb1);
+				if(fbl.getCompany().equalsIgnoreCase(companyname)){
+					
+					System.out.println("fdvgidmgvdlkmglkdfmkl"+companyname);
+					list1.add(fbl);
+					
+					
+				}
+			}
+			
+			System.out.println(list1.size());
+			//model.put("feedback",prepareListofBean(feedbackService.listFeedback()));
+			ModelAndView model = new ModelAndView("CompanyFeedback");
+			model.addObject("l",list1);
+			System.out.println(fb.getUsername());
+			return model;
+			//return new ModelAndView("feedbackList", fb);
+		
 	}
 	@RequestMapping(value = "/addFeedback", method = RequestMethod.GET)
 	public ModelAndView saveEmployee(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 

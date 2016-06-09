@@ -68,9 +68,9 @@ public class EventDaoImpl implements EventDao {
 		
 		Company result = (Company) sessionFactory.getCurrentSession().get(Company.class,company_id);
 		
-		System.out.println("Company Name in DaoIMPL"+result.getCompanyName());
+		System.out.println("Company Name in DaoIMPL"+result.getCompany_name());
 		
-		return result.getCompanyName();
+		return result.getCompany_name();
 	}
 		
 }

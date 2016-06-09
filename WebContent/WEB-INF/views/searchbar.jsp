@@ -106,7 +106,7 @@ description: contains serach field for searching any user or a company available
 										<c:forEach items="${companyList}" var="company">
 											<table align="center" >
 												<tr>
-													<td>${company.companyName}<td>
+													<td>${company.company_name}<td>
 												</tr>
 											</table>
 										</c:forEach>

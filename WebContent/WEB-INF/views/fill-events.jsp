@@ -10,7 +10,7 @@ description: contains fields to add a new event regarding placement drives ->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Add Faculty Members Manually </title>
+<title>Add Events </title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -230,6 +230,12 @@ description: contains fields to add a new event regarding placement drives ->
 														
 													});
 					</script>
+			
+	<!-- inline scripts related to this page -->
+
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 
 </body>
 </html>

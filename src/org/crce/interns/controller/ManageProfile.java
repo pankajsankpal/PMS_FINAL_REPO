@@ -18,12 +18,15 @@ import org.crce.interns.beans.CriteriaBean;
 import org.crce.interns.beans.JobBean;
 import org.crce.interns.model.Job;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.CompanyService;
+import org.crce.interns.service.ConstantValues;
 //import org.crce.interns.model.Allotment;
 //import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +44,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class ManageProfile extends HttpServlet{
+public class ManageProfile extends HttpServlet implements ConstantValues{
 
 	/**
 	 * 
@@ -50,6 +53,8 @@ public class ManageProfile extends HttpServlet{
 	
 	@Autowired
 	private ManageProfileService manageProfileService;
+	@Autowired
+	private CompanyService companyService;
 	@Autowired
 	private CheckRoleService crService;
 	
@@ -69,7 +74,7 @@ public class ManageProfile extends HttpServlet{
 	// profileBean,BindingResult result) {
 		
 		
-	public ModelAndView addProfile(@RequestParam Map<String, String> r) throws Exception {
+	public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r) throws Exception {
 		
 			// manageProfileService.addProfile(profileBean);
 
@@ -160,15 +165,16 @@ public class ManageProfile extends HttpServlet{
 		
 	//Create new job profile
 	@RequestMapping(value = "/addProfile", method = RequestMethod.GET)
-	public ModelAndView createProfile(HttpServletRequest request,Model model) {
+	public ModelAndView createProfile(Model model) {
 		
 		// ProfileBean profileBean = new ProfileBean();
-		
+		/*
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("ManageProfile", roleId))
 			return new ModelAndView("403");
 		else
+		*/
 		{
 			JobBean jobBean = new JobBean(); // declaring
 			CriteriaBean criteriaBean = new CriteriaBean();
@@ -186,7 +192,7 @@ public class ManageProfile extends HttpServlet{
 	
 	//Method to view the job profile
 	
-	@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
+	/*@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
 	
 	public ModelAndView listProfile(HttpServletRequest request) {
 		
@@ -196,12 +202,75 @@ public class ManageProfile extends HttpServlet{
 		if(!crService.checkRole("ManageProfile", roleId))
 			return new ModelAndView("403");
 		else
+		
 		{
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
 			return new ModelAndView("viewJobProfile", model);
 		}
 	}
+	*/
+	
+	@RequestMapping(value="/CompaniesPage", method = RequestMethod.GET)
+	public ModelAndView listProfile() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		//model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
+		//return new ModelAndView("viewProfile", model);
+		return new ModelAndView("CompaniesPage");
+	}
+	
+	/*@RequestMapping(value="/Company/companyname/{companyname}", method = RequestMethod.GET)
+	public ModelAndView Companies(@PathVariable String companyname) {
+		ModelAndView model ;
+		model = null;
+		// 1. get company list using getCompany from company dao
+		// 2. iterate company list and select a new company bean which matches with String companyname
+		// 3. model.addObject() the new company bean
+		
+		 * for(Company c: list)
+		 * 
+		 * 
+		 
+		
+		//List<CompanyBean> clist = companyService.getCompany();
+		List<CompanyBean> clist = manageProfileService.listCompanies();
+		//CompanyBean cb = new CompanyBean();
+		
+		System.out.println(clist.size());
+		
+		for( CompanyBean cb: clist){
+			System.out.println("Clist company name "+cb.getCompany_name());
+			System.out.println("Company Name "+companyname);
+			if(companyname.equalsIgnoreCase(cb.getCompany_name())){
+		//f(cb.getCompany_name().equalsIgnoreCase(companyname)){
+				
+				model.addObject("company", cb);
+				
+				
+			}
+		}
+		
+			
+		model = new ModelAndView("Company");
+		return model;
+		   
+		
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/JobPosts/companyname/{companyname}", method = RequestMethod.GET)
+	public ModelAndView JobPosting1(@PathVariable String companyname) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
+		return new ModelAndView("JobPosts", model);
+		//return new ModelAndView("CompaniesPage", model);
+	}
+	
 	
 	private List<JobBean> prepareListofBean(List<Job> profiles) {
 		
@@ -210,6 +279,8 @@ public class ManageProfile extends HttpServlet{
 		{
 			beans = new ArrayList<JobBean>();
 			JobBean bean = null;
+			
+			
 			for(Job profile : profiles)
 			{
 				bean = new JobBean();
@@ -233,5 +304,83 @@ public class ManageProfile extends HttpServlet{
 		}
 		return beans;
 	}
+/*
+ * added by @ZNevzz : status = working
+ * 
+ */
+	@RequestMapping(value="/Company", method = RequestMethod.GET)
+	public ModelAndView test(
+			 @RequestParam("companyname") String companyname
 
+			) {
+		ModelAndView model ;
+		model = new ModelAndView("Company");
+		//model = null;
+		// 1. get company list using getCompany from company dao
+		// 2. iterate company list and select a new company bean which matches with String companyname
+		// 3. model.addObject() the new company bean
+		
+		/* * for(Company c: list)
+		 * 
+		 * 
+		 */
+		
+		//List<CompanyBean> clist = companyService.getCompany();
+		List<CompanyBean> clist = manageProfileService.listCompanies();
+		//CompanyBean cb = new CompanyBean();
+		
+		System.out.println(clist.size());
+		
+		
+		System.out.println("Company Name "+companyname);
+		
+		for( CompanyBean cb: clist){
+			System.out.println("Clist company name "+cb.getCompany_name());
+			
+			
+			
+			if(companyname.equals(cb.getCompany_name())){
+					
+				System.out.println("inside IF"+cb.getCompany_name());
+				model.addObject("company", cb);
+				
+			}
+		}
+		
+		if(companyname.equals(JPM)){
+			model.addObject("link", JPM_LINK);
+			
+		}else if(companyname.equals(DIRECTI)){
+			model.addObject("link", DIRECTI_LINK);
+			
+		}else if(companyname.equals(MS)){
+			model.addObject("link", MS_LINK);
+			
+		}else if(companyname.equals(TCS)){
+			model.addObject("link", TCS_LINK);
+			
+		}else if(companyname.equals(ACC)){
+			model.addObject("link", ACC_LINE);
+			
+		}else if(companyname.equals(ZS)){
+			model.addObject("link", ZS_LINK);
+			
+		}else if(companyname.equals(GOD)){
+			model.addObject("link", GOD_LINK);
+			
+		}else if(companyname.equals(LNT)){
+			model.addObject("link", LNT_LINK);
+			
+		}
+	
+	
+		// this was the error why the EL wasn't working. We were creating another object
+		//model = new ModelAndView("Company");
+		
+		return model;
+		   
+		
+	}
+	
+	
 }

@@ -51,7 +51,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		Query q = s.createQuery(sql);
 		q.setParameter("n", user.getCompany());
 		List<Company> c = q.list();
-		int company_id = c.get(0).getCompanyId();
+		int company_id = c.get(0).getCompany_id();
 		user.setCompany_id(company_id);
 		tx=session.beginTransaction();
 		session.save(user);
@@ -102,7 +102,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 			List<Company> c = q.list();
 			
 			for(Company d:c){
-				if(d.getCompanyName().equals(user.getCompany())){
+				if(d.getCompany_name().equals(user.getCompany())){
 					flag=1;
 				}
 			}
@@ -184,7 +184,7 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		Query q = s.createQuery(sql);
 		q.setParameter("n", user.getCompany());
 		List<Company> c = q.list();
-		int company_id = c.get(0).getCompanyId();
+		int company_id = c.get(0).getCompany_id();
 		
 		System.out.println(company_id);
 		user.setCompany_id(company_id);

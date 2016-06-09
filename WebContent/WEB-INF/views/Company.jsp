@@ -25,6 +25,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 <body>
 
 	<jsp:directive.include file="Header.jsp" />
+	<%--
 	<c:if test="${companyname=='jpmorgan'}">
 		<c:set var="propercompanyname" value="JP Morgan" />
 	</c:if>
@@ -50,7 +51,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 		<c:set var="propercompanyname" value="TCS" />
 	</c:if>
 
-
+ --%>
 	<div class="main-content">
 
 		<div class="main-content-inner">
@@ -67,7 +68,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 					</li>
 
 					<li><a href="CompaniesPage">Companies</a></li>
-					<li class="active">${propercompanyname}</li>
+					<li class="active">${company.company_name}</li>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -88,9 +89,10 @@ description: dynamically creating a page once the Content on companiesPade is cl
 				<div class="page-header">
 
 					<h1>
-						${propercompanyname} <small> <i
+						${company.company_name} <small> <i
 							class="ace-icon fa fa-angle-double-right"></i>
 						</small>
+						<a href="${link}">About us</a>
 					</h1>
 
 				</div>
@@ -112,7 +114,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 													<span class="profile-picture"> <img
 														class="editable img-responsive" alt="Alex's Avatar"
 														id="avatar2"
-														src="assets/images/companies/${companyname}.jpg" />
+														src="assets/images/companies/${company.company_name}.jpg" />
 													</span>
 
 													<div class="space space-4"></div>
@@ -138,16 +140,14 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																	<div class="profile-info-name">Name</div>
 
 																	<div class="profile-info-value">
-																		<span>${propercompanyname}</span>
+																		<span>${company.company_name}</span>
 																	</div>
 																</div>
 																<div class="profile-info-row">
 																	<div class="profile-info-name">Address</div>
 
 																	<div class="profile-info-value">
-																		<span>${propercompanyname} India Office,Central
-																			Ave, Hiranandani Gardens, Powai, Mumbai, Maharashtra
-																			400076</span>
+																		<span>${company.company_address}</span>
 																	</div>
 																</div>
 
@@ -168,7 +168,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Job Posts
 															</h4>
-															<br /> <a href="JobPosts?companyname=${companyname}">
+															<br /> <a href="JobPosts?companyname=${company.company_name}">
 																<img style="border: 1" width="400" height="200"
 																alt="150x150" src="assets/images/companies/jobposts.jpg" />
 															</a>
@@ -190,7 +190,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Feedback
 															</h4>
-															<br /> <a href="CompanyFeedback?companyname=${companyname}">
+															<br /> <a href="feedback?companyname=${company.company_name}">
 																<img style="border: 1" width="400" height="200"
 																alt="150x150" src="assets/images/companies/feedback.png" />
 															</a>
@@ -213,7 +213,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																Job Applicants
 															</h4>
 															<br /> <a
-																href="JobApplicants?companyname=${companyname}"> <img
+																href="JobApplicants?companyname=${company.company_name}"> <img
 																align="middle" style="border: 1" width="400"
 																height="200" alt="150x150"
 																src="assets/images/companies/jobapplicants.jpg" />
