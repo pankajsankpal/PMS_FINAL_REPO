@@ -114,7 +114,7 @@ public class UpdateProfileController {
 				
 			}else if(roleName.equals("StudentTPC")){
 				
-				model = new ModelAndView("StudentTPC");
+				model = new ModelAndView("Student");
 				
 			}else if(roleName.equals("Faculty")){
 				model = new ModelAndView("Faculty");

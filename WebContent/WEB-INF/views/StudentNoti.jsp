@@ -123,9 +123,28 @@ description: contain notification received by student and student tpc -->
 																</div>
 															</div>
 
+
+
 															<div class="widget-body">
 																<div class="widget-main padding-4 scrollable" data-size="200">
 																	
+																	<c:if test="${!empty nf}">
+
+																		<c:forEach items="${nf}" var="a">
+																		<p class="alert alert-info">
+																		
+																		<a href="${a.url}" style="text-decoration: none;">
+																		<strong>
+																		${a.dateTime}
+																		</strong>																	
+																<%-- 		${a.type} Notification for ${a.userOrGroupId}:--%><br/>
+																		${a.message}<br/>
+																		</a><br/><br/>
+																		</c:forEach>
+																		</p>
+																	</c:if>
+																																			
+															<!-- 		
 																	<p class="alert alert-info">
 																		TCS Mock Interviews..
 																	</p>
@@ -138,7 +157,7 @@ description: contain notification received by student and student tpc -->
 																	<p class="alert alert-primary">
 																		Aptitude test for all BE student.<t></t>22nd may 2016
 																	</p>
-																
+																 -->
 																
 															</div>
 															

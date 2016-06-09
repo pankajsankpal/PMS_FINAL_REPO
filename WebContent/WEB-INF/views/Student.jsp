@@ -115,14 +115,18 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 														</div><!-- /.col -->
 
 														<div class="col-xs-12 col-sm-9">
+														
+														
+																		
 															<h4 class="blue">
-																
-
+					
 																<span class="label label-purple arrowed-in-right">
 																	<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-																	online
+																	${userDetails.currentState}
 																</span>
+																
 															</h4>
+					
 
 															<div class="profile-user-info">
 																<div class="profile-info-row">
