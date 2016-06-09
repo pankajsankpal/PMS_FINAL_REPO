@@ -190,6 +190,7 @@ function checkNewNoti(){
 </html>
 
 
+
 <%--
 <c:choose>							
 							<c:when test=" ${empty sessionScope}">							
