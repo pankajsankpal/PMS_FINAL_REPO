@@ -194,7 +194,7 @@ public class NfController implements ConstantValues{
 
 	//------------------------------------------------------------------------------------------------
 	
-	@RequestMapping(value="/addNfApply", method = RequestMethod.POST)
+	@RequestMapping(value="/addNfApply", method = RequestMethod.GET)
 	public ModelAndView addNfForJobApply(HttpServletRequest request) {
 	try{
 		
@@ -210,6 +210,7 @@ public class NfController implements ConstantValues{
 			System.out.println("notification not added");
 		}
 		
+		nfService.checkNf();
 		return model;
 
 		
@@ -223,7 +224,7 @@ public class NfController implements ConstantValues{
 	}
 
 	//------------------------------------------------------------------------------------------------	
-	@RequestMapping(value="/addNfPost", method = RequestMethod.POST)
+	@RequestMapping(value="/addNfPost", method = RequestMethod.GET)
 	public ModelAndView addNfForJobPost(HttpServletRequest request) {
 	try{
 		
@@ -239,6 +240,8 @@ public class NfController implements ConstantValues{
 			System.out.println("notification not added");
 		}
 		
+		nfService.checkNf();
+		
 		return model;
 
 		
@@ -251,7 +254,7 @@ public class NfController implements ConstantValues{
 	}
 	}
 
-	@RequestMapping(value="/addNfEvent", method = RequestMethod.POST)
+	@RequestMapping(value="/addNfEvent", method = RequestMethod.GET)
 	public ModelAndView addNfForEvent(HttpServletRequest request) {
 	try{
 		
@@ -266,6 +269,8 @@ public class NfController implements ConstantValues{
 		else{
 			System.out.println("notification not added");
 		}
+		
+		nfService.checkNf();
 		
 		return model;
 

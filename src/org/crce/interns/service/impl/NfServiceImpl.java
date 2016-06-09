@@ -187,7 +187,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 	public boolean addNotificationForJobPost(String companyName){
 		Notification temp = new Notification();
 		
-		temp.setType(GROUP);
+		temp.setType(ALL);
 		temp.setCategory(JOB);
 		temp.setMessage(JOB_M1+companyName);
 		temp.setUrl(JOB_URL);
@@ -209,7 +209,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 	public boolean addNotificationForEvent(String companyName){
 		Notification temp = new Notification();
 		
-		temp.setType(GROUP);
+		temp.setType(ALL);
 		temp.setCategory(EVENT);
 		temp.setMessage(EVENT_M+companyName);
 		temp.setUrl(EVENT_URL);
