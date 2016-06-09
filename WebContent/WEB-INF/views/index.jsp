@@ -1,6 +1,3 @@
-
-<!-- @Gaurav -->
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +24,9 @@
 <!-- ace styles -->
 <link rel="stylesheet" href="assets/css/ace.min.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
+
+
+
 
 
 <!-- inline styles related to this page -->
@@ -59,8 +59,12 @@
 					</script>
 
 
+
+
+					
 					<jsp:directive.include file="Footer.jsp" />
 
+				
 			</div>
 		</div>
 	</div>
@@ -77,5 +81,4 @@
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 </body>
-
 </html>

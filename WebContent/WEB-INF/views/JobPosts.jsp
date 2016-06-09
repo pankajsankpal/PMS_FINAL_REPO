@@ -213,6 +213,7 @@ description: displays the job when the user clocks on the job post image-->
 	</div>
 	</div>
 	<!-- /.main-content -->
+	<jsp:directive.include file="scripts.jsp" />
 
 	<jsp:directive.include file="Footer.jsp" />
 
