@@ -88,7 +88,9 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 
 												
 												<li>
+
 													<a  href="StuNoti">
+
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>

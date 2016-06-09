@@ -219,18 +219,18 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 		return new ModelAndView("CompaniesPage");
 	}
 	
-	@RequestMapping(value="/Company/companyname/{companyname}", method = RequestMethod.GET)
+	/*@RequestMapping(value="/Company/companyname/{companyname}", method = RequestMethod.GET)
 	public ModelAndView Companies(@PathVariable String companyname) {
 		ModelAndView model ;
 		model = null;
 		// 1. get company list using getCompany from company dao
 		// 2. iterate company list and select a new company bean which matches with String companyname
 		// 3. model.addObject() the new company bean
-		/*
+		
 		 * for(Company c: list)
 		 * 
 		 * 
-		 */
+		 
 		
 		//List<CompanyBean> clist = companyService.getCompany();
 		List<CompanyBean> clist = manageProfileService.listCompanies();
@@ -256,7 +256,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 		   
 		
 	}
-	
+	*/
 	
 	
 	
@@ -319,8 +319,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 		// 1. get company list using getCompany from company dao
 		// 2. iterate company list and select a new company bean which matches with String companyname
 		// 3. model.addObject() the new company bean
-		/*
-		 * for(Company c: list)
+		
+		/* * for(Company c: list)
 		 * 
 		 * 
 		 */

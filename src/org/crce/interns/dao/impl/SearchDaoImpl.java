@@ -39,9 +39,9 @@ public class SearchDaoImpl implements SearchDao {
 		
 		String SQL_QUERY = null;
 		if (matcher.matches())
-			SQL_QUERY ="from PersonalProfile as u where u.userName like :s";
+			SQL_QUERY ="from PersonalProfile as u where lower(u.userName) like lower(:s)";
 		else 
-			SQL_QUERY ="from PersonalProfile as u where u.name like :s";
+			SQL_QUERY ="from PersonalProfile as u where lower(u.name) like lower(:s)";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter("s", "%"+searchString+"%");
 		List<PersonalProfile> userDetailsList = query.list();
@@ -54,7 +54,7 @@ public class SearchDaoImpl implements SearchDao {
 	public List<Company> searchCompany(String searchString) {
 		System.out.println(searchString);
 		Session session = sessionFactory.openSession();
-		String SQL_QUERY ="from Company as c where c.companyName like :s";
+		String SQL_QUERY ="from Company as c where lower(c.company_name) like lower(:s)";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter("s", "%"+searchString+"%");
 		List<Company> companyList = query.list();

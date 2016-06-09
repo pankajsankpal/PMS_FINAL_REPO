@@ -36,33 +36,43 @@ public interface ConstantValues {
 	public String LNT_LINK = "http://www.larsentoubro.com/";
 	
 	//NOTIFICATION CATEGORIES	
-	public String JOB = "";
-	public String ELIGIBLE = "";
-	public String EVENT = "";
-	public String TEST = "";
-	public String COUNSELLING = "";
-	public String SELECTED = "";
-	public String ROOM = "";
-	public String EMAIL = "";
-	public String ROLE = "";
-	public String DOWNLOAD = "";
+	public String JOB = "JOB";
+	public String ELIGIBLE = "ELIGIBLE";
+	public String EVENT = "EVENT";
+	public String TEST = "TEST";
+	public String COUNSELLING = "COUNSELLING";
+	public String SELECTED = "SELECTED";
+	public String ROOM = "ROOM";
+	public String EMAIL = "EMAIL";
+	public String ROLE = "ROLE";
+	public String DOWNLOAD = "DOWNLOAD";
 	
 	//NOTIFICATION TYPES
-	public String GROUP = "";
-	public String USER = "";
-	public String ALL = "";
+	public String GROUP = "GROUP";
+	public String USER = "USER";
+	public String ALL = "ALL";
 	
 	
 	//NOTIFICATION CATEGORY-WISE MESSAGE
-	public String JOB_M = "";
-	public String ELIGIBLE_M = "";
-	public String EVENT_M = "";
+	public String JOB_M1 = "A new job has been posted for ";
+	
+	public String ELIGIBLE_M1 = "Your Job Application for ";
+	public String ELIGIBLE_M2 = " has been successfully accepted.";
+	
+	public String EVENT_M = "A new event has been scheduled for";
+	
 	public String TEST_M = "";
-	public String COUNSELLING_M = "";
-	public String SELECTED_M = "";
-	public String ROOM_M = "";
+	
+	public String COUNSELLING_M = "You have been selected to give a counselling report based on your placement experience for ";
+		
+	public String SELECTED_M = "Congratulations !! You have been selected as an employee for ";
+	
+	public String ROOM_M = "Check out the room allotment";
+	
 	public String EMAIL_M = "";
+	
 	public String ROLE_M = "";
+	
 	public String DOWNLOAD_M = "";
 	
 	
@@ -71,6 +81,7 @@ public interface ConstantValues {
 	public String IT = "Information Technology";
 	public String ELEX = "Electronics Engineering";
 	public String PROD = "Production Engineering";
+	public String[] BRANCHES = new String[]{COMPS, IT, ELEX ,PROD}; 
 	
 	// EVENT TYPES
 	public String APTI = "Aptitude";
@@ -83,7 +94,7 @@ public interface ConstantValues {
 	public String HR = "H.R.";
 	public String COD = "Coding";
 
-	// COMPANY ABOUT US URL
+	// COMPANY NAMES
 	public String JPM = "JP Morgan";
 	public String DIRECTI = "Direct i";
 	public String MS = "Morgan Stanley";
@@ -99,4 +110,16 @@ public interface ConstantValues {
 	public String DREAM ="dream";
 	public String NONDREAM ="nondream";
 	
+	public String JOB_URL = "";
+	public String ELIGIBLE_URL = "ELIGIBLE";
+	public String EVENT_URL = "EVENT";
+	public String TEST_URL = "TEST";
+	public String COUNSELLING_URL = "COUNSELLING";
+	public String SELECTED_URL = "SELECTED";
+	public String ROOM_URL = "ROOM";
+	public String EMAIL_URL = "EMAIL";
+	public String ROLE_URL = "ROLE";
+	public String DOWNLOAD_URL = "DOWNLOAD";
+	
 }
+
