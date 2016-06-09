@@ -1,8 +1,3 @@
-
-<!-- author: Pankaj sankpal
-description: contains tabs ->  activity ,uploads ,notification -->
-<!-- -------------------------------------------------------------------------------------------------------- -->
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -198,7 +193,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
 														  
 														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add candidate </a> <br><br>
-														  <a href="sendMail"  class="btn btn-inverse btn-lg btn-block">Send Email </a><br><br>
+														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
+														  <a href="personalMail"  class="btn btn-inverse btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>
 														
 												<div class="col-xs-12 col-sm-8 left">
@@ -297,11 +293,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 		
 	
 			jQuery(function($) {
-
 /* initialize the external events
 	-----------------------------------------------------------------*/
-
-
 	
 	/*** FOR DRAG AND DROP functionality *********************/
 	$('#id-input-file-3').ace_file_input({
@@ -334,12 +327,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 					//console.log($(this).data('ace_input_files'));
 					//console.log($(this).data('ace_input_method'));
 				});
-
-
 /**  for increasing the size of text area automatically************/
 		$('textarea[class*=autosize]').autosize({append: "\n"});
-
-
 //////////////////
 		//select2
 		$('.select2').css('width','200px').select2({allowClear:true})
@@ -349,18 +338,13 @@ description: contains tabs ->  activity ,uploads ,notification -->
 			if(which == 2) $('.select2').addClass('tag-input-style');
 			 else $('.select2').removeClass('tag-input-style');
 		});
-
-
 		
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
-
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-
-
 	var calendar = $('#calendar').fullCalendar({
 		//isRTL: true,
 		 buttonHtml: {
@@ -441,12 +425,10 @@ description: contains tabs ->  activity ,uploads ,notification -->
 				}
 			});
 			
-
 			calendar.fullCalendar('unselect');
 		}
 		,
 		eventClick: function(calEvent, jsEvent, view) {
-
 			//display a modal
 			var modal = 
 			'<div class="modal fade">\
@@ -472,7 +454,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 			var modal = $(modal).appendTo('body');
 			modal.find('form').on('submit', function(ev){
 				ev.preventDefault();
-
 				calEvent.title = $(this).find("input[type=text]").val();
 				calendar.fullCalendar('updateEvent', calEvent);
 				modal.modal("hide");
@@ -487,20 +468,14 @@ description: contains tabs ->  activity ,uploads ,notification -->
 			modal.modal('show').on('hidden', function(){
 				modal.remove();
 			});
-
-
 			//console.log(calEvent.id);
 			//console.log(jsEvent);
 			//console.log(view);
-
 			// change the border color just for fun
 			//$(this).css('border-color', 'red');
-
 		}
 		
 	});
-
-
 })
 		</script>
 	
@@ -520,7 +495,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 					//onchange:''
 					//
 				});
-
 		
 		//override dialog's title function to allow for HTML titles
 				$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
@@ -531,7 +505,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 						else title.text($title);
 					}
 				}));
-
 				$( "#id-btn-dialog1" ).on('click', function(e) {
 							e.preventDefault();
 					
@@ -563,7 +536,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 							};
 							**/
 						});
-
 		
 		//another option is using modals
 				$('#avatar2').on('click', function(){
@@ -657,12 +629,10 @@ description: contains tabs ->  activity ,uploads ,notification -->
  
  <%--		backend jsp page
  
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -684,7 +654,6 @@ description: contains tabs ->  activity ,uploads ,notification -->
 	<br />
 	
 	<table>
-
 		<tr>
 			<td><a href="addUser">Click here to Add users via csv file</a></td>
 		</tr>
@@ -718,9 +687,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 		</tr>
 		<tr>
 			<td>10.<a href="manage.html">Manage List of Applicants of all Companies</a><br /></td>
-
 			<td>10.<a href="view-candidate.html">Manage List of Applicants of all Companies</a><br /></td>
-
 		</tr>
 		<tr>
 			<td>11.<a href="getEventForm.html">Add Events</a><br /></td>
@@ -752,4 +719,3 @@ description: contains tabs ->  activity ,uploads ,notification -->
  
  
    --%>
-
