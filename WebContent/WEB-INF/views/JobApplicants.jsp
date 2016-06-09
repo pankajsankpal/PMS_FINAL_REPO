@@ -185,7 +185,7 @@ description: gives the list of applied aplicants-->
 		</div>
 	</div>
 	<!-- /.main-content -->
-
+<jsp:directive.include file="scripts.jsp" />
 	<jsp:directive.include file="Footer.jsp" />
 
 
