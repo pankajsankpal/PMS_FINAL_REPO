@@ -69,7 +69,7 @@ function checkNewNoti(){
 					<ul class="nav ace-nav">
 						
 						<li class="purple">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="notifications">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
@@ -128,7 +128,7 @@ function checkNewNoti(){
 :								</li>
 
 								<li class="dropdown-footer">
-									<a href="#">
+									<a href="notifications">
 										See all notifications
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
@@ -155,9 +155,9 @@ function checkNewNoti(){
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
-									<a href="form">
-										<i class="ace-icon fa fa-power-off"></i>
-										Sign In
+									<a href="viewprofile">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
 									</a>
 								</li>
 								
@@ -165,12 +165,6 @@ function checkNewNoti(){
 									<a href="logged-out">
 										<i class="ace-icon fa fa-power-off"></i>
 										Sign out
-									</a>
-								</li>
-								<li>
-									<a href="viewprofile">
-										<i class="ace-icon fa fa-user"></i>
-										profile
 									</a>
 								</li>
 							</ul>
