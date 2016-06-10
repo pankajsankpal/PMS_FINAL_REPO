@@ -96,7 +96,9 @@ description: contains all the validations required for every field -->
 
 									<div class="tab-content no-border padding-24">
 										<div id="home" class="tab-pane in active">
+										<div role="form" id="validation-form">
 											<form  method="post" action="saveProfile" >
+										
 												<div class="col-xs-12">
 
 													<div class="row">
@@ -555,9 +557,10 @@ description: contains all the validations required for every field -->
 														</div>
 
 														<div class="hr hr-8 dotted"></div>
+														</div>
 											</form>
+											</div>
 
-										</div>
 										<!-- /.row_1 -->
 									</div>
 

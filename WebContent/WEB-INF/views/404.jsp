@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>403 Error Page</title>
+		<title>404 Error Page - Ace Admin</title>
 
 		<meta name="description" content="404 Error Page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -54,7 +54,7 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
-							<li class="active">Error 403</li>
+							<li class="active">Error 404</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -144,7 +144,7 @@
 										<h1 class="grey lighter smaller">
 											<span class="blue bigger-125">
 												<i class="ace-icon fa fa-sitemap"></i>
-												403
+												404
 											</span>
 											<script type="text/javascript">
 					try {
