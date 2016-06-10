@@ -165,6 +165,8 @@ public class UpdateProfileController {
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
 	public ModelAndView editProfessionalProfile(HttpServletRequest request) {
 		
+		ModelAndView model=null;
+		model = new ModelAndView("viewprofile");
 	try{	
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
@@ -174,7 +176,7 @@ public class UpdateProfileController {
 		//{
 			System.out.println("Inside UpdateProfile Controller");
 		
-			ModelAndView model=null;		
+					
 
 			UserDetailsBean userDetailsBean= new UserDetailsBean();
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
@@ -189,7 +191,7 @@ public class UpdateProfileController {
 			personalProfileBean = profileService.getProfile(personalProfileBean);
 		
 		
-			model = new ModelAndView("viewprofile");		
+					
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
@@ -226,6 +228,8 @@ public class UpdateProfileController {
 	
 		System.out.println("Inside UpdateProfile Controller");
 	
+		ModelAndView model=null;
+		model = new ModelAndView("redirect:/viewprofile");	
 	try{	
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId= (String) request.getSession(true).getAttribute("roleId");
@@ -233,7 +237,7 @@ public class UpdateProfileController {
 			//return new ModelAndView("403");
 		//else
 		//{
-		ModelAndView model=null;
+		
 		
 		ProfessionalProfileBean professionalProfileBean = new ProfessionalProfileBean();
 		UserDetailsBean userDetailsBean=new UserDetailsBean();
@@ -263,7 +267,7 @@ public class UpdateProfileController {
 		personalProfileBean = profileService.updatePersonalProfile(personalProfileBean);			
 		professionalProfileBean = profileService.updateProfessionalProfile(professionalProfileBean);				
 		
-		model = new ModelAndView("redirect:/viewprofile");		
+			
 		return model;
 		//}
 	}
@@ -290,12 +294,14 @@ public class UpdateProfileController {
 	@RequestMapping(value="/sign-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request) {
 		
+		ModelAndView model=null;
+		model = new ModelAndView("redirect:/form");
 		try{
 			
 		
 			System.out.println("Inside UpdateProfile Controller");
 			LoginForm loginForm = new LoginForm();
-			ModelAndView model=null;
+			
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();
 			userDetailsBean.setUserName((String)request.getSession(true).getAttribute("userName"));
@@ -308,7 +314,7 @@ public class UpdateProfileController {
 			
 			request.getSession(true).invalidate();
 			
-			model = new ModelAndView("redirect:/form");
+			
 			//model.addObject("loginForm", loginForm);
 		
 			return model;
@@ -496,9 +502,12 @@ public class UpdateProfileController {
 @RequestMapping(value="/searchProfile", method = RequestMethod.GET)
 	
 	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
-		try{
+	
+	ModelAndView model=null;
+	model = new ModelAndView("Student");
+	
+	try{
 		System.out.println("Inside UpdateProfile Controller");
-		
 		
 		//String userName =(String)request.getSession(true).getAttribute("userName");
 		//String roleId=(String)request.getSession(true).getAttribute("roleId");
@@ -507,7 +516,7 @@ public class UpdateProfileController {
 			//return new ModelAndView("403");
 		//else
 		//{
-			ModelAndView model=null;
+			
 
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();									
@@ -537,7 +546,7 @@ public class UpdateProfileController {
 			
 			String roleName = (String)request.getSession(true).getAttribute("roleName");
 			
-			model = new ModelAndView("Student");
+			
 			
 			/*
 			if(roleName.equals("Student")){
