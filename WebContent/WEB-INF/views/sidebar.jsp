@@ -19,25 +19,25 @@ description: Sidebar, tabs turn active through jquery -->
 
 
 			<ul class="nav nav-list" id="sidebarli">
-				<li class=" " id="EventsPage"><a href="EventsPage"> <i
-						class="menu-icon fa fa-sign-in"></i> <span class="menu-text">
+				<li class=" " id="EventsPages"><a href="EventsPages"> <i
+						class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 							Events </span>
 				</a> <b class="arrow"></b></li>
 				
-				<li class=" " id="JobPosts"><a href="JobPosts"> <i
+				<li class=" " id="searchHome"><a href="searchHome"> <i
 						class="menu-icon fa fa-search"></i> <span class="menu-text">
-							Job Posts </span>
+							Search </span>
 				</a> <b class="arrow"></b></li>
 
-				<li class=" " id="Companies"><a href="CompaniesPage"> <i
+				<li class=" " id="CompaniesPage"><a href="CompaniesPage"> <i
 						class="menu-icon fa fa-gears"></i> <span class="menu-text">
 							Companies </span>
 				</a> <b class="arrow"></b></li>
 				
 				
-				<li class=" " id="Statistics"><a href="Statistics"> <i
+				<li class=" " id="Highlights"><a href="Highlights"> <i
 						class="menu-icon fa fa-bar-chart-o"></i> <span class="menu-text">
-							Statistics </span>
+							Highllights </span>
 				</a> <b class="arrow"></b></li>
 			</ul>
 			<!--  End of nav list-->
@@ -60,7 +60,7 @@ description: Sidebar, tabs turn active through jquery -->
 			<script>
     			$(document).ready(function(){
     				var i = window.location.pathname;
-    				var j = i.slice(12);
+    				var j = i.slice(8);					//needs to b changed count from first letter of proj to next /
     				
     			      $("#Index").addClass("active");
     			      if(j!=null){

@@ -60,10 +60,14 @@ public class CounselingReportUploadController {
 				String role =  (String)session.getAttribute("roleId");
 				String user=(String)session.getAttribute("userName");
 				String name=loginService.checkSR(user);
-				if(!(crService.checkRole("CounselingReportUpload", role)&&name.equals("COUNSELLING_REPORT")))
+				
+				if((role.equals("4") && !(crService.checkRole("CounselingReportUpload", role)&&name.equals("COUNSELLING_REPORT"))) || ((role.equals("1") || role.equals("3")) && !(crService.checkRole("CounselingReportUpload", role))))
 					return new ModelAndView("403");
+				
 				else
 					return new ModelAndView("CounselingReportUpload");
+				
+				
 			}
 
 			//used to actually upload the file

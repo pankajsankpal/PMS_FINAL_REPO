@@ -8,8 +8,7 @@
 <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>  -->
 
 
-<script>
-
+<script type="text/javascript">
 function checkNewNoti(){
 	console.log("inside checkNewNoti");
 	
@@ -35,7 +34,7 @@ function checkNewNoti(){
 	
 }
 
-
+</script>
 </head>
 
 <body onload="checkNewNoti()" class="skin-3 no-skin">
@@ -43,7 +42,7 @@ function checkNewNoti(){
 	
 	<div id="navbar" class="navbar navbar-default">
 			<script type="text/javascript">
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 			</script>
 
 			<div class="navbar-container " id="navbar-container">
@@ -70,7 +69,7 @@ function checkNewNoti(){
 					<ul class="nav ace-nav">
 						
 						<li class="purple">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="notifications">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
@@ -129,7 +128,7 @@ function checkNewNoti(){
 :								</li>
 
 								<li class="dropdown-footer">
-									<a href="#">
+									<a href="notifications">
 										See all notifications
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
@@ -156,9 +155,9 @@ function checkNewNoti(){
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
-									<a href="form">
-										<i class="ace-icon fa fa-power-off"></i>
-										Sign In
+									<a href="viewprofile">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
 									</a>
 								</li>
 								
@@ -166,12 +165,6 @@ function checkNewNoti(){
 									<a href="logged-out">
 										<i class="ace-icon fa fa-power-off"></i>
 										Sign out
-									</a>
-								</li>
-								<li>
-									<a href="viewprofile">
-										<i class="ace-icon fa fa-user"></i>
-										profile
 									</a>
 								</li>
 							</ul>
