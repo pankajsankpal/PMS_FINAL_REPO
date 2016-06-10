@@ -34,8 +34,13 @@ description: Sidebar, tabs turn active through jquery -->
 							Companies </span>
 				</a> <b class="arrow"></b></li>
 				
+<<<<<<< HEAD
 			
 				<li class=" " id="Highlights"><a href="Highlights"> <i>
+=======
+				
+				<li class=" " id="Highlights"><a href="Highlights"> <i
+>>>>>>> ac948b9e7a68b3b128f6d4f8d0a01296e32478c7
 						class="menu-icon fa fa-bar-chart-o"></i> <span class="menu-text">
 							Highllights </span>
 				</a> <b class="arrow"></b></li>

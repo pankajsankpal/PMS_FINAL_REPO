@@ -87,8 +87,6 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 <link href="assets/autocomplete/main.css" rel="stylesheet">
 
 
-
-
 </head>
 <body>
 
