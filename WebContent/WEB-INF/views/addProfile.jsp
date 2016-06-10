@@ -67,6 +67,10 @@ description: contains all the validations required for every field -->
 							class="ace-icon fa fa-angle-double-right"></i>
 						</small>
 					</h1>
+					
+					<c:if test="${success==1}">
+	<p color="blue"><h2>Profile added successfully!!</h2></p>
+	</c:if>
 
 				</div>
 				<!-- /.page-header -->
@@ -74,6 +78,7 @@ description: contains all the validations required for every field -->
 					<i class="ace-icon fa fa-hand-o-right"></i> Please note: In
 					some cases if the values aren't filled or changed, the default values in the
 					field will be considered.
+					
 					<button class="close" data-dismiss="alert">
 						<i class="ace-icon fa fa-times"></i>
 					</button>
@@ -91,7 +96,7 @@ description: contains all the validations required for every field -->
 
 									<div class="tab-content no-border padding-24">
 										<div id="home" class="tab-pane in active">
-											<form role="form" id="validation-form">
+											<form  method="post" action="saveProfile" >
 												<div class="col-xs-12">
 
 													<div class="row">
@@ -102,16 +107,16 @@ description: contains all the validations required for every field -->
 
 															<div class="col-sm-3">
 																<div class="clearfix">
-																	<select name="name" class="chosen-select">
+																	<select name="company_id" class="chosen-select">
 																	<option ></option>
-																		<option value="ND">Jp Morgan</option>
-																		<option value="DR">Direct-I</option>
-																		<option value="SD">Morgan Stanley</option>
-																		<option value="ND">Godrej</option>
-																		<option value="DR">TCS</option>
-																		<option value="SD">Accenture</option>
-																		<option value="DR">L&T Infotech</option>
-																		<option value="SD">ZS</option>
+																		<option value="2">Jp Morgan</option>
+																		<option value="4">Direct-I</option>
+																		<option value="6">Morgan Stanley</option>
+																		<option value="5">Godrej</option>
+																		<option value="3">TCS</option>
+																		<option value="8">Accenture</option>
+																		<option value="7">L&T Infotech</option>
+																		<option value="1">ZS</option>
 
 																	</select>
 																</div>
@@ -125,7 +130,7 @@ description: contains all the validations required for every field -->
 
 															<div class="col-sm-3">
 																<div class="inline">
-																	<input type="text" name="documents" id="form-field-tags2"
+																	<input type="text" name="docs_required" id="form-field-tags2"
 																		placeholder="Enter the documents" />
 																</div>
 															</div>
@@ -138,7 +143,7 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-3">
 																<div class="clearfix">
 																	<textarea class="autosize-transition form-control"
-																		name="comment1" id="comment1"></textarea>
+																		name="job_description" id="comment1"></textarea>
 																</div>
 															</div>
 
@@ -169,7 +174,7 @@ description: contains all the validations required for every field -->
 
 															<div class="col-sm-3">
 																<div class="inline">
-																	<input type="text" name="skills" id="form-field-tags"
+																	<input type="text" name="skills_required" id="form-field-tags"
 																		placeholder="Enter the skills" />
 																</div>
 															</div>
@@ -177,13 +182,31 @@ description: contains all the validations required for every field -->
 														<div class="form-group">
 
 
-															<label class="col-sm-1 control-label no-padding-right"
+															<!-- <label class="col-sm-1 control-label no-padding-right"
 																for="comment">Company Address</label>
 															<div class="col-sm-3">
 																<div class="clearfix">
 																	<textarea class="form-control" name="comment"
 																		id="comment"></textarea>
 																</div>
+															</div> -->
+															
+															
+															<label class="col-sm-1 control-label no-padding-right"
+																for="jobcategory">Job Category</label>
+															<div class="col-sm-2">
+
+																<div>
+
+																	<select name="job_category" class="chosen-select">
+																	<option ></option>
+																		<option value="Non Dream">NonDream</option>
+																		<option value="Dream">Dream</option>
+																		<option value="SD">SuperDream</option>
+
+																	</select>
+																</div>
+
 															</div>
 
 														</div>
@@ -197,9 +220,9 @@ description: contains all the validations required for every field -->
 												<div class="col-xs-12">
 
 													<div class="row">
-														<div class="form-group">
+													<div class="form-group">
 
-
+<!-- 
 															<label class="col-sm-1 control-label no-padding-right"
 																for="createddate">Created Date</label>
 															<div class="col-sm-3">
@@ -210,12 +233,13 @@ description: contains all the validations required for every field -->
 																	</span>
 																</div>
 
-															</div>
+															</div>-->
 
 														</div>
+												
 														<div class="form-group">
 
-
+		<!-- 
 															<label class="col-sm-1 control-label no-padding-right"
 																for="modifieddate">Modified Date</label>
 															<div class="col-sm-3">
@@ -229,7 +253,7 @@ description: contains all the validations required for every field -->
 
 															</div>
 
-														</div>
+														</div> -->
 														<div class="form-group">
 
 
@@ -237,7 +261,7 @@ description: contains all the validations required for every field -->
 																for="drivedate">Drive Date</label>
 															<div class="col-sm-3">
 																<div class="input-group input-group-sm">
-																	<input name="drivedate" type="text" id="datepicker2"
+																	<input name="drive_date" type="text" id="datepicker2"
 																		class="form-control" /> <span
 																		class="input-group-addon"> <i
 																		class="ace-icon fa fa-calendar"></i>
@@ -255,6 +279,7 @@ description: contains all the validations required for every field -->
 													<div class="row">
 
 														<div class="form-group">
+														<!-- 
 															<label class="col-sm-1 control-label no-padding-right"
 																for="createdby">Created By</label>
 
@@ -264,8 +289,10 @@ description: contains all the validations required for every field -->
 																</div>
 
 															</div>
+															-->
 														</div>
 														<div class="form-group">
+														<!-- 
 															<label class="col-sm-1 control-label no-padding-right"
 																for="modifiedby">Modified By</label>
 
@@ -275,25 +302,10 @@ description: contains all the validations required for every field -->
 																</div>
 
 															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-sm-1 control-label no-padding-right"
-																for="jobcategory">Job Category</label>
-															<div class="col-sm-2">
-
-																<div>
-
-																	<select name="jobcategory" class="chosen-select">
-																	<option ></option>
-																		<option value="ND">NonDream</option>
-																		<option value="DR">Dream</option>
-																		<option value="SD">SuperDream</option>
-
-																	</select>
-																</div>
-
-															</div>
-														</div>
+														</div> -->
+														<!-- <div class="form-group">
+															
+														</div> -->
 
 													</div>
 													<!-- /.row -->
@@ -312,7 +324,8 @@ description: contains all the validations required for every field -->
 												<div class="col-xs-12">
 
 													<div class="row">
-														<!-- <div class="form-group">
+														 <div class="form-group">
+														 <!--
 															<label class="col-sm-1 control-label no-padding-right"
 																for="criteriaid">Criteria Id</label>
 
@@ -321,14 +334,14 @@ description: contains all the validations required for every field -->
 																	<input type="text" id="criteriaid" name="criteriaid" />
 																</div>
 
-															</div>
-														</div> -->
+															</div>-->
+														</div> 
 														<div class="form-group">
 															<label class="col-sm-1 control-label no-padding-right"
 																for="eligiblebranches">Eligible Branches</label>
 															<div class="col-sm-4">
 																<div>
-																	<select name="eligiblebranches" class="chosen-select form-control"
+																	<select name="eligible_branches" class="chosen-select form-control"
 																		multiple="Eligible Branches">
 																		<option value="CS">Computers</option>
 																		<option value="IT">Info.Tech</option>
@@ -346,7 +359,7 @@ description: contains all the validations required for every field -->
 																for="yop">Year of Passing</label>
 															<div class="col-sm-4">
 																<div>
-																	<select class="form-control" id="yop" name="yop">
+																	<select class="form-control" id="yop" name="year_of_passing">
 																		<option value=""></option>
 																		<option value="2017">2017</option>
 																		<option value="2018">2018</option>
@@ -382,7 +395,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob" value="40"
 																			data-min="0" data-max="100" data-step="0.01"
 																			data-width="120" data-height="120"
-																			data-thickness="0.3" data-fgcolor="#b723df" />
+																			data-thickness="0.3" data-fgcolor="#b723df" name="hsc_or_dip_percentage" />
 																	</div>
 
 																</div>
@@ -394,7 +407,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob" value="40"
 																			data-min="0" data-max="100" data-step="0.01"
 																			data-width="120" data-height="120"
-																			data-thickness=".3" data-fgcolor="#f42458" />
+																			data-thickness=".3" data-fgcolor="#f42458" name="ssc_percentage" />
 																	</div>
 
 																</div>
@@ -405,7 +418,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob" value="40"
 																			data-min="0" data-max="100" data-step="0.01"
 																			data-width="120" data-height="120"
-																			data-thickness="0.3" data-fgcolor="#2466f4" />
+																			data-thickness="0.3" data-fgcolor="#2466f4" name="percentage"/>
 																	</div>
 
 																</div>
@@ -416,7 +429,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob"
 																			value="5.0" data-min="0" data-max="10"
 																			data-step="0.01" data-width="120" data-height="120"
-																			data-thickness=".3" data-fgcolor="#47d05e" />
+																			data-thickness=".3" data-fgcolor="#47d05e" name=""cgpa/>
 																	</div>
 
 																</div>
@@ -434,15 +447,22 @@ description: contains all the validations required for every field -->
 													<div class="row">
 														<div class="form-group">
 															<label class="col-sm-1  control-label no-padding-right"
-																for="form-field-18"> Year Gap Allowed </label>
-															<div class="col-sm-3">
+																for="form-field-18">No. Of Year Gaps</label>
+															<!-- <div class="col-sm-3">
 																<div>
-																	<label> <input name="switch-field-1"
+																	<label> <input name="year_gap_allowed"
 																		class="ace ace-switch ace-switch-6" type="checkbox" />
 																		<span class="lbl"></span>
 																	</label>
 																</div>
+															</div> -->
+															<div class="col-sm-3">
+																<div>
+																	<input name="year_gap_allowed" type="text" id="spinner11" />
+																	<div class="space-6"></div>
+																</div>
 															</div>
+															
 
 														</div>
 														<div class="form-group">
@@ -452,7 +472,7 @@ description: contains all the validations required for every field -->
 																for="lastdatetoapply">Last Date to Apply</label>
 															<div class="col-sm-3">
 																<div class="input-group input-group-sm">
-																	<input name="lastdatetoapply" type="text" id="datepicker3"
+																	<input name="last_date_to_apply" type="text" id="datepicker3"
 																		class="form-control" /> <span
 																		class="input-group-addon"> <i
 																		class="ace-icon fa fa-calendar"></i>
@@ -474,7 +494,7 @@ description: contains all the validations required for every field -->
 																for="form-field-18">Allow already Placed </label>
 															<div class="col-sm-3">
 																<div>
-																	<label> <input name="switch-field-1"
+																	<label> <input name="placed_students_allowed"
 																		class="ace ace-switch ace-switch-6" type="checkbox" />
 																		<span class="lbl"></span>
 																	</label>
@@ -487,7 +507,7 @@ description: contains all the validations required for every field -->
 																for="live">No of live KT's allowed </label>
 															<div class="col-sm-3">
 																<div>
-																	<input name="live" type="text" id="spinner11" />
+																	<input name="no_of_live_kts_allowed" type="text" id="spinner11" />
 																	<div class="space-6"></div>
 																</div>
 															</div>
@@ -498,7 +518,7 @@ description: contains all the validations required for every field -->
 																for="dead">No of dead KT's allowed </label>
 															<div class="col-sm-3">
 																<div>
-																	<input name="dead" type="text" id="spinner22" />
+																	<input name="no_of_dead_kts_allowed" type="text" id="spinner22" />
 																	<div class="space-6"></div>
 																</div>
 															</div>
@@ -521,10 +541,11 @@ description: contains all the validations required for every field -->
 															</div> -->
 															<div class="col-md-offset-4 col-md-9">
 																<button class="btn btn-info btn-next"
-																	data-last="Finish">
+																	data-last="Finish" type="submit">
 																	<i class="ace-icon fa fa-check bigger-110"></i>
 																	Submit 
 																</button>
+																<!-- <input type="submit" value="Submit"> -->
 
 																&nbsp; &nbsp; &nbsp;
 																<button class="btn" type="reset">
@@ -563,7 +584,7 @@ description: contains all the validations required for every field -->
 
 	
 		<jsp:directive.include file="scripts.jsp" />
-		<jsp:directive.include file="Footer.jsp" />
+		
 	
 	
 		<!-- /.main-container -->

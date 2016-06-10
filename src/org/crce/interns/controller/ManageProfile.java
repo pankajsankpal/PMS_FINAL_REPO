@@ -467,7 +467,7 @@ public class ManageProfile extends HttpServlet{
 		//Set values for JobBean
 		//jobBean.setJob_id(r.get("job_id"));
 		jobBean.setJob_id(r.get("company_id"));
-		//jobBean.setEvent_id(r.get("event_id"));
+		jobBean.setEvent_id(r.get("company_id"));
 		jobBean.setJob_description(r.get("job_description"));
 		jobBean.setJob_category(r.get("job_category"));
 		jobBean.setCtc(r.get("ctc"));
@@ -546,8 +546,16 @@ public class ManageProfile extends HttpServlet{
 		manageProfileService.addProfile(jobBean);
 		manageProfileService.addProfile(criteriaBean);
 		//manageProfileService.addProfile(companyBean);
-
-		return new ModelAndView("TPO");
+		
+		
+		
+		ModelAndView model = new ModelAndView("addProfile");
+		model.addObject("success", 1);
+		return model;
+		
+		
+		
+		//return new ModelAndView("TPO");
 		}
 		catch(Exception e){
 			System.out.println(e);
