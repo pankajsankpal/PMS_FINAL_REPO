@@ -45,7 +45,7 @@ ssc marks should :	${criteria.ssc_percentage } 		or higher
 
 
 <form method="post" action="/PMS_v1/applyforjob?c_id=${criteria.criteria_id }">
- <input type="hidden" name="j_id" value="<%= request.getParameter("job_id") %>" /> 
+ <input type="hidden" name="j_id" value="${job_id }" /> 
 		<input type="submit" value="APPLY" >
 	</form>
 

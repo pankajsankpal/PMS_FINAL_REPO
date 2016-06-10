@@ -181,7 +181,7 @@ description: displays the job when the user clocks on the job post image-->
 															</div>
 
 															<div>
-																<a href="JobPostsCriteria?companyname=${company.company_name}"
+																<a href="dispcriteria?job_id=${job.job_id}"
 																	class="btn btn-block btn-sm btn-primary"> <span>Check
 																		Criteria</span>
 																</a>
