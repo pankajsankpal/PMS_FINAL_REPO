@@ -36,22 +36,25 @@ import java.util.Date;
 import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.AddUserDao;
+import org.crce.interns.exception.IncorrectEncodingTypeException;
 import org.crce.interns.service.ProfileService;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.ModelAndView;
 
 @Repository("addUserDao")
 public class AddUserDaoImpl implements AddUserDao {
 	
 	
-	public void loadCopyFile(String tableName,String timeStamp,String userName) throws SQLException, IOException, ParseException {
+	public void loadCopyFile(String tableName,String timeStamp,String userName) throws SQLException, IOException, ParseException, IncorrectEncodingTypeException {
 		
+		IncorrectEncodingTypeException x = new IncorrectEncodingTypeException();
 		CopyManager copyManager;
 		InputStream inStream = null;
 		File copyFile;
-		
+		int encoding;
 			
 		Date dNow = new Date( );
 		SimpleDateFormat ft = 
@@ -94,9 +97,15 @@ public class AddUserDaoImpl implements AddUserDao {
 
 		copyManager = new CopyManager((BaseConnection) c);
 
+		try{
 		//copies contents of csv file into loader_schema.loader table
 		copyManager.copyIn("COPY " + tableName + " FROM STDIN DELIMITER ',' CSV", bufferedInStream);
 
+		}
+		catch(org.postgresql.util.PSQLException e){
+			throw x;
+			
+		}
 		Statement st = c.createStatement();
 		Statement st1 = c.createStatement();
 		//ResultSet rs = st.executeQuery("SELECT * FROM users");
