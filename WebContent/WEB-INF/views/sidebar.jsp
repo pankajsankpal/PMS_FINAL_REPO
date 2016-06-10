@@ -35,7 +35,7 @@ description: Sidebar, tabs turn active through jquery -->
 				</a> <b class="arrow"></b></li>
 				
 				
-				<li class=" " id="Statistics"><a href="Statistics"> <i
+				<li class=" " id="Statistics"><a href="list"> <i
 						class="menu-icon fa fa-bar-chart-o"></i> <span class="menu-text">
 							Statistics </span>
 				</a> <b class="arrow"></b></li>

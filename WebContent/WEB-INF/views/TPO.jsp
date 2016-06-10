@@ -28,9 +28,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 			
 		
-		<!-- page specific plugin for calander styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
+		
 		<script src="assets/js/ace-extra.min.js"></script>
 		
 		
@@ -62,9 +60,9 @@ description: contains tabs ->  activity ,uploads ,notification -->
 							
 							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
 							<br />
 	
 							
