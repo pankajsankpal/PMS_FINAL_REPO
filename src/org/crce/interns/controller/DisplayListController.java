@@ -48,9 +48,10 @@ public class DisplayListController {
 	@RequestMapping(value = "/dispCV")
 	public ModelAndView displayCV(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
-		List<String> listFullName = dsp.displayCVList(folder, userName);
+		String userRole = (String) request.getSession(true).getAttribute("roleName");
+		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
 		List<String> list = new ArrayList<String>();
-		;
+		
 
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
@@ -71,4 +72,33 @@ public class DisplayListController {
 
 		return model;
 	}
+	
+	
+	
+	@RequestMapping(value = "/dispCounselingReport")
+	public ModelAndView displayCounselReport(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+		String userName = (String) request.getSession().getAttribute("userName");
+		String userRole = (String) request.getSession(true).getAttribute("roleName");
+		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
+		List<String> list = new ArrayList<String>();
+
+		int z = 0;
+		List<Integer> indexList = new ArrayList<>();
+		System.out.println(listFullName);
+		for (String x : listFullName) {
+			list.add(x);
+			indexList.add(z);
+			z++;
+		}
+
+		request.getSession().setAttribute("folderName", folder);
+		ModelAndView model = new ModelAndView("TPO");
+
+		model.addObject("actualFileNames", listFullName);
+		model.addObject("nameToDisplay", list);
+		model.addObject("indexList", indexList);
+
+		return model;
+	}
+
 }
