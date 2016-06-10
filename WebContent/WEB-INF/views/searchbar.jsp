@@ -98,7 +98,7 @@ description: contains serach field for searching any user or a company available
 							if (userSelectId !== -1) {
 								if (type === 'user') {
 									window.location
-											.replace("/viewProfile?userName="
+											.replace("/PMS_v1/searchProfile?userName="
 													+ userSelectId);// ill tak to nevil tom abt ths url
 								} else {
 									if (companyName !== 'xyz')

@@ -488,6 +488,93 @@ public class UpdateProfileController {
 	}
 	
 	}
+	
+@RequestMapping(value="/searchProfile", method = RequestMethod.GET)
+	
+	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
+		try{
+		System.out.println("Inside UpdateProfile Controller");
+		
+		
+		//String userName =(String)request.getSession(true).getAttribute("userName");
+		//String roleId=(String)request.getSession(true).getAttribute("roleId");
+		
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
+			ModelAndView model=null;
+
+			
+			UserDetailsBean userDetailsBean= new UserDetailsBean();									
+			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+					
+			userDetailsBean.setUserName(userName);			
+			userDetailsBean = profileService.getProfile(userDetailsBean);					
+			
+			userDetailsBean.setAccountActive("YES");
+			userDetailsBean.setCurrentState("LOGGED IN");
+			userDetailsBean.setLastLogin(new Date());
+			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
+			userDetailsBean.setModifiedDate(new Date());
+			
+			professionalProfileBean.setUserName(userName);
+			personalProfileBean.setUserName(userName);
+		
+			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
+			
+			professionalProfileBean = profileService.getProfile(professionalProfileBean);
+			personalProfileBean = profileService.getProfile(personalProfileBean);	
+			
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			request.getSession(true).setAttribute("year",professionalProfileBean.getYear());			
+			
+			String roleName = (String)request.getSession(true).getAttribute("roleName");
+			
+			model = new ModelAndView("Student");
+			
+			/*
+			if(roleName.equals("Student")){
+				model = new ModelAndView("Student");
+				
+			}else if(roleName.equals("StudentTPC")){
+				
+				model = new ModelAndView("StudentTPC");
+				
+			}else if(roleName.equals("Faculty")){
+				model = new ModelAndView("Faculty");
+				
+			}else if(roleName.equals("FacultyTPC")){
+				model = new ModelAndView("FacultyTPC");
+				
+			}else if(roleName.equals("TPO")){
+				model = new ModelAndView("TPO");
+				
+			}else if(roleName.equals("Admin")){
+				model = new ModelAndView("Admin");
+			}
+		
+			//*/
+			
+			
+			model.addObject("userDetails",userDetailsBean);
+			model.addObject("professionalProfile",professionalProfileBean);
+			model.addObject("personalProfile",personalProfileBean);
+
+			
+			
+			return model;
+		}
+		catch(Exception e){
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/viewprofile");
+			return model;
+		}
+
+	}
 }	
 
 
