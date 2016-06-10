@@ -275,7 +275,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 					var tree_data_2 = {
 							'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
 							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
-							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
+							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
 						tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
