@@ -106,10 +106,10 @@ public interface ConstantValues {
 	
 	
 	// STUDENT PLACEMENT STATUS
-	public String PLACED = "placed";
-	public String DREAM ="dream";
-	public String NONDREAM ="nondream";
-	public String ALLOWED ="allowed";
+	public String PLACED = "Placed";
+	public String DREAM ="Dream";
+	public String NONDREAM ="Nondream";
+	public String ALLOWED ="Yes";
 	
 	public String JOB_URL = "";
 	public String ELIGIBLE_URL = "ELIGIBLE";
