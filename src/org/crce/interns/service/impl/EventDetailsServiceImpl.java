@@ -1,7 +1,5 @@
 package org.crce.interns.service.impl;
 
-import java.sql.BatchUpdateException;
-
 import org.crce.interns.beans.AptitudeBean;
 import org.crce.interns.beans.EventBean;
 import org.crce.interns.beans.InterviewBean;
@@ -24,14 +22,14 @@ public class EventDetailsServiceImpl implements EventDetailsService {
 	@Autowired
 	private EventDetailsDao eventDetailsDao;
 	
-	public void create(EventBean eventBean,String cname) {
-		//System.out.println(eventBean.getEvent_id());
+	public int create(EventBean eventBean,String cname) {
+		System.out.println("Before copy..................................................."+eventBean.getDate());
 		System.out.println(eventBean.getEvent_type());
 		Event event=new Event();
 		BeanUtils.copyProperties(eventBean,event);
-		//System.out.println(event.getEvent_id());
+		System.out.println("At service........................................................"+event.getDate());
 		System.out.println(event.getEvent_type());
-		eventDetailsDao.create(event,cname);
+		return eventDetailsDao.create(event,cname);
 	}
 		
 	public void create(AptitudeBean aptitudeBean){

@@ -6,7 +6,7 @@ import org.crce.interns.model.Pre_Placement;
 
 public interface EventDetailsDao {
 	
-	public void create(Event event,String cname);	
+	public int create(Event event,String cname);	
 	public void create(Aptitude bean);
 	public void create(Pre_Placement bean);
 	public void create(Interview bean);

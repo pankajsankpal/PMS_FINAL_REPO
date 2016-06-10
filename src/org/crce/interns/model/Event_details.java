@@ -17,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-//@Table(name = "sample.event_details")
-//@Table(name = "sample.event_details")
 @Entity
 @Table(name = "event_schema.event_details")
 public class Event_details implements Serializable {
