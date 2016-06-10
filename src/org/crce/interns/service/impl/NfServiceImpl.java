@@ -131,7 +131,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 	        public int compare(NotificationBean n1, NotificationBean n2) {
 	            try {	            		            
 	            			
-	                return f.parse(n1.getDateTime()).compareTo(f.parse(n2.getDateTime()));
+	                return f.parse(n2.getDateTime()).compareTo(f.parse(n1.getDateTime()));
 	            } catch (ParseException e) {
 	                throw new IllegalArgumentException(e);
 	            }

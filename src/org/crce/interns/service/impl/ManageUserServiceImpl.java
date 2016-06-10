@@ -16,6 +16,11 @@
 
 package org.crce.interns.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.crce.interns.beans.FacultyBean;
 import org.crce.interns.beans.StudentBean;
 import org.crce.interns.dao.ManageUserDao;
@@ -38,25 +43,41 @@ public class ManageUserServiceImpl implements ManageUserService {
 	@Autowired
 	private ManageUserDao manageUserDao;
 	
+	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void addStudent(StudentBean studentBean) {
+	public void addStudent(HttpServletRequest request,StudentBean studentBean) {
+		
+		Date dNow = new Date( );
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("yyyy-MM-dd");
+		String temp = ft.format(dNow);
 		
 		Student student = new Student();
-		
+		String userName = request.getSession().getAttribute("userName").toString();
 		//converts bean to model
 		BeanUtils.copyProperties(studentBean, student);
 		student.setRole_id("1");
-		
+		student.setCreated_by(userName);
+		student.setCreated_date(temp);
 		manageUserDao.createStudent(student);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void addFaculty(FacultyBean facultyBean) {
+	public void addFaculty(HttpServletRequest request,FacultyBean facultyBean) {
+		
+		Date dNow = new Date( );
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("yyyy-MM-dd");
+		String temp = ft.format(dNow);
+		
 		Faculty faculty = new Faculty();
+		String userName = request.getSession().getAttribute("userName").toString();
 		
 		//converts bean to model
 		BeanUtils.copyProperties(facultyBean, faculty);
 		faculty.setRole_id("2");
+		faculty.setCreated_by(userName);
+		faculty.setCreated_date(temp);
 		manageUserDao.createFaculty(faculty);
 	}
 	
