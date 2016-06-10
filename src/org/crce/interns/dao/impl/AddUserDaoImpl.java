@@ -48,7 +48,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AddUserDaoImpl implements AddUserDao {
 	
 	
-	public void loadCopyFile(String tableName,String timeStamp,String userName) throws SQLException, IOException, ParseException, IncorrectEncodingTypeException {
+	public void loadCopyFile(String tableName,String timeStamp,String userName, String fileName) throws SQLException, IOException, ParseException, IncorrectEncodingTypeException {
 		
 		IncorrectEncodingTypeException x = new IncorrectEncodingTypeException();
 		CopyManager copyManager;
@@ -86,7 +86,7 @@ public class AddUserDaoImpl implements AddUserDao {
 
 		//to get path where the csv file is stored
         DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
-		copyFile = new File(directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\"+"/ce.csv");
+		copyFile = new File(directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\"+"/" + fileName);
 
 		// tableName = "loader_schema.loader";
 	
