@@ -109,6 +109,7 @@ public interface ConstantValues {
 	public String PLACED = "placed";
 	public String DREAM ="dream";
 	public String NONDREAM ="nondream";
+	public String ALLOWED ="allowed";
 	
 	public String JOB_URL = "";
 	public String ELIGIBLE_URL = "ELIGIBLE";
