@@ -114,7 +114,7 @@ public class UpdateProfileController {
 				
 			}else if(roleName.equals("StudentTPC")){
 				
-				model = new ModelAndView("StudentTPC");
+				model = new ModelAndView("Student");
 				
 			}else if(roleName.equals("Faculty")){
 				model = new ModelAndView("Faculty");
@@ -141,8 +141,10 @@ public class UpdateProfileController {
 		//}
 		catch(Exception e){
 			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
-			model.addObject("exception", "/viewprofile");
+		ModelAndView model=new ModelAndView("500");			      
+ 
+ 		model.addObject("message", "Your session has timed out. Please login again");
+ 		model.addObject("url", "form");
 			return model;
 		}
 	}
@@ -198,8 +200,9 @@ public class UpdateProfileController {
 	}
 	catch(Exception e){
 		System.out.println(e);
-		ModelAndView model=new ModelAndView("500");
-		model.addObject("exception", "/edit");
+		model.addObject("message", "Your session has timed out. Please login again");
+ 		model.addObject("url", "form");
+		
 		return model;
 	}
 	}
@@ -266,8 +269,8 @@ public class UpdateProfileController {
 	}
 	catch(Exception e){
 		System.out.println(e);
-		ModelAndView model=new ModelAndView("500");
-		model.addObject("exception", "/update");
+		model.addObject("message", "Your session has timed out. Please login again");
+ 		model.addObject("url", "form");
 		return model;
 	}
 	}
@@ -312,8 +315,9 @@ public class UpdateProfileController {
 		}
 		catch(Exception e){
 			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
-			model.addObject("exception", "/sign-out");
+			
+			model.addObject("message", "Your session has timed out. Please login again");
+ 			model.addObject("url", "form");
 			return model;
 		}
 		
@@ -414,15 +418,9 @@ public class UpdateProfileController {
 		//}
 	}
 	
-	//----------------------------------------------------------------------------------------------
-	// AJAX test controller method
-	/*
-	@RequestMapping("/test")
-	public ModelAndView helloajax(){
-		return new ModelAndView("test","message","Spring with ajax and jquery");
-	}
-
+	
 	//----------------------------------------------------------------------------------------------	
+	
 	@RequestMapping(value="/ajaxtest", method = RequestMethod.GET)
 	public @ResponseBody
 	String getanswer(@RequestParam(value = "num1") int n1,
@@ -431,9 +429,21 @@ public class UpdateProfileController {
 		String result = "result is" + n3;
 		return result;
 	}
-	*/
-	//----------------------------------------------------------------------------------------------
 	
+	//----------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------
+		// AJAX test controller method
+		@RequestMapping("/test")
+		public ModelAndView helloajax1(){
+			return new ModelAndView("test","message","Spring with ajax and jquery");
+		}
+		
+		@RequestMapping("/test2")
+		public ModelAndView helloajax2(){
+			return new ModelAndView("test2","message","Spring with ajax and jquery");
+		}
+
+		//----------------------------------------------------------------------------------------------
 	
 	@RequestMapping("/looseSearch")
 	public @ResponseBody String loosesearch(@RequestParam("CHARS") String chars){
@@ -459,11 +469,6 @@ public class UpdateProfileController {
 	
 
 	
-	//this is for company dynamic dropdown
-	@RequestMapping("/test2")
-	public ModelAndView helloajax(){
-		return new ModelAndView("test2","message","Spring with ajax and jquery");
-	}
 	
 	@RequestMapping("/looseSearch2")
 	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars){
@@ -486,6 +491,94 @@ public class UpdateProfileController {
 		return "exception at /looseSearch2";
 	}
 	
+	}
+	
+@RequestMapping(value="/searchProfile", method = RequestMethod.GET)
+	
+	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
+		try{
+		System.out.println("Inside UpdateProfile Controller");
+		
+		
+		//String userName =(String)request.getSession(true).getAttribute("userName");
+		//String roleId=(String)request.getSession(true).getAttribute("roleId");
+		
+		//if(!crService.checkRole("UpdateProfile", roleId))
+			//return new ModelAndView("403");
+		//else
+		//{
+			ModelAndView model=null;
+
+			
+			UserDetailsBean userDetailsBean= new UserDetailsBean();									
+			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+					
+			userDetailsBean.setUserName(userName);			
+			userDetailsBean = profileService.getProfile(userDetailsBean);					
+			
+			userDetailsBean.setAccountActive("YES");
+			userDetailsBean.setCurrentState("LOGGED IN");
+			userDetailsBean.setLastLogin(new Date());
+			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
+			userDetailsBean.setModifiedDate(new Date());
+			
+			professionalProfileBean.setUserName(userName);
+			personalProfileBean.setUserName(userName);
+		
+			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
+			
+			professionalProfileBean = profileService.getProfile(professionalProfileBean);
+			personalProfileBean = profileService.getProfile(personalProfileBean);	
+			
+			request.getSession(true).setAttribute("name",personalProfileBean.getName());
+			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
+			request.getSession(true).setAttribute("year",professionalProfileBean.getYear());			
+			
+			String roleName = (String)request.getSession(true).getAttribute("roleName");
+			
+			model = new ModelAndView("Student");
+			
+			/*
+			if(roleName.equals("Student")){
+				model = new ModelAndView("Student");
+				
+			}else if(roleName.equals("StudentTPC")){
+				
+				model = new ModelAndView("StudentTPC");
+				
+			}else if(roleName.equals("Faculty")){
+				model = new ModelAndView("Faculty");
+				
+			}else if(roleName.equals("FacultyTPC")){
+				model = new ModelAndView("FacultyTPC");
+				
+			}else if(roleName.equals("TPO")){
+				model = new ModelAndView("TPO");
+				
+			}else if(roleName.equals("Admin")){
+				model = new ModelAndView("Admin");
+			}
+		
+			//*/
+			
+			
+			model.addObject("userDetails",userDetailsBean);
+			model.addObject("professionalProfile",professionalProfileBean);
+			model.addObject("personalProfile",personalProfileBean);
+
+			
+			
+			return model;
+		}
+		catch(Exception e){
+			System.out.println(e);
+			model.addObject("message", "Your session has timed out. Please login again");
+ 			model.addObject("url", "form");
+			
+			return model;
+		}
+
 	}
 }	
 

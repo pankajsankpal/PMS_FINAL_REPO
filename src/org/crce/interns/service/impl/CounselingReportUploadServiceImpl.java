@@ -63,7 +63,7 @@ DirectoryPathBean directoryPathBean = new DirectoryPathBean();
 			final String extension = FilenameUtils.getExtension(fullPath);
 				
 			// throws IncorrectFileFormatException if the uploaded file is not of the desired extension/type
-			if(!(extension.equals("docx") || extension.equals("odt")))
+			if(!(extension.equals("docx") || extension.equals("doc") || extension.equals("odt")))
 				throw e;
 			
 			//throws MaxFileSizeExceededError if the uploaded file exceeds the expected size limit

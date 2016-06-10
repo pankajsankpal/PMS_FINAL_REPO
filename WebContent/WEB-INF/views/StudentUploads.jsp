@@ -90,7 +90,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 												<li>
-													<a href="StuNoti">
+													<a href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
