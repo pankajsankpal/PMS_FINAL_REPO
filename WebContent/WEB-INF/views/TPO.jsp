@@ -178,8 +178,10 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 													<div class="space-12"></div>
 
-													</div><!-- /#feed -->
-
+												</div><!-- #end of uploads -->
+												
+												
+												
 												<div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
@@ -190,8 +192,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 															
 															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
 															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a>
-																
-
+															
 														</div>
 										
 														
@@ -208,7 +209,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 											</div>
 								
 							
-											</div><!-- /#pictures -->
+										
 										</div><!-- end of tabbable -->
 									</div><!-- end of user-profile-2 -->
 								</div><!-- end of show -->

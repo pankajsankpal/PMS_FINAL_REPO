@@ -223,13 +223,17 @@ description: contains links to manage system users->
 	
 		
 		<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
+<jsp:directive.include file="scripts.jsp" />
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 
 </div>
 	
-	
+	<!-- inline scripts related to this page -->
+
 
 
 </body>
