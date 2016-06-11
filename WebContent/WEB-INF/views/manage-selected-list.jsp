@@ -4,11 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title></title>
+<title>MANAGE LIST OF SELECTED APPLICANTS</title>
 </head>
 <body>
-Entry Deleted.
-<br />
-<a href="view.html">View Applicants' List</a>
+<form action="manageslist.html" method=POST>
+Edit User List:<select name="option">
+	<option value="Add" >Add</option>
+	<option value="Delete" >Delete</option>
+</select>
+<input type=submit value=submit /><br />
+</form>
+<a href="views.html">View Applicants' List</a>
 </body>
 </html>

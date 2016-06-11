@@ -1,47 +1,82 @@
 package org.crce.interns.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.crce.interns.dao.StatisticsDAO;
 import org.crce.interns.model.PlacementStats;
 import org.crce.interns.model.ProfessionalProfile;
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.model.TotalStudents;
+import org.crce.interns.service.ConstantValues;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Repository("statisticsDAO")
-public class StatisticsDAOImpl implements StatisticsDAO{
+public class StatisticsDAOImpl implements StatisticsDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PlacementStats> list(){
-		
-		List<PlacementStats> listStats=null;
-		
-		listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStats.class).list();		
-		
+	public List<PlacementStats> list() {
+
+		List<PlacementStats> listStats = null;
+
+		listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStats.class).list();
+
 		return listStats;
 	}
-	
+
 	@Override
-	public void add(PlacementStats placementStats){
+	public void add(PlacementStats placementStats) {
 		sessionFactory.getCurrentSession().saveOrUpdate(placementStats);
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public void calculateTotal(String year) {
-		//Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile.class);
-		//criteria.add(Restrictions.eq("year", year));
-		//List<ProfessionalProfile> l = criteria.list();
-		List<ProfessionalProfile> l = sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile.class).list();
-		for (ProfessionalProfile i : l)
-			System.out.println(i.getUserName());
+		/*
+		 * List<ProfessionalProfile> l =
+		 * sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile
+		 * .class).list(); for (ProfessionalProfile i : l)
+		 * System.out.println(i);
+		 */
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile.class);
+		criteria.add(Restrictions.eq("year", year));
+		List<ProfessionalProfile> l = criteria.list();
+
+		List<ProfessionalProfile> compsList = new ArrayList<>();
+		List<ProfessionalProfile> elexList = new ArrayList<>();
+		List<ProfessionalProfile> itList = new ArrayList<>();
+		List<ProfessionalProfile> prodsList = new ArrayList<>();
+		for (ProfessionalProfile i : l) {
+			if (i.getBranch() != null) {
+				System.out.println(i.getUserName());
+				if (i.getBranch().equals("ELEX")) {
+					elexList.add(i);
+				} else if (i.getBranch().equals("IT")) {
+					itList.add(i);
+				} else if (i.getBranch().equals("COMPS")) {
+					compsList.add(i);
+				} else if (i.getBranch().equals("PROD")) {
+					System.out.println("Prod List" + i.getUserName());
+					prodsList.add(i);
+				}
+			}
+		}
+		TotalNoOfStudents totalNoOfStudents = new TotalNoOfStudents();
+		totalNoOfStudents.setYear(year);
+		totalNoOfStudents.setComps(compsList.size());
+		totalNoOfStudents.setElex(elexList.size());
+		totalNoOfStudents.setIt(itList.size());
+		totalNoOfStudents.setProd(prodsList.size());
+		sessionFactory.getCurrentSession().saveOrUpdate(totalNoOfStudents);
 	}
 }

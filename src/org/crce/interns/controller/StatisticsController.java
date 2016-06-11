@@ -48,15 +48,22 @@ public class StatisticsController {
 		
 		ModelAndView model = new ModelAndView("viewStats");
 		
-		statisticsService.calculateTotal("2016");
+		//statisticsService.calculateTotal("2016");
 		
-		///Map<Integer, Map<String, PlacementStatsBean>> result = 
-		///		statisticsService.list();
+		Map<Integer, Map<String, PlacementStatsBean>> result = 
+		statisticsService.list();
 		
 		//model.addObject("companyMap", statisticsService.getCompanyMap());
-		///model.addObject("table", result);
+		model.addObject("table", result);
 		
 		return model;
 	}
 	
+	@RequestMapping(value="/x", method = RequestMethod.GET)
+	public ModelAndView view(HttpServletRequest request) {
+		
+		ModelAndView model = new ModelAndView("viewStats");
+		statisticsService.calculateTotal("2016");
+		return model;
+	}
 }
