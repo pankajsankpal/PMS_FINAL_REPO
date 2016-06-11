@@ -27,7 +27,7 @@ import com.google.gson.JsonObject;
  3>searchCompany
  */
 @Controller
-public class SearchController {
+public class SearchController { 
 
 	@Autowired
 	private SearchService searchService;
@@ -89,17 +89,15 @@ public class SearchController {
 		for (Company c : companyList) {
 			JsonObject jobj = new JsonObject();
 			jobj.addProperty("name", c.getCompany_name());
+			jobj.addProperty("id", c.getCompany_id());
 			jobj.addProperty("type", "company");
-			jobj.addProperty("roll-no", "NA");
-			jobj.addProperty("cid", c.getCompany_id());
 			jarray.add(jobj);
 		}
 		for (PersonalProfile p : userDetailsList) {
 			JsonObject jobj = new JsonObject();
 			jobj.addProperty("name", p.getName());
-			jobj.addProperty("type", "student");
-			jobj.addProperty("roll-no", p.getUserName());
-			jobj.addProperty("cid", "NA");
+			jobj.addProperty("id", p.getUserName());
+			jobj.addProperty("type", "user"); 
 			jarray.add(jobj);
 		}
 		

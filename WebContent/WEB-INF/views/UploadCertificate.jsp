@@ -629,10 +629,11 @@ description: contains Buttons for uploading neccessary docs->
 													
 											<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadCertificate">
 											<h3><b><u>Extra4</u></b></h3>
+											<c:if test="${extra4==1}">
 											<c:if test="${success==1}">
 															<p style="color:green;">Certificate uploaded successfully!</p>
 														</c:if>
-											<c:if test="${extra4==1}">
+											
 												<form:errors path="*" cssClass="errorblock" element="div" />
 											</c:if>
 													<input type="hidden" name="type" value="extra4">

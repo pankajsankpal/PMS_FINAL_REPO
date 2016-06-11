@@ -75,6 +75,8 @@ public class AddUserServiceImpl implements AddUserService {
 			
 			//File file = new File(fileUpload.getOriginalFilename());
 			final String extension = FilenameUtils.getExtension(fullPath);
+			final String fileName = FilenameUtils.getName(fullPath);
+			System.out.println(fileName);
 									
 			if(!(extension.equals("csv")))	// if the file format is not .csv
 				throw e;
@@ -105,7 +107,7 @@ public class AddUserServiceImpl implements AddUserService {
 			if (!fileUpload.getOriginalFilename().equals(""))
 
 				fileUpload.transferTo(new File(saveDirectory + fileUpload.getOriginalFilename()));
-			addUserDao.loadCopyFile("loader_schema.loader",timeStamp,userName);
+			addUserDao.loadCopyFile("loader_schema.loader",timeStamp,userName,fileName);
 		}
 		
 
