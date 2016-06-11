@@ -304,4 +304,24 @@ public class AssignTPCController {
 	//	return new ModelAndView("redirect:/TPOHome");
 	}
 
+	@RequestMapping(value="/ViewCurrentTPC", method = RequestMethod.GET)//View Users for TPO
+	public ModelAndView viewCurrentTPC(HttpServletRequest request) {
+		System.out.println("In Controller: View Current Year TPCs");
+		
+/*		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
+		
+		if(!crService.checkRole("AssignTPC", roleId))
+			return new ModelAndView("403");
+		else
+		{
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("users", userService.viewUsers());
+			return new ModelAndView("viewUserT", modelMap);
+		}*/
+		String year="2016";
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("users", userService.viewTPCs(year));
+		return new ModelAndView("viewUserT", modelMap);
+	}
 }
