@@ -8,11 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
  
-<!-- <script type="text/javascript">
-function selchange(){
-	var x= $("#yb").val();
-	alert(x);
-}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#yb").change(function(){
+    	var x = $('#yb').val();
+    	
+    	window.location.replace("highlight?year="+x);
+    });
+});
 </script>
  
  <script  type="text/javascript">
@@ -25,7 +29,7 @@ function selchange(){
   							}
   							
  }
- </script> -->
+ </script>
 <title>Highlights</title>
 </head>
 <body class="no-skin" onLoad="fillsel()">
@@ -41,12 +45,14 @@ function selchange(){
 							</h2></b>
 						</div>
 						<!-- /.page-header -->
-						<!-- <div class="space-4"></div>
+						<div class="space-4"></div>
+						
 						<div class="center">
-							<select id="yb" name="yb" onChange="selchange()">
+							<form action = "">
+							<select id="yb" name="yb" >
   							</select>
-  							<input type="button" id="year" name="year" value="Submit">
-						</div> -->
+  							</form>
+						</div>
 						<div class="space-4"></div>
 						<div class="center">
 						<table align="center">
@@ -66,7 +72,7 @@ function selchange(){
 								<img src="assets/images/statistics.jpg" alt="Statistics" width="300" height="300" border="0">
 							</a><h4>Statistics</h4>
 							</td>
-							<td><a href="CompaniesPage">
+							<td><a href="company">
 								<img src="assets/images/company.png" alt="Company" width="300" height="300" border="0">
 							</a><h4>Company</h4>
 							</td>
@@ -76,7 +82,6 @@ function selchange(){
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-				<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+
 	</body>
 </html>
