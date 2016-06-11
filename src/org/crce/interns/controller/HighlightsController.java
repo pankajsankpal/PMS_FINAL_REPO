@@ -1,10 +1,12 @@
 package org.crce.interns.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.StatisticsService;
@@ -22,6 +24,8 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private ProfileService profileService;
 	
+	@Autowired
+	private AssignTPCService userService;
 	
 	
 	@RequestMapping(value="/Statistics", method = RequestMethod.GET)
@@ -33,11 +37,11 @@ public class HighlightsController implements ConstantValues {
 
 	
 	@RequestMapping(value="/tpclist", method = RequestMethod.GET)
-	
 	public ModelAndView tpclist(@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
-	
-		return new ModelAndView("tpclist");
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("users", userService.viewTPCs(curYear));
+		return new ModelAndView("tpclist",modelMap);
 	}
 	
 	@RequestMapping(value="/stats", method = RequestMethod.GET)
