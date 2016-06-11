@@ -44,6 +44,7 @@
 		<![endif]-->
 </head>
 <body>
+
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
@@ -169,8 +170,8 @@
 								<hr />
 								<h3 class="lighter smaller">
 									Sorry,an unwanted error occured while displaying the
-									URL:"${exception} <br /> ${message} <a href="${url}">Let's
-										take you back</a>
+									URL:"${exception} <br /> ${message} 
+									<a href="${url}">Let's take you back</a>
 								</h3>
 
 								<div class="space"></div>
