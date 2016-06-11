@@ -10,7 +10,7 @@ user-name : is your User folder name in your Windows PC.
 Still if any doubts, contact Nevil
 -->
 <root>
-    <notifications>
+    <notifications>    
         <notification>
             <userOrGroupId>Computer Engineering</userOrGroupId>
             <category>JOB</category>

@@ -291,14 +291,11 @@ public class UpdateProfileController {
 	@RequestMapping(value="/sign-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request) {
 		
-		ModelAndView model=null;
-		model = new ModelAndView("redirect:/form");
+		System.out.println("Inside UpdateProfile Controller");
 		try{
-			
-		
-			System.out.println("Inside UpdateProfile Controller");
-			LoginForm loginForm = new LoginForm();
-			
+							
+			ModelAndView model=null;
+			model = new ModelAndView("redirect:/form");
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();
 			userDetailsBean.setUserName((String)request.getSession(true).getAttribute("userName"));
