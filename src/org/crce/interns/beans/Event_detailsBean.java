@@ -12,7 +12,7 @@ import java.sql.Date;
 
 public class Event_detailsBean implements Serializable {
 
-	private String event_id;
+	private Integer event_id;
 	private String event_type;
 	private int company_id;
 	private String approved;
@@ -20,14 +20,14 @@ public class Event_detailsBean implements Serializable {
 	private String venue;
 	private String times;
 	
-	public String getEvent_id() {
+	public Integer getEvent_id() {
 		return event_id;
 	}
-
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(Integer event_id) {
 		this.event_id = event_id;
 	}
-
+	
+	
 	public String getEvent_type() {
 		return event_type;
 	}
