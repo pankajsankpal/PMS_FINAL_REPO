@@ -28,12 +28,13 @@ public class CompanyController {
 	
 	@Autowired 
 	private CriteriaService criteriaService;
-	
+	/*
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView welcome() {
 		System.out.println("HELLO");
 		return new ModelAndView("index");
 	}
+	*/
 	 private Company prepareCompanyModel(CompanyBean companyBean){
 			Company company = new Company();
 			company.setCompany_address(companyBean.getCompany_address());

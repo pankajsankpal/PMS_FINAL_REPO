@@ -17,6 +17,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.beans.Event_detailsBean;
 import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
@@ -29,6 +30,7 @@ import org.crce.interns.service.SearchService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -499,7 +501,7 @@ public class UpdateProfileController {
 	
 	}
 	
-@RequestMapping(value="/searchProfile", method = RequestMethod.GET)
+	@RequestMapping(value="/searchProfile", method = RequestMethod.GET)
 	
 	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
 	
@@ -507,7 +509,7 @@ public class UpdateProfileController {
 			System.out.println("Inside UpdateProfile Controller");
 			
 			ModelAndView model=null;
-			model = new ModelAndView("searchStudent");
+			
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();									
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
@@ -517,10 +519,20 @@ public class UpdateProfileController {
 			professionalProfileBean.setUserName(userName);
 			personalProfileBean.setUserName(userName);
 		
-			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
-			userDetailsBean = profileService.getProfile(userDetailsBean);
+			
+			userDetailsBean = profileService.getProfile(userDetailsBean);								
 			professionalProfileBean = profileService.getProfile(professionalProfileBean);
 			personalProfileBean = profileService.getProfile(personalProfileBean);	
+			
+			if(userDetailsBean.getRoleId().equals("1") 
+					|| userDetailsBean.getRoleId().equals("3")){
+				model = new ModelAndView("searchStudent");
+			}
+			else{
+				model = new ModelAndView("redirect:/searchStaff");
+			}
+
+			
 			
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
@@ -535,7 +547,32 @@ public class UpdateProfileController {
 			
 			return model;
 		}
-
+		}
+	
+	@RequestMapping(value="/searchStaff", method = RequestMethod.GET)
+	
+	public ModelAndView searchStaff(@ModelAttribute("userDetails") UserDetailsBean userDetailsBean,			
+			@ModelAttribute("professionalProfile") ProfessionalProfileBean professionalProfileBean,
+			@ModelAttribute("personalProfile") PersonalProfileBean personalProfileBean) 	{
+	
+		try{
+		
+		ModelAndView model = new ModelAndView("searchStaff");		
+		model.addObject("userDetails",userDetailsBean);
+		model.addObject("professionalProfile",professionalProfileBean);
+		model.addObject("personalProfile",personalProfileBean);
+		return model;
+		}
+		catch(Exception e){
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");			      			
+			model.addObject("message", "Your session has timed out. Please login again");
+ 			model.addObject("url", "form");
+			
+			return model;
+		}
+	
+	
 	}
 }	
 
