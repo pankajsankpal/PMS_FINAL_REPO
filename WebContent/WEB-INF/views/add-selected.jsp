@@ -1,3 +1,4 @@
+ <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -5,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete</title>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<title>Add Selected Candidate</title>
 <style>
 	.error {
 		color:#ff0000;
@@ -15,15 +17,15 @@
 </style>
 </head>
 <body>
-<form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
-Name:<form:input name="name" type="text" path="username" />
+
+<form:form action="addselected.html" modelAttribute="userBean" method="post">
+Name:<form:input name="name" type="text" path="username" /> 
 <form:errors path="username" cssClass="error"/><br/>
-Company:<form:input name="company" type="text" path="company" />
-<form:errors path="company" cssClass="error"/>
-<br/>
+Company:<form:input name="company_name" type="text" path="company_name" />
+<form:errors path="company_name" cssClass="error"/> <br/>
+<input type="submit" value="Add"/><br />
 ${msg}
-<br/> 
-<input type="submit" value="Delete"/>
-</form:form><br />
+</form:form>
+
 </body>
 </html>
