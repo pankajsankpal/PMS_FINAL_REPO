@@ -406,7 +406,9 @@ description: contains text fields to add details of student manually->
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 
