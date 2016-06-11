@@ -10,12 +10,12 @@
 <body>
 <form action="viewclist.html" method="post" >
 	Company:<select name="company" >
-<<<<<<< HEAD
+
 	<option value="JP Morgan" >JPMC</option>
-=======
-	<option value="JPMC" >JPMC</option>
->>>>>>> origin/master
+
+	
 	<option value="Accenture" >Accenture</option>
+	
 	<option value="TCS" >TCS</option>
 	</select><br>
 	<input type="submit" value="submit"/> 

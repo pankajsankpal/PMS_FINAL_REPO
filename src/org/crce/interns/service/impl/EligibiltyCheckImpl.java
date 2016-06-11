@@ -92,25 +92,29 @@ public class EligibiltyCheckImpl implements EligibilityService {
 		if (cur_date.compareTo(c.getLast_date_to_apply()) <= 0) //to check if last date to apply has expired
 		{
 			ProfessionalProfileBean p = getProfessionalProfile(username);
-
+				
 			// check if student is placed
 			if (p.getStatus().equalsIgnoreCase(ConstantValues.PLACED)) {
-				String job_category = edao.getJobCategory(job_id);
-
-				String student_job_category = edao.getJobCategory(edao.getStudentJob(username));
-
-				if (job_category.equalsIgnoreCase(ConstantValues.DREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
-					System.out.println("you already have a dream job");
+				if(!c.getPlaced_students_allowed().equalsIgnoreCase(ConstantValues.ALLOWED))
+				{	
+					System.out.println(c.getPlaced_students_allowed());
 					return false;
 				}
-				if (job_category.equalsIgnoreCase(ConstantValues.NONDREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
+					String job_category = edao.getJobCategory(job_id);
+
+					String student_job_category = edao.getJobCategory(edao.getStudentJob(username));
+
+					if (job_category.equalsIgnoreCase(ConstantValues.DREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
+							System.out.println("you already have a dream job");
+							return false;
+					}
+					if (job_category.equalsIgnoreCase(ConstantValues.NONDREAM) && student_job_category.equalsIgnoreCase(ConstantValues.DREAM)) {
 					System.out.println("you have a dream job and this is a non-dream");
 					return false;
-
-				}
+					}
 
 			}
-
+			
 			String branch = p.getBranch();
 			String criteria_br[] = c.getEligible_branches().split(",");//to check whether student belongs to the branch
 

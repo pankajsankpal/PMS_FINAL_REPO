@@ -1,3 +1,4 @@
+
 package org.crce.interns.beans;
 
 import java.io.Serializable;
@@ -18,9 +19,7 @@ public class UserDetailsBean implements Serializable {
 	
 	private Date lastLogin;
 	
-	private String roleId;
-
-	
+	private String roleId;	
 
 	private String createdBy;
 	
@@ -149,4 +148,3 @@ public class UserDetailsBean implements Serializable {
 	
 
 }
-
