@@ -196,6 +196,29 @@ public class ManageAllotment extends HttpServlet{
 	}
 
 	 */
-
+	@RequestMapping("/list")
+	public ModelAndView list() {
+		return new ModelAndView("list");
+	}
+	@RequestMapping("/tpclist")
+	public ModelAndView tpclist() {
+		return new ModelAndView("tpclist");
+	}
+	@RequestMapping("/studentlist")
+	public ModelAndView studentlist() {
+		return new ModelAndView("studentlist");
+	}
+	@RequestMapping("/dept")
+	public ModelAndView dept() {
+		return new ModelAndView("dept");
+	}
+	@RequestMapping("/stats")
+	public ModelAndView stats() {
+		return new ModelAndView("stats");
+	}
+	@RequestMapping("/company")
+	public ModelAndView company() {
+		return new ModelAndView("company");
+	}
 
 		}

@@ -295,6 +295,9 @@ Return list of beans to front end. Done (y)
 		
 	}
 	
-	
+	@Override
+	public void calculateTotal(String year) {
+		statisticsDAO.calculateTotal(year);
+	}
 
 }

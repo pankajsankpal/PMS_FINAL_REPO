@@ -21,7 +21,7 @@ description: displays the criteria of the posted jobe-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<c:if test="${companyname=='jpmorgan'}">
+	<%-- <c:if test="${companyname=='jpmorgan'}">
 			<c:set var="propercompanyname" value="JP Morgan"/> 
 			<c:set var="color" value="orange"/> 
 			<c:set var="buttoncolor" value="warning"/>
@@ -61,7 +61,7 @@ description: displays the criteria of the posted jobe-->
 			<c:set var="color" value="green"/> 
 			<c:set var="buttoncolor" value="success"/>  
 	</c:if>
-	
+ --%>	
 		<div class="main-content">
 			<div class="main-content-inner">
 				
@@ -78,9 +78,9 @@ description: displays the criteria of the posted jobe-->
 					</li>
 
 					<li><a href="CompaniesPage">Companies</a></li>
-					<li><a href="Company?companyname=${companyname}">${propercompanyname}</a></li>
-					<li><a href="JobPosts?companyname=${companyname}">Job Posts</a></li>
-					<li class="active">Criteria</li>
+					<%-- <li><a href="Company?companyname=${company.company_name}}">${company.company_name}</a></li>
+					<li><a href="JobPosts?companyname=${company.company_name}">Job Posts</a></li>
+					<li class="active">Criteria</li> --%>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -116,7 +116,7 @@ description: displays the criteria of the posted jobe-->
 									<div class="tab-content no-border padding-24">
 										<div id="home" class="tab-pane in active">
 															
-										<div class="widget-box widget-color-${color}">
+										<div class="widget-box widget-color-blue">
 											<div class="widget-header">
 												<h5 class="widget-title bigger lighter">Job Crtieria</h5>
 											</div>
@@ -125,54 +125,54 @@ description: displays the criteria of the posted jobe-->
 												<div class="widget-main">
 													<ul class="list-unstyled spaced2">
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Eligibible Branches are COMPS,IT,ELEX.
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligibible Branches are ${criteria.eligible_branches}
 														</li>
 
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Only for unplaced students.
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Only for unplaced students
 														</li>
 
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Eligible SSC percentage is 60
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible SSC percentage is ${criteria.ssc_percentage } 	
 														</li>
 														
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Eligible HSC percentage is 50
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible HSC percentage is ${criteria.hsc_or_dip_percentage } 
 														</li>
 
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Eligible CGPA is 6.75
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible CGPA is ${criteria.cgpa }
 														</li>
 														
 															<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Year of passing should be 2017
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Year of passing should be ${criteria.year_of_passing  }
 														</li>
 														
 															<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															No of live KT's allowed is 1
+															<i class="ace-icon fa  fa-circle blue"></i>
+															No of live KT's allowed is ${criteria.no_of_live_kts_allowed }
 														</li>
 														
 															<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															No of dead KT's allowed is 1
+															<i class="ace-icon fa  fa-circle blue"></i>
+															No of dead KT's allowed is ${criteria.no_of_dead_kts_allowed }
 														</li>
 														
 															<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Year gap is not allowed
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Year gap should be ${criteria.year_gap_allowed } 
 														</li>
 
 														
 														<li>
-															<i class="ace-icon fa  fa-circle ${color}"></i>
-															Last date to apply is 26/6/2016
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Last date to apply is ${criteria.last_date_to_apply }
 														</li>
 													</ul>
 
@@ -181,7 +181,8 @@ description: displays the criteria of the posted jobe-->
 												</div>
 
 												<div>
-													<a href="#" class="btn btn-block btn-${buttoncolor}">
+													 
+													<a href="applyforjob?c_id=${criteria.criteria_id }&j_id=${job_id}" class="btn btn-block btn-primary">
 														
 														<span>Apply</span>
 														<i class="ace-icon fa fa-arrow-right bigger-110"></i>
@@ -189,7 +190,7 @@ description: displays the criteria of the posted jobe-->
 												</div>
 											</div>
 										</div>
-											<div class="hr hr-8 dotted"></div>
+											<div class="hr hr-8 dotted"></div>${msg }
 
 																						<div class="space-10"></div>
 
@@ -203,6 +204,7 @@ description: displays the criteria of the posted jobe-->
 			</div>
 		</div>
 		<!-- /.main-content -->
+		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 

@@ -22,7 +22,7 @@ description: displays the job when the user clocks on the job post image-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<c:if test="${companyname=='jpmorgan'}">
+	<%-- <c:if test="${companyname=='jpmorgan'}">
 		<c:set var="propercompanyname" value="JP Morgan" />
 		<c:set var="color" value="orange" />
 		<c:set var="buttoncolor" value="warning" />
@@ -102,7 +102,7 @@ description: displays the job when the user clocks on the job post image-->
 		<c:set var="ctc" value="3.75 Lakhs" />
 		<c:set var="documentsrequired" value="University Marksheet" />
 	</c:if>
-
+ --%>
 
 	<div class="main-content">
 		<div class="main-content-inner">
@@ -120,8 +120,8 @@ description: displays the job when the user clocks on the job post image-->
 					</li>
 
 					<li><a href="CompaniesPage">Companies</a></li>
-					<li><a href="Company?companyname=${companyname}">${propercompanyname}</a></li>
-					<li class="active">Job Posts</li>
+					<%-- <li><a href="Company?companyname=${company.company_name}">${company.company_name}</a></li>
+					<li class="active">Job Posts</li> --%>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -141,7 +141,7 @@ description: displays the job when the user clocks on the job post image-->
 
 				<div class="page-header">
 					<h1>
-						${propercompanyname} <small> <i
+						${company.company_name}<small> <i
 							class="ace-icon fa fa-angle-double-right"></i>
 						</small>
 					</h1>
@@ -160,19 +160,19 @@ description: displays the job when the user clocks on the job post image-->
 											<div class="row">
 												<div class="pricing-span">
 													<div
-														class="widget-box pricing-box-small widget-color-${color}">
+														class="widget-box pricing-box-small widget-color-blue">
 														<div class="widget-header">
-															<h5 class="widget-title bigger lighter">${jobdescription}</h5>
+															<h5 class="widget-title bigger lighter">${job.job_description}</h5>
 														</div>
 
 														<div class="widget-body">
 															<div class="widget-main no-padding">
 																<ul class="list-unstyled list-striped pricing-table">
-																	<li>Job Category: ${jobcategory}</li>
-																	<li>Job Description:${jobdescription}</li>
-																	<li>Skills required: ${skillsrequired}</li>
-																	<li>CTC:${ctc}</li>
-																	<li>Documents Required:${documentsrequired}</li>
+																	<li>Job Category: ${job.job_category}</li>
+																	<li>Job Description:${job.job_description}</li>
+																	<li>Skills required: ${job.skills_required}</li>
+																	<li>CTC:${job.ctc}</li>
+																	<li>Documents Required:${job.docs_required}</li>
 
 
 																</ul>
@@ -181,8 +181,8 @@ description: displays the job when the user clocks on the job post image-->
 															</div>
 
 															<div>
-																<a href="JobPostsCriteria?companyname=${companyname}"
-																	class="btn btn-block btn-sm btn-${buttoncolor}"> <span>Check
+																<a href="dispcriteria?job_id=${job.job_id}"
+																	class="btn btn-block btn-sm btn-primary"> <span>Check
 																		Criteria</span>
 																</a>
 															</div>
@@ -213,6 +213,7 @@ description: displays the job when the user clocks on the job post image-->
 	</div>
 	</div>
 	<!-- /.main-content -->
+	<jsp:directive.include file="scripts.jsp" />
 
 	<jsp:directive.include file="Footer.jsp" />
 
@@ -526,3 +527,82 @@ description: displays the job when the user clocks on the job post image-->
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.sql.*" %>
+
+<% Class.forName("org.postgresql.Driver"); %>
+
+<HTML>
+    <HEAD>
+        <TITLE>Job Details </TITLE>
+    </HEAD>
+
+    <BODY>
+        <H1>Job Details</H1>
+		<h2>Welcome to ${company.company_name}</h2>
+		<c:if test="${companyname=='jpmorgan'}">
+		<c:set var="propercompanyname" value="Accenture" />
+	</c:if>
+	<c:if test="${companyname=='directi'}">
+		<c:set var="propercompanyname" value="Direct I" />
+	</c:if>
+	
+	<br/>
+	<c:if test="${!empty job}">
+	<table align="left" border="1">
+		<tr>
+			<!-- <th>Job ID</th>
+			<th>Event Id</th> -->
+			<th>Job Description</th>
+			<th>Category</th>
+			<th>Ctc</th>
+			<th>Skills</th>
+			<th>Document</th>
+	<!--	<th>Edit Or Delete</th> 	-->
+		</tr>
+
+
+		 <c:forEach items="${job}" var="profile">
+			<tr>
+			<td><c:out value="${job.job_id}"/></td> 
+				<td><c:out value="${job.event_id}"/></td>			
+ 				<td><c:out value="${job.job_description}"/></td>
+				<td><c:out value="${job.job_category}"/></td>
+				<td><c:out value="${job.ctc}"/></td>
+				<td><c:out value="${job.skills_required}"/></td>
+				<td><c:out value="${job.docs_required}"/></td>
+			<td align="center"><a href="edit.html?id=${employee.id}">Edit</a> | <a href="delete.html?id=${employee.id}">Delete</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	
+	
+	
+	
+	
+</c:if> 
+
+    </BODY>
+</HTML>
+
+ --%>
+
+
+

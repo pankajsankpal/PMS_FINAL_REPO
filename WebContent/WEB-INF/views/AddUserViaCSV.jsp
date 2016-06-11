@@ -11,8 +11,7 @@ description: contains links to manage system users->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	
+
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -141,7 +140,9 @@ description: contains links to manage system users->
 										 <div class="widget-main">
 											<div>
 
-											 &nbsp;&nbsp; <b >Upload CSV file...! </b>
+
+											 &nbsp;&nbsp; <b >Upload CSV file...! </b>(Please change encoding type of file to UTF-8)
+
 												<form:form method="post" modelAttribute="fileUpload1" enctype="multipart/form-data" action="uploadFile">
 												<!--  Enter year of passing:   <input id="year" name="year" type="text" value=""/><br/><br/>-->
 												
@@ -154,6 +155,9 @@ description: contains links to manage system users->
 														</c:if>
 														<c:if test="${error1==1}">
 															<p style="color:red;">Failed to upload...File size can be only upto 1MB</p>
+														</c:if>
+														<c:if test="${encoding==1}">
+															<p style="color:red;">Failed to upload...Please change encoding type of the file to UTF-8</p>
 														</c:if>
 
 														  <input class="btn btn-sm btn-warning" type="submit" value="Upload"> Press here to upload the file!
@@ -200,7 +204,7 @@ description: contains links to manage system users->
 														<td>7.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
 													</tr>	
 													<tr>
-														<td>8. <a href="ViewUsersT.html"> View Users </a></td>
+														<td>8. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
 													</tr>		
 												</table>
 												<br>
@@ -220,7 +224,6 @@ description: contains links to manage system users->
 				</div>
 												
 	
-
 	
 		
 		<jsp:directive.include file="Footer.jsp" />
@@ -229,8 +232,7 @@ description: contains links to manage system users->
 		<!-- /.main-container -->
 
 </div>
-	
-	
+
 
 
 </body>
