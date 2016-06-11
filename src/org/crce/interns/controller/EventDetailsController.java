@@ -34,6 +34,7 @@ public class EventDetailsController {
 	
 	@RequestMapping(value="fill", method=RequestMethod.POST)
 	public ModelAndView createEvent(HttpServletRequest request,@RequestParam Map<String, String> map) throws ParseException, BatchUpdateException{
+		try{
 		String msg="";
 		ModelAndView model=new ModelAndView("fill-event-success");
 		// initialize event bean
@@ -106,6 +107,14 @@ public class EventDetailsController {
 			System.out.println(eventBean.getEvent_type());
 
 		return model;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/fill");
+			return model;
+		}
 	}
 	
 }
