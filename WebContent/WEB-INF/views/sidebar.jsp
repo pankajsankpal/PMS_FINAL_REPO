@@ -34,7 +34,7 @@ description: Sidebar, tabs turn active through jquery -->
 						Companies </span>
 			</a> <b class="arrow"></b></li>
 
-			<li class=" " id="Highlights"><a href="Highlights"> <i class="menu-icon
+			<li class=" " id="Highlights"><a href="list"> <i class="menu-icon
 						fa fa-bar-chart-o"></i> <span class="menu-text"> Highllights </span>
 			</a> <b class="arrow"></b></li>
 		</ul>
