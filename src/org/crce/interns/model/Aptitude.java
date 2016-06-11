@@ -2,12 +2,7 @@ package org.crce.interns.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
-import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +13,7 @@ import javax.persistence.Table;
 public class Aptitude {
 	@Id //@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="event_id")
-	private String event_id; 
+	private int event_id; 
 	
 	@Column(name="test_duration")
 	private String test_duration;
@@ -29,10 +24,10 @@ public class Aptitude {
 	@Column(name="test_sections")
 	private String test_section;
 	
-	public String getEvent_id() {
+	public int getEvent_id() {
 		return event_id;
 	}
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
 	public String getTest_duration() {

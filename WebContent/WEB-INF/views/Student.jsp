@@ -80,7 +80,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 												</li>
 
 												<li>
-													<a href="StudentUploads">
+													<a href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -88,9 +88,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 
 												
 												<li>
-
 													<a  href="notifications">
-
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>

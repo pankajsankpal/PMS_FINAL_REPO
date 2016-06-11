@@ -1,3 +1,4 @@
+
 package org.crce.interns.beans;
 
 import java.io.Serializable;
@@ -147,4 +148,3 @@ public class UserDetailsBean implements Serializable {
 	
 
 }
-

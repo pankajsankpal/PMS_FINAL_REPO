@@ -86,7 +86,6 @@ public class NfController implements ConstantValues{
 		
 		ModelAndView model=null;
 		
-		//model = new ModelAndView("nftest");
 		model = new ModelAndView("StudentNoti");
 		model.addObject("nf",nfList);
 		
