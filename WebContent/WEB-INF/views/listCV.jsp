@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Logged in as   ${sessionScope.name} 
+							Activity & Uploads
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -115,10 +115,12 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-box">
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
-																		<div>
+																		<div>	
+																		<c:if test="${sessionScope.roleName} eq 'StudentTPC'">
 																				<div class="profile-feed row">
 																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
+																		</c:if>
 																				<br>
 																				<table>
 																			

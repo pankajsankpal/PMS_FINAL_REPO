@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>view candidate list</title>
+<title>view selected candidate list</title>
 </head>
 <body>
-<form action="viewclist.html" method="post" >
+<form action="viewsclist.html" method="post" >
 	Company:<select name="company" >
 	<option value="JP Morgan" >JPMC</option>
 	<option value="Accenture" >Accenture</option>
