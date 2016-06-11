@@ -9,5 +9,5 @@ public interface StatisticsDAO {
 	
 	public List<PlacementStats> list();
 	public void add(PlacementStats placementStats);
-
+	public void calculateTotal(String year);
 }
