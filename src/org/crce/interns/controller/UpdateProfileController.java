@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -503,40 +504,37 @@ public class UpdateProfileController {
 	
 	@RequestMapping(value="/searchProfile", method = RequestMethod.GET)
 	
-	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
+	public ModelAndView search(final RedirectAttributes redirectAttributes , @RequestParam String userName ) {
 	
 	try{
 			System.out.println("Inside UpdateProfile Controller");
 			
 			ModelAndView model=null;
-			
-			
+						
 			UserDetailsBean userDetailsBean= new UserDetailsBean();									
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 					
-			userDetailsBean.setUserName(userName);														
+			userDetailsBean.setUserName(userName);
 			professionalProfileBean.setUserName(userName);
 			personalProfileBean.setUserName(userName);
-		
 			
-			userDetailsBean = profileService.getProfile(userDetailsBean);								
+			userDetailsBean = profileService.getProfile(userDetailsBean);
 			professionalProfileBean = profileService.getProfile(professionalProfileBean);
-			personalProfileBean = profileService.getProfile(personalProfileBean);	
+			personalProfileBean = profileService.getProfile(personalProfileBean);
+			
+			redirectAttributes.addFlashAttribute("userDetails", userDetailsBean);
+			redirectAttributes.addFlashAttribute("professionalProfile", professionalProfileBean);
+			redirectAttributes.addFlashAttribute("personalProfile",personalProfileBean);
 			
 			if(userDetailsBean.getRoleId().equals("1") 
-					|| userDetailsBean.getRoleId().equals("3")){
-				model = new ModelAndView("searchStudent");
+					|| userDetailsBean.getRoleId().equals("3")){				
+				model = new ModelAndView("redirect:/searchStudent");
 			}
 			else{
-				model = new ModelAndView("redirect:/searchStaff");
+				model = new ModelAndView("redirect:/searchStaff");											
 			}
-
-			
-			
-			model.addObject("userDetails",userDetailsBean);
-			model.addObject("professionalProfile",professionalProfileBean);
-			model.addObject("personalProfile",personalProfileBean);
+				
 			return model;
 		}
 		catch(Exception e){
@@ -551,17 +549,51 @@ public class UpdateProfileController {
 	
 	@RequestMapping(value="/searchStaff", method = RequestMethod.GET)
 	
-	public ModelAndView searchStaff(@ModelAttribute("userDetails") UserDetailsBean userDetailsBean,			
-			@ModelAttribute("professionalProfile") ProfessionalProfileBean professionalProfileBean,
-			@ModelAttribute("personalProfile") PersonalProfileBean personalProfileBean) 	{
+	public ModelAndView searchStaff(
+			@ModelAttribute("userDetails") final UserDetailsBean userDetailsBean,
+			@ModelAttribute("professionalProfile") final ProfessionalProfileBean professionalProfileBean,
+			@ModelAttribute("personalProfile") final PersonalProfileBean personalProfileBean) 	{
+	
 	
 		try{
 		
-		ModelAndView model = new ModelAndView("searchStaff");		
-		model.addObject("userDetails",userDetailsBean);
-		model.addObject("professionalProfile",professionalProfileBean);
-		model.addObject("personalProfile",personalProfileBean);
-		return model;
+			ModelAndView model = new ModelAndView("searchStaff");		
+			model.addObject("userDetails",userDetailsBean);
+			model.addObject("professionalProfile",professionalProfileBean);
+			model.addObject("personalProfile",personalProfileBean);
+			return model;
+			
+		
+		}
+		catch(Exception e){
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");			      			
+			model.addObject("message", "Your session has timed out. Please login again");
+ 			model.addObject("url", "form");
+			
+			return model;
+		}
+	
+	
+	}
+	
+@RequestMapping(value="/searchStudent", method = RequestMethod.GET)
+	
+	public ModelAndView searchStudent(
+			@ModelAttribute("userDetails") final UserDetailsBean userDetailsBean,
+			@ModelAttribute("professionalProfile") final ProfessionalProfileBean professionalProfileBean,
+			@ModelAttribute("personalProfile") final PersonalProfileBean personalProfileBean) 	{
+	
+	
+		try{
+		
+			ModelAndView model = new ModelAndView("searchStudent");		
+			model.addObject("userDetails",userDetailsBean);
+			model.addObject("professionalProfile",professionalProfileBean);
+			model.addObject("personalProfile",personalProfileBean);
+			return model;
+			
+		
 		}
 		catch(Exception e){
 			System.out.println(e);
