@@ -3,7 +3,8 @@ import java.util.Date;
 
 public class EventBean {
 
-	private String event_id;
+	
+	private Integer event_id;
 	private int company_id;
 	private String approved;
 	private Date date;
@@ -39,10 +40,10 @@ public class EventBean {
 	public void setModified_date(Date modified_date) {
 		this.modified_date = modified_date;
 	}
-	public String getEvent_id() {
+	public Integer getEvent_id() {
 		return event_id;
 	}
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(Integer event_id) {
 		this.event_id = event_id;
 	}
 	public int getCompany_id() {

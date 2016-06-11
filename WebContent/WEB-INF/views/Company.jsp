@@ -114,7 +114,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 													<span class="profile-picture"> <img
 														class="editable img-responsive" alt="Alex's Avatar"
 														id="avatar2"
-														src="assets/images/companies/${companyname}.jpg" />
+														src="assets/images/companies/${company.company_name}.jpg" />
 													</span>
 
 													<div class="space space-4"></div>
@@ -190,7 +190,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Feedback
 															</h4>
-															<br /> <a href="CompanyFeedback?companyname=${companyname}">
+															<br /> <a href="feedback?companyname=${company.company_name}">
 																<img style="border: 1" width="400" height="200"
 																alt="150x150" src="assets/images/companies/feedback.png" />
 															</a>
@@ -213,7 +213,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																Job Applicants
 															</h4>
 															<br /> <a
-																href="JobApplicants?companyname=${companyname}"> <img
+																href="JobApplicants?companyname=${company.company_name}"> <img
 																align="middle" style="border: 1" width="400"
 																height="200" alt="150x150"
 																src="assets/images/companies/jobapplicants.jpg" />
@@ -252,6 +252,8 @@ description: dynamically creating a page once the Content on companiesPade is cl
 			</div>
 			<!-- /.page-content -->
 		</div>
+			
+		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 </body>

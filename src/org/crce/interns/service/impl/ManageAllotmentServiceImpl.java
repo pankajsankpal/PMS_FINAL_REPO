@@ -96,7 +96,7 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 			final String extension = FilenameUtils.getExtension(fullPath);
 			
 			// throws IncorrectFileFormatException if the uploaded file is not of the desired extension/type
-			if(!(extension.equals("pdf") || extension.equals("docx") || extension.equals("odt") || extension.equals("png") || extension.equals("jpg") || extension.equals("jpeg")))
+			if(!(extension.equals("pdf") || extension.equals("doc") || extension.equals("docx") || extension.equals("odt") || extension.equals("png") || extension.equals("jpg") || extension.equals("jpeg")))
 				throw e;
 			
 			//throws MaxFileSizeExceededError if the uploaded file exceeds the expected size limit

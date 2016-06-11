@@ -73,7 +73,7 @@ public class LoginController{
                 /**
                  * End of @author Leon's code
                  */
-                return new ModelAndView("index");
+                return new ModelAndView("redirect:/form");
 		}
 		catch(Exception e){
 			System.out.println(e);

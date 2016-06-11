@@ -1,7 +1,7 @@
 <!-- author: Pankaj sankpal
 description: contain ALL professional and personal details of STUDENT tpc -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
-<%-- 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 
@@ -82,7 +82,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 												
 
 												<li>
-													<a  href="StudentUploads">
+													<a  href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -692,8 +692,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 </body>
 </html>
 
---%>
 
+<%-- 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -809,4 +809,4 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 	</table>
 
 </body>
-</html> 
+</html>  --%>
