@@ -13,11 +13,8 @@
 $(document).ready(function(){
     $("#yb").change(function(){
     	var x = $('#yb').val();
-    	$("#tpclist").attr("href", "tpclist?year="+x);
-    	$("#studentlist").attr("href", "studentlist?year="+x);
-    	$("#stats").attr("href", "stats?year="+x);
-    	$("#company").attr("href", "company?year="+x);
-    	//window.location.replace("highlight?year="+x);
+    	
+    	window.location.replace("highlight?year="+x);
     });
 });
 </script>
@@ -56,30 +53,91 @@ $(document).ready(function(){
   							</select>
   							</form>
 						</div>
+						
 						<div class="space-4"></div>
+						
 						<div class="center">
 						<table align="center">
 						<tr>	
-							<td><a id="tpclist" href="tpclist">
-								<img src="assets/images/placement.jpg" alt="TPC list" width="300" height="300" border="0">
-							</a><h4>TPC list</h4>
+							<td><a href="#">
+								
+							</a><h4>COMPS</h4>
 							</td>
-							<td>
-							<a id="studentlist" href="studentlist">
-								<img src="assets/images/student.jpg" alt="Students" width="300" height="300" border="0">
-							</a><h4>Students</h4>
+							<td><a href="#">
+								
+							</a><h4>IT</h4>
 							</td>
+							<td><a href="#">
+								
+							</a><h4>ELEX</h4>
+							</td>
+							<td><a href="#">
+								
+							</a><h4>PROD</h4>
+							</td>
+							
 						</tr>	
-						<tr>
-							<td><a id="stats" href="stats">
-								<img src="assets/images/statistics.jpg" alt="Statistics" width="300" height="300" border="0">
-							</a><h4>Statistics</h4>
+						
+						<tr>	
+							<td><a href="#">
+								
+							</a><h4>COMPS</h4>
+							
+							<c:if test="${!empty comps}">
+							<c:forEach items="${comps}" var="a">
+							<tr><td>${a}</td></tr>
+							</c:forEach>							
+							</c:if>
+							
 							</td>
-							<td><a id="company" href="company">
-								<img src="assets/images/company.png" alt="Company" width="300" height="300" border="0">
-							</a><h4>Company</h4>
-							</td>
+							
 						</tr>
+						
+						<tr>	
+							<td><a href="#">
+								
+							</a><h4>IT</h4>
+							
+							<c:if test="${!empty it}">
+							<c:forEach items="${it}" var="a">
+							<tr><td>${a}</td></tr>
+							</c:forEach>							
+							</c:if>
+							
+							</td>
+							
+						</tr>
+						
+						<tr>	
+							<td><a href="#">
+								
+							</a><h4>ELEX</h4>
+							
+							<c:if test="${!empty elex}">
+							<c:forEach items="${elex}" var="a">
+							<tr><td>${a}</td></tr>
+							</c:forEach>							
+							</c:if>
+							
+							</td>
+							
+						</tr>
+						
+						<tr>	
+							<td><a href="#">
+								
+							</a><h4>PROD</h4>
+							
+							<c:if test="${!empty prod}">
+							<c:forEach items="${prod}" var="a">
+							<tr><td>${a}</td></tr>
+							</c:forEach>							
+							</c:if>
+							
+							</td>
+							
+						</tr>
+						
 						</table>
 						</div>	
 					</div><!-- /.page-content -->
