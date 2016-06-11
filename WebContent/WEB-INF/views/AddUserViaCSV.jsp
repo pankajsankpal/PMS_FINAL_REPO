@@ -224,7 +224,6 @@ description: contains links to manage system users->
 				</div>
 												
 	
-
 	
 		
 		<jsp:directive.include file="Footer.jsp" />
@@ -233,8 +232,7 @@ description: contains links to manage system users->
 		<!-- /.main-container -->
 
 </div>
-	
-	
+
 
 
 </body>

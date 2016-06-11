@@ -25,6 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface AddUserDao {
 
 
-	public void loadCopyFile(String tableName,String timeStamp,String userName) throws SQLException, IOException, ParseException,IncorrectEncodingTypeException;
+	public void loadCopyFile(String tableName,String timeStamp,String userName, String fileName) throws SQLException, IOException, ParseException,IncorrectEncodingTypeException;
 
 }
