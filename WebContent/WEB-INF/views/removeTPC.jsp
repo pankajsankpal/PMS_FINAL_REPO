@@ -1,3 +1,4 @@
+
 <!-- author: Pankaj sankpal
 description: contains fields to remove a student or a faculty TPC into the System->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -92,8 +93,7 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 
 						<div class="page-header">
 							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
+								Logged in as  ${sessionScope.name}
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -132,20 +132,13 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 											<br><br>
 										</div>
 
-										
 									</div>
-										
-								
-								
-								</div>
+									</div>
 							</div>
 						</div>
 					</div>
 				</div>
-												
-
-
-	
+				
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
 	
@@ -153,9 +146,6 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 		<!-- /.main-container -->
 
 </div>
-	
-	
-
 
 </body>
 </html>
@@ -210,4 +200,3 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 </body>
 </html>
 
- --%>

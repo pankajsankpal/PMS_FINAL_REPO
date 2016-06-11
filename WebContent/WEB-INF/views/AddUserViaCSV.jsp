@@ -205,7 +205,11 @@ description: contains links to manage system users->
 													</tr>	
 													<tr>
 														<td>8. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
-													</tr>		
+													</tr>	
+	
+		<tr>
+			<td>11.<a href="manageselected.html">Manage List of Selected Applicants of all Companies</a><br /></td>
+		</tr>	
 												</table>
 												<br>
 											</div>
@@ -222,21 +226,16 @@ description: contains links to manage system users->
 						</div>
 					</div>
 				</div>
-												
-	
 
-	
-		
 		<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
+<jsp:directive.include file="scripts.jsp" />
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 
 </div>
-	
-	
-
-
 </body>
 </html>
 

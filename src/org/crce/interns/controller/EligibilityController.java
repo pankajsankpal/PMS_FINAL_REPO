@@ -66,7 +66,7 @@ public class EligibilityController {
 		{
 			System.out.println("oopsie!!  you dont meet the criteria ");
 			String msg = "YOU DONT MEET THE CRITERIA !!";
-			ModelAndView m = new ModelAndView("dispcriteria");
+			ModelAndView m = new ModelAndView("JobPostsCriteria");
 			m.addObject("msg", msg);
 			return m;
 		}
@@ -86,7 +86,7 @@ public class EligibilityController {
 		
 		System.out.println(criteria_id);
 		
-		ModelAndView model = new ModelAndView("dispcriteria");
+		ModelAndView model = new ModelAndView("JobPostsCriteria");
 		model.addObject("criteria", E_service.getCriteria(criteria_id));
 		model.addObject("job_id", job_id);
 		

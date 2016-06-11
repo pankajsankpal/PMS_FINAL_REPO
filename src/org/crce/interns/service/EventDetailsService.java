@@ -6,7 +6,7 @@ import org.crce.interns.beans.InterviewBean;
 import org.crce.interns.beans.Pre_PlacementBean;
 
 public interface EventDetailsService {
-	public void create(EventBean eventBean,String cname);
+	public int create(EventBean eventBean,String cname);
 	public void create(AptitudeBean aptitudeBean);
 	public void create(Pre_PlacementBean pre_placementBean);
 	public void create(InterviewBean interviewBean);
