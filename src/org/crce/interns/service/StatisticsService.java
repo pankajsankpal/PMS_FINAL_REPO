@@ -15,4 +15,6 @@ public interface StatisticsService {
 	public void addOnce(PlacementStatsBean statisticsBean);
 	
 	public Map<Integer, String> getCompanyMap();
+	
+	public void calculateTotal(String year);
 }

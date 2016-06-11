@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Activity & Uploads
+							Activity & Uploads for ${sessionScope.roleName}
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -116,7 +116,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
 																		<div>	
-																		<c:if test="${sessionScope.roleName} eq 'StudentTPC'">
+																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
+																		
 																				<div class="profile-feed row">
 																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
@@ -126,7 +127,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			
 																				
 																				<tr>
-																					<td>Links for Quick Access</td>
+																					<td>Links for Quick Access </td>
 																				</tr>
 																				<tr>
 																					<td>1. <a href="resumeUpload">Upload Resume</a></td>
@@ -185,6 +186,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
 																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																				
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -236,7 +238,6 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/fullcalendar.min.js"></script>
 		<script src="assets/js/bootbox.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
 		<script src="assets/js/bootstrap-datepicker.min.js"></script>
