@@ -77,4 +77,3 @@ public class Event_detailsBean implements Serializable {
 	}
 
 }
-

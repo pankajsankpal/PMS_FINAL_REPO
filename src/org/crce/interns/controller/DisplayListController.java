@@ -1,5 +1,4 @@
 /**
- * Author Name: Andrea Furtado
  * Filename: DisplayListController.java	
  * Classes used by code: DisplayListService
 * 
