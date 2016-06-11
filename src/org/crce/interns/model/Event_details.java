@@ -1,3 +1,4 @@
+
 /*
  * Event_details Class contains the various attributes of the 
  * event_schema.event_details table and their getters and setters
@@ -13,17 +14,22 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "event_schema.event_details")
 public class Event_details implements Serializable {
-	@Id
+	/*@Id
 	@Column(name = "event_id ", nullable = false)
 	@NotNull
-	private String event_id;
+	private String event_id;*/
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "event_id", nullable = false)
+	private Integer event_id;
 
 	@Column(name = "event_type")
 	private String event_type;
@@ -43,14 +49,14 @@ public class Event_details implements Serializable {
 	@Column(name = "time")
 	private String times;
 
-	public String getEvent_id() {
+	public Integer getEvent_id() {
 		return event_id;
 	}
 
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(Integer event_id) {
 		this.event_id = event_id;
 	}
-
+	
 	public String getEvent_type() {
 		return event_type;
 	}

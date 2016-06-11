@@ -1,4 +1,3 @@
-
 <!-- author: Pankaj sankpal
 description: contains fields to add a student or a faculty TPC into the System->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -94,7 +93,7 @@ description: contains fields to add a student or a faculty TPC into the System->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<c:out value="${loginForm.userName}" />
+								<core:out value="${loginForm.userName}" />
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -160,9 +159,7 @@ description: contains fields to add a student or a faculty TPC into the System->
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	<!-- ace scripts -->
-	<script src="assets/js/ace-elements.min.js"></script>
-	<script src="assets/js/ace.min.js"></script>
+	
 	
 		<!-- /.main-container -->
 
@@ -231,5 +228,4 @@ description: contains fields to add a student or a faculty TPC into the System->
 	</tr>
 </body>
 </html>
-
  --%>
