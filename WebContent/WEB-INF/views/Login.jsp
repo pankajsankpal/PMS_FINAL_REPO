@@ -1,11 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 	
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-
-	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -110,14 +108,7 @@
 													<div class="space-4"></div>
 												</fieldset>
 											</form:form>
-											
-											
-											
-											
-
-											
-
-											<div class="space-6"></div>
+										<div class="space-6"></div>
 
 											
 										</div><!-- /.widget-main -->
@@ -128,14 +119,12 @@
 
 								
 							</div><!-- /.widget-body -->
-						</div><!-- /.signup-box -->
-					</div><!-- /.position-relative -->
-
-							
+						
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
 			</div><!-- /.main-content -->
 		</div><!-- /.main-container -->
 </body>
+
 </html>

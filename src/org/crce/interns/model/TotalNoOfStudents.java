@@ -5,12 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.transaction.annotation.Transactional;
-
 @Entity
-@Table(name = "placement_statistics_schema.total_placed")
-public class TotalStudents {
-
+@Table(name = "placement_statistics_schema.total_no_of_students")
+public class TotalNoOfStudents {
 	@Id		
 	@Column(name = "year")
 	private String year;
@@ -66,7 +63,4 @@ public class TotalStudents {
 	public void setProd(int prod) {
 		this.prod = prod;
 	}
-
-	
-	
 }
