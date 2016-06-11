@@ -27,8 +27,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
 		
 </head>
-<body onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<script>
+	
+</script>
+
+<body >
 
 <jsp:directive.include file="Header.jsp" />
 
@@ -54,7 +57,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Logged in as   ${sessionScope.name} 
+							Logged in as   ${sessionScope.name} <br/> 
+							${sessionScope.roleName} <br/>
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -90,7 +94,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 												<li>
-													<a href="StuNoti">
+													<a href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -101,8 +105,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 											<div class="tab-content no-border padding-24">
 												
-												
-												<div id="uploads" class="tab-pane in active">
+										<div id="uploads" class="tab-pane in active">
 													<div class="profile-feed row">
 													
 														<div class="row">

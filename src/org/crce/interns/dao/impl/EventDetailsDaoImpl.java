@@ -1,6 +1,5 @@
 package org.crce.interns.dao.impl;
 
-import java.sql.BatchUpdateException;
 import java.util.List;
 
 import org.crce.interns.dao.EventDetailsDao;
@@ -24,24 +23,40 @@ public class EventDetailsDaoImpl implements EventDetailsDao{
 	Session session=null;
 	Transaction tx=null;
 	Event e=null;
-	public void create(Event event,String cname) {
+	public int create(Event event,String cname) {
 		
 		try {
 			System.out.println(event.getEvent_type()); 
+			System.out.println(event.getDate()); 
 			session=this.sessionFactory.openSession();
-			String sql = "from Company as c where c.companyName = :n";
+			//session = sessionFactory.getCurrentSession();
+			String sql = "from Company as c where c.company_name = :n";
 			Query q = session.createQuery(sql);
 			q.setParameter("n", cname);
 			List<Company> c = q.list();
 			int company_id = c.get(0).getCompany_id();
 			event.setCompany_id(company_id);
+			System.out.println("Company id = " + company_id);
+			System.out.println("Evemt ::::: " + event.getApproved());
+			System.out.println("+++++++++++++++++++++++"+event.getEvent_id());
 			tx=session.beginTransaction();			
-			session.save(event);
+			session.save(event);			
 			tx.commit();
-		} catch (HibernateException e) {
+			System.out.println("+++++++++++++++++++++++"+event.getEvent_id());
+			/*Event emp = (Event)session.get(Event.class, 1);
+			Serializable id = session.getIdentifier(emp);
+			System.out.println("EMP object identifer is "+ id);
+			*/
+			int s=(int)session.getIdentifier(event);
+			System.out.println("in daoImpl:  "+s);
+			session.close();
+			//sessionFactory.close();
+			//tx.commit();
+			return s;
+			} catch (HibernateException e) {
 				e.printStackTrace();
 		}
-		
+		return 0;
 	}
 	
 	
@@ -50,6 +65,7 @@ public class EventDetailsDaoImpl implements EventDetailsDao{
 		tx=session.beginTransaction();
 		session.save(bean);		
 		tx.commit();
+		session.close();
 
 	}
 	

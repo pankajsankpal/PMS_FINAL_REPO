@@ -84,6 +84,8 @@ description: contains the list of all the companies -->
 	<!-- /.main-content -->
 
 	<!-- /.page-header -->
+		
+		<jsp:directive.include file="scripts.jsp" />
 	<jsp:directive.include file="Footer.jsp" />
 
 

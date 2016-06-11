@@ -1,14 +1,14 @@
 package org.crce.interns.beans;
 
 public class Pre_PlacementBean {
-	private String event_id;
+	private int event_id;
 	//private int company_id;
 	private String conducted_by;
 	private String agenda;
-	public String getEvent_id() {
+	public int getEvent_id() {
 		return event_id;
 	}
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
 	public String getConducted_by() {
