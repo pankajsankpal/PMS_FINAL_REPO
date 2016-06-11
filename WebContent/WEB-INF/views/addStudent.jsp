@@ -111,7 +111,7 @@ description: contains text fields to add details of student manually->
 												<p style="color:red;">This user already exists in the database!</p>
 											</c:if>
 											<c:if test="${success==1}">
-															<p style="color:green;">Users added successfully!</p>
+															<p style="color:green;">User added successfully!</p>
 											</c:if>
 											<table align="center" style="margin-top: 10px; padding-right: 10px">
 												<tr>
@@ -406,7 +406,9 @@ description: contains text fields to add details of student manually->
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 

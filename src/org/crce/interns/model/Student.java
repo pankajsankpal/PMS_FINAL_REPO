@@ -201,7 +201,25 @@ public class Student implements Serializable {
 	@Column(name="role_id")
 	private String role_id;
 	
+	@Column(name="created_date")
+	private String created_date;
 	
+	@Column(name="created_by")
+	private String created_by;
+	
+	
+	public String getCreated_date() {
+		return created_date;
+	}
+	public String getCreated_by() {
+		return created_by;
+	}
+	public void setCreated_date(String created_date) {
+		this.created_date = created_date;
+	}
+	public void setCreated_by(String created_by) {
+		this.created_by = created_by;
+	}
 	
 	public String getRole_id() {
 		return role_id;

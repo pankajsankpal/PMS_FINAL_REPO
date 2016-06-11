@@ -80,7 +80,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 												</li>
 
 												<li>
-													<a href="StudentUploads">
+													<a href="displist">
 														<i class="orange ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
@@ -88,9 +88,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 
 												
 												<li>
-
-													<a  href="StuNoti">
-
+													<a  href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -110,19 +108,23 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 															
 															<div class="space space-4"></div>
 
-																<a href="edit"><span class="btn btn-md btn-block btn-pink">click here to edit your profile </span></a>
+																<a href="edit"><span class="btn btn-md btn-block btn-pink">Edit Profile Data</span></a>
 															
 														</div><!-- /.col -->
 
 														<div class="col-xs-12 col-sm-9">
+														
+														
+																		
 															<h4 class="blue">
-																
-
+					
 																<span class="label label-purple arrowed-in-right">
 																	<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
-																	online
+																	${userDetails.currentState}
 																</span>
+																
 															</h4>
+					
 
 															<div class="profile-user-info">
 																<div class="profile-info-row">

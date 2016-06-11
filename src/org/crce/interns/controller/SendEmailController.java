@@ -92,14 +92,14 @@ public class SendEmailController {
             model.addObject("success", "Email Sent Sucessfully");
             System.out.println(model);
             return model;
-            //} else {
-            //  model.addObject("error1", "Group name not proper");
+           //} else {
+             // model.addObject("error1", "Group name not proper");
             //return model;
         } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");
             model.addObject("exception", "/GroupSubmitEmail! Email not sent!");
-            return model;
+            return new ModelAndView("500");
 
         }
     }
@@ -121,13 +121,13 @@ public class SendEmailController {
             System.out.println("Mapped to /sendMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            if (!crService.checkRole("SendEmail", roleId)) {
+           /* if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
                 return new ModelAndView("Email");
-            }
+            }*/
 
-            //return new ModelAndView("Email");
+            return new ModelAndView("Email");
             //return new ModelAndView("Final");
         } catch (Exception e) {
             System.out.println(e);
@@ -149,12 +149,12 @@ public class SendEmailController {
             System.out.println("Mapped to personalMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            if (!crService.checkRole("SendEmail", roleId)) {
+           /* if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-                return new ModelAndView("Email");
-            }
-            //return new ModelAndView("EmailForm");
+                return new ModelAndView("EmailForm");
+            }*/
+            return new ModelAndView("EmailForm");
         } catch (Exception e) {
             System.out.println(e);
             ModelAndView model = new ModelAndView("500");

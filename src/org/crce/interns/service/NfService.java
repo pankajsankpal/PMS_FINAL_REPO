@@ -33,11 +33,9 @@ public interface NfService {
 	public boolean addNotification(NotificationBean n);
 	
 	public boolean addNotificationForJobApply(String companyName, String userName);
-	
-	
+		
 	public boolean addNotificationForJobPost(String companyName);
-	
-	
+		
 	public boolean addNotificationForEvent(String companyName);
 	
 

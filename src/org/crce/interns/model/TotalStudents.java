@@ -1,8 +1,14 @@
 package org.crce.interns.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Entity
+@Table(name = "placement_statistics_schema.total_placed")
 public class TotalStudents {
 
 	@Id		

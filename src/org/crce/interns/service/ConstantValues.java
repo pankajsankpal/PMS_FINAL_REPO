@@ -25,6 +25,16 @@ public interface ConstantValues {
 	public String Admin = "Admin";
 	public String TPO = "TPO";
 	
+	// COMPANY NAMES
+	public String JPM = "JP Morgan";
+	public String DIRECTI = "Direct i";
+	public String MS = "Morgan Stanley";
+	public String TCS = "Tata Consultancy Services";
+	public String ACC = "Accenture";
+	public String ZS = "ZS Associates";
+	public String GOD = "Godrej";
+	public String LNT = "Laursen & Tubro";
+	
 	// COMPANY ABOUT US URL
 	public String JPM_LINK = "https://www.jpmorgan.com/country/IN/EN/about";
 	public String DIRECTI_LINK = "http://www.directi.com";
@@ -94,21 +104,12 @@ public interface ConstantValues {
 	public String HR = "H.R.";
 	public String COD = "Coding";
 
-	// COMPANY NAMES
-	public String JPM = "JP Morgan";
-	public String DIRECTI = "Direct i";
-	public String MS = "Morgan Stanley";
-	public String TCS = "Tata Consultancy Services";
-	public String ACC = "Accenture";
-	public String ZS = "ZS Associates";
-	public String GOD = "Godrej";
-	public String LNT = "Laursen & Tubro";
-	
-	
+
 	// STUDENT PLACEMENT STATUS
-	public String PLACED = "placed";
-	public String DREAM ="dream";
-	public String NONDREAM ="nondream";
+	public String PLACED = "Placed";
+	public String DREAM ="Dream";
+	public String NONDREAM ="Nondream";
+	public String ALLOWED ="Yes";
 	
 	public String JOB_URL = "";
 	public String ELIGIBLE_URL = "ELIGIBLE";

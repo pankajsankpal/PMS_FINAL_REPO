@@ -20,6 +20,22 @@ public class FacultyBean {
 	private String gender;
 	private String email;
 	private String branch;
+	private String created_date;
+	private String created_by;
+	
+	
+	public String getCreated_date() {
+		return created_date;
+	}
+	public String getCreated_by() {
+		return created_by;
+	}
+	public void setCreated_date(String created_date) {
+		this.created_date = created_date;
+	}
+	public void setCreated_by(String created_by) {
+		this.created_by = created_by;
+	}
 	
 	
 	public String getUserId() {
