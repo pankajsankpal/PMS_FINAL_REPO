@@ -57,7 +57,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Logged in as   ${sessionScope.name} 
+							Logged in as   ${sessionScope.name} <br/> 
+							${sessionScope.roleName} <br/>
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -104,78 +105,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 											<div class="tab-content no-border padding-24">
 												
-												<div id="activity" class="tab-pane">
-												
-													<div class="row">
-														<div class="col-xs-12">
-															<!-- PAGE CONTENT BEGINS -->
-															
-															<div class="clearfix">
-															
-																	<div class="row">
-																	<div class="col-xs-12 ">
-																	<div class="widget-box">
-																	<div class="widget-body">
-																	 <div class="widget-main" align="center">
-																		<div >
-																		<c:if test="${sessionScope.roleId eq 3}">
-																				<div  class="profile-feed row">
-																					<button id="apply" type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student</button>
-																					
-																				</div>
-																		</c:if>
-																		
-																				<br>
-																				<table>
-																			
-																				
-																				<tr>
-																					<td> Links for Quick Access</td>
-																				</tr>
-																				<tr>
-																					<td>1. <a href="resumeUpload">Upload Resume</a></td></tr>
-																			    
-																					<td>2.<a  href="certificateUpload">Click to upload Certificates </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>3.<a href="addFeedback">Give a Feedback</a><br/></td>
-																				</tr>
-																				<tr>
-																					<td>4. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>5. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
-																				</tr>
-																				
-		
-																				</table>
-																				
-																			<br><br>
-																		</div>
-																		</div>
-																		</div>
-																		</div>
-																		<br><br>
-																	</div>
-							
-																	
-																</div>
-																	
-															
-															
-															</div>
-														</div>
-													</div>
-													
-												</div>	
-												
-												<div id="uploads" class="tab-pane in active">
+										<div id="uploads" class="tab-pane in active">
 													<div class="profile-feed row">
 													
 														<div class="row">
@@ -220,7 +150,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				<tr>
 																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
 																				</tr>
-																				
+																				<tr>
+																		 			<td><a href="displist">display list</a><br /></td>
+																		 		</tr>
 																				</table>
 																				
 																			
@@ -253,6 +185,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
+																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -275,63 +208,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												</div><!-- /#feed -->
 
-												<div id="notificatn" class="tab-pane">
-													
-													<div class="col-xs-10 widget-container-col">
-														
-															<div class="widget-box">
-															<div class="widget-header widget-header-large">
-																<h4 class="widget-title">Job News</h4>
-
-																<div class="widget-toolbar">
-																	<a href="#" data-action="settings">
-																		<i class="ace-icon fa fa-cog"></i>
-																	</a>
-
-																	<a href="#" data-action="reload">
-																		<i class="ace-icon fa fa-refresh"></i>
-																	</a>
-
-																	<a href="#" data-action="collapse">
-																		<i class="ace-icon fa fa-chevron-up"></i>
-																	</a>
-
-																	<a href="#" data-action="close">
-																		<i class="ace-icon fa fa-times"></i>
-																	</a>
-																</div>
-															</div>
-
-															<div class="widget-body">
-																<div class="widget-main padding-4 scrollable" data-size="200">
-																	
-																	<p class="alert alert-info">
-																		TCS Mock Interviews..
-																	</p>
-																	<p class="alert alert-danger">
-																		TCS Pre-placement talk..
-																	</p>
-																	<p class="alert alert-success">
-																		Jp Morgan CODE FOR GOOD Registration.<t>25th march 2016</t>
-																	</p>
-																	<p class="alert alert-primary">
-																		Aptitude test for all BE student.<t></t>22nd may 2016
-																	</p>
-																
-																
-															</div>
-															
-															</div>
-															
-														</div>
-												</div>
-													<!-- PAGE CONTENT ENDS -->
-														
-
-												</div><!-- /#friends -->
-
-
-							
+												
 											</div><!-- /#pictures -->
 											</div>
 										</div>
@@ -377,25 +254,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
-			<script type="text/javascript">
-			jQuery(function($) {
 			
-			
-			
-			
-				// scrollables
-				$('.scrollable').each(function () {
-					var $this = $(this);
-					$(this).ace_scroll({
-						size: $this.attr('data-size') || 150,
-						//styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-					});
-				});
-				
-			
-			
-			});
-		</script>
 		
 		<script type="text/javascript">
 			jQuery(function($) {
@@ -417,14 +276,15 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				function initiateDemoData(){
 					
 					var tree_data_2 = {
-							'marksheets' : {text: 'Marksheets', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: 'Resumes', type: 'folder', 'icon-class':'orange'}	,
-							
+							'marksheets' : {text: '<a href="/PMS_v1/StudentUploads?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
+							'resume' : {text: '<a href="/PMS_v1/StudentUploads?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
+							'OfferLetter' : {text: '<a href="/PMS_v1/StudentUploads?folder=Resume">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
 						tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
-								{text: '<i class="ace-icon fa fa-file-text blue"></i> resume1.doc', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'},
+								{text: '', type: 'item'},
+									
+								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
 								
 							]
 						}
@@ -480,6 +340,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-archive brown"></i> backup4.zip', type: 'item'}
 							]
 						} */
+						
+					
+					
 						var dataSource2 = function(options, callback){
 							var $data = null
 							if(!("text" in options) && !("type" in options)){
@@ -512,90 +375,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 })
 		</script>
 	
-	<!--script for changing the profile image -->
-	<script>
-		//another option is using modals
-				$('#avatar2').on('click', function(){
-					var modal = 
-					'<div class="modal fade">\
-					  <div class="modal-dialog">\
-					   <div class="modal-content">\
-						<div class="modal-header">\
-							<button type="button" class="close" data-dismiss="modal">&times;</button>\
-							<h4 class="blue">Change Avatar</h4>\
-						</div>\
-						\
-						<form class="no-margin">\
-						 <div class="modal-body">\
-							<div class="space-4"></div>\
-							<div style="width:75%;margin-left:12%;"><input type="file" name="file-input" /></div>\
-						 </div>\
-						\
-						 <div class="modal-footer center">\
-							<button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Submit</button>\
-							<button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
-						 </div>\
-						</form>\
-					  </div>\
-					 </div>\
-					</div>';
-					
-					
-					var modal = $(modal);
-					modal.modal("show").on("hidden", function(){
-						modal.remove();
-					});
-			
-					var working = false;
-			
-					var form = modal.find('form:eq(0)');
-					var file = form.find('input[type=file]').eq(0);
-					file.ace_file_input({
-						style:'well',
-						btn_choose:'Click to choose new avatar',
-						btn_change:null,
-						no_icon:'ace-icon fa fa-picture-o',
-						thumbnail:'small',
-						before_remove: function() {
-							//don't remove/reset files while being uploaded
-							return !working;
-						},
-						allowExt: ['jpg', 'jpeg', 'png', 'gif'],
-						allowMime: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-					});
-			
-					form.on('submit', function(){
-						if(!file.data('ace_input_files')) return false;
-						
-						file.ace_file_input('disable');
-						form.find('button').attr('disabled', 'disabled');
-						form.find('.modal-body').append("<div class='center'><i class='ace-icon fa fa-spinner fa-spin bigger-150 orange'></i></div>");
-						
-						var deferred = new $.Deferred;
-						working = true;
-						deferred.done(function() {
-							form.find('button').removeAttr('disabled');
-							form.find('input[type=file]').ace_file_input('enable');
-							form.find('.modal-body > :last-child').remove();
-							
-							modal.modal("hide");
-			
-							var thumb = file.next().find('img').data('thumb');
-							if(thumb) $('#avatar2').get(0).src = thumb;
-			
-							working = false;
-						});
-						
-						
-						setTimeout(function(){
-							deferred.resolve();
-						} , parseInt(Math.random() * 800 + 800));
-			
-						return false;
-					});
-					
-			});
-	</script>
+	
 </body>
 </html>
 

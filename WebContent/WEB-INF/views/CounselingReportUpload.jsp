@@ -123,7 +123,7 @@
 														File to upload: <input class="btn btn-sm btn-info" type="file" name="fileUpload"><br />
 														
 														<c:if test="${error==1}">
-															<p style="color:red;">Failed to upload...File format can be docx/odt only!</p>
+															<p style="color:red;">Failed to upload...File format can be doc/docx/odt only!</p>
 														</c:if>
 														<c:if test="${error1==1}">
 															<p style="color:red;">Failed to upload...File size can be only upto 1MB</p>

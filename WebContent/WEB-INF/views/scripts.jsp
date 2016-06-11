@@ -29,6 +29,7 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 
 		<!-- ace scripts -->
 
+
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
@@ -70,13 +71,22 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 				document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
 						+ "<"+"/script>");
 		</script> -->
-		
+
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script src="assets/js/jquery.2.1.1.min.js"></script> 
 
 		<!-- keep this below ace scripts -->
 		<script src="assets/js/bootstrap.min.js"></script>
+		
+		 <!-- for autocomplete -->
+		 <!-- 
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>  
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	 -->
+	
+	<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
+	<link href="assets/autocomplete/main.css" rel="stylesheet">
 
 
 </head>

@@ -54,9 +54,11 @@ public class OfferLetterUploadController {
 			
 			HttpSession session=request.getSession();
 			String role =  (String)session.getAttribute("roleId");
-			if(!crService.checkRole("OfferLetterUpload", role))
+
+			/*if(!crService.checkRole("OfferLetterUpload", role))
 				return new ModelAndView("403");
-			else
+			else*/
+
 				return new ModelAndView("OfferLetterUpload");
 		}
 

@@ -31,6 +31,7 @@
         <spring.version>4.0.3.RELEASE</spring.version>
         <hibernate.core>4.2.7.Final</hibernate.core>
         <postgres.connector.version>9.4.1207</postgres.connector.version>
+        <jackson.version>1.9.10</jackson.version>
     </properties>
 
     <dependencies>
@@ -197,6 +198,18 @@
             <version>3.3</version>
             <type>jar</type>
         </dependency>
+        <!-- Jackson JSON Mapper -->
+		 <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency> 
     </dependencies>
 
 </project>

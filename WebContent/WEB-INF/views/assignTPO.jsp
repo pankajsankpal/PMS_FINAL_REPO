@@ -9,7 +9,7 @@
 
  @author Adarsh
  -->
-
+ 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,29 +22,39 @@
 }
 </style>
 </head>
-<body>
-	<h2>Assign TPO</h2>
-	<form:form method="POST" action="SubmitAssignTPO">
-		<table>
-			<tr>
-				<td><form:label path="userName">User name:</form:label></td>
-				<td><form:input path="userName" /></td>
-				<td><form:errors path="userName" cssClass="error" /></td>
-			</tr>
-			<tr>
-				<p>
-					<font size="5" color="red" face="verdana">${erroMesg}</font>
-				</p>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Submit" /></td>
-			</tr>
-		</table>
-	</form:form>
-	<tr>
-		<td><a href="AdminHome">Home</a></td>
-	</tr>
-
+<body  class="no-skin">
+			<jsp:directive.include file="Header.jsp" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="page-content">
+						<div class="page-header">
+							<h2 class="widget-title grey lighter">
+								&nbsp; &nbsp; &nbsp; &nbsp; 
+									Assign TPO
+							</h2>
+						</div>
+						<div class="center">
+							<a href="AdminHome"><h3>Home</h3></a>
+						</div>
+						<div class="space"></div>
+						<div class="center">
+							<form:form method="POST" action="SubmitAssignTPO">
+							<table align="center">
+							<tr>
+								<td><form:label path="userName"><h3>User name:</h3></form:label></td>
+								<td><form:input path="userName" /></td>
+								<td><form:errors path="userName" cssClass="error" /></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="submit" value="Submit" class="btn btn-info" /></td>
+							</tr>
+							</table>
+							</form:form>
+						</div>
+					</div>	
+				</div>
+			</div>
+					<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />	
 </body>
-
 </html>
