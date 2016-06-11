@@ -11,6 +11,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+	
+	var x = new Date().getFullYear();
+	$("#tpclist").attr("href", "tpclist?year="+x);
+	$("#studentlist").attr("href", "studentlist?year="+x);
+	$("#stats").attr("href", "stats?year="+x);
+	$("#company").attr("href", "company?year="+x);
+	
+	
     $("#yb").change(function(){
     	var x = $('#yb').val();
     	$("#tpclist").attr("href", "tpclist?year="+x);

@@ -58,25 +58,6 @@ $(document).ready(function(){
 						
 						<div class="center">
 						<table align="center">
-						<tr>	
-							<td><a href="#">
-								
-							</a><h4>COMPS</h4>
-							</td>
-							<td><a href="#">
-								
-							</a><h4>IT</h4>
-							</td>
-							<td><a href="#">
-								
-							</a><h4>ELEX</h4>
-							</td>
-							<td><a href="#">
-								
-							</a><h4>PROD</h4>
-							</td>
-							
-						</tr>	
 						
 						<tr>	
 							<td><a href="#">
