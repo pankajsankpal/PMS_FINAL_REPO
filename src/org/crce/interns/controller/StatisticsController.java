@@ -48,11 +48,13 @@ public class StatisticsController {
 		
 		ModelAndView model = new ModelAndView("viewStats");
 		
-		Map<Integer, Map<String, PlacementStatsBean>> result = 
-				statisticsService.list();
+		statisticsService.calculateTotal("2016");
+		
+		///Map<Integer, Map<String, PlacementStatsBean>> result = 
+		///		statisticsService.list();
 		
 		//model.addObject("companyMap", statisticsService.getCompanyMap());
-		model.addObject("table", result);
+		///model.addObject("table", result);
 		
 		return model;
 	}
