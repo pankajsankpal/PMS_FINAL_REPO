@@ -16,4 +16,7 @@ public class HighlightsController {
 	
 		return new ModelAndView("list");
 	}
+
+
+
 }
