@@ -27,8 +27,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
 		
 </head>
-<body onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<script>
+	
+</script>
+
+<body >
 
 <jsp:directive.include file="Header.jsp" />
 
@@ -102,8 +105,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 											<div class="tab-content no-border padding-24">
 												
-												
-												<div id="uploads" class="tab-pane in active">
+										<div id="uploads" class="tab-pane in active">
 													<div class="profile-feed row">
 													
 														<div class="row">
