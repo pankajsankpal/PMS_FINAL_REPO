@@ -256,5 +256,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
+		<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 </body>
 </html>

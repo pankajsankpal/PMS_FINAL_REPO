@@ -19,6 +19,7 @@ public class StatisticsDAOImpl implements StatisticsDAO{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<PlacementStats> list(){
+		
 		List<PlacementStats> listStats=null;
 		
 		listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStats.class).list();		

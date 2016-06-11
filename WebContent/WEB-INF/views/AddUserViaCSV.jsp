@@ -205,7 +205,11 @@ description: contains links to manage system users->
 													</tr>	
 													<tr>
 														<td>8. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
-													</tr>		
+													</tr>	
+	
+		<tr>
+			<td>11.<a href="manageselected.html">Manage List of Selected Applicants of all Companies</a><br /></td>
+		</tr>	
 												</table>
 												<br>
 											</div>
