@@ -170,4 +170,22 @@ public class ProfileDAOImpl implements ProfileDAO, ConstantValues{
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override	
+	public List<String> listProfessionalProfile(String year){
+		
+		List<String> result= null;
+		
+		Integer y = Integer.parseInt(year);
+		y++;
+		
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("SELECT U.userName FROM ProfessionalProfile U WHERE U.year = :curYear");
+		query.setParameter("curYear", String.valueOf(y));
+		
+		result = query.list();
+		return result;
+	}
+	
 }
