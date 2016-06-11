@@ -6,9 +6,12 @@
  */
 package org.crce.interns.service;
 
+import java.util.List;
+
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
+import org.crce.interns.model.ProfessionalProfile;
 
 //@Service("profileService")
 public interface ProfileService {
@@ -25,7 +28,7 @@ public interface ProfileService {
 	
 	public UserDetailsBean updateUserDetails(UserDetailsBean userDetailsBean);
 	
-	
+	public List<String> listProfessionalProfile(String year);
 	//public Map<>
 
 }

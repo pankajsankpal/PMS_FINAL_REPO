@@ -23,7 +23,7 @@ public class AddApplicantsValidator implements Validator {
 	//	System.out.println(userBean.getUsername() + " : User Name in Validator");
 	//	System.out.println(userBean.getCompany() + " : Company Name in Validator");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "username.required");
-		ValidationUtils.rejectIfEmpty(errors, "company", "company.required");
+		ValidationUtils.rejectIfEmpty(errors, "company", "company_name.required");
 
 		
 	}

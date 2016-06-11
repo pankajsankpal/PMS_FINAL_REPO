@@ -55,5 +55,7 @@
 				</div>
 			</div>	
 		</div>
+				<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>

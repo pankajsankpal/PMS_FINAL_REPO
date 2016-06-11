@@ -409,7 +409,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         
         String senderList = "";
         Session session = sessionFactory.openSession();
-        String SQL_QUERY = "Select company_id from Company where company_name like '" + companyName + "'";
+        String SQL_QUERY = "Select company_id from Company where lower(company_name) like '" + companyName + "'";
         Query query = session.createQuery(SQL_QUERY);
         List list = query.list();
         System.out.println(list.toString());

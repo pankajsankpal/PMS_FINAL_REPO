@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Logged in as   ${sessionScope.name} 
+							Activity & Uploads
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -90,7 +90,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 												<li>
-													<a href="StuNoti">
+													<a href="notifications">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -115,10 +115,12 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-box">
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
-																		<div>
+																		<div>	
+																		<c:if test="${sessionScope.roleName} eq 'StudentTPC'">
 																				<div class="profile-feed row">
 																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
+																		</c:if>
 																				<br>
 																				<table>
 																			
@@ -183,6 +185,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
 																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																				
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -234,7 +237,6 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/fullcalendar.min.js"></script>
 		<script src="assets/js/bootbox.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
 		<script src="assets/js/bootstrap-datepicker.min.js"></script>
@@ -275,7 +277,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 					var tree_data_2 = {
 							'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
 							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
-							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
+							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
 						tree_data_2['resume']['additionalParameters'] = {
 							'children' : [

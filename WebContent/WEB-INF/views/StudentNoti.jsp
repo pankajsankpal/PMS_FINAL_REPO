@@ -102,48 +102,31 @@ description: contain notification received by student and student tpc -->
 														
 															<div class="widget-box">
 															<div class="widget-header widget-header-large">
-																<h4 class="widget-title">Job News</h4>
-
-																<div class="widget-toolbar">
-																	<a href="#" data-action="settings">
-																		<i class="ace-icon fa fa-cog"></i>
-																	</a>
-
-																	<a href="#" data-action="reload">
-																		<i class="ace-icon fa fa-refresh"></i>
-																	</a>
-
-																	<a href="#" data-action="collapse">
-																		<i class="ace-icon fa fa-chevron-up"></i>
-																	</a>
-
-																	<a href="#" data-action="close">
-																		<i class="ace-icon fa fa-times"></i>
-																	</a>
-																</div>
+																<h4 class="widget-title">Check out your latest notifications</h4>
+						
 															</div>
 
 															<div class="widget-body">
-																<div class="widget-main padding-4 scrollable" data-size="200">
+																<div class="widget-main padding-4 scrollable" data-size="400">
 																	
 																	<c:if test="${!empty nf}">
- +
- +																		<c:forEach items="${nf}" var="a">
- +																		<p class="alert alert-info">
- +																		      
- +																		<a href="${a.url}" style="text-decoration: none;">
- +																		<strong>
- +																		${a.dateTime}
- +																		</strong>																	      
- +																<%-- 		${a.type} Notification for ${a.userOrGroupId}:--%><br/>
- +																		${a.message}<br/>
- +																		</a><br/><br/>
- +																		</c:forEach>
- +																		</p>
- +																	</c:if>
-																
-																</div>
+
+ 
+ 																		<c:forEach items="${nf}" var="a">
+ 																		<p class="alert alert-info">
+ 																		      
+ 																		<a href="${a.url}" style="text-decoration: none;">
+ 																		<strong>
+ 																		${a.dateTime}
+ 																		</strong>																	      
+ 																<%-- 		${a.type} Notification for ${a.userOrGroupId}:--%><br/>
+ 																		${a.message}<br/>
+ 																		</a><br/><br/>
+ 																		</c:forEach>
+ 																		</p>
+ 																	</c:if>
 															
+																</div>
 															</div>
 															
 														</div>

@@ -1,4 +1,28 @@
+
 package org.crce.interns.service;
+import java.util.List;
+
+//import org.crce.interns.beans.UserBean;
+import org.crce.interns.beans.UserCompanyBean;
+import org.crce.interns.model.Company;
+
+public interface ManageApplicantsService {
+	
+	public int createDetails(UserCompanyBean userBean);
+	 
+	
+	// public List<Company> retrieveCompany_id();
+	 public int deleteDetails(UserCompanyBean userBean);
+	 
+	 public List<UserCompanyBean> retreiveDetails(String company);
+	 
+	 public List<Company> retrieveCompany_id();
+	 
+
+	 
+	}
+
+/*package org.crce.interns.service;
 import java.util.ArrayList;
 import java.util.List;
 //import org.crce.interns.beans.UserBean;
@@ -27,3 +51,4 @@ public interface ManageApplicantsService {
 
 	 
 	}
+*/

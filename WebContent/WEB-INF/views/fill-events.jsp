@@ -1,10 +1,198 @@
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.sql.*" %>
+<%ResultSet resultset =null;%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<html>
+<head>
+ <!-- <script src="https://code.jquery.com/jquery-2.2.1.min.js" ></script> 
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+
+<script type="text/javascript" src="assets/js/jquery.1.11.1.min.js" ></script>
+<script type="text/javascript" src="assets/js/respond.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+(function($,W,D){
+	var JQVAL={};
+	JQVAL.UTIL =
+		{
+		setupFormValidation: function(){
+		$("#form").validate({
+			rules: {
+				event_name : "required",
+				event_type : "required",
+				company_name : "required",
+				date : {
+					required:true,
+					},
+				time : "required",
+				venue: "required"
+			},
+			messages: {
+				event_name: "Please enter an event name",
+				event_type : "Please select an event type",
+				company_name : "Please enter the name of the company",
+				date : {
+					required : "Please enter the required date",
+				},
+				time : "Please enter the event time",
+				venue : "Please enter the venue",
+			},
+				submitHandler: function(form){
+				form.submit();
+			}
+		
+		});
+		
+	}
+}
+$(D).ready(function($){
+	JQVAL.UTIL.setupFormValidation();
+});
+
+})(jQuery, window, document);
+</script>
+
+<script>
+$(document).ready(function(){
+	$( "#category" ).change(function() {
+				
+			
+		var typ=$( "#category").val();
+				
+				
+				switch(typ){
+					case "training":
+						
+						$(".pre_placement").hide();
+						$(".interview").hide();
+						$(".aptitude").hide();
+						$(".training").show();
+						
+						break;
+					case "aptitude":
+						
+						$(".pre_placement").hide();
+						$(".interview").hide();
+						$(".aptitude").show();
+						$(".training").hide();
+						break;
+					
+					case "interview":
+						
+						
+						$(".pre_placement").hide();
+						$(".interview").show();
+						$(".aptitude").hide();
+						$(".training").hide();
+						break;
+						
+					case "pre_placement":
+						
+						$(".pre_placement").show();
+						$(".interview").hide();
+						$(".aptitude").hide();
+						$(".training").hide();
+							
+						break;
+				}
+				
+				
+	});
+});
+</script>
+<style>
+#form label.error {
+color: #FB3A3A;
+}
+</style>
+</head>
+<body>
+ 
+ <form id="form" action="fill.html" method="post" novalidate="novalidate">
+ <p>event name: 
+ <input type="text" id="event_name" name="event_name" path="event_name" /></p>
+<p>event type: 
+ <select id="category" name="event_type" path="event_type" >
+   <option value="none" path="none" >------</option>
+  <option value="pre_placement" path="pre_placement" >pre_placement</option>
+  <option value="aptitude" path="aptitude" >aptitude</option>
+  <option value="interview" path="interview" >interview</option>
+</select> 
+</p>
+
+<p>company name: <select type="text" id="company_name" name="company_name" path="company_name" >
+<%
+    				try{
+							Class.forName("org.postgresql.Driver").newInstance();
+							Connection connection = DriverManager.getConnection
+            				("jdbc:postgresql://localhost:5432/placementdb?user=postgres&password=root");
+
+       						Statement statement = connection.createStatement() ;
+
+       						resultset =statement.executeQuery("select company_name from job_schema.company") ;
+				%>
+				<%  while(resultset.next()){ %>
+            		<option><%= resultset.getString(1)%></option>
+        		<% } %>
+        		<%
+        		}
+        		catch(Exception e)
+        		{
+             			out.println("wrong entry"+e);
+        		}
+				%>
+
+</select></p>
+
+<p>approved: <select type="text" id="approved" name="approved" >
+				<option value="yes">yes</option>
+				<option value="no">no</option>
+			 </select></p>
+
+<p>date: <input type="text" id="date" name="date" placeholder="dd/MM/yyyy" /></p>
+
+<p>time: <input type="text" id="time" name="time" placeholder="HH:mm" /></p>
+
+<p>venue: <input type="text" id="venue" name="venue" /></p>
+
+<!-- pre_placement -->
+<div class="pre_placement" hidden>
+<p>conducted_by: <input type="text" id="test" name="conducted_by"  /></p>
+
+<p>agenda: <input type="text" id="test" name="agenda" /></p>
+</div>
+
+<!-- aptitude -->
+<div class="aptitude" hidden>
+<p>test_duration: <input type="text" id="test" name="test_duration" /></p>
+
+<p>subjects_to_be_prepared: <input type="text" id="test" name="subjects_to_be_prepared" /></p>
+
+<p>test_section: <input type="text" id="test" name="test_section" /></p>
+</div>
+
+<!-- interview -->
+<div class="interview" hidden>
+<p>interview_type: <input type="text" id="test" name="interview_type" /></p>
+</div>
+
+<button>Submit</button>
+
+</body>
+</html>
+ --%>
 <!-- author: Pankaj sankpal
 description: contains fields to add a new event regarding placement drives ->
 <!-- -------------------------------------------------------------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+	 <%@ page import="java.sql.*" %>
+<%ResultSet resultset =null;%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,12 +230,50 @@ description: contains fields to add a new event regarding placement drives ->
 <!-- ace settings handler -->
 <script src="../assets/js/ace-extra.min.js"></script>
 
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+<script type="text/javascript">
+(function($,W,D){
+	var JQVAL={};
+	JQVAL.UTIL =
+		{
+		setupFormValidation: function(){
+		$("#form").validate({
+			rules: {
+				event_name : "required",
+				event_type : "required",
+				company_name : "required",
+				date : {
+					required:true,
+					},
+				time : "required",
+				venue: "required"
+			},
+			messages: {
+				event_name: "Please enter an event name",
+				event_type : "Please select an event type",
+				company_name : "Please enter the name of the company",
+				date : {
+					required : "Please enter the required date",
+				},
+				time : "Please enter the event time",
+				venue : "Please enter the venue",
+			},
+				submitHandler: function(form){
+				form.submit();
+			}
+		
+		});
+		
+	}
+}
+$(D).ready(function($){
+	JQVAL.UTIL.setupFormValidation();
+});
 
+})(jQuery, window, document);
+</script>
 
 </head>
-<body 	onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<body >
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
@@ -84,8 +310,7 @@ description: contains fields to add a new event regarding placement drives ->
 
 						<div class="page-header">
 							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
+								Logged in as  ${sessionScope.name}
 							</h1>
 						</div><!-- /.page-header -->
 						
@@ -100,7 +325,7 @@ description: contains fields to add a new event regarding placement drives ->
 										<div class="widget-body">
 										 <div class="widget-main">
 											<div align="center">
-													<form action="fill.html" method="post">
+													<form id="form" action="fill.html" method="post" novalidate="novalidate">
 													 <p>event name: <input type="text" id="test" name="event_name"></p>
 													<p>event type: 
 													 <select id="category" name="event_type">
@@ -111,15 +336,40 @@ description: contains fields to add a new event regarding placement drives ->
 													</select> 
 													</p>
 													
-													<p>company name: <input type="text" id="test" name="company_name"></p>
+													<p>company name: <select type="text" id="company_name" name="company_name" path="company_name" >
+													<%
+													    				try{
+																				Class.forName("org.postgresql.Driver").newInstance();
+																				Connection connection = DriverManager.getConnection
+													            				("jdbc:postgresql://localhost:5432/placementdb?user=postgres&password=universe");
 													
-													<p>approved: <input type="text" id="test" name="approved"></p>
+													       						Statement statement = connection.createStatement() ;
 													
-													<p>date: <input type="text" id="test" name="date"></p>
+													       						resultset =statement.executeQuery("select company_name from job_schema.company") ;
+																	%>
+																	<%  while(resultset.next()){ %>
+													            		<option><%= resultset.getString(1)%></option>
+													        		<% } %>
+													        		<%
+													        		}
+													        		catch(Exception e)
+													        		{
+													             			out.println("wrong entry"+e);
+													        		}
+																	%>
 													
-													<p>time: <input type="text" id="test" name="time"></p>
+													</select></p>
 													
-													<p>venue: <input type="text" id="test" name="venue"></p>
+													<p>approved: <select type="text" id="approved" name="approved" >
+																	<option value="yes">yes</option>
+																	<option value="no">no</option>
+																 </select></p>
+													
+													<p>date: <input type="text" id="date" name="date" placeholder="dd/MM/yyyy" /></p>
+
+													<p>time: <input type="text" id="time" name="time" placeholder="HH:mm" /></p>
+													
+													<p>venue: <input type="text" id="venue" name="venue" /></p>
 													
 													<!-- pre_placement -->
 													
