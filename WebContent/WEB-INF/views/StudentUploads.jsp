@@ -54,7 +54,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Logged in as   ${sessionScope.name} 
+							Logged in as   ${sessionScope.name} <br/> 
+							${sessionScope.roleName} <br/>
 								
 							</h1>
 						</div><!-- /.page-header -->
