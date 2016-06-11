@@ -141,9 +141,11 @@ public class UpdateProfileController {
 		//}
 		catch(Exception e){
 			System.out.println(e);
+
 		ModelAndView model=new ModelAndView("500");			      
  		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
+
 			return model;
 		}
 	}
@@ -198,10 +200,10 @@ public class UpdateProfileController {
 	}
 	catch(Exception e){
 		System.out.println(e);
+
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
-		
 		return model;
 	}
 	}
@@ -269,9 +271,11 @@ public class UpdateProfileController {
 	}
 	catch(Exception e){
 		System.out.println(e);
+
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
+
 		return model;
 	}
 	}
@@ -315,9 +319,11 @@ public class UpdateProfileController {
 		}
 		catch(Exception e){
 			System.out.println(e);
+
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
  			model.addObject("url", "form");
+
 			return model;
 		}
 		

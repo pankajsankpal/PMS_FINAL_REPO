@@ -70,6 +70,7 @@ function checkNewNoti(){
 						
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="notifications">
+
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
@@ -167,6 +168,7 @@ function checkNewNoti(){
 										Sign out
 									</a>
 								</li>
+
 							</ul>
 						</li>
 					</ul>
@@ -181,3 +183,4 @@ function checkNewNoti(){
 </body>
 
 </html>
+

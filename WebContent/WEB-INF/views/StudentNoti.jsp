@@ -123,10 +123,13 @@ description: contain notification received by student and student tpc -->
 																</div>
 															</div>
 
+
+
 															<div class="widget-body">
 																<div class="widget-main padding-4 scrollable" data-size="200">
 																	
 																	<c:if test="${!empty nf}">
+<<<<<<< HEAD
  
  																		<c:forEach items="${nf}" var="a">
  																		<p class="alert alert-info">
@@ -143,7 +146,6 @@ description: contain notification received by student and student tpc -->
  																	</c:if>
 															
 																</div>
-															
 															</div>
 															
 														</div>

@@ -18,9 +18,7 @@ public class UserDetailsBean implements Serializable {
 	
 	private Date lastLogin;
 	
-	private String roleId;
-
-	
+	private String roleId;	
 
 	private String createdBy;
 	
