@@ -68,10 +68,10 @@ public class UpdateProfileController {
 	@RequestMapping(value="/viewprofile", method = RequestMethod.GET)
 	
 	public ModelAndView login(HttpServletRequest request) {
-		try{
+		
 		System.out.println("Inside UpdateProfile Controller");
 		
-		
+		try{
 		String userName =(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
 		
@@ -90,7 +90,7 @@ public class UpdateProfileController {
 			userDetailsBean = profileService.getProfile(userDetailsBean);					
 			
 			userDetailsBean.setAccountActive("YES");
-			userDetailsBean.setCurrentState("LOGGED IN");
+			userDetailsBean.setCurrentState("online");
 			userDetailsBean.setLastLogin(new Date());
 			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
 			userDetailsBean.setModifiedDate(new Date());
@@ -141,10 +141,11 @@ public class UpdateProfileController {
 		//}
 		catch(Exception e){
 			System.out.println(e);
+
 		ModelAndView model=new ModelAndView("500");			      
- 
  		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
+
 			return model;
 		}
 	}
@@ -165,46 +166,44 @@ public class UpdateProfileController {
 	@RequestMapping(value="/edit", method = RequestMethod.GET)
 	public ModelAndView editProfessionalProfile(HttpServletRequest request) {
 		
-		ModelAndView model=null;
-		model = new ModelAndView("viewprofile");
+		System.out.println("Inside UpdateProfile Controller");
 	try{	
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");
-		//if(!crService.checkRole("UpdateProfile", roleId))
-			//return new ModelAndView("403");
-		//else
-		//{
-			System.out.println("Inside UpdateProfile Controller");
 		
-					
+		
+		
+		ModelAndView model=null;
+		model = new ModelAndView("viewprofile");			
 
-			UserDetailsBean userDetailsBean= new UserDetailsBean();
-			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
-			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
-		
-			userDetailsBean.setUserName(id);
-			professionalProfileBean.setUserName(id);
-			personalProfileBean.setUserName(id);
+		UserDetailsBean userDetailsBean= new UserDetailsBean();
+		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+	
+		userDetailsBean.setUserName(id);
+		professionalProfileBean.setUserName(id);
+		personalProfileBean.setUserName(id);
 
-			userDetailsBean = profileService.getProfile(userDetailsBean);
-			professionalProfileBean = profileService.getProfile(professionalProfileBean);
-			personalProfileBean = profileService.getProfile(personalProfileBean);
-		
-		
-					
-			model.addObject("userDetails",userDetailsBean);
-			model.addObject("professionalProfile",professionalProfileBean);
-			model.addObject("personalProfile",personalProfileBean);
+		userDetailsBean = profileService.getProfile(userDetailsBean);
+		professionalProfileBean = profileService.getProfile(professionalProfileBean);
+		personalProfileBean = profileService.getProfile(personalProfileBean);
+	
+	
+				
+		model.addObject("userDetails",userDetailsBean);
+		model.addObject("professionalProfile",professionalProfileBean);
+		model.addObject("personalProfile",personalProfileBean);
 
-		
-			return model;
-		//}
+	
+		return model;
+	//}
 	}
 	catch(Exception e){
 		System.out.println(e);
+
+		ModelAndView model=new ModelAndView("500");
 		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
-		
 		return model;
 	}
 	}
@@ -227,16 +226,15 @@ public class UpdateProfileController {
 			@RequestParam Map<String, String> r,HttpServletRequest request) {
 	
 		System.out.println("Inside UpdateProfile Controller");
-	
-		ModelAndView model=null;
-		model = new ModelAndView("redirect:/viewprofile");	
-	try{	
+				
+	try{
+		
+		
 		String id = (String) request.getSession(true).getAttribute("userName");
 		String roleId= (String) request.getSession(true).getAttribute("roleId");
-		//if(!crService.checkRole("UpdateProfile", roleId))
-			//return new ModelAndView("403");
-		//else
-		//{
+		
+		ModelAndView model=null;
+		model = new ModelAndView("redirect:/viewprofile");
 		
 		
 		ProfessionalProfileBean professionalProfileBean = new ProfessionalProfileBean();
@@ -273,8 +271,11 @@ public class UpdateProfileController {
 	}
 	catch(Exception e){
 		System.out.println(e);
+
+		ModelAndView model=new ModelAndView("500");
 		model.addObject("message", "Your session has timed out. Please login again");
  		model.addObject("url", "form");
+
 		return model;
 	}
 	}
@@ -294,20 +295,17 @@ public class UpdateProfileController {
 	@RequestMapping(value="/sign-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request) {
 		
-		ModelAndView model=null;
-		model = new ModelAndView("redirect:/form");
+		System.out.println("Inside UpdateProfile Controller");
 		try{
-			
-		
-			System.out.println("Inside UpdateProfile Controller");
-			LoginForm loginForm = new LoginForm();
-			
+							
+			ModelAndView model=null;
+			model = new ModelAndView("redirect:/form");
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();
 			userDetailsBean.setUserName((String)request.getSession(true).getAttribute("userName"));
 			userDetailsBean = profileService.getProfile(userDetailsBean);
 			
-			userDetailsBean.setCurrentState("LOGGED OUT");
+			userDetailsBean.setCurrentState("offline");
 			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
 			userDetailsBean.setModifiedDate(new Date());
 			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
@@ -321,9 +319,11 @@ public class UpdateProfileController {
 		}
 		catch(Exception e){
 			System.out.println(e);
-			
+
+			ModelAndView model=new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
  			model.addObject("url", "form");
+
 			return model;
 		}
 		
@@ -503,85 +503,33 @@ public class UpdateProfileController {
 	
 	public ModelAndView search(HttpServletRequest request , @RequestParam String userName ) {
 	
-	ModelAndView model=null;
-	model = new ModelAndView("Student");
-	
 	try{
-		System.out.println("Inside UpdateProfile Controller");
-		
-		//String userName =(String)request.getSession(true).getAttribute("userName");
-		//String roleId=(String)request.getSession(true).getAttribute("roleId");
-		
-		//if(!crService.checkRole("UpdateProfile", roleId))
-			//return new ModelAndView("403");
-		//else
-		//{
+			System.out.println("Inside UpdateProfile Controller");
 			
-
+			ModelAndView model=null;
+			model = new ModelAndView("searchStudent");
 			
 			UserDetailsBean userDetailsBean= new UserDetailsBean();									
 			ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 			PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 					
-			userDetailsBean.setUserName(userName);			
-			userDetailsBean = profileService.getProfile(userDetailsBean);					
-			
-			userDetailsBean.setAccountActive("YES");
-			userDetailsBean.setCurrentState("LOGGED IN");
-			userDetailsBean.setLastLogin(new Date());
-			userDetailsBean.setModifiedBy(userDetailsBean.getUserName());			
-			userDetailsBean.setModifiedDate(new Date());
-			
+			userDetailsBean.setUserName(userName);														
 			professionalProfileBean.setUserName(userName);
 			personalProfileBean.setUserName(userName);
 		
 			userDetailsBean = profileService.updateUserDetails(userDetailsBean);
-			
+			userDetailsBean = profileService.getProfile(userDetailsBean);
 			professionalProfileBean = profileService.getProfile(professionalProfileBean);
 			personalProfileBean = profileService.getProfile(personalProfileBean);	
-			
-			request.getSession(true).setAttribute("name",personalProfileBean.getName());
-			request.getSession(true).setAttribute("branch",professionalProfileBean.getBranch());
-			request.getSession(true).setAttribute("year",professionalProfileBean.getYear());			
-			
-			String roleName = (String)request.getSession(true).getAttribute("roleName");
-			
-			
-			
-			/*
-			if(roleName.equals("Student")){
-				model = new ModelAndView("Student");
-				
-			}else if(roleName.equals("StudentTPC")){
-				
-				model = new ModelAndView("StudentTPC");
-				
-			}else if(roleName.equals("Faculty")){
-				model = new ModelAndView("Faculty");
-				
-			}else if(roleName.equals("FacultyTPC")){
-				model = new ModelAndView("FacultyTPC");
-				
-			}else if(roleName.equals("TPO")){
-				model = new ModelAndView("TPO");
-				
-			}else if(roleName.equals("Admin")){
-				model = new ModelAndView("Admin");
-			}
-		
-			//*/
-			
 			
 			model.addObject("userDetails",userDetailsBean);
 			model.addObject("professionalProfile",professionalProfileBean);
 			model.addObject("personalProfile",personalProfileBean);
-
-			
-			
 			return model;
 		}
 		catch(Exception e){
 			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");			      			
 			model.addObject("message", "Your session has timed out. Please login again");
  			model.addObject("url", "form");
 			

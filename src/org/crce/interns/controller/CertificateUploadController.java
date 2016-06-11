@@ -56,9 +56,11 @@ public class CertificateUploadController {
 						
 			HttpSession session=request.getSession();
 			String role =  (String)session.getAttribute("roleId");
+
 			/*if(!crService.checkRole("CertificateUpload", role))
 				return new ModelAndView("403");
 			else*/
+
 				return new ModelAndView("UploadCertificate");
 		}
 
