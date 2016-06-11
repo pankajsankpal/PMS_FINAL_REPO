@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete</title>
+<title>Delete Selected Applicants</title>
 <style>
 	.error {
 		color:#ff0000;
@@ -15,15 +15,15 @@
 </style>
 </head>
 <body>
-<form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
+<form:form action="deleteselected.html" modelAttribute="userBean" method="post">
 Name:<form:input name="name" type="text" path="username" />
 <form:errors path="username" cssClass="error"/><br/>
-Company:<form:input name="company" type="text" path="company" />
-<form:errors path="company" cssClass="error"/>
-<br/>
-${msg}
+Company:<form:input name="company_name" type="text" path="company_name"/>
+<form:errors path="company_name" cssClass="error"/> 
 <br/> 
 <input type="submit" value="Delete"/>
-</form:form><br />
+<br />
+${msg}
+</form:form>
 </body>
 </html>

@@ -9,6 +9,6 @@
 <body>
 Entry Deleted.
 <br />
-<a href="view.html">View Applicants' List</a>
+<a href="views.html">View Applicants' List</a>
 </body>
 </html>
