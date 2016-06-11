@@ -7,8 +7,8 @@
 <title></title>
 </head>
 <body>
-Entry Deleted.
+Successfully added.
 <br />
-<a href="view.html">View Applicants' List</a>
+<a href="views.html">View Applicants' List</a>
 </body>
 </html>
