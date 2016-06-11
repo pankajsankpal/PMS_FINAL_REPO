@@ -104,23 +104,7 @@ description: contain notification received by student and student tpc -->
 															<div class="widget-header widget-header-large">
 																<h4 class="widget-title">Job News</h4>
 
-																<div class="widget-toolbar">
-																	<a href="#" data-action="settings">
-																		<i class="ace-icon fa fa-cog"></i>
-																	</a>
-
-																	<a href="#" data-action="reload">
-																		<i class="ace-icon fa fa-refresh"></i>
-																	</a>
-
-																	<a href="#" data-action="collapse">
-																		<i class="ace-icon fa fa-chevron-up"></i>
-																	</a>
-
-																	<a href="#" data-action="close">
-																		<i class="ace-icon fa fa-times"></i>
-																	</a>
-																</div>
+																
 															</div>
 
 															<div class="widget-body">

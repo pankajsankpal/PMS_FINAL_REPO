@@ -92,8 +92,7 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 
 						<div class="page-header">
 							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
+								Logged in as  ${sessionScope.name}
 							</h1>
 						</div><!-- /.page-header -->
 						

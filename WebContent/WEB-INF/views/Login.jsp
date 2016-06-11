@@ -110,14 +110,7 @@
 													<div class="space-4"></div>
 												</fieldset>
 											</form:form>
-											
-											
-											
-											
-
-											
-
-											<div class="space-6"></div>
+										<div class="space-6"></div>
 
 											
 										</div><!-- /.widget-main -->
@@ -128,10 +121,7 @@
 
 								
 							</div><!-- /.widget-body -->
-						</div><!-- /.signup-box -->
-					</div><!-- /.position-relative -->
-
-							
+						
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
