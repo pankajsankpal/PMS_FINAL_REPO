@@ -252,6 +252,8 @@ description: dynamically creating a page once the Content on companiesPade is cl
 			</div>
 			<!-- /.page-content -->
 		</div>
+			
+		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 </body>

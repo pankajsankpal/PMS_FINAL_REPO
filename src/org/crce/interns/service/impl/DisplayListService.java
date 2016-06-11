@@ -17,6 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.crce.interns.beans.DirectoryPathBean;
+import org.crce.interns.service.ConstantValues;
 
 public class DisplayListService {
 
@@ -27,11 +28,14 @@ public class DisplayListService {
 	 * @param userName
 	 * @return
 	 */
-		public List<String> displayCVList(String folder,String userName){
+		public List<String> displayCVList(String folder,String userName,String userRole){
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
-			
-			 String pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
+			 String pathname = null;
+			if(userRole.equals(ConstantValues.StudentName))
+				pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
+			else
+				pathname=dpb.getSystemFolder()+"\\"+folder;
 			 System.out.println(pathname);
 			 File[] files= new File(pathname).listFiles();
 			 

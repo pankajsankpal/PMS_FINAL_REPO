@@ -58,6 +58,7 @@ public class DownloadController extends HttpServlet{
 		String fileToBeDownloaded = "";
 		if (role.equals("Student") || role.equals("StudentTPC")) 
 			fileToBeDownloaded = basePath + "\\Users" + "\\" + "Student" + "\\" + userName + "\\" + folderName + "\\" + fileName;
+
 		System.out.println(fileToBeDownloaded);
 		
 		ServletContext context = request.getServletContext();

@@ -126,53 +126,53 @@ description: displays the criteria of the posted jobe-->
 													<ul class="list-unstyled spaced2">
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Eligibible Branches are COMPS,IT,ELEX.
+															Eligibible Branches are ${criteria.eligible_branches}
 														</li>
 
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Only for unplaced students.
+															Only for unplaced students
 														</li>
 
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Eligible SSC percentage is 60
+															Eligible SSC percentage is ${criteria.ssc_percentage } 	
 														</li>
 														
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Eligible HSC percentage is 50
+															Eligible HSC percentage is ${criteria.hsc_or_dip_percentage } 
 														</li>
 
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Eligible CGPA is 6.75
+															Eligible CGPA is ${criteria.cgpa }
 														</li>
 														
 															<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Year of passing should be 2017
+															Year of passing should be ${criteria.year_of_passing  }
 														</li>
 														
 															<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															No of live KT's allowed is 1
+															No of live KT's allowed is ${criteria.no_of_live_kts_allowed }
 														</li>
 														
 															<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															No of dead KT's allowed is 1
+															No of dead KT's allowed is ${criteria.no_of_dead_kts_allowed }
 														</li>
 														
 															<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Year gap is not allowed
+															Year gap should be ${criteria.year_gap_allowed } 
 														</li>
 
 														
 														<li>
 															<i class="ace-icon fa  fa-circle blue"></i>
-															Last date to apply is 26/6/2016
+															Last date to apply is ${criteria.last_date_to_apply }
 														</li>
 													</ul>
 
@@ -181,7 +181,8 @@ description: displays the criteria of the posted jobe-->
 												</div>
 
 												<div>
-													<a href="#" class="btn btn-block btn-primary">
+													 
+													<a href="applyforjob?c_id=${criteria.criteria_id }&j_id=${job_id}" class="btn btn-block btn-primary">
 														
 														<span>Apply</span>
 														<i class="ace-icon fa fa-arrow-right bigger-110"></i>
@@ -189,7 +190,7 @@ description: displays the criteria of the posted jobe-->
 												</div>
 											</div>
 										</div>
-											<div class="hr hr-8 dotted"></div>
+											<div class="hr hr-8 dotted"></div>${msg }
 
 																						<div class="space-10"></div>
 
@@ -203,6 +204,7 @@ description: displays the criteria of the posted jobe-->
 			</div>
 		</div>
 		<!-- /.main-content -->
+		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 

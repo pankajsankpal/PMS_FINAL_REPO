@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>successfully added:</h1>
-<h2> ${eventBean.event_id} </h2>
+<h2> ${msg} </h2>
 </body>
 </html>

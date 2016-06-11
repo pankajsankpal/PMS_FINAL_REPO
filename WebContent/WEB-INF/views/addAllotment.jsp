@@ -73,7 +73,7 @@
 						<center><p style="color:green;">Room Allotment details added successfully!</p></center>
 					</c:if>
 					<c:if test="${error==1}">
-						<center><p style="color:red;">Failed to upload...File format can be .docx/.odt/.pdf/.png/.jpg/.jpeg only!</p></center>
+						<center><p style="color:red;">Failed to upload...File format can be .doc/.docx/.odt/.pdf/.png/.jpg/.jpeg only!</p></center>
 					</c:if>
 					<c:if test="${error1==1}">
 						<center><p style="color:red;">Failed to upload...File size can be only upto 2MB!</p></center>>
@@ -243,6 +243,7 @@
 				});				
 			});	
 		</script>
-
+				<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>
