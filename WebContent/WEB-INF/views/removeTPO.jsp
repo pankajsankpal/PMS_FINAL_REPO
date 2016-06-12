@@ -26,7 +26,10 @@
 <body>
 			<jsp:directive.include file="Header.jsp" />
 			<div class="main-content">
-				<div class="main-content-inner">
+				<div class="main-content-inner"><div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 					<div class="page-content">
 						<div class="page-header">
 							<h2 class="widget-title grey lighter">
