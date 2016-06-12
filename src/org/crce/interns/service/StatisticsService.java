@@ -6,6 +6,7 @@ import java.util.Map;
 import org.crce.interns.beans.PlacementStatisticsBean;
 import org.crce.interns.beans.PlacementStatsBean;
 import org.crce.interns.model.PlacementStats;
+import org.crce.interns.model.TotalNoOfStudents;
 
 
 public interface StatisticsService {
@@ -17,4 +18,6 @@ public interface StatisticsService {
 	public Map<Integer, String> getCompanyMap();
 	
 	public void calculateTotal(String year);
+	
+	public TotalNoOfStudents getTotalNoOfStudents(String year);
 }
