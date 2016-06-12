@@ -74,7 +74,7 @@ description: contains field for assigning a student tpc  -->
 				<div class="page-header">
 					<h1>
 						Logged in as
-						<c:out value="${sessionScope.name}" />
+						<core:out value="${loginForm.userName}" />
 					</h1>
 				</div>
 				<!-- /.page-header -->
@@ -98,11 +98,10 @@ description: contains field for assigning a student tpc  -->
 													<font size="5" color="red" face="verdana">${erroMesg}</font>
 												</p>
 											</tr>
-											<tr></tr>
 											<tr>
 
-												<td colspan="2"><center><input class="btn btn-sm  btn-primary"
-													type="submit" value="Submit" /></center></td>
+												<td colspan="2"><input class="btn btn-sm  btn-primary"
+													type="submit" value="Submit" /></td>
 											</tr>
 										</table>
 									</form:form>
