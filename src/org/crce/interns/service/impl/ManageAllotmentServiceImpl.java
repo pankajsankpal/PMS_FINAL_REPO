@@ -4,6 +4,7 @@ package org.crce.interns.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,10 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.DirectoryPathBean;
+import org.crce.interns.beans.UserCompanyBean;
+import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.ManageAllotmentDao;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
+import org.crce.interns.model.UserCompany;
+import org.crce.interns.model.UserDetails;
 import org.crce.interns.service.ManageAllotmentService;
 import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.BeanUtils;
@@ -75,10 +80,39 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 		manageAllotmentDao.createAllotment(allotment);
 	}
 
+	/* ** Newly added comments
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public List<Allotment> listAllotment() {
 		// TODO Auto-generated method stub
 		return manageAllotmentDao.listAllotment();
+	}
+	** */
+	
+	@Override
+	public List<AllotmentBean> listAllotment(Allotment allot) {
+		// TODO Auto-generated method stub
+		System.out.println("Room Allotment in Service Impl :" );
+		List<Allotment> allotList = manageAllotmentDao.listAllotment(allot);
+		if (allotList == null) {
+			return null;
+		}
+		return convertToBean(allotList);
+		
+		
+
+	}
+
+	
+
+	private List<AllotmentBean> convertToBean(List<Allotment> allotList) {
+		// TODO Auto-generated method stub
+		List<AllotmentBean> udsBeanList = new ArrayList<AllotmentBean>();
+		for (Allotment uds : allotList) {
+			AllotmentBean udsBean = new AllotmentBean();
+			BeanUtils.copyProperties(uds, udsBean);
+			udsBeanList.add(udsBean);
+		}
+		return udsBeanList;
 	}
 
 	@Override
