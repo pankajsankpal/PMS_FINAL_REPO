@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-								Welcome  ${sessionScope.name} 
+								Welcome  ${sessionScope.name} To Student TPC page
 								
 							</h1>
 						</div><!-- /.page-header -->

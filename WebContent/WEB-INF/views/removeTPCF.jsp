@@ -69,7 +69,7 @@ description: contain field for removing the student tpc -->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<c:out value="${sessionScope.name}" />
+								<core:out value="${loginForm.userName}" />
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -93,7 +93,7 @@ description: contain field for removing the student tpc -->
 													</p>
 												</tr>
 												<tr>
-													<td colspan="2"><center><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></center></td>
+													<td colspan="2"><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></td>
 												</tr>
 											</table>
 										</form:form>
