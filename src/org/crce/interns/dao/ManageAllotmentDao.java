@@ -8,7 +8,9 @@ public interface ManageAllotmentDao {
 
 	public void createAllotment(Allotment allotment);
 	
-	public List<Allotment> listAllotment();
+	//public List<Allotment> listAllotment(); //new comment
+	
+	public List<Allotment> listAllotment(Allotment allot);
 	
 
 }

@@ -55,7 +55,8 @@
 					<div class="page-content">
 							<div class="page-header">
 							
-							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+
+							<h3>Welcome , ${sessionScope.name} !</h3>
 	
 							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
@@ -86,7 +87,9 @@
 												</li>
 
 												<li>
+
 													<a href="downloads">
+
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
