@@ -54,7 +54,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Activity & Uploads for ${sessionScope.name}
+							Activity & Uploads for ${sessionScope.roleName}
 								
 							</h1>
 						</div><!-- /.page-header -->

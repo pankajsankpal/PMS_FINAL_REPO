@@ -26,12 +26,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
-import org.crce.interns.service.CopyFileService;
 import org.crce.interns.service.ResumeUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,9 +44,6 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	//@Autowired
 	//private ResumeUploadDao resumeUploadDao;		//not used
 
-	@Autowired
-	private CopyFileService copyFileService;
-	
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
 	
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload, String username)
@@ -89,17 +84,10 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				//newName : It is the entire path of the uploaded file with the timestamp of upload appended
 				String newName = fullPath.substring(0,lastDot) + "-" + timeStamp + fullPath.substring(lastDot);
 				File f2 = new File(newName);
-				
 				System.out.println("Saving file: " + newName);
 				
 				f1.renameTo(f2);
 				fileUpload.transferTo(f2);
-				
-				
-				String newFileName = f2.getName();
-				copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);
-				
-				
 				//call to the dao 
 				//resumeUploadDao.addNewResume(username,newName);		//not used
 			}
