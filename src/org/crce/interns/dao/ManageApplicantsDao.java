@@ -12,6 +12,8 @@ public interface ManageApplicantsDao {
 
 	public List<UserCompany> retreiveDetails(String company);
 
+	public List<UserCompany> retreiveDetails(String company, String year);
+	
 	public List<Company> retrieveCompany_id();
 
 	public void deleteDetails(UserCompany user);

@@ -1,6 +1,7 @@
 package org.crce.interns.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,7 +45,10 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 	// to create an entry 
 
 	public void createDetails(UserCompany user){
-		session=this.sessionFactory.openSession();			
+		session=this.sessionFactory.openSession();
+		String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		System.out.println(year+"----------------------------------------------------------"+year);
+		user.setYear(year);
 		Session s = sessionFactory.openSession();
 		String sql = "from Company as c where c.company_name = :n";
 		Query q = s.createQuery(sql);
@@ -142,6 +146,29 @@ public class ManageApplicantsDaoImpl implements ManageApplicantsDao {
 		
 		return userList;
 	}	
+	
+	public List<UserCompany> retreiveDetails(String company, String year){
+		 		
+		 		session=this.sessionFactory.openSession();
+		 		tx=session.beginTransaction();
+		 		Criteria criteria=session.createCriteria(UserCompany.class);
+		 
+		 		System.out.println("inside DAO: "+company);
+		 		List<UserCompany> list=new ArrayList<UserCompany>();
+		 		list.addAll(criteria.list());
+		 		List<UserCompany> userList=new ArrayList<UserCompany>();
+		 	
+		 	for(UserCompany d:list){
+		 		if(d.getCompany().equals(company) && d.getYear().equals(year)) userList.add(d);
+		     }
+		 	
+		 	System.out.println("outside DAO.....");
+		 	tx.commit();
+		 	session.close();
+		 	
+		 	return userList;
+		 }
+	
 
 	/*
 	 * 
