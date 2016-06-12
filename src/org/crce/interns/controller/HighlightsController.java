@@ -2,7 +2,9 @@ package org.crce.interns.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.ProfileService;
+import org.crce.interns.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +17,17 @@ public class HighlightsController {
 	@Autowired
 	private ProfileService profileService;
 	
+	@Autowired
+	private StatisticsService statisticsService;
+	
 	@RequestMapping(value="/Statistics", method = RequestMethod.GET)
-	
-	public ModelAndView login(HttpServletRequest request) {
-	
-		return new ModelAndView("list");
+	public ModelAndView view(HttpServletRequest request) {
+		//String year = (String) request.getAttribute("year");
+		String year = "2016";
+		TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(year);
+		ModelAndView model = new ModelAndView("list");
+		model.addObject("totalStudents", total);
+		return model;
 	}
 
 	
@@ -30,7 +38,7 @@ public class HighlightsController {
 		profileService.listProfessionalProfile("2016");
 		return new ModelAndView("list");
 	}
-
+	
 
 
 }

@@ -275,4 +275,52 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("/downloadOfferLetter") 	
+	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("fileName") String fileName) {
+		String userName = (String) request.getSession().getAttribute("userName");
+		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + userName + "\\Offer Letters\\" + fileName;
+		System.out.println(fileToBeDownloaded);
+
+		ServletContext context = request.getServletContext();
+
+		File downloadFile = new File(fileToBeDownloaded);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(downloadFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String mimeType = context.getMimeType(fileToBeDownloaded);
+		if (mimeType == null) {
+			mimeType = "application/octet-stream";
+		}
+
+		String downloadFileName = downloadFile.getName();
+
+		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+
+		response.setContentType(mimeType);
+		response.setContentLength((int) downloadFile.length());
+		String headerKey = "Content-Disposition";
+		String headerValue = String.format("attachment; filename=\"%s\"",
+				downloadFileName.substring(0, downloadFileName.indexOf('-')) + ext);
+		response.setHeader(headerKey, headerValue);
+
+		OutputStream outStream = null;
+		try {
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int bytesRead = -1;
+			outStream = response.getOutputStream();
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, bytesRead);
+			}
+
+			inputStream.close();
+			outStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
