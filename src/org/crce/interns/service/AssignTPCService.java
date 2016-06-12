@@ -24,6 +24,7 @@ public interface AssignTPCService {
 	public List<UserDetailsBean> viewUsers();
 	public List<FacultyUserBean> viewFacultyTasks();
 	public int insertWork(FacultyUserBean fuserBean);
+	public List<UserDetailsBean> viewTPCs(String year);
 
 /*
 	

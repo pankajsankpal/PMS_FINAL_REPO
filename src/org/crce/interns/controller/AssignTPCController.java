@@ -22,7 +22,6 @@ import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.CheckRoleService;
-import org.crce.interns.service.GetBranchService;
 import org.crce.interns.validators.AddTPCTaskValidator;
 import org.crce.interns.validators.AddTPCValidator;
 import org.crce.interns.validators.RemoveTPCValidator;
@@ -52,9 +51,6 @@ public class AssignTPCController {
 	@Autowired
 	private CheckRoleService crService;
 	
-	@Autowired
-	private GetBranchService gbService;
-
 	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET)	//Home Page of TPO
 	public ModelAndView goTPOHome(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
 		System.out.println("In Controller : TPO Home Page\n");
@@ -304,4 +300,12 @@ public class AssignTPCController {
 	//	return new ModelAndView("redirect:/TPOHome");
 	}
 
+/*	@RequestMapping(value="/ViewCurrentTPC", method = RequestMethod.GET)//View Users for TPO
+	public ModelAndView viewCurrentTPC(HttpServletRequest request) {
+		System.out.println("In Controller: View Current Year TPCs");
+		String year="2016";
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("users", userService.viewTPCs(year));
+		return new ModelAndView("viewUserT", modelMap);
+	}*/
 }
