@@ -161,8 +161,8 @@ description: contains serach field for searching any user or a company available
 
 				<div class="page-header">
 					<h1>
-						Logged in as
-						<core:out value="${loginForm.userName}" />
+						Logged in as ${sessionScope.userName}
+					
 					</h1>
 				</div>
 				<!-- /.page-header -->
