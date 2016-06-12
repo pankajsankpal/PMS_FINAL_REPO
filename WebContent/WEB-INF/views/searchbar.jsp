@@ -1,4 +1,3 @@
-
 <!-- author: Pankaj sankpal
 description: contains serach field for searching any user or a company available in the system  -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -161,8 +160,8 @@ description: contains serach field for searching any user or a company available
 
 				<div class="page-header">
 					<h1>
-						Logged in as ${sessionScope.userName}
-					
+						Logged in as
+						<c:out value="${sessionScope.name}" />
 					</h1>
 				</div>
 				<!-- /.page-header -->
