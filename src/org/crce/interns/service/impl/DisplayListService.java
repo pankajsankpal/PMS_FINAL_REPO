@@ -32,7 +32,7 @@ public class DisplayListService {
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
 			 String pathname = null;
-			if(userRole.equals(ConstantValues.StudentName))
+			if(userRole.equals(ConstantValues.StudentName) || userRole.equals("allowed"))
 				pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
 			else
 				pathname=dpb.getSystemFolder()+"\\"+folder;
@@ -50,10 +50,31 @@ public class DisplayListService {
 			 
 			 //getting the file names
 			 for (File file : files) 
-			   results.add(file.getName());
+				  results.add(file.getName());
 			     
 			         return results;
 		}
+		
+		
+		/**
+		 * this method displays the folders within a folder
+		 * @param id
+		 * @return
+		 */
+		public List<String > displayFolderlist(String id){
+			DirectoryPathBean dpb=new DirectoryPathBean();
+			 List<String> results = new ArrayList<String>();
+			 String path=dpb.getStudentFolder()+"\\" +id;
+			 File[] files= new File(path).listFiles();
+			 System.out.println(path);
+			 for (File file : files)
+				 if(file.isDirectory())
+				   results.add(file.getName());
+				     System.out.println(results);
+			 return results;
+			
+		}
+		
 		
 		
 }
