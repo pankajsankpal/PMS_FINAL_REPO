@@ -115,7 +115,7 @@ public class NfController implements ConstantValues{
 		
 		ModelAndView model=null;
 		//model = new ModelAndView("redirect:/checkNf");
-		model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/notifications");
 		
 		if(nfService.addNotification(add)){
 			System.out.println("notification added");
@@ -208,7 +208,7 @@ public class NfController implements ConstantValues{
 		
 		ModelAndView model=null;
 		//model = new ModelAndView("redirect:/checkNf");
-		model = new ModelAndView("redirect:/checkNf");
+		model = new ModelAndView("redirect:/notifications");
 		
 		
 		if(nfService.addNotificationForJobApply(TCS, "7001")){

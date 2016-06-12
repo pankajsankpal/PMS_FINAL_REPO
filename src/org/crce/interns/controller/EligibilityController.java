@@ -11,11 +11,17 @@
 
 package org.crce.interns.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.beans.CompanyBean;
+import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.EligibilityService;
+import org.crce.interns.service.ManageProfileService;
+import org.crce.interns.service.NfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -28,6 +34,12 @@ public class EligibilityController {
 	
 	@Autowired
 	private EligibilityService E_service;
+		
+	@Autowired
+	private ManageProfileService manageProfileService;
+	
+	@Autowired
+	private NfService nfService;
 	
 	String msg = "";
 
@@ -58,10 +70,40 @@ public class EligibilityController {
 		String username = (String) session.getAttribute("userName");
 		
 		System.out.println("This is user:" + username + "   and c_id: " + c_id);
+		
+		/*
+		 * @author Nevil Dsouza
+		 * code for notification
+		 * 
+		 */
+		List<CompanyBean> clist = manageProfileService.listCompanies();		
+		String companyName="";
+		int id = Integer.parseInt(job_id); 
+		for( CompanyBean cb: clist){
+			if(cb.getCompany_id()==id){
+				companyName = cb.getCompany_name();
+			}			
+		}
+		
+	
 
-		if (E_service.checkCriteria(username, c_id, job_id))
+		if (E_service.checkCriteria(username, c_id, job_id)){
+			/*
+			 * @author Nevil Dsouza
+			 * code for notification
+			 * 
+			 */
+			
+			if(nfService.addNotificationForJobApply(companyName, username)){
+				System.out.println("notification added");
+			}
+			else{
+				System.out.println("notification not added");
+			}
+				
+			
 			return new ModelAndView("eligible");
-
+		}
 		else
 		{
 			System.out.println("oopsie!!  you dont meet the criteria ");
