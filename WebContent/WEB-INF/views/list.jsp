@@ -1,14 +1,16 @@
- <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %> 
+
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
 	
@@ -29,18 +31,18 @@ $(document).ready(function(){
     });
 });
 </script>
- 
- <script  type="text/javascript">
- function fillsel(){
-  							var myDate = new Date();
-  							var year = myDate.getFullYear();
-  							for(var i = 2000; i < year+1; i++){
-					 						 	$('#yb').append('<option value="'+i+'">'+i+'</option>');
 
-  							}
-  							
- }
- </script>
+<script type="text/javascript">
+	function fillsel() {
+		var myDate = new Date();
+		var year = myDate.getFullYear();
+		for (var i = 2000; i < year + 1; i++) {
+			$('#yb').append('<option value="'+i+'">' + i + '</option>');
+
+		}
+
+	}
+</script>
 <title>Highlights</title>
 </head>
 <body class="no-skin" onLoad="fillsel()">
@@ -88,11 +90,42 @@ $(document).ready(function(){
 							</a><h4>Company</h4>
 							</td>
 						</tr>
-						</table>
-						</div>	
-					</div><!-- /.page-content -->
+						<tr>
+							<td><a href="stats"> <img
+									src="assets/images/statistics.jpg" alt="Statistics" width="300"
+									height="300" border="0">
+							</a>
+								<h4>Statistics</h4></td>
+							<td><a href="company"> <img
+									src="assets/images/company.png" alt="Company" width="300"
+									height="300" border="0">
+							</a>
+								<h4>Company</h4></td>
+						</tr>
+					</table>
 				</div>
-			</div><!-- /.main-content -->
-
-	</body>
+			</div>
+			<!-- /.page-content -->
+		</div>
+	</div>
+	<!-- /.main-content -->
+	<center>
+		<table border="1">
+			<tr>
+				<td>Year</td>
+				<td>Comps</td>
+				<td>Elex</td>
+				<td>It</td>
+				<td>Prod</td>
+			</tr>
+			<tr>
+				<td>${totalStudents.year}</td>
+				<td>${totalStudents.comps}</td>
+				<td>${totalStudents.elex}</td>
+				<td>${totalStudents.it}</td>
+				<td>${totalStudents.prod}</td>
+			</tr>
+		</table>
+	</center>
+</body>
 </html>
