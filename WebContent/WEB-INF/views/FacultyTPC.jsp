@@ -63,11 +63,11 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 						<div class="page-header">
 							
-							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
 							
 							
 						</div><!-- /.page-header -->
@@ -102,81 +102,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 											<div class="tab-content no-border padding-24">
 												
 
-												<div id="uploads" class="tab-pane">
-													<div class="row">
-														<div class="col-xs-12 col-sm-8">
-															<div class="widget-box">
-																<div class="widget-body">
-																 <div class="widget-main">	
-																	
-																		<div class="form-group">
-																			<div>
-																				<label class="col-sm-3 control-label no-padding-left" for="form-field-1"> Job Profile </label>
-																				<div class="col-sm-9">
-																					<input type="text" id="form-field-1" placeholder=" Name of Job Profile" class="col-xs-10 col-sm-8" />
-																				</div><br>
-																				<label for="form-field-11">About Job</label>
-																					<textarea id="form-field-11" placeholder="Add remarks on Selected Job profile" class="autosize-transition form-control"></textarea>
-																				<br>
-																				<label class="control-label col-xs-12 col-sm-3 no-padding-left" for="message">Send to :</label>
-																				<div class="col-xs-12 col-sm-9">
-																					<select id="message" class="multiselect" multiple="">
-																						<option value="cheese">Student</option>
-																						<option value="tomatoes">Student TPC</option>
-																						<option value="mozarella">TPO</option>
-																					</select>
-																				</div>
-																				<br><br><br>
-																				
-																				<div class="form-group">
-																					<div class="col-xs-12">
-																						<input multiple="" type="file" id="id-input-file-3" />
-																					</div>
-																				</div>
-
-																				<br><br><br>
-																				<button class="btn btn-info" type="button">
-																					<i class="ace-icon fa fa-check bigger-110"></i>
-																					SEND
-																				</button>
-
-																				&nbsp; &nbsp; &nbsp;
-																				<button class="btn" type="reset">
-																					<i class="ace-icon fa fa-undo bigger-110"></i>
-																					Reset
-																				</button>
-																				
-																			</div>
-																	   
-																	   </div>
-
-																		
-																		
-																	</div>
-																	
-																</div>
-															</div>
-														</div><!-- /.span -->
-													
-														<div class="col-xs-12 col-sm-4">
-																<br>
-																<a href="#"  class="btn btn-primary btn-md">View Counseling Reports.</a>
-																	<br><br>
-																<a href="#" class="btn btn-warning btn-md">View Offer Letters.</a>
-																	<br><br>
-																	<div class="col-xs-12">
-																		<input type="file" id="id-input-file-2" />
-																	<a href="#"  class="btn btn-info btn-sm">Upload</a>
-																	</div>
-																
-													</div>
-													</div>
-
-
-													<div class="space-12"></div>
-
-													</div><!-- /#feed -->
-
+											
 												<div id="activity" class="tab-pane in active">
 													
 												
@@ -187,41 +113,21 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
 															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>
-															<a href="sendMail"  class="btn btn-inverse btn-lg btn-block">Send Email </a>
-															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
+															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
+															
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
 															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
-															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>
-															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
+															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>  <br><br>
+															
 
 														</div>
 														
-														<div class="col-xs-12 col-sm-4 right">
-															<div class="widget-box">
-															<div class="widget-body">
-															 <div class="widget-main">
-															 <h3>Send notification to user </h3>
-															<%-- 	<form:form action="notify" commandName="notify">
-																	<table cellpadding="5" cellspacing="10" >
-																		<tr >
-																			<td> Roll No:<FONT color="red"> <form:errors
-																						path="userName" /></FONT></td>
-																		</tr>
-																		<tr>
-																			<td ><form:input path="userName" /></td>
-																			<td><input class="btn btn-sm btn-warning" type="submit" value="Notify" /></td>
-																		</tr>
-																	
-																	</table>
-																</form:form>
-																--%>
-															</div>
-															</div>
-															</div>
+														<div class="col-xs-12 col-sm-8 right">
+														<a href="SearchApplicant"  class="btn btn-pink btn-lg btn-block">Search Applicants </a>
 														</div>
 													</div>
 													

@@ -50,7 +50,7 @@ description: contain notification received by student and student tpc -->
 						
 						<div class="page-header">
 							<h1>
-								Welcome  ${sessionScope.name} To Student TPC page
+									Your Notifications....
 								
 							</h1>
 						</div><!-- /.page-header -->
