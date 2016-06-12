@@ -28,7 +28,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.DirectoryPathBean;
-import org.crce.interns.dao.ResumeUploadDao;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.service.ResumeUploadService;
@@ -42,8 +41,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Service("resumeUploadService")
 public class ResumeUploadServiceImpl implements ResumeUploadService {
 
-	@Autowired
-	private ResumeUploadDao resumeUploadDao;
+	//@Autowired
+	//private ResumeUploadDao resumeUploadDao;		//not used
 
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
 	
@@ -90,7 +89,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				f1.renameTo(f2);
 				fileUpload.transferTo(f2);
 				//call to the dao 
-				resumeUploadDao.addNewResume(username,newName);
+				//resumeUploadDao.addNewResume(username,newName);		//not used
 			}
 					
 				

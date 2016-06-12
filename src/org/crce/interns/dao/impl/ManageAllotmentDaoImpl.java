@@ -37,4 +37,6 @@ public class ManageAllotmentDaoImpl implements ManageAllotmentDao{
 		return (List<Allotment>) sessionFactory.getCurrentSession().createCriteria(Allotment.class).list();
 		//return (List<Allotment>) sessionFactory.openSession().createCriteria(Allotment.class).list();
 	}
+
+	
 }

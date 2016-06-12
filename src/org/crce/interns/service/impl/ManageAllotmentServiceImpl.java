@@ -75,12 +75,12 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 		manageAllotmentDao.createAllotment(allotment);
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+/**	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public List<Allotment> listAllotment() {
 		// TODO Auto-generated method stub
 		return manageAllotmentDao.listAllotment();
 	}
-
+**/
 	@Override
 	public void handleFileUpload(HttpServletRequest request, CommonsMultipartFile fileUpload) throws Exception {
 		// TODO Auto-generated method stub
