@@ -23,6 +23,7 @@ import org.crce.interns.dao.StatisticsDAO;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.PlacementStatistics;
 import org.crce.interns.model.PlacementStats;
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.model.UserCompany;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.StatisticsService;
@@ -299,6 +300,11 @@ Return list of beans to front end. Done (y)
 	@Override
 	public void calculateTotal(String year) {
 		statisticsDAO.calculateTotal(year);
+	}
+
+	@Override
+	public TotalNoOfStudents getTotalNoOfStudents(String year) {
+		return statisticsDAO.getTotalNoOfStudents(year);
 	}
 
 }
