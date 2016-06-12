@@ -70,7 +70,7 @@ public class DisplayListService {
 			 for (File file : files)
 				 if(file.isDirectory())
 				   results.add(file.getName());
-				     System.out.println(results);
+				  
 			 return results;
 			
 		}
