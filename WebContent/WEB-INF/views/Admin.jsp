@@ -256,7 +256,9 @@ description: contains various functions for admin -->
 		<tr>
 			<td>7. <a href="AssignRole">Assign functions to various roles</a><br /></td>
 		</tr>
-
+		<tr>
+			<td>8. <a href="ViewCurrentTPC.html">View Current TPC</a><br /></td>
+		</tr>
 	</table>
 
 	<br /></br>
