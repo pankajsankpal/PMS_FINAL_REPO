@@ -152,7 +152,7 @@
 														
 														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
 														  
-														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add candidate </a> <br><br>
+														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
 														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
 														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>
