@@ -44,6 +44,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="fileUploadValidator" class="org.crce.interns.validators.FileUploadValidator" />
 	<bean id="addSelectedValidator" class="org.crce.interns.validators.AddSelectedValidator" />
 	<bean id="deleteSelectedValidator" class="org.crce.interns.validators.DeleteSelectedValidator" />
+	<bean id="searchApplicantValidator" class="org.crce.interns.validators.SearchApplicantValidator" />
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
