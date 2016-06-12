@@ -103,11 +103,8 @@ description: contain notification received by student and student tpc -->
 															<div class="widget-box">
 															<div class="widget-header widget-header-large">
 																<h4 class="widget-title">Check out your latest notifications</h4>
-
-																						
+						
 															</div>
-
-
 
 															<div class="widget-body">
 																<div class="widget-main padding-4 scrollable" data-size="400">

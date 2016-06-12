@@ -12,6 +12,8 @@ package org.crce.interns.service.impl;
 
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
@@ -223,6 +225,14 @@ public class ProfileServiceImpl implements ProfileService{
 		
 		System.out.println(result.toString());
 		return result;
+	}
+	
+	
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public Map<String, Set<String>> totalStudents(String year){
+		return profileDAO.totalStudents(year);
 	}
 	
 }

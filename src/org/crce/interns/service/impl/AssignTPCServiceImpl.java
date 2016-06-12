@@ -19,6 +19,7 @@ import java.util.List;
 import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.dao.AssignTPCDao;
+import org.crce.interns.dao.ProfileDAO;
 import org.crce.interns.model.FacultyUser;
 import org.crce.interns.model.RMUser;
 import org.crce.interns.model.UserDetails;
@@ -27,11 +28,15 @@ import org.crce.interns.service.ConstantValues;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AssignTPCServiceImpl implements AssignTPCService,ConstantValues {
 	@Autowired
 	private AssignTPCDao assignTPCDao;
+	
+	@Autowired
+	private ProfileDAO profDaO;
 
 	/* Methods to Insert the data */
 	@Override
@@ -221,5 +226,36 @@ public class AssignTPCServiceImpl implements AssignTPCService,ConstantValues {
 		
 		return convertToBeanFaculty(userList);
 	}
+
+	@Override
+	@Transactional
+	public List<UserDetailsBean> viewTPCs(String year) {
+		System.out.println("In ServiceImpl: View Current Year TPCs");
+		List<String> usernameList=profDaO.listProfessionalProfile(year);
+		System.out.println("Size of the list from ProfessionalProfile Table: "+usernameList.size());
+		List<UserDetails> userList = assignTPCDao.viewUsers();
+		
+		List<UserDetailsBean> userListBean=convertToBean(userList);
+		System.out.println("userListBean size "+userListBean.size());
+		
+		List<UserDetailsBean> userListBeanDisp= new ArrayList<UserDetailsBean>();
+		
+		for(String s:usernameList)
+		{	
+			System.out.println("String from ProfessionalProfile Table: "+s);
+		
+			for(int i=0;i<userListBean.size();i++){
+				System.out.println("String in UserDetails Table: "+userListBean.get(i).getUserName());
+			if(s.equalsIgnoreCase(userListBean.get(i).getUserName()))
+			{
+				userListBeanDisp.add(userListBean.get(i));
+				break;
+			}
+			}
+		
+		}
+		return userListBeanDisp;
+	}
+
 
 }
