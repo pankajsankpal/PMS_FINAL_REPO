@@ -6,31 +6,62 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Assign Role</title>
+<style>
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
-	<form:form action="roleAssigned"  commandName="assignRole">
-	<table>
-		<tr>
-			<td>Function Name:<FONT color="red"><form:errors path="functionName" /></FONT></td>
-		</tr>
-		<tr>
-			<td><form:input path="functionName" /></td>
-		</tr>
-		<tr>
-			<td>Role ID:<FONT color="red"><form:errors
-				path="roleId" /></FONT></td>
-		</tr>
-		<tr>
-			<td><form:input path="roleId" /></td>
-		</tr>
-		<tr>
-			<td>Function URL:</td>
-			<td><form:input path="functionURL"/></td>
-		</tr>
-		<tr>
-			<td><input type="submit" value="Submit" /></td>
-		</tr>
-	</table>
-</form:form>
+	<jsp:directive.include file="Header.jsp" />
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="page-header">
+					<h2 class="widget-title grey lighter">
+						&nbsp; &nbsp; &nbsp; &nbsp; 
+						Assign Role
+					</h2>
+				</div>
+				<div class="space"></div>
+				<div class="center">
+			<form:form action="roleAssigned"  commandName="assignRole">
+				<table align="center">
+					<tr>
+						<%-- <td>Function Name:<FONT color="red"><form:errors path="functionName" /></FONT></td>
+						<td><form:input path="functionName" /></td>
+						 --%>
+						<td><form:label path="functionName">Function Name:</form:label></td>
+						<td><form:input path="functionName" /></td>
+						<td><form:errors path="functionName" cssClass="error" /></td>
+					</tr>
+					<tr>
+						
+					</tr>
+					<tr>
+						<td>Role ID:<FONT color="red"><form:errors
+							path="roleId" /></FONT></td>
+						<td><form:input path="roleId" /></td>	
+					</tr>
+					<tr>
+						
+					</tr>
+					<tr>
+						<td>Function URL:</td>
+						<td><form:input path="functionURL"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Submit" class="btn btn-info" /></td>
+					</tr>
+				</table>
+				</form:form>
+  				</div>
+  			</div>
+  		</div>
+  	</div>			
+  	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>
