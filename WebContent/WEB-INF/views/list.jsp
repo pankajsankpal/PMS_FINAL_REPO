@@ -11,10 +11,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+	
+	var x = new Date().getFullYear();
+	$("#tpclist").attr("href", "tpclist?year="+x);
+	$("#studentlist").attr("href", "studentlist?year="+x);
+	$("#stats").attr("href", "stats?year="+x);
+	$("#company").attr("href", "company?year="+x);
+	
+	
     $("#yb").change(function(){
     	var x = $('#yb').val();
-    	
-    	window.location.replace("highlight?year="+x);
+    	$("#tpclist").attr("href", "tpclist?year="+x);
+    	$("#studentlist").attr("href", "studentlist?year="+x);
+    	$("#stats").attr("href", "stats?year="+x);
+    	$("#company").attr("href", "company?year="+x);
+    	//window.location.replace("highlight?year="+x);
     });
 });
 </script>
@@ -57,22 +68,22 @@ $(document).ready(function(){
 						<div class="center">
 						<table align="center">
 						<tr>	
-							<td><a href="tpclist">
+							<td><a id="tpclist" href="tpclist">
 								<img src="assets/images/placement.jpg" alt="TPC list" width="300" height="300" border="0">
 							</a><h4>TPC list</h4>
 							</td>
 							<td>
-							<a href="studentlist">
+							<a id="studentlist" href="studentlist">
 								<img src="assets/images/student.jpg" alt="Students" width="300" height="300" border="0">
 							</a><h4>Students</h4>
 							</td>
 						</tr>	
 						<tr>
-							<td><a href="stats">
+							<td><a id="stats" href="stats">
 								<img src="assets/images/statistics.jpg" alt="Statistics" width="300" height="300" border="0">
 							</a><h4>Statistics</h4>
 							</td>
-							<td><a href="company">
+							<td><a id="company" href="company">
 								<img src="assets/images/company.png" alt="Company" width="300" height="300" border="0">
 							</a><h4>Company</h4>
 							</td>

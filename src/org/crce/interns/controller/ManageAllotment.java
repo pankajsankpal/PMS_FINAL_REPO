@@ -105,6 +105,11 @@ public class ManageAllotment extends HttpServlet{
 	//Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
+		
+		
+		  //Authentication is commented
+		 
+		 
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		String user=(String)session.getAttribute("userName");
@@ -112,6 +117,9 @@ public class ManageAllotment extends HttpServlet{
 		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
 			return new ModelAndView("403");
 		else
+		
+		
+		
 		{
 			AllotmentBean allotmentBean = new AllotmentBean(); // declaring
 
@@ -127,11 +135,18 @@ public class ManageAllotment extends HttpServlet{
 	
 	@RequestMapping(value="/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request) {
+		
+		
+		/* **
+		 		//Authentication is commented
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("ManageAllotment", roleId))
 			return new ModelAndView("403");
 		else
+		
+		** */
 		{
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment()));
