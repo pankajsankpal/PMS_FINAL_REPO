@@ -32,6 +32,11 @@ public class DisplayListController {
 	 */
 	@RequestMapping(value = "/displist")
 	public ModelAndView displayCVpage() {
+		return new ModelAndView("listCV");
+	}
+	
+	@RequestMapping(value = "/disptemppage")
+	public ModelAndView displaypage() {
 		return new ModelAndView("Folders");
 	}
 	
