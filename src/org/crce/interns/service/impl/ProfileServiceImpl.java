@@ -11,6 +11,10 @@ package org.crce.interns.service.impl;
 
 
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserDetailsBean;
@@ -194,6 +198,41 @@ public class ProfileServiceImpl implements ProfileService{
 		return userDetailsBean;
 	}
 	
+	@SuppressWarnings("null")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public List<String> listProfessionalProfile(String year){
+		/*
+		List<ProfessionalProfileBean> result = null;
+		
+		List<ProfessionalProfile> temp = profileDAO.listProfessionalProfile(year);
+		
+		for( ProfessionalProfile p : temp){
+			
+			
+			ProfessionalProfileBean pb = new ProfessionalProfileBean();
+			BeanUtils.copyProperties(p, pb);
+			result.add(pb);
+		}
+		
+		System.out.println(result.toString());
+		return result;
+		*/
+		
+		List<String> result= null;
+		
+		result = profileDAO.listProfessionalProfile(year);
+		
+		System.out.println(result.toString());
+		return result;
+	}
 	
+	
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public Map<String, Set<String>> totalStudents(String year){
+		return profileDAO.totalStudents(year);
+	}
 	
 }

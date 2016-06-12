@@ -127,7 +127,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -409,17 +409,19 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         
         String senderList = "";
         Session session = sessionFactory.openSession();
-        String SQL_QUERY = "Select company_id from Company where company_name like '" + companyName + "'";
+        String SQL_QUERY = "Select company_id from Company where lower(company_name) like '" + companyName + "'";
         Query query = session.createQuery(SQL_QUERY);
         List list = query.list();
-        System.out.println(list.toString());
-        for(Object o : list){
-            String SQL_QUERY1 = "Select userName from QuickStats where companyId = "+ Integer.parseInt(o.toString());
+        System.out.println("List "+list.toString());
+        for(Object j : list){
+            System.out.println("called for j");
+            String SQL_QUERY1 = "Select username from QuickStats where company_id = "+ Integer.parseInt(j.toString());
             Query query1 = session.createQuery(SQL_QUERY1);
             List list1 = query1.list();
             System.out.println(list1.toString());
             //String recipient = list1.toString();
             for(Object i : list1){
+                System.out.println("called for i");
                 String SQL_QUERY2 = "Select emailId from PersonalProfile where userName like '" + i + "'";
                 Query query2 = session.createQuery(SQL_QUERY2);
                 List list2 = query2.list();

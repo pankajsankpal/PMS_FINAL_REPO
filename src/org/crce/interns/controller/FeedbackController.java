@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import org.crce.interns.beans.FeedbackBean;
+import org.crce.interns.beans.UserCompanyBean;
 import org.crce.interns.model.Feedback;
 import org.crce.interns.model.UserCompany;
 import org.crce.interns.service.CheckRoleService;
@@ -97,12 +98,14 @@ public class FeedbackController {
 		//System.out.println("in controller1");
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		 List<UserCompany> userList=new ArrayList<UserCompany>();
+		/* List<UserCompany> userList=new ArrayList<UserCompany>();
+		 userList.addAll(crudService.retreiveDetails("TCS"));*/
+		List<UserCompanyBean> userList=new ArrayList<UserCompanyBean>();//Changed from UserComapny to UserCompanyBean by @Rashmi
 		 userList.addAll(crudService.retreiveDetails("TCS"));
 		// HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
 		boolean flag=false;
-		for(UserCompany d:userList ){
+		for(UserCompanyBean d:userList ){ //Changed from UserComapny to UserCompanyBean by @Rashmi
 			if(d.getUsername().matches(user)) { flag=true; break; }
 		}
 		if(flag)
