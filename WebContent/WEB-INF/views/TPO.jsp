@@ -130,8 +130,10 @@
 
 													<div class="space-12"></div>
 
-													</div><!-- /#feed -->
-
+												</div><!-- #end of uploads -->
+												
+												
+												
 												<div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
@@ -141,6 +143,7 @@
 														<div class="col-xs-12 col-sm-4 left">
 															
 															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
+
 															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
 																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
 
@@ -161,7 +164,7 @@
 											</div>
 								
 							
-											</div><!-- /#pictures -->
+										
 										</div><!-- end of tabbable -->
 									</div><!-- end of user-profile-2 -->
 								</div><!-- end of show -->

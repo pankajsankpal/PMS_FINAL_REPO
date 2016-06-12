@@ -50,6 +50,7 @@ public class DownloadController extends HttpServlet {
 	 * availabe online
 	 */
 	@RequestMapping("/downloadResume")
+
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		try {
