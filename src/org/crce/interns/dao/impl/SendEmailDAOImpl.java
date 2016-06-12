@@ -127,7 +127,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology'";
 
         Query query = session.createQuery(SQL_QUERY);
 
