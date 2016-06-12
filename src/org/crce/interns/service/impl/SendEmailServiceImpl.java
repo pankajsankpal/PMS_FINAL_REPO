@@ -17,7 +17,6 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.dao.SendEmailDAO;
-import org.crce.interns.service.ConstantValues;
 
 import org.crce.interns.service.SendEmailService;
 import org.crce.interns.validators.PersonalEmailValidator;
@@ -31,7 +30,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Service("sendEmailServiceImpl")
-public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
+public class SendEmailServiceImpl implements SendEmailService {
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -285,7 +284,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("prodclass,");
             
             loweredList.remove("prodclass,");
-            String prodClass = sendEmailDAO.fetchStreamStudents(PROD);
+            String prodClass = sendEmailDAO.fetchStreamStudents("Production Engineering");
             loweredList.add(pos, prodClass);
             // System.out.println(loweredList);
         } else if (loweredList.contains("prodclass")) {
@@ -293,7 +292,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("prodclass");
             //System.out.println(pos);
             loweredList.remove("prodclass");
-            String prodClass = sendEmailDAO.fetchStreamStudents(PROD);
+            String prodClass = sendEmailDAO.fetchStreamStudents("Production Engineering");
             loweredList.add(pos, prodClass);
             // System.out.println(loweredList);
         }
@@ -302,7 +301,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("itclass,");
             System.out.println(pos);
             loweredList.remove("itclass,");
-            String itClass = sendEmailDAO.fetchStreamStudents(IT);
+            String itClass = sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, itClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("itclass")) {
@@ -310,7 +309,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("itclass");
             System.out.println(pos);
             loweredList.remove("itclass");
-            String itClass = sendEmailDAO.fetchStreamStudents(IT);
+            String itClass = sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, itClass);
             System.out.println(loweredList);
         }
@@ -319,7 +318,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("compsclass,");
             System.out.println(pos);
             loweredList.remove("compsclass,");
-            String compsClass = sendEmailDAO.fetchStreamStudents(COMPS);
+            String compsClass = sendEmailDAO.fetchStreamStudents("Computer Engineering");
             loweredList.add(pos, compsClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("compsclass")) {
@@ -327,7 +326,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("compsclass");
             System.out.println(pos);
             loweredList.remove("compsclass");
-            String compsClass = sendEmailDAO.fetchStreamStudents(COMPS);
+            String compsClass = sendEmailDAO.fetchStreamStudents("Computer Engineering");
             loweredList.add(pos, compsClass);
             System.out.println(loweredList);
         }
@@ -336,7 +335,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("elexclass,");
             System.out.println(pos);
             loweredList.remove("elexclass,");
-            String elexClass = sendEmailDAO.fetchStreamStudents(ELEX);
+            String elexClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering");
             loweredList.add(pos, elexClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("elexclass")) {
@@ -344,7 +343,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("elexclass");
             System.out.println(pos);
             loweredList.remove("elexclass");
-            String elexClass = sendEmailDAO.fetchStreamStudents(ELEX);
+            String elexClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering");
             loweredList.add(pos, elexClass);
             System.out.println(loweredList);
         }
@@ -353,7 +352,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("allclasses,");
             System.out.println(pos);
             loweredList.remove("allclasses,");
-            String allClass = sendEmailDAO.fetchStreamStudents(ELEX) + " " + sendEmailDAO.fetchStreamStudents(COMPS) + " " + sendEmailDAO.fetchStreamStudents(PROD) + " " + sendEmailDAO.fetchStreamStudents(IT);
+            String allClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering") + " " + sendEmailDAO.fetchStreamStudents("Computer Engineering") + " " + sendEmailDAO.fetchStreamStudents("Production Engineering") + " " + sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, allClass);
             System.out.println(loweredList);
         } else if (loweredList.contains("allclasses")) {
@@ -361,7 +360,7 @@ public class SendEmailServiceImpl implements SendEmailService,ConstantValues {
             int pos = loweredList.indexOf("allclasses");
             System.out.println(pos);
             loweredList.remove("allclasses");
-            String allClass = sendEmailDAO.fetchStreamStudents(ELEX) + " " + sendEmailDAO.fetchStreamStudents(COMPS) + " " + sendEmailDAO.fetchStreamStudents(PROD) + " " + sendEmailDAO.fetchStreamStudents(IT);
+            String allClass = sendEmailDAO.fetchStreamStudents("Electronics Engineering") + " " + sendEmailDAO.fetchStreamStudents("Computer Engineering") + " " + sendEmailDAO.fetchStreamStudents("Production Engineering") + " " + sendEmailDAO.fetchStreamStudents("Information Technology Engineering");
             loweredList.add(pos, allClass);
             System.out.println(loweredList);
         }

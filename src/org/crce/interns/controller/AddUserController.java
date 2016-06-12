@@ -28,7 +28,6 @@ import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.FileUpload;
 import org.crce.interns.service.AddUserService;
 import org.crce.interns.service.CheckRoleService;
-import org.crce.interns.service.CopyFileService;
 import org.crce.interns.service.DirectoryService;
 import org.crce.interns.validators.FileUploadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +88,6 @@ public class AddUserController {
 			String userName = request.getSession().getAttribute("userName").toString();
 			System.out.println("");
 			addUserService.handleFileUpload(request,fileUpload,userName);
-			
 			model.addObject("success", 1);
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();

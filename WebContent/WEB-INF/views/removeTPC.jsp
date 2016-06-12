@@ -1,4 +1,5 @@
 
+
 <!-- author: Pankaj sankpal
 description: contains fields to remove a student or a faculty TPC into the System->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -201,5 +202,10 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 </body>
 </html>
 
+<<<<<<< HEAD
+ --%>
+>>>>>>> branch 'master' of https://github.com/Andreaf2395/PMS_FINAL_REPO.git
+=======
 
  --%>
+>>>>>>> branch 'master' of https://github.com/Andreaf2395/PMS_FINAL_REPO.git
