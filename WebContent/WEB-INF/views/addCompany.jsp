@@ -14,33 +14,57 @@
 	font-weight: bold;
 }
 </style>  
-
 </head>
 <body>
-<form:form method="POST" action="saveCompany" modelAttribute="companyBean">  
-  <table>
-   
-   
-   
-   <tr>
-   <td><form:label path="company_name">Name of the company:</form:label></td>
-  <td><form:input path="company_name" value="${company.company_name}" /> </td>
-  <td><form:errors path="company_name" cssClass="error" /></td>
-     
-  </tr>
-  
-  <tr>
-  <td><form:label path="company_address">Address: </form:label> </td>
-  <td><form:input path="company_address" value="${company.company_address}"/> </td>
-  <td><form:errors path="company_address" cssClass="error" /></td>
-     
-  </tr>
-  <tr>  
-         <td colspan="2"><input type="submit" value="Proceed to next page"/></td>  
-        </tr>  
-  
-  </table>
-   </form:form>
-  
- </body>
+	<jsp:directive.include file="Header.jsp" />
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="page-header">
+					<h2 class="widget-title grey lighter">
+						&nbsp; &nbsp; &nbsp; &nbsp; 
+						Add company
+					</h2>
+				</div>
+				<div class="space"></div>
+				<div class="center">
+					<form:form method="POST" action="saveCompany" modelAttribute="companyBean">  
+  					<table align="center">   
+   						<tr>
+   							<td><form:label path="company_name">Name of the company:&nbsp</form:label></td>
+  							<td><form:input path="company_name" value="${company.company_name}" /> </td>
+  							<td><form:errors path="company_name" cssClass="error" /></td>     
+  						</tr>
+  						<tr>
+					  	<td><br/></td>
+					  	</tr>
+					  	<tr>
+					  	<td><br/></td>
+					  	</tr>
+  						<tr>
+  							<td><form:label path="company_address">Address:&nbsp </form:label> </td>
+  							<td><form:input path="company_address" value="${company.company_address}"/> </td>
+  							<td><form:errors path="company_address" cssClass="error" /></td>
+					  	</tr>
+					  	<tr>
+					  	<td><br/></td>
+					  	</tr>
+					  	<tr>
+					  	<td><br/></td>
+					  	</tr>
+					  	<tr>
+					  	<td><br/></td>
+					  	</tr>
+  						<tr>  
+        	 				<td colspan="2"><input type="submit" value="Proceed to next page" class="btn btn-info"/></td>  
+        				</tr>   
+  					</table>
+  	 				</form:form>
+  				</div>
+  			</div>
+  		</div>
+  	</div>			
+  	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
+</body>
 </html>
