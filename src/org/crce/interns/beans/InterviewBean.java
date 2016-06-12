@@ -1,7 +1,7 @@
 package org.crce.interns.beans;
 
 public class InterviewBean {
-	private String event_id;
+	private int event_id;
 	private String interview_type;
 	public String getInterview_type() {
 		return interview_type;
@@ -11,11 +11,11 @@ public class InterviewBean {
 		this.interview_type = interview_type;
 	}
 
-	public String getEvent_id() {
+	public int getEvent_id() {
 		return event_id;
 	}
 
-	public void setEvent_id(String event_id) {
+	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
 

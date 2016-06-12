@@ -7,6 +7,7 @@
 
 package org.crce.interns.dao;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,6 +30,9 @@ public interface ProfileDAO {
 	
 	public UserDetails updateUserDetails(UserDetails userDetails);
 	
-	public Map<String, Set<String>> totalStudents();
+	public Map<String, Set<String>> totalStudents(String year);
+	
+	public List<String> listProfessionalProfile(String year);
+	
 	
 }

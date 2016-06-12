@@ -6,10 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Delete</title>
+<style>
+	.error {
+		color:#ff0000;
+		font-style:italic;
+		font-weight:bold;
+	}
+</style>
 </head>
 <body>
 <form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
-
 Name:<form:input name="name" type="text" path="username" />
 <form:errors path="username" cssClass="error"/><br/>
 Company:<form:input name="company" type="text" path="company" />
@@ -19,12 +25,5 @@ ${msg}
 <br/> 
 <input type="submit" value="Delete"/>
 </form:form><br />
-
-Name:<form:input name="name" type="text" path="username" /><br>
-Company:<form:input name="company" type="text" path="company" /><br>
-<input type="submit" value="Delete"/>
-
-<a href="view-candidate.html">Back</a>
-
 </body>
 </html>

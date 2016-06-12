@@ -1,6 +1,7 @@
 package org.crce.interns.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -129,7 +130,7 @@ public class StatisticsServiceImpl implements StatisticsService, ConstantValues 
 		
 		
 		// fetch branch-wise list of usernames
-		Map<String, Set<String>> result = profileDao.totalStudents();
+		Map<String, Set<String>> result = profileDao.totalStudents(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
 		
 		for(String i: BRANCHES){
 			
@@ -254,7 +255,7 @@ Return list of beans to front end. Done (y)
 		System.out.println("RESULT = "+companySet.toString());		
 		
 		// fetch branch-wise list of usernames
-		Map<String, Set<String>> result = profileDao.totalStudents();
+		Map<String, Set<String>> result = profileDao.totalStudents(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
 				
 		//SUCCESSFULL
 		//System.out.println("COMPS = "+result.get(COMPS).toString());		
@@ -295,6 +296,9 @@ Return list of beans to front end. Done (y)
 		
 	}
 	
-	
+	@Override
+	public void calculateTotal(String year) {
+		statisticsDAO.calculateTotal(year);
+	}
 
 }

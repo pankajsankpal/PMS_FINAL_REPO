@@ -8,11 +8,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
  
-<!-- <script type="text/javascript">
-function selchange(){
-	var x= $("#yb").val();
-	alert(x);
-}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	var x = new Date().getFullYear();
+	$("#tpclist").attr("href", "tpclist?year="+x);
+	$("#studentlist").attr("href", "studentlist?year="+x);
+	$("#stats").attr("href", "stats?year="+x);
+	$("#company").attr("href", "company?year="+x);
+	
+	
+    $("#yb").change(function(){
+    	var x = $('#yb').val();
+    	$("#tpclist").attr("href", "tpclist?year="+x);
+    	$("#studentlist").attr("href", "studentlist?year="+x);
+    	$("#stats").attr("href", "stats?year="+x);
+    	$("#company").attr("href", "company?year="+x);
+    	//window.location.replace("highlight?year="+x);
+    });
+});
 </script>
  
  <script  type="text/javascript">
@@ -25,7 +40,7 @@ function selchange(){
   							}
   							
  }
- </script> -->
+ </script>
 <title>Highlights</title>
 </head>
 <body class="no-skin" onLoad="fillsel()">
@@ -41,32 +56,34 @@ function selchange(){
 							</h2></b>
 						</div>
 						<!-- /.page-header -->
-						<!-- <div class="space-4"></div>
+						<div class="space-4"></div>
+						
 						<div class="center">
-							<select id="yb" name="yb" onChange="selchange()">
+							<form action = "">
+							<select id="yb" name="yb" >
   							</select>
-  							<input type="button" id="year" name="year" value="Submit">
-						</div> -->
+  							</form>
+						</div>
 						<div class="space-4"></div>
 						<div class="center">
 						<table align="center">
 						<tr>	
-							<td><a href="tpclist">
+							<td><a id="tpclist" href="tpclist">
 								<img src="assets/images/placement.jpg" alt="TPC list" width="300" height="300" border="0">
 							</a><h4>TPC list</h4>
 							</td>
 							<td>
-							<a href="studentlist">
+							<a id="studentlist" href="studentlist">
 								<img src="assets/images/student.jpg" alt="Students" width="300" height="300" border="0">
 							</a><h4>Students</h4>
 							</td>
 						</tr>	
 						<tr>
-							<td><a href="stats">
+							<td><a id="stats" href="stats">
 								<img src="assets/images/statistics.jpg" alt="Statistics" width="300" height="300" border="0">
 							</a><h4>Statistics</h4>
 							</td>
-							<td><a href="CompaniesPage">
+							<td><a id="company" href="company">
 								<img src="assets/images/company.png" alt="Company" width="300" height="300" border="0">
 							</a><h4>Company</h4>
 							</td>
@@ -76,7 +93,6 @@ function selchange(){
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-				<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+
 	</body>
 </html>
