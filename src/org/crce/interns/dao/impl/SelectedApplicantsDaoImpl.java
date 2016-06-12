@@ -1,6 +1,7 @@
 package org.crce.interns.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.crce.interns.dao.SelectedApplicantsDao;
@@ -26,7 +27,12 @@ public class SelectedApplicantsDaoImpl implements SelectedApplicantsDao{
 	
 	// to create an entry 
 	public void createDetails(QuickStats user){
-		session=this.sessionFactory.openSession();			
+		session=this.sessionFactory.openSession();
+		
+		String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		System.out.println(year+"----------------------------------------------------------"+year);
+		user.setYear(year);
+
 		Session s = sessionFactory.openSession();
 		String sql = "from Company as c where c.company_name = :n";
 		Query q = s.createQuery(sql);
@@ -121,6 +127,30 @@ public class SelectedApplicantsDaoImpl implements SelectedApplicantsDao{
 
 	}
 	
+	
+	 public List<QuickStats> retrieveDetails(String company, String year){
+		
+		session=this.sessionFactory.openSession();
+		tx=session.beginTransaction();
+		Criteria criteria=session.createCriteria(QuickStats.class);
+
+		System.out.println("inside DAO: "+company);
+		List<QuickStats> list=new ArrayList<QuickStats>();
+		list.addAll(criteria.list());
+		List<QuickStats> userList=new ArrayList<QuickStats>();
+		
+		for(QuickStats d:list){
+			if(d.getCompany_name().equals(company) && d.getYear().equals(year)) userList.add(d);
+	    }
+		
+		System.out.println("outside DAO.....");
+		tx.commit();
+		session.close();
+		
+		return userList;
+	}
+
+	 
 	
 	public void deleteDetails(QuickStats user){
 		

@@ -1,6 +1,7 @@
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.crce.interns.beans.PersonalProfileBean;
@@ -61,8 +62,11 @@ public class SelectedApplicantsController {
 		 System.out.println("inside controller"+company);
 		 
 		 model = new ModelAndView("selected-candidate-list");
+		 
+		 String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 
 		 List<QuickStatsBean> userBeanList=new ArrayList<QuickStatsBean>();
-		 userBeanList.addAll(selectService.retrieveDetails(company));
+		 userBeanList.addAll(selectService.retrieveDetails(company,year));
 		
 		 List<ProfessionalProfileBean> professionalProfileBeanList=new ArrayList<ProfessionalProfileBean>();
 		 List<PersonalProfileBean> personalProfileBeanList=new ArrayList<PersonalProfileBean>();

@@ -31,6 +31,9 @@ public class QuickStats implements Serializable{
 
 	@Column(name="company_name", nullable=false)
 	private String company_name;
+	
+	@Column(name="year")
+	private String year;
 
 	public String getUsername() {
 		return username;
@@ -54,6 +57,14 @@ public class QuickStats implements Serializable{
 
 	public void setCompany_name(String company_name) {
 		this.company_name = company_name;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
 	}
 
 	
