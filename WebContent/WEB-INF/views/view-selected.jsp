@@ -10,7 +10,7 @@
 <body>
 <form action="viewsclist.html" method="post" >
 	Company:<select name="company" >
-	<option value="JP Morgan" >JPMC</option>
+	<option value="jpmorgan" >JPMC</option>
 	<option value="Accenture" >Accenture</option>
 	<option value="Tata Consultancy Services" >TCS</option>
 	</select><br>
