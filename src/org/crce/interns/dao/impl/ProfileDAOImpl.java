@@ -110,41 +110,40 @@ public class ProfileDAOImpl implements ProfileDAO, ConstantValues{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map<String, Set<String>> totalStudents(){
+	public Map<String, Set<String>> totalStudents(String year){
 		
 		Map<String, Set<String>> result = new HashMap<String, Set<String>>();
 		List<ProfessionalProfile> prof = null;
 		List<String> stud = null;
 		
-		//Set<String> udSet = new HashSet<String>();
 		Set<String> udSet ;
 		Set<String> comps = new LinkedHashSet<String>();
 		Set<String> it = new LinkedHashSet<String>();
 		Set<String> elex = new LinkedHashSet<String>();
 		Set<String> prod = new LinkedHashSet<String>();
 		
-		prof = sessionFactory.getCurrentSession().createCriteria(ProfessionalProfile.class).list();
-						
-		System.out.println("USERS 1= "+prof.size());
-		
+		Integer y = Integer.parseInt(year);
+		y++;
 		
 		Query query = sessionFactory.getCurrentSession()
+				.createQuery("FROM ProfessionalProfile U WHERE U.year = :curYear");
+		query.setParameter("curYear", String.valueOf(y));
+		
+		prof = query.list();
+		
+		query = sessionFactory.getCurrentSession()
 				.createQuery("SELECT U.userName FROM UserDetails U WHERE U.roleId = :role_id1 OR U.roleId = :role_id3");
 		query.setParameter("role_id1", "1");
 		query.setParameter("role_id3", "3");
 		
 		stud = query.list();
-		
-		System.out.println("USERS 2= "+stud.toString());
-		
+				
 		for( ProfessionalProfile i: prof){
-			
-		//	System.out.println("branch = "+i.getBranch());
+
 			if(!stud.contains(i.getUserName())){
 				continue;
 			}
-			
-			
+
 			if(i.getBranch().equals(COMPS)){
 				comps.add(i.getUserName());
 				
@@ -165,7 +164,6 @@ public class ProfileDAOImpl implements ProfileDAO, ConstantValues{
 		result.put(ELEX, elex);
 		result.put(PROD,prod);
 		
-		//listStats = sessionFactory.getCurrentSession().createCriteria(PlacementStatistics.class).list();
 		
 		return result;
 	}
