@@ -91,7 +91,7 @@ public class DisplayListController {
 		}
 
 		request.getSession().setAttribute("folderName", folder);
-		ModelAndView model = new ModelAndView("TPO");
+		ModelAndView model = new ModelAndView("facultyDownloads");
 
 		model.addObject("actualFileNames", listFullName);
 		model.addObject("nameToDisplay", list);
