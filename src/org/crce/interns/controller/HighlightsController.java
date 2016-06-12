@@ -1,10 +1,14 @@
 package org.crce.interns.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+import org.crce.interns.model.TotalNoOfStudents;
+import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.StatisticsService;
@@ -22,22 +26,30 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private ProfileService profileService;
 	
+	@Autowired
+	private StatisticsService statisticsService;
+
+	@Autowired
+	private AssignTPCService userService;
 	
 	
 	@RequestMapping(value="/Statistics", method = RequestMethod.GET)
-	
-	public ModelAndView Statistics(HttpServletRequest request) {
-	
-		return new ModelAndView("list");
+	public ModelAndView view(HttpServletRequest request) {
+		//String year = (String) request.getAttribute("year");
+		String year = "2016";
+		TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(year);
+		ModelAndView model = new ModelAndView("list");
+		model.addObject("totalStudents", total);
+		return model;
 	}
 
 	
 	@RequestMapping(value="/tpclist", method = RequestMethod.GET)
-	
 	public ModelAndView tpclist(@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
-	
-		return new ModelAndView("tpclist");
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("users", userService.viewTPCs(curYear));
+		return new ModelAndView("tpclist",modelMap);
 	}
 	
 	@RequestMapping(value="/stats", method = RequestMethod.GET)
@@ -88,6 +100,5 @@ public class HighlightsController implements ConstantValues {
 		profileService.listProfessionalProfile("2016");
 		return new ModelAndView("list");
 	}
-	
 
 }

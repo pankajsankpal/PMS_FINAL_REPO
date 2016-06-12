@@ -79,4 +79,10 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 		totalNoOfStudents.setProd(prodsList.size());
 		sessionFactory.getCurrentSession().saveOrUpdate(totalNoOfStudents);
 	}
+
+	@Override
+	public TotalNoOfStudents getTotalNoOfStudents(String year) {
+		List<TotalNoOfStudents> totalList = sessionFactory.getCurrentSession().createCriteria(TotalNoOfStudents.class).add(Restrictions.eq("year", year)).list();
+		return totalList.get(0);
+	}
 }

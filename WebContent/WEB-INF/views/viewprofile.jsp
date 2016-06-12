@@ -53,7 +53,7 @@ description: contains Fields to edit  student profile -->
 						
 						<div class="page-header">
 							<h1>
-								Profile Page
+								My Profile
 								
 							</h1>
 						</div><!-- /.page-header -->

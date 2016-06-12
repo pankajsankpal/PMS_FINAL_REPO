@@ -139,7 +139,7 @@ public class EligibilityController {
 	public ModelAndView checkCriteriaFromftpc(HttpServletRequest request, @RequestParam(value = "u_name") String uname,
 			@RequestParam(value = "j_id") String job_id) {
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
-		System.out.println(userRole);
+		
 
 		if (userRole.equals(ConstantValues.StudentTPCName)) {
 			int criteria_id = E_service.getCriteriaId(job_id);

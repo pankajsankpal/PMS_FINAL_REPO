@@ -489,7 +489,7 @@ public class ManageProfile extends HttpServlet{
 		 */
 		jobBean.setModified_date(null);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = new Date(); 
 		/** Below comments are trials for fixing the date accepting issue....ignore them*/
 		
