@@ -276,4 +276,12 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	// @pankaj added following for facultyTPC and Tpo downloads
+		//--------------------------------------------------------------------
+
+		@RequestMapping("/downloads")
+		public String StudentNotification() {
+			return "facultyDownloads";
+		}
 }
