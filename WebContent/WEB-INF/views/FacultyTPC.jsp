@@ -82,24 +82,19 @@ description: contains tabs ->  activity ,uploads ,notification -->
 											<ul class="nav nav-tabs padding-18">
 												
 												<li class="active">
-													<a data-toggle="tab" href="#activity">
+													<a href="#activity">
 														<i class="orange ace-icon fa fa-wrench bigger-120"></i>
 														Activity
 													</a>
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a href="downloads">
 														<i class="blue ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
 												</li>
-												<li>
-													<a data-toggle="tab" href="#notification">
-														<i class="red ace-icon fa fa-bell bigger-120"></i>
-														Notification
-													</a>
-												</li>
+												
 
 											</ul>
 
