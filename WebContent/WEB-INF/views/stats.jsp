@@ -63,10 +63,10 @@
 									</tr>
 										<tr>
 										<td colspan="2" class="text-center">Total No. of Students</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
+										<td class="text-center">${totalStudents.prod}</td>
+										<td class="text-center">${totalStudents.elex}</td>
+										<td class="text-center">${totalStudents.comps}</td>
+										<td class="text-center">${totalStudents.it}</td>
 									</tr>
 										<tr>
 										<td colspan="2" class="text-center">Eligible Students</td>
