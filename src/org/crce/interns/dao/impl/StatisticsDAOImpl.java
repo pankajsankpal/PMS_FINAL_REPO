@@ -8,6 +8,7 @@ import org.crce.interns.model.PlacementStats;
 import org.crce.interns.model.ProfessionalProfile;
 import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.model.TotalStudents;
+import org.crce.interns.model.UserDetails;
 import org.crce.interns.service.ConstantValues;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -18,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository("statisticsDAO")
-public class StatisticsDAOImpl implements StatisticsDAO {
+public class StatisticsDAOImpl implements StatisticsDAO, ConstantValues {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -52,22 +53,35 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 		criteria.add(Restrictions.eq("year", year));
 		List<ProfessionalProfile> l = criteria.list();
 
+		criteria = sessionFactory.getCurrentSession().createCriteria(UserDetails.class);
+		criteria.add(Restrictions.eq("roleId", "1"));
+		List<UserDetails> studentList = criteria.list();
+
+		//13
+		System.out.println("Statsdaoimpl : " + studentList.size());
+		
 		List<ProfessionalProfile> compsList = new ArrayList<>();
 		List<ProfessionalProfile> elexList = new ArrayList<>();
 		List<ProfessionalProfile> itList = new ArrayList<>();
 		List<ProfessionalProfile> prodsList = new ArrayList<>();
 		for (ProfessionalProfile i : l) {
-			if (i.getBranch() != null) {
-				System.out.println(i.getUserName());
-				if (i.getBranch().equals("ELEX")) {
-					elexList.add(i);
-				} else if (i.getBranch().equals("IT")) {
-					itList.add(i);
-				} else if (i.getBranch().equals("COMPS")) {
-					compsList.add(i);
-				} else if (i.getBranch().equals("PROD")) {
-					System.out.println("Prod List" + i.getUserName());
-					prodsList.add(i);
+			System.out.println("*****" + i.getUserName() + "  " + contains(studentList, i.getUserName()));
+			if (contains(studentList, i.getUserName())) {
+				if (i.getBranch() != null) {
+					System.out.println(i.getUserName());
+					if (i.getBranch().equals(ELEX)) {
+						elexList.add(i);
+						System.out.println("ElexList : " + i.getUserName());
+					} else if (i.getBranch().equals(IT)) {
+						itList.add(i);
+						System.out.println("ItList : " + i.getUserName());
+					} else if (i.getBranch().equals(COMPS)) {
+						compsList.add(i);
+						System.out.println("CompsList : " + i.getUserName());
+					} else if (i.getBranch().equals(PROD)) {
+						prodsList.add(i);
+						System.out.println("ProdList : " + i.getUserName());
+					}
 				}
 			}
 		}
@@ -80,9 +94,18 @@ public class StatisticsDAOImpl implements StatisticsDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(totalNoOfStudents);
 	}
 
+	private boolean contains(List<UserDetails> studentList, String userName) {
+		for (UserDetails student : studentList) {
+			if (student.getUserName().equals(userName))
+				return true;
+		}
+		return false;
+	}
+
 	@Override
 	public TotalNoOfStudents getTotalNoOfStudents(String year) {
-		List<TotalNoOfStudents> totalList = sessionFactory.getCurrentSession().createCriteria(TotalNoOfStudents.class).add(Restrictions.eq("year", year)).list();
+		List<TotalNoOfStudents> totalList = sessionFactory.getCurrentSession().createCriteria(TotalNoOfStudents.class)
+				.add(Restrictions.eq("year", year)).list();
 		return totalList.get(0);
 	}
 }
