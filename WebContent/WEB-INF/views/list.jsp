@@ -90,7 +90,7 @@ $(document).ready(function(){
 							</a><h4>Company</h4>
 							</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td><a href="stats"> <img
 									src="assets/images/statistics.jpg" alt="Statistics" width="300"
 									height="300" border="0">
@@ -101,7 +101,7 @@ $(document).ready(function(){
 									height="300" border="0">
 							</a>
 								<h4>Company</h4></td>
-						</tr>
+						</tr> -->
 					</table>
 				</div>
 			</div>
@@ -109,7 +109,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<!-- /.main-content -->
-	<center>
+	<%-- <center>
 		<table border="1">
 			<tr>
 				<td>Year</td>
@@ -126,6 +126,6 @@ $(document).ready(function(){
 				<td>${totalStudents.prod}</td>
 			</tr>
 		</table>
-	</center>
+	</center> --%>
 </body>
 </html>

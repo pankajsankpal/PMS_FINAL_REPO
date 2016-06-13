@@ -202,15 +202,15 @@ description: contains links to manage system users->
 														<td>6. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
 													</tr>	
 													<c:if test="${sessionScope.roleName=='TPO'}">
-													<tr>
+												<!-- 	<tr>
 														<td>7.<a href="manageselected.html">Manage List of Selected Applicants of all Companies</a><br /></td>
 													</tr>	
-													
+													 -->
 													<tr>
-														<td>8.<a href="AssignTPC.html">Assign TPC </a><br/></td>
+														<td>7.<a href="AssignTPC.html">Assign TPC </a><br/></td>
 													</tr>
 													<tr>
-														<td>9.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
+														<td>8.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
 													</tr>	
 													</c:if>
 												</table>

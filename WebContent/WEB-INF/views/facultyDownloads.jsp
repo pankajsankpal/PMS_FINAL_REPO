@@ -111,7 +111,7 @@
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">

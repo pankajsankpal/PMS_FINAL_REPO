@@ -152,8 +152,8 @@ description: contains all the validations required for every field -->
 															<label class="col-sm-1 control-label no-padding-right"
 																for="name">Company Name</label>
 
-															<div class="col-sm-3"><input path="company" id="dynamicsearchcompany" value="" />
-																<!-- <div class="clearfix">
+															<div class="col-sm-3"><!-- <input path="company" id="dynamicsearchcompany" value="" /> -->
+																<div class="clearfix">
 																	<select name="company_id" class="chosen-select">
 																	<option ></option>
 																		<option value="2">Jp Morgan</option>
@@ -167,8 +167,8 @@ description: contains all the validations required for every field -->
 
 																	</select>
 																</div>
- -->
-															</div>
+
+															<!-- </div> -->
 														</div>
 														
 														<div class="form-group">
