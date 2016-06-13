@@ -47,6 +47,29 @@ public class SelectedApplicantsServiceImpl implements SelectedApplicantsService{
 	}
 	
 	
+	 public List<QuickStatsBean> retrieveDetails(String company, String year){
+		List<QuickStats> userList=new ArrayList<QuickStats>();
+		List<QuickStatsBean> userBeanList=new ArrayList<QuickStatsBean>();
+		userList=selectDao.retrieveDetails(company, year);
+		//userList.addAll(crudDao.retreiveDetails(company));
+		//UserCompanyBean userCompanyBean=new UserCompanyBean();
+		
+		for(QuickStats d:userList){
+			System.out.println("d=  "+d.getUsername());
+			//userBeanList.add(userCompanyBean);
+			QuickStatsBean userCompanyBean=new QuickStatsBean();
+			BeanUtils.copyProperties(d,userCompanyBean);
+			System.out.println("userCompanyBean= "+userCompanyBean.getUsername());
+			userBeanList.add(userCompanyBean);
+		}
+		/*for(UserCompanyBean d:userBeanList){
+			System.out.println("userBeanList=  "+d.getUsername());
+		}*/
+		return userBeanList;
+	}
+
+	 
+	
 	public int deleteDetails(QuickStatsBean userBean){
 		QuickStats user=new QuickStats();
 		BeanUtils.copyProperties(userBean, user);

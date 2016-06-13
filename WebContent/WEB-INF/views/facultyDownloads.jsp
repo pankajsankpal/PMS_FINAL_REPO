@@ -1,38 +1,40 @@
-<!-- author: Pankaj sankpal
-description: contain ALL professional and personal details of STUDENT tpc -->
-<!-- -------------------------------------------------------------------------------------------------------- -->
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Student uploads and downloads</title>
-
-<!-- page specific plugin styles -->
+<title>Faculty Downloads</title>
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 		<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-		
+		<link rel="stylesheet" href="assets/css/select2.min.css" />
+	
 		<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/dropzone.min.css" />
-		<!-- page specific plugin styles -->
 		
+		<link rel="stylesheet" href="assets/css/select2.min.css" />
+		
+		
+		<!-- <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" /> -->
+		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+			
+		
+		<!-- page specific plugin for calander styles -->
+		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
+		<script src="assets/js/ace-extra.min.js"></script>
+		
 		
 </head>
-<body onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<body>
 
 <jsp:directive.include file="Header.jsp" />
 
-<div class="main-content">
+	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
 						<script type="text/javascript">
@@ -40,24 +42,28 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						</script>
 
 						
+
 						<div class="nav-search" id="nav-search">
 							<form class="form-search">
 								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
 							</form>
 						</div><!-- /.nav-search -->
 					</div>
-
 					<div class="page-content">
-						
-						<div class="page-header">
-							<h1>
-							Activity & Uploads for ${sessionScope.name}
-								
-							</h1>
-						</div><!-- /.page-header -->
+							<div class="page-header">
+							
+							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+	
+							<%-- <h2>
+								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
+							</h2> --%>
+							<br />
+	
+							
+							</div><!-- /.page-header -->
 
 						<div class="row">
 							<div class="col-xs-12">
@@ -72,108 +78,28 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 									<div id="user-profile-2" class="user-profile">
 										<div class="tabbable">
 											<ul class="nav nav-tabs padding-18">
-												<ul class="nav nav-tabs padding-18">
 												<li>
-													<a href="viewprofile">
-														<i class="green ace-icon fa fa-user bigger-120"></i>
-														Profile
+													<a  href="viewprofile">
+														<i class="orange ace-icon fa fa-rss bigger-120"></i>
+														Activity
 													</a>
 												</li>
-												
 
 												<li class="active">
-													<a data-toggle="tab" href="#uploads">
-														<i class="orange ace-icon fa fa-upload bigger-120"></i>
-														Uploads
+													<a href="#uploads">
+														<i class="blue ace-icon fa fa-users bigger-120"></i>
+														Uploads	
 													</a>
 												</li>
-
 												
-												<li>
-													<a href="notifications">
-														<i class="pink ace-icon fa fa-check bigger-120"></i>
-														Notification
-													</a>
-												</li>
 
-											</ul>
 											</ul>
 
 											<div class="tab-content no-border padding-24">
 												
-												
+
 												<div id="uploads" class="tab-pane in active">
-													<div class="profile-feed row">
-													
-														<div class="row">
-														<div class="col-xs-12">
-															<!-- PAGE CONTENT BEGINS -->
-															<div class="clearfix">
-															
-																	<div class="row">
-																	<div class="col-xs-12 ">
-																	<div class="widget-box">
-																	<div class="widget-body">
-																	 <div class="widget-main" align="center">
-																		<div>	
-																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
-																		
-																				<div class="profile-feed row">
-																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
-																				</div>
-																		</c:if>
-																				<br>
-																				<table>
-																			
-																				
-																				<tr>
-																					<td>Links for Quick Access </td>
-																				</tr>
-																				<tr>
-																					<td>1. <a href="resumeUpload">Upload Resume</a></td>
-																				</tr>
-																			    <tr>
-																					<td>2.<a  href="certificateUpload">Click to upload Certificates </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>3.<a href="addFeedback">Give a Feedback</a><br/></td>
-																				</tr>
-																				<tr>
-																					<td>4. <a href="InsertMonth.html"> Click to View Events in that month </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>5. <a href="offerLetterUpload">Click to Upload Offer Letter </a></td>
-																				</tr>
-																				
-																				<tr>
-																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
-																				</tr>
-																				<!-- <tr>
-																		 			<td><a href="displist">display list</a><br /></td>
-																		 		</tr> -->
-																				</table>
-																				
-																			
-																			<br><br>
-																		</div>
-																		</div>
-																		</div>
-																		</div>
-																		<br><br>
-																	</div>
-							
-																	
-																</div>
-																	
-															
-															
-															</div>
-														</div>
-													</div>
-													
-														<div class="row">
+													<div class="row">
 															<div class="col-xs-12">
 																<!-- PAGE CONTENT BEGINS -->
 																
@@ -186,7 +112,6 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
 																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
-																				
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -201,33 +126,68 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																
 															</div><!-- /.col -->
 														</div><!-- /.row -->
-					
-													
-													</div><!-- /.row -->
+
 
 													<div class="space-12"></div>
 
-												</div><!-- /#feed -->
-
+												</div><!-- #end of uploads -->
 												
-											</div><!-- /#pictures -->
+												
+												
+												<!-- <div id="activity" class="tab-pane in active">
+													 <div class="row ">
+														
+														
+														 <br>
+													 
+														<div class="col-xs-12 col-sm-4 left">
+															
+															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
+
+															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
+																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
+
+														</div>
+										
+														
+														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
+														  
+														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
+														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
+														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
+														</div>
+														
+												<div class="col-xs-12 col-sm-8 left">
+														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
+												</div>
+											</div>/#pictures
 											</div>
-										</div>
-									</div>
-								</div>
+								
+							 -->
+										
+										</div><!-- end of tabbable -->
+									</div><!-- end of user-profile-2 -->
+								</div><!-- end of show -->
+							</div><!-- /.col -->
 
 						
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
+								
+							</div><!-- /.row -->
+						</div><!-- end of page-content -->
+					
+
+				
 			
+			</div><!-- /.main-content-inner-->
+		
+</div><!-- main-content -->
+			
+
 <jsp:directive.include file="Footer.jsp" />
 <jsp:directive.include file="scripts.jsp" />
-	
 
-		<!-- page specific plugin scripts -->
+
+				<!-- page specific plugin scripts -->
 		<script src="assets/js/fuelux.tree.min.js"></script>
 		
 		<script src="assets/js/dropzone.min.js"></script>
@@ -238,6 +198,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/fullcalendar.min.js"></script>
 		<script src="assets/js/bootbox.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
 		<script src="assets/js/bootstrap-datepicker.min.js"></script>
@@ -253,10 +214,17 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 
-		<!-- inline scripts related to this page -->
-			
+
+		<!-- page specific plugin scripts -->
 		
-		<script type="text/javascript">
+		
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+		
+		
+		<!-- inline scripts related to this page -->
+			<script type="text/javascript">
 			jQuery(function($) {
 
 				var sampleData = initiateDemoData();//see below
@@ -276,18 +244,18 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				function initiateDemoData(){
 					
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
-							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
+							'marksheets' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>', type: 'folder', 'icon-class':'red'}	,
+							'resume' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
+							
 						}
-						tree_data_2['resume']['additionalParameters'] = {
+						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
-								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
+								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 								
 							]
-						}
+						} */
 						/* tree_data_2['video']['additionalParameters'] = {
 							'children' : [
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
@@ -297,7 +265,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+						/* tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -319,7 +287,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {
@@ -376,36 +344,105 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		</script>
 	
 	
+	
+	<!--script for changing the profile image and model for buttons -->
+	
 </body>
 </html>
 
 
-<%-- 
+
+
+ 
+ <%--		backend jsp page
+ 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<!-- <SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</SCRIPT> -->
+<title>TPO</title>
 </head>
-<body>
-<a href="/PMS_v1/dispCV?folder=Resume">Resume</a><br>
-
-<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a><br>
-
-<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters</a>
-
-	<c:if test="${not empty indexList}">
-</br>THIS are the files
-		<ul>
-			<c:forEach var="index" items="${indexList}">
-				
-				<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
-			</c:forEach>
-		</ul>
-
-	</c:if>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
+	onunload="">
+	
+	<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+	
+	<h2>
+		My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
+	</h2>
+	<br />
+	
+	<table>
+		<tr>
+			<td><a href="addUser">Click here to Add users via csv file</a></td>
+		</tr>
+		<tr>
+			<td>1. <a href="addstudent.html">Add Student</a></td>
+		</tr>
+		<tr>
+			<td>2. <a href="addfaculty.html">Add Faculty</a></td>
+		</tr>
+		<tr>
+			<td>3. <a href="removeuser.html">Remove User</a></td>
+		</tr>
+		<tr>
+			<td>4. <a href="AssignTPC.html">Assign TPC</a></td>
+		</tr>
+		<tr>
+			<td>5. <a href="RemoveTPC.html">Remove TPC</a></td>
+		</tr>
+		<tr>
+			<td>6. <a href="InsertWork.html">Assign Task</a></td>
+		</tr>
+		<tr>
+			<td>7. <a href="ViewUsersT.html">View Users</a></td>
+		</tr>
+		<tr>
+			<td>8. <a href="ViewFacultyTasks.html">View Faculty Tasks</a></td>
+		</tr>
+		<tr>
+			<td>9.<a href="InsertMonth.html">Insert Month to view Events
+					Users</a><br /></td>
+		</tr>
+		<tr>
+			<td>10.<a href="manage.html">Manage List of Applicants of all Companies</a><br /></td>
+			<td>10.<a href="view-candidate.html">Manage List of Applicants of all Companies</a><br /></td>
+		</tr>
+		<tr>
+			<td>11.<a href="getEventForm.html">Add Events</a><br /></td>
+		</tr>
+		
+	</table>
+	<br />
+	<br />
+	<table>
+		<tr>
+			<td><a href="searchHome">Click here to search for something</a></td>
+		</tr>
+		<tr>
+			<td><a href="addProfile">Add JOB POST</a></td>
+		</tr>
+		<tr>
+			<td><a href="viewProfile">View JOB POSTS</a></td>
+		</tr>
+		
+		<tr>
+			<td><a href="sendMail">Click here to send an email</a></td>
+		</tr>
+		<tr>
+			<td><a href="logged-out">Logout</a></td>
+		</tr>
+	</table>
 </body>
-</html> --%>
+</html>
+ 
+   --%>
+

@@ -411,6 +411,8 @@ import org.crce.interns.service.CompanyService;
 //import org.crce.interns.model.Allotment;
 //import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
+import org.crce.interns.service.NfService;
+import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -441,10 +443,18 @@ public class ManageProfile extends HttpServlet{
 	
 	@Autowired
 	private ManageProfileService manageProfileService;
+	
 	@Autowired
 	private CompanyService companyService;
+	
 	@Autowired
 	private CheckRoleService crService;
+	
+	@Autowired
+	private NfService nfService;
+	
+	@Autowired
+    private EmailNotificationServiceImpl emailNotificationService;
 	
 	/*
 	@RequestMapping("/")
@@ -542,6 +552,29 @@ public class ManageProfile extends HttpServlet{
 		
 		//companyBean.setCriteria(criteriaBean.getCriteria_id());
 		
+		/* @author Nevil Dsouza
+		 * code for notifications
+		 */
+		
+		List<CompanyBean> clist = manageProfileService.listCompanies();
+		String companyName="";
+		int id = Integer.parseInt(jobBean.getJob_id()); 
+		for( CompanyBean cb: clist){
+			if(cb.getCompany_id()==id){
+				companyName = cb.getCompany_name();
+			}
+			
+		}
+		
+		
+		
+		if(nfService.addNotificationForJobPost(companyName)){
+			System.out.println("notification added");
+		}
+		else{
+			System.out.println("notification not added");
+		}
+		//emailNotificationService.sendEmailNotification(receivers, category, message);
 		
 		manageProfileService.addProfile(jobBean);
 		manageProfileService.addProfile(criteriaBean);
@@ -651,7 +684,7 @@ public class ManageProfile extends HttpServlet{
 	}
 	
 	@RequestMapping(value="/JobPosts", method = RequestMethod.GET)
-	public ModelAndView Companies(@RequestParam String companyname) {
+	public ModelAndView Companies(@RequestParam("companyname") String companyname) {
 		
 	try{
 		ModelAndView model ;
