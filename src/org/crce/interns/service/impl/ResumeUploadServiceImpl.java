@@ -20,9 +20,7 @@ package org.crce.interns.service.impl;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,6 +28,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
+import org.crce.interns.service.CopyFileService;
 import org.crce.interns.service.ResumeUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +42,9 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 
 	//@Autowired
 	//private ResumeUploadDao resumeUploadDao;		//not used
+	
+	@Autowired
+	private CopyFileService copyFileService;
 
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
 	
@@ -90,6 +92,9 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				fileUpload.transferTo(f2);
 				//call to the dao 
 				//resumeUploadDao.addNewResume(username,newName);		//not used
+				
+				String newFileName = f2.getName();
+				copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);
 			}
 					
 				
