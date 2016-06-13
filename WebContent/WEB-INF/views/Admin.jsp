@@ -54,7 +54,7 @@ description: contains various functions for admin -->
 					<div class="page-content">
 							<div class="page-header">
 							
-									<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+									<h1>Welcome , ${sessionScope.name}! </h1>
 
 							</div><!-- /.page-header -->
 
