@@ -135,3 +135,7 @@ SERVICES
 +FTPService
 >FTP for upload/download which wont be used
 >**dev by Leon @LeonDsouza**
+
++CopyFileService
+>Copies files or directories as required
+>**dev by CRYSTAL @Crystal21**

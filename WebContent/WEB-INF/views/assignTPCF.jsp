@@ -74,7 +74,7 @@ description: contains field for assigning a student tpc  -->
 				<div class="page-header">
 					<h1>
 						Logged in as
-						<core:out value="${loginForm.userName}" />
+						<c:out value="${sessionScope.name}" />
 					</h1>
 				</div>
 				<!-- /.page-header -->
@@ -100,8 +100,8 @@ description: contains field for assigning a student tpc  -->
 											</tr>
 											<tr>
 
-												<td colspan="2"><input class="btn btn-sm  btn-primary"
-													type="submit" value="Submit" /></td>
+												<td colspan="2"><center><input class="btn btn-sm  btn-primary"
+-													type="submit" value="Submit" /></center></td>
 											</tr>
 										</table>
 									</form:form>
