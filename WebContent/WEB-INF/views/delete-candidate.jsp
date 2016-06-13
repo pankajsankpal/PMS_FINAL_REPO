@@ -28,10 +28,6 @@
 <link rel="stylesheet" href="assets/css/ace.min.css"
 	class="ace-main-stylesheet" id="main-ace-style" />
 
-
-
-
-
 <!-- inline styles related to this page -->
 
 <!-- ace settings handler -->
@@ -46,30 +42,57 @@
 }
 </style>
 
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
 
+<!-- for autocomplete -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
+<link href="assets/autocomplete/main.css" rel="stylesheet">
+
+<script>
+	$(document)
+			.ready(
+					function() {
+
+						$('#dynamicsearchcompany')
+								.autocomplete(
+										{
+											serviceUrl : 'looseSearch2',
+											paramName : "CHARS",
+											delimiter : ",",
+											transformResult : function(response) {
+
+												return {
+													//must convert json to javascript object before process
+													suggestions : $
+															.map(
+																	$
+																			.parseJSON(response),
+																	function(
+																			company) {
+
+																		return {
+																			value : company.company_name,
+																			data : company.company_id
+																		};
+																	})
+
+												};
+
+											}
+
+										});
+
+					});
+</script>
 </head>
 <body>
-	<jsp:directive.include file="Header.jsp" />
-	<div class="main-content">
-		<div class="main-content-inner">
-
-			<div class="page-content">
-				<div class="page-header"></div>
-				<!-- /.page-header -->
-
-
-
-				<script type="text/javascript">
-					try {
-						ace.settings.check('main-container', 'fixed')
-					} catch (e) {
-					}
-				</script>
-
-				<%-- <form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
+<jsp:directive.include file="scripts.jsp" />
+<form:form action="deletecandidate.html" modelAttribute="userBean" method="post">
 Name:<form:input name="name" type="text" path="username" />
 <form:errors path="username" cssClass="error"/><br/>
-Company:<form:input name="company" type="text" path="company" />
+Company:<form:input path="company"  id="dynamicsearchcompany" value=""/>
 <form:errors path="company" cssClass="error"/>
 <br/>
 ${msg}

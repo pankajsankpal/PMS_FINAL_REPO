@@ -175,10 +175,10 @@ public class AssignTPCController {
 				model.addObject("erroMesg",erroMesg);
 				//return new ModelAndView("notStud");	
 			}
-			else if(a==4)//A Non-Faculty user attempted to be assigned as STPC
+			else if(a==4)//A Non-Faculty user attempted to be assigned as FTPC
 			{
 				model=new ModelAndView("assignTPC");
-				erroMesg+="A Non-Faculty user attempted to be assigned as STPC";
+				erroMesg+="A Non-Faculty user attempted to be assigned as FTPC";
 				model.addObject("erroMesg",erroMesg);
 				//return new ModelAndView("notFac");
 			}
