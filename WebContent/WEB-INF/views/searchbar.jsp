@@ -43,7 +43,7 @@ description: contains serach field for searching any user or a company available
 	$(document).ready(
 			function() {
 
-				$('#dynamicsearchcomp').autocomplete(
+				$('#dynamicsearchall').autocomplete(
 						{
 							serviceUrl : 'Search',
 							paramName : "CHARS",
@@ -68,7 +68,7 @@ description: contains serach field for searching any user or a company available
 
 						});
 
-				/* $('#dynamicsearchcomp').on('change',function(){
+				/* $('#dynamicsearchall').on('change',function(){
 					  //alert(x.name);
 					  alert($(this).val());
 					  
@@ -78,7 +78,7 @@ description: contains serach field for searching any user or a company available
 				  }); */
 				$('#searchbutton').click(
 						function() {
-							var userSelect = $('#dynamicsearchcomp').val();
+							var userSelect = $('#dynamicsearchall').val();
 							console.log(userSelect);
 							var userSelectId = -1;
 							var companyName = "xyz"
@@ -175,7 +175,7 @@ description: contains serach field for searching any user or a company available
 									<h2>Enter Student/Company name to search</h2>
 									<br>
 
-										<input type="text" id="dynamicsearchcomp" value=""> <input
+										<input type="text" id="dynamicsearchall" value=""> <input
 											class="btn btn-sm btn-primary" type="button" value="Search"
 											id="searchbutton"> <br>
 										<div id="notfound" style="color: red"></div>

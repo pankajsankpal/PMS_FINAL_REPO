@@ -13,6 +13,7 @@ import org.crce.interns.beans.EventBean;
 import org.crce.interns.beans.InterviewBean;
 import org.crce.interns.beans.Pre_PlacementBean;
 import org.crce.interns.service.EventDetailsService;
+import org.crce.interns.service.NfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EventDetailsController {
 
+	@Autowired
+	private NfService nfService;
+	
 	@Autowired
 	private EventDetailsService eventDetailsService;
 	
@@ -105,7 +109,18 @@ public class EventDetailsController {
 		}
 		
 			System.out.println(eventBean.getEvent_type());
-
+			/*
+			 * @author Nevil Dsouza
+			 * code for notification
+			 */
+			
+			
+			if(nfService.addNotificationForEvent(cname)){
+				System.out.println("notification added");
+			}
+			else{
+				System.out.println("notification not added");
+			}
 		return model;
 		}
 		catch(Exception e)

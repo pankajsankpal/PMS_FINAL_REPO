@@ -166,7 +166,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setType(USER);
 		temp.setCategory(ELIGIBLE);
 		temp.setMessage(ELIGIBLE_M1+companyName+ELIGIBLE_M2);
-		temp.setUrl(ELIGIBLE_URL);
+		temp.setUrl(ELIGIBLE_URL+companyName);
 		temp.setUserOrGroupId(userName);		
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 		
@@ -190,7 +190,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setType(ALL);
 		temp.setCategory(JOB);
 		temp.setMessage(JOB_M1+companyName);
-		temp.setUrl(JOB_URL);
+		temp.setUrl(JOB_URL+companyName);
 		temp.setUserOrGroupId(ALL);		
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 

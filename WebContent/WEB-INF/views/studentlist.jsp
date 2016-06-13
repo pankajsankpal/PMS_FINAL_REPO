@@ -19,18 +19,7 @@ $(document).ready(function(){
 });
 </script>
  
- <script  type="text/javascript">
- function fillsel(){
-  							var myDate = new Date();
-  							var year = myDate.getFullYear();
-  							for(var i = 2000; i < year+1; i++){
-					 						 	$('#yb').append('<option value="'+i+'">'+i+'</option>');
-
-  							}
-  							
- }
- </script>
-<title>Highlights</title>
+ <title>Highlights</title>
 </head>
 <body class="no-skin" onLoad="fillsel()">
 
@@ -41,18 +30,12 @@ $(document).ready(function(){
 						<div class="page-header center">
 							<b><h2 class="widget-title grey lighter">
 								&nbsp; &nbsp; &nbsp; &nbsp; 					
-									Hightlights of the year
+									Student List 
 							</h2></b>
 						</div>
 						<!-- /.page-header -->
 						<div class="space-4"></div>
 						
-						<div class="center">
-							<form action = "">
-							<select id="yb" name="yb" >
-  							</select>
-  							</form>
-						</div>
 						
 						<div class="space-4"></div>
 						
