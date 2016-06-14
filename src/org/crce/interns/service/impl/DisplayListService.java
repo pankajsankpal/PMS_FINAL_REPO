@@ -40,7 +40,8 @@ public class DisplayListService {
 			 File[] files= new File(pathname).listFiles();
 			 
 			 //logic for sorting the files w.r.t to date of creation
-			 Arrays.sort( files, new Comparator<Object>()
+			 if(files!= null)
+			 {Arrays.sort( files, new Comparator<Object>()
 		        {
 		        public int compare(Object o1, Object o2) {
 		        return -1 *new Long(((File)o1).lastModified()).compareTo(new Long(((File) o2).lastModified()));
@@ -51,7 +52,7 @@ public class DisplayListService {
 			 //getting the file names
 			 for (File file : files) 
 				  results.add(file.getName());
-			     
+			 }
 			         return results;
 		}
 		

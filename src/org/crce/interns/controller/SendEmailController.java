@@ -121,11 +121,11 @@ public class SendEmailController {
             System.out.println("Mapped to /sendMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            if (!crService.checkRole("SendEmail", roleId)) {
+            /*if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
-            } else {
+            } else {*/
                 return new ModelAndView("Email");
-            }
+            
 
            // return new ModelAndView("Email");
             //return new ModelAndView("Final");
@@ -149,11 +149,12 @@ public class SendEmailController {
             System.out.println("Mapped to personalMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            if (!crService.checkRole("SendEmail", roleId)) {
+           /* if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-                return new ModelAndView("EmailForm");
-            }
+*/               
+            return new ModelAndView("EmailForm");
+            
             //return new ModelAndView("EmailForm");
         } catch (Exception e) {
             System.out.println(e);
