@@ -11,8 +11,7 @@
 
 <script type="text/javascript" src="assets/js/jquery.1.11.1.min.js" ></script>
 <script type="text/javascript" src="assets/js/respond.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+
 <script type="text/javascript">
 (function($,W,D){
 	var JQVAL={};
@@ -252,46 +251,6 @@ description: contains fields to add a new event regarding placement drives ->
 					});
 </script>
 
-<script type="text/javascript">
-	(function($, W, D) {
-		var JQVAL = {};
-		JQVAL.UTIL = {
-			setupFormValidation : function() {
-				$("#form").validate({
-					rules : {
-						event_name : "required",
-						event_type : "required",
-						company_name : "required",
-						date : {
-							required : true,
-						},
-						time : "required",
-						venue : "required"
-					},
-					messages : {
-						event_name : "Please enter an event name",
-						event_type : "Please select an event type",
-						company_name : "Please enter the name of the company",
-						date : {
-							required : "Please enter the required date",
-						},
-						time : "Please enter the event time",
-						venue : "Please enter the venue",
-					},
-					submitHandler : function(form) {
-						form.submit();
-					}
-
-				});
-
-			}
-		}
-		$(D).ready(function($) {
-			JQVAL.UTIL.setupFormValidation();
-		});
-
-	})(jQuery, window, document);
-</script>
 
 </head>
 <body>
@@ -356,7 +315,7 @@ description: contains fields to add a new event regarding placement drives ->
 														</p>
 
 														<p>
-															Company Name: <input path="company"
+															Company Name: <input path="company" name="company_name"
 																id="dynamicsearchcompany" value="" />
 														</p>
 
@@ -506,6 +465,50 @@ description: contains fields to add a new event regarding placement drives ->
 
 		});
 	</script>
+
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+	(function($, W, D) {
+		var JQVAL = {};
+		JQVAL.UTIL = {
+			setupFormValidation : function() {
+				$("#form").validate({
+					rules : {
+						event_name : "required",
+						event_type : "required",
+						company_name : "required",
+						date : {
+							required : true,
+						},
+						time : "required",
+						venue : "required"
+					},
+					messages : {
+						event_name : "Please enter an event name",
+						event_type : "Please select an event type",
+						company_name : "Please enter the name of the company",
+						date : {
+							required : "Please enter the required date",
+						},
+						time : "Please enter the event time",
+						venue : "Please enter the venue",
+					},
+					submitHandler : function(form) {
+						form.submit();
+					}
+
+				});
+
+			}
+		}
+		$(D).ready(function($) {
+			JQVAL.UTIL.setupFormValidation();
+		});
+
+	})(jQuery, window, document);
+</script>
 
 	<!-- inline scripts related to this page -->
 
