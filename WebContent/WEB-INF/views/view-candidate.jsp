@@ -84,15 +84,16 @@
 															name="company">
 																<!-- <option value="jpmorgan">JP Morgan</option> -->
 																<option value="JP Morgan">JP Morgan</option>
-																<option value="accenture">Accenture</option>
+																<option value="Accenture">Accenture</option>
 																<!-- <option value="tcs">TCS</option> -->
-																<option value="TCS">TCS</option>
-																<option value="larsentubro">L&T</option>
-																<option value="morganstanley">Morgan & Stanley</option>
-																<option value="godrej">Godrej</option>
-																<option value="directi">Direct-I</option>
-																<option value="zs">ZS</option>
+																<option value="Tata Consultancy Services">TCS</option>
+																<option value="Laursen & Tubro">L&T</option>
+																<option value="Morgan Stanley">Morgan & Stanley</option>
+																<option value="Godrej">Godrej</option>
+																<option value="Direct i">Direct-I</option>
+																<option value="ZS Associates">ZS</option>
 														</select>
+														<input name="year" hidden />
 															<button class="btn btn-xs btn-primary" type="submit">
 																<i class="ace-icon fa fa-check bigger-110"></i> Submit
 															</button></td>

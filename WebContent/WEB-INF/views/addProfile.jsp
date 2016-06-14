@@ -74,31 +74,9 @@ description: contains all the validations required for every field -->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -152,8 +130,8 @@ description: contains all the validations required for every field -->
 															<label class="col-sm-1 control-label no-padding-right"
 																for="name">Company Name</label>
 
-															<div class="col-sm-3"><input path="company" id="dynamicsearchcompany" value="" />
-																<!-- <div class="clearfix">
+															<div class="col-sm-3"><!-- <input path="company" id="dynamicsearchcompany" value="" /> -->
+																<div class="clearfix">
 																	<select name="company_id" class="chosen-select">
 																	<option ></option>
 																		<option value="2">Jp Morgan</option>
@@ -167,8 +145,8 @@ description: contains all the validations required for every field -->
 
 																	</select>
 																</div>
- -->
-															</div>
+
+															<!-- </div> -->
 														</div>
 														
 														<div class="form-group">

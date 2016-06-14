@@ -1,3 +1,4 @@
+
 <!-- author: Pankaj sankpal, @author Adarsh
 description: contains field for assigning a student tpc  -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -37,35 +38,8 @@ description: contains field for assigning a student tpc  -->
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-				<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="on" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
+				<jsp:directive.include file="searchheader.jsp" />
 			</div>
 
 			<div class="page-content">
@@ -74,7 +48,7 @@ description: contains field for assigning a student tpc  -->
 				<div class="page-header">
 					<h1>
 						Logged in as
-						<c:out value="${sessionScope.name}" />
+						<core:out value="${loginForm.userName}" />
 					</h1>
 				</div>
 				<!-- /.page-header -->
@@ -100,8 +74,8 @@ description: contains field for assigning a student tpc  -->
 											</tr>
 											<tr>
 
-												<td colspan="2"><center><input class="btn btn-sm  btn-primary"
--													type="submit" value="Submit" /></center></td>
+												<td colspan="2"><input class="btn btn-sm  btn-primary"
+													type="submit" value="Submit" /></td>
 											</tr>
 										</table>
 									</form:form>
