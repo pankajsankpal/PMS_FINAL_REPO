@@ -76,8 +76,80 @@ description: gives the list of applied aplicants-->
 											<div class="row">
 
 
+<div class="col-xs-12">
+													<div class="table-header">The List Of Applicants So
+														Far</div>
+													<table id="simple-table"
+														class="table table-striped table-bordered table-hover">
+														<thead>
+															<tr>
+																<th>Roll No</th>
+																<th>Name</th>
+																<th>Branch</th>
 
+															</tr>
+														</thead>
+
+														<tbody>
+															
+															<c:forEach items="${userList}" var="user"
+															varStatus="loop">
+															<tr>
+																<td><font color="blue">${user.username}</font></td>
+																<td>${personalProfileBeanList[loop.index].name}</td>
+																<td><font color="orange">
+																${professionalProfileBeanList[loop.index].branch}</font></td>
+																
+															</tr>	
+																
+															</c:forEach>
+																
+															
+
+														</tbody>
+													</table>
+												</div>
+												
+<!-- /.col -->
+												<!---------------->
+												
+												<!-- selected list -->	
 												<div class="col-xs-12">
+													<div class="table-header">The List Of Selected Applicants So
+														Far</div>
+													<table id="simple-table"
+														class="table table-striped table-bordered table-hover">
+														<thead>
+															<tr>
+																<th>Roll No</th>
+																<th>Name</th>
+																<th>Branch</th>
+
+															</tr>
+														</thead>
+
+														<tbody>
+															<tr>
+															<c:forEach items="${quickStatsList}" var="user"
+																varStatus="loop">
+																<td><font color="blue">${user.username}</font></td>
+																<td>${selectedPersonal[loop.index].name}</td>
+																<td><font color="orange">
+																${selectedProf[loop.index].branch}</font></td>
+																
+																
+																
+															</c:forEach>
+																
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+
+												<!-- /.col -->
+												
+												<!-- <div class="col-xs-12">
 													<div class="table-header">The List Of Applicants So
 														Far</div>
 													<table id="simple-table"
@@ -132,7 +204,7 @@ description: gives the list of applied aplicants-->
 															</tr>
 														</tbody>
 													</table>
-												</div>
+												</div> -->
 
 												<!-- /.col -->
 
