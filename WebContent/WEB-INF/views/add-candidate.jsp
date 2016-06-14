@@ -1,19 +1,45 @@
- <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %> 
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>Add Candidate</title>
+
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+<!-- page specific plugin styles -->
+
+<!-- text fonts -->
+<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
+
+<!-- ace styles -->
+<link rel="stylesheet" href="assets/css/ace.min.css"
+	class="ace-main-stylesheet" id="main-ace-style" />
+
+<!-- inline styles related to this page -->
+
+<!-- ace settings handler -->
+<script src="assets/js/ace-extra.min.js"></script>
+
+<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 <style>
-	.error {
-		color:#ff0000;
-		font-style:italic;
-		font-weight:bold;
-	}
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
 </style>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
@@ -72,54 +98,101 @@ ${msg}
 <input type="submit" value="Add"/><br />
 </form:form>
 
+				<div class="clearfix">
+
+					<div class="row">
+						<div class="col-xs-12 ">
+							<div class="widget-box">
+								<div class="widget-body">
+									<div class="widget-main">
+										<div align="center">
+											<h2>Add Candidate</h2>
+											<br>
+											<form:form action="addcandidate.html"
+												modelAttribute="userBean">
+
+												<table>
+													<tr>
+														<td>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<form:input
+																name="name" type="text" path="username" /> <form:errors
+																path="username" cssClass="error" />
+														</td>
+
+													</tr>
+													<tr>
+														<td><div class="col-sm-16">
+																<br>Company:
+																<form:input name="company" id="company_id"
+																	path="company" />
+																<br> ${msg}
+																<form:errors path="company" cssClass="error" />
+																</br> <br></td>
+													</tr>
+													<tr>
+														<td><div class="" center>
+																<button class="btn  btn-primary" type="submit">
+																	<i class="ace-icon fa fa-check bigger-110"></i> Add
+																</button>
+															</div></td>
+													</tr>
+													<tr>
+														<td><a href="view.html">View The List Of Applied
+																Candidates</a></td>
+													</tr>
+
+
+
+												</table>
+											</form:form>
+											<br> <br>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br> <br>
+						</div>
+
+
+					</div>
+
+					<!-- /#home -->
+				</div>
+
+
+
+
+
+
+				<%-- <form:form action="addcandidate.html" modelAttribute="userBean"
+					method="post">
+Name:<form:input name="name" type="text" path="username" />
+					<form:errors path="username" cssClass="error" />
+					<br />
+Company:<form:input name="company" id="company_id" path="company" />
+					<br>
+${msg}
+<form:errors path="company" cssClass="error" />
+					<br />
+					<input type="submit" value="Add" />
+					<br />
+				</form:form> --%>
+				<jsp:directive.include file="Footer.jsp" />
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- /.main-container -->
+
+	<!--[if !IE]> -->
+	<script src="assets/js/jquery.2.1.1.min.js"></script>
+
+
+	<!-- inline scripts related to this page -->
+
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 </body>
 </html>
-
-
-
-<%--  <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %> 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<title>Add Candidate</title>
-</head>
-<body>
-<<<<<<< HEAD
-
-<form:form action="addcandidate.html" modelAttribute="userBean" method="post">
-Name:<form:input name="name" type="text" path="username" /> 
-<form:errors path="username" cssClass="error"/><br/>
-Company:<form:input name="company" id="company_id" path="company" />
-<br>
-${msg}
-<form:errors path="company" cssClass="error"/><br/>
-<input type="submit" value="Add"/><br />
-</form:form>
-
-=======
-<form:form action="addcandidate.html" modelAttribute="userBean" method="post">
-Name:<form:input name="name" type="text" path="username" /><br>
-Company:<form:input name="company" id="company_id" path="company" />
-<br>
-<input type="submit" value="Add"/><br />
-</form:form>
-<a href="view-candidate.html">Back</a>
->>>>>>> origin/master
-<!-- 
-<script>
-var arr=[];
-arr.push('#clist');
-$.each($(arr), function (i, item) {
-$('#company_id').append($('<option>', {
-    value: $(item.company_id),
-    text: $(item.company_id)
-}));
-});
-</script> -->
-</body>
-</html> --%>

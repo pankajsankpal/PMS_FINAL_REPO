@@ -13,6 +13,7 @@ public interface ManageAllotmentService {
 
 	public void addAllotment(AllotmentBean allotmentBean);
 	public void handleFileUpload(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload) throws Exception;
-	public List<Allotment> listAllotment();
+	//public List<Allotment> listAllotment(); ///new comment
+	List<AllotmentBean> listAllotment(Allotment allot);
 	
 }

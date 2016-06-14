@@ -1,6 +1,7 @@
 package org.crce.interns.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import org.crce.interns.dao.StatisticsDAO;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.PlacementStatistics;
 import org.crce.interns.model.PlacementStats;
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.model.UserCompany;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.StatisticsService;
@@ -129,7 +131,7 @@ public class StatisticsServiceImpl implements StatisticsService, ConstantValues 
 		
 		
 		// fetch branch-wise list of usernames
-		Map<String, Set<String>> result = profileDao.totalStudents();
+		Map<String, Set<String>> result = profileDao.totalStudents(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
 		
 		for(String i: BRANCHES){
 			
@@ -254,7 +256,7 @@ Return list of beans to front end. Done (y)
 		System.out.println("RESULT = "+companySet.toString());		
 		
 		// fetch branch-wise list of usernames
-		Map<String, Set<String>> result = profileDao.totalStudents();
+		Map<String, Set<String>> result = profileDao.totalStudents(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
 				
 		//SUCCESSFULL
 		//System.out.println("COMPS = "+result.get(COMPS).toString());		
@@ -298,6 +300,11 @@ Return list of beans to front end. Done (y)
 	@Override
 	public void calculateTotal(String year) {
 		statisticsDAO.calculateTotal(year);
+	}
+
+	@Override
+	public TotalNoOfStudents getTotalNoOfStudents(String year) {
+		return statisticsDAO.getTotalNoOfStudents(year);
 	}
 
 }

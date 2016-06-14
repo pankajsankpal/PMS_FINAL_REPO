@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -147,9 +148,10 @@
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
 											</div>
-								
+											
 							
 										
 										</div><!-- end of tabbable -->

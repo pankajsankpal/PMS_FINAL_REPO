@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.AllotmentBean;
+import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
@@ -105,6 +106,11 @@ public class ManageAllotment extends HttpServlet{
 	//Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
+		
+		
+		  //Authentication is commented
+		 
+		 
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		String user=(String)session.getAttribute("userName");
@@ -112,12 +118,15 @@ public class ManageAllotment extends HttpServlet{
 		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
 			return new ModelAndView("403");
 		else
+		
+		
+		
 		{
 			AllotmentBean allotmentBean = new AllotmentBean(); // declaring
-
+			Allotment allot = new Allotment();
 			model.addAttribute("allotmentBean", allotmentBean); // adding in model
 			Map<String, Object> model1 = new HashMap<String, Object>();
-			model1.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment()));
+			model1.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allot)));
 			return new ModelAndView("addAllotment");
 		}
 	}
@@ -126,15 +135,29 @@ public class ManageAllotment extends HttpServlet{
 	//Method to view allotment details
 	
 	@RequestMapping(value="/viewAllotment", method = RequestMethod.GET)
-	public ModelAndView listAllotment(HttpServletRequest request) {
+	public ModelAndView listAllotment(HttpServletRequest request,@ModelAttribute("command") Allotment allotmentBean,BindingResult bindingResult) {
+		
+		
+		/* **
+		 		//Authentication is commented
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		if(!crService.checkRole("ManageAllotment", roleId))
 			return new ModelAndView("403");
 		else
+		
+		** */
 		{
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment()));
+			model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
+			//model.put("allotments",manageAllotmentService.listAllotment(allotmentBean) );
+			
+			if (model.isEmpty()) {
+				System.out.println("Error no Model , Model is null");
+				return new ModelAndView("403");
+			}
+			
 			return new ModelAndView("viewAllotment", model);
 		}
 	}
@@ -142,14 +165,13 @@ public class ManageAllotment extends HttpServlet{
 	
 	//Used to display information regarding allotment
 	
-	private List<AllotmentBean> prepareListofBean(List<Allotment> allotments) {
-		
+	private List<AllotmentBean> prepareListofBean(List<AllotmentBean> list) { 
 		List<AllotmentBean> beans = null;
-		if(allotments != null && !allotments.isEmpty())
+		if(list != null && !list.isEmpty())
 		{
 			beans = new ArrayList<AllotmentBean>();
 			AllotmentBean bean = null;
-			for(Allotment allotment : allotments)
+			for(AllotmentBean allotment : list)
 			{
 				bean = new AllotmentBean();
 				bean.setAllotment_id(allotment.getAllotment_id());

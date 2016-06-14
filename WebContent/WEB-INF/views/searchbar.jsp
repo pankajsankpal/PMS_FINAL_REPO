@@ -1,4 +1,3 @@
-
 <!-- author: Pankaj sankpal
 description: contains serach field for searching any user or a company available in the system  -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -119,9 +118,6 @@ description: contains serach field for searching any user or a company available
 </script>
 
 
-
-
-
 </head>
 
 <body>
@@ -230,4 +226,5 @@ description: contains serach field for searching any user or a company available
 	</c:if>
 </body>
 </html>
+
  --%>

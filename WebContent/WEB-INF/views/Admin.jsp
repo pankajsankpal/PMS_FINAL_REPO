@@ -1,3 +1,4 @@
+
 <!-- auther: @pankaj
 description: contains various functions for admin -->
 
@@ -9,7 +10,7 @@ description: contains various functions for admin -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title> Admin| HOME</title>
 
 		<!-- page specific plugin styles -->
@@ -38,7 +39,7 @@ description: contains various functions for admin -->
 					<div class="breadcrumbs" id="breadcrumbs">
 
 				<jsp:directive.include file="searchheader.jsp" />
-			</div>
+				</div>
 					<div class="page-content">
 							<div class="page-header">
 							
@@ -121,8 +122,9 @@ description: contains various functions for admin -->
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
-											</div>
+										</div>
 								
 							
 										
@@ -264,4 +266,5 @@ description: contains various functions for admin -->
 	</table>
 </body>
 </html>
+
  --%>

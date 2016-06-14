@@ -43,7 +43,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						
 						<div class="page-header">
 							<h1>
-							Activity & Uploads
+							Activity & Uploads for ${sessionScope.name}
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -105,7 +105,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
 																		<div>	
-																		<c:if test="${sessionScope.roleName} eq 'StudentTPC'">
+																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
+																		
 																				<div class="profile-feed row">
 																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
@@ -115,7 +116,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			
 																				
 																				<tr>
-																					<td>Links for Quick Access</td>
+																					<td>Links for Quick Access </td>
 																				</tr>
 																				<tr>
 																					<td>1. <a href="resumeUpload">Upload Resume</a></td>
@@ -268,14 +269,14 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
 							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
-						tree_data_2['resume']['additionalParameters'] = {
+						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
-								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
+								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 								
 							]
-						}
+						} */
 						/* tree_data_2['video']['additionalParameters'] = {
 							'children' : [
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
@@ -285,7 +286,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+						/* tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -308,7 +309,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								
 							]
 						}
-
+ */
 /* 
 						tree_data_2['documents']['additionalParameters'] = {
 							'children' : [

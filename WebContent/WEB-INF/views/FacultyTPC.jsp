@@ -41,11 +41,12 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 						<div class="page-header">
 							
-							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+							<h3>Welcome , ${sessionScope.name} ! </h3>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
+							
 							
 						</div><!-- /.page-header -->
 
@@ -60,24 +61,19 @@ description: contains tabs ->  activity ,uploads ,notification -->
 											<ul class="nav nav-tabs padding-18">
 												
 												<li class="active">
-													<a data-toggle="tab" href="#activity">
+													<a href="#activity">
 														<i class="orange ace-icon fa fa-wrench bigger-120"></i>
 														Activity
 													</a>
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a href="downloads">
 														<i class="blue ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
 												</li>
-												<li>
-													<a data-toggle="tab" href="#notification">
-														<i class="red ace-icon fa fa-bell bigger-120"></i>
-														Notification
-													</a>
-												</li>
+												
 
 											</ul>
 
@@ -168,50 +164,27 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														<div class="col-xs-12 col-sm-4 left">
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
-															  <a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>
-															<a href="sendMail"  class="btn btn-inverse btn-lg btn-block">Send Email </a>
+															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
+															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
-															  <a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
-															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>
-															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
+															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
+															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
+															
+
 														</div>
 														
-														<div class="col-xs-12 col-sm-4 right">
-															<div class="widget-box">
-															<div class="widget-body">
-															 <div class="widget-main">
-															 <h3>Send notification to user </h3>
-															<%-- 	<form:form action="notify" commandName="notify">
-																	<table cellpadding="5" cellspacing="10" >
-																		<tr >
-																			<td> Roll No:<FONT color="red"> <form:errors
-																						path="userName" /></FONT></td>
-																		</tr>
-																		<tr>
-																			<td ><form:input path="userName" /></td>
-																			<td><input class="btn btn-sm btn-warning" type="submit" value="Notify" /></td>
-																		</tr>
-																	
-																	</table>
-																</form:form>
-																--%>
-															</div>
-															</div>
-															</div>
+														<div class="col-xs-12 col-sm-8">
+														<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
 														</div>
+														
+														
 													</div>
 													
 													
-													<br><br>
-													
-														
-															<br><br>
-															
-															<div class="hr dotted"></div>
 															
 
 												</div><!-- /#activity -->

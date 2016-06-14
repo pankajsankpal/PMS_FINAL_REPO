@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -9,7 +8,7 @@
 
  @author Adarsh
  -->
- 
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,6 +21,7 @@
 }
 </style>
 </head>
+
 <body  class="no-skin">
 			<jsp:directive.include file="Header.jsp" />
 			<div class="main-content">
@@ -43,21 +43,30 @@
 						<div class="center">
 							<form:form method="POST" action="SubmitAssignTPO">
 							<table align="center">
+
 							<tr>
-								<td><form:label path="userName"><h3>User name:</h3></form:label></td>
+								<td><form:label path="userName">
+										<h3>User name:</h3>
+									</form:label></td>
 								<td><form:input path="userName" /></td>
 								<td><form:errors path="userName" cssClass="error" /></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" value="Submit" class="btn btn-info" /></td>
+								<p>
+									<font size="5" color="red" face="verdana">${erroMesg}</font>
+								</p>
 							</tr>
-							</table>
-							</form:form>
-						</div>
-					</div>	
+							<tr>
+								<td colspan="2"><input type="submit" value="Submit"
+									class="btn btn-info" /></td>
+							</tr>
+						</table>
+					</form:form>
 				</div>
 			</div>
-					<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />	
+		</div>
+	</div>
+	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>

@@ -89,7 +89,7 @@ description: contains fields to add new faculty member->
 												<p style="color:red;">This user does not exist in the database!</p>
 											</c:if>
 													<form method="POST" action="removeUser">
-													Enter User ID:   <input id="username" name="username" type="text" value=""/><br/><br/>
+													Enter User ID:   <input id="username" name="username" type="text" value="" required/><br/><br/>
 														
 															  <input type="submit" value="Remove User"> 
 														</form>
