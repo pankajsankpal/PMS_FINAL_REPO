@@ -1,5 +1,6 @@
 <!-- @author Leon 
     for Group Email -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,13 +54,19 @@
         <script src="assets/js/html5shiv.min.js"></script>
         <script src="assets/js/respond.min.js"></script>
         <![endif]-->
-</head>
-
-<body class="no-skin">
-	<%@include file="Header.jsp"%>
-	<div class="main-content">
-		<div class="main-content-inner">
-			<div class="breadcrumbs" id="breadcrumbs">
+        
+    </head>
+    <body class="no-skin">
+        <%@include file="Header.jsp"%>
+         <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+                </script>
 
 				<jsp:directive.include file="searchheader.jsp" />
 			</div>
@@ -81,36 +88,42 @@
 								<label class="control-label col-xs-12 col-sm-3 no-padding-right">
 									To </label>
 
-								<div class="col-xs-12 col-sm-9">
-									<input path="company" id="dynamicsearchcompany" value="" />
-									<!-- <select multiple="" id="state" name="receiver" class="select2"
-										data-placeholder="Click to Choose Recipients">
-										<option value="">&nbsp;</option>
-										<option value="CompsSTPC">CompsSTPC</option>
-										<option value="ITSTPC">ITSTPC</option>
-										<option value="ElexSTPC">ElexSTPC</option>
-										<option value="ProdSTPC">ProdSTPC</option>
-										<option value="CompsFTPC">CompsFTPC</option>
-										<option value="ITFTPC">ITFTPC</option>
-										<option value="ProdFTPC">ProdFTPC</option>
-										<option value="ElexFTPC">ElexFTPC</option>
-										<option value="STPC">STPC</option>
-										<option value="FTPC">FTPC</option>
-										<option value="TPC">TPC</option>
-										<option value="compsClass">CompsClass</option>
-										<option value="prodClass">ProdClass</option>
-										<option value="itClass">ITClass</option>
-										<option value="elexClass">ElexClass</option>
-										<option value="JP Morgan">JP Morgan</option>
-										<option value="Morgan Stanley">Morgan Stanley</option>
-										<option value="Direct i">Directi</option>
-										<option value="Tata Consultancy Services">TCS</option>
-										<option value="Accenture">Accenture</option>
-										<option value="SAP">SAP</option>
-										<option value="Godrej">Godrej</option>
-										<option value="Laursen & Tubro">L&T</option>
-										<option value="Neebal">Neebal</option>
 
+
+
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-3 no-padding-right"> To </label>
+
+                <div class="col-xs-12 col-sm-9">
+                    <select multiple="" id="state" name="receiver" class="select2" data-placeholder="Click to Choose Recipients">
+                        <option value="">&nbsp;</option>
+                        <option value="CompsSTPC">CompsSTPC</option>
+                        <option value="ITSTPC">ITSTPC</option>
+                        <option value="ElexSTPC">ElexSTPC</option>
+                        <option value="ProdSTPC">ProdSTPC</option>
+                        <option value="CompsFTPC">CompsFTPC</option>
+                        <option value="ITFTPC">ITFTPC</option>
+                        <option value="ProdFTPC">ProdFTPC</option>
+                        <option value="ElexFTPC">ElexFTPC</option>
+                        <option value="STPC">STPC</option>
+                        <option value="FTPC">FTPC</option>
+                        <option value="TPC">TPC</option>
+                        <option value="compsClass">CompsClass</option>
+                        <option value="prodClass">ProdClass</option>
+                        <option value="itClass">ITClass</option>
+                        <option value="elexClass">ElexClass</option>
+                        <!--<option value="JP Morgan">JP Morgan</option>
+                        <option value="Morgan Stanley"> Morgan Stanley </option>
+                        <option value="Direct i">Directi </option>
+                        <option value ="Tata Consultancy Services">TCS</option>
+                        <option value="Accenture">Accenture</option>
+                        <option value="SAP">SAP</option>
+                        <option value="Godrej">Godrej</option>
+                        <option value="Laursen & Tubro">L&T</option>  -->
+                        <c:forEach items="${companies}" var="companies">
+                        <option value="${companies.key}">${companies.value}</option>
+                        </c:forEach>
+                        <!--<option value="Neebal">Neebal</option>
                         <option value="Seclore">Seclore</option>
                         <option value="LnTInfoTech"> L&T Infotech</option>
                         <option value="LntEngineering"> L&T Engineering</option>
@@ -122,7 +135,8 @@
                         <option value="NSE"> NSE </option>
                         <option value="Siemens">Siemens</option>
                         <option value="BNP"> BNP Paribas </option>   -->
-                        <option value ="ZS Associates"> ZS </option>    
+                        <!--<option value ="ZS Associates"> ZS </option>    -->  
+                        
                     </select>
                 </div>
                 <br/> <br/> <br>
