@@ -37,9 +37,9 @@ public class HighlightsController implements ConstantValues {
 	public ModelAndView view(HttpServletRequest request) {
 		//String year = (String) request.getAttribute("year");
 		String year = "2016";
-		//TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(year);
-		ModelAndView model = new ModelAndView("list");
-		//model.addObject("totalStudents", total);
+		TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(year);
+		ModelAndView model = new ModelAndView("stats");
+		model.addObject("totalStudents", total);
 		return model;
 	}
 

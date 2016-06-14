@@ -11,8 +11,10 @@
 package org.crce.interns.dao.impl;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import org.crce.interns.dao.SendEmailDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -47,9 +49,8 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         Session session = sessionFactory.openSession();
 
         String senderList = "";
-
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -88,7 +89,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Electronics Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Electronics Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -127,7 +128,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Information Technology' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -166,7 +167,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Production Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Production Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -205,7 +206,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Computer Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Computer Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -244,7 +245,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Electronics Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Electronics Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -283,7 +284,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Information Technology Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Information Technology Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -322,7 +323,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         String senderList = "";
 
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
-        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Production Engineering'";
+        String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '4' and p.branch like 'Production Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
         Query query = session.createQuery(SQL_QUERY);
 
@@ -377,7 +378,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         Session session = sessionFactory.openSession();
         
         String senderList="";
-         String SQL_QUERY = "Select userName from ProfessionalProfile where branch like '" + receivers + "'";
+         String SQL_QUERY = "Select userName from ProfessionalProfile where branch like '" + receivers + "' and year like '"+ Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1)+"'";
          Query query = session.createQuery(SQL_QUERY);
          List list = query.list();
          if(!list.isEmpty()){
@@ -415,7 +416,7 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         System.out.println("List "+list.toString());
         for(Object j : list){
             System.out.println("called for j");
-            String SQL_QUERY1 = "Select username from QuickStats where company_id = "+ Integer.parseInt(j.toString());
+            String SQL_QUERY1 = "Select username from QuickStats where company_id = "+ Integer.parseInt(j.toString())+"and year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"'";
             Query query1 = session.createQuery(SQL_QUERY1);
             List list1 = query1.list();
             System.out.println(list1.toString());
