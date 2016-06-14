@@ -8,12 +8,14 @@
 package org.crce.interns.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.SendEmailService;
+import org.crce.interns.service.impl.GetCompaniesServiceImpl;
 import org.crce.interns.validators.PersonalEmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,8 @@ public class SendEmailController {
     public SendEmailService sendEmailService;
     @Autowired
     private CheckRoleService crService;
+    @Autowired
+    private GetCompaniesServiceImpl getCompaniesService;
     /*
      Return Type: Boolean-True/False
      Function: Checks for Files
@@ -84,12 +88,14 @@ public class SendEmailController {
             for (String i : receivers) {
                 System.out.println(i);
             }
-            ModelAndView model = new ModelAndView("Email");
+            Map m = getCompaniesService.referenceData(request);
+            ModelAndView model = new ModelAndView("Email","companies",m);
             // boolean flag = false;
             //SendEmailValidator sendEmailValidator = new SendEmailValidator();
             //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
             model.addObject("success", "Email Sent Sucessfully");
+            model.addObject("companies", m);
             System.out.println(model);
             return model;
            //} else {
@@ -121,11 +127,12 @@ public class SendEmailController {
             System.out.println("Mapped to /sendMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            /*if (!crService.checkRole("SendEmail", roleId)) {
+            if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
-            } else {*/
-                return new ModelAndView("Email");
-            
+            } else {
+            Map m = getCompaniesService.referenceData(request);
+                return new ModelAndView("Email","companies",m);
+            }
 
            // return new ModelAndView("Email");
             //return new ModelAndView("Final");
