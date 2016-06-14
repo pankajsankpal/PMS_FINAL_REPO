@@ -202,7 +202,6 @@ description: contains links to manage system users->
 														<td>6. <a href="InsertMonth.html"> Insert month to view Events  </a></td>
 													</tr>	
 													<c:if test="${sessionScope.roleName=='TPO'}">
-																										
 													<tr>
 														<td>7.<a href="AssignTPC.html">Assign TPC </a><br/></td>
 													</tr>

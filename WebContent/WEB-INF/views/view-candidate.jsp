@@ -82,9 +82,11 @@
 													<tr>
 														<td><label class="col-sm-0">Company</label><select
 															name="company">
-																<option value="jpmorgan">JP Morgan</option>
+																<!-- <option value="jpmorgan">JP Morgan</option> -->
+																<option value="JP Morgan">JP Morgan</option>
 																<option value="accenture">Accenture</option>
-																<option value="tcs">TCS</option>
+																<!-- <option value="tcs">TCS</option> -->
+																<option value="TCS">TCS</option>
 																<option value="larsentubro">L&T</option>
 																<option value="morganstanley">Morgan & Stanley</option>
 																<option value="godrej">Godrej</option>
