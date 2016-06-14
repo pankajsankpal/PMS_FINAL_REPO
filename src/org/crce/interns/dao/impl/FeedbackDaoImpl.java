@@ -1,6 +1,8 @@
 package org.crce.interns.dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -27,6 +29,21 @@ public class FeedbackDaoImpl implements FeedbackDao {
 	}
 
 	public void addFeedback(Feedback feedback) {
+		Date dNow = new Date( );
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("yyyy-MM-dd");
+		String temp = ft.format(dNow);
+		//Date parsed = ft.parse(temp);
+		System.out.println(temp);
+		 
+		 //java.sql.Date sql = new java.sql.Date(parsed.getTime());
+        
+		
+		
+		String year =  Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
+		feedback.setCreated_date(dNow);
+		feedback.setCreated_by(feedback.getUsername());
+		feedback.setYear(year);
 		sessionFactory.getCurrentSession().saveOrUpdate(feedback);
 	}
 	
