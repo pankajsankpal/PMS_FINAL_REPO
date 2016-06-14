@@ -26,7 +26,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 </head>
 
-	<body>
+<body>
 <jsp:directive.include file="Header.jsp" />
 
 <div class="main-content">
@@ -115,7 +115,21 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
 
 															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
-															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
+															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a> <br><br>
+															<button data-toggle="dropdown" class="btn btn-pink btn-lg  dropdown-toggle btn-block">
+																								Send E-mail
+																<i class="ace-icon fa fa-angle-down icon-on-right"></i>
+															</button>
+															<ul class="dropdown-menu dropdown-pink dropdown-menu-right">
+																<li>
+																	<a href="GroupSendMail">send to Group</a>
+																</li>
+			
+																<li>
+																	<a href="personalMail">send to individual</a>
+																</li>
+															
+															</ul>
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
@@ -124,14 +138,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
 
 															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
-
+															<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
 															
-
-														</div>
-														
-
-														<div class="col-xs-12 col-sm-8">
-														<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
 
 														</div>
 														
