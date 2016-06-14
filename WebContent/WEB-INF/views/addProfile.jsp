@@ -8,7 +8,7 @@ description: contains all the validations required for every field -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TPO|Job Post</title>
+<title>Add Profile</title>
 <!-- page specific plugin styles -->
 <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 <link rel="stylesheet" href="assets/css/chosen.min.css" />
