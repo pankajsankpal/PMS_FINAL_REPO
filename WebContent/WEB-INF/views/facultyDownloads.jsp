@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TPO | HOME</title>
+<title>Faculty Downloads</title>
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
@@ -55,7 +55,7 @@
 					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome , ${sessionScope.name} !</h3>
+							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
 	
 							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
@@ -78,17 +78,17 @@
 									<div id="user-profile-2" class="user-profile">
 										<div class="tabbable">
 											<ul class="nav nav-tabs padding-18">
-												<li class="active">
-													<a data-toggle="tab" href="#activity">
+												<li>
+													<a  href="viewprofile">
 														<i class="orange ace-icon fa fa-rss bigger-120"></i>
 														Activity
 													</a>
 												</li>
 
-												<li>
-													<a href="downloads">
+												<li class="active">
+													<a href="#uploads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
-														Uploads
+														Uploads	
 													</a>
 												</li>
 												
@@ -98,7 +98,7 @@
 											<div class="tab-content no-border padding-24">
 												
 
-												<div id="uploads" class="tab-pane">
+												<div id="uploads" class="tab-pane in active">
 													<div class="row">
 															<div class="col-xs-12">
 																<!-- PAGE CONTENT BEGINS -->
@@ -111,7 +111,7 @@
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -134,7 +134,7 @@
 												
 												
 												
-												<div id="activity" class="tab-pane in active">
+												<!-- <div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
 														
@@ -157,13 +157,13 @@
 														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>
 														
-												<!-- <div class="col-xs-12 col-sm-8 left">
+												<div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
-												</div> -->
-											</div><!-- /#pictures -->
+												</div>
+											</div>/#pictures
 											</div>
 								
-							
+							 -->
 										
 										</div><!-- end of tabbable -->
 									</div><!-- end of user-profile-2 -->
@@ -248,14 +248,14 @@
 							'resume' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
 							
 						}
-						tree_data_2['resume']['additionalParameters'] = {
+						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
-								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
+								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 								
 							]
-						}
+						} */
 						/* tree_data_2['video']['additionalParameters'] = {
 							'children' : [
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
@@ -265,7 +265,7 @@
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+						/* tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -287,7 +287,7 @@
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {

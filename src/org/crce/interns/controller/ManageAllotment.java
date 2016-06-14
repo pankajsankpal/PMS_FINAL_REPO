@@ -108,7 +108,7 @@ public class ManageAllotment extends HttpServlet{
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
 		
 		
-		/* **  //Authentication is commented
+		  //Authentication is commented
 		 
 		 
 		HttpSession session=request.getSession();
@@ -119,7 +119,7 @@ public class ManageAllotment extends HttpServlet{
 			return new ModelAndView("403");
 		else
 		
-		** */
+		
 		
 		{
 			AllotmentBean allotmentBean = new AllotmentBean(); // declaring

@@ -19,7 +19,7 @@ description: Sidebar, tabs turn active through jquery -->
 
 
 		<ul class="nav nav-list" id="sidebarli">
-			<li class=" " id="EventsPages"><a href="EventsPages"> <i
+			<li class=" " id="InsertMonth"><a href="InsertMonth"> <i
 					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
 						Events </span>
 			</a> <b class="arrow"></b></li>

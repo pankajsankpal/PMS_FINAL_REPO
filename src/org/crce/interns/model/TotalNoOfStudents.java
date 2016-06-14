@@ -1,20 +1,27 @@
-package org.crce.interns.beans;
+package org.crce.interns.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class PlacedStudentsBean {
-
+@Entity
+@Table(name = "placement_statistics_schema.total_no_of_students")
+public class TotalNoOfStudents {
+	@Id		
+	@Column(name = "year")
 	private String year;
 	
-	
+	@Column(name = "it")
 	private int it;
 	
-	
+	@Column(name = "comps")
 	private int comps;
 	
-	
+	@Column(name = "elex")
 	private int elex;
 	
-	
+	@Column(name = "prod")
 	private int prod;
 
 	public String getYear() {
@@ -56,5 +63,4 @@ public class PlacedStudentsBean {
 	public void setProd(int prod) {
 		this.prod = prod;
 	}
-
 }

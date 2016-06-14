@@ -12,5 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface SelectedApplicantsService {
 	public int createDetails(QuickStatsBean userBean);
 	public List<QuickStatsBean> retrieveDetails(String company);
+	public List<QuickStatsBean> retrieveDetails(String company, String year);
 	public int deleteDetails(QuickStatsBean userBean);
 }

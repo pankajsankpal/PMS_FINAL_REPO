@@ -30,6 +30,12 @@ public class FeedbackServiceImpl implements FeedbackService {
 		System.out.println("inside service");
 		return feedbackDao.listFeedback();
 	}
-
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean checkUser(String user, String cName){
+		
+		return feedbackDao.checkUser(user, cName);
+		
+	}
 	
 }

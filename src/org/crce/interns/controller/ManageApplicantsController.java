@@ -5,8 +5,6 @@ import java.util.List;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserCompanyBean;
-import org.crce.interns.model.Company;
-import org.crce.interns.model.UserCompany;
 import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.validators.AddApplicantsValidator;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.Calendar;
 
 /**
 *
@@ -69,8 +68,11 @@ public class ManageApplicantsController {
 		 System.out.println("inside controller"+company);
 		 
 		 model = new ModelAndView("candidate-list");
+		 String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 
 		 List<UserCompanyBean> userBeanList=new ArrayList<UserCompanyBean>();
-		 userBeanList.addAll(crudService.retreiveDetails(company));
+		/* userBeanList.addAll(crudService.retreiveDetails(company));*/
+		 userBeanList.addAll(crudService.retreiveDetails(company, year));
 		
 		 List<ProfessionalProfileBean> professionalProfileBeanList=new ArrayList<ProfessionalProfileBean>();
 		 List<PersonalProfileBean> personalProfileBeanList=new ArrayList<PersonalProfileBean>();
