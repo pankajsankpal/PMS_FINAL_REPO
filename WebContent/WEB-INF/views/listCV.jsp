@@ -120,7 +120,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
 																		
 																				<div class="profile-feed row">
-																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																					<a href="ftpcapplies"  class="btn btn-primary btn-md">Apply on behalf of Student</a> <br> <br>
 																				</div>
 																		</c:if>
 																				<br>
@@ -151,6 +151,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																				<tr>
 																					<td>6. <a href="counselingReportUpload">Click here to upload Counseling Report</a></td>
 																				</tr>
+																				
 																				<!-- <tr>
 																		 			<td><a href="displist">display list</a><br /></td>
 																		 		</tr> -->
