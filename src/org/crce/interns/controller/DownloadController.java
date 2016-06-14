@@ -281,8 +281,8 @@ public class DownloadController extends HttpServlet {
 	@RequestMapping("/downloadOfferLetter") 	
 	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
-		String userName = (String) request.getSession().getAttribute("userName");
-		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + "5534" + "\\Offer Letters\\" + fileName;
+		String userId = (String) request.getSession().getAttribute("userId");
+		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + userId + "\\Offer Letters\\" + fileName;
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();

@@ -8,6 +8,7 @@ package org.crce.interns.service.impl;
 import java.io.IOException;
 import javax.mail.internet.MimeMessage;
 import org.crce.interns.dao.SendEmailDAO;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.EmailNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
  * @author Leon
  */
 @Service("emailNotificationService")
-public class EmailNotificationServiceImpl implements EmailNotificationService{
+public class EmailNotificationServiceImpl implements EmailNotificationService,ConstantValues{
 
     @Autowired
     private SendEmailDAO sendEmailDAO;
@@ -38,7 +39,7 @@ public class EmailNotificationServiceImpl implements EmailNotificationService{
      */
     public void sendEmailNotification(String receivers, String category, String message) {
 
-        if (receivers.equalsIgnoreCase("Computer Engineering") || receivers.equalsIgnoreCase("Information Technology Engineering") || receivers.equalsIgnoreCase("Production Engineering") || receivers.equalsIgnoreCase("Electronics Engineering")){
+        if (receivers.equalsIgnoreCase(COMPS) || receivers.equalsIgnoreCase(IT) || receivers.equalsIgnoreCase(PROD) || receivers.equalsIgnoreCase(ELEX)){
             String list = sendEmailDAO.fetchStreamStudents(receivers);
         }
         else{

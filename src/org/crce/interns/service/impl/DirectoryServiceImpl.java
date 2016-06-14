@@ -263,7 +263,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         File counselingReportFtpcFiles = new File(directoryPathBean.getCounselingReportFtpcFolder());
         counselingReportFtpcFiles.mkdirs();
         
-        //File copyFiles = new File(directoryPathBean.getCopyFolder());
-        //copyFiles.mkdirs();
+      //File copyFiles = new File(directoryPathBean.getCopyFolder());
+      //copyFiles.mkdirs();
     }
 }

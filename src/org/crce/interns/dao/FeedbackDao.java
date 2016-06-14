@@ -8,6 +8,9 @@ import org.crce.interns.model.*;
 public interface FeedbackDao {
 
 	public List<Feedback> listFeedback();
+	
 	public void addFeedback(Feedback feedback);
-
+	
+	public boolean checkUser(String user, String cName);
+	
 }

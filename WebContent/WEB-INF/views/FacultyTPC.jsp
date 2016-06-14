@@ -32,31 +32,9 @@ description: contains tabs ->  activity ,uploads ,notification -->
 <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -186,8 +164,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														<div class="col-xs-12 col-sm-4 left">
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
-															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>
-															<a href="sendMail"  class="btn btn-inverse btn-lg btn-block">Send Email </a>
+															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
 															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
 														</div>
 														
@@ -195,43 +172,19 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
 															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
-															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>
-															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
+															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
+															
 
 														</div>
 														
-														<div class="col-xs-12 col-sm-4 right">
-															<div class="widget-box">
-															<div class="widget-body">
-															 <div class="widget-main">
-															 <h3>Send notification to user </h3>
-															<%-- 	<form:form action="notify" commandName="notify">
-																	<table cellpadding="5" cellspacing="10" >
-																		<tr >
-																			<td> Roll No:<FONT color="red"> <form:errors
-																						path="userName" /></FONT></td>
-																		</tr>
-																		<tr>
-																			<td ><form:input path="userName" /></td>
-																			<td><input class="btn btn-sm btn-warning" type="submit" value="Notify" /></td>
-																		</tr>
-																	
-																	</table>
-																</form:form>
-																--%>
-															</div>
-															</div>
-															</div>
+														<div class="col-xs-12 col-sm-8">
+														<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
 														</div>
+														
+														
 													</div>
 													
 													
-													<br><br>
-													
-														
-															<br><br>
-															
-															<div class="hr dotted"></div>
 															
 
 												</div><!-- /#activity -->

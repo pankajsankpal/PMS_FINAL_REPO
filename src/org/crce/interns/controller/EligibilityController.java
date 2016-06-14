@@ -48,7 +48,7 @@ public class EligibilityController {
 		return new ModelAndView("tempform");
 	}
 
-	@RequestMapping("/ftpcapplies")
+	@RequestMapping("/stpcapplies")
 	public ModelAndView start1() {
 		return new ModelAndView("tempform2");
 	}

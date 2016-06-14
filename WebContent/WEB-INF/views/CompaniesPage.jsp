@@ -21,9 +21,13 @@ description: contains the list of all the companies -->
 
 	<div class="main-content">
 		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
 
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+			
 			<div class="page-content">
-
+				
 				<div class="page-header">
 					<h1>Companies</h1>
 				</div>
@@ -64,7 +68,7 @@ description: contains the list of all the companies -->
 										src="assets/images/companies/zs.jpg" />
 								</a></li>
 
-								<li><a href="Company?companyname=tcs"> <img width="200"
+								<li><a href="Company?companyname=Tata%20Consultancy%20Services"> <img width="200"
 										height="150" alt="150x150"
 										src="assets/images/companies/tcs.jpg" />
 								</a></li>

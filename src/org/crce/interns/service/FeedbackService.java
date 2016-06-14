@@ -10,6 +10,9 @@ public interface FeedbackService {
 	
 	
 	public List<Feedback> listFeedback();
+	
 	public void addFeedback(Feedback feedback);
+	
+	public boolean checkUser(String user, String cName);
 
 	}
