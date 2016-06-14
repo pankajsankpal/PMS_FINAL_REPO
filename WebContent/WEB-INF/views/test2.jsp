@@ -28,13 +28,13 @@
  		function doSearch(){
 	 		$.getJSON("looseSearch2",
 	 				
-	 				{CHARS:'JP'},
+	 				{CHARS:''},
 	 				
 	 				function(data){
 	 					console.log(data);
 	 					$('#searchresult').text('');
 	 					for(var index in data){
-	 						$('#searchresult').append('<option name="'+data[index].companyId+'">'+data[index].companyId+data[index].companyName+'</option>');
+	 						$('#searchresult').append('<option name="'+data[index].company_id+'">'+data[index].company_name+'</option>');
 	 					}
 	 				});
  		}

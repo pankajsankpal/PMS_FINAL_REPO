@@ -202,14 +202,15 @@
                         <option value="prodClass">ProdClass</option>
                         <option value="itClass">ITClass</option>
                         <option value="elexClass">ElexClass</option>
-                        <option value="JPMorgan">JP Morgan</option>
-                        <option value="MorganStanley"> Morgan Stanley </option>
-                        <option value="Directi">Directi </option>
-                        <option value ="TCS">TCS</option>
+                        <option value="JP Morgan">JP Morgan</option>
+                        <option value="Morgan Stanley"> Morgan Stanley </option>
+                        <option value="Direct i">Directi </option>
+                        <option value ="Tata Consultancy Services">TCS</option>
                         <option value="Accenture">Accenture</option>
                         <option value="SAP">SAP</option>
                         <option value="Godrej">Godrej</option>
-                        <option value="Neebal">Neebal</option>
+                        <option value="Laursen & Tubro">L&T</option>
+                        <!--<option value="Neebal">Neebal</option>
                         <option value="Seclore">Seclore</option>
                         <option value="LnTInfoTech"> L&T Infotech</option>
                         <option value="LntEngineering"> L&T Engineering</option>
@@ -220,8 +221,8 @@
                         <option value="TCSDigital"> TCS Digital</option>
                         <option value="NSE"> NSE </option>
                         <option value="Siemens">Siemens</option>
-                        <option value="BNP"> BNP Paribas </option>
-                        <option value ="ZS"> ZS </option>    
+                        <option value="BNP"> BNP Paribas </option>   -->
+                        <option value ="ZS Associates"> ZS </option>    
                     </select>
                 </div>
                 <br/> <br/> <br>

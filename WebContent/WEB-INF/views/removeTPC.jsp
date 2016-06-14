@@ -1,17 +1,19 @@
+
+
 <!-- author: Pankaj sankpal
 description: contains fields to remove a student or a faculty TPC into the System->
 <!-- -------------------------------------------------------------------------------------------------------- -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Remove faculty or Student TPC </title>
+<title>Remove faculty or Student TPC</title>
 <style>
 .error {
 	color: #ff0000;
@@ -54,18 +56,21 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 
 
 </head>
-<body 	onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
+	onunload="">
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('breadcrumbs', 'fixed')
+					} catch (e) {
+					}
+				</script>
 
-						<!-- <ul class="breadcrumb">
+				<!-- <ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
@@ -77,37 +82,37 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 							<li class="active">User Profile</li>
 						</ul>/.breadcrumb -->
 
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<div class="nav-search" id="nav-search">
+					<form class="form-search">
+						<span class="input-icon"> <input type="text"
+							placeholder="Search ..." class="nav-search-input"
+							id="nav-search-input" autocomplete="on" /> <i
+							class="ace-icon fa fa-search nav-search-icon"></i>
+						</span>
+					</form>
+				</div>
+				<!-- /.nav-search -->
+			</div>
 
-					<div class="page-content">
-						
+			<div class="page-content">
 
-						<div class="page-header">
-							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
-							</h1>
-						</div><!-- /.page-header -->
-						
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="clearfix">
-								
-										<div class="row">
-										<div class="col-xs-12 ">
-										<div class="widget-box">
+
+				<div class="page-header">
+					<h1>Logged in as ${sessionScope.name}</h1>
+				</div>
+				<!-- /.page-header -->
+
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="clearfix">
+
+							<div class="row">
+								<div class="col-xs-12 ">
+									<div class="widget-box">
 										<div class="widget-body">
-										 <div class="widget-main">
-											<div align="center">
+											<div class="widget-main">
+												<div align="center">
 													<h2>Remove TPC</h2>
 													<form:form method="POST" action="SubmitRemoveTPC">
 														<table>
@@ -117,53 +122,50 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 																<td><form:errors path="userName" cssClass="error" /></td>
 															</tr>
 															<tr>
-																<p><font size="5" color="red" face="verdana">${erroMesg}</font></p>
+																<p>
+																	<font size="5" color="red" face="verdana">${erroMesg}</font>
+																</p>
 															</tr>
 															<tr>
-																<td colspan="2"><input class="btn btn-md btn-success" type="submit" value="Submit" /></td>
+																<td colspan="2"><input
+																	class="btn btn-md btn-success" type="submit"
+																	value="Submit" /></td>
 															</tr>
 														</table>
-													</form:form>												
-												<br><br>
+													</form:form>
+													<br>
+													<br>
+												</div>
 											</div>
-											</div>
-											</div>
-											</div>
-											<br><br>
 										</div>
-
-										
 									</div>
-										
-								
-								
+									<br>
+									<br>
 								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
-												
+			</div>
+		</div>
 
-
-	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	
-	
+
+
 		<!-- /.main-container -->
 
-</div>
-	
-	
-
+	</div>
 
 </body>
 </html>
 
 
-<%-- 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -210,4 +212,5 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 </body>
 </html>
 
+<<<<<<< HEAD
  --%>

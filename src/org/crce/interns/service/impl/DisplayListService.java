@@ -32,7 +32,7 @@ public class DisplayListService {
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
 			 String pathname = null;
-			if(userRole.equals(ConstantValues.StudentName))
+			if(userRole.equals(ConstantValues.StudentName) || userRole.equals("allowed") || userRole.equals(ConstantValues.StudentTPCName))
 				pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
 			else
 				pathname=dpb.getSystemFolder()+"\\"+folder;
@@ -40,7 +40,8 @@ public class DisplayListService {
 			 File[] files= new File(pathname).listFiles();
 			 
 			 //logic for sorting the files w.r.t to date of creation
-			 Arrays.sort( files, new Comparator<Object>()
+			 if(files!= null)
+			 {Arrays.sort( files, new Comparator<Object>()
 		        {
 		        public int compare(Object o1, Object o2) {
 		        return -1 *new Long(((File)o1).lastModified()).compareTo(new Long(((File) o2).lastModified()));
@@ -50,10 +51,31 @@ public class DisplayListService {
 			 
 			 //getting the file names
 			 for (File file : files) 
-			   results.add(file.getName());
-			     
+				  results.add(file.getName());
+			 }
 			         return results;
 		}
+		
+		
+		/**
+		 * this method displays the folders within a folder
+		 * @param id
+		 * @return
+		 */
+		public List<String > displayFolderlist(String id){
+			DirectoryPathBean dpb=new DirectoryPathBean();
+			 List<String> results = new ArrayList<String>();
+			 String path=dpb.getStudentFolder()+"\\" +id;
+			 File[] files= new File(path).listFiles();
+			 System.out.println(path);
+			 for (File file : files)
+				 if(file.isDirectory())
+				   results.add(file.getName());
+				  
+			 return results;
+			
+		}
+		
 		
 		
 }
