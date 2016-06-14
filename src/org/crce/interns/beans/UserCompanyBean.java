@@ -10,6 +10,8 @@ public class UserCompanyBean {
 
 		private String company;
 		
+		private String year;
+		
 		public String getUsername() {
 			return username;
 		}
@@ -29,6 +31,12 @@ public class UserCompanyBean {
 		}
 		public void setCompany_id(int company_id) {
 			this.company_id = company_id;
+		}
+		public String getYear() {
+			return year;
+		}
+		public void setYear(String year) {
+			this.year = year;
 		}
 
 }

@@ -345,7 +345,7 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-4">
 																<div>
 																	<select name="eligible_branches" class="chosen-select form-control"
-																		multiple="Eligible Branches">
+																		multiple="">
 																		<option value="CS">Computers</option>
 																		<option value="IT">Info.Tech</option>
 																		<option value="EX">Electronics</option>

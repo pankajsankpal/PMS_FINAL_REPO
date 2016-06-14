@@ -397,6 +397,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -419,6 +420,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /*
  * Author: Cheryl
@@ -505,6 +507,8 @@ public class ManageProfile extends HttpServlet{
 		jobBean.setCreated_date(date);
 		jobBean.setModified_by(r.get("modified_by"));
 		
+		jobBean.setYear(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+		
 		//jobBean.setModified_date(sdf.parse(r.get("modified_date")));
 
 		
@@ -513,8 +517,17 @@ public class ManageProfile extends HttpServlet{
 		//criteriaBean.setCriteria_id(Integer.parseInt(r.get("criteria_id")));
 		criteriaBean.setCriteria_id(Integer.parseInt(r.get("company_id")));
 		//criteriaBean.setCriteria_id(Integer.parseInt(r.get("company_id")));
-		criteriaBean.setEligible_branches(r.get("eligible_branches"));
-		criteriaBean.setEligible_branches(r.get("eligible_branches"));
+		//criteriaBean.setEligible_branches(r.get("eligible_branches"));
+		//System.out.println(r.get("eligible_branches"));
+		
+		String[] val = request.getParameterValues("eligible_branches");
+		String e="";
+		for(String i: val){
+			e=e+" , "+i;
+		}
+		
+		criteriaBean.setEligible_branches(e);
+		
 		criteriaBean.setYear_of_passing(r.get("year_of_passing"));
 		criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
 		criteriaBean.setPercentage(r.get("percentage"));
@@ -624,11 +637,12 @@ public class ManageProfile extends HttpServlet{
 	*/
 	
 	@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
-	public ModelAndView listProfile() {
+	public ModelAndView listProfile(@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 	
 	try{
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
+		model.put("profiles",  prepareListofBean(manageProfileService.listProfile(curYear)));
 		//return new ModelAndView("viewProfile", model);
 		return new ModelAndView("CompaniesPage", model);
 	}
@@ -651,7 +665,8 @@ public class ManageProfile extends HttpServlet{
 	}
 	
 	@RequestMapping(value="/JobPosts", method = RequestMethod.GET)
-	public ModelAndView Companies(@RequestParam String companyname) {
+	public ModelAndView Companies(@RequestParam String companyname,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 		
 	try{
 		ModelAndView model ;
@@ -690,7 +705,7 @@ public class ManageProfile extends HttpServlet{
 		model = new ModelAndView("JobPosts");
 		
 		
-		List<JobBean> jlist = manageProfileService.listJob();
+		List<JobBean> jlist = manageProfileService.listJob(curYear);
 		System.out.println(jlist.size());
 		for( JobBean jb: jlist){
 			//CompanyBean cb = new CompanyBean();
@@ -728,11 +743,12 @@ public class ManageProfile extends HttpServlet{
 	
 	
 	@RequestMapping(value="/JobPosts/companyname/{companyname}", method = RequestMethod.GET)
-	public ModelAndView JobPosting1(@PathVariable String companyname) {
+	public ModelAndView JobPosting1(@PathVariable String companyname,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 		
 	try{
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("profiles",  prepareListofBean(manageProfileService.listProfile()));
+		model.put("profiles",  prepareListofBean(manageProfileService.listProfile(curYear)));
 		return new ModelAndView("JobPosts", model);
 		//return new ModelAndView("CompaniesPage", model);
 	}

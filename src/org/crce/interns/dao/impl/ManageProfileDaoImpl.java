@@ -89,10 +89,12 @@ import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.model.Job;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.crce.interns.beans.JobBean;
 import org.crce.interns.dao.ManageProfileDao;
+import org.hibernate.Query;
 //import org.crce.interns.model.Profile;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,13 +138,31 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Job> listProfile() {
+	//Added String curYear
+	public List<Job> listProfile(String curYear) {
 		// TODO Auto-generated method stub
-		return (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).list();
-		//return (List<Allotment>) sessionFactory.openSession().createCriteria(Allotment.class).list();
+		
+		List<Job> result = null;
+		
+		if(curYear.equals(""))
+		{
+			
+			curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+		}
+		//return (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).list();
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("SELECT job FROM Job job WHERE job.year = :curYear");
+		query.setParameter("curYear", curYear);
+		
+		result = query.list();
+		return result;
+		
 	}
 
 	//@Override
+	
 	public void createProfile(Company company) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().saveOrUpdate(company);			
@@ -160,10 +180,31 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 		//return (List<Allotment>) sessionFactory.openSession().createCriteria(Allotment.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Job> listJob() {
+	//Added String curYear
+	public List<Job> listJob(String curYear) {
 		// TODO Auto-generated method stub
-		return (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).list();
+		
+		List<Job> result = null;
+		
+		if(curYear.equals(""))
+		{
+			
+			curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+		}
+		//return (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).list();
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("SELECT job FROM Job job WHERE job.year = :curYear");
+		query.setParameter("curYear", curYear);
+		
+		result = query.list();
+		return result;
+
+		
+		//return (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).list();
 	}
 	 
 }

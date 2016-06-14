@@ -42,6 +42,15 @@ import javax.persistence.Table;
 	@Column(name="company_name")
 	private String company;
 	
+	@Column(name="year")
+	private String year;
+	
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
 	//private String user_password;
 	public String getUsername() {
 		return username;

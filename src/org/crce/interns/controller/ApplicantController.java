@@ -143,6 +143,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ApplicantController {
@@ -172,13 +173,15 @@ public class ApplicantController {
 	}
 	
 	@RequestMapping(value="/ViewApplicant", method = RequestMethod.GET)
-	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
+	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 		
 		
 		
 		System.out.println("In View Applicant: " + companies);
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("users", applicantService.viewApplicants(companies));
+		//modelMap.put("users", applicantService.viewApplicants(companies));
+		modelMap.put("users", applicantService.viewApplicants(companies,curYear));
 		
 		if (modelMap.isEmpty()) {
 			System.out.println("Error no Model map, Model map is null");
@@ -195,15 +198,17 @@ public class ApplicantController {
 		return new ModelAndView("viewApplicant", modelMap);
 	}
 	
-	@RequestMapping(value = "/NotifyStudent", method = RequestMethod.POST)
-	public ModelAndView notifyStudent(@RequestParam("userName") String userName,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
+	@RequestMapping(value = "/NotifyStudent", method = RequestMethod.GET)
+	public ModelAndView notifyStudent(@RequestParam("userName") String userName,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult,
+			@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 	//	UserDetailsBean userBean =new UserDetailsBean();
 		//userBean.setUserName(userName);
 		ModelAndView model;
 		String errorMsg="";
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		if(userName.equalsIgnoreCase("")){
-			modelMap.put("users", applicantService.viewApplicants(companies));
+			modelMap.put("users", applicantService.viewApplicants(companies,curYear));
 			model = new ModelAndView("viewApplicant",modelMap);
 /*		model = new ModelAndView("viewApplicant",modelMap);
 */		//modelMap.put("users", applicantService.viewApplicants(companies));
@@ -220,14 +225,16 @@ public class ApplicantController {
 	}
 	
 	@RequestMapping(value="/SetNotify", method = RequestMethod.GET)
-	public ModelAndView setNotify(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
+	public ModelAndView setNotify(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult
+			,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes) {
 		
 		ModelAndView model;
 		String errorMsg="";
 		Date date = new Date(); 
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		//if(userName.equalsIgnoreCase("")){
-		modelMap.put("users", applicantService.viewApplicants(companies));
+		modelMap.put("users", applicantService.viewApplicants(companies,curYear));
 		
 		System.out.println("In Set Notify: " + user);
 		int check = applicantService.checkNotify(user);
@@ -238,7 +245,7 @@ public class ApplicantController {
 			ud.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
 			ud.setUserName(user);
 
-			modelMap.put("notify", applicantService.notifyApplicants(ud));
+			modelMap.put("notify", applicantService.notifyApplicants(ud,curYear));
 			
 			model = new ModelAndView("viewApplicant", modelMap);
 			model.addObject("success", 1);
@@ -247,7 +254,7 @@ public class ApplicantController {
 		}
 		else
 		{
-			modelMap.put("users", applicantService.viewApplicants(companies));
+			modelMap.put("users", applicantService.viewApplicants(companies,curYear));
 			model = new ModelAndView("viewApplicant",modelMap);
 			errorMsg = "Student is already notified";
 			model.addObject("errorMsg", errorMsg);
