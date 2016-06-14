@@ -18,6 +18,7 @@ public class JobBean {
 	private String created_by;
 	private Date modified_date;
 	private String modified_by;
+	private String year;
 	public String getJob_id() {
 		return job_id;
 	}
@@ -93,6 +94,12 @@ public class JobBean {
 	}
 	public void setModified_by(String modified_by) {
 		this.modified_by = modified_by;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
 	}
 		
 }

@@ -62,8 +62,9 @@ description: contains tabs ->  activity ,uploads ,notification -->
 						
 
 						<div class="page-header">
-							
-							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+
+							<h3>Welcome , ${sessionScope.name} ! </h3>
+
 	
 							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
@@ -112,32 +113,32 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														<div class="col-xs-12 col-sm-4 left">
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
-															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>
-															<a href="counselingReportUpload"  class="btn btn-inverse btn-lg btn-block">Counseling Report Upload</a>
-															
+
+															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
+															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
 															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
-															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a>  <br><br>
+
+															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
+
 															
 
 														</div>
 														
-														<div class="col-xs-12 col-sm-8 right">
-														<a href="SearchApplicant"  class="btn btn-pink btn-lg btn-block">Search Applicants </a>
+
+														<div class="col-xs-12 col-sm-8">
+														<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
+
 														</div>
+														
+														
 													</div>
 													
 													
-													<br><br>
-													
-														
-															<br><br>
-															
-															<div class="hr dotted"></div>
 															
 
 												</div><!-- /#activity -->

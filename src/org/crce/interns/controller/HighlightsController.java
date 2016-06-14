@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.ProfileService;
@@ -25,14 +27,20 @@ public class HighlightsController implements ConstantValues {
 	private ProfileService profileService;
 	
 	@Autowired
+	private StatisticsService statisticsService;
+
+	@Autowired
 	private AssignTPCService userService;
 	
 	
 	@RequestMapping(value="/Statistics", method = RequestMethod.GET)
-	
-	public ModelAndView Statistics(HttpServletRequest request) {
-	
-		return new ModelAndView("list");
+	public ModelAndView view(HttpServletRequest request) {
+		//String year = (String) request.getAttribute("year");
+		//String year = "2016";
+		//TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(year);
+		ModelAndView model = new ModelAndView("list");
+	//	model.addObject("totalStudents", total);
+		return model;
 	}
 
 	
@@ -92,6 +100,5 @@ public class HighlightsController implements ConstantValues {
 		profileService.listProfessionalProfile("2016");
 		return new ModelAndView("list");
 	}
-	
 
 }
