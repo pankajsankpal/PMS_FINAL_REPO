@@ -49,6 +49,8 @@ public class AddUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
+	
+	
 	@Autowired
     FileUploadValidator validator;
 	

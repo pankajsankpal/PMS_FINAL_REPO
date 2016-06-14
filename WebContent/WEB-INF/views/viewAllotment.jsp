@@ -19,13 +19,13 @@
 				<div class="page-content">
 					<h1 align="center"><u>List Allotments</u></h1>
 					<!-- connect to database -->
-					<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+					<%-- <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
 					     url="jdbc:postgresql://localhost:5432/placementdb"
 					     user="postgres"  password="root"/>
 					<!-- write query -->
 					<sql:query dataSource="${snapshot}" var="allotments">
 						SELECT * from room_allotment.allotment;
-					</sql:query>
+					</sql:query> --%>
 					<!-- header-->
 					<table border="3" class="table-fill">
 					<thead>
@@ -38,9 +38,46 @@
 							<th class="text-center"><b>Drive Date</b></td>
 						</tr>
 					</thead>
+					
+					
+					
+					
+					
 					<tbody class="table-hover">
 						<!--view contents -->
-						<c:forEach items="${allotments.rows}" var="allotment">
+						
+						
+						 <%-- <c:if test="${!empty allotments}">
+							<table border="1">
+								<tr>
+									<th>User Roll No.</th>
+				
+								</tr>
+									<c:forEach items="${allotments}" var="allot">
+										<tr>
+											<td><c:out value="${allot.allotment_id}" /></td>
+											<td><c:out value="${allot.company_name}" /></td>
+											<td><c:out value="${allot.round_no}" /></td>
+											<td><c:out value="${allot.room_no}" /></td>
+											<td><c:out value="${allot.job_description}" /></td>
+											<td><c:out value="${allot.drive_date}" /></td>
+											
+											<tr>
+							<td class="text-center"><c:out value="${allot.allotment_id}"/></td>
+							<td class="text-center"><c:out value="${allot.company_name}"/></td>
+							<td class="text-center"><c:out value="${allot.round_no}"/></td>
+							<td class="text-center"><c:out value="${allot.room_no}"/></td>
+							<td class="text-center"><c:out value="${allot.job_description}"/></td>
+							<td class="text-center"><c:out value="${allot.drive_date}"/></td>
+						</tr>
+					
+										<!-- </tr> -->
+									</c:forEach>
+							</table>
+						</c:if>  --%>
+						
+						
+						<c:forEach items="${allotments}" var="allotment">
 						<tr>
 							<td class="text-center"><c:out value="${allotment.allotment_id}"/></td>
 							<td class="text-center"><c:out value="${allotment.company_name}"/></td>
@@ -49,7 +86,7 @@
 							<td class="text-center"><c:out value="${allotment.job_description}"/></td>
 							<td class="text-center"><c:out value="${allotment.drive_date}"/></td>
 						</tr>
-						</c:forEach>
+						</c:forEach>  
 					</tbody>
 					</table>
 				</div>

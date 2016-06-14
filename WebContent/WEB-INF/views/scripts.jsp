@@ -80,6 +80,7 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 		<script src="assets/js/bootstrap.min.js"></script>
 		
 		 <!-- for autocomplete -->
+
 		 <!-- 
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>  
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -87,7 +88,6 @@ description: all the common links and scripts related to the ui theme, fonts, jq
 	
 	<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
 	<link href="assets/autocomplete/main.css" rel="stylesheet">
-
 
 </head>
 <body>

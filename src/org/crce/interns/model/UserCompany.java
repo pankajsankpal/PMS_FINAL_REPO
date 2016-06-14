@@ -42,6 +42,9 @@ import javax.persistence.Table;
 	@Column(name="company_name")
 	private String company;
 	
+	@Column(name="year")
+	private String year;
+	
 	//private String user_password;
 	public String getUsername() {
 		return username;
@@ -63,6 +66,14 @@ import javax.persistence.Table;
 		this.company = company;
 	}
 	
+	public String getYear() {
+		return year;
+	}
+	
+	public void setYear(String year) {
+		this.year = year;
+	}
+}	
 		/*
 		 * database.driver=com.mysql.jdbc.Driver
 database.url=jdbc:mysql://localhost:3306/intellex
@@ -73,7 +84,6 @@ hibernate.hbm2ddl.auto=update
 hibernate.show_sql=true
 		 */
 
-}
 
 /*package org.crce.interns.model;
 import java.io.Serializable;
