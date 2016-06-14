@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -37,29 +38,16 @@
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
-					<div class="page-content">
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome , ${sessionScope.name} !</h3>
+							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
 	
-							<%-- <h2>
+							<h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2> --%>
+							</h2>
 							<br />
 	
 							
@@ -86,7 +74,7 @@
 												</li>
 
 												<li>
-													<a href="downloads">
+													<a data-toggle="tab" href="#uploads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -152,7 +140,7 @@
 														
 														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
 														  
-														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
+														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add candidate </a> <br><br>
 														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
 														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>
@@ -160,9 +148,10 @@
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
 											</div>
-								
+											
 							
 										
 										</div><!-- end of tabbable -->
