@@ -21,9 +21,13 @@ description: contains the list of all the companies -->
 
 	<div class="main-content">
 		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
 
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+			
 			<div class="page-content">
-
+				
 				<div class="page-header">
 					<h1>Companies</h1>
 				</div>
