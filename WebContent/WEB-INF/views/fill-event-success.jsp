@@ -42,7 +42,10 @@
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
+<div class="breadcrumbs" id="breadcrumbs">
 
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 			<div class="page-content">
 				<div class="page-header">
 					<h1>
@@ -55,12 +58,6 @@
 
 
 
-				<script type="text/javascript">
-					try {
-						ace.settings.check('main-container', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
 				<div class="row">
 					<div class="col-sm-5 col-sm-offset-2">
