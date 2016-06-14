@@ -85,6 +85,29 @@ public class ManageApplicantsServiceImpl implements ManageApplicantsService{
 		list.addAll(crudDao.retrieveCompany_id());
 		return list;
 	}
+
+	@Override
+	public List<UserCompanyBean> retreiveDetails(String company, String year) {
+		// TODO Auto-generated method stub
+		List<UserCompany> userList=new ArrayList<UserCompany>();
+		 		List<UserCompanyBean> userBeanList=new ArrayList<UserCompanyBean>();
+		 		userList=crudDao.retreiveDetails(company, year);
+		 	//userList.addAll(crudDao.retreiveDetails(company));
+		 		//UserCompanyBean userCompanyBean=new UserCompanyBean();
+		 		
+		 		for(UserCompany d:userList){
+		 		System.out.println("d=  "+d.getUsername());
+		 		//userBeanList.add(userCompanyBean);
+		 		UserCompanyBean userCompanyBean=new UserCompanyBean();
+		 		BeanUtils.copyProperties(d,userCompanyBean);
+		 			System.out.println("userCompanyBean= "+userCompanyBean.getUsername());
+		 			userBeanList.add(userCompanyBean);
+		 		}
+		 	/*	for(UserCompanyBean d:userBeanList){
+		 			System.out.println("userBeanList=  "+d.getUsername());
+		 	}*/
+		 		return userBeanList;
+	}
 	
 /*	public void deleteDetails(UserCompanyBean userBean){
 		UserCompany user=new UserCompany();

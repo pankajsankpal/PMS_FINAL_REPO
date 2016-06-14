@@ -35,26 +35,15 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
 						<div class="page-header">
 							<h1>
-							Activity & Uploads for ${sessionScope.roleName}
+							Activity & Uploads for ${sessionScope.name}
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -280,14 +269,14 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
 							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
-						tree_data_2['resume']['additionalParameters'] = {
+						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
-								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
+								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 								
 							]
-						}
+						} */
 						/* tree_data_2['video']['additionalParameters'] = {
 							'children' : [
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
@@ -297,7 +286,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+						/* tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -320,7 +309,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								
 							]
 						}
-
+ */
 /* 
 						tree_data_2['documents']['additionalParameters'] = {
 							'children' : [

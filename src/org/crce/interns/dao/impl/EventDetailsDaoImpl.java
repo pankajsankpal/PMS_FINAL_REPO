@@ -30,6 +30,7 @@ public class EventDetailsDaoImpl implements EventDetailsDao{
 			System.out.println(event.getDate()); 
 			session=this.sessionFactory.openSession();
 			//session = sessionFactory.getCurrentSession();
+			System.out.println("fdggggggggggggggggggggggggggg"+cname);
 			String sql = "from Company as c where c.company_name = :n";
 			Query q = session.createQuery(sql);
 			q.setParameter("n", cname);

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,10 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/PMS_v1/dispcriteria">
+<c:if test="${not empty indexList}">
+</br>THIS are the files:-----
+		<ul>
+			<c:forEach var="index" items="${indexList}">
+				
+				<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
+			</c:forEach>
+		</ul>
+
+	</c:if>
 	
-		job_id <input type="text" name="job_id"> <br/>
-		<input type="submit" value="APPLY">
-	</form>
+
+
 </body>
 </html>

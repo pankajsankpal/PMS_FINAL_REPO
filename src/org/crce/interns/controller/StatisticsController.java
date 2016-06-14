@@ -63,7 +63,7 @@ public class StatisticsController {
 	@RequestMapping(value="/calculateTotalStudents", method = RequestMethod.GET)
 	public ModelAndView calculateTotalStudents(HttpServletRequest request) {
 		
-		ModelAndView model = new ModelAndView("viewStats");
+		ModelAndView model = new ModelAndView("stats");
 		statisticsService.calculateTotal("2016");
 		return model;
 	}

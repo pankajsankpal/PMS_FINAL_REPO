@@ -57,6 +57,9 @@ public class Job implements Serializable {
 	@Column(name="modified_by")
 	private String modified_by;
 	
+	@Column(name="year")
+	private String year;
+	
 	
 	public String getJob_id() {
 		return job_id;
@@ -130,6 +133,12 @@ public class Job implements Serializable {
 	}
 	public void setModified_by(String modified_by) {
 		this.modified_by = modified_by;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
 	}
 	
 		
