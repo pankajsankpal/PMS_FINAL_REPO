@@ -93,13 +93,19 @@ public class FeedbackController {
 	public ModelAndView saveEmployee(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 
 			BindingResult result) {
 		System.out.println("in controller1");
+		
 		//Feedback feedback = prepareModel(feedbackBean);
 		//feedbackService.addFeedback(feedback);
 		//System.out.println("in controller1");
+		
+		
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
+		String user=(String)session.getAttribute("roleId");
+		
 		/* List<UserCompany> userList=new ArrayList<UserCompany>();
-		 userList.addAll(crudService.retreiveDetails("TCS"));*/
+		 userList.addAll(crudService.retreiveDetails("TCS"));
 		List<UserCompanyBean> userList=new ArrayList<UserCompanyBean>();//Changed from UserComapny to UserCompanyBean by @Rashmi
 		 userList.addAll(crudService.retreiveDetails("TCS"));
 		// HttpSession session=request.getSession();
@@ -117,6 +123,24 @@ public class FeedbackController {
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("addFeedback");
+		*/
+		
+		ModelAndView model = new ModelAndView();
+		 
+		
+		//if()){
+		if(feedbackService.checkUser(user, feedbackBean.getCompany())){
+			
+			model.addObject("message","You are not eligible for giving this feedback");
+			return new ModelAndView("addFeedback");
+		}
+		else{
+
+			return new ModelAndView("addFeedback");
+		}
+		
+		
+		
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)  

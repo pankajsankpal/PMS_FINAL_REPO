@@ -194,6 +194,33 @@ var x = [];
 
 	});
 </script>
+<script>
+	$(document).ready(function() {
+
+		$('#dynamicsearchcompany').autocomplete({
+			serviceUrl : 'looseSearch2',
+			paramName : "CHARS",
+			delimiter : ",",
+			transformResult : function(response) {
+
+				return {
+					//must convert json to javascript object before process
+					suggestions : $.map($.parseJSON(response), function(company) {
+
+						return {
+							value : company.company_name,
+							data : company.company_id
+						};
+					})
+
+				};
+
+			}
+
+		});
+
+	});
+</script>
 
 </head>
 
@@ -213,12 +240,12 @@ var x = [];
 		<br />
 		<div id="company"></div>
 
-		<br>AutoComplete search Company : <input type="text" id="dynamicsearchcomp" value=""> 
+		<br>AutoComplete search : <input type="text" id="dynamicsearchcomp" value=""> 
 		<input class="btn btn-sm btn-primary" type="button" value="Search" id="searchbutton">
 		<br>
 		<div id="notfound" style="color:red"></div>
 		<br>AutoComplete search User: <input type="text" id="dynamicsearchuser" value="">
-
+		<br>AutoComplete search Company: <input type="text" id="dynamicsearchcompany" value="">
 
 	</div>
 

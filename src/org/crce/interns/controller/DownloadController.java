@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller
 public class DownloadController extends HttpServlet {
+	
 	@Autowired
 	private CheckRoleService crService;
 	/*
@@ -280,8 +281,8 @@ public class DownloadController extends HttpServlet {
 	@RequestMapping("/downloadOfferLetter") 	
 	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
-		String userName = (String) request.getSession().getAttribute("userName");
-		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + userName + "\\Offer Letters\\" + fileName;
+		String userId = (String) request.getSession().getAttribute("userId");
+		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + userId + "\\Offer Letters\\" + fileName;
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();
@@ -323,5 +324,10 @@ public class DownloadController extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("/downloads")
+	public String StudentNotification() {
+		return "facultyDownloads";
 	}
 }

@@ -55,11 +55,11 @@
 					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+							<h3>Welcome , ${sessionScope.name} !</h3>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
 							<br />
 	
 							
@@ -86,7 +86,7 @@
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a href="downloads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -152,7 +152,7 @@
 														
 														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
 														  
-														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add candidate </a> <br><br>
+														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
 														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
 														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>

@@ -7,7 +7,19 @@
 <title>Success</title>
 </head>
 <body>
-	Function has been assigned successfully to the respective role ID.
-	<a href="AssignRole">Back</a>
+	<jsp:directive.include file="Header.jsp" />
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="space"></div>
+				<div class="center">
+					Function has been assigned successfully to the respective role ID.
+					<a href="AdminHome">Home</a>
+  				</div>
+  			</div>
+  		</div>
+  	</div>			
+  	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />					
 </body>
 </html>
