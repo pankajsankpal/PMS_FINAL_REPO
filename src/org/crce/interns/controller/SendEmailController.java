@@ -8,15 +8,19 @@
 package org.crce.interns.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.crce.interns.beans.CompanyBean;
 
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.SendEmailService;
-
-//import org.crce.interns.service.impl.GetCompaniesServiceImpl;
 
 import org.crce.interns.validators.PersonalEmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +42,11 @@ public class SendEmailController {
     @Autowired
     private CheckRoleService crService;
 
-    //@Autowired
-    //private GetCompaniesServiceImpl getCompaniesService;
+    
+    @Autowired
+    private ManageProfileService manageProfileService;
+    
+    
     /*
      Return Type: Boolean-True/False
      Function: Checks for Files
@@ -83,8 +90,6 @@ public class SendEmailController {
      * @throws IllegalStateException
      * @throws IOException 
      */
-    
-    /*
     @RequestMapping(value = "/GroupSubmitEmail", method = RequestMethod.POST)
     public ModelAndView sendEmail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
@@ -93,14 +98,18 @@ public class SendEmailController {
             for (String i : receivers) {
                 System.out.println(i);
             }
-            Map m = getCompaniesService.referenceData(request);
-            ModelAndView model = new ModelAndView("Email","companies",m);
+            List<CompanyBean> companyList = manageProfileService.listCompanies();
+    Map <String, String> companyMap = new LinkedHashMap<String,String>();
+            companyList.stream().forEach((companyBean) -> {
+                companyMap.put(companyBean.getCompany_name(), companyBean.getCompany_name());
+            });
+            ModelAndView model = new ModelAndView("Email","companies",companyMap);
             // boolean flag = false;
             //SendEmailValidator sendEmailValidator = new SendEmailValidator();
             //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
             model.addObject("success", "Email Sent Sucessfully");
-            model.addObject("companies", m);
+            model.addObject("companies", companyMap);
             System.out.println(model);
             return model;
            //} else {
@@ -125,8 +134,6 @@ public class SendEmailController {
      * @param request
      * @return ModelAndView
      */
-    
-    /*
     @RequestMapping(method = RequestMethod.GET, value = "/GroupSendMail")
     public ModelAndView email_welcome(HttpServletRequest request) {
 
@@ -134,15 +141,16 @@ public class SendEmailController {
             System.out.println("Mapped to /sendMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-            /*if (!crService.checkRole("SendEmail", roleId)) {
+            if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
-
             } else {
-            
-            Map m = getCompaniesService.referenceData(request);
-                return new ModelAndView("Email","companies",m);
+                List<CompanyBean> companyList = manageProfileService.listCompanies();
+    Map <String, String> companyMap = new LinkedHashMap<String,String>();
+            companyList.stream().forEach((companyBean) -> {
+                companyMap.put(companyBean.getCompany_name(), companyBean.getCompany_name());
+            });
+                return new ModelAndView("Email","companies",companyMap);
             }
-
 
            // return new ModelAndView("Email");
             //return new ModelAndView("Final");
@@ -160,25 +168,18 @@ public class SendEmailController {
      * @return ModelAndView
      */
     
-    /*
     @RequestMapping(method = RequestMethod.GET, value = "/personalMail")
     public ModelAndView individualMail(HttpServletRequest request) {
         try {
             System.out.println("Mapped to personalMail");
             HttpSession session = request.getSession();
             String roleId = (String) session.getAttribute("roleId");
-           /* if (!crService.checkRole("SendEmail", roleId)) {
+            if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-<<<<<<< HEAD
-     
-            return new ModelAndView("EmailForm");
-            
-=======
                
             return new ModelAndView("EmailForm");
             }
->>>>>>> fed849e068c7fe5b39b811c7dbcd7bb7cf15a6e1
             //return new ModelAndView("EmailForm");
         } catch (Exception e) {
             System.out.println(e);
@@ -199,7 +200,6 @@ public class SendEmailController {
      * @throws IOException 
      */
     
-    /*
     @RequestMapping(method = RequestMethod.POST, value = "/SendPersonalMail")
     public ModelAndView submitIndividualMail(HttpServletRequest request,
             @RequestParam(value = "fileUpload") CommonsMultipartFile[] file) throws IllegalStateException, IOException {
