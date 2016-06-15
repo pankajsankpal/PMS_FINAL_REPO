@@ -120,14 +120,22 @@ public class EligibiltyCheckImpl implements EligibilityService {
 
 			for (i = 0; i < criteria_br.length; i++) {
 
+				System.out.println("Inside for::::::::");
 				if (branch.equalsIgnoreCase(criteria_br[i])) {
 					QualificationBean q = getQualifications(username);
 					// check the student's qualification
+					
+					System.out.println("Inside percent::::::::"+q.getDeg_per()+" crit "+c.getPercentage());
+					System.out.println("Inside hsc::::::::"+q.getHsc_or_dip_per()+" crit "+c.getHsc_or_dip_percentage());
+					System.out.println("Inside ssc::::::::"+q.getSsc_per()+" crit "+c.getSsc_percentage());
+					System.out.println("Inside drops::::::::"+q.getDrops()+" crit "+c.getYear_gap_allowed());
+					
 					if (Double.parseDouble(q.getDeg_per()) >= Double.parseDouble(c.getPercentage())
 							&& Double.parseDouble(q.getHsc_or_dip_per()) >= Double.parseDouble(c.getHsc_or_dip_percentage())
 							&& Double.parseDouble(q.getSsc_per()) >= Double.parseDouble(c.getSsc_percentage())
 							&& Double.parseDouble(q.getDrops()) <= Double.parseDouble(c.getYear_gap_allowed())
 							) {
+						
 						return true;
 					} else {
 						System.out.println("dont meet the qualification criteria");
