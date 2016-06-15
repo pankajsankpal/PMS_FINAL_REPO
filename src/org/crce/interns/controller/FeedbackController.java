@@ -1,20 +1,3 @@
-/*
-*
-* Author Name:Anu Anna Issac
-* 
-* Filename:FeedbackController.java	
-* 	
-* Classes used by code:FeedbackService,FeedbackValidator,Feedback
-* 
-* Tabes used:Feedback
-* 
-* Description: This controller is used to obtain feedback from   *students for the placement drive conducted by the company.
-* 
-*Functions:listFeedback,saveFeedback,addFeedback,welcome,prepareM*odel,prepareList
-*
-*/
-
-
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -131,7 +114,7 @@ public class FeedbackController {
 		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
-		String user=(String)session.getAttribute("roleId");
+		String user=(String)session.getAttribute("userName");
 		
 		/* List<UserCompany> userList=new ArrayList<UserCompany>();
 		 userList.addAll(crudService.retreiveDetails("TCS"));
@@ -158,16 +141,16 @@ public class FeedbackController {
 		 
 		
 		//if()){
-		if(feedbackService.checkUser(user, feedbackBean.getCompany())){
+		/*if(feedbackService.checkUser(user, feedbackBean.getCompany())!=true){
 			
 			model.addObject("message","You are not eligible for giving this feedback");
 			return new ModelAndView("addFeedback");
 		}
 		else{
-
+*/
 			return new ModelAndView("addFeedback");
-		}
-		}
+		/*}
+		*/}
 		catch(Exception e){
 			System.out.println(e);
 
@@ -183,17 +166,28 @@ public class FeedbackController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)  
-	 public ModelAndView addFeedback(  @ModelAttribute("command")FeedbackBean feedbackBean,  
+	 public ModelAndView addFeedback( HttpServletRequest request, @ModelAttribute("command")FeedbackBean feedbackBean,  
 	   BindingResult result) { 
 		//validating
 		
 		try{
+			HttpSession session=request.getSession();
+			String user=(String)session.getAttribute("userName");
+			
+			
 		validator.validate(feedbackBean, result);
 				if (result.hasErrors()) {
 			System.out.println("Error in form");
             
             return new ModelAndView("addFeedback");
         }
+				boolean b=feedbackService.checkUser(user, feedbackBean.getCompany());
+				if(!b){
+					ModelAndView m=new ModelAndView("500") ;
+					m.addObject("message","You are not eligible to give  feedback for this company");
+					System.out.println("ERROR IN FEEDBACK");
+					return  m;}
+				
 				Feedback feedback = prepareModel(feedbackBean);
 				feedbackService.addFeedback(feedback);
 	  Map<String, Object> model = new HashMap<String, Object>();  

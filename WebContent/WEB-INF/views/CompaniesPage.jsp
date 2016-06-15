@@ -39,40 +39,41 @@ description: contains the list of all the companies -->
 							<ul class="ace-thumbnails ">
 
 
-								<li><a href="Company?companyname=jpmorgan"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/jpmorgan.jpg" href="Company" />
+								<li><a href="Company?companyname=JP Morgan"> <img
+										width="200" height="150" alt="JP Morgan"
+										src="assets/images/companies/JP Morgan.jpg"/>
 								</a></li>
-								<li><a href="Company?companyname=directi"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/directi.jpg" />
+								<li><a href="Company?companyname=Direct i"> <img
+										width="200" height="150" alt="Direct i"
+										src="assets/images/companies/Direct i.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=morganstanley"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/morganstanley.jpg" />
+								<li><a href="Company?companyname=Morgan Stanley"> <img
+										width="200" height="150" alt="Morgan Stanley"
+										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=larsentoubro"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/larsentoubro.jpg" />
+								<li><a href="Company?companyname=Laursen & Tubro"> <img
+										width="200" height="150" alt="Laursen & Tubro"
+										src="assets/images/companies/Laursen & Tubro.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=accenture"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/accenture.jpg" />
+								<li><a href="Company?companyname=Accenture"> <img
+										width="200" height="150" alt="Accenture"
+										src="assets/images/companies/Accenture.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=godrej"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/godrej.jpg" />
+								<li><a href="Company?companyname=Tata Consultancy Services"> <img width="200"
+										height="150" alt="Tata Consultancy Services"
+										src="assets/images/companies/Tata Consultancy Services.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=zs"> <img width="200"
-										height="150" alt="150x150"
-										src="assets/images/companies/zs.jpg" />
+								<li><a href="Company?companyname=ZS Associates"> <img width="200"
+										height="150" alt="ZS Associates"
+										src="assets/images/companies/ZS Associates.jpg" />
 								</a></li>
-
-								<li><a href="Company?companyname=Tata%20Consultancy%20Services"> <img width="200"
-										height="150" alt="150x150"
-										src="assets/images/companies/tcs.jpg" />
+								
+								<li><a href="Company?companyname=Godrej"> <img
+										width="200" height="150" alt="Godrej"
+										src="assets/images/companies/Godrej.jpg" />
 								</a></li>
-
+								
+								
 
 							</ul>
 						</div>
