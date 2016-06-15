@@ -1,5 +1,6 @@
 package org.crce.interns.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,23 +16,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "company", catalog = "job_schema")
 public class Company {
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "company_id")
-	private Integer company_id;
+	private int company_id;
 	
-	public Integer getCompany_id() {
+	public int getCompany_id() {
 		return company_id;
 	}
-	public void setCompany_id(Integer company_id) {
+	public void setCompany_id(int company_id) {
 		this.company_id = company_id;
 	}
-	public Integer getCriteria_id() {
-		return criteria_id;
-	}
-	public void setCriteria_id(Integer criteria_id) {
-		this.criteria_id = criteria_id;
-	}
+	
 	public String getCompany_name() {
 		return company_name;
 	}
@@ -44,8 +43,10 @@ public class Company {
 	public void setCompany_address(String company_address) {
 		this.company_address = company_address;
 	}
-	@Column(name = "criteria_id")
-	private Integer criteria_id;
+	
+	
+	
+		
 	
 	@Column(name = "company_name")
 	private String company_name;
@@ -65,16 +66,8 @@ public class Company {
 	@Column(name = "modified_by")
 	private String modifiedBy;
 	
-	@Column(name = "year")
-	private String year;
 	
 	
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
 	public Date getCreatedDate() {
 		return createdDate;
 	}
