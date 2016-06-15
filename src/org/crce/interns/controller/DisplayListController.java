@@ -17,7 +17,12 @@ import org.crce.interns.service.impl.DisplayListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 @Controller
 public class DisplayListController {
@@ -66,7 +71,7 @@ public class DisplayListController {
 	 * @return
 	 */
 
-	@RequestMapping(value = "/dispCV")
+	@RequestMapping(value = "/dispCV--")
 	public ModelAndView displayCV(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
@@ -102,17 +107,17 @@ public class DisplayListController {
 	 * @param folder
 	 * @return
 	 */
-	@RequestMapping(value = "/dispCounselingReport")
-	public ModelAndView displayCounselReport(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+	@RequestMapping(value = "/dispCounselingReport--")
+	public ModelAndView dispCounselingReport(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
 		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
 		List<String> list = new ArrayList<String>();
 
 		int z = 0;
-		List<Integer> indexList = new ArrayList<>();
+		List<Integer> indexList = new ArrayList<>(); 
 		System.out.println(listFullName);
-		for (String x : listFullName) {
+		for (String x : listFullName) { 	
 			list.add(x);
 			indexList.add(z);
 			z++;
@@ -163,5 +168,85 @@ public class DisplayListController {
 		return model;
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Modified by Pankaj & Melwyn
+	@RequestMapping(value = "/dispCV")
+	public @ResponseBody String d(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+		String userName = (String) request.getSession().getAttribute("userName");
+		String userRole = (String) request.getSession(true).getAttribute("roleName");
+		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
+		List<String> list = new ArrayList<String>();
+		int z = 0;
+		List<Integer> indexList = new ArrayList<>();
+		if(listFullName.isEmpty())
+			return "[]";
+		for (String x : listFullName) {
+			int pos = x.indexOf('-');
+			list.add(x.substring(0, pos));
+			indexList.add(z);
+			z++;
+		}
+		request.getSession().setAttribute("folderName", folder);
+		JsonArray jarray = new JsonArray();
+		for (int i=0;i<z;i++) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("actualName", listFullName.get(i));
+			jobj.addProperty("displayName", list.get(i));
+			System.out.println("displayName : " + list.get(i));
+			jarray.add(jobj);
+		}
+		System.out.println(jarray.toString());
+		return jarray.toString();
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////
+	/// Pankaj Modified below
+	
+	/**
+	 * this method display the files to ftpc, tpo
+	 * @param request
+	 * @param folder
+	 * @return 
+	 * @return
+	 */
+	@RequestMapping(value = "/dispCounselingReport")
+	public @ResponseBody String displayCounselingReport(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+		String userName = (String) request.getSession().getAttribute("userName");
+		String userRole = (String) request.getSession(true).getAttribute("roleName");
+		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
+		List<String> list = new ArrayList<String>();
+
+		int z = 0;
+		List<Integer> indexList = new ArrayList<>();
+		System.out.println(listFullName);
+		for (String x : listFullName) {
+			list.add(x);
+			indexList.add(z);
+			z++;
+		}
+
+		request.getSession().setAttribute("folderName", folder);
+		
+		JsonArray jarray = new JsonArray();
+		for(int i=0;i<z;i++){
+			
+			JsonObject jobj=new JsonObject();
+			jobj.addProperty("actualFileNames", listFullName.get(i));
+			jobj.addProperty("nameToDisplay", list.get(i));
+			jarray.add(jobj);
+		}
+		
+		/*ModelAndView model = new ModelAndView("facultyDownloads");*/
+
+		/*model.addObject("actualFileNames", listFullName);
+		model.addObject("nameToDisplay", list);
+		model.addObject("indexList", indexList);
+
+		return model;*/
+		
+		return jarray.toString();
+		
+	}
 
 }

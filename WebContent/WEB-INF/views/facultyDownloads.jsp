@@ -100,6 +100,45 @@
 
 												<div id="uploads" class="tab-pane in active">
 													<div class="row">
+																<div class="col-xs-12 ">
+																	<div class="widget-box">
+																		<div class="widget-body">
+																			<div class="widget-main" align="center">
+																				<div>
+																				 <h2>Get students Documents...!</h2>
+																					<form method="post" action="/PMS_v1/dispAllfolder">
+	
+																						Student Rollno: <input type="text" name="userId" required><br><br>
+																						 <input  class="btn btn-sm btn-success" type="submit" value="APPLY" />
+																					</form>
+																					
+	
+																						<c:if test="${not empty list}">
+																					</br>pick a folder
+																							<ul>
+																								<c:forEach var="l" items="${list}">
+																									
+																									<li><a href="/PMS_v1/displistoffiles?folder=${l }">${l}</a></li>
+																								</c:forEach>
+																							</ul>
+																					
+																						</c:if>
+																						
+																				
+																					<br> <br>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<br> <br>
+																</div>
+
+
+															</div>
+
+													
+												
+													<div class="row">
 															<div class="col-xs-12">
 																<!-- PAGE CONTENT BEGINS -->
 																
@@ -111,9 +150,9 @@
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<%-- <c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach> --%>
+																				<div id="DisplayTree"></div>
 																			</div>
-																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
 																			<span class="bigger-110">Upload</span>
 		
@@ -225,6 +264,35 @@
 		
 		<!-- inline scripts related to this page -->
 			<script type="text/javascript">
+			
+			var times=0;
+			
+			function displayCRS(){
+				
+				$.ajax({
+					url : 'dispCounselingReport',
+					data : 'folder=Counseling Report-Student',
+					dataType : 'json',
+					success : function(data) {
+						console.log(data.length);
+						for (i = 0; i < data.length; i++)
+							console.log(data[i]);
+						 times = data.length;
+						 console.log("times: " + times);
+						$('#DisplayTree').text('');
+						$.each(data, function() {
+							$('#DisplayTree').append(
+									'<li><a href="/PMS_v1/downloadCounsellingReport?fileName='
+											+ this.actualFileNames + ' "> '
+											+ this.nameToDisplay + ' </a></li>');
+						});
+					}
+				});
+				
+				initiateDemoData();
+			}
+			
+			
 			jQuery(function($) {
 
 				var sampleData = initiateDemoData();//see below
@@ -242,13 +310,19 @@
 				});
 
 				function initiateDemoData(){
-					
+					console.log("inside other fnc: "+ times);
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>', type: 'folder', 'icon-class':'red'}	,
+							'marksheets' : {text: '<button onClick="displayCRS()" >Counseling Report-Student</button>', type: 'folder', 'icon-class':'red'}	,
 							'resume' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
 							
 						}
-						/* tree_data_2['resume']['additionalParameters'] = {
+					
+					
+						/*
+						
+						<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>
+						
+						tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
