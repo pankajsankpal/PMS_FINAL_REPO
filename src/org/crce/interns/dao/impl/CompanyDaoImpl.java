@@ -81,9 +81,10 @@ public class CompanyDaoImpl implements CompanyDao{
 		  return (List<Company>) sessionFactory.getCurrentSession().createCriteria(Company.class).list();  
 		 }
 
-	@Override
+	//why is this empty!!!? so much error in this module ! 
+	/*@Override
 	public void addCompany(Company company) {
 		// TODO Auto-generated method stub
 		
-	}  
+	}  */
 	}

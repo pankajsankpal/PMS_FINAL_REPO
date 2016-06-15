@@ -104,7 +104,7 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		}
 		//this was giving problem so commented @melwyn95
 		return company.getCompany_id();
-		return 0;
+		//return 0;	//was giving error so commented @Crystal
 	}
 	
 	/**

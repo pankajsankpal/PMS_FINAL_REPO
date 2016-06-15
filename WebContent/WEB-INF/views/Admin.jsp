@@ -1,4 +1,3 @@
-
 <!-- auther: @pankaj
 description: contains various functions for admin -->
 
@@ -11,7 +10,7 @@ description: contains various functions for admin -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title> Admin| HOME</title>
+<title> Admin | HOME</title>
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
@@ -43,7 +42,7 @@ description: contains various functions for admin -->
 					<div class="page-content">
 							<div class="page-header">
 							
-									<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+									<h1>Welcome , ${sessionScope.name}! </h1>
 
 							</div><!-- /.page-header -->
 
@@ -266,5 +265,4 @@ description: contains various functions for admin -->
 	</table>
 </body>
 </html>
-
  --%>

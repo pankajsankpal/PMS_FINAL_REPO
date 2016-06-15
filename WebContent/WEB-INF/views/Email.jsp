@@ -197,7 +197,7 @@
                         <option value="compsClass">CompsClass</option>
                         <option value="prodClass">ProdClass</option>
                         <option value="itClass">ITClass</option>
-                        <option value="elexClass">ElexClass</option>
+                        <option value="elexClass">ElexClass</option>                        
                         <!--<option value="JP Morgan">JP Morgan</option>
                         <option value="Morgan Stanley"> Morgan Stanley </option>
                         <option value="Direct i">Directi </option>

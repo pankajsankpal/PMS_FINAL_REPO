@@ -24,5 +24,5 @@ public interface ManageUserService {
 
 	public void addStudent(HttpServletRequest request,StudentBean studentBean);
 	public void addFaculty(HttpServletRequest request,FacultyBean facultyBean);
-	public void removeUser(StudentBean studentBean,String username);
+	public int removeUser(StudentBean studentBean,String username);
 }
