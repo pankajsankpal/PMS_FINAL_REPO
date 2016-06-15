@@ -37,8 +37,11 @@ public interface ManageProfileDao {
 	public void createProfile(Job job);
 	public void createProfile(Criteria criteria);
 	public void createProfile(Company company);
-	public List<Job> listProfile();
+	public List<Job> listProfile(String curYear);
 	public List<Company> listCompanies();
-	public List<Job> listJob();
+	public List<Job> listJob(String curYear);
+	/*public List<Job> listProfile();
+	public List<Company> listCompanies();
+	public List<Job> listJob();*/
 
 }
