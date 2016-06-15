@@ -380,7 +380,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob"
 																			value="5.0" data-min="0" data-max="10"
 																			data-step="0.01" data-width="120" data-height="120"
-																			data-thickness=".3" data-fgcolor="#47d05e" name=""cgpa/>
+																			data-thickness=".3" data-fgcolor="#47d05e" name="cgpa"/>
 																	</div>
 
 																</div>

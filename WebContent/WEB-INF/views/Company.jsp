@@ -88,8 +88,8 @@ description: dynamically creating a page once the Content on companiesPade is cl
 											<div class="row">
 												<div class="col-xs-12 col-sm-3 center">
 													<span class="profile-picture"> <img
-														class="editable img-responsive" alt="Alex's Avatar"
-														id="avatar2"
+														class="editable img-responsive" alt="${company.company_name}"
+														
 														src="assets/images/companies/${company.company_name}.jpg" />
 													</span>
 
