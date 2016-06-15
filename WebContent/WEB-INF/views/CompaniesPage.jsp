@@ -41,38 +41,39 @@ description: contains the list of all the companies -->
 
 								<li><a href="Company?companyname=JP Morgan"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/jpmorgan.jpg"/>
+										src="assets/images/companies/JP Morgan.jpg"/>
 								</a></li>
-								<li><a href="Company?companyname=directi"> <img
+								<li><a href="Company?companyname=Direct i"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/directi.jpg" />
+										src="assets/images/companies/Direct i.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=morganstanley"> <img
+								<li><a href="Company?companyname=Morgan Stanley"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/morganstanley.jpg" />
+										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=larsentoubro"> <img
+								<li><a href="Company?companyname=Laursen & Tubro"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/larsentoubro.jpg" />
+										src="assets/images/companies/Laursen & Tubro.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=accenture"> <img
+								<li><a href="Company?companyname=Accenture"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/accenture.jpg" />
+										src="assets/images/companies/Accenture.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=godrej"> <img
-										width="200" height="150" alt="150x150"
-										src="assets/images/companies/godrej.jpg" />
-								</a></li>
-								<li><a href="Company?companyname=zs"> <img width="200"
+								<li><a href="Company?companyname=Tata Consultancy Services"> <img width="200"
 										height="150" alt="150x150"
-										src="assets/images/companies/zs.jpg" />
+										src="assets/images/companies/Tata Consultancy Services.jpg" />
 								</a></li>
-
-								<li><a href="Company?companyname=Tata%20Consultancy%20Services"> <img width="200"
+								<li><a href="Company?companyname=ZS Associates"> <img width="200"
 										height="150" alt="150x150"
-										src="assets/images/companies/tcs.jpg" />
+										src="assets/images/companies/ZS Associates.jpg" />
 								</a></li>
-
+								
+								<li><a href="Company?companyname=Godrej"> <img
+										width="200" height="150" alt="150x150"
+										src="assets/images/companies/Godrej.jpg" />
+								</a></li>
+								
+								
 
 							</ul>
 						</div>

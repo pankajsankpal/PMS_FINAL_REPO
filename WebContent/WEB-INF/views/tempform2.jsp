@@ -132,6 +132,10 @@
 													
 														<td>Job Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="j_id"></td>
 													</tr>
+													
+													<tr>
+														<td><br/></td>
+													</tr>
 
 													<tr>
 
