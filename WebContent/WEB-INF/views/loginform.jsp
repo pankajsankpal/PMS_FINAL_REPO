@@ -33,7 +33,6 @@ User Name="UserName" and password="password"
 		<tr>
 			<td><input type="submit" value="Submit" /></td>
 		</tr>
-		<p>The context path is: ${pageContext.request.contextPath}.</p>
 	</table>
 </form:form>
 </body>

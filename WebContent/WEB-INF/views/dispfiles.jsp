@@ -14,7 +14,7 @@
 		<ul>
 			<c:forEach var="index" items="${indexList}">
 				
-				<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
+				<li><a href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
 			</c:forEach>
 		</ul>
 
