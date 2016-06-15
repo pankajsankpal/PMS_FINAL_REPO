@@ -189,7 +189,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																Job Applicants
 															</h4>
 															<br /> <a
-																href="JobApplicants?companyname=${company.company_name}"> <img
+																href="viewApplicants?companyname=${company.company_name}&year="> <img
 																align="middle" style="border: 1" width="400"
 																height="200" alt="150x150"
 																src="assets/images/companies/jobapplicants.jpg" />
