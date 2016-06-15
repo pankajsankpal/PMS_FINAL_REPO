@@ -24,42 +24,45 @@
 </style>
 </head>
 <body>
-			<jsp:directive.include file="Header.jsp" />
-			<div class="main-content">
-				<div class="main-content-inner">
-					<div class="page-content">
-						<div class="page-header">
-							<h2 class="widget-title grey lighter">
-								&nbsp; &nbsp; &nbsp; &nbsp; 
-									Remove TPO
-							</h2>
-						</div>
-						<div class="center">
-							<a href="AdminHome"><h3>Home</h3></a>
-						</div>
-						<div class="space"></div>
-						<div class="center">
-							<form:form method="POST" action="SubmitRemoveTPO">
-							<table align="center">
+	<jsp:directive.include file="Header.jsp" />
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="page-header">
+					<h2 class="widget-title grey lighter">&nbsp; &nbsp; &nbsp;
+						&nbsp; Remove TPO</h2>
+				</div>
+				<div class="center">
+					<a href="AdminHome"><h3>Home</h3></a>
+				</div>
+				<div class="space"></div>
+				<div class="center">
+					<form:form method="POST" action="SubmitRemoveTPO">
+						<table align="center">
 							<tr>
-								<td><form:label path="userName"><h3>User name:</h3></form:label></td>
+								<td><form:label path="userName">
+										<h3>User name:</h3>
+									</form:label></td>
 								<td><form:input path="userName" /></td>
 								<td><form:errors path="userName" cssClass="error" /></td>
 							</tr>
-							<tr><td></td>
+							<tr>
+								<p>
+									<font size="5" color="red" face="verdana">${erroMesg}</font>
+								</p>
 							</tr>
-							<tr><td></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" value="Submit"  class="btn btn-info" /></td>
+								<td colspan="2"><input type="submit" value="Submit"
+									class="btn btn-info" /></td>
 							</tr>
-							</table>
-							</form:form>
-						</div>
-					</div>
+						</table>
+					</form:form>
 				</div>
-			</div>	
-					<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />		
+			</div>
+		</div>
+	</div>
+	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>

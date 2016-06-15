@@ -5,7 +5,8 @@ public class QuickStatsBean {
 	private String username;
 	private int company_id;
 	private String company_name;
-
+	private String year;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -28,6 +29,14 @@ public class QuickStatsBean {
 
 	public void setCompany_name(String company_name) {
 		this.company_name = company_name;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
 	}
 
 		

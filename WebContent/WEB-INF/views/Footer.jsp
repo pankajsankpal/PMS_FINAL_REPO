@@ -9,7 +9,7 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">PMS</span>
+							<span class="blue bolder">Placement Management System</span>
 							Application &copy; 2015-16
 						</span>
 
