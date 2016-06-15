@@ -108,7 +108,11 @@ public class AssignTPCController {
 		if(!crService.checkRole("AssignTPC", roleId))
 			return new ModelAndView("403");
 		else
-		return new ModelAndView("insertWork");
+		{
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("fusers", userService.viewFacultyTasks());
+			return new ModelAndView("insertWork", modelMap);
+		}
 	}
 	
 	@RequestMapping(value = "/AssignTPC", method = RequestMethod.GET)//Call to jsp to get username and role

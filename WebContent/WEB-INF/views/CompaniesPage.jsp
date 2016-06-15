@@ -68,7 +68,7 @@ description: contains the list of all the companies -->
 										src="assets/images/companies/zs.jpg" />
 								</a></li>
 
-								<li><a href="Company?companyname=tcs"> <img width="200"
+								<li><a href="Company?companyname=Tata%20Consultancy%20Services"> <img width="200"
 										height="150" alt="150x150"
 										src="assets/images/companies/tcs.jpg" />
 								</a></li>
