@@ -108,7 +108,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
 																		
 																				<div class="profile-feed row">
-																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																					<button type="button" onclick="location.href = 'stpcapplies';" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
 																		</c:if>
 																				<br>

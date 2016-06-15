@@ -39,9 +39,9 @@ description: contains the list of all the companies -->
 							<ul class="ace-thumbnails ">
 
 
-								<li><a href="Company?companyname=jpmorgan"> <img
+								<li><a href="Company?companyname=JP Morgan"> <img
 										width="200" height="150" alt="150x150"
-										src="assets/images/companies/jpmorgan.jpg" href="Company" />
+										src="assets/images/companies/jpmorgan.jpg"/>
 								</a></li>
 								<li><a href="Company?companyname=directi"> <img
 										width="200" height="150" alt="150x150"

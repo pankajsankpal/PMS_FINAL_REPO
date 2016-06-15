@@ -280,6 +280,42 @@ ${msg}
 	font-weight: bold;
 }
 </style>
+<script>
+	$(document)
+			.ready(
+					function() {
+
+						$('#dynamicsearchcompany')
+								.autocomplete(
+										{
+											serviceUrl : 'looseSearch2',
+											paramName : "CHARS",
+											delimiter : ",",
+											transformResult : function(response) {
+
+												return {
+													//must convert json to javascript object before process
+													suggestions : $
+															.map(
+																	$
+																			.parseJSON(response),
+																	function(
+																			company) {
+
+																		return {
+																			value : company.company_name,
+																			data : company.company_id
+																		};
+																	})
+
+												};
+
+											}
+
+										});
+
+					});
+</script>
 
 
 
