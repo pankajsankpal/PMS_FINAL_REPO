@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -54,7 +54,7 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 
-<div class="breadcrumbs" id="breadcrumbs">
+			<div class="breadcrumbs" id="breadcrumbs">
 
 				<jsp:directive.include file="searchheader.jsp" />
 			</div>
@@ -76,130 +76,37 @@
 									<div class="timeline-container">
 
 										<div class="timeline-items">
-										
-									<c:forEach var="flist" items="${l}">	
-											<div class="timeline-item clearfix">
-												<div class="timeline-info">
-													<i
-														class="timeline-indicator ace-icon fa 	fa-comment-o btn btn-primary no-hover green"></i>
-												</div>
 
-												<div class="widget-box transparent">
-													<div class="widget-header widget-header-small">
-														<h5 class="widget-title smaller">${flist.username}</h5>
-
+											<c:forEach var="flist" items="${l}">
+												<div class="timeline-item clearfix">
+													<div class="timeline-info">
+														<i
+															class="timeline-indicator ace-icon fa 	fa-comment-o btn btn-primary no-hover green"></i>
 													</div>
 
-													<div class="widget-body">
-														<div class="widget-main">
-															${flist.feeback}
-															<div class="space-6"></div>
+													<div class="widget-box transparent">
+														<div class="widget-header widget-header-small">
+															<h5 class="widget-title smaller">${flist.username}</h5>
 
-															<div class="widget-toolbox clearfix">
-																<div class="pull-right action-buttons">
-																	<div class="space-4"></div>
+														</div>
 
+														<div class="widget-body">
+															<div class="widget-main">
+																${flist.feeback}
+																<div class="space-6"></div>
+
+																<div class="widget-toolbox clearfix">
+																	<div class="pull-right action-buttons">
+																		<div class="space-4"></div>
+
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
 											</c:forEach>
-											<!-- <div class="timeline-item clearfix">
-												<div class="timeline-info">
-													<i
-														class="timeline-indicator ace-icon fa 	fa-comment-o btn btn-primary no-hover green"></i>
-												</div>
 
-												<div class="widget-box transparent">
-													<div class="widget-header widget-header-small">
-														<h5 class="widget-title smaller">New logo</h5>
-
-
-													</div>
-
-													<div class="widget-body">
-														<div class="widget-main">
-															Designed a new logo for our website. Would appreciate
-															feedback.
-															<div class="space-6"></div>
-
-															<div class="widget-toolbox clearfix">
-																<div class="pull-right action-buttons">
-																	<div class="space-4"></div>
-
-
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
- -->
-
-
-										<!-- 	<div class="timeline-item clearfix">
-												<div class="timeline-info">
-													<i
-														class="timeline-indicator ace-icon fa 	fa-comment-o btn btn-primary no-hover green"></i>
-												</div>
-
-												<div class="widget-box transparent">
-													<div class="widget-header widget-header-small">
-														<h5 class="widget-title smaller">New logo</h5>
-
-
-													</div>
-
-													<div class="widget-body">
-														<div class="widget-main">
-															Designed a new logo for our website. Would appreciate
-															feedback.
-															<div class="space-6"></div>
-
-															<div class="widget-toolbox clearfix">
-																<div class="pull-right action-buttons">
-																	<div class="space-4"></div>
-
-
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div> -->
-<!-- 											<div class="timeline-item clearfix">
-												<div class="timeline-info">
-													<i
-														class="timeline-indicator ace-icon fa 	fa-comment-o btn btn-primary no-hover green"></i>
-												</div>
-
-												<div class="widget-box transparent">
-													<div class="widget-header widget-header-small">
-														<h5 class="widget-title smaller">New logo</h5>
-
-
-													</div>
-
-													<div class="widget-body">
-														<div class="widget-main">
-															Designed a new logo for our website. Would appreciate
-															feedback.
-															<div class="space-6"></div>
-
-															<div class="widget-toolbox clearfix">
-																<div class="pull-right action-buttons">
-																	<div class="space-4"></div>
-
-
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div> -->
 										</div>
 										<!-- /.timeline-items -->
 									</div>
@@ -223,8 +130,8 @@
 
 	</div>
 	<!-- /.main-content -->
-		
-		<jsp:directive.include file="scripts.jsp" />
+
+	<jsp:directive.include file="scripts.jsp" />
 
 	<jsp:directive.include file="Footer.jsp" />
 

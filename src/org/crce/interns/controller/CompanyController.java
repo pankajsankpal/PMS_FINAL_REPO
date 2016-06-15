@@ -16,6 +16,9 @@
 
 package org.crce.interns.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.CriteriaBean;
 import org.crce.interns.model.Company;
@@ -81,7 +84,7 @@ public class CompanyController {
 
 		}
 	 @RequestMapping(value = "/saveCompany", method = RequestMethod.POST)
-		public ModelAndView saveCompany(  @ModelAttribute("companyBean") CompanyBean companyBean, 
+		public ModelAndView saveCompany(  HttpServletRequest request,@ModelAttribute("companyBean") CompanyBean companyBean, 
 				BindingResult result) {
 		 
 		 try{
@@ -92,8 +95,12 @@ public class CompanyController {
      return new ModelAndView("addCompany");
          }
 			Company company = prepareCompanyModel(companyBean);
+			HttpSession session=request.getSession();
+			String user=(String)session.getAttribute("userName");
+			System.out.println(user);
 			
-			companyService.addCompany(company);
+			//this was giving problem so commented @melwyn95
+			companyService.addCompany(user,company);
 
 //			return new ModelAndView("companysuccess");
 
