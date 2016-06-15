@@ -40,36 +40,36 @@ description: contains the list of all the companies -->
 
 
 								<li><a href="Company?companyname=JP Morgan"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="JP Morgan"
 										src="assets/images/companies/JP Morgan.jpg"/>
 								</a></li>
 								<li><a href="Company?companyname=Direct i"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="Direct i"
 										src="assets/images/companies/Direct i.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=Morgan Stanley"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="Morgan Stanley"
 										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=Laursen & Tubro"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="Laursen & Tubro"
 										src="assets/images/companies/Laursen & Tubro.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=Accenture"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="Accenture"
 										src="assets/images/companies/Accenture.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=Tata Consultancy Services"> <img width="200"
-										height="150" alt="150x150"
+										height="150" alt="Tata Consultancy Services"
 										src="assets/images/companies/Tata Consultancy Services.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=ZS Associates"> <img width="200"
-										height="150" alt="150x150"
+										height="150" alt="ZS Associates"
 										src="assets/images/companies/ZS Associates.jpg" />
 								</a></li>
 								
 								<li><a href="Company?companyname=Godrej"> <img
-										width="200" height="150" alt="150x150"
+										width="200" height="150" alt="Godrej"
 										src="assets/images/companies/Godrej.jpg" />
 								</a></li>
 								
