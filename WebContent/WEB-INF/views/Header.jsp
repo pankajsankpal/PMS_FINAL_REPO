@@ -117,7 +117,7 @@ function checkNewNoti(){
 		
 		<!-- basic scripts -->
 		<jsp:directive.include file="sidebar.jsp" />
-
+		
 		
 </body>
 

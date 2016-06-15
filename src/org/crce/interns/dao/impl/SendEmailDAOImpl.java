@@ -49,8 +49,6 @@ public class SendEmailDAOImpl implements SendEmailDAO {
         Session session = sessionFactory.openSession();
 
         String senderList = "";
-        HttpServletRequest request = null;
-        System.out.println(request.getParameter("userName"));
         //String SQL_QUERY="Select emailId from PersonalProfile where userName like (select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering')";
         String SQL_QUERY = "select u.userName from UserDetails as u,ProfessionalProfile as p where u.userName=p.userName and u.roleId like '3' and p.branch like 'Computer Engineering' and p.year like '" + Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1) + "'";
 
