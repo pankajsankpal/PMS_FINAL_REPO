@@ -123,18 +123,19 @@
 								<div class="widget-body">
 									<div class="widget-main">
 										<div align="center">
-											<h2>Add Feedback Data</h2>
-											<br>${msg}
+											<h2>Apply On Behalf</h2>
+											<br><font color="red">${msg}</font>
 											<form method="post" action="/PMS_v1/applyonbehaloffstudent">
 
 												<table>
 													<tr>
-														<td>Job Id<input type="text" name="j_id"></td>
+													
+														<td>Job Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="j_id"></td>
 													</tr>
 
 													<tr>
 
-														<td>Username<input type="text" name="u_name"> </td>
+														<td>Username:<input type="text" name="u_name"> </td>
 													</tr>
 													
 												</table>
