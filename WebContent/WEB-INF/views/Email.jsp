@@ -179,7 +179,7 @@
                 <label class="control-label col-xs-12 col-sm-3 no-padding-right"> To </label>
 
                 <div class="col-xs-12 col-sm-9">
-                    <select multiple="" id="state" name="receiver" class="select2" data-placeholder="Click to Choose Recipients">
+                    <select multiple="" id="state" name="receiver" class="select2" data-placeholder="Click to Choose Recipients" required>
                         <option value="">&nbsp;</option>
                         <option value="CompsSTPC">CompsSTPC</option>
                         <option value="ITSTPC">ITSTPC</option>
@@ -195,7 +195,7 @@
                         <option value="compsClass">CompsClass</option>
                         <option value="prodClass">ProdClass</option>
                         <option value="itClass">ITClass</option>
-                        <option value="elexClass">ElexClass</option>
+                        <option value="elexClass">ElexClass</option>                        
                         <!--<option value="JP Morgan">JP Morgan</option>
                         <option value="Morgan Stanley"> Morgan Stanley </option>
                         <option value="Direct i">Directi </option>
