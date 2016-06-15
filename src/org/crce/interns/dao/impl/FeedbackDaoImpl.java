@@ -50,7 +50,7 @@ public class FeedbackDaoImpl implements FeedbackDao {
 	
 	public boolean checkUser(String user, String cName){
 		
-		List<UserCompanyBean> result = null;
+		List<String> result = null;
 		
 		String y = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
 		
@@ -60,9 +60,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
 		query.setParameter("cName", cName);
 		result = query.list();
 		
-		for(UserCompanyBean a: result){
+		for(String a: result){
 			
-			if(user.equals(a.getUsername())){
+			if(user.equals(a)){
 				return true;
 			}
 			

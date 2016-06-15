@@ -391,7 +391,7 @@ package org.crce.interns.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Map;
-
+import org.crce.interns.service.ConstantValues;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -434,7 +434,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class ManageProfile extends HttpServlet{
+public class ManageProfile extends HttpServlet implements ConstantValues{
 
 	/**
 	 * 
@@ -824,7 +824,7 @@ public class ManageProfile extends HttpServlet{
 				}
 			}
 			
-			/*if(companyname.equals(JPM)){
+			if(companyname.equals(JPM)){
 				model.addObject("link", JPM_LINK);
 				
 			}else if(companyname.equals(DIRECTI)){
@@ -850,7 +850,7 @@ public class ManageProfile extends HttpServlet{
 				
 			}
 		
-		*/
+		
 			// this was the error why the EL wasn't working. We were creating another object
 			//model = new ModelAndView("Company");
 			
