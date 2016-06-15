@@ -80,13 +80,16 @@ description: contains fields to add new faculty member->
 										<div class="widget-body">
 										 <div class="widget-main" align="center">
 											<div>
-											<h2>Enter User ID to Remove User ....!</h2><br>
+											<h3>Enter User ID to Remove any User from the system </h3><br>
 											
 											<c:if test="${success==1}">
 												<p style="color:green;">User removed successfully!</p>
 											</c:if>
-											<c:if test="${error==1}">
+											<%-- <c:if test="${error==1}">
 												<p style="color:red;">This user does not exist in the database!</p>
+											</c:if> --%>
+											<c:if test="${no_user==1}">
+												<font size="5" color="red" face="verdana">This user does not exist in the database!</font>
 											</c:if>
 													<form method="POST" action="removeUser">
 													Enter User ID:   <input id="username" name="username" type="text" value="" required/><br/><br/>
