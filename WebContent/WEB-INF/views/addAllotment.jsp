@@ -89,7 +89,12 @@
 							<tr>
 						<td><label>Company Name&nbsp&nbsp&nbsp</label></td>
 				<td><form:select name="company" id="company" path="company_name">
-				<%
+				
+				<c:forEach items="${companies}" var="companies">
+                        <form:option value="${companies.key}">${companies.value}</form:option>
+                </c:forEach>
+				
+				 <%-- <%
     				try{
 							Class.forName("org.postgresql.Driver").newInstance();
 							Connection connection = DriverManager.getConnection
@@ -108,7 +113,7 @@
         		{
              			out.println("wrong entry"+e);
         		}
-				%>
+				%>  --%>
 					</form:select></td>
 			</tr>
 			<tr>

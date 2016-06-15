@@ -22,8 +22,8 @@ public class Allotment implements Serializable{
 	private static final long serialVersionUID = 3924163780669412934L;
 	
 	@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO) 	//originally used by @Cheryl3
-	@GeneratedValue(strategy=GenerationType.IDENTITY) 	//change made @Crystal
+	@GeneratedValue(strategy=GenerationType.AUTO) 	//originally used by @Cheryl3
+	//@GeneratedValue(strategy=GenerationType.IDENTITY) 	//change made @Crystal
 	@Column(name="allotment_id")
 	private Integer allotment_id;
 	
