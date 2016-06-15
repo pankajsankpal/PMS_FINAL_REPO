@@ -390,15 +390,6 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 package org.crce.interns.controller;
 
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-import java.util.Map;
-import org.crce.interns.service.ConstantValues;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-=======
->>>>>>> cd9529e394e544e1673bae2e28caaec9092fe828
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -409,7 +400,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 //import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
@@ -418,19 +408,16 @@ import org.crce.interns.beans.JobBean;
 import org.crce.interns.model.Job;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CompanyService;
+import org.crce.interns.service.ConstantValues;
 //import org.crce.interns.model.Allotment;
 //import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.crce.interns.validators.CriteriaFormValidator;
-import org.crce.interns.validators.CriteriaValidator;
-import org.crce.interns.validators.JobValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -463,8 +450,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 	@Autowired
 	private CompanyService companyService;
 	
-	@Autowired
-	private JobValidator jobValidator;
+	//@Autowired
+	//private JobValidator jobValidator;
 	
 	@Autowired
 	private CriteriaFormValidator critValidator;
@@ -926,12 +913,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 				model1.addObject("exception", "/Company");
 				return model1;
 			}
-<<<<<<< HEAD
-			
-			if(companyname.equals(JPM)){
-=======
+		}
 			/*if(companyname.equals(JPM)){
->>>>>>> cd9529e394e544e1673bae2e28caaec9092fe828
+
 				model.addObject("link", JPM_LINK);
 				
 			}else if(companyname.equals(DIRECTI)){

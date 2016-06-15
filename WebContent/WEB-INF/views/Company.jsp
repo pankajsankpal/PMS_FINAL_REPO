@@ -154,15 +154,16 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																Job Posts
 															</h4>
 															
-															<!-- Commented while merging conflicts -->
-															<%-- <br /> <a
+															
+															<br /> <a
 																href="JobPosts?companyname=${company.company_name}">
 																<img style="border: 1" width="350" height="200"
-																alt="${company.company_name}" src="assets/images/companies/jobposts.jpg" /> --%>
+																alt="${company.company_name}" src="assets/images/companies/jobposts.jpg" />
 
-															<br /> <a href="JobPosts?companyname=${company.company_name}">         
+															<!-- Commented while merging conflicts -->
+															<%-- <br /> <a href="JobPosts?companyname=${company.company_name}">         
 																<img style="border: 1" width="400" height="200"
-																alt="150x150" src="assets/images/companies/jobposts.jpg" />
+																alt="150x150" src="assets/images/companies/jobposts.jpg" /> --%>
 
 															</a>
 														</div>
