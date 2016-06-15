@@ -10,7 +10,7 @@ description: contains various functions for admin -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title> Admin| HOME</title>
+<title> Admin | HOME</title>
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
