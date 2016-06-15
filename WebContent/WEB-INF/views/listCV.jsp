@@ -174,7 +174,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<c:forEach var="index" items="${indexList}"><li><a href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
 																				
 																			</div>
 																			
@@ -265,9 +265,9 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				function initiateDemoData(){
 					
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
-							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
+							'marksheets' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
+							'resume' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
+							'OfferLetter' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
 						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [

@@ -79,5 +79,11 @@ public class CompanyDaoImpl implements CompanyDao{
 	@SuppressWarnings("unchecked")
 	public List<Company> getCompany() {  
 		  return (List<Company>) sessionFactory.getCurrentSession().createCriteria(Company.class).list();  
-		 }  
+		 }
+
+	@Override
+	public void addCompany(Company company) {
+		// TODO Auto-generated method stub
+		
+	}  
 	}
