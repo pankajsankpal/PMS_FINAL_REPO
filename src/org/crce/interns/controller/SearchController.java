@@ -27,64 +27,74 @@ import com.google.gson.JsonObject;
  3>searchCompany
  */
 @Controller
-public class SearchController { 
+public class SearchController {
 
 	@Autowired
 	private SearchService searchService;
-	
+
 	/*
-	This method is used to handle the urlmapping for the searchbar
-	*/
-	@RequestMapping(value = "/searchHome", method = RequestMethod.GET) 
+	 * This method is used to handle the urlmapping for the searchbar
+	 */
+	@RequestMapping(value = "/searchHome", method = RequestMethod.GET)
 	public ModelAndView welcomeSearch() {
 		System.out.println("searchBar");
 		return new ModelAndView("searchbar");
 	}
-	
+
 	/*
-	This method take's a searchString and checks is occurance in the userName filed of userDstails
-	*/
-	@RequestMapping(value = "/SearchUser", method = RequestMethod.GET) 
-	public ModelAndView searchUser(@RequestParam("searchString")String searchString) {
-		System.out.println(searchString);
-		List<PersonalProfile> userDetailsList = null;
-		if (!searchString.equals(""))
-			userDetailsList = searchService.searchUser(searchString);	
-		Map<String, Object> modelMap = new HashMap<>();
-		modelMap.put("userList", userDetailsList);
-		return new ModelAndView("searchbar", modelMap);
-	}
-	
-	/*
-	This method take's a searchString and checks is occurance in the comnpanyName
-	*/
-	@RequestMapping(value = "/SearchCompany", method = RequestMethod.GET) 
-	public ModelAndView searchCompany(@RequestParam("searchString")String searchString) {
-		System.out.println(searchString);
-		List<Company> companyList = null;
-		if (!searchString.matches("\\s*"))
-				companyList = searchService.searchCompany(searchString);
-		Map<String, Object> modelMap = new HashMap<>();
-		modelMap.put("companyList", companyList);
-		return new ModelAndView("searchbar", modelMap);
-	}
-	
-	/*
-	 *This method searches for both students and companies
-	 *and returns a combined list of companies and students in JSON format
-	 *this method works with the autocomplete functionality
+	 * This method take's a searchString and checks is occurance in the userName
+	 * filed of userDstails
 	 */
-	@RequestMapping(value = "/Search", method = RequestMethod.GET) 
+	@RequestMapping(value = "/SearchUser", method = RequestMethod.GET)
+	public ModelAndView searchUser(@RequestParam("searchString") String searchString) {
+		try {
+			System.out.println(searchString);
+			List<PersonalProfile> userDetailsList = null;
+			if (!searchString.equals(""))
+				userDetailsList = searchService.searchUser(searchString);
+			Map<String, Object> modelMap = new HashMap<>();
+			modelMap.put("userList", userDetailsList);
+			return new ModelAndView("searchbar", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
+	}
+
+	/*
+	 * This method take's a searchString and checks is occurance in the
+	 * comnpanyName
+	 */
+	@RequestMapping(value = "/SearchCompany", method = RequestMethod.GET)
+	public ModelAndView searchCompany(@RequestParam("searchString") String searchString) {
+		try {
+			System.out.println(searchString);
+			List<Company> companyList = null;
+			if (!searchString.matches("\\s*"))
+				companyList = searchService.searchCompany(searchString);
+			Map<String, Object> modelMap = new HashMap<>();
+			modelMap.put("companyList", companyList);
+			return new ModelAndView("searchbar", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
+	}
+
+	/*
+	 * This method searches for both students and companies and returns a
+	 * combined list of companies and students in JSON format this method works
+	 * with the autocomplete functionality
+	 */
+	@RequestMapping(value = "/Search", method = RequestMethod.GET)
 	public @ResponseBody String searchCombined(@RequestParam("CHARS") String searchString) {
 		System.out.println(searchString);
 		List<Company> companyList = null;
 		List<PersonalProfile> userDetailsList = null;
-		
+
 		if (!searchString.matches("\\s*")) {
 			companyList = searchService.searchCompany(searchString);
 			userDetailsList = searchService.searchUser(searchString);
 		}
-		
+
 		JsonArray jarray = new JsonArray();
 		for (Company c : companyList) {
 			JsonObject jobj = new JsonObject();
@@ -97,10 +107,10 @@ public class SearchController {
 			JsonObject jobj = new JsonObject();
 			jobj.addProperty("name", p.getName());
 			jobj.addProperty("id", p.getUserName());
-			jobj.addProperty("type", "user"); 
+			jobj.addProperty("type", "user");
 			jarray.add(jobj);
 		}
-		
+
 		System.out.println(jarray);
 		return jarray.toString();
 	}
