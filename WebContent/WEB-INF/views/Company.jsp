@@ -67,8 +67,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 					<h1>
 						${company.company_name} <small> <i
 							class="ace-icon fa fa-angle-double-right"></i>
-						</small>
-						<a href="${link}">About us</a>
+						</small> <a href="${link}">About us</a>
 					</h1>
 
 				</div>
@@ -87,9 +86,9 @@ description: dynamically creating a page once the Content on companiesPade is cl
 										<div id="home" class="tab-pane in active">
 											<div class="row">
 												<div class="col-xs-12 col-sm-3 center">
-													<span class="profile-picture"> <img
-														class="editable img-responsive" alt="Alex's Avatar"
-														id="avatar2"
+													<span class="profile-picture"> <img width="200" height="200"
+														class="editable img-responsive"
+														alt="${company.company_name}"
 														src="assets/images/companies/${company.company_name}.jpg" />
 													</span>
 
@@ -127,6 +126,16 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																	</div>
 																</div>
 
+																<div class="profile-info-row">
+																	<div class="profile-info-name">Know Us More</div>
+
+																	<div class="profile-info-value">
+																		<span><button class="btn  btn-primary btn-block"
+																				onclick="location.href = '${link}';">Check Us Out</button></span>
+																	</div>
+
+																</div>
+
 															</div>
 														</div>
 													</div>
@@ -144,9 +153,18 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Job Posts
 															</h4>
-															<br /> <a href="JobPosts?companyname=${company.company_name}">
+															
+															
+															<br /> <a
+																href="JobPosts?companyname=${company.company_name}">
+																<img style="border: 1" width="350" height="200"
+																alt="${company.company_name}" src="assets/images/companies/jobposts.jpg" />
+
+															<!-- Commented while merging conflicts -->
+															<%-- <br /> <a href="JobPosts?companyname=${company.company_name}">         
 																<img style="border: 1" width="400" height="200"
-																alt="150x150" src="assets/images/companies/jobposts.jpg" />
+																alt="150x150" src="assets/images/companies/jobposts.jpg" /> --%>
+
 															</a>
 														</div>
 
@@ -157,8 +175,8 @@ description: dynamically creating a page once the Content on companiesPade is cl
 														</div>
 													</div>
 												</div>
-												
-												
+
+
 												<div class="col-xs-12 col-sm-4">
 													<div class="widget-box transparent">
 														<div class="widget-header widget-header-small">
@@ -166,9 +184,10 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Feedback
 															</h4>
-															<br /> <a href="feedback?companyname=${company.company_name}">
-																<img style="border: 1" width="400" height="200"
-																alt="150x150" src="assets/images/companies/feedback.png" />
+															<br /> <a
+																href="feedback?companyname=${company.company_name}">
+																<img style="border: 1" width="350" height="200"
+																alt="${company.company_name}" src="assets/images/companies/feedback.png" />
 															</a>
 														</div>
 
@@ -179,7 +198,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 														</div>
 													</div>
 												</div>
-												
+
 
 												<div class="col-xs-12 col-sm-4">
 													<div class="widget-box transparent">
@@ -189,9 +208,9 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																Job Applicants
 															</h4>
 															<br /> <a
-																href="viewApplicants?companyname=${company.company_name}&year="> <img
-																align="middle" style="border: 1" width="400"
-																height="200" alt="150x150"
+																href="viewApplicants?companyname=${company.company_name}&year=">
+																<img align="middle" style="border: 1" width="350"
+																height="200" alt="${company.company_name}"
 																src="assets/images/companies/jobapplicants.jpg" />
 															</a>
 														</div>
@@ -205,7 +224,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 														</div>
 													</div>
 												</div>
-												
+
 											</div>
 											<div class="hr hr-8 dotted"></div>
 
@@ -228,11 +247,11 @@ description: dynamically creating a page once the Content on companiesPade is cl
 			</div>
 			<!-- /.page-content -->
 		</div>
-			
+
 		<jsp:directive.include file="scripts.jsp" />
 
 		<jsp:directive.include file="Footer.jsp" />
 		<script src="assets/js/ace-elements.min.js"></script>
-	<script src="assets/js/ace.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
 </body>
 </html>

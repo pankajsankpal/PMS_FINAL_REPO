@@ -61,7 +61,9 @@
          <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs" id="breadcrumbs">
+
                 <jsp:directive.include file="searchheader.jsp" />
+
                 <script type="text/javascript">
                     try {
                         ace.settings.check('breadcrumbs', 'fixed')
