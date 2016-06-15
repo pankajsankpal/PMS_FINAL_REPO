@@ -100,7 +100,7 @@ public class CompanyController {
 			System.out.println(user);
 			
 			//this was giving problem so commented @melwyn95
-			//companyService.addCompany(user,company);
+			companyService.addCompany(user,company);
 
 //			return new ModelAndView("companysuccess");
 
