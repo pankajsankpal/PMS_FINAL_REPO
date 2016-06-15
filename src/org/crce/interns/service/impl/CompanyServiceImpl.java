@@ -1,5 +1,9 @@
 package org.crce.interns.service.impl;
 import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.crce.interns.beans.*;
 import org.crce.interns.dao.CompanyDao;
 import org.crce.interns.model.Company;
@@ -19,8 +23,10 @@ public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	private CompanyDao companyDao;
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)	
-	public void addCompany(Company company) {
-		companyDao.addCompany(company);
+	public void addCompany(String user,Company company) {
+		
+		
+		companyDao.addCompany(user,company);
 			}
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addCriteria(Criteria criteria) {
