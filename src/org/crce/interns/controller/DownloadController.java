@@ -33,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller
 public class DownloadController extends HttpServlet {
-	
+
 	@Autowired
 	private CheckRoleService crService;
 	/*
@@ -113,29 +113,33 @@ public class DownloadController extends HttpServlet {
 	 */
 	@RequestMapping("/viewResumes")
 	public ModelAndView viewFiles(HttpServletRequest request, HttpServletResponse response) {
-		String userName = (String) request.getSession().getAttribute("userName");
-		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		String roleId = (String) request.getSession().getAttribute("roleId");
-		if (!crService.checkRole("Download", roleId))
-			return new ModelAndView("403");
-		else {
-			String directoryPath = basePath + "\\" + role + "\\" + userName;
-			File directory = new File(directoryPath);
-			File[] listOfFiles = directory.listFiles();
+		try {
+			String userName = (String) request.getSession().getAttribute("userName");
+			String role = getRole((String) request.getSession().getAttribute("roleId"));
+			String roleId = (String) request.getSession().getAttribute("roleId");
+			if (!crService.checkRole("Download", roleId))
+				return new ModelAndView("403");
+			else {
+				String directoryPath = basePath + "\\" + role + "\\" + userName;
+				File directory = new File(directoryPath);
+				File[] listOfFiles = directory.listFiles();
 
-			System.out.println(directoryPath);
+				System.out.println(directoryPath);
 
-			List<String> fileList = new ArrayList<String>();
-			for (File file : listOfFiles) {
-				if (file.isFile()) {
-					System.out.println("FILE : " + file.getName());
-					fileList.add(file.getName());
-				} else
-					System.out.println("DIRECTORY : " + file.getName());
+				List<String> fileList = new ArrayList<String>();
+				for (File file : listOfFiles) {
+					if (file.isFile()) {
+						System.out.println("FILE : " + file.getName());
+						fileList.add(file.getName());
+					} else
+						System.out.println("DIRECTORY : " + file.getName());
+				}
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("fileList", fileList);
+				return new ModelAndView("viewResumes", modelMap);
 			}
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			modelMap.put("fileList", fileList);
-			return new ModelAndView("viewResumes", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
 
@@ -161,31 +165,36 @@ public class DownloadController extends HttpServlet {
 
 	@RequestMapping("/viewCSV")
 	public ModelAndView viewCV(HttpServletRequest request, HttpServletResponse response) {
-		String directoryPath = basePath + "\\System\\CSV";
-		File directory = new File(directoryPath);
-		File[] listOfFiles = directory.listFiles();
+		try {
+			String directoryPath = basePath + "\\System\\CSV";
+			File directory = new File(directoryPath);
+			File[] listOfFiles = directory.listFiles();
 
-		System.out.println(directoryPath);
-		System.out.println(listOfFiles);
+			System.out.println(directoryPath);
+			System.out.println(listOfFiles);
 
-		List<String> fileList = new ArrayList<String>();
-		if (listOfFiles != null) {
-			for (File file : listOfFiles) {
-				if (file.isFile()) {
-					System.out.println("FILE : " + file.getName());
-					fileList.add(file.getName());
-				} else
-					System.out.println("DIRECTORY : " + file.getName());
+			List<String> fileList = new ArrayList<String>();
+			if (listOfFiles != null) {
+				for (File file : listOfFiles) {
+					if (file.isFile()) {
+						System.out.println("FILE : " + file.getName());
+						fileList.add(file.getName());
+					} else
+						System.out.println("DIRECTORY : " + file.getName());
+				}
 			}
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("fileList", fileList);
+			return new ModelAndView("viewCSV", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500s");
 		}
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("fileList", fileList);
-		return new ModelAndView("viewCSV", modelMap);
 	}
 
 	@RequestMapping("/downloadCSV")
 	public void downloadCSV(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
+
 		String fileToBeDownloaded = basePath + "\\System\\CSV" + "\\" + fileName;
 		System.out.println(fileToBeDownloaded);
 
@@ -229,8 +238,8 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping("/downloadCounsellingReport") 	
+
+	@RequestMapping("/downloadCounsellingReport")
 	public void downloadCounsellingReport(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		String folderName = (String) request.getSession().getAttribute("folderName");
@@ -277,8 +286,8 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping("/downloadOfferLetter") 	
+
+	@RequestMapping("/downloadOfferLetter")
 	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		String userId = (String) request.getSession().getAttribute("userId");
@@ -325,7 +334,7 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping("/downloads")
 	public String StudentNotification() {
 		return "facultyDownloads";

@@ -40,84 +40,79 @@ import org.springframework.web.servlet.ModelAndView;
 public class CompanyController {
 
 	@Autowired
-    CompanyFormValidator companyValidator;
-	
+	CompanyFormValidator companyValidator;
+
 	@Autowired
 	private CompanyService companyService;
-	
-	@Autowired 
+
+	@Autowired
 	private CriteriaService criteriaService;
+
 	/*
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView welcome() {
-		System.out.println("HELLO");
-		return new ModelAndView("index");
+	 * @RequestMapping(value = "/index", method = RequestMethod.GET) public
+	 * ModelAndView welcome() { System.out.println("HELLO"); return new
+	 * ModelAndView("index"); }
+	 */
+	private Company prepareCompanyModel(CompanyBean companyBean) {
+		Company company = new Company();
+		company.setCompany_address(companyBean.getCompany_address());
+		company.setCompany_name(companyBean.getCompany_name());
+		return company;
 	}
-	*/
-	 private Company prepareCompanyModel(CompanyBean companyBean){
-			Company company = new Company();
-			company.setCompany_address(companyBean.getCompany_address());
-			company.setCompany_name(companyBean.getCompany_name());
-			return company;
-		}
-	 
-	 
-	 @RequestMapping(value = "/addCompany", method = RequestMethod.GET)
-		public ModelAndView addCompany(Model model) {
-		 
-		 try{
-		 CompanyBean companyBean=new CompanyBean();
-		 model.addAttribute("companyBean",companyBean);
+
+	@RequestMapping(value = "/addCompany", method = RequestMethod.GET)
+	public ModelAndView addCompany(Model model) {
+
+		try {
+			CompanyBean companyBean = new CompanyBean();
+			model.addAttribute("companyBean", companyBean);
 			System.out.println("in controller1");
 			return new ModelAndView("addCompany");
-			
-		 }
-		 catch(Exception e){
-				System.out.println(e);
 
-				ModelAndView model1=new ModelAndView("500");
-				model1.addObject("message", "Your session has timed out. Please login again");
-		 		//model.addObject("url", "form");
-
-				return model1;
-			}
-
-		}
-	 @RequestMapping(value = "/saveCompany", method = RequestMethod.POST)
-		public ModelAndView saveCompany(  HttpServletRequest request,@ModelAttribute("companyBean") CompanyBean companyBean, 
-				BindingResult result) {
-		 
-		 try{
-		 companyValidator.validate(companyBean, result);
-			if (result.hasErrors()) {
-		System.out.println("Error in form");
-     
-     return new ModelAndView("addCompany");
-         }
-			Company company = prepareCompanyModel(companyBean);
-			HttpSession session=request.getSession();
-			String user=(String)session.getAttribute("userName");
-			System.out.println(user);
-			
-			//this was giving problem so commented @melwyn95
-			//companyService.addCompany(user,company);
-
-//			return new ModelAndView("companysuccess");
-
-			return new ModelAndView("redirect:/addCompany");
-         
-		
-	 }
-	 catch(Exception e){
+		} catch (Exception e) {
 			System.out.println(e);
 
-			ModelAndView model1=new ModelAndView("500");
+			ModelAndView model1 = new ModelAndView("500");
 			model1.addObject("message", "Your session has timed out. Please login again");
-	 		model1.addObject("url", "form");
+			// model.addObject("url", "form");
 
 			return model1;
 		}
 
+	}
 
-}
+	@RequestMapping(value = "/saveCompany", method = RequestMethod.POST)
+	public ModelAndView saveCompany(HttpServletRequest request, @ModelAttribute("companyBean") CompanyBean companyBean,
+			BindingResult result) {
+
+		try {
+			companyValidator.validate(companyBean, result);
+			if (result.hasErrors()) {
+				System.out.println("Error in form");
+
+				return new ModelAndView("addCompany");
+			}
+			Company company = prepareCompanyModel(companyBean);
+			HttpSession session = request.getSession();
+			String user = (String) session.getAttribute("userName");
+			System.out.println(user);
+
+			// this was giving problem so commented @melwyn95
+			// companyService.addCompany(user,company);
+
+			// return new ModelAndView("companysuccess");
+
+			return new ModelAndView("redirect:/addCompany");
+
+		} catch (Exception e) {
+			System.out.println(e);
+
+			ModelAndView model1 = new ModelAndView("500");
+			model1.addObject("message", "Your session has timed out. Please login again");
+			model1.addObject("url", "form");
+
+			return model1;
+		}
+
+	}
 }

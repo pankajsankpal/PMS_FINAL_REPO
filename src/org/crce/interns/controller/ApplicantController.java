@@ -149,117 +149,126 @@ public class ApplicantController {
 
 	Integer companies;
 	String user;
-	
+
 	@Autowired
 	private ApplicantService applicantService;
-	
+
 	@Autowired
 	SearchApplicantValidator searchApplicantValidator;
-	
+
 	@RequestMapping(value = "/SearchApplicant", method = RequestMethod.GET)
 	public ModelAndView searchApplicant() {
-		
-		ModelAndView model = new ModelAndView("searchApplicant");
-		return model;
+		try {
+			ModelAndView model = new ModelAndView("searchApplicant");
+			return model;
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
+
 	@RequestMapping(value = "/SubmitCompany", method = RequestMethod.POST)
 	public ModelAndView submitCompany(@RequestParam("company") Integer company) {
-		
-		System.out.println("Company sent from front end :" + company);
-		companies = company;
-		return new ModelAndView("redirect:/ViewApplicant");
+		try {
+			System.out.println("Company sent from front end :" + company);
+			companies = company;
+			return new ModelAndView("redirect:/ViewApplicant");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	@RequestMapping(value="/ViewApplicant", method = RequestMethod.GET)
-	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
-		
-		
-		
-		System.out.println("In View Applicant: " + companies);
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("users", applicantService.viewApplicants(companies));
-		
-		if (modelMap.isEmpty()) {
-			System.out.println("Error no Model map, Model map is null");
-			return new ModelAndView("403");
-		}
-		if(modelMap.containsValue(null))
-		{
-			ModelAndView model = new ModelAndView("searchApplicant");
-			String errorMsg = "No applicants in selected company";
-			model.addObject("errorMsg", errorMsg);
-			return model;
-		}
 
-		return new ModelAndView("viewApplicant", modelMap);
+	@RequestMapping(value = "/ViewApplicant", method = RequestMethod.GET)
+	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,
+			BindingResult bindingResult) {
+		try {
+			System.out.println("In View Applicant: " + companies);
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("users", applicantService.viewApplicants(companies));
+
+			if (modelMap.isEmpty()) {
+				System.out.println("Error no Model map, Model map is null");
+				return new ModelAndView("403");
+			}
+			if (modelMap.containsValue(null)) {
+				ModelAndView model = new ModelAndView("searchApplicant");
+				String errorMsg = "No applicants in selected company";
+				model.addObject("errorMsg", errorMsg);
+				return model;
+			}
+
+			return new ModelAndView("viewApplicant", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
+
 	@RequestMapping(value = "/NotifyStudent", method = RequestMethod.POST)
-	public ModelAndView notifyStudent(@RequestParam("userName") String userName,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
-	//	UserDetailsBean userBean =new UserDetailsBean();
-		//userBean.setUserName(userName);
-		ModelAndView model;
-		String errorMsg="";
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		if(userName.equalsIgnoreCase("")){
-			modelMap.put("users", applicantService.viewApplicants(companies));
-			model = new ModelAndView("viewApplicant",modelMap);
-/*		model = new ModelAndView("viewApplicant",modelMap);
-*/		//modelMap.put("users", applicantService.viewApplicants(companies));
+	public ModelAndView notifyStudent(@RequestParam("userName") String userName,
+			@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+		// UserDetailsBean userBean =new UserDetailsBean();
+		// userBean.setUserName(userName);
+		try {
+			ModelAndView model;
+			String errorMsg = "";
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			if (userName.equalsIgnoreCase("")) {
+				modelMap.put("users", applicantService.viewApplicants(companies));
+				model = new ModelAndView("viewApplicant", modelMap);
+				/*
+				 * model = new ModelAndView("viewApplicant",modelMap);
+				 */ // modelMap.put("users",
+					// applicantService.viewApplicants(companies));
 
-		errorMsg = "User name cannot be empty";
-		model.addObject("errorMsg", errorMsg);
-		
-		return model;
-		}
-		searchApplicantValidator.validate(userBean, bindingResult);
-		System.out.println("User sent from front end :" + userName);
-		user = userName;
-		return new ModelAndView("redirect:/SetNotify");
-	}
-	
-	@RequestMapping(value="/SetNotify", method = RequestMethod.GET)
-	public ModelAndView setNotify(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult) {
-		
-		ModelAndView model;
-		String errorMsg="";
-		Date date = new Date(); 
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		//if(userName.equalsIgnoreCase("")){
-		modelMap.put("users", applicantService.viewApplicants(companies));
-		
-		System.out.println("In Set Notify: " + user);
-		int check = applicantService.checkNotify(user);
-		if(check==0)
-		{
-			UserDetails ud = new UserDetails();
-			ud.setModifiedDate(date);
-			ud.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
-			ud.setUserName(user);
+				errorMsg = "User name cannot be empty";
+				model.addObject("errorMsg", errorMsg);
 
-			modelMap.put("notify", applicantService.notifyApplicants(ud));
-			
-			model = new ModelAndView("viewApplicant", modelMap);
-			model.addObject("success", 1);
-			//return new ModelAndView("viewApplicant", modelMap);
-			return model;
+				return model;
+			}
+			searchApplicantValidator.validate(userBean, bindingResult);
+			System.out.println("User sent from front end :" + userName);
+			user = userName;
+			return new ModelAndView("redirect:/SetNotify");
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
-		else
-		{
-			modelMap.put("users", applicantService.viewApplicants(companies));
-			model = new ModelAndView("viewApplicant",modelMap);
-			errorMsg = "Student is already notified";
-			model.addObject("errorMsg", errorMsg);
-			
-			return model;
-			
-		}
-		
-		 	
-		
-		
 	}
 
+	@RequestMapping(value = "/SetNotify", method = RequestMethod.GET)
+	public ModelAndView setNotify(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
+			BindingResult bindingResult) {
+		try {
+			ModelAndView model;
+			String errorMsg = "";
+			Date date = new Date();
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			// if(userName.equalsIgnoreCase("")){
+			modelMap.put("users", applicantService.viewApplicants(companies));
+
+			System.out.println("In Set Notify: " + user);
+			int check = applicantService.checkNotify(user);
+			if (check == 0) {
+				UserDetails ud = new UserDetails();
+				ud.setModifiedDate(date);
+				ud.setModifiedBy((String) request.getSession(true).getAttribute("userName"));
+				ud.setUserName(user);
+
+				modelMap.put("notify", applicantService.notifyApplicants(ud));
+
+				model = new ModelAndView("viewApplicant", modelMap);
+				model.addObject("success", 1);
+				// return new ModelAndView("viewApplicant", modelMap);
+				return model;
+			} else {
+				modelMap.put("users", applicantService.viewApplicants(companies));
+				model = new ModelAndView("viewApplicant", modelMap);
+				errorMsg = "Student is already notified";
+				model.addObject("errorMsg", errorMsg);
+
+				return model;
+			}
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
+	}
 
 }
