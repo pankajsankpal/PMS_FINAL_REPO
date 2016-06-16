@@ -58,11 +58,11 @@ public class ManageAllotment extends HttpServlet {
 	@Autowired
 	public LoginService loginService;
 
-
+/*
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 				return new ModelAndView("index");
-	}
+	}*/
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 

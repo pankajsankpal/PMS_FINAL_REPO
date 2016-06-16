@@ -465,12 +465,12 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	@Autowired
 	private EmailNotificationServiceImpl emailNotificationService;
 
-	
+/*	
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 		return new ModelAndView("index");
 	}
-
+*/
 	
 	/* -----------------------------------------------------------------------------------------------------------------  */
 
