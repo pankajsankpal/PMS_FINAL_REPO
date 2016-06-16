@@ -9,8 +9,8 @@ description: contains various functions for admin -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title> Admin| HOME</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title> Admin | HOME</title>
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
@@ -36,25 +36,13 @@ description: contains various functions for admin -->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+				</div>
 					<div class="page-content">
 							<div class="page-header">
 							
-									<h1>Welcome  ${sessionScope.name} to the profile page </h1>
+									<h1>Welcome , ${sessionScope.name}! </h1>
 
 							</div><!-- /.page-header -->
 
@@ -133,8 +121,9 @@ description: contains various functions for admin -->
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
-											</div>
+										</div>
 								
 							
 										
@@ -256,9 +245,7 @@ description: contains various functions for admin -->
 		<tr>
 			<td>7. <a href="AssignRole">Assign functions to various roles</a><br /></td>
 		</tr>
-		<tr>
-			<td>8. <a href="ViewCurrentTPC.html">View Current TPC</a><br /></td>
-		</tr>
+
 	</table>
 
 	<br /></br>

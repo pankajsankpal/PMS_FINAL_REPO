@@ -43,8 +43,8 @@ public interface ManageProfileService {
 	public void addProfile(JobBean jobBean);
 	public void addProfile(CriteriaBean criteriaBean);
 	public void addProfile(CompanyBean companyBean);
-	public List<Job> listProfile();
+	public List<Job> listProfile(String curYear);
 	public List<CompanyBean> listCompanies();
-	public List<JobBean> listJob();
+	public List<JobBean> listJob(String curYear);
 	
 }

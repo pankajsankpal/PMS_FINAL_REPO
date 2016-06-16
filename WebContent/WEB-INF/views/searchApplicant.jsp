@@ -77,15 +77,18 @@
 														<td><h4>Company Name: </h4></td>
 														<td><select name="company" class="chosen-select">
 
-																<option value="01">TCS</option>
+														<c:forEach items="${companies}" var="companies">
+                        									<option value="${companies.key}">${companies.value}</option>
+                										</c:forEach>
+																<!-- <option value="01">TCS</option>
 																<option value="02">L&T</option>
-																<!-- <option value="03">IBM</option> -->
+																<option value="03">IBM</option>
 																<option value="04">JPMorgan</option>
 																<option value="05">Direct I</option>
 																<option value="06">ZS</option>
-																<!-- <option value="07">Radio Mirchi</option> -->
+																<option value="07">Radio Mirchi</option>
 																<option value="08">Accenture</option>
-																<!-- <option value="09">Fr. Agnel</option> -->
+																<option value="09">Fr. Agnel</option> -->
 
 														</select></td>
 													</tr>
