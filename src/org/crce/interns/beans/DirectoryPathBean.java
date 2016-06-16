@@ -36,12 +36,14 @@ public class DirectoryPathBean {
     private final String counselingReportFtpcFolder = rootContext + "/System/Counseling Report-Ftpc"; //code added @Crystal
 	private final String systemFolder = rootContext + "/System";  //code added @Leon
 
-/*	private final String copyFolder = "C:\\Users\\Crystal\\Desktop"; //code added @Crystal
+
+	/*private final String copyFolder = "C:\\Users\\Crystal\\Desktop"; //code added @Crystal
 	    
 			public String getCopyFolder() {
 				return copyFolder;
-			}
-	*/
+			}*/
+	
+
 	public String getCounselingReportStudentFolder() {
 		return counselingReportStudentFolder;
 	}

@@ -90,7 +90,8 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				//call to the dao 
 				//resumeUploadDao.addNewResume(username,newName);		//not used
 				
-				String newFileName = f2.getName();
+				//keep this part commented
+				//String newFileName = f2.getName();
 				//copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);
 			}
 					
