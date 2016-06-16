@@ -549,6 +549,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				criteriaBean.setYear_of_passing(r.get("year_of_passing"));
 				criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
+				System.out.println("Placed :::<<"+r.get("placed_students_allowed")+">>>");
 				criteriaBean.setPercentage(r.get("percentage"));
 				criteriaBean.setCgpa(r.get("cgpa"));
 				criteriaBean.setNo_of_live_kts_allowed(r.get("no_of_live_kts_allowed"));

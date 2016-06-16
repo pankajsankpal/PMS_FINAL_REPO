@@ -14,6 +14,8 @@
 *
 */
 
+
+
 package org.crce.interns.controller;
 
 import java.util.List;
@@ -40,74 +42,73 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ResumeUploadController {
 
+
 	@Autowired
 	private ResumeUploadService resumeUploadService;
-
+	
 	@Autowired
-	FileUploadValidator validator;
-
+    FileUploadValidator validator;
+	
 	@Autowired
 	private CheckRoleService crService;
 
-	// used to navigate to ResumeUpload.jsp
+	//used to navigate to ResumeUpload.jsp
 	@RequestMapping("resumeUpload")
 	public ModelAndView welcome(HttpServletRequest request) {
-		try {
-			HttpSession session = request.getSession();
-			String role = (String) session.getAttribute("roleId");
-			if (!crService.checkRole("ResumeUpload", role))
-				return new ModelAndView("403");
-			else
-				return new ModelAndView("ResumeUpload");
-		} catch (Exception e) {
-			return new ModelAndView("500");
-		}
+		
+		HttpSession session=request.getSession();
+		String role =  (String)session.getAttribute("roleId");
+		if(!crService.checkRole("ResumeUpload", role))
+			return new ModelAndView("403");
+		else
+			return new ModelAndView("ResumeUpload");
 	}
 
-	// used to actually upload the file
+	//used to actually upload the file
 	@RequestMapping(value = "/uploadResume", method = RequestMethod.POST)
 	public ModelAndView resumeUpload(HttpServletRequest request,
-			@RequestParam(required = false) CommonsMultipartFile fileUpload,
-			@ModelAttribute("fileUpload1") FileUpload fileUpload1, BindingResult result) throws Exception {
+			@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
+					throws Exception {
 
 		ModelAndView model = new ModelAndView("ResumeUpload");
 		try {
-
-			// fileUpload1 : this is the request parameter model attribute of
-			// FileUpload type
+			
+			//fileUpload1 : this is the request parameter model attribute of FileUpload type
 			fileUpload1.setFile(fileUpload);
 			System.out.println(fileUpload1.getFile().getSize());
-
+			
 			validator.validate(fileUpload1, result);
-
-			// if no file is uploaded
+			
+			//if no file is uploaded
 			if (fileUpload1.getFile().getSize() == 0) {
 				System.out.println("Error in form");
-
-				return model;
+	            
+	            return model;
 			}
-
-			String username = (String) request.getSession(true).getAttribute("userName");
+			
+			String username = (String)request.getSession(true).getAttribute("userName");
 			System.out.println("in try");
-
-			// calls the service to actually upload the file
+			
+			//calls the service to actually upload the file
 			resumeUploadService.handleFileUpload(request, fileUpload, username);
 			model.addObject("success", 1);
-
+			
+			
 		} catch (IncorrectFileFormatException e) {
 			System.out.println(e);
-
-			model.addObject("error", 1); // so that the jsp catches the error
+			
+			model.addObject("error", 1);	// so that the jsp catches the error
 			return model;
-
+			
 		} catch (MaxFileSizeExceededError m) {
 			System.out.println(m);
-
-			model.addObject("error1", 1); // so that the jsp catches the error
+			
+			model.addObject("error1", 1); 	// so that the jsp catches the error
 			return model;
 		}
-
+		
 		return model;
 	}
-
+	
+	
 }
