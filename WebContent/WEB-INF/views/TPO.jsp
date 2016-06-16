@@ -145,7 +145,7 @@
 															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
 
 															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
-																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
+																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage users of System</a>
 
 														</div>
 										
@@ -162,7 +162,7 @@
 												</div> -->
 											</div><!-- /#pictures -->
 											</div>
-								
+										</div>
 							
 										
 										</div><!-- end of tabbable -->
@@ -179,13 +179,19 @@
 				
 			
 			</div><!-- /.main-content-inner-->
-		
+		<jsp:directive.include file="Footer.jsp" />
 </div><!-- main-content -->
-			
+<br><br>			
 
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
 
+
+<!-- page specific plugin scripts -->
+		
+		
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+		
 
 				<!-- page specific plugin scripts -->
 		<script src="assets/js/fuelux.tree.min.js"></script>
@@ -215,12 +221,6 @@
 		<script src="assets/js/ace.min.js"></script>
 
 
-		<!-- page specific plugin scripts -->
-		
-		
-		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
 		
 		
 		<!-- inline scripts related to this page -->

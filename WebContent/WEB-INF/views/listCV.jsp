@@ -275,7 +275,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 			$('#d').
 		}); */
 		
-		var times=0;
+	
 		
 		function displayCertificate() {
 			$.ajax({
@@ -297,7 +297,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				}
 			});
 		}
-		console.log(times);
+		//console.log(times);
 		
 		function displayResume() {
 			$.ajax({
@@ -339,13 +339,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				}
 			});
 		}
-q
+
 		jQuery(function($) {
-			var times = 0;
+			//var times = 0;
 			var sampleData = initiateDemoData();//see below
 
-			
-			
 			
 			$('#tree2')
 					.ace_tree(
@@ -381,7 +379,7 @@ q
 				
 				
 							
-				 tree_data_2['resume']['additionalParameters'] = {
+				/*  tree_data_2['resume']['additionalParameters'] = {
 						'children' : [	
 							 {text: '<li><a href="/PMS_v1/downloadResume?fileName='
 									+ this.actualName + ' "> '
@@ -389,7 +387,7 @@ q
 							
 						]
 					} 
-
+ */
 			
 				
 			/* 	'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,

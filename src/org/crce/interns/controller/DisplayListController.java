@@ -51,7 +51,7 @@ public class DisplayListController {
 	 * @param userId
 	 * @return
 	 */
-	@RequestMapping(value = "/dispAllfolder")
+	/*@RequestMapping(value = "/dispAllfolder")
 	public ModelAndView displayfolder(HttpServletRequest request,@RequestParam(value = "userId") String userId) {
 		request.getSession().setAttribute("userId", userId);
 		List<String> list = dsp.displayFolderlist(userId);
@@ -59,7 +59,7 @@ public class DisplayListController {
 		model.addObject("list", list);
 
 		return model;
-	}
+	}*/
 	
 	
 	/**
@@ -71,7 +71,7 @@ public class DisplayListController {
 	 * @return
 	 */
 
-	@RequestMapping(value = "/dispCV--")
+	/*@RequestMapping(value = "/dispCV--")
 	public ModelAndView displayCV(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
@@ -98,7 +98,7 @@ public class DisplayListController {
 		model.addObject("indexList", indexList);
 
 		return model;
-	}
+	}*/
 	
 	
 	/**
@@ -107,7 +107,7 @@ public class DisplayListController {
 	 * @param folder
 	 * @return
 	 */
-	@RequestMapping(value = "/dispCounselingReport--")
+	/*@RequestMapping(value = "/dispCounselingReport--")
 	public ModelAndView dispCounselingReport(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userName = (String) request.getSession().getAttribute("userName");
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
@@ -132,7 +132,7 @@ public class DisplayListController {
 
 		return model;
 	}
-
+*/
 	
 	
 	/**
@@ -141,7 +141,7 @@ public class DisplayListController {
 	 * @param folder
 	 * @return
 	 */
-	@RequestMapping(value = "/displistoffiles")
+	/*@RequestMapping(value = "/displistoffiles")
 	public ModelAndView displayFilesToftpc(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userId = (String) request.getSession().getAttribute("userId");
 		String userRole = "allowed";
@@ -149,6 +149,8 @@ public class DisplayListController {
 		List<String> list = new ArrayList<String>();
 		ModelAndView model = new ModelAndView("dispfiles");
 
+		System.out.println("inside files... ");
+		
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
 		if(listFullName.isEmpty())
@@ -164,10 +166,15 @@ public class DisplayListController {
 		model.addObject("actualFileNames", listFullName);
 		model.addObject("nameToDisplay", list);
 		model.addObject("indexList", indexList);
+		
+		System.out.println("files: " + listFullName);
+		System.out.println("files: " + list);
 
 		return model;
-	}
+	}*/
 
+	//------------------------------------------------------------------------------------------------------------
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Modified by Pankaj & Melwyn
 	@RequestMapping(value = "/dispCV")
@@ -225,7 +232,7 @@ public class DisplayListController {
 			indexList.add(z);
 			z++;
 		}
-
+		System.out.println("checking..");
 		request.getSession().setAttribute("folderName", folder);
 		
 		JsonArray jarray = new JsonArray();
@@ -244,9 +251,70 @@ public class DisplayListController {
 		model.addObject("indexList", indexList);
 
 		return model;*/
-		
+		System.out.println("checking..");
 		return jarray.toString();
 		
 	}
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////
+	/// Modified by Pankaj ...
+	
+	@RequestMapping(value = "/dispAllfolder")
+	public @ResponseBody  String displayfolder(HttpServletRequest request,@RequestParam(value = "userId") String userId) {
+		request.getSession().setAttribute("userId", userId);
+		List<String> list = dsp.displayFolderlist(userId);
+		
+		/*ModelAndView model = new ModelAndView("Folders");
+		model.addObject("list", list);*/
 
+		JsonArray jarray= new JsonArray();
+		for(int i=0;i<list.size();i++){
+			
+			JsonObject jobj =new JsonObject();
+			jobj.addProperty("list", list.get(i));
+			jarray.add(jobj);
+			
+		}
+		System.out.println("list: "+ list.size());
+		
+		System.out.println("checking folders..");
+		return jarray.toString();
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	///// Pankaj Modified following for displaying files in the folders..
+	
+	@RequestMapping(value = "/displistoffiles")
+	public ModelAndView displayFilesToftpc(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+		String userId = (String) request.getSession().getAttribute("userId");
+		String userRole = "allowed";
+		List<String> listFullName = dsp.displayCVList(folder, userId,userRole);
+		List<String> list = new ArrayList<String>();
+		ModelAndView model = new ModelAndView("dispfiles");
+
+		System.out.println("inside files... ");
+		
+		int z = 0;
+		List<Integer> indexList = new ArrayList<>();
+		if(listFullName.isEmpty())
+			return model;
+		for (String x : listFullName) {
+			int pos = x.indexOf('-');
+			list.add(x.substring(0, pos));
+			indexList.add(z);
+			z++;
+		}
+
+		request.getSession().setAttribute("folderName", folder);
+		model.addObject("actualFileNames", listFullName);
+		model.addObject("nameToDisplay", list);
+		model.addObject("indexList", indexList);
+		
+		System.out.println("files: " + listFullName);
+		System.out.println("files: " + list);
+
+		return model;
+	}
+	
 }

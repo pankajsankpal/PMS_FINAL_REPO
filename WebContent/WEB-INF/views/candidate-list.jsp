@@ -1,4 +1,4 @@
-<!-- author: Lenherd Olivera
+s<!-- author: Lenherd Olivera
 description: gives the list of applied aplicants-->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>

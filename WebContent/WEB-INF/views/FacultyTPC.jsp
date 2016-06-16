@@ -114,12 +114,12 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
 
-															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
+															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search Students/Companies </a> <br><br>															
 															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a> <br><br>
 															<button data-toggle="dropdown" class="btn btn-pink btn-lg  dropdown-toggle btn-block">
 																								Send E-mail
 																<i class="ace-icon fa fa-angle-down icon-on-right"></i>
-															</button>
+															</button> <br><br>
 															<ul class="dropdown-menu dropdown-pink dropdown-menu-right">
 																<li>
 																	<a href="GroupSendMail">send to Group</a>

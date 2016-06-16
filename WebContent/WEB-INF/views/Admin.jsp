@@ -126,7 +126,7 @@ description: contains various functions for admin -->
 														
 														<div class="col-xs-12 col-sm-8" >
 														  
-														  <a href="addUser" class="btn btn-inverse btn-lg btn-block">Manage Different Users of System.. </a> <br><br>
+														  <a href="addUser" class="btn btn-inverse btn-lg btn-block">Manage Users of System.. </a> <br><br>
 														  
 														</div>
 														
