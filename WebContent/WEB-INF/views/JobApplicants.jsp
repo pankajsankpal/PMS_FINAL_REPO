@@ -9,7 +9,7 @@ description: gives the list of applied aplicants-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Companies Page</title>
+<title>Job Applicants</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -52,16 +52,17 @@ description: gives the list of applied aplicants-->
 			<div class="breadcrumbs" id="breadcrumbs">
 
 				<jsp:directive.include file="searchheader.jsp" />
-			</div>			<div class="page-content">
+			</div>
+			<div class="page-content">
 
 
-				<div class="page-header">
+				<%-- <div class="page-header">
 					<h1>
 						${propercompanyname} <small> <i
 							class="ace-icon fa fa-angle-double-right"></i>
 						</small>
 					</h1>
-				</div>
+				</div> --%>
 
 				<div class="row">
 					<div class="col-xs-12">
@@ -76,7 +77,7 @@ description: gives the list of applied aplicants-->
 											<div class="row">
 
 
-<div class="col-xs-12">
+												<div class="col-xs-12">
 													<div class="table-header">The List Of Applicants So
 														Far</div>
 													<table id="simple-table"
@@ -91,32 +92,32 @@ description: gives the list of applied aplicants-->
 														</thead>
 
 														<tbody>
-															
+
 															<c:forEach items="${userList}" var="user"
-															varStatus="loop">
-															<tr>
-																<td><font color="blue">${user.username}</font></td>
-																<td>${personalProfileBeanList[loop.index].name}</td>
-																<td><font color="orange">
-																${professionalProfileBeanList[loop.index].branch}</font></td>
-																
-															</tr>	
-																
+																varStatus="loop">
+																<tr>
+																	<td><font color="blue">${user.username}</font></td>
+																	<td>${personalProfileBeanList[loop.index].name}</td>
+																	<td><font color="orange">
+																			${professionalProfileBeanList[loop.index].branch}</font></td>
+
+																</tr>
+
 															</c:forEach>
-																
-															
+
+
 
 														</tbody>
 													</table>
 												</div>
-												
-<!-- /.col -->
+
+												<!-- /.col -->
 												<!---------------->
-												
-												<!-- selected list -->	
+
+												<!-- selected list -->
 												<div class="col-xs-12">
-													<div class="table-header">The List Of Selected Applicants So
-														Far</div>
+													<div class="table-header">The List Of Selected
+														Applicants So Far</div>
 													<table id="simple-table"
 														class="table table-striped table-bordered table-hover">
 														<thead>
@@ -130,17 +131,17 @@ description: gives the list of applied aplicants-->
 
 														<tbody>
 															<tr>
-															<c:forEach items="${quickStatsList}" var="user"
-																varStatus="loop">
-																<td><font color="blue">${user.username}</font></td>
-																<td>${selectedPersonal[loop.index].name}</td>
-																<td><font color="orange">
-																${selectedProf[loop.index].branch}</font></td>
-																
-																
-																
-															</c:forEach>
-																
+																<c:forEach items="${quickStatsList}" var="user"
+																	varStatus="loop">
+																	<td><font color="blue">${user.username}</font></td>
+																	<td>${selectedPersonal[loop.index].name}</td>
+																	<td><font color="orange">
+																			${selectedProf[loop.index].branch}</font></td>
+
+
+
+																</c:forEach>
+
 															</tr>
 
 														</tbody>
@@ -148,7 +149,7 @@ description: gives the list of applied aplicants-->
 												</div>
 
 												<!-- /.col -->
-												
+
 												<!-- <div class="col-xs-12">
 													<div class="table-header">The List Of Applicants So
 														Far</div>
@@ -224,6 +225,9 @@ description: gives the list of applied aplicants-->
 						</div>
 					</div>
 				</div>
+				<jsp:directive.include file="scripts.jsp" />
+				<jsp:directive.include file="Footer.jsp" />
+
 			</div>
 
 
@@ -231,8 +235,6 @@ description: gives the list of applied aplicants-->
 		</div>
 	</div>
 	<!-- /.main-content -->
-<jsp:directive.include file="scripts.jsp" />
-	<jsp:directive.include file="Footer.jsp" />
 
 
 
