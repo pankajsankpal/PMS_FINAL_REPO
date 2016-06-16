@@ -37,7 +37,7 @@ function checkNewNoti(){
 </script>
 </head>
 
-<body onload="checkNewNoti()" class="skin-3 no-skin">
+<body onload="" class="skin-3 no-skin">
 	<jsp:directive.include file="scripts.jsp" />
 	
 	<div id="navbar" class="navbar navbar-default">
