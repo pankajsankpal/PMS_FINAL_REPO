@@ -58,12 +58,14 @@ public class ResumeUploadController {
 		
 		HttpSession session=request.getSession();
 		String role =  (String)session.getAttribute("roleId");
-		if(!crService.checkRole("ResumeUpload", role))
+		if(!crService.checkRole("resumeUpload", role))
 			return new ModelAndView("403");
 		else
 			return new ModelAndView("ResumeUpload");
 	}
 
+	
+	//authorization done - unauthorized call redirected to 405.jsp
 	//used to actually upload the file
 	@RequestMapping(value = "/uploadResume", method = RequestMethod.POST)
 	public ModelAndView resumeUpload(HttpServletRequest request,
