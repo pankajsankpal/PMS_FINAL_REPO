@@ -14,7 +14,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>Remove TPO</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
 <style>
 .error {
 	color: #ff0000;
@@ -65,10 +71,12 @@
 						</table>
 					</form:form>
 				</div>
+				<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 			</div>
 		</div>
 	</div>
-	<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 </body>
 </html>

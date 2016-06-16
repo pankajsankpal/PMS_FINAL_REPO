@@ -68,13 +68,13 @@ function checkNewNoti(){
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						
-						<li class="blue">
-							<a href="notifications">
+						<!-- <li class="blue">
+							<a datatoggle="dropdown" href="notifications">
 
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
-						</li>
+						</li> -->
 
 						
 

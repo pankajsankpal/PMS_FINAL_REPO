@@ -84,9 +84,7 @@ description: contains all the validations required for every field -->
 						<div class="page-header">
 
 					<h1>
-						Job Details<small> <i
-							class="ace-icon fa fa-angle-double-right"></i>
-						</small>
+						Job Details
 					</h1>
 					
 					<c:if test="${success==1}">
@@ -274,9 +272,7 @@ description: contains all the validations required for every field -->
 												<div class="page-header">
 
 													<h1>
-														Job Criteria<small> <i
-															class="ace-icon fa fa-angle-double-right"></i>
-														</small>
+														Job Criteria
 													</h1>
 
 												</div>
@@ -439,7 +435,7 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-3">
 																<div>
 																	<label> <input name="placed_students_allowed"
-																		class="ace ace-switch ace-switch-6" type="checkbox" />
+																		class="ace ace-switch ace-switch-6" type="checkbox" value="off"/>
 																		<span class="lbl"></span>
 																	</label>
 																</div>
@@ -479,10 +475,6 @@ description: contains all the validations required for every field -->
 																</button>
 																<!-- <input type="submit" value="Submit"> -->
 
-																&nbsp; &nbsp; &nbsp;
-																<button class="btn" type="reset">
-																	<i class="ace-icon fa fa-undo bigger-110"></i> Reset
-																</button>
 															</div>
 														</div>
 

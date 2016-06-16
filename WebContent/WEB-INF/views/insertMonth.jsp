@@ -18,14 +18,6 @@ description: contain field for removing the student tpc -->
 	font-weight: bold;
 }
 </style>
-<!-- page specific plugin styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-<link rel="stylesheet" href="assets/css/select2.min.css" />
-<link rel="stylesheet" href="assets/css/datepicker.min.css" />
-<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
-<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 
 </head>
 
@@ -95,16 +87,23 @@ description: contain field for removing the student tpc -->
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-
+					<jsp:directive.include file="Footer.jsp" />
+					<jsp:directive.include file="scripts.jsp" />
+				
 			</div>
 			<!-- /.page-content -->
 		</div>
 
 	</div>
-	<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
+	
+	
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
+
 
 </body>
+
 </html>
 
 
