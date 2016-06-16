@@ -769,7 +769,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 	@RequestMapping(value="/JobPosts", method = RequestMethod.GET)
 
 	
-	public ModelAndView Companies(@RequestParam String companyname,@RequestParam("year") String curYear,
+	public ModelAndView Companies(@RequestParam("companyname") String companyname,@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
 	
 		
@@ -903,8 +903,35 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 						
 					}
 				}
+					if(companyname.equals(JPM)){
+
+						model.addObject("link", JPM_LINK);
+						
+					}else if(companyname.equals(DIRECTI)){
+						model.addObject("link", DIRECTI_LINK);
+						
+					}else if(companyname.equals(MS)){
+						model.addObject("link", MS_LINK);
+						
+					}else if(companyname.equals(TCS)){
+						model.addObject("link", TCS_LINK);
+						
+					}else if(companyname.equals(ACC)){
+						model.addObject("link", ACC_LINE);
+						
+					}else if(companyname.equals(ZS)){
+						model.addObject("link", ZS_LINK);
+						
+					}else if(companyname.equals(GOD)){
+						model.addObject("link", GOD_LINK);
+						
+					}else if(companyname.equals(LNT)){
+						model.addObject("link", LNT_LINK);
+						
+					}
+					return model;
 				
-				return model;
+
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -913,35 +940,10 @@ public class ManageProfile extends HttpServlet implements ConstantValues{
 				model1.addObject("exception", "/Company");
 				return model1;
 			}
+		
+			
 		}
-			/*if(companyname.equals(JPM)){
-
-				model.addObject("link", JPM_LINK);
-				
-			}else if(companyname.equals(DIRECTI)){
-				model.addObject("link", DIRECTI_LINK);
-				
-			}else if(companyname.equals(MS)){
-				model.addObject("link", MS_LINK);
-				
-			}else if(companyname.equals(TCS)){
-				model.addObject("link", TCS_LINK);
-				
-			}else if(companyname.equals(ACC)){
-				model.addObject("link", ACC_LINE);
-				
-			}else if(companyname.equals(ZS)){
-				model.addObject("link", ZS_LINK);
-				
-			}else if(companyname.equals(GOD)){
-				model.addObject("link", GOD_LINK);
-				
-			}else if(companyname.equals(LNT)){
-				model.addObject("link", LNT_LINK);
-				
-			}
-		
-		
+		/*
 			// this was the error why the EL wasn't working. We were creating another object
 			//model = new ModelAndView("Company");
 			
