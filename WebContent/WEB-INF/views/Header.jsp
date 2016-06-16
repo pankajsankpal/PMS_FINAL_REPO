@@ -41,12 +41,11 @@
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
+
 						
-						
-						
-						<!-- Notification removed for mobile view , can be added later -->
 						<!-- <li class="blue">
-							<a href="notifications">
+							<a datatoggle="dropdown" href="notifications">
+
 
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>

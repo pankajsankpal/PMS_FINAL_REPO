@@ -9,7 +9,7 @@ description: gives the list of applied aplicants-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Companies Page</title>
+<title>Applicant List</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -21,55 +21,16 @@ description: gives the list of applied aplicants-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<c:if test="${companyname=='jpmorgan'}">
-		<c:set var="propercompanyname" value="JP Morgan" />
-	</c:if>
-	<c:if test="${companyname=='directi'}">
-		<c:set var="propercompanyname" value="Direct i" />
-	</c:if>
-	<c:if test="${companyname=='morganstanley'}">
-		<c:set var="propercompanyname" value="MorganStanley" />
-	</c:if>
-	<c:if test="${companyname=='larsentoubro'}">
-		<c:set var="propercompanyname" value="Larsen&Toubro" />
-	</c:if>
-	<c:if test="${companyname=='accenture'}">
-		<c:set var="propercompanyname" value="Accenture" />
-	</c:if>
-	<c:if test="${companyname=='godrej'}">
-		<c:set var="propercompanyname" value="Godrej" />
-	</c:if>
-	<c:if test="${companyname=='zs'}">
-		<c:set var="propercompanyname" value="ZS" />
-	</c:if>
-	<c:if test="${companyname=='tcs'}">
-		<c:set var="propercompanyname" value="TCS" />
-	</c:if>
+	
 
 	<div class="main-content">
 		<div class="main-content-inner">
 
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-			
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="off" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
+				<jsp:directive.include file="searchheader.jsp" />
 			</div>
+			
 			<div class="page-content">
 
 
@@ -149,6 +110,8 @@ description: gives the list of applied aplicants-->
 						</div>
 					</div>
 				</div>
+					<jsp:directive.include file="scripts.jsp" />
+	<jsp:directive.include file="Footer.jsp" />
 			</div>
 
 
@@ -156,8 +119,7 @@ description: gives the list of applied aplicants-->
 		</div>
 	</div>
 	<!-- /.main-content -->
-	<jsp:directive.include file="scripts.jsp" />
-	<jsp:directive.include file="Footer.jsp" />
+
 
 
 
