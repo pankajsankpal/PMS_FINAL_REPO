@@ -262,13 +262,15 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 						
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
+							<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
+	
+							
 						</div><!-- /.row -->
+						
 					</div><!-- /.page-content -->
 				</div>
 			
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
-	
 
 		
 		<!--[if lte IE 8]>

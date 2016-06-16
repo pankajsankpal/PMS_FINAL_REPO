@@ -136,6 +136,9 @@ description: contains various functions for admin -->
 						
 								
 							</div><!-- /.row -->
+<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
+
 						</div><!-- end of page-content -->
 					
 
@@ -146,8 +149,6 @@ description: contains various functions for admin -->
 </div><!-- main-content -->
 			
 
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
 
 
 				<!-- page specific plugin scripts -->

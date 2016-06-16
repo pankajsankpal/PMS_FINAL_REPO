@@ -19,40 +19,6 @@ description: contains fields to add new faculty member->
 	font-style: italic;
 	font-weight: bold;
 }
-</style>
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="../assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-<!-- page specific plugin styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-
-
-
-<!-- text fonts -->
-<link rel="stylesheet" href="../assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="../assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="../assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-
 </head>
 <body 	onload="noBack();"
     onpageshow="if (event.persisted) noBack();" onunload="">
@@ -153,16 +119,17 @@ description: contains fields to add new faculty member->
 								
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-												
-
+							
 
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
 	<!-- ace scripts -->
+						</div>
+					</div>
+				</div>
+												
+
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	
