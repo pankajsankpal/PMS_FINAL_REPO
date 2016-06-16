@@ -286,19 +286,19 @@ public class DisplayListController {
 	///// Pankaj Modified following for displaying files in the folders..
 	
 	@RequestMapping(value = "/displistoffiles")
-	public ModelAndView displayFilesToftpc(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+	public @ResponseBody String displayFilesToftpc(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
 		String userId = (String) request.getSession().getAttribute("userId");
 		String userRole = "allowed";
 		List<String> listFullName = dsp.displayCVList(folder, userId,userRole);
 		List<String> list = new ArrayList<String>();
-		ModelAndView model = new ModelAndView("dispfiles");
+		//ModelAndView model = new ModelAndView("dispfiles");
 
 		System.out.println("inside files... ");
 		
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
 		if(listFullName.isEmpty())
-			return model;
+			return "[]";
 		for (String x : listFullName) {
 			int pos = x.indexOf('-');
 			list.add(x.substring(0, pos));
@@ -307,14 +307,27 @@ public class DisplayListController {
 		}
 
 		request.getSession().setAttribute("folderName", folder);
-		model.addObject("actualFileNames", listFullName);
+		
+		JsonArray jarry= new JsonArray();
+		for(int i=0;i<z;i++){
+			
+			JsonObject jobj= new JsonObject();
+			jobj.addProperty("actualFileNames", listFullName.get(i));
+			jobj.addProperty("nameToDisplay", list.get(i));
+			
+			jarry.add(jobj);
+		}
+		
+		
+		/*model.addObject("actualFileNames", listFullName);
 		model.addObject("nameToDisplay", list);
-		model.addObject("indexList", indexList);
+		model.addObject("indexList", indexList);*/
 		
 		System.out.println("files: " + listFullName);
 		System.out.println("files: " + list);
 
-		return model;
+		//return mode;
+		return jarry.toString();
 	}
 	
 }

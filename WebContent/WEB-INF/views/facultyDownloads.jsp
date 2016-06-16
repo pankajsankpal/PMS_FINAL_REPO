@@ -280,7 +280,7 @@
 		<script type="text/javascript">
 
 		 function x(subfolder){
-			 alert("HI  "+ subfolder);
+			// alert("HI  "+ subfolder);
 			//var idvalue= $('#userID').val();
 			$.ajax({
 				url: 'displistoffiles' ,
@@ -297,7 +297,8 @@
 					$.each(data, function() {
 						console.log("print...");
 						$('#folders').append(
-								'<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>'
+								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li>'
 								);
 					});
 				}
