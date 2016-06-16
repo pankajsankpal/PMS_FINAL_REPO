@@ -211,8 +211,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																<div class="widget-body">
 																	<div class="widget-main padding-10">
 																		<div class="clearfix">
-																			<p> My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch .I 
-																				am a Web Technology and Coading enthusiasts
+																			<p> My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch .
 																			</p>
 																			<div class="hr hr-16"></div>
 																			<p>

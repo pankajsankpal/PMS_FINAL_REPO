@@ -8,12 +8,13 @@
 	<div class="footer">
 				<div class="footer-inner">
 					<div class="footer-content">
+					<div class="ace-settings-box clearfix">
 						<span class="bigger-120">
 							<span class="blue bolder">Placement Management System</span>
 							Application &copy; 2015-16
 						</span>
 
-						
+					</div>
 					</div>
 				</div>
 			</div>
