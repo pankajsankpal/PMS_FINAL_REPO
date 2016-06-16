@@ -19,18 +19,16 @@
 
 package org.crce.interns.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.FacultyBean;
 import org.crce.interns.beans.StudentBean;
-import org.crce.interns.model.Student;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.DirectoryService;
 import org.crce.interns.service.ManageUserService;
+import org.crce.interns.validators.AddFacultyValidator;
+import org.crce.interns.validators.AddStudentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +49,12 @@ public class ManageUserController {
 	@Autowired
 	private CheckRoleService crService;
 	
+	@Autowired
+	AddStudentValidator addStudentValidator;
+
+	@Autowired
+	AddFacultyValidator addFacultyValidator;
+
 	 @Autowired
 	 private DirectoryService directoryService;
 	
@@ -60,6 +64,12 @@ public class ManageUserController {
 		
 		ModelAndView model = new ModelAndView("addStudent"); 
 		try {
+			addStudentValidator.validate(studentBean, result);
+			if (result.hasErrors()) {
+				System.out.println("Binding Errors are present...");
+				return new ModelAndView("addStudent");
+			}
+
 			manageUserService.addStudent(request, studentBean);
 			model.addObject("success", 1);
 			directoryService.createStudentFolder();
@@ -77,6 +87,11 @@ public class ManageUserController {
 		
 		ModelAndView model = new ModelAndView("addFaculty");
 		try{
+			addFacultyValidator.validate(facultyBean, result);
+			if (result.hasErrors()) {
+				System.out.println("Binding Errors are present...");
+				return new ModelAndView("addFaculty");
+			}
 		manageUserService.addFaculty(request, facultyBean);
 		model.addObject("success", 1);
 		directoryService.createFacultyFolder();
