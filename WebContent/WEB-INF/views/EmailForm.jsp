@@ -70,7 +70,7 @@
 			</div>
 
             <div class="page-content">
-                
+                <div class="ace-settings-container" id="ace-settings-container">
 
                     <div class="ace-settings-box clearfix" id="ace-settings-box">
                         <div class="pull-left width-50">
