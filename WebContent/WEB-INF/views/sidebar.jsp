@@ -34,10 +34,10 @@ description: Sidebar, tabs turn active through jquery -->
 						Events </span>
 			</a> <b class="arrow"></b></li>
 
-			<li class=" " id="searchHome"><a href="searchHome"> <i
+			<!-- <li class=" " id="searchHome"><a href="searchHome"> <i
 					class="menu-icon fa fa-search"></i> <span class="menu-text">
 						Search </span>
-			</a> <b class="arrow"></b></li>
+			</a> <b class="arrow"></b></li> -->
 
 			<li class=" " id="CompaniesPage"><a href="CompaniesPage"> <i
 					class="menu-icon fa fa-gears"></i> <span class="menu-text">

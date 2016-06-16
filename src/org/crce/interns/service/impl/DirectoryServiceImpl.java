@@ -59,7 +59,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         boolean created = false;
         for (Object l1 : studentList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getStudentFolder()+"\\" + (l1.toString()) + "\\Resume");
+            File files = new File(directoryPathBean.getStudentFolder()+"/" + (l1.toString()) + "/Resume");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -74,7 +74,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : studentList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getStudentFolder()+"\\" + (l1.toString()) + "\\Offer Letters");//folder name changed @Crystal
+            File files = new File(directoryPathBean.getStudentFolder()+"/" + (l1.toString()) + "/Offer Letters");//folder name changed @Crystal
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -89,7 +89,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : studentList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getStudentFolder()+"\\" + (l1.toString()) + "\\Certificates");
+            File files = new File(directoryPathBean.getStudentFolder()+"/" + (l1.toString()) + "/Certificates");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -113,7 +113,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         boolean created = false;
         for (Object l1 : facultyList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getFacultyFolder()+"\\" + (l1.toString()) + "\\Reference");
+            File files = new File(directoryPathBean.getFacultyFolder()+"/" + (l1.toString()) + "/Reference");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -128,7 +128,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : facultyList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getFacultyFolder()+"\\" + (l1.toString()) + "\\Letters");
+            File files = new File(directoryPathBean.getFacultyFolder()+"/" + (l1.toString()) + "/Letters");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -153,7 +153,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         boolean created = false;
         for (Object l1 : tpoList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getTpoFolder()+"\\" + (l1.toString()) + "\\References");
+            File files = new File(directoryPathBean.getTpoFolder()+"/" + (l1.toString()) + "/References");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -168,7 +168,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : tpoList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getTpoFolder()+"\\" + (l1.toString()) + "\\Letters");
+            File files = new File(directoryPathBean.getTpoFolder()+"/" + (l1.toString()) + "/Letters");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -183,7 +183,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         }
         for (Object l1 : tpoList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getTpoFolder()+"\\" + (l1.toString()) + "\\Reports");
+            File files = new File(directoryPathBean.getTpoFolder()+"/" + (l1.toString()) + "/Reports");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -207,7 +207,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         boolean created=false;
         for (Object l1 : companyList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getCompanyFolder()+"\\" + (l1.toString()));
+            File files = new File(directoryPathBean.getCompanyFolder()+"/" + (l1.toString()));
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
@@ -229,7 +229,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         boolean created = false;
         for (Object l1 : adminList) {
             System.out.println(l1);
-            File files = new File(directoryPathBean.getAdminFolder() + "\\" +(l1.toString()) + "\\Archives");
+            File files = new File(directoryPathBean.getAdminFolder() + "/" +(l1.toString()) + "/Archives");
             if (!files.exists()) {
                 System.out.println("Something doesnt exist");
                 if (files.mkdirs()) {
