@@ -74,7 +74,7 @@
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a  href="downloads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -254,7 +254,7 @@
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+					/* 	tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -276,7 +276,7 @@
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {
