@@ -42,7 +42,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 						
 						<div class="page-header">
 							<h1>
-								Welcome , ${sessionScope.name} ! 
+								My Profile
 								
 							</h1>
 						</div><!-- /.page-header -->

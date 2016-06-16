@@ -90,14 +90,14 @@ description: contains fields to add new faculty member->
 														</c:if>
 															<table align="center" style="padding-top: 10px"  >
 																<tr >
-																	<td>User ID :</td>
-																	<td><form:input path="userId" required="true"/></td>
+																	<td>ID :</td>
+																	<td><form:input path="userId" /></td>
 																</tr><br>
 																<tr >
 																	<td>Name :</td>
-																	<td style="padding-top: 10px"><form:input path="name" required="true" /></td>
+																	<td style="padding-top: 10px"><form:input path="name" /></td>
 																</tr><br>
-																<tr>
+																<tr ">
 																	<td style="padding-top: 10px">Branch :</td>
 																	<td style="padding-top: 10px"><form:select path="branch">
 																			<form:option value="0" label="Select" />
@@ -111,13 +111,13 @@ description: contains fields to add new faculty member->
 																
 																<tr>
 																	<td>Gender :</td>
-																	<td><form:radiobutton path="gender" value="MALE" label="Male" required="true" />
-																		<form:radiobutton path="gender" value="FEMALE" label="Female" required="true" /></td>
+																	<td><form:radiobutton path="gender" value="MALE" label="Male" />
+																		<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
 																</tr>
 																
 																<tr>
 																	<td>Email ID :</td>
-																	<td><form:input path="email" required="true" /></td>
+																	<td><form:input path="email" /></td>
 																</tr>
 																<tr><td></td></tr>
 																
