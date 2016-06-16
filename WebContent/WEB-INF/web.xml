@@ -26,8 +26,8 @@
     <session-timeout>15</session-timeout>
   </session-config>
   
-<!--   <error-page>
+<error-page>
         <error-code>405</error-code>
-        <location>/WEB-INF/views/403.jsp</location>
-</error-page> -->
+        <location>/WEB-INF/views/405.jsp</location>
+</error-page>
 </web-app>

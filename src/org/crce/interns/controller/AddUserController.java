@@ -62,13 +62,14 @@ public class AddUserController {
 	public ModelAndView indexjsp(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		String role =  (String)session.getAttribute("roleId");
-		if(!crService.checkRole("AddUser", role))
+		if(!crService.checkRole("/addUser", role))
 			return new ModelAndView("403");
 		else
 			return new ModelAndView("AddUserViaCSV");
 	}
 
-
+	
+	//authorization done - unauthorized call redirected to 405.jsp
 	//this function is used to call the AddUserService to actually upload the file 
 	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
 	public ModelAndView addUser(HttpServletRequest request,@RequestParam CommonsMultipartFile fileUpload, @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
