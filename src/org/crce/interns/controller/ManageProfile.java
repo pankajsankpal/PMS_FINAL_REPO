@@ -400,7 +400,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 //import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
@@ -409,19 +408,16 @@ import org.crce.interns.beans.JobBean;
 import org.crce.interns.model.Job;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CompanyService;
+import org.crce.interns.service.ConstantValues;
 //import org.crce.interns.model.Allotment;
 //import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.crce.interns.validators.CriteriaFormValidator;
-import org.crce.interns.validators.CriteriaValidator;
-import org.crce.interns.validators.JobValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -441,7 +437,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 
 @Controller
-public class ManageProfile extends HttpServlet{
+public class ManageProfile extends HttpServlet implements ConstantValues{
 
 	/**
 	 * 
@@ -454,8 +450,8 @@ public class ManageProfile extends HttpServlet{
 	@Autowired
 	private CompanyService companyService;
 	
-	@Autowired
-	private JobValidator jobValidator;
+	//@Autowired
+	//private JobValidator jobValidator;
 	
 	@Autowired
 	private CriteriaFormValidator critValidator;
@@ -553,6 +549,7 @@ public class ManageProfile extends HttpServlet{
 		
 				criteriaBean.setYear_of_passing(r.get("year_of_passing"));
 				criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
+				System.out.println("Placed :::<<"+r.get("placed_students_allowed")+">>>");
 				criteriaBean.setPercentage(r.get("percentage"));
 				criteriaBean.setCgpa(r.get("cgpa"));
 				criteriaBean.setNo_of_live_kts_allowed(r.get("no_of_live_kts_allowed"));
@@ -773,7 +770,7 @@ public class ManageProfile extends HttpServlet{
 	@RequestMapping(value="/JobPosts", method = RequestMethod.GET)
 
 	
-	public ModelAndView Companies(@RequestParam String companyname,@RequestParam("year") String curYear,
+	public ModelAndView Companies(@RequestParam("companyname") String companyname,@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
 	
 		
@@ -907,8 +904,35 @@ public class ManageProfile extends HttpServlet{
 						
 					}
 				}
+					if(companyname.equals(JPM)){
+
+						model.addObject("link", JPM_LINK);
+						
+					}else if(companyname.equals(DIRECTI)){
+						model.addObject("link", DIRECTI_LINK);
+						
+					}else if(companyname.equals(MS)){
+						model.addObject("link", MS_LINK);
+						
+					}else if(companyname.equals(TCS)){
+						model.addObject("link", TCS_LINK);
+						
+					}else if(companyname.equals(ACC)){
+						model.addObject("link", ACC_LINE);
+						
+					}else if(companyname.equals(ZS)){
+						model.addObject("link", ZS_LINK);
+						
+					}else if(companyname.equals(GOD)){
+						model.addObject("link", GOD_LINK);
+						
+					}else if(companyname.equals(LNT)){
+						model.addObject("link", LNT_LINK);
+						
+					}
+					return model;
 				
-				return model;
+
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -917,33 +941,10 @@ public class ManageProfile extends HttpServlet{
 				model1.addObject("exception", "/Company");
 				return model1;
 			}
-			/*if(companyname.equals(JPM)){
-				model.addObject("link", JPM_LINK);
-				
-			}else if(companyname.equals(DIRECTI)){
-				model.addObject("link", DIRECTI_LINK);
-				
-			}else if(companyname.equals(MS)){
-				model.addObject("link", MS_LINK);
-				
-			}else if(companyname.equals(TCS)){
-				model.addObject("link", TCS_LINK);
-				
-			}else if(companyname.equals(ACC)){
-				model.addObject("link", ACC_LINE);
-				
-			}else if(companyname.equals(ZS)){
-				model.addObject("link", ZS_LINK);
-				
-			}else if(companyname.equals(GOD)){
-				model.addObject("link", GOD_LINK);
-				
-			}else if(companyname.equals(LNT)){
-				model.addObject("link", LNT_LINK);
-				
-			}
 		
-		*/
+			
+		}
+		/*
 			// this was the error why the EL wasn't working. We were creating another object
 			//model = new ModelAndView("Company");
 			

@@ -61,7 +61,9 @@
          <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs" id="breadcrumbs">
-                
+
+                <jsp:directive.include file="searchheader.jsp" />
+
                 <script type="text/javascript">
                     try {
                         ace.settings.check('breadcrumbs', 'fixed')
@@ -195,7 +197,7 @@
                         <option value="compsClass">CompsClass</option>
                         <option value="prodClass">ProdClass</option>
                         <option value="itClass">ITClass</option>
-                        <option value="elexClass">ElexClass</option>
+                        <option value="elexClass">ElexClass</option>                        
                         <!--<option value="JP Morgan">JP Morgan</option>
                         <option value="Morgan Stanley"> Morgan Stanley </option>
                         <option value="Direct i">Directi </option>

@@ -7,6 +7,7 @@ import java.util.List;
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.QuickStatsBean;
+import org.crce.interns.beans.UserCompanyBean;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SelectedApplicantsService;
 import org.crce.interns.validators.AddSelectedValidator;
@@ -54,27 +55,31 @@ public class SelectedApplicantsController {
 
 	// @SuppressWarnings("unused")
 
-	@RequestMapping(value = "/viewsclist.html", method = RequestMethod.POST)
-	public ModelAndView viewcandidate(@RequestParam("company") String company) {
+	@RequestMapping(value = "/viewsclist.html", method = RequestMethod.GET)
+	public ModelAndView viewcandidate(@ModelAttribute("company") String company,
+			@ModelAttribute("year") String year,
+			@ModelAttribute("userList") List<UserCompanyBean> userBeanList,
+			@ModelAttribute("professionalProfileBeanList") List<ProfessionalProfileBean> professionalProfileBeanList,
+			@ModelAttribute("personalProfileBeanList") List<PersonalProfileBean> personalProfileBeanList) {
 		try{
-		ModelAndView model;
+		ModelAndView moel;
 
 		 System.out.println("inside controller"+company);
 		 
-		 model = new ModelAndView("selected-candidate-list");
+		 ModelAndView model = new ModelAndView("JobApplicants");
 		 
-		 String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 //String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
 		 
-		 List<QuickStatsBean> userBeanList=new ArrayList<QuickStatsBean>();
-		 userBeanList.addAll(selectService.retrieveDetails(company,year));
+		 List<QuickStatsBean> quickStatsList=new ArrayList<QuickStatsBean>();
+		 quickStatsList.addAll(selectService.retrieveDetails(company,year));
 		
-		 List<ProfessionalProfileBean> professionalProfileBeanList=new ArrayList<ProfessionalProfileBean>();
-		 List<PersonalProfileBean> personalProfileBeanList=new ArrayList<PersonalProfileBean>();
+		 List<ProfessionalProfileBean> selectedProf=new ArrayList<ProfessionalProfileBean>();
+		 List<PersonalProfileBean> selectedPersonal=new ArrayList<PersonalProfileBean>();
 		
 	
 		 System.out.println("inside controller..........");
 		
-		 for(QuickStatsBean d:userBeanList) {
+		 for(QuickStatsBean d:quickStatsList) {
 			 System.out.println(d.getUsername());
 			 
 			 ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
@@ -83,14 +88,21 @@ public class SelectedApplicantsController {
 			 
 			 professionalProfileBean.setUserName(d.getUsername());
 			 personalProfileBean.setUserName(d.getUsername());
-			 professionalProfileBeanList.add(profileService.getProfile(professionalProfileBean));
-			 personalProfileBeanList.add(profileService.getProfile(personalProfileBean));
+			 selectedProf.add(profileService.getProfile(professionalProfileBean));
+			 selectedPersonal.add(profileService.getProfile(personalProfileBean));
 			 System.out.println(professionalProfileBean.getUserName());
 		 
 			 model.addObject("company", company);
+			 
 			 model.addObject("userList",userBeanList);
 			 model.addObject("professionalProfileBeanList",professionalProfileBeanList);
 			 model.addObject("personalProfileBeanList",personalProfileBeanList);
+
+			 
+			 
+			 model.addObject("quickStatsList",quickStatsList);
+			 model.addObject("selectedProf",selectedProf);
+			 model.addObject("selectedPersonal",selectedPersonal);
 		 }
 		 return model;
 		}
@@ -101,8 +113,7 @@ public class SelectedApplicantsController {
 			model.addObject("exception", "/viewsclist");
 			return model;
 		}
-		 
-	}
+		 	}
 
 	@RequestMapping(value = "/manageslist.html", method = RequestMethod.POST )
 	public ModelAndView cruddetails(@RequestParam(value = "option") String option) {
