@@ -20,6 +20,7 @@ import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.LoginService;
 import org.crce.interns.service.ManageAllotmentService;
 import org.crce.interns.service.ManageProfileService;
+import org.crce.interns.validators.AllotmentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +54,9 @@ public class ManageAllotment extends HttpServlet {
 	private ManageProfileService manageProfileService;
 	
 	@Autowired
+	private AllotmentValidator allotmentValidator;
+	
+	@Autowired
 	private CheckRoleService crService;
 
 	@Autowired
@@ -73,10 +77,25 @@ public class ManageAllotment extends HttpServlet {
 	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) throws Exception {
 		
 		try {
-				ModelAndView model =  new ModelAndView("addAllotment");
+				//ModelAndView model =  new ModelAndView("addAllotment");
+				List<CompanyBean> companyList = manageProfileService.listCompanies();
+			    Map<String, String> companyMap = new LinkedHashMap<String,String>();
+			            for(CompanyBean cb : companyList){
+			            	companyMap.put(cb.getCompany_name(), cb.getCompany_name());
+			            }
+			    ModelAndView model = new ModelAndView("addAllotment","companies",companyMap);  
+			    
+			   /* allotmentValidator.validate(allotmentBean, result);
+				
+				if (result.hasErrors()) {
+					System.out.println("Binding Errors are present...");
+					return model;
+				}
+				*/
 			
 				try{
 				
+					
 			
 						//System.out.println("after db entry");
 						manageAllotmentService.handleFileUpload(request,fileUpload);
@@ -89,7 +108,7 @@ public class ManageAllotment extends HttpServlet {
 			
 						System.out.println(e);
 						model.addObject("error", 1);
-			
+						
 			
 					} 
 				catch (MaxFileSizeExceededError m) {
