@@ -23,48 +23,55 @@ public class StatisticsController {
 
 	@Autowired
 	private ProfileService profileService;
-	
+
 	@Autowired
 	private CheckRoleService crService;
-	
+
 	@Autowired
 	private StatisticsService statisticsService;
-	
-	@RequestMapping(value="/addStatistics", method = RequestMethod.GET)
-	public ModelAndView addStatistics(HttpServletRequest request) {
-		
-		PlacementStatsBean statisticsBean = new PlacementStatsBean();
-		
-		statisticsBean.setCompanyId(1010);		
-		statisticsBean.setYear("2016");
 
-		statisticsService.addOnce(statisticsBean);
-		
-		return null;		
-		
+	@RequestMapping(value = "/addStatistics", method = RequestMethod.GET)
+	public ModelAndView addStatistics(HttpServletRequest request) {
+		try {
+			PlacementStatsBean statisticsBean = new PlacementStatsBean();
+
+			statisticsBean.setCompanyId(1010);
+			statisticsBean.setYear("2016");
+
+			statisticsService.addOnce(statisticsBean);
+
+			return null;
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	@RequestMapping(value="/viewStatistics", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/viewStatistics", method = RequestMethod.GET)
 	public ModelAndView viewStatistics(HttpServletRequest request) {
-		
-		ModelAndView model = new ModelAndView("viewStats");
-		
-		//statisticsService.calculateTotal("2016");
-		
-		Map<Integer, Map<String, PlacementStatsBean>> result = 
-		statisticsService.list();
-		
-		//model.addObject("companyMap", statisticsService.getCompanyMap());
-		model.addObject("table", result);
-		
-		return model;
+		try {
+			ModelAndView model = new ModelAndView("viewStats");
+
+			// statisticsService.calculateTotal("2016");
+
+			Map<Integer, Map<String, PlacementStatsBean>> result = statisticsService.list();
+
+			// model.addObject("companyMap", statisticsService.getCompanyMap());
+			model.addObject("table", result);
+
+			return model;
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	@RequestMapping(value="/calculateTotalStudents", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/calculateTotalStudents", method = RequestMethod.GET)
 	public ModelAndView calculateTotalStudents(HttpServletRequest request) {
-		
-		ModelAndView model = new ModelAndView("stats");
-		statisticsService.calculateTotal("2016");
-		return model;
+		try {
+			ModelAndView model = new ModelAndView("stats");
+			statisticsService.calculateTotal("2016");
+			return model;
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
 }

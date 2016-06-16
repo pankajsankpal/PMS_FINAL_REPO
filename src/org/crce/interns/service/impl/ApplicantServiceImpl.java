@@ -19,7 +19,7 @@ public class ApplicantServiceImpl implements ApplicantService{
 	@Autowired
 	ApplicantDao applicantDao;
 	
-	@Override
+	/*@Override
 	public List<UserCompanyBean> viewApplicants(Integer companies) {
 		// TODO Auto-generated method stub
 		System.out.println("CompanyId in Service Impl :" + companies);
@@ -29,7 +29,7 @@ public class ApplicantServiceImpl implements ApplicantService{
 		}
 		return convertToBean(userList);
 
-	}
+	}*/
 
 	public List<UserCompanyBean> convertToBean(List<UserCompany> userList) {
 		// TODO Auto-generated method stub
@@ -43,11 +43,11 @@ public class ApplicantServiceImpl implements ApplicantService{
 	}
 
 	@Override
-	public List<UserDetailsBean> notifyApplicants(UserDetails ud) {
+	public List<UserDetailsBean> notifyApplicants(UserDetails ud,String curYear) {
 		// TODO Auto-generated method stub
 		System.out.println("UserId in Service Impl :" + ud.getUserName());
 		
-		List<UserDetails> userList = applicantDao.notifyApplicants(ud);
+		List<UserDetails> userList = applicantDao.notifyApplicants(ud,curYear);
 		if (userList == null) {
 			return null;
 		}
@@ -71,6 +71,17 @@ public class ApplicantServiceImpl implements ApplicantService{
 		System.out.println("In Service : Check Notify");
 		int check=applicantDao.checkNotify(user);
 		return check;
+	}
+
+	@Override
+	public List<UserCompanyBean> viewApplicants(Integer companies, String curYear) {
+		// TODO Auto-generated method stub
+		System.out.println("CompanyId in Service Impl :" + companies);
+		List<UserCompany> userList = applicantDao.viewApplicants(companies,curYear);
+		if (userList == null) {
+			return null;
+		}
+		return convertToBean(userList);
 	}
 
 	

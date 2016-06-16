@@ -31,32 +31,8 @@ description: contains all the validations required for every field -->
 
 		<div class="main-content-inner">
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-					</li>
-
-					<li><a href="tpo">TPO</a></li>
-					<li class="active">Add Job Post</li>
-				</ul>
-				<!-- /.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="off" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
+				<jsp:directive.include file="searchheader.jsp" />
 			</div>
 
 			<div class="page-content">
@@ -181,7 +157,7 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-3">
 																<div class="clearfix">
 																	<select name="name" class="chosen-select">
-																	<option ></option>
+																	<!-- <option ></option>
 																		<option value="ND">Jp Morgan</option>
 																		<option value="DR">Direct-I</option>
 																		<option value="SD">Morgan Stanley</option>
@@ -190,7 +166,10 @@ description: contains all the validations required for every field -->
 																		<option value="SD">Accenture</option>
 																		<option value="DR">L&T Infotech</option>
 																		<option value="SD">ZS</option>
-
+ 																	-->
+ 																	 <c:forEach items="${companies}" var="companies">
+                        												<option value="${companies.key}">${companies.value}</option>
+                  													</c:forEach>
 																	</select>
 																</div>
 

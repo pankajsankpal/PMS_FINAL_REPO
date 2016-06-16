@@ -31,16 +31,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EligibilityController {
-	
+
 	@Autowired
 	private EligibilityService E_service;
-		
+
 	@Autowired
 	private ManageProfileService manageProfileService;
-	
+
 	@Autowired
 	private NfService nfService;
-	
+
 	String msg = "";
 
 	@RequestMapping("/getjob")
@@ -52,7 +52,6 @@ public class EligibilityController {
 	public ModelAndView start1() {
 		return new ModelAndView("tempform2");
 	}
-	
 
 	/**
 	 * the method check whether the student is eligible and directs to fail or
@@ -65,54 +64,48 @@ public class EligibilityController {
 	@RequestMapping("/applyforjob")
 	public ModelAndView criteriaCheck(HttpServletRequest request, @RequestParam(value = "c_id") int c_id,
 			@RequestParam(value = "j_id") String job_id) {
-	
-		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("userName");
-		
-		System.out.println("This is user:" + username + "   and c_id: " + c_id);
-		
-		/*
-		 * @author Nevil Dsouza
-		 * code for notification
-		 * 
-		 */
-		List<CompanyBean> clist = manageProfileService.listCompanies();		
-		String companyName="";
-		int id = Integer.parseInt(job_id); 
-		for( CompanyBean cb: clist){
-			if(cb.getCompany_id()==id){
-				companyName = cb.getCompany_name();
-			}			
-		}
-		
-	
+		try {
+			HttpSession session = request.getSession();
+			String username = (String) session.getAttribute("userName");
 
-		if (E_service.checkCriteria(username, c_id, job_id)){
+			System.out.println("This is user:" + username + "   and c_id: " + c_id);
+
 			/*
-			 * @author Nevil Dsouza
-			 * code for notification
+			 * @author Nevil Dsouza code for notification
 			 * 
 			 */
-			
-			if(nfService.addNotificationForJobApply(companyName, username)){
-				System.out.println("notification added");
+			List<CompanyBean> clist = manageProfileService.listCompanies();
+			String companyName = "";
+			int id = Integer.parseInt(job_id);
+			for (CompanyBean cb : clist) {
+				if (cb.getCompany_id() == id) {
+					companyName = cb.getCompany_name();
+				}
 			}
-			else{
-				System.out.println("notification not added");
+
+			if (E_service.checkCriteria(username, c_id, job_id)) {
+				/*
+				 * @author Nevil Dsouza code for notification
+				 * 
+				 */
+
+				if (nfService.addNotificationForJobApply(companyName, username)) {
+					System.out.println("notification added");
+				} else {
+					System.out.println("notification not added");
+				}
+
+				return new ModelAndView("eligible");
+			} else {
+				System.out.println("oopsie!!  you dont meet the criteria ");
+				String msg = "Oops....You Don't Meet The Criteria";
+				ModelAndView m = new ModelAndView("JobPostsCriteria");
+				m.addObject("msg", msg);
+				return m;
 			}
-				
-			
-			return new ModelAndView("eligible");
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
-		else
-		{
-			System.out.println("oopsie!!  you dont meet the criteria ");
-			String msg = "YOU DONT MEET THE CRITERIA !!";
-			ModelAndView m = new ModelAndView("JobPostsCriteria");
-			m.addObject("msg", msg);
-			return m;
-		}
-			
 	}
 
 	/**
@@ -124,38 +117,45 @@ public class EligibilityController {
 	 */
 	@RequestMapping("/dispcriteria")
 	public ModelAndView displayCriteriaDetails(@RequestParam(value = "job_id") String job_id) {
-		int criteria_id = E_service.getCriteriaId(job_id);
-		
-		System.out.println(criteria_id);
-		
-		ModelAndView model = new ModelAndView("JobPostsCriteria");
-		model.addObject("criteria", E_service.getCriteria(criteria_id));
-		model.addObject("job_id", job_id);
-		
-		return model;
+		try {
+			int criteria_id = E_service.getCriteriaId(job_id);
+
+			System.out.println(criteria_id);
+
+			ModelAndView model = new ModelAndView("JobPostsCriteria");
+			model.addObject("criteria", E_service.getCriteria(criteria_id));
+			model.addObject("job_id", job_id);
+
+			return model;
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
 
 	@RequestMapping("/applyonbehaloffstudent")
 	public ModelAndView checkCriteriaFromftpc(HttpServletRequest request, @RequestParam(value = "u_name") String uname,
 			@RequestParam(value = "j_id") String job_id) {
-		String userRole = (String) request.getSession(true).getAttribute("roleName");
-		
+		try {
+			String userRole = (String) request.getSession(true).getAttribute("roleName");
 
-		if (userRole.equals(ConstantValues.StudentTPCName)) {
-			int criteria_id = E_service.getCriteriaId(job_id);
-			if (E_service.checkCriteria(uname, criteria_id, job_id))
-				return new ModelAndView("eligible");
-			else {
-				System.out.println("oopsie!!  you dont meet the criteria ");
-				String msg = "THE STUDENT DOES NOT MEET THE CRITERIA !!";
-				ModelAndView m = new ModelAndView("tempform2");
-				m.addObject("msg", msg);
-				return m;
+			if (userRole.equals(ConstantValues.StudentTPCName)) {
+				int criteria_id = E_service.getCriteriaId(job_id);
+				if (E_service.checkCriteria(uname, criteria_id, job_id))
+					return new ModelAndView("eligible");
+				else {
+					System.out.println("oopsie!! !!!!  you dont meet the criteria ");
+					String msg = "Oops....You Don't Meet The Criteria";
+					ModelAndView m = new ModelAndView("tempform2");
+					m.addObject("msg", msg);
+					return m;
+				}
 			}
-		}
 
-		else
-			return new ModelAndView("403");
+			else
+				return new ModelAndView("403");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
 
 	/*

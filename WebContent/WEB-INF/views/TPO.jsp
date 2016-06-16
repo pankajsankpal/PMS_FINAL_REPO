@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -37,25 +39,12 @@
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
-					<div class="page-content">
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome , ${sessionScope.name} !</h3>
+							<h3>Welcome , ${sessionScope.name} ! </h3>
 	
 							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
@@ -86,7 +75,7 @@
 												</li>
 
 												<li>
-													<a href="downloads">
+													<a  href="downloads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -145,14 +134,14 @@
 															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
 
 															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
-																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage users of System</a>
+																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
 
 														</div>
 										
 														
 														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
 														  
-														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
+														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add candidate </a> <br><br>
 														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
 														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
 														</div>
@@ -160,9 +149,10 @@
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
 											</div>
-										</div>
+											
 							
 										
 										</div><!-- end of tabbable -->
@@ -179,19 +169,13 @@
 				
 			
 			</div><!-- /.main-content-inner-->
-		<jsp:directive.include file="Footer.jsp" />
+		
 </div><!-- main-content -->
-<br><br>			
+			
 
+<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
 
-
-<!-- page specific plugin scripts -->
-		
-		
-		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
-		
 
 				<!-- page specific plugin scripts -->
 		<script src="assets/js/fuelux.tree.min.js"></script>
@@ -221,6 +205,12 @@
 		<script src="assets/js/ace.min.js"></script>
 
 
+		<!-- page specific plugin scripts -->
+		
+		
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
 		
 		
 		<!-- inline scripts related to this page -->
@@ -265,7 +255,7 @@
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+					/* 	tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -287,7 +277,7 @@
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {

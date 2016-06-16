@@ -1,11 +1,13 @@
 package org.crce.interns.dao.impl;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import org.crce.interns.dao.ApplicantDao;
+import org.crce.interns.model.Job;
 import org.crce.interns.model.UserCompany;
 import org.crce.interns.model.UserDetails;
 import org.hibernate.Query;
@@ -25,7 +27,7 @@ public class ApplicantDaoImpl implements ApplicantDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@Override
+	/*@Override
 	public List<UserCompany> viewApplicants(Integer companies) {
 		// TODO Auto-generated method stub
 		System.out.println("Company in Dao Impl :" + companies);
@@ -36,10 +38,10 @@ public class ApplicantDaoImpl implements ApplicantDao{
 			return null;
 		
 		return udList;
-	}
+	}*/
 
 	@Override
-	public List<UserDetails> notifyApplicants(UserDetails user) {
+	public List<UserDetails> notifyApplicants(UserDetails user,String curYear) {
 		
 		// TODO Auto-generated method stub
 		System.out.println("User Id in Dao Impl :" + user);
@@ -75,6 +77,42 @@ public class ApplicantDaoImpl implements ApplicantDao{
 		return 1;
 		
 		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserCompany> viewApplicants(Integer companies, String curYear) {
+		// TODO Auto-generated method stub
+		
+		List<UserCompany> result = null;
+		
+		if(curYear.equals(""))
+		{
+			
+			curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+		}
+		
+		System.out.println("Company in Dao Impl :" + companies);
+		
+		
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("select uc from UserCompany uc where uc.company_id = :cId and uc.year = :curYear");
+		
+		query.setParameter("cId", companies);
+		query.setParameter("curYear", curYear);
+		
+		result = query.list();
+		return result;
+		
+		
+		/*Session session = sessionFactory.openSession();
+		List<UserCompany> udList = session.createQuery("select uc from UserCompany uc where company_id = :cId").setParameter("cId", companies).list();
+		if(udList.isEmpty())
+			return null;
+		
+		return udList;*/
 	}
 
 	

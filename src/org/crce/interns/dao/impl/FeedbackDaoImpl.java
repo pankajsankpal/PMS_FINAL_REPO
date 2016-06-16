@@ -1,6 +1,8 @@
 package org.crce.interns.dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -27,13 +29,28 @@ public class FeedbackDaoImpl implements FeedbackDao {
 	}
 
 	public void addFeedback(Feedback feedback) {
+		Date dNow = new Date( );
+		SimpleDateFormat ft = 
+			      new SimpleDateFormat ("yyyy-MM-dd");
+		String temp = ft.format(dNow);
+		//Date parsed = ft.parse(temp);
+		System.out.println(temp);
+		 
+		 //java.sql.Date sql = new java.sql.Date(parsed.getTime());
+        
+		
+		
+		String year =  Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
+		feedback.setCreated_date(dNow);
+		feedback.setCreated_by(feedback.getUsername());
+		feedback.setYear(year);
 		sessionFactory.getCurrentSession().saveOrUpdate(feedback);
 	}
 	
 	
 	public boolean checkUser(String user, String cName){
 		
-		List<UserCompanyBean> result = null;
+		List<String> result = null;
 		
 		String y = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
 		
@@ -43,9 +60,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
 		query.setParameter("cName", cName);
 		result = query.list();
 		
-		for(UserCompanyBean a: result){
+		for(String a: result){
 			
-			if(user.equals(a.getUsername())){
+			if(user.equals(a)){
 				return true;
 			}
 			

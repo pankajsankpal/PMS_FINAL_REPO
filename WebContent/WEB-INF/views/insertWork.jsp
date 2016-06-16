@@ -4,8 +4,8 @@ description: contains fields for TPO to allot a work for the FACULTY TPC  ->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,117 +54,110 @@ description: contains fields for TPO to allot a work for the FACULTY TPC  ->
 
 
 </head>
-<body 	onload="noBack();"
-    onpageshow="if (event.persisted) noBack();" onunload="">
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
+	onunload="">
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+			<div class="page-content">
 
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
 
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<div class="page-header">
+					<h1>
+						Logged in as
+						<core:out value="${loginForm.userName}" />
+					</h1>
+				</div>
+				<!-- /.page-header -->
 
-					<div class="page-content">
-						
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="clearfix">
 
-						<div class="page-header">
-							<h1>
-								Logged in as
-								<core:out value="${loginForm.userName}" />
-							</h1>
-						</div><!-- /.page-header -->
-						
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="clearfix">
-								
-										<div class="row">
-										<div class="col-xs-12 ">
-										<div class="widget-box">
+							<div class="row">
+								<div class="col-xs-12 ">
+									<div class="widget-box">
 										<div class="widget-body">
-										 <div class="widget-main">
-											<div align="center">
-														<h2>Insert Work</h2><br>
-															<form:form method="POST" action="SubmitInsertWork">
-																<table>
-																	<tr>
-																		<td><form:label path="userName">UserName:</form:label></td>
-																		<td><form:input path="userName" /></td>
-																		<td><form:errors path="userName" cssClass="error" /></td>
-																	</tr>
-																	<tr>
-																		<td style="padding-top: 10px">WORK :</td>
-																		<td style="padding-top: 10px"><select name="userWork">
-																				<option value="01">PLACEMENT REPORT</option>
-																				<option value="02">ROOM ALLOTMENT</option>
-																				<option value="03">COUNSELLING REPORT</option>
-																				<option value="04">FEEDBACK REPORT</option>
-																		</select></td>
-																	</tr>
-																	<tr>
-																		<p>
-																			<font size="5" color="red" face="verdana">${erroMesg}</font>
-																		</p>
-																	</tr>
-																	<tr>
-																		<td colspan="2" style="padding-top: 10px"><input class="btn btn-md btn-block btn-success" type="submit" value="Submit" /></td>
-																	</tr>
-																</table>
-															</form:form>	
-												<br><br>
-											</div>
-											</div>
-											</div>
-											</div>
-											<br><br>
-										</div>
+											<div class="widget-main">
+												<div align="center">
+													<h2>Insert Work</h2>
+													<br>
+													<c:if test="${empty fusers}"><h3 style="color:red">No FTPC Exists</h3></c:if>
+													<form:form method="POST" action="SubmitInsertWork">
+														<table>
+															<tr>
+																<td><form:label path="userName">UserName:</form:label></td>
+																<td style="padding-top: 10px"><center><c:if test="${!empty fusers}">
 
-										
+																		<select>
+																			<c:forEach items="${fusers}" var="fuser">
+																				<option>
+																					<c:out value="${fuser.userName}" />
+
+																				</option>
+																			</c:forEach>
+																		</select>
+																	</c:if></center></td>
+																<td><form:errors path="userName" cssClass="error" /></td>
+															</tr>
+															<tr>
+																<td style="padding-top: 10px">WORK :</td>
+																<td style="padding-top: 10px"><select
+																	name="userWork">
+																		<option value="01">PLACEMENT REPORT</option>
+																		<option value="02">ROOM ALLOTMENT</option>
+																		<option value="03">COUNSELLING REPORT</option>
+																		<option value="04">FEEDBACK REPORT</option>
+																</select></td>
+															</tr>
+															<tr>
+																<p>
+																	<font size="5" color="red" face="verdana">${erroMesg}</font>
+																</p>
+															</tr>
+															<tr>
+																<td colspan="2" style="padding-top: 10px"><c:if test="${!empty fusers}"><input
+																	class="btn btn-md btn-block btn-success" type="submit"
+																	value="Submit" /></c:if></td>
+															</tr>
+														</table>
+													</form:form>
+													<br> <br>
+												</div>
+											</div>
+										</div>
 									</div>
-										
-								
-								
+									<br> <br>
 								</div>
+
+
 							</div>
+
+
+
 						</div>
 					</div>
 				</div>
-												
+			</div>
+		</div>
 
 
-	
+
+
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	
-	
+
+
 		<!-- /.main-container -->
 
-</div>
-	
+	</div>
+
 
 </body>
 </html>
