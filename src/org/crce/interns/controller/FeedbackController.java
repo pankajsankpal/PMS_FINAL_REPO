@@ -1,4 +1,3 @@
-
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
@@ -62,6 +61,8 @@ public class FeedbackController {
 			)
 	{	System.out.println(companyname);
 	System.out.println("Hi");
+	
+	try{
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
 		
@@ -87,19 +88,36 @@ public class FeedbackController {
 			System.out.println(fb.getUsername());
 			return model;
 			//return new ModelAndView("feedbackList", fb);
+	}
+	catch(Exception e){
+		System.out.println(e);
+
+	ModelAndView model=new ModelAndView("500");			      
+		model.addObject("message", "Your session has timed out. Please login again");
+		//model.addObject("url", "form");
+
+		return model;
+	}
+
 		
 	}
 	@RequestMapping(value = "/addFeedback", method = RequestMethod.GET)
-	public ModelAndView saveEmployee(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 
+	public ModelAndView saveFeedback(HttpServletRequest request,@ModelAttribute("command") FeedbackBean feedbackBean, 
 			BindingResult result) {
 		System.out.println("in controller1");
+		
 		//Feedback feedback = prepareModel(feedbackBean);
 		//feedbackService.addFeedback(feedback);
 		//System.out.println("in controller1");
+		
+		try{
+		
 		HttpSession session=request.getSession();
 		String roleId=(String)session.getAttribute("roleId");
+		String user=(String)session.getAttribute("userName");
+		
 		/* List<UserCompany> userList=new ArrayList<UserCompany>();
-		 userList.addAll(crudService.retreiveDetails("TCS"));*/
+		 userList.addAll(crudService.retreiveDetails("TCS"));
 		List<UserCompanyBean> userList=new ArrayList<UserCompanyBean>();//Changed from UserComapny to UserCompanyBean by @Rashmi
 		 userList.addAll(crudService.retreiveDetails("TCS"));
 		// HttpSession session=request.getSession();
@@ -117,24 +135,76 @@ public class FeedbackController {
 			return new ModelAndView("403");
 		else
 		return new ModelAndView("addFeedback");
+		*/
+		
+		ModelAndView model = new ModelAndView();
+		 
+		
+		//if()){
+		/*if(feedbackService.checkUser(user, feedbackBean.getCompany())!=true){
+			
+			model.addObject("message","You are not eligible for giving this feedback");
+			return new ModelAndView("addFeedback");
+		}
+		else{
+*/
+			return new ModelAndView("addFeedback");
+		/*}
+		*/}
+		catch(Exception e){
+			System.out.println(e);
+
+		ModelAndView model=new ModelAndView("500");			      
+ 		model.addObject("message", "Your session has timed out. Please login again");
+ 		//model.addObject("url", "form");
+
+			return model;
+		}
+
+		
+		
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)  
-	 public ModelAndView addEmployee(  @ModelAttribute("command")FeedbackBean feedbackBean,  
+	 public ModelAndView addFeedback( HttpServletRequest request, @ModelAttribute("command")FeedbackBean feedbackBean,  
 	   BindingResult result) { 
 		//validating
+		
+		try{
+			HttpSession session=request.getSession();
+			String user=(String)session.getAttribute("userName");
+			
+			
 		validator.validate(feedbackBean, result);
 				if (result.hasErrors()) {
 			System.out.println("Error in form");
             
             return new ModelAndView("addFeedback");
         }
+				boolean b=feedbackService.checkUser(user, feedbackBean.getCompany());
+				if(!b){
+					ModelAndView m=new ModelAndView("500") ;
+					m.addObject("message","You are not eligible to give  feedback for this company");
+					System.out.println("ERROR IN FEEDBACK");
+					return  m;}
+				
 				Feedback feedback = prepareModel(feedbackBean);
 				feedbackService.addFeedback(feedback);
 	  Map<String, Object> model = new HashMap<String, Object>();  
 	 model.put("feedback",  prepareList(feedbackService.listFeedback(),feedbackBean.getCompany()));  
 	  return new ModelAndView("feedbackSaveSuccess",model);  
 	 }  
+	
+	catch(Exception e){
+		System.out.println(e);
+
+	ModelAndView model=new ModelAndView("500");			      
+		model.addObject("message", "Your session has timed out. Please login again");
+		//model.addObject("url", "form");
+
+		return model;
+	}
+	}
 	
 	
 	/*@RequestMapping(value = "/index", method = RequestMethod.GET)

@@ -37,31 +37,9 @@ description: contain field for removing the student tpc -->
 <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -69,7 +47,7 @@ description: contain field for removing the student tpc -->
 						<div class="page-header">
 							<h1>
 								Logged in as
-								<core:out value="${loginForm.userName}" />
+								<c:out value="${sessionScope.name}" />
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -93,7 +71,7 @@ description: contain field for removing the student tpc -->
 													</p>
 												</tr>
 												<tr>
-													<td colspan="2"><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></td>
+													<td colspan="2"><center><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></center></td>
 												</tr>
 											</table>
 										</form:form>

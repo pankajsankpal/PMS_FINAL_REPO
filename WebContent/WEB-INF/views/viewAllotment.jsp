@@ -16,7 +16,10 @@
 		<jsp:directive.include file="Header.jsp" />
 		<div class="main-content">
 			<div class="main-content-inner">
-				<div class="page-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div><div class="page-content">
 					<h1 align="center"><u>List Allotments</u></h1>
 					<!-- connect to database -->
 					<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
@@ -58,4 +61,5 @@
 				<jsp:directive.include file="Footer.jsp" />
 <jsp:directive.include file="scripts.jsp" />
 </body>
+
 </html>

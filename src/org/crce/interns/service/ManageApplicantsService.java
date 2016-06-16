@@ -16,6 +16,8 @@ public interface ManageApplicantsService {
 	 
 	 public List<UserCompanyBean> retreiveDetails(String company);
 	 
+	 public List<UserCompanyBean> retreiveDetails(String company, String year);
+	 
 	 public List<Company> retrieveCompany_id();
 	 
 

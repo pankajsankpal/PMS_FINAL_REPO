@@ -8,12 +8,20 @@
 package org.crce.interns.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.crce.interns.beans.CompanyBean;
 
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.SendEmailService;
+
 import org.crce.interns.validators.PersonalEmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +41,12 @@ public class SendEmailController {
     public SendEmailService sendEmailService;
     @Autowired
     private CheckRoleService crService;
+
+    
+    @Autowired
+    private ManageProfileService manageProfileService;
+    
+    
     /*
      Return Type: Boolean-True/False
      Function: Checks for Files
@@ -84,12 +98,18 @@ public class SendEmailController {
             for (String i : receivers) {
                 System.out.println(i);
             }
-            ModelAndView model = new ModelAndView("Email");
+            List<CompanyBean> companyList = manageProfileService.listCompanies();
+    Map <String, String> companyMap = new LinkedHashMap<String,String>();
+            companyList.stream().forEach((companyBean) -> {
+                companyMap.put(companyBean.getCompany_name(), companyBean.getCompany_name());
+            });
+            ModelAndView model = new ModelAndView("Email","companies",companyMap);
             // boolean flag = false;
             //SendEmailValidator sendEmailValidator = new SendEmailValidator();
             //if (sendEmailValidator.validateRecipients(request.getParameter("receiver"))) {
             model = sendEmailService.sendMail(request, file);
             model.addObject("success", "Email Sent Sucessfully");
+            model.addObject("companies", companyMap);
             System.out.println(model);
             return model;
            //} else {
@@ -124,10 +144,15 @@ public class SendEmailController {
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-                return new ModelAndView("Email");
+                List<CompanyBean> companyList = manageProfileService.listCompanies();
+    Map <String, String> companyMap = new LinkedHashMap<String,String>();
+            companyList.stream().forEach((companyBean) -> {
+                companyMap.put(companyBean.getCompany_name(), companyBean.getCompany_name());
+            });
+                return new ModelAndView("Email","companies",companyMap);
             }
 
-            //return new ModelAndView("Email");
+           // return new ModelAndView("Email");
             //return new ModelAndView("Final");
         } catch (Exception e) {
             System.out.println(e);
@@ -152,7 +177,8 @@ public class SendEmailController {
             if (!crService.checkRole("SendEmail", roleId)) {
                 return new ModelAndView("403");
             } else {
-                return new ModelAndView("EmailForm");
+               
+            return new ModelAndView("EmailForm");
             }
             //return new ModelAndView("EmailForm");
         } catch (Exception e) {

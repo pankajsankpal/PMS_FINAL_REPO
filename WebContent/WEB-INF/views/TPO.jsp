@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -37,29 +38,16 @@
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
-					<div class="page-content">
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+							<h3>Welcome , ${sessionScope.name} ! </h3>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
 							<br />
 	
 							
@@ -86,7 +74,7 @@
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a  href="downloads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -130,8 +118,10 @@
 
 													<div class="space-12"></div>
 
-													</div><!-- /#feed -->
-
+												</div><!-- #end of uploads -->
+												
+												
+												
 												<div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
@@ -141,6 +131,7 @@
 														<div class="col-xs-12 col-sm-4 left">
 															
 															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
+
 															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
 																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
 
@@ -157,11 +148,12 @@
 												<!-- <div class="col-xs-12 col-sm-8 left">
 														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
 												</div> -->
+												</div>
 											</div><!-- /#pictures -->
 											</div>
-								
+											
 							
-											</div><!-- /#pictures -->
+										
 										</div><!-- end of tabbable -->
 									</div><!-- end of user-profile-2 -->
 								</div><!-- end of show -->
@@ -262,7 +254,7 @@
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+					/* 	tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -284,7 +276,7 @@
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.crce.interns.beans.PlacementStatisticsBean;
 import org.crce.interns.beans.PlacementStatsBean;
+import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.StatisticsService;
 import org.crce.interns.service.ProfileService;
@@ -59,10 +60,10 @@ public class StatisticsController {
 		return model;
 	}
 	
-	@RequestMapping(value="/x", method = RequestMethod.GET)
-	public ModelAndView view(HttpServletRequest request) {
+	@RequestMapping(value="/calculateTotalStudents", method = RequestMethod.GET)
+	public ModelAndView calculateTotalStudents(HttpServletRequest request) {
 		
-		ModelAndView model = new ModelAndView("viewStats");
+		ModelAndView model = new ModelAndView("stats");
 		statisticsService.calculateTotal("2016");
 		return model;
 	}

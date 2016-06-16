@@ -35,26 +35,15 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
 						<div class="page-header">
 							<h1>
-							Activity & Uploads
+							Activity & Uploads for ${sessionScope.name}
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -116,9 +105,10 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<div class="widget-body">
 																	 <div class="widget-main" align="center">
 																		<div>	
-																		<c:if test="${sessionScope.roleName} eq 'StudentTPC'">
+																		<c:if test="${sessionScope.roleName=='StudentTPC'}"> <br/>
+																		
 																				<div class="profile-feed row">
-																					<button type="button" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
+																					<button type="button" onclick="location.href = 'stpcapplies';" class="btn btn-md btn-primary" data-toggle="model" dats-target="myModel"><i class="ace-icon fa fa-group-o"></i> Apply on behalf of student..</button>
 																				</div>
 																		</c:if>
 																				<br>
@@ -126,7 +116,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																			
 																				
 																				<tr>
-																					<td>Links for Quick Access</td>
+																					<td>Links for Quick Access </td>
 																				</tr>
 																				<tr>
 																					<td>1. <a href="resumeUpload">Upload Resume</a></td>
@@ -184,7 +174,8 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<c:forEach var="index" items="${indexList}"><li><a href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																				
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -236,7 +227,6 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/fullcalendar.min.js"></script>
 		<script src="assets/js/bootbox.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
 		<script src="assets/js/bootstrap-datepicker.min.js"></script>
@@ -275,18 +265,18 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 				function initiateDemoData(){
 					
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="/PMS_v1/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: '<a href="/PMS_v1/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
-							'OfferLetter' : {text: '<a href="/PMS_v1/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
+							'marksheets' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Certificates">Certificates</a>', type: 'folder', 'icon-class':'red'}	,
+							'resume' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Resume">Resume</a>', type: 'folder', 'icon-class':'orange'}	,
+							'OfferLetter' : {text: '<a href="${pageContext.request.contextPath}/dispCV?folder=Offer Letters">Offer Letters </a>', type: 'folder', 'icon-class':'orange'}	,
 						}
-						tree_data_2['resume']['additionalParameters'] = {
+						/* tree_data_2['resume']['additionalParameters'] = {
 							'children' : [
 								{text: '', type: 'item'},
 									
-								/* {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, */
+								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 								
 							]
-						}
+						} */
 						/* tree_data_2['video']['additionalParameters'] = {
 							'children' : [
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
@@ -296,7 +286,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+						/* tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -319,7 +309,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 								
 							]
 						}
-
+ */
 /* 
 						tree_data_2['documents']['additionalParameters'] = {
 							'children' : [

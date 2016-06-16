@@ -197,9 +197,10 @@ public class ManageProfileServiceImpl implements ManageProfileService{
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public List<Job> listProfile() {
+	public List<Job> listProfile(String curYear) {
 		// TODO Auto-generated method stub
-		return manageProfileDao.listProfile();
+		//return manageProfileDao.listProfile();
+		return manageProfileDao.listProfile(curYear);
 	}
 
 	//@Override
@@ -256,9 +257,9 @@ public class ManageProfileServiceImpl implements ManageProfileService{
 
 	//@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public List<JobBean> listJob() {
+	public List<JobBean> listJob(String curYear) {
 		// TODO Auto-generated method stub
-		List<Job> nfList= manageProfileDao.listJob();
+		List<Job> nfList= manageProfileDao.listJob(curYear);
 		List<JobBean> nfBeanList= new LinkedList<JobBean>();
 		
 		for( Job c: nfList){

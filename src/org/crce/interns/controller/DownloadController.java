@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,13 +34,15 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller
 public class DownloadController extends HttpServlet {
+	
 	@Autowired
 	private CheckRoleService crService;
 	/*
 	 * The base path would be the root directory of all the folders the year
 	 * field will be added soon so final basePath would look like PMS/year
 	 */
-	private String basePath = "C:\\PMS\\2016-2017";
+	DirectoryPathBean dpb = new DirectoryPathBean();
+	private String basePath = dpb.getRoomAllotmentFolder();
 
 	private static final int BUFFER_SIZE = 4096;
 
@@ -50,6 +53,7 @@ public class DownloadController extends HttpServlet {
 	 * availabe online
 	 */
 	@RequestMapping("/downloadResume")
+
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		try {
@@ -57,7 +61,7 @@ public class DownloadController extends HttpServlet {
 			String role = getRole((String) request.getSession().getAttribute("roleId"));
 			String folderName = (String) request.getSession().getAttribute("folderName");
 
-			String fileToBeDownloaded = basePath + "\\Users" + "\\" + role + "\\" + userName + "\\" + folderName + "\\"
+			String fileToBeDownloaded = basePath + "/Users" + "/" + role + "/" + userName + "/" + folderName + "/"
 					+ fileName;
 			System.out.println(fileToBeDownloaded);
 
@@ -117,7 +121,7 @@ public class DownloadController extends HttpServlet {
 		if (!crService.checkRole("Download", roleId))
 			return new ModelAndView("403");
 		else {
-			String directoryPath = basePath + "\\" + role + "\\" + userName;
+			String directoryPath = basePath + "/" + role + "/" + userName;
 			File directory = new File(directoryPath);
 			File[] listOfFiles = directory.listFiles();
 
@@ -159,7 +163,7 @@ public class DownloadController extends HttpServlet {
 
 	@RequestMapping("/viewCSV")
 	public ModelAndView viewCV(HttpServletRequest request, HttpServletResponse response) {
-		String directoryPath = basePath + "\\System\\CSV";
+		String directoryPath = basePath + "/System/CSV";
 		File directory = new File(directoryPath);
 		File[] listOfFiles = directory.listFiles();
 
@@ -184,7 +188,7 @@ public class DownloadController extends HttpServlet {
 	@RequestMapping("/downloadCSV")
 	public void downloadCSV(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
-		String fileToBeDownloaded = basePath + "\\System\\CSV" + "\\" + fileName;
+		String fileToBeDownloaded = basePath + "/System/CSV" + "/" + fileName;
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();
@@ -226,5 +230,106 @@ public class DownloadController extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("/downloadCounsellingReport") 	
+	public void downloadCounsellingReport(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("fileName") String fileName) {
+		String folderName = (String) request.getSession().getAttribute("folderName");
+		String fileToBeDownloaded = basePath + "/System/" + folderName + "/" + fileName;
+		System.out.println(fileToBeDownloaded);
+
+		ServletContext context = request.getServletContext();
+
+		File downloadFile = new File(fileToBeDownloaded);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(downloadFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String mimeType = context.getMimeType(fileToBeDownloaded);
+		if (mimeType == null) {
+			mimeType = "application/octet-stream";
+		}
+
+		String downloadFileName = downloadFile.getName();
+
+		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+
+		response.setContentType(mimeType);
+		response.setContentLength((int) downloadFile.length());
+		String headerKey = "Content-Disposition";
+		String headerValue = String.format("attachment; filename=\"%s\"",
+				downloadFileName.substring(0, downloadFileName.indexOf('-')) + ext);
+		response.setHeader(headerKey, headerValue);
+
+		OutputStream outStream = null;
+		try {
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int bytesRead = -1;
+			outStream = response.getOutputStream();
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, bytesRead);
+			}
+
+			inputStream.close();
+			outStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping("/downloadOfferLetter") 	
+	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("fileName") String fileName) {
+		String userId = (String) request.getSession().getAttribute("userId");
+		String fileToBeDownloaded = basePath + "/Users/Student/" + userId + "/Offer Letters/" + fileName;
+		System.out.println(fileToBeDownloaded);
+
+		ServletContext context = request.getServletContext();
+
+		File downloadFile = new File(fileToBeDownloaded);
+		FileInputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(downloadFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String mimeType = context.getMimeType(fileToBeDownloaded);
+		if (mimeType == null) {
+			mimeType = "application/octet-stream";
+		}
+
+		String downloadFileName = downloadFile.getName();
+
+		String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+
+		response.setContentType(mimeType);
+		response.setContentLength((int) downloadFile.length());
+		String headerKey = "Content-Disposition";
+		String headerValue = String.format("attachment; filename=\"%s\"",
+				downloadFileName.substring(0, downloadFileName.indexOf('-')) + ext);
+		response.setHeader(headerKey, headerValue);
+
+		OutputStream outStream = null;
+		try {
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int bytesRead = -1;
+			outStream = response.getOutputStream();
+			while ((bytesRead = inputStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, bytesRead);
+			}
+
+			inputStream.close();
+			outStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping("/downloads")
+	public String StudentNotification() {
+		return "facultyDownloads";
 	}
 }

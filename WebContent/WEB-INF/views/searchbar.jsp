@@ -1,4 +1,3 @@
-
 <!-- author: Pankaj sankpal
 description: contains serach field for searching any user or a company available in the system  -->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -44,7 +43,7 @@ description: contains serach field for searching any user or a company available
 	$(document).ready(
 			function() {
 
-				$('#dynamicsearchcomp').autocomplete(
+				$('#dynamicsearchall').autocomplete(
 						{
 							serviceUrl : 'Search',
 							paramName : "CHARS",
@@ -69,7 +68,7 @@ description: contains serach field for searching any user or a company available
 
 						});
 
-				/* $('#dynamicsearchcomp').on('change',function(){
+				/* $('#dynamicsearchall').on('change',function(){
 					  //alert(x.name);
 					  alert($(this).val());
 					  
@@ -79,7 +78,7 @@ description: contains serach field for searching any user or a company available
 				  }); */
 				$('#searchbutton').click(
 						function() {
-							var userSelect = $('#dynamicsearchcomp').val();
+							var userSelect = $('#dynamicsearchall').val();
 							console.log(userSelect);
 							var userSelectId = -1;
 							var companyName = "xyz"
@@ -119,9 +118,6 @@ description: contains serach field for searching any user or a company available
 </script>
 
 
-
-
-
 </head>
 
 <body>
@@ -131,29 +127,7 @@ description: contains serach field for searching any user or a company available
 		<div class="main-content-inner">
 			<div class="breadcrumbs" id="breadcrumbs">
 
-
-				<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="on" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
+				<jsp:directive.include file="searchheader.jsp" />
 			</div>
 
 			<div class="page-content">
@@ -176,7 +150,7 @@ description: contains serach field for searching any user or a company available
 									<h2>Enter Student/Company name to search</h2>
 									<br>
 
-										<input type="text" id="dynamicsearchcomp" value=""> <input
+										<input type="text" id="dynamicsearchall" value=""> <input
 											class="btn btn-sm btn-primary" type="button" value="Search"
 											id="searchbutton"> <br>
 										<div id="notfound" style="color: red"></div>
@@ -184,27 +158,7 @@ description: contains serach field for searching any user or a company available
 
 
 									<br />
-									<c:if test="${!empty userList}">
-										<c:forEach items="${userList}" var="user">
-											<table align="center">
-												<tr>
-													<td>${user.userName}
-													<td>
-													<td>${user.name}</td>
-												</tr>
-											</table>
-										</c:forEach>
-									</c:if>
-									<c:if test="${!empty companyList}">
-										<c:forEach items="${companyList}" var="company">
-											<table align="center">
-												<tr>
-													<td>${company.company_name}
-													<td>
-												</tr>
-											</table>
-										</c:forEach>
-									</c:if>
+									
 								</div>
 							</div>
 						</div>
@@ -225,7 +179,6 @@ description: contains serach field for searching any user or a company available
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
 
 </body>
 </html>
@@ -273,4 +226,5 @@ description: contains serach field for searching any user or a company available
 	</c:if>
 </body>
 </html>
+
  --%>

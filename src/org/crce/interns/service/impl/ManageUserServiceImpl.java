@@ -82,13 +82,21 @@ public class ManageUserServiceImpl implements ManageUserService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void removeUser(StudentBean studentBean, String username){
+	public int removeUser(StudentBean studentBean, String username){
 		
 		Student student = new Student();
+		student.setRollno(username);
+		student = manageUserDao.getUser(student);
+		
+		if (student == null) {
+			System.out.println("Error:No User Defined" + "\n");
+			return 0;
+		}
 		//converts bean to model
 		BeanUtils.copyProperties(studentBean, student);
 		
 		manageUserDao.deleteUser(student, username);
+		return 255;
 	}
 
 }

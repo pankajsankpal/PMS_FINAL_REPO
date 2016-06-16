@@ -56,31 +56,9 @@ description: contains text fields to add details of student manually->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -116,16 +94,16 @@ description: contains text fields to add details of student manually->
 											<table align="center" style="margin-top: 10px; padding-right: 10px">
 												<tr>
 													<td>Roll no :</td>
-													<td><form:input path="rollno" /></td>
+													<td><form:input path="rollno" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Name :</td>
-													<td><form:input path="name" /></td>
+													<td><form:input path="name" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Branch :</td>
-													<td><form:select path="branch">
-															<form:option value="0" label="Select" />
+													<td><form:select path="branch" required="true">
+															<form:option value="" label="Select" />
 															<form:option value="Computer Engineering"  label="Computer" />
 															<form:option value="IT Engineering" label="IT" />
 															<form:option value="Electronics Engineering" label="Electronics" />
@@ -135,12 +113,12 @@ description: contains text fields to add details of student manually->
 												
 												<tr>
 													<td>Year of passing :</td>
-													<td><form:input path="year" /></td>
+													<td><form:input path="year" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Gender :</td>
-													<td><form:radiobutton path="gender" value="MALE" label="Male" />
-														<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+													<td><form:radiobutton path="gender" value="MALE" label="Male" required="true"/>
+														<form:radiobutton path="gender" value="FEMALE" label="Female" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Date of birth :</td>
@@ -148,11 +126,11 @@ description: contains text fields to add details of student manually->
 												</tr>
 												<tr>
 													<td>Mobile no :</td>
-													<td><form:input path="mobile" /></td>
+													<td><form:input path="mobile" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Email ID :</td>
-													<td><form:input path="email" /></td>
+													<td><form:input path="email" required="true"/></td>
 												</tr>
 												<tr><td></td></tr>
 												<tr>
@@ -406,7 +384,9 @@ description: contains text fields to add details of student manually->
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
-	
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 

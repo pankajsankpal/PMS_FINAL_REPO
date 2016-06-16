@@ -16,7 +16,10 @@
 			<jsp:directive.include file="Header.jsp" />
 			<div class="main-content">
 				<div class="main-content-inner">					
-					<div class="page-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div><div class="page-content">
 						<div class="page-header center">
 							<b><h2 class="widget-title grey lighter">
 								&nbsp; &nbsp; &nbsp; &nbsp; 					
@@ -63,10 +66,10 @@
 									</tr>
 										<tr>
 										<td colspan="2" class="text-center">Total No. of Students</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
-										<td class="text-center">2</td>
+										<td class="text-center">${totalStudents.prod}</td>
+										<td class="text-center">${totalStudents.elex}</td>
+										<td class="text-center">${totalStudents.comps}</td>
+										<td class="text-center">${totalStudents.it}</td>
 									</tr>
 										<tr>
 										<td colspan="2" class="text-center">Eligible Students</td>

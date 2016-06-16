@@ -20,15 +20,12 @@ package org.crce.interns.service.impl;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.DirectoryPathBean;
-import org.crce.interns.dao.ResumeUploadDao;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.service.ResumeUploadService;
@@ -42,8 +39,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Service("resumeUploadService")
 public class ResumeUploadServiceImpl implements ResumeUploadService {
 
-	@Autowired
-	private ResumeUploadDao resumeUploadDao;
+	//@Autowired
+	//private ResumeUploadDao resumeUploadDao;		//not used
+	
 
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
 	
@@ -53,7 +51,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		
 		//get the path for saving the resume
-		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Resume\\";
+		String saveDirectory = directoryPathBean.getStudentFolder() + "/" + username + "/Resume/";
 		
 
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
@@ -90,7 +88,10 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				f1.renameTo(f2);
 				fileUpload.transferTo(f2);
 				//call to the dao 
-				resumeUploadDao.addNewResume(username,newName);
+				//resumeUploadDao.addNewResume(username,newName);		//not used
+				
+				String newFileName = f2.getName();
+				//copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);
 			}
 					
 				

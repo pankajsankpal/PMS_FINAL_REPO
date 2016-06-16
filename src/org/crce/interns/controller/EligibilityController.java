@@ -11,11 +11,17 @@
 
 package org.crce.interns.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.crce.interns.beans.CompanyBean;
+import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.EligibilityService;
+import org.crce.interns.service.ManageProfileService;
+import org.crce.interns.service.NfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -28,6 +34,12 @@ public class EligibilityController {
 	
 	@Autowired
 	private EligibilityService E_service;
+		
+	@Autowired
+	private ManageProfileService manageProfileService;
+	
+	@Autowired
+	private NfService nfService;
 	
 	String msg = "";
 
@@ -36,7 +48,7 @@ public class EligibilityController {
 		return new ModelAndView("tempform");
 	}
 
-	@RequestMapping("/ftpcapplies")
+	@RequestMapping("/stpcapplies")
 	public ModelAndView start1() {
 		return new ModelAndView("tempform2");
 	}
@@ -58,14 +70,44 @@ public class EligibilityController {
 		String username = (String) session.getAttribute("userName");
 		
 		System.out.println("This is user:" + username + "   and c_id: " + c_id);
+		
+		/*
+		 * @author Nevil Dsouza
+		 * code for notification
+		 * 
+		 */
+		List<CompanyBean> clist = manageProfileService.listCompanies();		
+		String companyName="";
+		int id = Integer.parseInt(job_id); 
+		for( CompanyBean cb: clist){
+			if(cb.getCompany_id()==id){
+				companyName = cb.getCompany_name();
+			}			
+		}
+		
+	
 
-		if (E_service.checkCriteria(username, c_id, job_id))
+		if (E_service.checkCriteria(username, c_id, job_id)){
+			/*
+			 * @author Nevil Dsouza
+			 * code for notification
+			 * 
+			 */
+			
+			if(nfService.addNotificationForJobApply(companyName, username)){
+				System.out.println("notification added");
+			}
+			else{
+				System.out.println("notification not added");
+			}
+				
+			
 			return new ModelAndView("eligible");
-
+		}
 		else
 		{
 			System.out.println("oopsie!!  you dont meet the criteria ");
-			String msg = "YOU DONT MEET THE CRITERIA !!";
+			String msg = "Oops....You Don't Meet The Criteria";
 			ModelAndView m = new ModelAndView("JobPostsCriteria");
 			m.addObject("msg", msg);
 			return m;
@@ -97,15 +139,15 @@ public class EligibilityController {
 	public ModelAndView checkCriteriaFromftpc(HttpServletRequest request, @RequestParam(value = "u_name") String uname,
 			@RequestParam(value = "j_id") String job_id) {
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
-		System.out.println(userRole);
+		
 
 		if (userRole.equals(ConstantValues.StudentTPCName)) {
 			int criteria_id = E_service.getCriteriaId(job_id);
 			if (E_service.checkCriteria(uname, criteria_id, job_id))
 				return new ModelAndView("eligible");
 			else {
-				System.out.println("oopsie!!  you dont meet the criteria ");
-				String msg = "THE STUDENT DOES NOT MEET THE CRITERIA !!";
+				System.out.println("oopsie!! !!!!  you dont meet the criteria ");
+				String msg = "Oops....You Don't Meet The Criteria";
 				ModelAndView m = new ModelAndView("tempform2");
 				m.addObject("msg", msg);
 				return m;

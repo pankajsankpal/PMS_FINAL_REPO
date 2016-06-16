@@ -111,11 +111,11 @@ public interface ConstantValues {
 	public String NONDREAM ="Nondream";
 	public String ALLOWED ="Yes";
 	
-	public String JOB_URL = "";
-	public String ELIGIBLE_URL = "ELIGIBLE";
-	public String EVENT_URL = "EVENT";
+	public String JOB_URL = "JobPosts?companyname=";
+	public String ELIGIBLE_URL = "viewclist.html?company=";
+	public String EVENT_URL = "ViewEvents";
 	public String TEST_URL = "TEST";
-	public String COUNSELLING_URL = "COUNSELLING";
+	public String COUNSELLING_URL = "displist";
 	public String SELECTED_URL = "SELECTED";
 	public String ROOM_URL = "ROOM";
 	public String EMAIL_URL = "EMAIL";

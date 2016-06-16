@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -24,9 +23,13 @@
 </style>
 </head>
 <body>
+
 			<jsp:directive.include file="Header.jsp" />
 			<div class="main-content">
-				<div class="main-content-inner">
+				<div class="main-content-inner"><div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 					<div class="page-content">
 						<div class="page-header">
 							<h2 class="widget-title grey lighter">
@@ -42,24 +45,30 @@
 							<form:form method="POST" action="SubmitRemoveTPO">
 							<table align="center">
 							<tr>
-								<td><form:label path="userName"><h3>User name:</h3></form:label></td>
+								<td><form:label path="userName">
+										<h3>User name:</h3>
+									</form:label></td>
 								<td><form:input path="userName" /></td>
 								<td><form:errors path="userName" cssClass="error" /></td>
 							</tr>
-							<tr><td></td>
+							<tr>
+								<p>
+									<font size="5" color="red" face="verdana">${erroMesg}</font>
+								</p>
 							</tr>
-							<tr><td></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" value="Submit"  class="btn btn-info" /></td>
+								<td colspan="2"><input type="submit" value="Submit"
+									class="btn btn-info" /></td>
 							</tr>
-							</table>
-							</form:form>
-						</div>
-					</div>
+						</table>
+					</form:form>
 				</div>
-			</div>	
-					<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />		
+			</div>
+		</div>
+	</div>
+	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>
+
