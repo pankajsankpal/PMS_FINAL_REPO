@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.Calendar;
 
 /**
@@ -61,14 +63,20 @@ public class ManageApplicantsController {
 	// @SuppressWarnings("unused")
 
 	@RequestMapping(value = "/viewclist.html", method = RequestMethod.POST)
-	public ModelAndView viewcandidate(@RequestParam("company") String company) {
+	public ModelAndView viewcandidate(@RequestParam("company") String company,
+			@RequestParam("year") String year) {
 		try{ 
 		ModelAndView model;
 
 		 System.out.println("inside controller"+company);
 		 
 		 model = new ModelAndView("candidate-list");
-		 String year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 
+		 if(year.equals("")){
+			 year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 }
+		 
+		 year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
 		 
 		 List<UserCompanyBean> userBeanList=new ArrayList<UserCompanyBean>();
 		/* userBeanList.addAll(crudService.retreiveDetails(company));*/
@@ -225,6 +233,71 @@ public class ManageApplicantsController {
 		}
 	}
 
+	@RequestMapping(value = "viewApplicants", method = RequestMethod.GET)
+	public ModelAndView viewApplicants(@RequestParam("companyname") String company,
+			@RequestParam("year") String year,
+			final RedirectAttributes redirectAttributes) {
+		try{ 
+		ModelAndView model;
+
+		 System.out.println("inside controller"+company);
+		 
+		 model = new ModelAndView("redirect:/viewsclist.html");
+		 
+		 if(year.equals("")){
+			 year=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		 }
+		 
+		 
+		 
+		 List<UserCompanyBean> userBeanList=new ArrayList<UserCompanyBean>();
+		 userBeanList.addAll(crudService.retreiveDetails(company, year));
+		
+		 List<ProfessionalProfileBean> professionalProfileBeanList=new ArrayList<ProfessionalProfileBean>();
+		 List<PersonalProfileBean> personalProfileBeanList=new ArrayList<PersonalProfileBean>();
+		
+		/* ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+		 PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+*/
+		 System.out.println("inside controller..........");
+		
+		 for(UserCompanyBean d:userBeanList) {
+			 System.out.println(d.getUsername());
+			 
+			 ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+			 PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+			 
+			 
+			 professionalProfileBean.setUserName(d.getUsername());
+			 personalProfileBean.setUserName(d.getUsername());
+			 professionalProfileBeanList.add(profileService.getProfile(professionalProfileBean));
+			 personalProfileBeanList.add(profileService.getProfile(personalProfileBean));
+			 System.out.println(professionalProfileBean.getUserName());
+		
+
+			 redirectAttributes.addFlashAttribute("company", company);
+			 redirectAttributes.addFlashAttribute("year", year);
+			 redirectAttributes.addFlashAttribute("userList",userBeanList);
+			 redirectAttributes.addFlashAttribute("professionalProfileBeanList",professionalProfileBeanList);
+			 redirectAttributes.addFlashAttribute("personalProfileBeanList",personalProfileBeanList);
+			 
+			 
+			 //model.addObject("company", company);
+			 //model.addObject("userList",userBeanList);
+			 //model.addObject("professionalProfileBeanList",professionalProfileBeanList);
+			 //model.addObject("personalProfileBeanList",personalProfileBeanList);
+		 }
+		 return model;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			ModelAndView model=new ModelAndView("500");
+			model.addObject("exception", "/viewclist");
+			return model;
+		}
+		 
+	}
 }
 
 

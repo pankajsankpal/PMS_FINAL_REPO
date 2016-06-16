@@ -14,7 +14,7 @@ The below controller list refers to the respective modules integrated in this re
 
 +AssignRoleController
 >manage ftpc special role
->**dev by ADARSH @darshgup139**
+>**dev by KHUSAAL @Jugal69**
 
 +AssignTPCController
 >assign STPC and FTPC module

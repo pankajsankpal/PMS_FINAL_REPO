@@ -56,51 +56,16 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 
 
 </head>
-<body onload="noBack();" onpageshow="if (event.persisted) noBack();"
-	onunload="">
+<body>
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
-		<div class="main-content-inner">
-			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-				<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
+				<div class="main-content-inner">
+					<div class="breadcrumbs" id="breadcrumbs">
 
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="on" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
+				<jsp:directive.include file="searchheader.jsp" />
 			</div>
-
-			<div class="page-content">
-
-
-				<div class="page-header">
-					<h1>Logged in as ${sessionScope.name}</h1>
-				</div>
-				<!-- /.page-header -->
 
 				<div class="row">
 					<div class="col-xs-12">
@@ -148,8 +113,7 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 					</div>
 				</div>
 			</div>
-		</div>
-
+		
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
 
@@ -212,5 +176,4 @@ description: contains fields to remove a student or a faculty TPC into the Syste
 </body>
 </html>
 
-<<<<<<< HEAD
  --%>

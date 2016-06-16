@@ -25,8 +25,7 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<script src="assets/js/jquery.js"></script>
-		<script type="text/javascript">
-		<!--form validation--> 
+		<!-- <script type="text/javascript">
 		$(document).ready(function() { 
 		$("#validation-form").validate({
 		    rules: {
@@ -59,16 +58,22 @@
 			 }
 		});		
 		});		
-		</script>
-		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+		</script> 
+		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script> -->
 </head>
 <body>
 	<jsp:directive.include file="Header.jsp" />
+	
 	<div class="main-content">
 		<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 			<div class="page-content">
 				<form:form method="POST" id="validation-form" enctype="multipart/form-data" modelAttribute="allotmentBean" action="saveAllotment">
 					<h2 align="center"><u>Room Allotment Details</u></h2>
+					<a href="viewAllotment"><h3 align="center">View Allotment</h3></a>
 					<c:if test="${success==1}">
 						<center><p style="color:green;">Room Allotment details added successfully!</p></center>
 					</c:if>
@@ -200,7 +205,7 @@
 			
 			<tr>
 			
-				<td colspan="2"><input value="Submit" type="submit" value="Save" class="btn btn-info"/></td>
+				<td colspan="2"><input value="Submit" type="submit" class="btn btn-info"/></td>
 				<td ><input type="reset" value="Reset" class="btn btn-info"/></td>
 			</tr>
 		</table>
@@ -208,7 +213,8 @@
 </div>
 </div>
 </div>
-
+<jsp:directive.include file="scripts.jsp" />
+				<jsp:directive.include file="Footer.jsp" />
 	<script src="assets/js/jquery.2.1.1.min.js"></script>
 	<script src="assets/js/jquery.1.11.1.min.js"></script>
 	<script src="assets/js/jquery.validate.js"></script>
@@ -248,7 +254,7 @@
 				});				
 			});	
 		</script>
-				<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+		
+				
 </body>
 </html>

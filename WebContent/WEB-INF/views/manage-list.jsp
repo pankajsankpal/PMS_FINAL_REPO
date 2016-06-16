@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>PMS Application</title>
+<title>Add/Delete Candidate</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
