@@ -96,6 +96,9 @@ public class CompanyController {
 			HttpSession session = request.getSession();
 			String user = (String) session.getAttribute("userName");
 			System.out.println(user);
+			
+			//this was giving problem so commented @melwyn95
+			companyService.addCompany(user,company);
 
 			// this was giving problem so commented @melwyn95
 			// companyService.addCompany(user,company);

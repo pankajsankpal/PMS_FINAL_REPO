@@ -39,7 +39,7 @@ description: contain notification received by student and student tpc -->
 						
 						<div class="page-header">
 							<h1>
-								Welcome  ${sessionScope.name} 
+								Welcome , ${sessionScope.name} !
 								
 							</h1>
 						</div><!-- /.page-header -->

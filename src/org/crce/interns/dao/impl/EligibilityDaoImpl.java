@@ -103,8 +103,8 @@ public class EligibilityDaoImpl implements EligibilityDao {
 			e.printStackTrace();
 		}
 		//this was giving problem so commented @melwyn95
-		//return company.getCriteria_id();
-		return 0;
+		return company.getCompany_id();
+		//return 0;	//was giving error so commented @Crystal
 	}
 	
 	/**

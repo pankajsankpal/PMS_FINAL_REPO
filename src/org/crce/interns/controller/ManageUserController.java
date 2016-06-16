@@ -149,12 +149,23 @@ public class ManageUserController {
 			@RequestParam("username") String username) {
 
 		ModelAndView model = new ModelAndView("removeUser");
-		try {
-
-			manageUserService.removeUser(studentBean, username);
-			model.addObject("success", 1);
-		} catch (Exception e) {
-
+		int a;
+		//String erroMesg="";
+		try{
+		
+		a = manageUserService.removeUser(studentBean, username);
+		
+		if(a==0)//No such user exists in UserDetails Table
+		{
+			//model=new ModelAndView("assignTPO");
+			//erroMesg+="No such user exists";
+			model.addObject("no_user",1);
+			return model;
+		//	return new ModelAndView("noUser");
+		}
+		model.addObject("success", 1);
+		}	
+		catch (Exception e) {
 			System.out.println(e.toString());
 			model.addObject("error", 1);
 		}

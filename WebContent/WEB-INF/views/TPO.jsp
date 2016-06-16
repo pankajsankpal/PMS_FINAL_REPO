@@ -43,11 +43,11 @@
 			</div>					<div class="page-content">
 							<div class="page-header">
 							
-							<h3>Welcome  ${sessionScope.name} to the profile page </h3>
+							<h3>Welcome , ${sessionScope.name} ! </h3>
 	
-							<h2>
+							<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2>
+							</h2> --%>
 							<br />
 	
 							
@@ -74,7 +74,7 @@
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#uploads">
+													<a  href="downloads">
 														<i class="blue ace-icon fa fa-users bigger-120"></i>
 														Uploads
 													</a>
@@ -254,7 +254,7 @@
 								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
 							]
 						} */
-						tree_data_2['marksheets']['additionalParameters'] = {
+					/* 	tree_data_2['marksheets']['additionalParameters'] = {
 							'children' : {
 								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
 								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
@@ -276,7 +276,7 @@
 								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
 								
 							]
-						}
+						} */
 
 /* 
 						tree_data_2['documents']['additionalParameters'] = {

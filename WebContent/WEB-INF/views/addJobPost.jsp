@@ -157,7 +157,7 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-3">
 																<div class="clearfix">
 																	<select name="name" class="chosen-select">
-																	<option ></option>
+																	<!-- <option ></option>
 																		<option value="ND">Jp Morgan</option>
 																		<option value="DR">Direct-I</option>
 																		<option value="SD">Morgan Stanley</option>
@@ -166,7 +166,10 @@ description: contains all the validations required for every field -->
 																		<option value="SD">Accenture</option>
 																		<option value="DR">L&T Infotech</option>
 																		<option value="SD">ZS</option>
-
+ 																	-->
+ 																	 <c:forEach items="${companies}" var="companies">
+                        												<option value="${companies.key}">${companies.value}</option>
+                  													</c:forEach>
 																	</select>
 																</div>
 

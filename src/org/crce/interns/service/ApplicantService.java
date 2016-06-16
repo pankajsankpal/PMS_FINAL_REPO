@@ -8,10 +8,14 @@ import org.crce.interns.model.UserDetails;
 
 public interface ApplicantService {
 
-	public List<UserCompanyBean> viewApplicants(Integer companies);
+	//public List<UserCompanyBean> viewApplicants(Integer companies);
 
-	public List<UserDetailsBean> notifyApplicants(UserDetails ud);
+	//public List<UserDetailsBean> notifyApplicants(UserDetails ud);
 
 	public int checkNotify(String user);
+
+	public List<UserCompanyBean> viewApplicants(Integer companies, String curYear);
+
+	public List<UserDetailsBean> notifyApplicants(UserDetails ud, String curYear);
 	
 }

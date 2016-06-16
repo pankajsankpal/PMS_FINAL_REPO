@@ -65,9 +65,7 @@ description: dynamically creating a page once the Content on companiesPade is cl
 				<div class="page-header">
 
 					<h1>
-						${company.company_name} <small> <i
-							class="ace-icon fa fa-angle-double-right"></i>
-						</small> <a href="${link}">About us</a>
+						${company.company_name}
 					</h1>
 
 				</div>
@@ -153,10 +151,18 @@ description: dynamically creating a page once the Content on companiesPade is cl
 																<i class="ace-icon fa fa-check-square-o bigger-110"></i>
 																Job Posts
 															</h4>
+															
+															
 															<br /> <a
-																href="JobPosts?companyname=${company.company_name}">
+																href="JobPosts?companyname=${company.company_name}&year=">
 																<img style="border: 1" width="350" height="200"
 																alt="${company.company_name}" src="assets/images/companies/jobposts.jpg" />
+
+															<!-- Commented while merging conflicts -->
+															<%-- <br /> <a href="JobPosts?companyname=${company.company_name}">         
+																<img style="border: 1" width="400" height="200"
+																alt="150x150" src="assets/images/companies/jobposts.jpg" /> --%>
+
 															</a>
 														</div>
 
