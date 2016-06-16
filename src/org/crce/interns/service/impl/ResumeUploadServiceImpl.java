@@ -28,7 +28,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
-import org.crce.interns.service.CopyFileService;
 import org.crce.interns.service.ResumeUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +42,6 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 	//@Autowired
 	//private ResumeUploadDao resumeUploadDao;		//not used
 	
-	@Autowired
-	private CopyFileService copyFileService;
 
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();    
 	

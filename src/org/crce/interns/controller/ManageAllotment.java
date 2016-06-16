@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
 /*
  * Author: Cheryl
  * Classes Used: ManageAllotmentService, CheckRoleService, LoginService 
@@ -40,31 +39,30 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class ManageAllotment extends HttpServlet{
+public class ManageAllotment extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3205005179545325725L;
-	
+
 	@Autowired
 	private ManageAllotmentService manageAllotmentService;
-	
+
 	@Autowired
 	private ManageProfileService manageProfileService;
 	
 	@Autowired
 	private CheckRoleService crService;
-	
+
 	@Autowired
 	public LoginService loginService;
-	
-	/*
+
+/*
 	@RequestMapping("/")
 	public ModelAndView welcome() {
 				return new ModelAndView("index");
-	}
-	*/
+	}*/
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 
@@ -112,19 +110,19 @@ public class ManageAllotment extends HttpServlet{
 				return model1;
 			}
 	}
-	
-	
+
 	/*
-	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
-	public ModelAndView createAllotment(@ModelAttribute("command")  AllotmentBean allotmentBean ,
-			BindingResult result) {
-	    
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment()));
-		return new ModelAndView("addAllotment", model);
-	}
-	*/
-	
+	 * @RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
+	 * public ModelAndView createAllotment(@ModelAttribute("command")
+	 * AllotmentBean allotmentBean , BindingResult result) {
+	 * 
+	 * Map<String, Object> model = new HashMap<String, Object>();
+	 * model.put("allotments",
+	 * prepareListofBean(manageAllotmentService.listAllotment())); return new
+	 * ModelAndView("addAllotment", model); }
+	 */
+
+	// Method to create a new allotment
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 
@@ -175,7 +173,6 @@ public class ManageAllotment extends HttpServlet{
 		}
 
 	/* -----------------------------------------------------------------------------------------------------------------------  */
-
 	
 	//Method to view allotment details
 	
@@ -215,18 +212,15 @@ public class ManageAllotment extends HttpServlet{
 				return model1;
 			}
 	}
-	
-	
-	//Used to display information regarding allotment
-	
-	private List<AllotmentBean> prepareListofBean(List<AllotmentBean> list) { 
+
+	// Used to display information regarding allotment
+
+	private List<AllotmentBean> prepareListofBean(List<AllotmentBean> list) {
 		List<AllotmentBean> beans = null;
-		if(list != null && !list.isEmpty())
-		{
+		if (list != null && !list.isEmpty()) {
 			beans = new ArrayList<AllotmentBean>();
 			AllotmentBean bean = null;
-			for(AllotmentBean allotment : list)
-			{
+			for (AllotmentBean allotment : list) {
 				bean = new AllotmentBean();
 				bean.setAllotment_id(allotment.getAllotment_id());
 				bean.setCompany_name(allotment.getCompany_name());
@@ -234,43 +228,41 @@ public class ManageAllotment extends HttpServlet{
 				bean.setJob_description(allotment.getJob_description());
 				bean.setRoom_no(allotment.getRoom_no());
 				bean.setRound_no(allotment.getRound_no());
-				beans.add(bean);			
+				beans.add(bean);
 			}
 		}
 		return beans;
 	}
 
-	//Ignore the below code
+	// Ignore the below code
 	/*
-	 
-	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
-	public ModelAndView createAllotment(Model model) {
-		AllotmentBean allotmentBean = new AllotmentBean(); // declaring
-
-         model.addAttribute("allotmentBean", allotmentBean); // adding in model
-
-		return new ModelAndView("addAllotment");
-	}
-	
-	@RequestMapping(value = "/viewAllotment", method = RequestMethod.GET)
-	public ModelAndView createAllotment(@ModelAttribute("command")  AllotmentBean allotment,
-			BindingResult result) {
-			
-		 Map<String, Object> model = new HashMap<String, Object>();
-		 model.put("categories",  categoryService.getCategories());
-			return new ModelAndView("addCategory", model);
-		return new ModelAndView("addAllotment");
-	}
-	
-	  @RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView addEmployee(@ModelAttribute("command") EmployeeBean employeeBean ,
-			BindingResult result) {
-	    
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("employees",  prepareListofBean(employeeService.listEmployeess()));
-		return new ModelAndView("addEmployee", model);
-	}
-
+	 * 
+	 * @RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
+	 * public ModelAndView createAllotment(Model model) { AllotmentBean
+	 * allotmentBean = new AllotmentBean(); // declaring
+	 * 
+	 * model.addAttribute("allotmentBean", allotmentBean); // adding in model
+	 * 
+	 * return new ModelAndView("addAllotment"); }
+	 * 
+	 * @RequestMapping(value = "/viewAllotment", method = RequestMethod.GET)
+	 * public ModelAndView createAllotment(@ModelAttribute("command")
+	 * AllotmentBean allotment, BindingResult result) {
+	 * 
+	 * Map<String, Object> model = new HashMap<String, Object>();
+	 * model.put("categories", categoryService.getCategories()); return new
+	 * ModelAndView("addCategory", model); return new
+	 * ModelAndView("addAllotment"); }
+	 * 
+	 * @RequestMapping(value = "/add", method = RequestMethod.GET) public
+	 * ModelAndView addEmployee(@ModelAttribute("command") EmployeeBean
+	 * employeeBean , BindingResult result) {
+	 * 
+	 * Map<String, Object> model = new HashMap<String, Object>();
+	 * model.put("employees",
+	 * prepareListofBean(employeeService.listEmployeess())); return new
+	 * ModelAndView("addEmployee", model); }
+	 * 
 	 */
 	
 	/* ----------------------------------------------------------------------------------------------- */
@@ -290,8 +282,6 @@ public class ManageAllotment extends HttpServlet{
 			return model1;
 		}
 	}
-	
-	/* ------------------------------------------------------------------------------------------------  */
 
 	@RequestMapping("/tpclist")
 	public ModelAndView tpclist() {
@@ -308,8 +298,6 @@ public class ManageAllotment extends HttpServlet{
 		}
 	}
 	
-	/* --------------------------------------------------------------------------------------------------  */
-
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
 		try {
@@ -324,8 +312,6 @@ public class ManageAllotment extends HttpServlet{
 			return model1;
 		}
 	}
-	
-	/* --------------------------------------------------------------------------------------------------  */
 
 	@RequestMapping("/dept")
 	public ModelAndView dept() {
@@ -341,8 +327,6 @@ public class ManageAllotment extends HttpServlet{
 			return model1;
 		}
 	}
-	
-	/* --------------------------------------------------------------------------------------------------  */
 
 	@RequestMapping("/stats")
 	public ModelAndView stats() {
@@ -358,8 +342,7 @@ public class ManageAllotment extends HttpServlet{
 			return model1;
 		}
 	}
-	
-	/* --------------------------------------------------------------------------------------------------  */
+
 
 	@RequestMapping("/company")
 	public ModelAndView company() {

@@ -15,8 +15,6 @@
 *
 */
 
-
-
 package org.crce.interns.controller;
 
 import java.util.HashMap;
@@ -41,8 +39,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
 @Controller
 public class ManageUserController {
 
@@ -50,96 +46,108 @@ public class ManageUserController {
 	private ManageUserService manageUserService;
 	@Autowired
 	private CheckRoleService crService;
-	
-	 @Autowired
-	 private DirectoryService directoryService;
-	
-	//actually adding student
+
+	@Autowired
+	private DirectoryService directoryService;
+
+	// actually adding student
 	@RequestMapping(value = "/registerStudent", method = RequestMethod.POST)
-	public ModelAndView addStudent(HttpServletRequest request, @ModelAttribute("studentBean")StudentBean studentBean,BindingResult result) {
-		
-		ModelAndView model = new ModelAndView("addStudent"); 
+	public ModelAndView addStudent(HttpServletRequest request, @ModelAttribute("studentBean") StudentBean studentBean,
+			BindingResult result) {
+
+		ModelAndView model = new ModelAndView("addStudent");
 		try {
 			manageUserService.addStudent(request, studentBean);
 			model.addObject("success", 1);
 			directoryService.createStudentFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
-			
+
 			System.out.println(e.toString());
 			model.addObject("error", 1);
 		}
 		return model;
 	}
-	
-	//actually adding faculty
+
+	// actually adding faculty
 	@RequestMapping(value = "/registerFaculty", method = RequestMethod.POST)
-	public ModelAndView addFaculty(HttpServletRequest request,@ModelAttribute("facultyBean")FacultyBean facultyBean,BindingResult result) {
-		
+	public ModelAndView addFaculty(HttpServletRequest request, @ModelAttribute("facultyBean") FacultyBean facultyBean,
+			BindingResult result) {
+
 		ModelAndView model = new ModelAndView("addFaculty");
-		try{
-		manageUserService.addFaculty(request, facultyBean);
-		model.addObject("success", 1);
-		directoryService.createFacultyFolder();
+		try {
+			manageUserService.addFaculty(request, facultyBean);
+			model.addObject("success", 1);
+			directoryService.createFacultyFolder();
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
-			
+
 			System.out.println(e.toString());
 			model.addObject("error", 1);
 		}
 		return model;
-		
+
 	}
-	
-	
-	//to navigate to addStudent.jsp 
+
+	// to navigate to addStudent.jsp
 	@RequestMapping(value = "/addstudent", method = RequestMethod.GET)
-	public ModelAndView welcomeStudent(HttpServletRequest request,Model model) {
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("ManageUser", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			StudentBean studentBean = new StudentBean(); // declaring
+	public ModelAndView welcomeStudent(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+			if (!crService.checkRole("ManageUser", roleId))
+				return new ModelAndView("403");
+			else {
+				StudentBean studentBean = new StudentBean(); // declaring
 
-			model.addAttribute("studentBean", studentBean); // adding in model
+				model.addAttribute("studentBean", studentBean); // adding in
+																// model
 
-			return new ModelAndView("addStudent");
+				return new ModelAndView("addStudent");
+			}
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
-	
-	//to navigate to addFaculty.jsp
+
+	// to navigate to addFaculty.jsp
 	@RequestMapping(value = "/addfaculty", method = RequestMethod.GET)
-	public ModelAndView welcomeFaculty(HttpServletRequest request,Model model) {
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("ManageUser", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			FacultyBean facultyBean = new FacultyBean(); // declaring
+	public ModelAndView welcomeFaculty(HttpServletRequest request, Model model) {
+		try {
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+			if (!crService.checkRole("ManageUser", roleId))
+				return new ModelAndView("403");
+			else {
+				FacultyBean facultyBean = new FacultyBean(); // declaring
 
-			model.addAttribute("facultyBean", facultyBean); // adding in model
-			return new ModelAndView("addFaculty");
+				model.addAttribute("facultyBean", facultyBean); // adding in
+																// model
+				return new ModelAndView("addFaculty");
+			}
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
-	
-	
-	//to navigate to removeUser.jsp
+
+	// to navigate to removeUser.jsp
 	@RequestMapping(value = "/removeuser", method = RequestMethod.GET)
 	public ModelAndView removeUser(HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("ManageUser", roleId))
-			return new ModelAndView("403");
-		else
-		return new ModelAndView("removeUser");		
+		try {
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+			if (!crService.checkRole("ManageUser", roleId))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("removeUser");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	//actually removing user
+
+	// actually removing user
 	@RequestMapping(value = "/removeUser", method = RequestMethod.POST)
-	public ModelAndView removeUser1(@ModelAttribute("command")  StudentBean studentBean,
-			BindingResult result, @RequestParam("username")String username) {
-		
+	public ModelAndView removeUser1(@ModelAttribute("command") StudentBean studentBean, BindingResult result,
+			@RequestParam("username") String username) {
+
 		ModelAndView model = new ModelAndView("removeUser");
 		int a;
 		//String erroMesg="";
@@ -158,7 +166,6 @@ public class ManageUserController {
 		model.addObject("success", 1);
 		}	
 		catch (Exception e) {
-			
 			System.out.println(e.toString());
 			model.addObject("error", 1);
 		}

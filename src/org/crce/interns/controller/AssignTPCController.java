@@ -35,7 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AssignTPCController {
-	
+
 	@Autowired
 	private AssignTPCService userService;
 
@@ -47,269 +47,305 @@ public class AssignTPCController {
 
 	@Autowired
 	AddTPCTaskValidator addTPCTaskValidator;
-	
+
 	@Autowired
 	private CheckRoleService crService;
-	
-	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET)	//Home Page of TPO
-	public ModelAndView goTPOHome(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
-		System.out.println("In Controller : TPO Home Page\n");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
-			return new ModelAndView("403");
-		else
-		return new ModelAndView("TPO");
+
+	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET) // Home Page
+																	// of TPO
+	public ModelAndView goTPOHome(HttpServletRequest request, @ModelAttribute("command") FacultyUserBean userBean,
+			BindingResult result) {
+		try {
+			System.out.println("In Controller : TPO Home Page\n");
+
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+
+			if (!crService.checkRole("AssignTPC", roleId))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("TPO");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	@RequestMapping(value="/ViewUsersT", method = RequestMethod.GET)//View Users for TPO
+
+	@RequestMapping(value = "/ViewUsersT", method = RequestMethod.GET) // View
+																		// Users
+																		// for
+																		// TPO
 	public ModelAndView viewUsers(HttpServletRequest request) {
 		System.out.println("In Controller: View Users by TPO");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
+
+		HttpSession session = request.getSession();
+		String roleId = (String) session.getAttribute("roleId");
+
+		if (!crService.checkRole("AssignTPC", roleId))
 			return new ModelAndView("403");
-		else
-		{
+		else {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			modelMap.put("users", userService.viewUsers());
 			return new ModelAndView("viewUserT", modelMap);
 		}
 	}
-	
-	@RequestMapping(value="/ViewFacultyTasks", method = RequestMethod.GET)//View tasks assigned to FTPC
+
+	@RequestMapping(value = "/ViewFacultyTasks", method = RequestMethod.GET) // View
+																				// tasks
+																				// assigned
+																				// to
+																				// FTPC
 	public ModelAndView viewFacultyTasks(HttpServletRequest request) {
-		System.out.println("In Controller: View TPC Tasks");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			modelMap.put("fusers", userService.viewFacultyTasks());
-			return new ModelAndView("viewFacultyTasks", modelMap);
+		try {
+			System.out.println("In Controller: View TPC Tasks");
+
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+
+			if (!crService.checkRole("AssignTPC", roleId))
+				return new ModelAndView("403");
+			else {
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("fusers", userService.viewFacultyTasks());
+				return new ModelAndView("viewFacultyTasks", modelMap);
+			}
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
-	
-	@RequestMapping(value = "/InsertWork", method = RequestMethod.GET)//Call to jsp to get the task
-	public ModelAndView createUserWork(HttpServletRequest request,@ModelAttribute("command") FacultyUserBean userBean, BindingResult result) {
-		System.out.println("In Controller: Assign TPC Work\n");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
-			return new ModelAndView("403");
-		else
-		{
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			modelMap.put("fusers", userService.viewFacultyTasks());
-			return new ModelAndView("insertWork", modelMap);
+
+	@RequestMapping(value = "/InsertWork", method = RequestMethod.GET) // Call
+																		// to
+																		// jsp
+																		// to
+																		// get
+																		// the
+																		// task
+	public ModelAndView createUserWork(HttpServletRequest request, @ModelAttribute("command") FacultyUserBean userBean,
+			BindingResult result) {
+		try {
+			System.out.println("In Controller: Assign TPC Work\n");
+
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+
+			if (!crService.checkRole("AssignTPC", roleId))
+				return new ModelAndView("403");
+			else {
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("fusers", userService.viewFacultyTasks());
+				return new ModelAndView("insertWork", modelMap);
+			}
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
-	
-	@RequestMapping(value = "/AssignTPC", method = RequestMethod.GET)//Call to jsp to get username and role
-	public ModelAndView assignTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
-		System.out.println("In Controller: Assign TPC\n");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
-			return new ModelAndView("403");
-		else
-		return new ModelAndView("assignTPC");
+
+	@RequestMapping(value = "/AssignTPC", method = RequestMethod.GET) // Call to
+																		// jsp
+																		// to
+																		// get
+																		// username
+																		// and
+																		// role
+	public ModelAndView assignTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
+			BindingResult result) {
+		try {
+			System.out.println("In Controller: Assign TPC\n");
+
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+
+			if (!crService.checkRole("AssignTPC", roleId))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("assignTPC");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	@RequestMapping(value = "/RemoveTPC", method = RequestMethod.GET)//Call to jsp to get usernam
-	public ModelAndView removeTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult result) {
-		System.out.println("In Controller: Remove TPC\n");
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		
-		if(!crService.checkRole("AssignTPC", roleId))
-			return new ModelAndView("403");
-		else
-			return new ModelAndView("removeTPC");
+
+	@RequestMapping(value = "/RemoveTPC", method = RequestMethod.GET) // Call to
+																		// jsp
+																		// to
+																		// get
+																		// usernam
+	public ModelAndView removeTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
+			BindingResult result) {
+		try {
+			System.out.println("In Controller: Remove TPC\n");
+
+			HttpSession session = request.getSession();
+			String roleId = (String) session.getAttribute("roleId");
+
+			if (!crService.checkRole("AssignTPC", roleId))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("removeTPC");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
 
 	@RequestMapping(value = "/SubmitAssignTPC", method = RequestMethod.POST)
-	public ModelAndView submitAssignTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean,/*@ModelAttribute("fuserBean")FacultyUserBean fuserBean,*/ BindingResult bindingResult) {
+	public ModelAndView submitAssignTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
+			/* @ModelAttribute("fuserBean")FacultyUserBean fuserBean, */ BindingResult bindingResult) {
 		System.out.println("In Controller: Submit Assign TPC");
-		try{
-		ModelAndView model;
-		String erroMesg="";
-		int a;
-		
-		validator.validate(userBean, bindingResult);
-		
-		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
-			return new ModelAndView("assignTPC");
-		}
-		
-		HttpSession session=request.getSession();
-		String userName=(String)session.getAttribute("userName");
-		
-		userBean.setModifiedBy(userName);
-		userBean.setModifiedDate(new Date());
-		
-		a=userService.assignTPC(userBean);
-		System.out.println("Value Returned from Service: "+a);
-		
-			if(a==0)//No such user exists in UserDetails Table
+		try {
+			ModelAndView model;
+			String erroMesg = "";
+			int a;
+
+			validator.validate(userBean, bindingResult);
+
+			if (bindingResult.hasErrors()) {
+				System.out.println("Binding Errors are present...");
+				return new ModelAndView("assignTPC");
+			}
+
+			HttpSession session = request.getSession();
+			String userName = (String) session.getAttribute("userName");
+
+			userBean.setModifiedBy(userName);
+			userBean.setModifiedDate(new Date());
+
+			a = userService.assignTPC(userBean);
+			System.out.println("Value Returned from Service: " + a);
+
+			if (a == 0)// No such user exists in UserDetails Table
 			{
-				model=new ModelAndView("assignTPC");
-				erroMesg+="No such user exists";
-				model.addObject("erroMesg",erroMesg);
-				//return new ModelAndView("noUser");
-			}
-			else if(a==3)//A Non-Student user attempted to be assigned as STPC
+				model = new ModelAndView("assignTPC");
+				erroMesg += "No such user exists";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("noUser");
+			} else if (a == 3)// A Non-Student user attempted to be assigned as
+								// STPC
 			{
-				model=new ModelAndView("assignTPC");
-				erroMesg+="A Non-Student user attempted to be assigned as STPC";
-				model.addObject("erroMesg",erroMesg);
-				//return new ModelAndView("notStud");	
-			}
-			else if(a==4)//A Non-Faculty user attempted to be assigned as STPC
+				model = new ModelAndView("assignTPC");
+				erroMesg += "A Non-Student user attempted to be assigned as STPC";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("notStud");
+			} else if (a == 4)// A Non-Faculty user attempted to be assigned as
+								// STPC
 			{
-				model=new ModelAndView("assignTPC");
-				erroMesg+="A Non-Faculty user attempted to be assigned as STPC";
-				model.addObject("erroMesg",erroMesg);
-				//return new ModelAndView("notFac");
-			}
-			else if(a==34){	//Already assigned STPC or FTPC user attempted to be assigned as TPC
-				model=new ModelAndView("assignTPC");
-				erroMesg+="Already assigned STPC or FTPC user attempted to be assigned as TPC";
-				model.addObject("erroMesg",erroMesg);
-				//return new ModelAndView("alTPC");
-			}
-			else
+				model = new ModelAndView("assignTPC");
+				erroMesg += "A Non-Faculty user attempted to be assigned as STPC";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("notFac");
+			} else if (a == 34) { // Already assigned STPC or FTPC user
+									// attempted to be assigned as TPC
+				model = new ModelAndView("assignTPC");
+				erroMesg += "Already assigned STPC or FTPC user attempted to be assigned as TPC";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("alTPC");
+			} else
 				model = new ModelAndView("redirect:/ViewUsersT");
-			
+
 			return model;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
+			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitAssignTPC");
 			return model;
 		}
-		//return new ModelAndView("redirect:/ViewUsersT");
-		//return new ModelAndView("redirect:/TPOHome");
+		// return new ModelAndView("redirect:/ViewUsersT");
+		// return new ModelAndView("redirect:/TPOHome");
 	}
-	
-	
+
 	@RequestMapping(value = "/SubmitInsertWork", method = RequestMethod.POST)
 	public ModelAndView createWork(@ModelAttribute("command") FacultyUserBean fuserBean, BindingResult bindingResult) {
 		System.out.println("In Controller: Submit TPC Work");
-		try{
-		ModelAndView model;
-		String erroMesg="";
-		int a;
-		
-		addTPCTaskValidator.validate(fuserBean, bindingResult);
-		
-		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
-			return new ModelAndView("insertWork");
-		}
-		
-		a=userService.insertWork(fuserBean);
-		System.out.println("Value Returned from Service: "+a);
-		
-		if(a==0)//No such user exists in Table
-		{
-			model=new ModelAndView("insertWork");
-			erroMesg+="No such user exists";
-			model.addObject("erroMesg",erroMesg);
-			//return new ModelAndView("noUser");
-		}
-		else
-		model = new ModelAndView("redirect:/ViewFacultyTasks");
-		
-		return model;
-		}
-		catch(Exception e)
-		{
+		try {
+			ModelAndView model;
+			String erroMesg = "";
+			int a;
+
+			addTPCTaskValidator.validate(fuserBean, bindingResult);
+
+			if (bindingResult.hasErrors()) {
+				System.out.println("Binding Errors are present...");
+				return new ModelAndView("insertWork");
+			}
+
+			a = userService.insertWork(fuserBean);
+			System.out.println("Value Returned from Service: " + a);
+
+			if (a == 0)// No such user exists in Table
+			{
+				model = new ModelAndView("insertWork");
+				erroMesg += "No such user exists";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("noUser");
+			} else
+				model = new ModelAndView("redirect:/ViewFacultyTasks");
+
+			return model;
+		} catch (Exception e) {
 			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
+			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitInsertWork");
 			return model;
 		}
-		//return new ModelAndView("redirect:/ViewFacultyTasks");
+		// return new ModelAndView("redirect:/ViewFacultyTasks");
 	}
-		
-	
+
 	@RequestMapping(value = "/SubmitRemoveTPC", method = RequestMethod.POST)
-	public ModelAndView submitRemoveTPC(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean, BindingResult bindingResult) {
+	public ModelAndView submitRemoveTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
+			BindingResult bindingResult) {
 		System.out.println("In Controller: Submit Remove TPC");
-		try{
-		int a;
-		ModelAndView model;
-		String erroMesg="";
-		
-		rvmvalidator.validate(userBean, bindingResult);
-		
-		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
-			return new ModelAndView("removeTPC");
-		}
-		
-		HttpSession session=request.getSession();
-		String userName=(String)session.getAttribute("userName");
-		
-		userBean.setModifiedBy(userName);
-		userBean.setModifiedDate(new Date());
-		
-		a=userService.removeTPC(userBean);
-		System.out.println("Value Returned from Service: "+a);
-		
-		if(a==0)//No such user exists in UserDetails Table
-		{
-			model=new ModelAndView("removeTPC");
-			erroMesg+="No such user exists";
-			model.addObject("erroMesg",erroMesg);
-			//return new ModelAndView("noUser");
-		}
-		else if(a==33)//User attempted to be removed is not a TPC
-		{
-			model=new ModelAndView("removeTPC");
-			erroMesg+="User attempted to be removed from TPC post is not a TPC";
-			model.addObject("erroMesg",erroMesg);
-			//return new ModelAndView("notTPC");
-		}
-		else
-		model = new ModelAndView("redirect:/ViewUsersT");
-		
-		return model;
-		}
-		catch(Exception e)
-		{
+		try {
+			int a;
+			ModelAndView model;
+			String erroMesg = "";
+
+			rvmvalidator.validate(userBean, bindingResult);
+
+			if (bindingResult.hasErrors()) {
+				System.out.println("Binding Errors are present...");
+				return new ModelAndView("removeTPC");
+			}
+
+			HttpSession session = request.getSession();
+			String userName = (String) session.getAttribute("userName");
+
+			userBean.setModifiedBy(userName);
+			userBean.setModifiedDate(new Date());
+
+			a = userService.removeTPC(userBean);
+			System.out.println("Value Returned from Service: " + a);
+
+			if (a == 0)// No such user exists in UserDetails Table
+			{
+				model = new ModelAndView("removeTPC");
+				erroMesg += "No such user exists";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("noUser");
+			} else if (a == 33)// User attempted to be removed is not a TPC
+			{
+				model = new ModelAndView("removeTPC");
+				erroMesg += "User attempted to be removed from TPC post is not a TPC";
+				model.addObject("erroMesg", erroMesg);
+				// return new ModelAndView("notTPC");
+			} else
+				model = new ModelAndView("redirect:/ViewUsersT");
+
+			return model;
+		} catch (Exception e) {
 			System.out.println(e);
-			ModelAndView model=new ModelAndView("500");
+			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitRemoveTPC");
 			return model;
 		}
-	//	return new ModelAndView("redirect:/ViewUsersT");
-	//	return new ModelAndView("redirect:/TPOHome");
+		// return new ModelAndView("redirect:/ViewUsersT");
+		// return new ModelAndView("redirect:/TPOHome");
 	}
 
-/*	@RequestMapping(value="/ViewCurrentTPC", method = RequestMethod.GET)//View Users for TPO
-	public ModelAndView viewCurrentTPC(HttpServletRequest request) {
-		System.out.println("In Controller: View Current Year TPCs");
-		String year="2016";
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("users", userService.viewTPCs(year));
-		return new ModelAndView("viewUserT", modelMap);
-	}*/
+	/*
+	 * @RequestMapping(value="/ViewCurrentTPC", method =
+	 * RequestMethod.GET)//View Users for TPO public ModelAndView
+	 * viewCurrentTPC(HttpServletRequest request) { System.out.println(
+	 * "In Controller: View Current Year TPCs"); String year="2016"; Map<String,
+	 * Object> modelMap = new HashMap<String, Object>(); modelMap.put("users",
+	 * userService.viewTPCs(year)); return new ModelAndView("viewUserT",
+	 * modelMap); }
+	 */
 }

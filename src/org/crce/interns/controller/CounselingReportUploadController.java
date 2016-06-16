@@ -42,86 +42,90 @@ public class CounselingReportUploadController {
 
 	@Autowired
 	private CounselingReportUploadService counselingReportUploadService;
-	
+
 	@Autowired
-    FileUploadValidator validator;
-	
+	FileUploadValidator validator;
+
 	@Autowired
 	private CheckRoleService crService;
-	
+
 	@Autowired
 	public LoginService loginService;
-	
-	//used to navigate to CounselingReportUpload.jsp
-			@RequestMapping("counselingReportUpload")
-			public ModelAndView welcome(HttpServletRequest request) {
-				
-				HttpSession session=request.getSession();
-				String role =  (String)session.getAttribute("roleId");
-				String user=(String)session.getAttribute("userName");
-				String name=loginService.checkSR(user);
-				
-				if((role.equals("4") && !(crService.checkRole("CounselingReportUpload", role)&&name.equals("COUNSELLING_REPORT"))) || ((role.equals("1") || role.equals("3")) && !(crService.checkRole("CounselingReportUpload", role))))
-					return new ModelAndView("403");
-				
-				else
-					return new ModelAndView("CounselingReportUpload");
-				
-				
-			}
 
-			//used to actually upload the file
-			@RequestMapping(value = "/uploadCounselingReport", method = RequestMethod.POST)
-			public ModelAndView counselingReportUpload(HttpServletRequest request,
-					@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
-							throws Exception {
+	// used to navigate to CounselingReportUpload.jsp
+	@RequestMapping("counselingReportUpload")
+	public ModelAndView welcome(HttpServletRequest request) {
+		try {
+			HttpSession session = request.getSession();
+			String role = (String) session.getAttribute("roleId");
+			String user = (String) session.getAttribute("userName");
+			String name = loginService.checkSR(user);
 
-				ModelAndView model = new ModelAndView("CounselingReportUpload");
-				
-				try {
-					
-					//fileUpload1 : this is the request parameter model attribute of FileUpload type
-					fileUpload1.setFile(fileUpload);
-					System.out.println(fileUpload1.getFile().getSize());
-					
-					validator.validate(fileUpload1, result);
-					
-					
-					//if no file is uploaded
-					if (fileUpload1.getFile().getSize() == 0) {
-						System.out.println("Error in form");
-			            
-			            return model;
-					}
-					
-					String username = (String)request.getSession(true).getAttribute("userName");
-					System.out.println("in try");
-					
-					//calls the service to actually upload the file
-					counselingReportUploadService.handleFileUpload(request, fileUpload, username);
-					model.addObject("success", 1);
-					
-				} catch (IncorrectFileFormatException e) {
-					System.out.println(e);
-					
-					model.addObject("error", 1);	// so that the jsp catches the error
-					
-					
-				} catch (MaxFileSizeExceededError m) {
-					System.out.println(m);
-					
-					model.addObject("error1", 1); 	// so that the jsp catches the error
-					
-				}
-				
+			if ((role.equals("4")
+					&& !(crService.checkRole("CounselingReportUpload", role) && name.equals("COUNSELLING_REPORT")))
+					|| ((role.equals("1") || role.equals("3"))
+							&& !(crService.checkRole("CounselingReportUpload", role))))
+				return new ModelAndView("403");
+
+			else
+				return new ModelAndView("CounselingReportUpload");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
+
+	}
+
+	// used to actually upload the file
+	@RequestMapping(value = "/uploadCounselingReport", method = RequestMethod.POST)
+	public ModelAndView counselingReportUpload(HttpServletRequest request,
+			@RequestParam(required = false) CommonsMultipartFile fileUpload,
+			@ModelAttribute("fileUpload1") FileUpload fileUpload1, BindingResult result) throws Exception {
+
+		ModelAndView model = new ModelAndView("CounselingReportUpload");
+
+		try {
+
+			// fileUpload1 : this is the request parameter model attribute of
+			// FileUpload type
+			fileUpload1.setFile(fileUpload);
+			System.out.println(fileUpload1.getFile().getSize());
+
+			validator.validate(fileUpload1, result);
+
+			// if no file is uploaded
+			if (fileUpload1.getFile().getSize() == 0) {
+				System.out.println("Error in form");
+
 				return model;
 			}
-			
-			// @pankaj added following for upload page
-			//--------------------------------------------------------------------
 
-			@RequestMapping("/StudentUploads")
-			public String StudentNotification() {
-				return "StudentUploads";
-			}
+			String username = (String) request.getSession(true).getAttribute("userName");
+			System.out.println("in try");
+
+			// calls the service to actually upload the file
+			counselingReportUploadService.handleFileUpload(request, fileUpload, username);
+			model.addObject("success", 1);
+
+		} catch (IncorrectFileFormatException e) {
+			System.out.println(e);
+
+			model.addObject("error", 1); // so that the jsp catches the error
+
+		} catch (MaxFileSizeExceededError m) {
+			System.out.println(m);
+
+			model.addObject("error1", 1); // so that the jsp catches the error
+
+		}
+
+		return model;
+	}
+
+	// @pankaj added following for upload page
+	// --------------------------------------------------------------------
+
+	@RequestMapping("/StudentUploads")
+	public String StudentNotification() {
+		return "StudentUploads";
+	}
 }
