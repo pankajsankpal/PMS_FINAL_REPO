@@ -102,8 +102,9 @@ public class EligibilityDaoImpl implements EligibilityDao {
 		} catch (NonUniqueResultException e) {
 			e.printStackTrace();
 		}
-	
-		return company.getCriteria_id();
+		//this was giving problem so commented @melwyn95
+		return company.getCompany_id();
+		//return 0;	//was giving error so commented @Crystal
 	}
 	
 	/**

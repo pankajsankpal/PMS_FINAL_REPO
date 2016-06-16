@@ -2,6 +2,7 @@ package org.crce.interns.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.crce.interns.beans.AllotmentBean;
+import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.UserDetailsBean;
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
@@ -17,6 +19,7 @@ import org.crce.interns.model.Allotment;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.LoginService;
 import org.crce.interns.service.ManageAllotmentService;
+import org.crce.interns.service.ManageProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +51,9 @@ public class ManageAllotment extends HttpServlet{
 	private ManageAllotmentService manageAllotmentService;
 	
 	@Autowired
+	private ManageProfileService manageProfileService;
+	
+	@Autowired
 	private CheckRoleService crService;
 	
 	@Autowired
@@ -60,34 +66,51 @@ public class ManageAllotment extends HttpServlet{
 	}
 	*/
 	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
+
+	
 	//changes made @Crystal
 	//Method to save allotment details
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
 	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,@ModelAttribute("allotmentBean")AllotmentBean allotmentBean,BindingResult result) throws Exception {
 		
-		ModelAndView model =  new ModelAndView("addAllotment");
-		try{
+		try {
+				ModelAndView model =  new ModelAndView("addAllotment");
 			
-		
-		//System.out.println("after db entry");
-		manageAllotmentService.handleFileUpload(request,fileUpload);
-		
-		manageAllotmentService.addAllotment(allotmentBean);
-		model.addObject("success", 1);
-		
-		} catch (IncorrectFileFormatException e) {
-		
-			System.out.println(e);
-			model.addObject("error", 1);
-		
-		
-		} catch (MaxFileSizeExceededError m) {
-		
-			System.out.println(m);
-			model.addObject("error1", 1);
-		
-		}
-		return model;
+				try{
+				
+			
+						//System.out.println("after db entry");
+						manageAllotmentService.handleFileUpload(request,fileUpload);
+			
+						manageAllotmentService.addAllotment(allotmentBean);
+						model.addObject("success", 1);
+			
+					} 
+				catch (IncorrectFileFormatException e) {
+			
+						System.out.println(e);
+						model.addObject("error", 1);
+			
+			
+					} 
+				catch (MaxFileSizeExceededError m) {
+			
+						System.out.println(m);
+						model.addObject("error1", 1);
+			
+					}
+				
+				
+					return model;
+				} 
+		catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				ModelAndView model1=new ModelAndView("500");
+				model1.addObject("exception", "/saveAllotment");
+				return model1;
+			}
 	}
 	
 	
@@ -103,33 +126,55 @@ public class ManageAllotment extends HttpServlet{
 	*/
 	
 	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
+
+	
 	//Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
 	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
 		
 		
-		  //Authentication is commented
-		 
-		 
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		String user=(String)session.getAttribute("userName");
-		String name=loginService.checkSR(user);
-		if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
-			return new ModelAndView("403");
-		else
-		
-		
-		
-		{
-			AllotmentBean allotmentBean = new AllotmentBean(); // declaring
-			Allotment allot = new Allotment();
-			model.addAttribute("allotmentBean", allotmentBean); // adding in model
-			Map<String, Object> model1 = new HashMap<String, Object>();
-			model1.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allot)));
-			return new ModelAndView("addAllotment");
+		  try {
+			  	//Authentication is commented
+			 
+			  	/* 
+					HttpSession session=request.getSession();
+					String roleId=(String)session.getAttribute("roleId");
+					String user=(String)session.getAttribute("userName");
+					String name=loginService.checkSR(user);
+					if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
+					return new ModelAndView("403");
+					else
+			  	 */
+			
+			
+			  	{
+			  		AllotmentBean allotmentBean = new AllotmentBean(); // declaring
+			  		Allotment allot = new Allotment();
+			  		model.addAttribute("allotmentBean", allotmentBean); // adding in model
+			  		Map<String, Object> model1 = new HashMap<String, Object>();
+			  		model1.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allot)));
+			  		
+			  		List<CompanyBean> companyList = manageProfileService.listCompanies();
+				    Map<String, String> companyMap = new LinkedHashMap<String,String>();
+				            for(CompanyBean cb : companyList){
+				            	companyMap.put(cb.getCompany_name(), cb.getCompany_name());
+				            }
+					
+					return new ModelAndView("addAllotment","companies",companyMap);
+			  		//return new ModelAndView("addAllotment");
+			  	}
+		  	} 
+		  catch (Exception e) {
+			  		// TODO Auto-generated catch block
+			  		System.out.println(e);
+			  		ModelAndView model1=new ModelAndView("500");
+			  		model1.addObject("exception", "/addAllotment");
+			  		return model1;
+		  	}
 		}
-	}
+
+	/* -----------------------------------------------------------------------------------------------------------------------  */
 
 	
 	//Method to view allotment details
@@ -138,28 +183,37 @@ public class ManageAllotment extends HttpServlet{
 	public ModelAndView listAllotment(HttpServletRequest request,@ModelAttribute("command") Allotment allotmentBean,BindingResult bindingResult) {
 		
 		
-		/* **
-		 		//Authentication is commented
-		
-		HttpSession session=request.getSession();
-		String roleId=(String)session.getAttribute("roleId");
-		if(!crService.checkRole("ManageAllotment", roleId))
-			return new ModelAndView("403");
-		else
-		
-		** */
-		{
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
-			//model.put("allotments",manageAllotmentService.listAllotment(allotmentBean) );
+		try {
+				/* **
+			 		//Authentication is commented
 			
-			if (model.isEmpty()) {
-				System.out.println("Error no Model , Model is null");
-				return new ModelAndView("403");
+					HttpSession session=request.getSession();
+					String roleId=(String)session.getAttribute("roleId");
+					if(!crService.checkRole("ManageAllotment", roleId))
+					return new ModelAndView("403");
+					else
+			
+				 ** */
+				{
+					Map<String, Object> model = new HashMap<String, Object>();
+					model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
+					//model.put("allotments",manageAllotmentService.listAllotment(allotmentBean) );
+				
+					if (model.isEmpty()) {
+						System.out.println("Error no Model , Model is null");
+						return new ModelAndView("403");
+					}
+				
+					return new ModelAndView("viewAllotment", model);
+				}
+			} 
+		catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				ModelAndView model1=new ModelAndView("500");
+				model1.addObject("exception", "/viewAllotment");
+				return model1;
 			}
-			
-			return new ModelAndView("viewAllotment", model);
-		}
 	}
 	
 	
@@ -218,29 +272,108 @@ public class ManageAllotment extends HttpServlet{
 	}
 
 	 */
+	
+	/* ----------------------------------------------------------------------------------------------- */
+
 	@RequestMapping("/list")
 	public ModelAndView list() {
-		return new ModelAndView("list");
+		
+		try {
+			
+			return new ModelAndView("list");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/list");
+			return model1;
+		}
 	}
+	
+	/* ------------------------------------------------------------------------------------------------  */
+
 	@RequestMapping("/tpclist")
 	public ModelAndView tpclist() {
-		return new ModelAndView("tpclist");
+		try {
+			
+			return new ModelAndView("tpclist");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/tpclist");
+			return model1;
+		}
 	}
+	
+	/* --------------------------------------------------------------------------------------------------  */
+
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
-		return new ModelAndView("studentlist");
+		try {
+			
+			return new ModelAndView("studentlist");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/studentlist");
+			return model1;
+		}
 	}
+	
+	/* --------------------------------------------------------------------------------------------------  */
+
 	@RequestMapping("/dept")
 	public ModelAndView dept() {
-		return new ModelAndView("dept");
+		try {
+			
+			return new ModelAndView("dept");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/dept");
+			return model1;
+		}
 	}
+	
+	/* --------------------------------------------------------------------------------------------------  */
+
 	@RequestMapping("/stats")
 	public ModelAndView stats() {
-		return new ModelAndView("stats");
+		try {
+			
+			return new ModelAndView("stats");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/stats");
+			return model1;
+		}
 	}
+	
+	/* --------------------------------------------------------------------------------------------------  */
+
 	@RequestMapping("/company")
 	public ModelAndView company() {
-		return new ModelAndView("company");
+		try {
+			
+			return new ModelAndView("company");
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			ModelAndView model1=new ModelAndView("500");
+			model1.addObject("exception", "/company");
+			return model1;
+		}
 	}
 
-		}
+}

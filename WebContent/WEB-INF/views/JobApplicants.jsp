@@ -50,35 +50,9 @@ description: gives the list of applied aplicants-->
 		<div class="main-content-inner">
 
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-					</li>
-
-					<li><a href="CompaniesPage">Companies</a></li>
-					<li><a href="Company?companyname=${companyname}">${propercompanyname}</a></li>
-					<li class="active">Job Applications</li>
-				</ul>
-				<!-- /.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="off" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
-			</div>
-			<div class="page-content">
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>			<div class="page-content">
 
 
 				<div class="page-header">
@@ -102,8 +76,80 @@ description: gives the list of applied aplicants-->
 											<div class="row">
 
 
+<div class="col-xs-12">
+													<div class="table-header">The List Of Applicants So
+														Far</div>
+													<table id="simple-table"
+														class="table table-striped table-bordered table-hover">
+														<thead>
+															<tr>
+																<th>Roll No</th>
+																<th>Name</th>
+																<th>Branch</th>
 
+															</tr>
+														</thead>
+
+														<tbody>
+															
+															<c:forEach items="${userList}" var="user"
+															varStatus="loop">
+															<tr>
+																<td><font color="blue">${user.username}</font></td>
+																<td>${personalProfileBeanList[loop.index].name}</td>
+																<td><font color="orange">
+																${professionalProfileBeanList[loop.index].branch}</font></td>
+																
+															</tr>	
+																
+															</c:forEach>
+																
+															
+
+														</tbody>
+													</table>
+												</div>
+												
+<!-- /.col -->
+												<!---------------->
+												
+												<!-- selected list -->	
 												<div class="col-xs-12">
+													<div class="table-header">The List Of Selected Applicants So
+														Far</div>
+													<table id="simple-table"
+														class="table table-striped table-bordered table-hover">
+														<thead>
+															<tr>
+																<th>Roll No</th>
+																<th>Name</th>
+																<th>Branch</th>
+
+															</tr>
+														</thead>
+
+														<tbody>
+															<tr>
+															<c:forEach items="${quickStatsList}" var="user"
+																varStatus="loop">
+																<td><font color="blue">${user.username}</font></td>
+																<td>${selectedPersonal[loop.index].name}</td>
+																<td><font color="orange">
+																${selectedProf[loop.index].branch}</font></td>
+																
+																
+																
+															</c:forEach>
+																
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+
+												<!-- /.col -->
+												
+												<!-- <div class="col-xs-12">
 													<div class="table-header">The List Of Applicants So
 														Far</div>
 													<table id="simple-table"
@@ -158,7 +204,7 @@ description: gives the list of applied aplicants-->
 															</tr>
 														</tbody>
 													</table>
-												</div>
+												</div> -->
 
 												<!-- /.col -->
 

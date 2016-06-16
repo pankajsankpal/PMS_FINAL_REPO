@@ -111,7 +111,7 @@
 																		<div class="widget-body">
 																			<div class="widget-main padding-8">
 																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="/PMS_v1/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
+																					<c:forEach var="index" items="${indexList}"><li><a href="${pageContext.request.contextPath}/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
 																			</div>
 																			
 																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
@@ -244,8 +244,8 @@
 				function initiateDemoData(){
 					
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
+							'marksheets' : {text: '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>', type: 'folder', 'icon-class':'red'}	,
+							'resume' : {text: '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
 							
 						}
 						/* tree_data_2['resume']['additionalParameters'] = {

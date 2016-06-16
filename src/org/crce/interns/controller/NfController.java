@@ -14,6 +14,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +57,7 @@ public class NfController implements ConstantValues{
         private EmailNotificationServiceImpl emailNotificationService;
 
         
-	//------------------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------------------
 	@RequestMapping(value="/notifications", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
 	try{
@@ -143,6 +144,16 @@ public class NfController implements ConstantValues{
 		//nfService.checkNf();
 		//String id="7000";
 		
+		if(request.getSession(true).getAttribute("oldNoti") == null){
+			request.getSession(true).setAttribute("oldNoti", 0);
+		}
+		else{
+			request.getSession(true).setAttribute("oldNoti",request.getSession(true).getAttribute("newNoti"));
+				
+	
+//			System.out.println(request.getSession(true).getAttribute("oldNoti")+"- "+request.getSession(true).getAttribute("newNoti"));
+		}
+		
 		String userName=(String)request.getSession(true).getAttribute("userName");
 		String roleId=(String)request.getSession(true).getAttribute("roleId");		
 		
@@ -167,15 +178,24 @@ public class NfController implements ConstantValues{
 		nfList = nfService.sortByDate(nfList);
                 
 		request.getSession(true).setAttribute("newNoti", nfList.size());
+		
+		
                // NotificationBean notificationBean = new NotificationBean();
                 //emailNotificationService.sendEmailNotification(
                 	//	notificationBean.getUserOrGroupId(),notificationBean.getCategory(),notificationBean.getMessage());
 
 	
-		return new Gson().toJson(nfList);
+		Map<String,String> result = new HashMap<String,String>();
+		result.put("nfList", nfList.toString());
+		result.put("oldNoti", request.getSession(true).getAttribute("oldNoti").toString());
+		result.put("newNoti", request.getSession(true).getAttribute("newNoti").toString());
+		
+		System.out.println("old: "+request.getSession(true).getAttribute("oldNoti").toString()+"new: "+request.getSession(true).getAttribute("newNoti").toString());
+				
+		return new Gson().toJson(result);
 	}
 	catch(Exception e){
-		System.out.println(e.getLocalizedMessage());
+		System.out.println("Exception is "+e);
 		//ModelAndView model=new ModelAndView("500");
 		//model.addObject("exception", "/viewprofile");
 		return "exception at looseNotification";
@@ -188,8 +208,20 @@ public class NfController implements ConstantValues{
 		
 		String timestamp = new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date());
 		//request.getSession(true).setAttribute("notiClick", new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+		Integer old = (Integer)request.getSession(true).getAttribute("newNoti");
+		request.getSession(true).setAttribute("oldNoti", old);
 		request.getSession(true).setAttribute("notiClick", timestamp);
-		return timestamp;
+		
+
+		//result.
+		//return timestamp;
+		
+		Map<String,String> result = new HashMap<String,String>();
+		result.put("timestamp", timestamp);
+		result.put("oldNoti", request.getSession(true).getAttribute("oldNoti").toString());
+		result.put("newNoti", request.getSession(true).getAttribute("newNoti").toString());
+		
+		return new Gson().toJson(result);
 	}
 	
 	// @pankaj added following for notification
@@ -197,7 +229,7 @@ public class NfController implements ConstantValues{
 
 	@RequestMapping("/StuNoti")
 	public String StudentNotification() {
-		return "StudentNoti";
+		return "nftest";
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -261,7 +293,7 @@ public class NfController implements ConstantValues{
 		return model;
 	}
 	}
-
+	//-----------------------------------------------------------------------------------------------
 	@RequestMapping(value="/addNfEvent", method = RequestMethod.GET)
 	public ModelAndView addNfForEvent(HttpServletRequest request) {
 	try{
@@ -292,6 +324,9 @@ public class NfController implements ConstantValues{
 	}
 	}
 
+	
+	
+	
 }
 
 

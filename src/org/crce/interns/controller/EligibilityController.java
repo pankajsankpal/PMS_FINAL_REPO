@@ -107,7 +107,7 @@ public class EligibilityController {
 		else
 		{
 			System.out.println("oopsie!!  you dont meet the criteria ");
-			String msg = "YOU DONT MEET THE CRITERIA !!";
+			String msg = "Oops....You Don't Meet The Criteria";
 			ModelAndView m = new ModelAndView("JobPostsCriteria");
 			m.addObject("msg", msg);
 			return m;
@@ -146,8 +146,8 @@ public class EligibilityController {
 			if (E_service.checkCriteria(uname, criteria_id, job_id))
 				return new ModelAndView("eligible");
 			else {
-				System.out.println("oopsie!!  you dont meet the criteria ");
-				String msg = "THE STUDENT DOES NOT MEET THE CRITERIA !!";
+				System.out.println("oopsie!! !!!!  you dont meet the criteria ");
+				String msg = "Oops....You Don't Meet The Criteria";
 				ModelAndView m = new ModelAndView("tempform2");
 				m.addObject("msg", msg);
 				return m;

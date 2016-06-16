@@ -55,31 +55,9 @@ description: contains fields to add new faculty member->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -112,14 +90,14 @@ description: contains fields to add new faculty member->
 														</c:if>
 															<table align="center" style="padding-top: 10px"  >
 																<tr >
-																	<td>ID :</td>
-																	<td><form:input path="userId" /></td>
+																	<td>User ID :</td>
+																	<td><form:input path="userId" required="true"/></td>
 																</tr><br>
 																<tr >
 																	<td>Name :</td>
-																	<td style="padding-top: 10px"><form:input path="name" /></td>
+																	<td style="padding-top: 10px"><form:input path="name" required="true" /></td>
 																</tr><br>
-																<tr ">
+																<tr>
 																	<td style="padding-top: 10px">Branch :</td>
 																	<td style="padding-top: 10px"><form:select path="branch">
 																			<form:option value="0" label="Select" />
@@ -133,13 +111,13 @@ description: contains fields to add new faculty member->
 																
 																<tr>
 																	<td>Gender :</td>
-																	<td><form:radiobutton path="gender" value="MALE" label="Male" />
-																		<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+																	<td><form:radiobutton path="gender" value="MALE" label="Male" required="true" />
+																		<form:radiobutton path="gender" value="FEMALE" label="Female" required="true" /></td>
 																</tr>
 																
 																<tr>
 																	<td>Email ID :</td>
-																	<td><form:input path="email" /></td>
+																	<td><form:input path="email" required="true" /></td>
 																</tr>
 																<tr><td></td></tr>
 																

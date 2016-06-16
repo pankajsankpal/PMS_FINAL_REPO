@@ -22,6 +22,7 @@ package org.crce.interns.dao.impl;
 import org.crce.interns.dao.ManageUserDao;
 import org.crce.interns.model.Faculty;
 import org.crce.interns.model.Student;
+import org.crce.interns.model.UserDetails;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,20 @@ public class ManageUserDaoImpl implements ManageUserDao{
 
 	public void createFaculty(Faculty faculty) {
 		sessionFactory.getCurrentSession().save(faculty);
+	}
+	
+	public Student getUser(Student checkUser) {
+		//System.out.println("In DAOImpl: Get UserDetails User");
+		
+		Student result = (Student) sessionFactory.getCurrentSession().get(Student.class,
+				checkUser.getRollno());
+		
+		return result;
+		
+		/*String userName = checkUser.getUsername();
+		UserDetails user = (UserDetails) entityManager.createQuery("select u from UserDetails u where u.username = :n")
+				.setParameter("n", userName).getSingleResult();
+		return user;*/
 	}
 	
 	public void deleteUser(Student student, String username) {
