@@ -154,10 +154,10 @@ public class ApplicantController {
 
 	Integer companies;
 	String user;
-	
+
 	@Autowired
 	private ApplicantService applicantService;
-	
+
 	@Autowired
 	private ManageProfileService manageProfileService;
 	
@@ -346,6 +346,4 @@ public class ApplicantController {
 		
 		
 		}
-
-
 }

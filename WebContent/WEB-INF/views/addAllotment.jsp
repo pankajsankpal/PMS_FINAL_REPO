@@ -10,6 +10,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Room Allotment</title>
+		<style>
+		.error {
+					color: #ff0000;
+					font-style: italic;
+					font-weight: bold;
+				}
+		</style>
 		<meta name="description" content="Common form elements and layouts" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -116,6 +123,7 @@
         		}
 				%>  --%>
 					</form:select></td>
+					<td><form:errors path="company_name" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -131,6 +139,8 @@
 			<tr>
 				<td><label>Round Name</label></td>
 				<td><form:input name="round" id="round" path="round_no" /></td>
+				<td><form:errors path="round_no" cssClass="error" /></td>
+				
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -146,6 +156,7 @@
 			<tr>
 				<td><label>Room number</label></td>
 				<td><form:input name="room" id="room" path="room_no" /></td>
+				<td><form:errors path="room_no" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -176,6 +187,7 @@
 			<tr>
 				<td><label>Date</label></td>
 				<td><form:input path="drive_date" name="date" id="date" class="form-control date-picker" data-date-format="yyyy/mm/dd"/></td>
+				<td><form:errors path="drive_date" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>

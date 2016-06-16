@@ -95,9 +95,9 @@ description: contains fields for TPO to allot a work for the FACULTY TPC  ->
 																<td><form:label path="userName">UserName:</form:label></td>
 																<td style="padding-top: 10px"><center><c:if test="${!empty fusers}">
 
-																		<select name="userName">
+																		<select>
 																			<c:forEach items="${fusers}" var="fuser">
-																				<option value="${fuser.userName}">
+																				<option>
 																					<c:out value="${fuser.userName}" />
 
 																				</option>
