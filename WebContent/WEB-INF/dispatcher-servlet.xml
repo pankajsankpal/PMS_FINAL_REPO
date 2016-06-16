@@ -15,7 +15,7 @@
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
    
 
-	<context:property-placeholder location="/WEB-INF/database.properties" />
+	<context:property-placeholder location="classpath:resources/database.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -25,6 +25,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
  
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
+	
 	<context:component-scan base-package="org.crce.interns" />
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -45,6 +46,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="addSelectedValidator" class="org.crce.interns.validators.AddSelectedValidator" />
 	<bean id="deleteSelectedValidator" class="org.crce.interns.validators.DeleteSelectedValidator" />
 	<bean id="searchApplicantValidator" class="org.crce.interns.validators.SearchApplicantValidator" />
+	<!-- These files don't exist! -->
+	<!-- <bean id="jobValidator" class="org.crce.interns.validators.JobValidator" />
+	<bean id="critValidator" class="org.crce.interns.validators.CriteriaValidator" /> -->
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

@@ -22,53 +22,10 @@ description: contains all the validations required for every field -->
 <!-- page specific plugin styles -->
 <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 <link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
-
-<!-- for autocomplete -->
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>
-<link href="assets/autocomplete/main.css" rel="stylesheet">
-
-<script>
-	$(document)
-			.ready(
-					function() {
-
-						$('#dynamicsearchcompany')
-								.autocomplete(
-										{
-											serviceUrl : 'looseSearch2',
-											paramName : "CHARS",
-											delimiter : ",",
-											transformResult : function(response) {
-
-												return {
-													//must convert json to javascript object before process
-													suggestions : $
-															.map(
-																	$
-																			.parseJSON(response),
-																	function(
-																			company) {
-
-																		return {
-																			value : company.company_name,
-																			data : company.company_id
-																		};
-																	})
-
-												};
-
-											}
-
-										});
-
-					});
-</script>
 
 </head>
-<body>
+<body 	onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
@@ -91,7 +48,11 @@ description: contains all the validations required for every field -->
 					
 					<c:if test="${success==1}">
 						<p color="blue"><h2>Profile added successfully!!</h2></p>
-
+					</c:if>
+					
+					<br/>
+					<c:if test="${job==1}">
+						<p color="green"><h2>Job Details not filled</h2></p>
 					</c:if>
 
 
@@ -119,8 +80,8 @@ description: contains all the validations required for every field -->
 
 									<div class="tab-content no-border padding-24">
 										<div id="home" class="tab-pane in active">
-										<div role="form" id="validation-form">
-											<form  method="post" action="saveProfile" >
+										<div  role="form" id="validation-form"  >
+											<form  method="post" action="saveProfile">
 										
 												<div class="col-xs-12">
 
@@ -130,10 +91,10 @@ description: contains all the validations required for every field -->
 															<label class="col-sm-1 control-label no-padding-right"
 																for="name">Company Name</label>
 
-															<div class="col-sm-3"><!-- <input path="company" id="dynamicsearchcompany" value="" /> -->
+															<div class="col-sm-3">
 																<div class="clearfix">
 																	<select name="company_id" class="chosen-select">
-																	<option ></option>
+																	<!-- <option ></option>
 																		<option value="2">Jp Morgan</option>
 																		<option value="4">Direct-I</option>
 																		<option value="6">Morgan Stanley</option>
@@ -141,12 +102,15 @@ description: contains all the validations required for every field -->
 																		<option value="3">TCS</option>
 																		<option value="8">Accenture</option>
 																		<option value="7">L&T Infotech</option>
-																		<option value="1">ZS</option>
+																		<option value="1">ZS</option> -->
+																		<c:forEach items="${companies}" var="companies">
+                        												<option value="${companies.key}">${companies.value}</option>
+                  													</c:forEach>
 
 																	</select>
 																</div>
 
-															<!-- </div> -->
+															</div>
 														</div>
 														
 														<div class="form-group">
@@ -380,7 +344,7 @@ description: contains all the validations required for every field -->
 																		<input type="text" class="input-small knob"
 																			value="5.0" data-min="0" data-max="10"
 																			data-step="0.01" data-width="120" data-height="120"
-																			data-thickness=".3" data-fgcolor="#47d05e" name=""cgpa/>
+																			data-thickness=".3" data-fgcolor="#47d05e" name="cgpa"/>
 																	</div>
 
 																</div>
@@ -473,7 +437,7 @@ description: contains all the validations required for every field -->
 															
 															<div class="col-md-offset-4 col-md-9">
 																<button class="btn btn-info btn-next"
-																	data-last="Finish" type="submit">
+																	 type="submit">
 																	<i class="ace-icon fa fa-check bigger-110"></i>
 																	Submit 
 																</button>
@@ -520,7 +484,53 @@ description: contains all the validations required for every field -->
 		
 	
 	
-		
+		<!-- /.main-container -->
+
+
+	<!--[if !IE]> -->
+	<script src="assets/js/jquery.2.1.1.min.js"></script>
+
+
+
+
+	<!-- basic scripts -->
+
+	<!--[if !IE]> -->
+	<script src="assets/js/jquery.2.1.1.min.js"></script>
+
+	<!-- <![endif]-->
+
+	<!--[if IE]>
+<script src="assets/js/jquery.1.11.1.min.js"></script>
+<![endif]-->
+
+	<!--[if !IE]> -->
+	<script type="text/javascript">
+		window.jQuery
+				|| document.write("<script src='assets/js/jquery.min.js'>"
+						+ "<"+"/script>");
+	</script>
+
+	<!-- <![endif]-->
+
+	<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+	<script type="text/javascript">
+		if ('ontouchstart' in document.documentElement)
+			document
+					.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
+							+ "<"+"/script>");
+	</script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<!-- page specific plugin scripts -->
+
+	<!--[if lte IE 8]>
+		  <script src="assets/js/excanvas.min.js"></script>
+		<![endif]-->
 	<script src="assets/js/jquery-ui.custom.min.js"></script>
 	<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="assets/js/chosen.jquery.min.js"></script>
@@ -838,7 +848,7 @@ description: contains all the validations required for every field -->
 			});
 
 			$('#spinner11').ace_spinner({
-				value : 1,
+				value : 0,
 				min : 0,
 				max : 5,
 				step : 1,
@@ -1285,7 +1295,7 @@ description: contains all the validations required for every field -->
 									comment1 : {
 										required : true
 									},
-									yop : {
+									year_of_passing : {
 										required : true
 									},
 									platform : {
@@ -1300,7 +1310,7 @@ description: contains all the validations required for every field -->
 									agree : {
 										required : true,
 									},
-									job : {
+									job_category : {
 										required : true,
 									},
 									companyid : {
@@ -1319,10 +1329,10 @@ description: contains all the validations required for every field -->
 									criteriaid : {
 										required : true,
 									},
-									skills : {
+									skills_required : {
 										required : true,
 									},
-									documents : {
+									docs_required : {
 										required : true,
 									},
 									ctc : {
@@ -1331,25 +1341,31 @@ description: contains all the validations required for every field -->
 									createddate : {
 										required : true,
 									},
-									modifieddate : {
+									drive_date : {
 										required : true,
 									},
-									drivedate : {
+									year_gap_allowed : {
 										required : true,
 									},
 									jobcategory : {
 										required : true,
 									},
-									eligiblebranches : {
+									eligible_branches : {
 										required : true,
 									},
-									lastdatetoapply : {
+									last_date_to_apply : {
 										required : true,
 									},
-									live : {
+									no_of_live_kts_allowed : {
 										required : true,
 									},
-									dead : {
+									no_of_dead_kts_allowed : {
+										required : true,
+									},
+									job_description : {
+										required : true,
+									},
+									company_id: {
 										required : true,
 									}
 								},
@@ -1363,22 +1379,24 @@ description: contains all the validations required for every field -->
 										required : "Please specify a password.",
 										minlength : "Please specify a secure password."
 									},
-									yop : "Please choose an year of passing",
+									year_of_passing : "Please choose an year of passing",
 									subscription : "Please choose at least one option",
 									gender : "Please choose gender",
 									agree : "Please accept our policy",
-									skills : "Please enter atleast one skill",
-									name : "Please Enter the Company name",
-									documents : "Please Enter the Document to be carried",
+									skills_required : "Please enter atleast one skill",
+									company_id : "Please Enter the Company name",
+									docs_required : "Please Enter the Document to be carried",
+									job_description:"Please Enter the Job Description",
 									ctc : "Please Enter a C.T.C",
 									createddate : "Please Enter a Valid Date",
 									modifieddate : "Please Enter a Valid Date",
-									drivedate : "Please Enter a Valid Date",
-									jobcategory : "Please select a Job Category",
-									eligiblebranches : "Select atleast one eligible branch",
-									lastdatetoapply : "Please Enter a Valid Date",
-									live : "Please specify a number",
-									dead : "Please specify a number"
+									drive_date : "Please Enter a Valid Date",
+									job_category : "Please select a Job Category",
+									eligible_branches : "Select atleast one eligible branch",
+									last_date_to_apply : "Please Enter a Valid Date",
+									no_of_live_kts_allowed : "Please specify a number",
+									no_of_dead_kts_allowed : "Please specify a number",
+									year_gap_allowed : "Please specify a number"
 								},
 
 								highlight : function(e) {

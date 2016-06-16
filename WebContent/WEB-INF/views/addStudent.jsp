@@ -94,16 +94,16 @@ description: contains text fields to add details of student manually->
 											<table align="center" style="margin-top: 10px; padding-right: 10px">
 												<tr>
 													<td>Roll no :</td>
-													<td><form:input path="rollno" /></td>
+													<td><form:input path="rollno" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Name :</td>
-													<td><form:input path="name" /></td>
+													<td><form:input path="name" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Branch :</td>
-													<td><form:select path="branch">
-															<form:option value="0" label="Select" />
+													<td><form:select path="branch" required="true">
+															<form:option value="" label="Select" />
 															<form:option value="Computer Engineering"  label="Computer" />
 															<form:option value="IT Engineering" label="IT" />
 															<form:option value="Electronics Engineering" label="Electronics" />
@@ -113,12 +113,12 @@ description: contains text fields to add details of student manually->
 												
 												<tr>
 													<td>Year of passing :</td>
-													<td><form:input path="year" /></td>
+													<td><form:input path="year" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Gender :</td>
-													<td><form:radiobutton path="gender" value="MALE" label="Male" />
-														<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+													<td><form:radiobutton path="gender" value="MALE" label="Male" required="true"/>
+														<form:radiobutton path="gender" value="FEMALE" label="Female" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Date of birth :</td>
@@ -126,11 +126,11 @@ description: contains text fields to add details of student manually->
 												</tr>
 												<tr>
 													<td>Mobile no :</td>
-													<td><form:input path="mobile" /></td>
+													<td><form:input path="mobile" required="true"/></td>
 												</tr>
 												<tr>
 													<td>Email ID :</td>
-													<td><form:input path="email" /></td>
+													<td><form:input path="email" required="true"/></td>
 												</tr>
 												<tr><td></td></tr>
 												<tr>

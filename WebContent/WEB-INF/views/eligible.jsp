@@ -1,11 +1,12 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta charset="utf-8" />
-<title>Dashboard - Ace Admin</title>
+
+<title>PMS Application</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
@@ -15,7 +16,6 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
 
 <!-- page specific plugin styles -->
 
@@ -36,80 +36,68 @@
 <script src="assets/js/ace-extra.min.js"></script>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 
 </head>
 <body>
 	<jsp:directive.include file="Header.jsp" />
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
 
-	<div class="main-container" id="main-container">
-		<script type="text/javascript">
-			try {
-				ace.settings.check('main-container', 'fixed')
-			} catch (e) {
-			}
-		</script>
-
-		<div id="sidebar" class="sidebar responsive">
-			<script type="text/javascript">
-				try {
-					ace.settings.check('sidebar', 'fixed')
-				} catch (e) {
-				}
-			</script>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+			<div class="page-content">
+				<div class="page-header"></div>
+				<!-- /.page-header -->
 
 
 
-
-			<ul class="nav nav-list">
-				<li class=" "><a href="index.jsp"> <i
-						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
-							Dashboard </span>
-				</a> <b class="arrow"></b></li>
-
-				<li class=" "><a href="Login.jsp"> <i
-						class="menu-icon fa fa-sign-in"></i> <span class="menu-text">
-							Login </span>
-				</a> <b class="arrow"></b></li>
-
-				<li class=" "><a href="Upload.jsp"> <i
-						class="menu-icon fa fa-cloud-upload"></i> <span class="menu-text">
-							Upload </span>
-				</a> <b class="arrow"></b></li>
-
-				<li class=" "><a href="Event.jsp"> <i
-						class="menu-icon fa fa-book"></i> <span class="menu-text">
-							Event </span>
-				</a> <b class="arrow"></b></li>
-
-				<li class="active"><a href="Apply.jsp"> <i
-						class="menu-icon fa fa-pencil-square-o"></i> <span
-						class="menu-text"> Apply </span>
-				</a> <b class="arrow"></b></li>
-			</ul>
-			<!--  End of nav list-->
+				<script type="text/javascript">
+					try {
+						ace.settings.check('main-container', 'fixed')
+					} catch (e) {
+					}
+				</script>
 
 
-		</div>
-		<!-- End of sidebar responsive -->
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-2">
 
 
-		<div class="row">
-			<div class="col-sm-5 col-sm-offset-2">
-				
+						<div class="widget-body">
+							<div class="widget-main padding-24">
+								<div class="row align-center">
+									<h1 style="color: green;">
+										<div>Congratulations! You have successfully applied</div>
+									</h1>
 
-					<div class="widget-body">
-						<div class="widget-main padding-24">
-							<div class="row align-center">
-							<h1 style="color:green;"><div>Congratulations! You have successfully applied</div></h1>
-										
+								</div>
+								<!-- /.row -->
+
+
 							</div>
-							<!-- /.row -->
+						</div>
+					</div>
+				</div>
+
+				<jsp:directive.include file="Footer.jsp" />
 
 
-</div></div></div></div>
-		
-		<jsp:directive.include file="Footer.jsp" />
-		</body>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.main-container -->
+
+	<!--[if !IE]> -->
+	<script src="assets/js/jquery.2.1.1.min.js"></script>
+
+
+	<!-- inline scripts related to this page -->
+
+	<!-- ace scripts -->
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
+</body>
 </html>
