@@ -95,8 +95,8 @@ description: gives the list of applied aplicants-->
 														class="table table-striped table-bordered table-hover">
 														<thead>
 															<tr>
-																<th>Name</th>
 																<th>Roll No</th>
+																<th>Name</th>
 																<th>Branch</th>
 
 															</tr>
