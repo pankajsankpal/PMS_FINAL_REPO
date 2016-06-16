@@ -631,9 +631,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				
 				
-				List<CompanyBean> companyList = manageProfileService.listCompanies();
+				//List<CompanyBean> companyList = manageProfileService.listCompanies();
 			    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
-			            for(CompanyBean cb : companyList){
+			            for(CompanyBean cb : clist){
 			            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			            }
 				
