@@ -339,9 +339,8 @@ ${msg}
 																<br>Company:
 																<form:input name="company" id="company_id"
 																	path="company" />
-																<br> ${msg}
 																<form:errors path="company" cssClass="error" />
-																</br> <br></td>
+																<br> ${msg}<br></td>
 													</tr>
 													<tr>
 														<td><div class="" center>
