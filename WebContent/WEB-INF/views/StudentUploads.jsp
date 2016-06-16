@@ -199,10 +199,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 												
 											</div><!-- /#pictures -->
-											</div>
-										</div>
-									</div>
-								</div>
+											
 
 						
 								<!-- PAGE CONTENT ENDS -->
@@ -210,8 +207,11 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div>
-			
-<jsp:directive.include file="Footer.jsp" />
+			</div>
+		</div>
+	</div>
+</div>
+
 <jsp:directive.include file="scripts.jsp" />
 	
 
