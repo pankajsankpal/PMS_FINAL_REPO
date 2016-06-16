@@ -71,13 +71,7 @@
                     }
                 </script>
 
-                <ul class="breadcrumb">
-                    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-                    </li>
-
-                    <li><a href="#">Forms</a></li>
-                    <li class="active">Send An e-Mail!</li>
-                </ul>
+                
                 <!-- /.breadcrumb -->
 
                 
@@ -86,10 +80,7 @@
 
             <div class="page-content">
                 <div class="ace-settings-container" id="ace-settings-container">
-                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn"
-                         id="ace-settings-btn">
-                        <i class="ace-icon fa fa-cog bigger-130"></i>
-                    </div>
+                    
 
                     <div class="ace-settings-box clearfix" id="ace-settings-box">
                         <div class="pull-left width-50">

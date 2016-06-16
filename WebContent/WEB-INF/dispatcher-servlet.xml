@@ -15,7 +15,7 @@
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
    
 
-	<context:property-placeholder location="classpath:resources/database.properties" />
+	<context:property-placeholder location="/WEB-INF/database.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -46,6 +46,8 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="addSelectedValidator" class="org.crce.interns.validators.AddSelectedValidator" />
 	<bean id="deleteSelectedValidator" class="org.crce.interns.validators.DeleteSelectedValidator" />
 	<bean id="searchApplicantValidator" class="org.crce.interns.validators.SearchApplicantValidator" />
+	<bean id="allotmentValidator" class="org.crce.interns.validators.AllotmentValidator" />
+	
 	<!-- These files don't exist! -->
 	<!-- <bean id="jobValidator" class="org.crce.interns.validators.JobValidator" />
 	<bean id="critValidator" class="org.crce.interns.validators.CriteriaValidator" /> -->
