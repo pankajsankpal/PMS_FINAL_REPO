@@ -21,22 +21,29 @@
 }
 </style>
 </head>
-<body class="no-skin">
-	<jsp:directive.include file="Header.jsp" />
-	<div class="main-content">
-		<div class="main-content-inner">
-			<div class="page-content">
-				<div class="page-header">
-					<h2 class="widget-title grey lighter">&nbsp; &nbsp; &nbsp;
-						&nbsp; Assign TPO</h2>
-				</div>
-				<div class="center">
-					<a href="AdminHome"><h3>Home</h3></a>
-				</div>
-				<div class="space"></div>
-				<div class="center">
-					<form:form method="POST" action="SubmitAssignTPO">
-						<table align="center">
+
+<body  class="no-skin">
+			<jsp:directive.include file="Header.jsp" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div><div class="page-content">
+						<div class="page-header">
+							<h2 class="widget-title grey lighter">
+								&nbsp; &nbsp; &nbsp; &nbsp; 
+									Assign TPO
+							</h2>
+						</div>
+						<div class="center">
+							<a href="AdminHome"><h3>Home</h3></a>
+						</div>
+						<div class="space"></div>
+						<div class="center">
+							<form:form method="POST" action="SubmitAssignTPO">
+							<table align="center">
+
 							<tr>
 								<td><form:label path="userName">
 										<h3>User name:</h3>
@@ -63,3 +70,4 @@
 	<jsp:directive.include file="scripts.jsp" />
 </body>
 </html>
+

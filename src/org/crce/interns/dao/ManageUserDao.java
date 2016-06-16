@@ -21,4 +21,5 @@ public interface ManageUserDao {
 	public void createStudent(Student student);
 	public void createFaculty(Faculty faculty);
 	public void deleteUser(Student student, String username) ;
+	public Student getUser(Student checkUser);		//new method! Don't delete :|
 }

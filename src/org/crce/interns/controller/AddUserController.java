@@ -15,9 +15,7 @@
 *
 */
 
-
 package org.crce.interns.controller;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,81 +38,78 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 public class AddUserController {
-	
+
 	@Autowired
 	private AddUserService addUserService;
 	@Autowired
 	private CheckRoleService crService;
-	
-	
-	
+
 	@Autowired
-    FileUploadValidator validator;
-	
-    @Autowired
-    private DirectoryService directoryService;
-        
-    // this function is used to navigate to AddUserViaCSV.jsp    
-	@RequestMapping(value="/addUser", method = RequestMethod.GET)
+	FileUploadValidator validator;
+
+	@Autowired
+	private DirectoryService directoryService;
+
+	// this function is used to navigate to AddUserViaCSV.jsp
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		String role =  (String)session.getAttribute("roleId");
-		if(!crService.checkRole("AddUser", role))
-			return new ModelAndView("403");
-		else
-			return new ModelAndView("AddUserViaCSV");
+		try {
+			HttpSession session = request.getSession();
+			String role = (String) session.getAttribute("roleId");
+			if (!crService.checkRole("AddUser", role))
+				return new ModelAndView("403");
+			else
+				return new ModelAndView("AddUserViaCSV");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
 
+	// this function is used to call the AddUserService to actually upload the
+	// file
+	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	public ModelAndView addUser(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,
+			@ModelAttribute("fileUpload1") FileUpload fileUpload1, BindingResult result) throws Exception {
 
-	//this function is used to call the AddUserService to actually upload the file 
-	@RequestMapping( value = "/uploadFile", method = RequestMethod.POST)
-	public ModelAndView addUser(HttpServletRequest request,@RequestParam CommonsMultipartFile fileUpload, @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
-			throws Exception {
-
-			
 		ModelAndView model = new ModelAndView("AddUserViaCSV");
 		try {
-						
-			//boolean flag = false;
+
+			// boolean flag = false;
 			fileUpload1.setFile(fileUpload);
 			System.out.println(fileUpload1.getFile().getSize());
 			validator.validate(fileUpload1, result);
 			if (fileUpload1.getFile().getSize() == 0) {
 				System.out.println("Error in form");
-	            
-	            return new ModelAndView("AddUserViaCSV");
+
+				return new ModelAndView("AddUserViaCSV");
 			}
 			String userName = request.getSession().getAttribute("userName").toString();
 			System.out.println("");
-			addUserService.handleFileUpload(request,fileUpload,userName);
+			addUserService.handleFileUpload(request, fileUpload, userName);
 			model.addObject("success", 1);
 			// loadCopyFile("user_schema.userdetails");
 			directoryService.createStudentFolder();
-			// returns to the same index page	
-			
-		}catch(IncorrectEncodingTypeException x){
+			// returns to the same index page
+
+		} catch (IncorrectEncodingTypeException x) {
 			System.out.println(x);
 			model.addObject("encoding", 1);
-			
+
 		} catch (IncorrectFileFormatException e) {
-			
+
 			System.out.println(e);
 			model.addObject("error", 1);
-			
-			
+
 		} catch (MaxFileSizeExceededError m) {
-			
+
 			System.out.println(m);
 			model.addObject("error1", 1);
-			
-		}
-		
-		return model;	
+
 		}
 
-        
+		return model;
+	}
 
 }

@@ -8,36 +8,10 @@
 <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>  -->
 
 
-<script type="text/javascript">
-function checkNewNoti(){
-	console.log("inside checkNewNoti");
-	
-	
-	$.getJSON("checkNewNoti",
-				
-				{CHARS:''},
-				
-				function(data){
-					console.log(data);
-					console.log("size of list: "+data.length);
-					//$("#notiNumber").text(data.length)
-					//$('#noti').text('');
-					/*
-					for(var index in data){
-						$('#noti').append('<li><a href="'+data[index].url+'"><div class=/"clearfix/"><span class=/"pull-left/"><i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'
-								+data[index].type+'<br/>Sent on'+data[index].dateTime+'<br/>'+
-								data[index].message+'<br/></span><span class="pull-right badge badge-info">+12</span></div></a></li>'
-						);
-					}
-					*/
-				});
-	
-}
 
-</script>
 </head>
 
-<body onload="checkNewNoti()" class="skin-3 no-skin">
+<body onload="" class="skin-3 no-skin">
 	<jsp:directive.include file="scripts.jsp" />
 	
 	<div id="navbar" class="navbar navbar-default">
@@ -68,13 +42,16 @@ function checkNewNoti(){
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						
-						<li class="blue">
+						
+						
+						<!-- Notification removed for mobile view , can be added later -->
+						<!-- <li class="blue">
 							<a href="notifications">
 
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
 							</a>
-						</li>
+						</li> -->
 
 						
 
@@ -117,7 +94,7 @@ function checkNewNoti(){
 		
 		<!-- basic scripts -->
 		<jsp:directive.include file="sidebar.jsp" />
-
+		
 		
 </body>
 

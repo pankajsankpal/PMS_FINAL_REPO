@@ -157,6 +157,7 @@
 																<div id="DisplayTree"></div>
 															</div>
 															<!-- <button class="btn btn-md btn-block btn-primary pull-right">
+
 																			<span class="bigger-110">Upload</span>
 		
 																			<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -410,6 +411,7 @@
 				function initiateDemoData() {
 					//console.log("inside other fnc: "+ times);
 					var tree_data_2 = {
+
 						'marksheets' : {
 							text : '<button onClick="displayCRS()">Counseling Report-Student</button>',
 							type : 'folder',
@@ -431,6 +433,7 @@
 					tree_data_2['resume']['additionalParameters'] = {
 						'children' : [
 							{text: '', type: 'item'},
+
 								
 							 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
 							

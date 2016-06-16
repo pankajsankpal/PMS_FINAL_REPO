@@ -16,48 +16,52 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CriteriaController {
-	
+
 	@Autowired
-    CriteriaFormValidator criteriaValidator;
-	
+	CriteriaFormValidator criteriaValidator;
 
 	@Autowired
 	private CriteriaService criteriaService;
-	
-	
+
 	@RequestMapping(value = "/addCriteria", method = RequestMethod.GET)
 	public ModelAndView addCriteria(Model model) {
-		
-		CriteriaBean criteriaBean=new CriteriaBean();
-		model.addAttribute("criteriaBean",criteriaBean);
-		System.out.println("in controller11");
-		return new ModelAndView("addCriteria");
+		try {
+			CriteriaBean criteriaBean = new CriteriaBean();
+			model.addAttribute("criteriaBean", criteriaBean);
+			System.out.println("in controller11");
+			return new ModelAndView("addCriteria");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
-	 @RequestMapping(value = "/saveCriteria", method = RequestMethod.POST)  
-	 public ModelAndView saveEmployee(@ModelAttribute("criteriaBean") CriteriaBean criteriaBean,BindingResult result) throws Exception { 
-		 
-		 criteriaValidator.validate(criteriaBean, result);
+
+	@RequestMapping(value = "/saveCriteria", method = RequestMethod.POST)
+	public ModelAndView saveEmployee(@ModelAttribute("criteriaBean") CriteriaBean criteriaBean, BindingResult result)
+			throws Exception {
+		try {
+			criteriaValidator.validate(criteriaBean, result);
 			if (result.hasErrors()) {
-		System.out.println("Error in form");
-     
-     return new ModelAndView("addCriteria");
- }
-		 	
-																			
-		 Criteria criteria=prepareCriteriaModel(criteriaBean);
-	  criteriaService.addCriteria(criteria);  
-	  return new ModelAndView("redirect:/addCompany");  
-	  
-	   	
-	
-	 }
-	 
-	private Criteria prepareCriteriaModel(CriteriaBean criteriaBean){
-		Criteria criteria =new Criteria();
-		BeanUtils.copyProperties(criteriaBean, criteria);
-		return criteria;
+				System.out.println("Error in form");
+
+				return new ModelAndView("addCriteria");
+			}
+
+			Criteria criteria = prepareCriteriaModel(criteriaBean);
+			criteriaService.addCriteria(criteria);
+			return new ModelAndView("redirect:/addCompany");
+		} catch (Exception e) {
+			return new ModelAndView("500");
+		}
 	}
-	
+
+	private Criteria prepareCriteriaModel(CriteriaBean criteriaBean) {
+		try {
+			Criteria criteria = new Criteria();
+			BeanUtils.copyProperties(criteriaBean, criteria);
+			return criteria;
+		} catch (Exception e) {
+			return new Criteria();
+		}
+	}
 
 }
