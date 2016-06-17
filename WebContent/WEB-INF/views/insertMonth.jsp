@@ -18,6 +18,14 @@ description: contain field for removing the student tpc -->
 	font-weight: bold;
 }
 </style>
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
+<link rel="stylesheet" href="assets/css/select2.min.css" />
+<link rel="stylesheet" href="assets/css/datepicker.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
+<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 
 </head>
 
@@ -50,7 +58,7 @@ description: contain field for removing the student tpc -->
 								<div class="widget-main" align="center">
 
 									<h2>Select the month to view events in that Month</h2>
-									<form:form method="POST" action="SubmitMonth">
+									<form:form method="GET" action="SubmitMonth">
 										<span>Month : </span>
 										<span><select name="month">
 
@@ -87,28 +95,22 @@ description: contain field for removing the student tpc -->
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-					<jsp:directive.include file="Footer.jsp" />
-					<jsp:directive.include file="scripts.jsp" />
-				
+
 			</div>
 			<!-- /.page-content -->
 		</div>
 
 	</div>
-	
-	
-	<!-- ace scripts -->
-	<script src="assets/js/ace-elements.min.js"></script>
-	<script src="assets/js/ace.min.js"></script>
-
+	<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 
 </body>
-
 </html>
 
 
 
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -157,5 +159,4 @@ description: contain field for removing the student tpc -->
 </body>
 
 </html>
-
  --%>

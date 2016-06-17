@@ -4,7 +4,9 @@ description: contains fields for TPO to allot a work for the FACULTY TPC  ->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,11 +64,10 @@ description: contains fields for TPO to allot a work for the FACULTY TPC  ->
 																<td><form:label path="userName">UserName:</form:label></td>
 																<td style="padding-top: 10px"><center><c:if test="${!empty fusers}">
 
-																		<select>
-																			<c:forEach items="${fusers}" var="fuser">
-																				<option>
-																					<c:out value="${fuser.userName}" />
-
+																		<select name="userName">
+																			<c:forEach items="${fusers}" var="fusers">
+																				<option value="${fusers.userName}" >
+																					<c:out value="${fusers.userName}" />
 																				</option>
 																			</c:forEach>
 																		</select>

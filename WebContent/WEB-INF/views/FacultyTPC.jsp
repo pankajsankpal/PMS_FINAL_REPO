@@ -113,7 +113,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
-															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
+															<a href="ViewEvents"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
 
 															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
 															<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
