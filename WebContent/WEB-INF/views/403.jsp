@@ -79,7 +79,9 @@
 
 						
 
+
 						<li class="light-blue">
+
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<!--  <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />   -->
 								<span class="user-info">
@@ -110,7 +112,9 @@
 								</li>
 
 							</ul>
+
 						</li>
+
 					</ul>
 				</div>
 			</div><!-- /.navbar-container -->
@@ -223,12 +227,13 @@
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						<jsp:directive.include file="Footer.jsp" />
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
 
 
-				<jsp:directive.include file="Footer.jsp" />
+				
 
 	<!-- basic scripts -->
 

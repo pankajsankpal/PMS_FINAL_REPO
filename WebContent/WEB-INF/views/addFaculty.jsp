@@ -13,40 +13,12 @@ description: contains fields to add new faculty member->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Add Faculty Members Manually </title>
-
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="../assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-<!-- page specific plugin styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-
-
-
-<!-- text fonts -->
-<link rel="stylesheet" href="../assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="../assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="../assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-
+<style>
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
 </head>
 <body 	onload="noBack();"
     onpageshow="if (event.persisted) noBack();" onunload="">
@@ -92,10 +64,12 @@ description: contains fields to add new faculty member->
 																<tr >
 																	<td>ID :</td>
 																	<td><form:input path="userId" /></td>
+																	<td><form:errors path="userId" cssClass="error" /></td>
 																</tr><br>
 																<tr >
 																	<td>Name :</td>
 																	<td style="padding-top: 10px"><form:input path="name" /></td>
+																	<td><form:errors path="name" cssClass="error" /></td>
 																</tr><br>
 																<tr ">
 																	<td style="padding-top: 10px">Branch :</td>
@@ -113,11 +87,13 @@ description: contains fields to add new faculty member->
 																	<td>Gender :</td>
 																	<td><form:radiobutton path="gender" value="MALE" label="Male" />
 																		<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+																		<td><form:errors path="gender" cssClass="error" /></td>
 																</tr>
 																
 																<tr>
 																	<td>Email ID :</td>
 																	<td><form:input path="email" /></td>
+																	<td><form:errors path="email" cssClass="error" /></td>
 																</tr>
 																<tr><td></td></tr>
 																
@@ -143,16 +119,17 @@ description: contains fields to add new faculty member->
 								
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-												
-
+							
 
 	
 		<jsp:directive.include file="scripts.jsp" />
 		<jsp:directive.include file="Footer.jsp" />
 	<!-- ace scripts -->
+						</div>
+					</div>
+				</div>
+												
+
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	

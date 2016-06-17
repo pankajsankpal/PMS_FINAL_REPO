@@ -41,7 +41,7 @@ public class CompanyServiceImpl implements CompanyService {
 	 public List<CompanyBean> getCompany() {
 		List<CompanyBean> temp = new LinkedList<CompanyBean>();
 		List<Company> result = companyDao.getCompany();
-		
+                
 		for( Company c: result){
 			CompanyBean cb= new CompanyBean();
 			BeanUtils.copyProperties(c, cb);

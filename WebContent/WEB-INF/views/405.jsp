@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>404 Error Page - Ace Admin</title>
+		<title>405 Error Page</title>
 
 		<meta name="description" content="404 Error Page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -79,7 +79,7 @@
 
 						
 
-						<li class="light-blue">
+						<%-- <li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<!--  <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />   -->
 								<span class="user-info">
@@ -110,7 +110,7 @@
 								</li>
 
 							</ul>
-						</li>
+						</li> --%>
 					</ul>
 				</div>
 			</div><!-- /.navbar-container -->
@@ -118,6 +118,7 @@
 				<div class="main-content">
 				<div class="main-content-inner">
 					
+
 					<div class="page-content">
 						<div class="ace-settings-container" id="ace-settings-container">
 							
@@ -167,7 +168,7 @@
 										<h1 class="grey lighter smaller">
 											<span class="blue bigger-125">
 												<i class="ace-icon fa fa-sitemap"></i>
-												404
+												405
 											</span>
 											<script type="text/javascript">
 					try {
@@ -175,7 +176,7 @@
 					} catch (e) {
 					}
 				</script>
-				YOU are not allowed to access this page !!!!!! <br />
+				YOU are not allowed to access this URL directly !!!!!! <br />
 				<br /> <a href="form">Click here to login again</a>
 										</h1>
 

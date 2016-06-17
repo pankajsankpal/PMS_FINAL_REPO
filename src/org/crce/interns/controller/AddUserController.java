@@ -55,6 +55,7 @@ public class AddUserController {
 	// this function is used to navigate to AddUserViaCSV.jsp
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
 	public ModelAndView indexjsp(HttpServletRequest request) {
+		
 		try {
 			HttpSession session = request.getSession();
 			String role = (String) session.getAttribute("roleId");
@@ -67,6 +68,7 @@ public class AddUserController {
 		}
 	}
 
+	//authorization done - unauthorized call redirected to 405.jsp
 	// this function is used to call the AddUserService to actually upload the
 	// file
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)

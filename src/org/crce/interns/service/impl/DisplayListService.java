@@ -32,6 +32,7 @@ public class DisplayListService {
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
 			 String pathname = null;
+			 System.out.println("Role : " + userRole);
 			if(userRole.equals(ConstantValues.StudentName) || userRole.equals("allowed") || userRole.equals(ConstantValues.StudentTPCName))
 				pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
 			else
