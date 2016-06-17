@@ -56,7 +56,7 @@
 					  	<td><br/></td>
 					  	</tr>
   						<tr>  
-        	 				<td colspan="2"><input type="submit" value="Proceed to next page" class="btn btn-info"/></td>  
+        	 				<td colspan="2"><input type="submit" value="Submit" class="btn btn-info"/></td>  
         				</tr>   
   					</table>
   	 				</form:form>
