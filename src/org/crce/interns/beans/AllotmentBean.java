@@ -4,7 +4,7 @@ import java.util.Date;
 
 // Room Allotment Entries(room_allotment.allotment)
 
-public class AllotmentBean {
+public class AllotmentBean{
 
 	private Integer allotment_id;
 	private String company_name;

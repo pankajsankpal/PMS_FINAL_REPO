@@ -124,6 +124,7 @@ public class ApplicantController {
 package org.crce.interns.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -217,9 +218,17 @@ public class ApplicantController {
 
 	
 	@RequestMapping(value="/ViewApplicant", method = RequestMethod.GET)
-	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult,@RequestParam("year") String curYear,
-			final RedirectAttributes redirectAttributes) {
+	public ModelAndView viewApplicant(@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult/*,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes*/) {
 		
+		String curYear = new String();
+		
+		if(curYear.equals(""))
+		{
+			
+			curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+		}
 		
 		
 		try {
@@ -239,7 +248,7 @@ public class ApplicantController {
 					model.addObject("errorMsg", errorMsg);
 					return model;
 				}
-
+				
 				return new ModelAndView("viewApplicant", modelMap);
 			} 
 		catch (Exception e) {
@@ -254,10 +263,19 @@ public class ApplicantController {
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 
-	@RequestMapping(value = "/NotifyStudent", method = RequestMethod.GET)
-	public ModelAndView notifyStudent(@RequestParam("userName") String userName,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult,
-			@RequestParam("year") String curYear,
-			final RedirectAttributes redirectAttributes) {
+	@RequestMapping(value = "/NotifyStudent", method = RequestMethod.POST)
+	public ModelAndView notifyStudent(@RequestParam("userName") String userName,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult
+			/*,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes*/) {
+		
+		String curYear = new String();
+		
+		if(curYear.equals(""))
+		{
+			
+			curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+		}
 	
 			try {
 					//	UserDetailsBean userBean =new UserDetailsBean();
@@ -298,8 +316,17 @@ public class ApplicantController {
 	
 	@RequestMapping(value="/SetNotify", method = RequestMethod.GET)
 	public ModelAndView setNotify(HttpServletRequest request,@ModelAttribute("command") UserDetailsBean userBean,BindingResult bindingResult
-			,@RequestParam("year") String curYear,
-			final RedirectAttributes redirectAttributes) {
+			/*,@RequestParam("year") String curYear,
+			final RedirectAttributes redirectAttributes*/) {
+		
+			String curYear = new String();
+		
+			if(curYear.equals(""))
+			{
+			
+				curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				
+			}
 		
 			try {
 					ModelAndView model;

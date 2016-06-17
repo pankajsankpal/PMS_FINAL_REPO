@@ -11,17 +11,22 @@ description: contains tabs ->  activity ,uploads ,notification -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>Faculty Tpc | HOME</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+		<!-- <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 		<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
 		<link rel="stylesheet" href="assets/css/select2.min.css" />
 		<link rel="stylesheet" href="assets/css/datepicker.min.css" />
 		<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
 		<link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
 		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
-
+ -->
 
 
 </head>
@@ -165,21 +170,23 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
 															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search for Students/Company </a> <br><br>															
-															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a>
+															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a><br><br>
+															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
+															
 														</div>
 														
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
 															<a href="InsertMonth.html"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
-															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
+															<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a><br><br>
+															<a href="viewAllotment"  class="btn btn-inverse btn-lg btn-block">View Allotment</a>
 															
 
 														</div>
 														
-														<div class="col-xs-12 col-sm-8">
-														<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>
-														</div>
+														<!-- <div class="col-xs-12 col-sm-8">
+														</div> -->
 														
 														
 													</div>
@@ -252,15 +259,18 @@ description: contains tabs ->  activity ,uploads ,notification -->
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						
+<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
 					</div><!-- /.page-content -->
 				</div>
 			
 </div>
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 	
 	
-		<script src="assets/js/jquery-ui.custom.min.js"></script>
+	<!-- 	<script src="assets/js/jquery-ui.custom.min.js"></script>
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script src="assets/js/moment.min.js"></script>
@@ -280,13 +290,13 @@ description: contains tabs ->  activity ,uploads ,notification -->
 		<script src="assets/js/jquery-ui.min.js"></script>
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 
-		<!-- page specific plugin scripts -->
+		page specific plugin scripts
 		
 		
-		<!-- ace scripts -->
+		ace scripts
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-
+ -->
 
 		<!-- inline scripts related to this page -->
 			<script type="text/javascript">
