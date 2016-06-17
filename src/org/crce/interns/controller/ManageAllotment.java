@@ -80,6 +80,7 @@ public class ManageAllotment extends HttpServlet {
 			@ModelAttribute("allotmentBean") AllotmentBean allotmentBean, BindingResult result) throws Exception {
 
 		try {
+			
 			// ModelAndView model = new ModelAndView("addAllotment");
 			List<CompanyBean> companyList = manageProfileService.listCompanies();
 			Map<String, String> companyMap = new LinkedHashMap<String, String>();
@@ -91,14 +92,18 @@ public class ManageAllotment extends HttpServlet {
 			
 			
 			/*allotmentValidator.validate(allotmentBean, result);
-
+			int i=0;
 			if (result.hasErrors()) {
-				System.out.println("Binding Errors are present...");
+				i++;
+				System.out.println("Binding Errors are present ..."+i);
+				System.out.println(allotmentBean.getCompany_name());
+				System.out.println("Round Name: "+allotmentBean.getRoom_no());
+				System.out.println("Round no "+allotmentBean.getRound_no());
+				System.out.println(allotmentBean.getDrive_date());
 				ModelAndView model1 = new ModelAndView("addAllotment", "companies", companyMap);
 				return model1;
 			}*/
 
-			
 			
 			try {
 

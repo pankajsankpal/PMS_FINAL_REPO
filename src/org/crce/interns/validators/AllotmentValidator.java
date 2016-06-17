@@ -27,7 +27,7 @@ public class AllotmentValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "company_name", "roomComapny.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "round_no", "roomRoundNo.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "room_no", "roomNo.required");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "drive_date", "roomDriveDate.required");
+	//	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "drive_date", "roomDriveDate.required");
 		
 		
 	}
