@@ -399,8 +399,9 @@ description: contains all the validations required for every field -->
 															<div class="col-sm-3">
 																<div>
 
+																<!-- don't add value attribute!  -->
 																	<label> <input name="placed_students_allowed"
-																		class="ace ace-switch ace-switch-6" type="checkbox" value="off"/>
+																		class="ace ace-switch ace-switch-6" type="checkbox"/>
 
 																		<span class="lbl"></span>
 																	</label>
