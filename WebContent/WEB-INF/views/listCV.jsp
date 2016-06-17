@@ -276,7 +276,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 					$('#d').text('');
 					$.each(data, function() {
 						$('#d').append(
-								'<li><a href="/PMS_v1/downloadResume?fileName='
+								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
 										+ this.actualName + ' "> '
 										+ this.displayName + ' </a></li>');
 					});
@@ -298,7 +298,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 					$('#d').text('');
 					$.each(data, function() {
 						$('#d').append(
-								'<li><a href="/PMS_v1/downloadResume?fileName='
+								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
 										+ this.actualName + ' "> '
 										+ this.displayName + ' </a></li>');
 					});
@@ -318,7 +318,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 					$('#d').text('');
 					$.each(data, function() {
 						$('#d').append(
-								'<li><a href="/PMS_v1/downloadResume?fileName='
+								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
 										+ this.actualName + ' "> '
 										+ this.displayName + ' </a></li>');
 					});

@@ -134,10 +134,10 @@
 																</button>
 															</div></td>
 													</tr>
-													<tr>
-														<td><a href="view.html">View The List Of Applied
+										<!-- 			<tr>
+														<td><a href="views.html">View The List Of Applied
 																Candidates</a></td>
-													</tr>
+													</tr> -->
 												</table>
 											</form:form>
 											<br> <br>

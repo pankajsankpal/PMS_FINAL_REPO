@@ -182,7 +182,7 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 																	<ul id="tree2"></ul>
 																	<c:forEach var="index" items="${indexList}">
 																		<li><a
-																			href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
+																			href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
 																	</c:forEach>
 																</div>
 
@@ -289,17 +289,17 @@ description: contain ALL professional and personal details of STUDENT tpc -->
 
 				var tree_data_2 = {
 					'marksheets' : {
-						text : '<a href="/PMS_v1/StudentUploads?folder=Certificates">Certificates</a>',
+						text : '<a href="${pageContext.request.contextPath}/StudentUploads?folder=Certificates">Certificates</a>',
 						type : 'folder',
 						'icon-class' : 'red'
 					},
 					'resume' : {
-						text : '<a href="/PMS_v1/StudentUploads?folder=Resume">Resume</a>',
+						text : '<a href="${pageContext.request.contextPath}/StudentUploads?folder=Resume">Resume</a>',
 						type : 'folder',
 						'icon-class' : 'orange'
 					},
 					'OfferLetter' : {
-						text : '<a href="/PMS_v1/StudentUploads?folder=Resume">Offer Letters </a>',
+						text : '<a href="${pageContext.request.contextPath}/StudentUploads?folder=Resume">Offer Letters </a>',
 						type : 'folder',
 						'icon-class' : 'orange'
 					},

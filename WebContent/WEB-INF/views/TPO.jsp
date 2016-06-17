@@ -81,7 +81,7 @@
 																<ul id="tree2"></ul>
 																<c:forEach var="index" items="${indexList}">
 																	<li><a
-																		href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
+																		href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
 																</c:forEach>
 															</div>
 
@@ -243,12 +243,12 @@
 
 				var tree_data_2 = {
 					'marksheets' : {
-						text : '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>',
+						text : '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>',
 						type : 'folder',
 						'icon-class' : 'red'
 					},
 					'resume' : {
-						text : '<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>',
+						text : '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>',
 						type : 'folder',
 						'icon-class' : 'orange'
 					},

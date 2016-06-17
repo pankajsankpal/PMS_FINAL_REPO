@@ -95,57 +95,75 @@ description: displays the criteria of the posted jobe-->
 													<h5 class="widget-title bigger lighter">Job Crtieria</h5>
 												</div>
 
-												<div class="widget-body">
-													<div class="widget-main">
-														<ul class="list-unstyled spaced2">
-															<li><i class="ace-icon fa  fa-circle blue"></i>
-																Eligibible Branches are ${criteria.eligible_branches}</li>
+												
+											<div class="widget-body">
+												<div class="widget-main">
+													<ul class="list-unstyled spaced2">
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligibible Branches are ${criteria.eligible_branches}
+														</li>
 
-															<li><i class="ace-icon fa  fa-circle blue"></i> Only
-																for unplaced students</li>
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Only for unplaced students
+														</li>
 
-															<li><i class="ace-icon fa  fa-circle blue"></i>
-																Eligible SSC percentage is ${criteria.ssc_percentage }</li>
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible SSC percentage is ${criteria.ssc_percentage } 	
+														</li>
+														
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible HSC percentage is ${criteria.hsc_or_dip_percentage } 
+														</li>
 
-															<li><i class="ace-icon fa  fa-circle blue"></i>
-																Eligible HSC percentage is
-																${criteria.hsc_or_dip_percentage }</li>
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Eligible CGPA is ${criteria.cgpa }
+														</li>
+														
+															<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Year of passing should be ${criteria.year_of_passing  }
+														</li>
+														
+															<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															No of live KT's allowed is ${criteria.no_of_live_kts_allowed }
+														</li>
+														
+															<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															No of dead KT's allowed is ${criteria.no_of_dead_kts_allowed }
+														</li>
+														
+															<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Year gap should be ${criteria.year_gap_allowed } 
+														</li>
 
-															<li><i class="ace-icon fa  fa-circle blue"></i>
-																Eligible CGPA is ${criteria.cgpa }</li>
+														
+														<li>
+															<i class="ace-icon fa  fa-circle blue"></i>
+															Last date to apply is ${criteria.last_date_to_apply }
+														</li>
+													</ul>
 
-															<li><i class="ace-icon fa  fa-circle blue"></i> Year
-																of passing should be ${criteria.year_of_passing  }</li>
-
-															<li><i class="ace-icon fa  fa-circle blue"></i> No
-																of live KT's allowed is
-																${criteria.no_of_live_kts_allowed }</li>
-
-															<li><i class="ace-icon fa  fa-circle blue"></i> No
-																of dead KT's allowed is
-																${criteria.no_of_dead_kts_allowed }</li>
-
-															<li><i class="ace-icon fa  fa-circle blue"></i> Year
-																gap should be ${criteria.year_gap_allowed }</li>
-
-
-															<li><i class="ace-icon fa  fa-circle blue"></i> Last
-																date to apply is ${criteria.last_date_to_apply }</li>
-														</ul>
-
-														<hr />
-
-													</div>
-
-													<div>
-
-														<a
-															href="applyforjob?c_id=${criteria.criteria_id }&j_id=${job_id}"
-															class="btn btn-block btn-primary"> <span>Apply</span>
-															<i class="ace-icon fa fa-arrow-right bigger-110"></i>
-														</a>
-													</div>
+													<hr />
+													
 												</div>
+
+												<div>
+													 
+													<a href="applyforjob?c_id=${criteria.criteria_id }&j_id=${job_id}" class="btn btn-block btn-primary">
+														
+														<span>Apply</span>
+														<i class="ace-icon fa fa-arrow-right bigger-110"></i>
+													</a>
+												</div>
+											</div>
 											</div>
 											<div class="hr hr-8 dotted"></div>${msg }
 
