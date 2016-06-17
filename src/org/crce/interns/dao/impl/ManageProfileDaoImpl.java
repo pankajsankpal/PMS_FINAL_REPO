@@ -134,7 +134,7 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 
 	public void createProfile(Criteria criteria) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(criteria);	
+		sessionFactory.getCurrentSession().save(criteria);	
 	}
 
 	@SuppressWarnings("unchecked")

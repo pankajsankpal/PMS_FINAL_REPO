@@ -47,7 +47,7 @@
 			</script>
 
 			<div class="navbar-container " id="navbar-container">
-				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+				<!-- <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
 
 					<span class="icon-bar"></span>
@@ -55,7 +55,7 @@
 					<span class="icon-bar"></span>
 
 					<span class="icon-bar"></span>
-				</button>
+				</button> -->
 
 				<div class="navbar-header navbar-green pull-left">
 					<a href="#" class="navbar-brand">
@@ -78,8 +78,10 @@
 						</li> -->
 
 						
-						<!-- Keep this part commented -->
-						<%-- <li class="light-blue">
+
+
+						<li class="light-blue">
+
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<!--  <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />   -->
 								<span class="user-info">
@@ -110,7 +112,9 @@
 								</li>
 
 							</ul>
-						</li> --%>
+
+						</li>
+
 					</ul>
 				</div>
 			</div><!-- /.navbar-container -->
@@ -223,12 +227,13 @@
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						<jsp:directive.include file="Footer.jsp" />
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
 
 
-				<jsp:directive.include file="Footer.jsp" />
+				
 
 	<!-- basic scripts -->
 

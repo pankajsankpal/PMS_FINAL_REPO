@@ -123,10 +123,7 @@ $(document).ready(function(){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#yb").change(function() {
@@ -155,6 +152,10 @@ $(document).ready(function(){
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 			<div class="page-content">
 				<div class="center">
 					<b><h2 class="widget-title grey lighter">&nbsp; &nbsp;
@@ -270,7 +271,7 @@ $(document).ready(function(){
 
 						<div class="col-xs-3">
 							<center>
-								<div class="table-header">Information Technology</div>
+								<div class="table-header">I.T</div>
 
 								<table id="simple-table"
 									class="table table-striped table-bordered table-hover">
@@ -298,7 +299,7 @@ $(document).ready(function(){
 
 						<div class="col-xs-3">
 							<center>
-								<div class="table-header">Electronics</div>
+								<div class="table-header">Elex</div>
 
 								<table id="simple-table"
 									class="table table-striped table-bordered table-hover">
@@ -326,7 +327,7 @@ $(document).ready(function(){
 
 						<div class="col-xs-3">
 							<center>
-								<div class="table-header">Production</div>
+								<div class="table-header">Prod</div>
 
 								<table id="simple-table"
 									class="table table-striped table-bordered table-hover">
@@ -368,12 +369,6 @@ $(document).ready(function(){
 	</div>
 
 	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
-
-
-	<!-- inline scripts related to this page -->
 
 	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>

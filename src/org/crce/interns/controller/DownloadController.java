@@ -122,7 +122,7 @@ public class DownloadController extends HttpServlet {
 			if (!crService.checkRole("Download", roleId))
 				return new ModelAndView("403");
 			else {
-				String directoryPath = basePath + "\\" + role + "\\" + userName;
+				String directoryPath = basePath + "/" + role + "/" + userName;
 				File directory = new File(directoryPath);
 				File[] listOfFiles = directory.listFiles();
 
@@ -168,7 +168,7 @@ public class DownloadController extends HttpServlet {
 	@RequestMapping("/viewCSV")
 	public ModelAndView viewCV(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String directoryPath = basePath + "\\System\\CSV";
+			String directoryPath = basePath + "/System/CSV";
 			File directory = new File(directoryPath);
 			File[] listOfFiles = directory.listFiles();
 
