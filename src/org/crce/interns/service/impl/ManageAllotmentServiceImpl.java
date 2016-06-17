@@ -56,7 +56,7 @@ public class ManageAllotmentServiceImpl implements ManageAllotmentService{
 	
 	//private String saveDirectory = "C:/work/";
 	DirectoryPathBean directoryPathBean = new DirectoryPathBean();
-	String saveDirectory = directoryPathBean.getRoomAllotmentFolder()+ "\\";
+	String saveDirectory = directoryPathBean.getRoomAllotmentFolder()+ "/";
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
