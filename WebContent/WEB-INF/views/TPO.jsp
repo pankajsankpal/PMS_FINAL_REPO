@@ -28,13 +28,13 @@
 			<div class="page-content">
 				<div class="page-header">
 
-					<h3>Welcome ${sessionScope.name} to the profile page</h3>
+					<h1>Welcome ${sessionScope.name} to the profile page</h1>
 
-					<h2>My name is ${sessionScope.name} , I am a
+					<%-- <h2>My name is ${sessionScope.name} , I am a
 						${sessionScope.roleName} from ${sessionScope.branch} branch with
 						username ${sessionScope.userName}</h2>
 					<br />
-
+ --%>
 
 				</div>
 				<!-- /.page-header -->
@@ -53,9 +53,9 @@
 										<li class="active"><a data-toggle="tab" href="#activity">
 												<i class="orange ace-icon fa fa-rss bigger-120"></i>
 												Activity
-										</a></li>
+										</a></li>	
 
-										<li><a data-toggle="tab" href="#uploads"> <i
+										<li><a href="downloads"> <i
 												class="blue ace-icon fa fa-users bigger-120"></i> Uploads
 										</a></li>
 

@@ -30,7 +30,7 @@ description: contains Fields to edit  student profile -->
 	onunload="">
 
 	<jsp:directive.include file="Header.jsp" />
-	<div class="main-container">
+
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs" id="breadcrumbs">
