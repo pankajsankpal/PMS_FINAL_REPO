@@ -19,6 +19,40 @@ description: contains fields to add new faculty member->
 	font-style: italic;
 	font-weight: bold;
 }
+</style>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="../assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+
+
+
+<!-- text fonts -->
+<link rel="stylesheet" href="../assets/fonts/fonts.googleapis.com.css" />
+
+<!-- ace styles -->
+<link rel="stylesheet" href="../assets/css/ace.min.css"
+	class="ace-main-stylesheet" id="main-ace-style" />
+
+
+
+
+
+<!-- inline styles related to this page -->
+
+<!-- ace settings handler -->
+<script src="../assets/js/ace-extra.min.js"></script>
+
+<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+
 </head>
 <body 	onload="noBack();"
     onpageshow="if (event.persisted) noBack();" onunload="">
@@ -73,8 +107,8 @@ description: contains fields to add new faculty member->
 																</tr><br>
 																<tr ">
 																	<td style="padding-top: 10px">Branch :</td>
-																	<td style="padding-top: 10px"><form:select path="branch">
-																			<form:option value="0" label="Select" />
+																	<td style="padding-top: 10px"><form:select path="branch" required="true">
+																			<form:option value="" label="Select" />
 																			<form:option value="Computer Engineering"  label="Computer" />
 																			<form:option value="IT Engineering" label="IT" />
 																			<form:option value="Electronics Engineering" label="Electronics" />
@@ -119,17 +153,16 @@ description: contains fields to add new faculty member->
 								
 								</div>
 							</div>
-							
-
-	
-		<jsp:directive.include file="scripts.jsp" />
-		<jsp:directive.include file="Footer.jsp" />
-	<!-- ace scripts -->
 						</div>
 					</div>
 				</div>
 												
 
+
+	
+		<jsp:directive.include file="scripts.jsp" />
+		<jsp:directive.include file="Footer.jsp" />
+	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	

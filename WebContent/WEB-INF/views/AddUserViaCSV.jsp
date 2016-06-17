@@ -164,8 +164,10 @@ description: contains links to manage system users->
 														<td>To manage the users manually</td>
 													</tr>
 													<tr>
-														<td>1. <a href="addstudent.html">Add Student</a></td></tr>
+														<!--change made @Crystal -->
+														<td>1. <a href="addstudent.html">Add Student</a></td></tr> 
 												    <tr>
+												    	<!--change made @Crystal -->
 														<td>2. <a href="addfaculty.html">Add Faculty</a></td>	</tr>
 													<tr>
 														<td>3.<a  href="removeuser">Remove User</a><br/></td>

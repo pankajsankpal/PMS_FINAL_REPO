@@ -39,8 +39,8 @@ public class AddStudentValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dob", "dob.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mobile", "mobile.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ssc_per", "ssc_per.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "hsc_or_dip_per", "hsc_or_dip_per.required");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ssc_per", "ssc_per.required");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "hsc_or_dip_per", "hsc_or_dip_per.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "gender.required");
 	}
 

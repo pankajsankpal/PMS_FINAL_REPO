@@ -110,8 +110,8 @@ description: contains text fields to add details of student manually->
 												</tr>
 												<tr>
 													<td>Branch :</td>
-													<td><form:select path="branch">
-															<form:option value="0" label="Select" />
+													<td><form:select path="branch" required="true">
+															<form:option value="" label="Select" />
 															<form:option value="Computer Engineering"  label="Computer" />
 															<form:option value="IT Engineering" label="IT" />
 															<form:option value="Electronics Engineering" label="Electronics" />
