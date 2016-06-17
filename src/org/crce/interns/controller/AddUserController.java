@@ -59,7 +59,7 @@ public class AddUserController {
 		try {
 			HttpSession session = request.getSession();
 			String role = (String) session.getAttribute("roleId");
-			if (!crService.checkRole("AddUser", role))
+			if (!crService.checkRole("/addUser", role))
 				return new ModelAndView("403");
 			else
 				return new ModelAndView("AddUserViaCSV");
