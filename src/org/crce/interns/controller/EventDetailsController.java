@@ -14,6 +14,7 @@ import org.crce.interns.beans.InterviewBean;
 import org.crce.interns.beans.Pre_PlacementBean;
 import org.crce.interns.service.EventDetailsService;
 import org.crce.interns.service.NfService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class EventDetailsController {
 	}
 	
 	@RequestMapping(value="fill", method=RequestMethod.POST)
-	public ModelAndView createEvent(HttpServletRequest request,@RequestParam Map<String, String> map) throws ParseException, BatchUpdateException{
+	public ModelAndView createEvent(HttpServletRequest request,@RequestParam Map<String, String> map) throws ParseException, ConstraintViolationException, BatchUpdateException{
 		try{
 		String msg="";
 		ModelAndView model=new ModelAndView("fill-event-success");
