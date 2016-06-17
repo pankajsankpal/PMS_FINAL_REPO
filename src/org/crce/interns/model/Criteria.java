@@ -30,11 +30,8 @@ public class Criteria implements Serializable{
 	 */
 	private static final long serialVersionUID = -6251953336559583204L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name="criteria_id")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id	
+	@Column(name="criteria_id")		//generation type removed @Crystal
 	private Integer criteria_id;
 	
 	@Column(name="eligible_branches")
