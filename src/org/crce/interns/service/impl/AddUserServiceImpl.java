@@ -62,7 +62,7 @@ public class AddUserServiceImpl implements AddUserService {
 			throws Exception {
 		
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-		String saveDirectory = directoryPathBean.getCsvFolder() + "\\"  + timeStamp + "\\";
+		String saveDirectory = directoryPathBean.getCsvFolder() + "/"  + timeStamp + "/";
 		
         
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
