@@ -418,6 +418,7 @@ import org.crce.interns.validators.CriteriaFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -536,6 +537,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				//criteriaBean.setCriteria_id(Integer.parseInt(r.get("criteria_id")));
 				criteriaBean.setCriteria_id(Integer.parseInt(r.get("company_id")));
+				System.out.println(criteriaBean.getCriteria_id());
+				
 				//criteriaBean.setEligible_branches(r.get("eligible_branches"));
 				//System.out.println(r.get("eligible_branches"));
 		

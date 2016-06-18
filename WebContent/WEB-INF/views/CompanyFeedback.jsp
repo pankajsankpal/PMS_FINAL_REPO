@@ -123,6 +123,10 @@
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
+				<jsp:directive.include file="scripts.jsp" />
+
+				<jsp:directive.include file="Footer.jsp" />
+
 			</div>
 			<!-- /.page-content -->
 		</div>
@@ -131,9 +135,6 @@
 	</div>
 	<!-- /.main-content -->
 
-	<jsp:directive.include file="scripts.jsp" />
-
-	<jsp:directive.include file="Footer.jsp" />
 
 
 	<!-- page specific plugin scripts -->

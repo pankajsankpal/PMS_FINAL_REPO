@@ -82,6 +82,13 @@ description: contains the list of all the companies -->
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
+				
+						<jsp:directive.include file="scripts.jsp" />
+	<jsp:directive.include file="Footer.jsp" />
+
+
+
+				
 			</div>
 			<!-- /.page-content -->
 		</div>
@@ -90,11 +97,6 @@ description: contains the list of all the companies -->
 
 	<!-- /.page-header -->
 		
-		<jsp:directive.include file="scripts.jsp" />
-	<jsp:directive.include file="Footer.jsp" />
-
-
-
 
 
 	<!-- inline scripts related to this page -->

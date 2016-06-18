@@ -213,36 +213,8 @@ ${msg}
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Delete</title>
+<title>Delete</title> <
 
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-<!-- page specific plugin styles -->
-
-<!-- text fonts -->
-<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 <style>
 .error {
 	color: #ff0000;
@@ -294,6 +266,11 @@ ${msg}
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+
 
 			<div class="page-content">
 				<div class="page-header"></div>
@@ -382,17 +359,16 @@ ${msg}
 				</div>
 
 
+				<jsp:directive.include file="scripts.jsp" />
+				<jsp:directive.include file="Footer.jsp" />
+
+
+
+
 			</div>
 		</div>
 	</div>
 
-	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
-
-
-	<!-- inline scripts related to this page -->
 
 	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>
