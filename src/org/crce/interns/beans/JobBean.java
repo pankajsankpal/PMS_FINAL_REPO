@@ -19,10 +19,7 @@ public class JobBean {
 	private Date modified_date;
 	private String modified_by;
 	private String year;
-/*<<<<<<< HEAD
-	
-=======
->>>>>>> 6f2e892504fcb2cf2828ea74b9111d1bf4a300ca*/
+
 	public String getJob_id() {
 		return job_id;
 	}
