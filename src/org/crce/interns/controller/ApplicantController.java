@@ -165,7 +165,7 @@ public class ApplicantController {
 	@Autowired
 	SearchApplicantValidator searchApplicantValidator;
 	
-        private static final Logger logger = Logger.getLogger(LoginController.class.getName());
+        private static final Logger logger = Logger.getLogger(ApplicantController.class.getName());
 	/* ---------------------------------------------------------------------------------------------------------------------  */
 	
 	@RequestMapping(value = "/SearchApplicant", method = RequestMethod.GET)

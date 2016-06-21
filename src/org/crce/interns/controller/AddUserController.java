@@ -53,7 +53,7 @@ public class AddUserController {
 	@Autowired
 	private DirectoryService directoryService;
         
-        private static final Logger logger = Logger.getLogger(LoginController.class.getName()); 
+        private static final Logger logger = Logger.getLogger(AddUserController.class.getName()); 
 
 	// this function is used to navigate to AddUserViaCSV.jsp
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
