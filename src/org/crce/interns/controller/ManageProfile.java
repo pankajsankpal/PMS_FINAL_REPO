@@ -400,6 +400,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 //import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
@@ -418,7 +419,6 @@ import org.crce.interns.validators.CriteriaFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -476,7 +476,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	/* -----------------------------------------------------------------------------------------------------------------  */
 
 		// Save new job profile
-	
+		//authorization done - unauthorized call redirected to 405.jsp
 		@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r /*,
 				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2*/) throws Exception {
@@ -665,17 +665,19 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		//Create new job profile
 		
 		@RequestMapping(value = "/addProfile", method = RequestMethod.GET)
-		public ModelAndView createProfile(Model model) {
+		public ModelAndView createProfile(Model model, HttpServletRequest request) {
 		
 			try{
 					// ProfileBean profileBean = new ProfileBean();
-					/*
+					
 					HttpSession session=request.getSession();
 					String roleId=(String)session.getAttribute("roleId");
-					if(!crService.checkRole("ManageProfile", roleId))
-					return new ModelAndView("403");
+					
+					//new authorization
+					if(!crService.checkRole("/addProfile", roleId))
+						return new ModelAndView("403");
 					else
-					*/
+					
 					{
 						JobBean jobBean = new JobBean(); // declaring
 						CriteriaBean criteriaBean = new CriteriaBean();
@@ -727,13 +729,16 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	}
 	*/
 		
-	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ----Authorizations to be done from here!----------------------------------------------------------------------------------------------------------- */
 	
+		
+		
 	@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
 	public ModelAndView listProfile(@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
 	
 		try{
+			
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("profiles",  prepareListofBean(manageProfileService.listProfile(curYear)));
 				//return new ModelAndView("viewProfile", model);

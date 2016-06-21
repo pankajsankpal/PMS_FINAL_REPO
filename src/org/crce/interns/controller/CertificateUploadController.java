@@ -49,21 +49,20 @@ public class CertificateUploadController {
 	@Autowired
 	private CheckRoleService crService;
 	
-	//used to navigate to CertificateUpload.jsp
-	
+		//used to navigate to CertificateUpload.jsp	
 		@RequestMapping("certificateUpload")
 		public ModelAndView welcome(HttpServletRequest request) {
 						
 			HttpSession session=request.getSession();
 			String role =  (String)session.getAttribute("roleId");
 
-			/*if(!crService.checkRole("CertificateUpload", role))
+			if(!crService.checkRole("certificateUpload", role))
 				return new ModelAndView("403");
-			else*/
-
+			else
 				return new ModelAndView("UploadCertificate");
 		}
 
+		//authorization done - unauthorized call redirected to 405.jsp
 		//used to actually upload the file
 		@RequestMapping(value = "/uploadCertificate", method = RequestMethod.POST)
 		public ModelAndView certificateUpload(HttpServletRequest request,
