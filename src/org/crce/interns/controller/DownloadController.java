@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.crce.interns.beans.DirectoryPathBean;
 import org.crce.interns.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,14 +34,15 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller
 public class DownloadController extends HttpServlet {
-	
+
 	@Autowired
 	private CheckRoleService crService;
 	/*
 	 * The base path would be the root directory of all the folders the year
 	 * field will be added soon so final basePath would look like PMS/year
 	 */
-	private String basePath = "C:\\PMS\\2016-2017";
+	DirectoryPathBean dpb = new DirectoryPathBean();
+	private String basePath = dpb.getRoomAllotmentFolder();
 
 	private static final int BUFFER_SIZE = 4096;
 
@@ -59,7 +61,7 @@ public class DownloadController extends HttpServlet {
 			String role = getRole((String) request.getSession().getAttribute("roleId"));
 			String folderName = (String) request.getSession().getAttribute("folderName");
 
-			String fileToBeDownloaded = basePath + "\\Users" + "\\" + role + "\\" + userName + "\\" + folderName + "\\"
+			String fileToBeDownloaded = basePath + "/Users" + "/" + role + "/" + userName + "/" + folderName + "/"
 					+ fileName;
 			System.out.println(fileToBeDownloaded);
 
@@ -113,29 +115,33 @@ public class DownloadController extends HttpServlet {
 	 */
 	@RequestMapping("/viewResumes")
 	public ModelAndView viewFiles(HttpServletRequest request, HttpServletResponse response) {
-		String userName = (String) request.getSession().getAttribute("userName");
-		String role = getRole((String) request.getSession().getAttribute("roleId"));
-		String roleId = (String) request.getSession().getAttribute("roleId");
-		if (!crService.checkRole("Download", roleId))
-			return new ModelAndView("403");
-		else {
-			String directoryPath = basePath + "\\" + role + "\\" + userName;
-			File directory = new File(directoryPath);
-			File[] listOfFiles = directory.listFiles();
+		try {
+			String userName = (String) request.getSession().getAttribute("userName");
+			String role = getRole((String) request.getSession().getAttribute("roleId"));
+			String roleId = (String) request.getSession().getAttribute("roleId");
+			if (!crService.checkRole("Download", roleId))
+				return new ModelAndView("403");
+			else {
+				String directoryPath = basePath + "/" + role + "/" + userName;
+				File directory = new File(directoryPath);
+				File[] listOfFiles = directory.listFiles();
 
-			System.out.println(directoryPath);
+				System.out.println(directoryPath);
 
-			List<String> fileList = new ArrayList<String>();
-			for (File file : listOfFiles) {
-				if (file.isFile()) {
-					System.out.println("FILE : " + file.getName());
-					fileList.add(file.getName());
-				} else
-					System.out.println("DIRECTORY : " + file.getName());
+				List<String> fileList = new ArrayList<String>();
+				for (File file : listOfFiles) {
+					if (file.isFile()) {
+						System.out.println("FILE : " + file.getName());
+						fileList.add(file.getName());
+					} else
+						System.out.println("DIRECTORY : " + file.getName());
+				}
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("fileList", fileList);
+				return new ModelAndView("viewResumes", modelMap);
 			}
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			modelMap.put("fileList", fileList);
-			return new ModelAndView("viewResumes", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500");
 		}
 	}
 
@@ -161,32 +167,37 @@ public class DownloadController extends HttpServlet {
 
 	@RequestMapping("/viewCSV")
 	public ModelAndView viewCV(HttpServletRequest request, HttpServletResponse response) {
-		String directoryPath = basePath + "\\System\\CSV";
-		File directory = new File(directoryPath);
-		File[] listOfFiles = directory.listFiles();
+		try {
+			String directoryPath = basePath + "/System/CSV";
+			File directory = new File(directoryPath);
+			File[] listOfFiles = directory.listFiles();
 
-		System.out.println(directoryPath);
-		System.out.println(listOfFiles);
+			System.out.println(directoryPath);
+			System.out.println(listOfFiles);
 
-		List<String> fileList = new ArrayList<String>();
-		if (listOfFiles != null) {
-			for (File file : listOfFiles) {
-				if (file.isFile()) {
-					System.out.println("FILE : " + file.getName());
-					fileList.add(file.getName());
-				} else
-					System.out.println("DIRECTORY : " + file.getName());
+			List<String> fileList = new ArrayList<String>();
+			if (listOfFiles != null) {
+				for (File file : listOfFiles) {
+					if (file.isFile()) {
+						System.out.println("FILE : " + file.getName());
+						fileList.add(file.getName());
+					} else
+						System.out.println("DIRECTORY : " + file.getName());
+				}
 			}
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("fileList", fileList);
+			return new ModelAndView("viewCSV", modelMap);
+		} catch (Exception e) {
+			return new ModelAndView("500s");
 		}
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("fileList", fileList);
-		return new ModelAndView("viewCSV", modelMap);
 	}
 
 	@RequestMapping("/downloadCSV")
 	public void downloadCSV(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
-		String fileToBeDownloaded = basePath + "\\System\\CSV" + "\\" + fileName;
+		String fileToBeDownloaded = basePath + "/System/CSV" + "/" + fileName;
+
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();
@@ -229,12 +240,12 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping("/downloadCounsellingReport") 	
+
+	@RequestMapping("/downloadCounsellingReport")
 	public void downloadCounsellingReport(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		String folderName = (String) request.getSession().getAttribute("folderName");
-		String fileToBeDownloaded = basePath + "\\System\\" + folderName + "\\" + fileName;
+		String fileToBeDownloaded = basePath + "/System/" + folderName + "/" + fileName;
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();
@@ -277,12 +288,12 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping("/downloadOfferLetter") 	
+
+	@RequestMapping("/downloadOfferLetter")
 	public void downloadOfferLetter(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		String userId = (String) request.getSession().getAttribute("userId");
-		String fileToBeDownloaded = basePath + "\\Users\\Student\\" + userId + "\\Offer Letters\\" + fileName;
+		String fileToBeDownloaded = basePath + "/Users/Student/" + userId + "/Offer Letters/" + fileName;
 		System.out.println(fileToBeDownloaded);
 
 		ServletContext context = request.getServletContext();
@@ -325,7 +336,7 @@ public class DownloadController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping("/downloads")
 	public String StudentNotification() {
 		return "facultyDownloads";

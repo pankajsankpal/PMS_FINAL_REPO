@@ -1,4 +1,3 @@
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -46,6 +45,10 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="addSelectedValidator" class="org.crce.interns.validators.AddSelectedValidator" />
 	<bean id="deleteSelectedValidator" class="org.crce.interns.validators.DeleteSelectedValidator" />
 	<bean id="searchApplicantValidator" class="org.crce.interns.validators.SearchApplicantValidator" />
+	<bean id="allotmentValidator" class="org.crce.interns.validators.AllotmentValidator" />
+	<bean id="addStudentValidator" class="org.crce.interns.validators.AddStudentValidator" />
+	<bean id="addFacultyValidator" class="org.crce.interns.validators.AddFacultyValidator" />
+	
 	<!-- These files don't exist! -->
 	<!-- <bean id="jobValidator" class="org.crce.interns.validators.JobValidator" />
 	<bean id="critValidator" class="org.crce.interns.validators.CriteriaValidator" /> -->

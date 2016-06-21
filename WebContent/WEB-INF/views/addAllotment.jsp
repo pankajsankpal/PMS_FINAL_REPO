@@ -10,6 +10,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Room Allotment</title>
+		<style>
+		.error {
+					color: #ff0000;
+					font-style: italic;
+					font-weight: bold;
+				}
+		</style>
 		<meta name="description" content="Common form elements and layouts" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -25,8 +32,7 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<script src="assets/js/jquery.js"></script>
-		<script type="text/javascript">
-		<!--form validation--> 
+		<!-- <script type="text/javascript">
 		$(document).ready(function() { 
 		$("#validation-form").validate({
 		    rules: {
@@ -59,11 +65,12 @@
 			 }
 		});		
 		});		
-		</script>
-		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+		</script> 
+		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script> -->
 </head>
 <body>
 	<jsp:directive.include file="Header.jsp" />
+	
 	<div class="main-content">
 		<div class="main-content-inner">
 		<div class="breadcrumbs" id="breadcrumbs">
@@ -73,6 +80,7 @@
 			<div class="page-content">
 				<form:form method="POST" id="validation-form" enctype="multipart/form-data" modelAttribute="allotmentBean" action="saveAllotment">
 					<h2 align="center"><u>Room Allotment Details</u></h2>
+					<a href="viewAllotment"><h3 align="center">View Allotment</h3></a>
 					<c:if test="${success==1}">
 						<center><p style="color:green;">Room Allotment details added successfully!</p></center>
 					</c:if>
@@ -115,6 +123,7 @@
         		}
 				%>  --%>
 					</form:select></td>
+					<td><form:errors path="company_name" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -130,6 +139,8 @@
 			<tr>
 				<td><label>Round Name</label></td>
 				<td><form:input name="round" id="round" path="round_no" /></td>
+				<td><form:errors path="round_no" cssClass="error" /></td>
+				
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -145,6 +156,7 @@
 			<tr>
 				<td><label>Room number</label></td>
 				<td><form:input name="room" id="room" path="room_no" /></td>
+				<td><form:errors path="room_no" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -175,6 +187,7 @@
 			<tr>
 				<td><label>Date</label></td>
 				<td><form:input path="drive_date" name="date" id="date" class="form-control date-picker" data-date-format="yyyy/mm/dd"/></td>
+				<td><form:errors path="drive_date" cssClass="error" /></td>
 			</tr>
 			<tr>
 			<td><br/></td>
@@ -204,7 +217,7 @@
 			
 			<tr>
 			
-				<td colspan="2"><input value="Submit" type="submit" value="Save" class="btn btn-info"/></td>
+				<td colspan="2"><input value="Submit" type="submit" class="btn btn-info"/></td>
 				<td ><input type="reset" value="Reset" class="btn btn-info"/></td>
 			</tr>
 		</table>
@@ -212,7 +225,8 @@
 </div>
 </div>
 </div>
-
+<jsp:directive.include file="scripts.jsp" />
+				<jsp:directive.include file="Footer.jsp" />
 	<script src="assets/js/jquery.2.1.1.min.js"></script>
 	<script src="assets/js/jquery.1.11.1.min.js"></script>
 	<script src="assets/js/jquery.validate.js"></script>
@@ -252,7 +266,7 @@
 				});				
 			});	
 		</script>
-				<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+		
+				
 </body>
 </html>

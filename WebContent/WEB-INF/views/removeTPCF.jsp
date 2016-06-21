@@ -58,6 +58,7 @@ description: contain field for removing the student tpc -->
 								<div class="widget-body">
 								 <div class="widget-main" align="center">
 									<h2>Remove Student TPC</h2>
+									<br>
 										<form:form method="POST" action="SubmitRemoveTPCF">
 											<table>
 												<tr>
@@ -71,7 +72,7 @@ description: contain field for removing the student tpc -->
 													</p>
 												</tr>
 												<tr>
-													<td colspan="2"><center><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></center></td>
+													<td colspan="2" style="padding-top: 10px;"><center><input class="btn btn-sm  btn-primary" type="submit" value="Submit" /></center></td>
 												</tr>
 											</table>
 										</form:form>

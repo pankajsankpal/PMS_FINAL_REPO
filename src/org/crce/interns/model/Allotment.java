@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 //Entries of rom_allotment.allotment
 
 @Entity
@@ -21,9 +23,9 @@ public class Allotment implements Serializable{
 	
 	private static final long serialVersionUID = 3924163780669412934L;
 	
+	//don't change this
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO) 	//originally used by @Cheryl3
-	//@GeneratedValue(strategy=GenerationType.IDENTITY) 	//change made @Crystal
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 	//change made @Crystal
 	@Column(name="allotment_id")
 	private Integer allotment_id;
 	

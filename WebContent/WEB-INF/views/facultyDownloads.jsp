@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,132 +9,178 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Faculty Downloads</title>
 
-		<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-		<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-		<link rel="stylesheet" href="assets/css/select2.min.css" />
-	
-		<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-		
-		<link rel="stylesheet" href="assets/css/select2.min.css" />
-		
-		
-		<!-- <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" /> -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
-			
-		
-		<!-- page specific plugin for calander styles -->
-		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-		<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
-		<script src="assets/js/ace-extra.min.js"></script>
-		
-		
+<!-- page specific plugin styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
+<link rel="stylesheet" href="assets/css/select2.min.css" />
+
+<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
+
+<link rel="stylesheet" href="assets/css/select2.min.css" />
+
+
+<!-- <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" /> -->
+<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+
+
+<!-- page specific plugin for calander styles -->
+<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
+<script src="assets/js/ace-extra.min.js"></script>
+
+
 </head>
 <body>
 
-<jsp:directive.include file="Header.jsp" />
+	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<script type="text/javascript">
+					try {
+						ace.settings.check('breadcrumbs', 'fixed')
+					} catch (e) {
+					}
+				</script>
 
-						
 
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
-					<div class="page-content">
-							<div class="page-header">
-							
-							<h1>Welcome  ${sessionScope.name} to the profile page </h1>
-	
-							<%-- <h2>
+
+				<div class="nav-search" id="nav-search">
+					<form class="form-search">
+						<span class="input-icon"> <input type="text"
+							placeholder="Search ..." class="nav-search-input"
+							id="nav-search-input" autocomplete="on" /> <i
+							class="ace-icon fa fa-search nav-search-icon"></i>
+						</span>
+					</form>
+				</div>
+				<!-- /.nav-search -->
+			</div>
+			<div class="page-content">
+				<div class="page-header">
+
+					<h1>Welcome ${sessionScope.name} to the profile page</h1>
+
+					<%-- <h2>
 								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
 							</h2> --%>
-							<br />
-	
-							
-							</div><!-- /.page-header -->
+					<br />
 
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="clearfix">
-									
-								</div>
 
-								<!-- <div class="hr dotted"></div> -->
+				</div>
+				<!-- /.page-header -->
 
-							<div class="show">
-									<div id="user-profile-2" class="user-profile">
-										<div class="tabbable">
-											<ul class="nav nav-tabs padding-18">
-												<li>
-													<a  href="viewprofile">
-														<i class="orange ace-icon fa fa-rss bigger-120"></i>
-														Activity
-													</a>
-												</li>
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
+						<div class="clearfix"></div>
 
-												<li class="active">
-													<a href="#uploads">
-														<i class="blue ace-icon fa fa-users bigger-120"></i>
-														Uploads	
-													</a>
-												</li>
-												
+						<!-- <div class="hr dotted"></div> -->
 
-											</ul>
+						<div class="show">
+							<div id="user-profile-2" class="user-profile">
+								<div class="tabbable">
+									<ul class="nav nav-tabs padding-18">
+										<li><a href="viewprofile"> <i
+												class="orange ace-icon fa fa-rss bigger-120"></i> Activity
+										</a></li>
 
-											<div class="tab-content no-border padding-24">
-												
+										<li class="active"><a href="#uploads"> <i
+												class="blue ace-icon fa fa-users bigger-120"></i> Uploads
+										</a></li>
 
-												<div id="uploads" class="tab-pane in active">
-													<div class="row">
-															<div class="col-xs-12">
-																<!-- PAGE CONTENT BEGINS -->
-																
-																	<div class="widget-box widget-color-green2">
-																		<div class="widget-header">
-																			<h4 class="widget-title lighter smaller">Browse Files to Download</h4>
-																		</div>
-							
-																		<div class="widget-body">
-																			<div class="widget-main padding-8">
-																				<ul id="tree2"></ul>
-																					<c:forEach var="index" items="${indexList}"><li><a href="${pageContext.request.contextPath}/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach>
-																			</div>
-																			
-																			<!-- <button class="btn btn-md btn-block btn-primary pull-right">
+
+									</ul>
+
+									<div class="tab-content no-border padding-24">
+
+
+										<div id="uploads" class="tab-pane in active">
+											<div class="row">
+												<div class="col-xs-12 ">
+													<div class="widget-box">
+														<div class="widget-body">
+															<div class="widget-main" align="center">
+																<div>
+																	<h2>Get students Documents...!</h2>
+																	
+
+																		Student Rollno: <input id="userID" type="text"
+																			name="userId" required><br>
+																		<br> <button class="btn btn-sm btn-success"
+																			onclick="dispFolder()"  >APPLY</button>
+																	
+
+
+																	<%-- <c:if test="${not empty list}">
+																					</br>pick a folder
+																							<ul>
+																								<c:forEach var="l" items="${list}">
+																									
+																									<li><a href="/${pageContext.request.contextPath}/displistoffiles?folder=${l }">${l}</a></li>
+																								</c:forEach>
+																							</ul>
+																					
+																						</c:if> --%>
+
+
+																	<br> <br>
+																</div>
+
+																<div id="folders"></div>
+															</div>
+														</div>
+													</div>
+													<br> <br>
+												</div>
+
+
+											</div>
+
+
+
+											<div class="row">
+												<div class="col-xs-12">
+													<!-- PAGE CONTENT BEGINS -->
+
+													<div class="widget-box widget-color-green2">
+														<div class="widget-header">
+															<h4 class="widget-title lighter smaller">Browse
+																Files to Download</h4>
+														</div>
+
+														<div class="widget-body">
+															<div class="widget-main padding-8">
+																<ul id="tree2"></ul>
+																<%-- <c:forEach var="index" items="${indexList}"><li><a href="${pageContext.request.contextPath}/downloadCounsellingReport?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li></c:forEach> --%>
+																<div id="DisplayTree"></div>
+															</div>
+															<!-- <button class="btn btn-md btn-block btn-primary pull-right">
+
 																			<span class="bigger-110">Upload</span>
 		
 																			<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
 																		</button> -->
-																		</div>
-																		
-																	</div>
-																	
-																
-															</div><!-- /.col -->
-														</div><!-- /.row -->
+														</div>
+
+													</div>
 
 
-													<div class="space-12"></div>
+												</div>
+												<!-- /.col -->
+											</div>
+											<!-- /.row -->
 
-												</div><!-- #end of uploads -->
-												
-												
-												
-												<!-- <div id="activity" class="tab-pane in active">
+
+											<div class="space-12"></div>
+
+										</div>
+										<!-- #end of uploads -->
+
+
+
+										<!-- <div id="activity" class="tab-pane in active">
 													 <div class="row ">
 														
 														
@@ -164,32 +210,40 @@
 											</div>
 								
 							 -->
-										
-										</div><!-- end of tabbable -->
-									</div><!-- end of user-profile-2 -->
-								</div><!-- end of show -->
-							</div><!-- /.col -->
 
-						
-								
-							</div><!-- /.row -->
-						</div><!-- end of page-content -->
-					
-
-				
-			
-			</div><!-- /.main-content-inner-->
-		
-</div><!-- main-content -->
-			
-
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
+									</div>
+									<!-- end of tabbable -->
+								</div>
+								<!-- end of user-profile-2 -->
+							</div>
+							<!-- end of show -->
+						</div>
+						<!-- /.col -->
 
 
-				<!-- page specific plugin scripts -->
+
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- end of page-content -->
+
+
+
+
+			</div>
+			<!-- /.main-content-inner-->
+
+		</div>
+		<!-- main-content -->
+
+
+		<jsp:directive.include file="Footer.jsp" />
+		<jsp:directive.include file="scripts.jsp" />
+
+
+		<!-- page specific plugin scripts -->
 		<script src="assets/js/fuelux.tree.min.js"></script>
-		
+
 		<script src="assets/js/dropzone.min.js"></script>
 		<!--[if lte IE 8]>
 		  <script src="assets/js/excanvas.min.js"></script>
@@ -209,152 +263,285 @@
 		<script src="assets/js/bootstrap-editable.min.js"></script>
 		<script src="assets/js/ace-editable.min.js"></script>
 		<script src="assets/js/jquery.maskedinput.min.js"></script>
-				
+
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 
 
 		<!-- page specific plugin scripts -->
-		
-		
+
+
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-		
-		
+
+
 		<!-- inline scripts related to this page -->
-			<script type="text/javascript">
+		<script type="text/javascript">
+
+		 function x(subfolder){
+			// alert("HI  "+ subfolder);
+			//var idvalue= $('#userID').val();
+			$.ajax({
+				url: 'displistoffiles' ,
+				data:'folder='+subfolder,
+				dataType : 'json',
+				success : function(data){
+					console.log("inside subfolder...")
+					console.log(data.length);
+					for (i = 0; i < data.length; i++)
+						console.log(data[i]);
+					// times = data.length;
+					// console.log("times: " + times);
+					$('#folders').text('');
+					$.each(data, function() {
+						console.log("print...");
+						$('#folders').append(
+								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li>'
+								);
+					});
+				}
+				
+			});
+		} 
+			
+			
+			function dispFolder(){
+				var idvalue= $('#userID').val();
+				$.ajax({
+					url: 'dispAllfolder' ,
+					data:'userId='+idvalue,
+					dataType : 'json',
+					success : function(data){
+						
+						console.log(data.length);
+						for (i = 0; i < data.length; i++)
+							console.log(data[i]);
+						// times = data.length;
+						// console.log("times: " + times);
+						$('#folders').text('');
+						$.each(data, function() {
+							console.log("print..."+this.list);
+							$('#folders').append(
+									'<li><a id ="folderName" onClick="x(this.list);">'+ this.list+'</a></li>'
+									);
+						});
+					}
+					
+				});
+			} 
+
+			
+
+			function displayCRS() {
+
+				$.ajax({
+					url : 'dispCounselingReport',
+					data : 'folder=Counseling Report-Student',
+					dataType : 'json',
+					success : function(data) {
+						console.log(data.length);
+						for (i = 0; i < data.length; i++)
+							console.log(data[i]);
+						//times = data.length;
+						//console.log("times: " + times);
+						$('#DisplayTree').text('');
+						$.each(data, function() {
+							$('#DisplayTree')
+									.append(
+											'<li><a href="${pageContext.request.contextPath}/downloadCounsellingReport?fileName='
+													+ this.actualFileNames
+													+ ' "> '
+													+ this.nameToDisplay
+													+ ' </a></li>');
+						});
+					}
+				});
+
+				//initiateDemoData();
+			}
+
+			function displayCRF() {
+
+				$.ajax({
+					url : 'dispCounselingReport',
+					data : 'folder=Counseling Report-Ftpc',
+					dataType : 'json',
+					success : function(data) {
+						console.log(data.length);
+						for (i = 0; i < data.length; i++)
+							console.log(data[i]);
+						//times = data.length;
+						//console.log("times: " + times);
+						$('#DisplayTree').text('');
+						$.each(data, function() {
+							$('#DisplayTree')
+									.append(
+											'<li><a href="${pageContext.request.contextPath}/downloadCounsellingReport?fileName='
+													+ this.actualFileNames
+													+ ' "> '
+													+ this.nameToDisplay
+													+ ' </a></li>');
+						});
+					}
+				});
+
+				//initiateDemoData();
+			}
+
 			jQuery(function($) {
 
 				var sampleData = initiateDemoData();//see below
-				
-				
-				$('#tree2').ace_tree({
-					dataSource: sampleData['dataSource2'] ,
-					loadingHTML:'<div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>',
-					'open-icon' : 'ace-icon fa fa-folder-open',
-					'close-icon' : 'ace-icon fa fa-folder',
-					'selectable' : false,
-					multiSelect: false,
-					'selected-icon' : null,
-					'unselected-icon' : null
-				});
 
-				function initiateDemoData(){
-					
+				$('#tree2')
+						.ace_tree(
+								{
+									dataSource : sampleData['dataSource2'],
+									loadingHTML : '<div class="tree-loading"><i class="ace-icon fa fa-refresh fa-spin blue"></i></div>',
+									'open-icon' : 'ace-icon fa fa-folder-open',
+									'close-icon' : 'ace-icon fa fa-folder',
+									'selectable' : false,
+									multiSelect : false,
+									'selected-icon' : null,
+									'unselected-icon' : null
+								});
+
+				function initiateDemoData() {
+					//console.log("inside other fnc: "+ times);
 					var tree_data_2 = {
-							'marksheets' : {text: '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>', type: 'folder', 'icon-class':'red'}	,
-							'resume' : {text: '<a href="${pageContext.request.contextPath}/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>', type: 'folder', 'icon-class':'orange'}	,
-							
-						}
-						/* tree_data_2['resume']['additionalParameters'] = {
-							'children' : [
-								{text: '', type: 'item'},
-									
-								 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
-								
-							]
-						} */
-						/* tree_data_2['video']['additionalParameters'] = {
-							'children' : [
-								{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
-								{text: '<i class="ace-icon fa fa-film blue"></i> movie2.avi', type: 'item'},
-								{text: '<i class="ace-icon fa fa-film blue"></i> movie3.avi', type: 'item'},
-								{text: '<i class="ace-icon fa fa-film blue"></i> movie4.avi', type: 'item'},
-								{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
-							]
-						} */
-						/* tree_data_2['marksheets']['additionalParameters'] = {
-							'children' : {
-								'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
-								'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
-								'sem1' : {text: 'sem_1', type: 'folder', 'icon-class':'pink'},
-								'sem3' : {text: 'sem_3', type: 'folder', 'icon-class':'pink'},
-								'sem6' : {text: 'sem_6', type: 'folder', 'icon-class':'pink'}
-							}
-						}
-						tree_data_2['marksheets']['additionalParameters']['children']['ssc']['additionalParameters'] = {
-							'children' : [
-								{text: '<i class="ace-icon fa fa-file-text green"></i> sample1.pdf <a href="#">download</a>', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text green"></i>sample2.pdf', type: 'item'},
-								
-							]
-						}
-						tree_data_2['marksheets']['additionalParameters']['children']['hsc']['additionalParameters'] = {
-							'children' : [
-								{text: '<i class="ace-icon fa  fa-file-text red"></i> doc1', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
-								
-							]
-						} */
 
-/* 
-						tree_data_2['documents']['additionalParameters'] = {
-							'children' : [
-								{text: '<i class="ace-icon fa fa-file-text red"></i> document1.pdf', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text grey"></i> document2.doc', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text grey"></i> document3.doc', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text red"></i> document4.pdf', type: 'item'},
-								{text: '<i class="ace-icon fa fa-file-text grey"></i> document5.doc', type: 'item'}
-							]
-						}
+						'marksheets' : {
+							text : '<button onClick="displayCRS()">Counseling Report-Student</button>',
+							type : 'folder',
+							'icon-class' : 'red'
+						},
 
-						tree_data_2['backup']['additionalParameters'] = {
-							'children' : [
-								{text: '<i class="ace-icon fa fa-archive brown"></i> backup1.zip', type: 'item'},
-								{text: '<i class="ace-icon fa fa-archive brown"></i> backup2.zip', type: 'item'},
-								{text: '<i class="ace-icon fa fa-archive brown"></i> backup3.zip', type: 'item'},
-								{text: '<i class="ace-icon fa fa-archive brown"></i> backup4.zip', type: 'item'}
-							]
-						} */
-						
+						'resume' : {
+							text : '<button onClick="displayCRF()">Counseling Report-faculty</button>',
+							type : 'folder',
+							'icon-class' : 'orange'
+						},
+
+					}
+
+					/*
+					<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Ftpc">Counseling Report-faculty</a>
+					<a href="/PMS_v1/dispCounselingReport?folder=Counseling Report-Student">Counseling Report-Student</a>
 					
-					
-						var dataSource2 = function(options, callback){
-							var $data = null
-							if(!("text" in options) && !("type" in options)){
-								$data = tree_data_2;//the root tree
-								callback({ data: $data });
-								return;
-							}
-							else if("type" in options && options.type == "folder") {
-								if("additionalParameters" in options && "children" in options.additionalParameters)
-									$data = options.additionalParameters.children || {};
-								else $data = {}//no data
-							}
-							
-							if($data != null)//this setTimeout is only for mimicking some random delay
-								setTimeout(function(){callback({ data: $data });} , parseInt(Math.random() * 500) + 200);
+					tree_data_2['resume']['additionalParameters'] = {
+						'children' : [
+							{text: '', type: 'item'},
 
-							//we have used static data here
-							//but you can retrieve your data dynamically from a server using ajax call
-							//checkout examples/treeview.html and examples/treeview.js for more info
+								
+							 {text: '<i class="ace-icon fa fa-file-text blue"></i> TCS resume.doc', type: 'item'}, 
+							
+						]
+					} */
+					/* tree_data_2['video']['additionalParameters'] = {
+						'children' : [
+							{text: '<i class="ace-icon fa fa-film blue"></i> movie1.avi', type: 'item'},
+							{text: '<i class="ace-icon fa fa-film blue"></i> movie2.avi', type: 'item'},
+							{text: '<i class="ace-icon fa fa-film blue"></i> movie3.avi', type: 'item'},
+							{text: '<i class="ace-icon fa fa-film blue"></i> movie4.avi', type: 'item'},
+							{text: '<i class="ace-icon fa fa-film blue"></i> movie5.avi', type: 'item'}
+						]
+					} */
+					/* tree_data_2['marksheets']['additionalParameters'] = {
+						'children' : {
+							'ssc' : {text: 'SSC', type: 'folder', 'icon-class':'pink'} , 
+							'hsc' : {text: 'HSC', type: 'folder', 'icon-class':'pink'}, 
+							'sem1' : {text: 'sem_1', type: 'folder', 'icon-class':'pink'},
+							'sem3' : {text: 'sem_3', type: 'folder', 'icon-class':'pink'},
+							'sem6' : {text: 'sem_6', type: 'folder', 'icon-class':'pink'}
+						}
+					}
+					tree_data_2['marksheets']['additionalParameters']['children']['ssc']['additionalParameters'] = {
+						'children' : [
+							{text: '<i class="ace-icon fa fa-file-text green"></i> sample1.pdf <a href="#">download</a>', type: 'item'},
+							{text: '<i class="ace-icon fa fa-file-text green"></i>sample2.pdf', type: 'item'},
+							
+						]
+					}
+					tree_data_2['marksheets']['additionalParameters']['children']['hsc']['additionalParameters'] = {
+						'children' : [
+							{text: '<i class="ace-icon fa  fa-file-text red"></i> doc1', type: 'item'},
+							{text: '<i class="ace-icon fa fa-file-text grey"></i> doc2', type: 'item'},
+							
+						]
+					} */
+
+					/* 
+					 tree_data_2['documents']['additionalParameters'] = {
+					 'children' : [
+					 {text: '<i class="ace-icon fa fa-file-text red"></i> document1.pdf', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-file-text grey"></i> document2.doc', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-file-text grey"></i> document3.doc', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-file-text red"></i> document4.pdf', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-file-text grey"></i> document5.doc', type: 'item'}
+					 ]
+					 }
+
+					 tree_data_2['backup']['additionalParameters'] = {
+					 'children' : [
+					 {text: '<i class="ace-icon fa fa-archive brown"></i> backup1.zip', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-archive brown"></i> backup2.zip', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-archive brown"></i> backup3.zip', type: 'item'},
+					 {text: '<i class="ace-icon fa fa-archive brown"></i> backup4.zip', type: 'item'}
+					 ]
+					 } */
+
+					var dataSource2 = function(options, callback) {
+						var $data = null
+						if (!("text" in options) && !("type" in options)) {
+							$data = tree_data_2;//the root tree
+							callback({
+								data : $data
+							});
+							return;
+						} else if ("type" in options
+								&& options.type == "folder") {
+							if ("additionalParameters" in options
+									&& "children" in options.additionalParameters)
+								$data = options.additionalParameters.children
+										|| {};
+							else
+								$data = {}//no data
 						}
 
-						
-						return { 'dataSource2' : dataSource2}
+						if ($data != null)//this setTimeout is only for mimicking some random delay
+							setTimeout(function() {
+								callback({
+									data : $data
+								});
+							}, parseInt(Math.random() * 500) + 200);
+
+						//we have used static data here
+						//but you can retrieve your data dynamically from a server using ajax call
+						//checkout examples/treeview.html and examples/treeview.js for more info
+					}
+
+					return {
+						'dataSource2' : dataSource2
+					}
 
 				}
 
-
-
-
-})
+			})
 		</script>
-	
-	
-	
-	<!--script for changing the profile image and model for buttons -->
-	
+
+
+
+		<!--script for changing the profile image and model for buttons -->
 </body>
 </html>
 
 
 
 
- 
- <%--		backend jsp page
+
+<%--		backend jsp page
  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>

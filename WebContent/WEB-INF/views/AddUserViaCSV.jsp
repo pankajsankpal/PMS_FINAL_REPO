@@ -30,7 +30,11 @@ description: contains links to manage system users->
 	margin: 16px;
 }
 </style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <title>Add User via Csv file..</title>
 
@@ -160,8 +164,10 @@ description: contains links to manage system users->
 														<td>To manage the users manually</td>
 													</tr>
 													<tr>
-														<td>1. <a href="addstudent.html">Add Student</a></td></tr>
+														<!--change made @Crystal -->
+														<td>1. <a href="addstudent.html">Add Student</a></td></tr> 
 												    <tr>
+												    	<!--change made @Crystal -->
 														<td>2. <a href="addfaculty.html">Add Faculty</a></td>	</tr>
 													<tr>
 														<td>3.<a  href="removeuser">Remove User</a><br/></td>
@@ -188,6 +194,9 @@ description: contains links to manage system users->
 													</tr>
 													<tr>
 														<td>8.<a href="RemoveTPC.html">Remove TPC </a><br/></td>
+													</tr>
+													<tr>
+														<td>9.<a href="manageselected.html">Manage List of Selected Applicants of all Companies</a><br /></td>
 													</tr>	
 													</c:if>
 												</table>
@@ -204,18 +213,20 @@ description: contains links to manage system users->
 								</div>
 							</div>
 						</div>
+						<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
 					</div>
 				</div>
 
-		<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
-	<!-- ace scripts -->
+		
+	
+</div>
+<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	
 		<!-- /.main-container -->
 
-</div>
 </body>
 </html>
 

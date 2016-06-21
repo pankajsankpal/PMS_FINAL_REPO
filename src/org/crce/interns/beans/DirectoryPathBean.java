@@ -22,25 +22,26 @@ public class DirectoryPathBean {
 
     String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-"+ Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
 
-    private final String rootContext="C:\\PMS\\"+year;
-    private final String studentFolder=rootContext + "\\Users\\Student";
-    private final String facultyFolder=rootContext + "\\Users\\Faculty";
-    private final String tpoFolder = rootContext + "\\Users\\TPO";
-    private final String adminFolder = rootContext + "\\Users\\Admin";
-    private final String companyFolder = rootContext + "\\Users\\Company";
-    private final String csvFolder = rootContext + "\\System\\CSV";
-    private final String logFolder = rootContext + "\\System\\Logs";
-    private final String emailFolder= rootContext + "\\System\\Email_Temp";
-    private final String roomAllotmentFolder = rootContext + "\\System\\Room Allotment"; //code added @Crystal
-    private final String counselingReportStudentFolder = rootContext + "\\System\\Counseling Report-Student"; //code added @Crystal
-    private final String counselingReportFtpcFolder = rootContext + "\\System\\Counseling Report-Ftpc"; //code added @Crystal
-	private final String systemFolder = rootContext + "\\System";  //code added @Leon
+    //private final String rootContext="C:\\PMS\\"+year;
+    private final String rootContext="home/universe/PMS/"+year;
+    private final String studentFolder=rootContext + "/Users/Student";
+    private final String facultyFolder=rootContext + "/Users/Faculty";
+    private final String tpoFolder = rootContext + "/Users/TPO";
+    private final String adminFolder = rootContext + "/Users/Admin";
+    private final String companyFolder = rootContext + "/Users/Company";
+    private final String csvFolder = rootContext + "/System/CSV";
+    private final String logFolder = rootContext + "/System/Logs";
+    private final String emailFolder= rootContext + "/System/Email_Temp";
+    private final String roomAllotmentFolder = rootContext + "/System/Room Allotment"; //code added @Crystal
+    private final String counselingReportStudentFolder = rootContext + "/System/Counseling Report-Student"; //code added @Crystal
+    private final String counselingReportFtpcFolder = rootContext + "/System/Counseling Report-Ftpc"; //code added @Crystal
+	private final String systemFolder = rootContext + "/System";  //code added @Leon
 
-	private final String copyFolder = "C:\\Users\\Crystal\\Desktop"; //code added @Crystal
+/*	private final String copyFolder = "C:\\Users\\Crystal\\Desktop"; //code added @Crystal
 	    
 			public String getCopyFolder() {
 				return copyFolder;
-			}
+			}    */
 	
 	public String getCounselingReportStudentFolder() {
 		return counselingReportStudentFolder;
