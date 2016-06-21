@@ -55,31 +55,9 @@ description: contains fields to add new faculty member->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -102,13 +80,16 @@ description: contains fields to add new faculty member->
 										<div class="widget-body">
 										 <div class="widget-main" align="center">
 											<div>
-											<h2>Enter User ID to Remove User ....!</h2><br>
+											<h3>Enter User ID to Remove any User from the system </h3><br>
 											
 											<c:if test="${success==1}">
 												<p style="color:green;">User removed successfully!</p>
 											</c:if>
-											<c:if test="${error==1}">
+											<%-- <c:if test="${error==1}">
 												<p style="color:red;">This user does not exist in the database!</p>
+											</c:if> --%>
+											<c:if test="${no_user==1}">
+												<font size="5" color="red" face="verdana">This user does not exist in the database!</font>
 											</c:if>
 													<form method="POST" action="removeUser">
 													Enter User ID:   <input id="username" name="username" type="text" value="" required/><br/><br/>

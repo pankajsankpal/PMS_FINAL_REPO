@@ -42,7 +42,7 @@ DirectoryPathBean directoryPathBean = new DirectoryPathBean();
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		
 		//get the path for saving the resume
-		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Offer Letters\\";
+		String saveDirectory = directoryPathBean.getStudentFolder() + "/" + username + "/Offer Letters/";
 		
 
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();

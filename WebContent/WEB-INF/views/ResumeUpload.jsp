@@ -28,38 +28,6 @@
 	margin: 16px;
 }
 </style>
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="../assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-<!-- page specific plugin styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-
-
-
-<!-- text fonts -->
-<link rel="stylesheet" href="../assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="../assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="../assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
 
 </head>
 <body 	onload="noBack();"
@@ -69,31 +37,9 @@
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -151,21 +97,24 @@
 								</div>
 							</div>
 						</div>
+						<jsp:directive.include file="scripts.jsp" />
+		<jsp:directive.include file="Footer.jsp" />
+	
 					</div>
 				</div>
 												
 
 
 	
-		<jsp:directive.include file="scripts.jsp" />
-		<jsp:directive.include file="Footer.jsp" />
-	
+		
 	
 		<!-- /.main-container -->
 
 </div>
 	
-	
+
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 
 
 </body>

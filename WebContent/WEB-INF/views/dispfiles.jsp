@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
@@ -14,7 +14,7 @@
 		<ul>
 			<c:forEach var="index" items="${indexList}">
 				
-				<li><a href="/PMS_v1/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
+				<li><a href="${pageContext.request.contextPath}/downloadResume?fileName=${actualFileNames[index]}">${nameToDisplay[index]}</a></li>
 			</c:forEach>
 		</ul>
 
@@ -23,4 +23,4 @@
 
 
 </body>
-</html>
+</html> --%>

@@ -14,7 +14,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 <title>Remove TPO</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
 <style>
 .error {
 	color: #ff0000;
@@ -24,21 +30,27 @@
 </style>
 </head>
 <body>
-	<jsp:directive.include file="Header.jsp" />
-	<div class="main-content">
-		<div class="main-content-inner">
-			<div class="page-content">
-				<div class="page-header">
-					<h2 class="widget-title grey lighter">&nbsp; &nbsp; &nbsp;
-						&nbsp; Remove TPO</h2>
-				</div>
-				<div class="center">
-					<a href="AdminHome"><h3>Home</h3></a>
-				</div>
-				<div class="space"></div>
-				<div class="center">
-					<form:form method="POST" action="SubmitRemoveTPO">
-						<table align="center">
+
+			<jsp:directive.include file="Header.jsp" />
+			<div class="main-content">
+				<div class="main-content-inner"><div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
+					<div class="page-content">
+						<div class="page-header">
+							<h2 class="widget-title grey lighter">
+								&nbsp; &nbsp; &nbsp; &nbsp; 
+									Remove TPO
+							</h2>
+						</div>
+						<div class="center">
+							<a href="AdminHome"><h3>Home</h3></a>
+						</div>
+						<div class="space"></div>
+						<div class="center">
+							<form:form method="POST" action="SubmitRemoveTPO">
+							<table align="center">
 							<tr>
 								<td><form:label path="userName">
 										<h3>User name:</h3>
@@ -59,10 +71,12 @@
 						</table>
 					</form:form>
 				</div>
+				<jsp:directive.include file="Footer.jsp" />
+	<jsp:directive.include file="scripts.jsp" />
 			</div>
 		</div>
 	</div>
-	<jsp:directive.include file="Footer.jsp" />
-	<jsp:directive.include file="scripts.jsp" />
+	<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 </body>
 </html>

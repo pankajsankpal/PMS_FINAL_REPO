@@ -213,71 +213,7 @@ public class LoginController{
 
    	//----------------------------------------------------------------------------------------------------------	
 
-	/*
-=======
 
->>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
-	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
-	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
-			Map model) 
-	{
-
-		try
-		{
-			HttpSession session=request.getSession();
-			String roleId=(String)session.getAttribute("roleId");
-			String user=(String)session.getAttribute("userName");
-			String name=loginService.checkSR(user);
-		
-		
-			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
-				return new ModelAndView("403");
-			else
-<<<<<<< HEAD
-
-		String roleId=(String)request.getSession(true).getAttribute("roleId");
-		String user=(String)request.getSession(true).getAttribute("userName");
-		
-		String name=loginService.checkSR(user);
-		
-		
-		if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
-			return new ModelAndView("403");
-		else
-		{
-			String userName=notify.getUserName();
-			int update=loginService.getStudentByid(userName);
-
-			//System.out.println("hello");
-			if(update==0)
-
-=======
->>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
-			{
-				String userName=notify.getUserName();
-				int update=loginService.getStudentByid(userName);
-
-			//System.out.println("hello");
-				if(update==0)
-
-				{
-					
-						model.put("notify",notify);
-						return new ModelAndView("FacultyTPC");
-				}
-				else
-					return new ModelAndView("success");
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-			ModelAndView model1=new ModelAndView("500");
-			model1.addObject("exception", "Notify form");
-			return model1;
-		}
-	}
-	*/
 	
    	//----------------------------------------------------------------------------------------------------------
 }

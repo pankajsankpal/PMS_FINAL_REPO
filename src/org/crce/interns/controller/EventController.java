@@ -7,6 +7,8 @@
  * */
 package org.crce.interns.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class EventController {
 		return new ModelAndView("insertMonth");
 	}
 
-	@RequestMapping(value = "/SubmitMonth", method = RequestMethod.POST)
+	@RequestMapping(value = "/SubmitMonth", method = RequestMethod.GET)
 	public ModelAndView submitMonth(@RequestParam("month") Integer month) {
 		System.out.println("In Controller : Submit Month");
 		
@@ -67,7 +69,7 @@ public class EventController {
 		if (modelMap.containsValue(null))// If no events in the selected month display this
 		{
 			model = new ModelAndView("insertMonth");
-			erroMesg += "No events in the selected month";
+			erroMesg += "No events in this month";
 			model.addObject("erroMesg", erroMesg);
 			// System.out.println("No events in selected month");
 			// return new ModelAndView("noEvents");
@@ -80,6 +82,18 @@ public class EventController {
 		System.out.println("Companies Name Map Size" + companyMap.size());
 		modelMap.put("companyMap", companyMap);
 		model = new ModelAndView("viewEvents", modelMap);
+		String msgcurrevent = new String();
+		Date d =new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d);
+		int currmonth = cal.get(Calendar.MONTH);
+		if(currmonth == (months-1)){
+			msgcurrevent = msgcurrevent.concat("for current month");
+			
+		}
+		
+		
+		model.addObject("msgcurrevent",msgcurrevent);
 		
 		// return new ModelAndView("viewEvents", modelMap);
 		}

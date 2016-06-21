@@ -5,42 +5,19 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>PMS Application</title>
+<title>Applied List</title>
 
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-<!-- page specific plugin styles -->
-
-<!-- text fonts -->
-<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 
 </head>
 <body>
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+
+			<jsp:directive.include file="searchheader.jsp" />
+		</div>
+
 		<div class="main-content-inner">
 
 			<div class="page-content">
@@ -65,7 +42,7 @@
 	</select><br>
 	<input type="submit" value="submit"/> 
 </form> --%>
-			
+
 				<div class="clearfix">
 
 					<div class="row">
@@ -84,15 +61,15 @@
 															name="company">
 																<!-- <option value="jpmorgan">JP Morgan</option> -->
 																<option value="JP Morgan">JP Morgan</option>
-																<option value="accenture">Accenture</option>
+																<option value="Accenture">Accenture</option>
 																<!-- <option value="tcs">TCS</option> -->
-																<option value="TCS">TCS</option>
-																<option value="larsentubro">L&T</option>
-																<option value="morganstanley">Morgan & Stanley</option>
-																<option value="godrej">Godrej</option>
-																<option value="directi">Direct-I</option>
-																<option value="zs">ZS</option>
-														</select>
+																<option value="Tata Consultancy Services">TCS</option>
+																<option value="Laursen & Tubro">L&T</option>
+																<option value="Morgan Stanley">Morgan & Stanley</option>
+																<option value="Godrej">Godrej</option>
+																<option value="Direct i">Direct-I</option>
+																<option value="ZS Associates">ZS</option>
+														</select> <input name="year" hidden />
 															<button class="btn btn-xs btn-primary" type="submit">
 																<i class="ace-icon fa fa-check bigger-110"></i> Submit
 															</button></td>
@@ -118,19 +95,12 @@
 				</div>
 
 				<jsp:directive.include file="Footer.jsp" />
+				<jsp:directive.include file="scripts.jsp" />
 
 
 			</div>
 		</div>
 	</div>
-
-	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
-
-
-	<!-- inline scripts related to this page -->
 
 	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>

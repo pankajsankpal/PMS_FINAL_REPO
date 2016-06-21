@@ -18,13 +18,10 @@
 	<jsp:directive.include file="Header.jsp" />
 
 	<div class="main-container" id="main-container">
-		<script type="text/javascript">
-			try {
-				ace.settings.check('main-container', 'fixed')
-			} catch (e) {
-			}
-		</script>
+		<div class="breadcrumbs" id="breadcrumbs">
 
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 		
 
 		<div class="page-header">

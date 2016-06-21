@@ -54,7 +54,7 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		
 		//get the path for saving the resume
-		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Resume\\";
+		String saveDirectory = directoryPathBean.getStudentFolder() + "/" + username + "/Resume/";
 		
 
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
@@ -93,8 +93,8 @@ public class ResumeUploadServiceImpl implements ResumeUploadService {
 				//call to the dao 
 				//resumeUploadDao.addNewResume(username,newName);		//not used
 				
-				String newFileName = f2.getName();
-				copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);
+			/*	String newFileName = f2.getName();
+				copyFileService.copyFileorDirectory(newName, "C:/Users/Crystal/Desktop/"+newFileName);  */
 			}
 					
 				

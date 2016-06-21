@@ -13,7 +13,13 @@ description: contains fields to add new faculty member->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Add Faculty Members Manually </title>
-
+<style>
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
+</style>
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -55,31 +61,9 @@ description: contains fields to add new faculty member->
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
 
-						<!-- <ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">More Pages</a>
-							</li>
-							<li class="active">User Profile</li>
-						</ul>/.breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="on" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
-					</div>
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 
 					<div class="page-content">
 						
@@ -114,15 +98,17 @@ description: contains fields to add new faculty member->
 																<tr >
 																	<td>ID :</td>
 																	<td><form:input path="userId" /></td>
+																	<td><form:errors path="userId" cssClass="error" /></td>
 																</tr><br>
 																<tr >
 																	<td>Name :</td>
 																	<td style="padding-top: 10px"><form:input path="name" /></td>
+																	<td><form:errors path="name" cssClass="error" /></td>
 																</tr><br>
 																<tr ">
 																	<td style="padding-top: 10px">Branch :</td>
-																	<td style="padding-top: 10px"><form:select path="branch">
-																			<form:option value="0" label="Select" />
+																	<td style="padding-top: 10px"><form:select path="branch" required="true">
+																			<form:option value="" label="Select" />
 																			<form:option value="Computer Engineering"  label="Computer" />
 																			<form:option value="IT Engineering" label="IT" />
 																			<form:option value="Electronics Engineering" label="Electronics" />
@@ -135,11 +121,13 @@ description: contains fields to add new faculty member->
 																	<td>Gender :</td>
 																	<td><form:radiobutton path="gender" value="MALE" label="Male" />
 																		<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+																		<td><form:errors path="gender" cssClass="error" /></td>
 																</tr>
 																
 																<tr>
 																	<td>Email ID :</td>
 																	<td><form:input path="email" /></td>
+																	<td><form:errors path="email" cssClass="error" /></td>
 																</tr>
 																<tr><td></td></tr>
 																

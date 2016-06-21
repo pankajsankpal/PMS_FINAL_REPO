@@ -22,131 +22,23 @@ description: displays the job when the user clocks on the job post image-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<%-- <c:if test="${companyname=='jpmorgan'}">
-		<c:set var="propercompanyname" value="JP Morgan" />
-		<c:set var="color" value="orange" />
-		<c:set var="buttoncolor" value="warning" />
-		<c:set var="jobcategory" value="Non-Dream" />
-		<c:set var="jobdescription" value="DataBase expert" />
-		<c:set var="skillsrequired" value="Angular,CSS,Java-Script" />
-		<c:set var="ctc" value="5.5 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='directi'}">
-		<c:set var="propercompanyname" value="Direct i" />
-		<c:set var="color" value="red" />
-		<c:set var="buttoncolor" value="danger" />
-		<c:set var="jobcategory" value="Dream" />
-		<c:set var="jobdescription" value=" Developer" />
-		<c:set var="skillsrequired" value="Java" />
-		<c:set var="ctc" value="6 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='morganstanley'}">
-		<c:set var="propercompanyname" value="MorganStanley" />
-		<c:set var="color" value="green" />
-		<c:set var="buttoncolor" value="success" />
-		<c:set var="jobcategory" value="Non-Dream" />
-		<c:set var="jobdescription" value="UI- Developer" />
-		<c:set var="skillsrequired" value="Angular,CSS,Java-Script" />
-		<c:set var="ctc" value="3.6 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='larsentoubro'}">
-		<c:set var="propercompanyname" value="Larsen&Toubro" />
-		<c:set var="color" value="grey" />
-		<c:set var="buttoncolor" value="inverse" />
-		<c:set var="jobcategory" value="Non-Dream" />
-		<c:set var="jobdescription" value="Tester" />
-		<c:set var="skillsrequired" value="Angular,CSS,Java-Script" />
-		<c:set var="ctc" value="4.5 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='accenture'}">
-		<c:set var="propercompanyname" value="Accenture" />
-		<c:set var="color" value="orange" />
-		<c:set var="buttoncolor" value="warning" />
-		<c:set var="jobcategory" value="Dream" />
-		<c:set var="jobdescription" value="DataBase Expert" />
-		<c:set var="skillsrequired" value="Java,MYSQL" />
-		<c:set var="ctc" value="2.5 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='godrej'}">
-		<c:set var="propercompanyname" value="Godrej" />
-		<c:set var="color" value="blue" />
-		<c:set var="buttoncolor" value="primary" />
-		<c:set var="jobcategory" value="Non-Dream" />
-		<c:set var="jobdescription" value="Site Manager" />
-		<c:set var="skillsrequired" value=" " />
-		<c:set var="ctc" value="2.75 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='zs'}">
-		<c:set var="propercompanyname" value="ZS" />
-		<c:set var="color" value="red" />
-		<c:set var="buttoncolor" value="danger" />
-		<c:set var="jobcategory" value="Non-Dream" />
-		<c:set var="jobdescription" value="Developer" />
-		<c:set var="skillsrequired" value="Java,Python " />
-		<c:set var="ctc" value="7.75 Lakhs" />
-		<c:set var="documentsrequired" value="Marksheet" />
-	</c:if>
-	<c:if test="${companyname=='tcs'}">
-		<c:set var="propercompanyname" value="TCS" />
-		<c:set var="color" value="green" />
-		<c:set var="buttoncolor" value="success" />
-		<c:set var="jobcategory" value="Dream" />
-		<c:set var="jobdescription" value="UI-Developer" />
-		<c:set var="skillsrequired" value="Java,Python,Photoshop " />
-		<c:set var="ctc" value="3.75 Lakhs" />
-		<c:set var="documentsrequired" value="University Marksheet" />
-	</c:if>
- --%>
+
 
 	<div class="main-content">
 		<div class="main-content-inner">
 
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
-				<ul class="breadcrumb">
-					<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-					</li>
-
-					<li><a href="CompaniesPage">Companies</a></li>
-					<%-- <li><a href="Company?companyname=${company.company_name}">${company.company_name}</a></li>
-					<li class="active">Job Posts</li> --%>
-				</ul>
-				<!-- /.breadcrumb -->
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="off" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
-			</div>
-			<div class="page-content">
+				<jsp:directive.include file="searchheader.jsp" />
+			</div><div class="page-content">
 
 
-				<div class="page-header">
+				<%-- <div class="page-header">
 					<h1>
-						${company.company_name}<small> <i
-							class="ace-icon fa fa-angle-double-right"></i>
-						</small>
+						${company.company_name}
 					</h1>
 				</div>
-
+ --%>
 				<div class="row">
 					<div class="col-xs-13">
 						<!-- PAGE CONTENT BEGINS -->
@@ -205,20 +97,22 @@ description: displays the job when the user clocks on the job post image-->
 						</div>
 					</div>
 				</div>
+					<jsp:directive.include file="scripts.jsp" />
+
+	<jsp:directive.include file="Footer.jsp" />
+
+				
 			</div>
+					
 		</div>
 
 
 		<!-- /.page-content -->
 	</div>
-	</div>
+
 	<!-- /.main-content -->
-	<jsp:directive.include file="scripts.jsp" />
-
-	<jsp:directive.include file="Footer.jsp" />
-
-
-	<div class="hr hr-8 dotted"></div>
+	
+	
 
 
 	<!-- inline scripts related to this page -->

@@ -20,7 +20,7 @@
 		<ul>
 			<c:forEach var="l" items="${list}">
 				
-				<li><a href="/PMS_v1/displistoffiles?folder=${l }">${l}</a></li>
+				<li><a href="${pageContext.request.contextPath}/displistoffiles?folder=${l }">${l}</a></li>
 			</c:forEach>
 		</ul>
 

@@ -19,6 +19,7 @@ public class JobBean {
 	private Date modified_date;
 	private String modified_by;
 	private String year;
+
 	public String getJob_id() {
 		return job_id;
 	}
