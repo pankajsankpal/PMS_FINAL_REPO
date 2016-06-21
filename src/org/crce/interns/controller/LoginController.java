@@ -48,7 +48,7 @@ public class LoginController{
 	public ModelAndView welcome() throws ParseException {
 		
 		try{
-				System.out.println("return model");
+				//System.out.println("return model");
                                 logger.error("Return Model : Mapping /");
                 /**
                  * Year changing logic
