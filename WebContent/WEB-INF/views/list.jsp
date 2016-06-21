@@ -102,20 +102,24 @@ $(document).ready(function(){
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Statistics</title>
+
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
-
 		var x = new Date().getFullYear();
 		$("#tpclist").attr("href", "tpclist?year=" + x);
 		$("#studentlist").attr("href", "studentlist?year=" + x);
 		$("#stats").attr("href", "stats?year=" + x);
 		$("#company").attr("href", "company?year=" + x);
-
 		$("#yb").change(function() {
 			var x = $('#yb').val();
 			$("#tpclist").attr("href", "tpclist?year=" + x);
@@ -134,9 +138,7 @@ $(document).ready(function(){
 		$('#yb').append('<option value=" ">--select--</option>');
 		for (var i = 2000; i < year + 1; i++) {
 			$('#yb').append('<option value="'+i+'">' + i + '</option>');
-
 		}
-
 	}
 </script>
 <style>
@@ -144,13 +146,16 @@ $(document).ready(function(){
 	font-size: 75px;
 }
 </style>
-<title>Highlights</title>
 </head>
 <body class="no-skin" onLoad="fillsel()">
 
 	<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+
+				<jsp:directive.include file="searchheader.jsp" />
+			</div>
 			<div class="page-content">
 				<div class="center">
 					<b><h4 class="widget-title grey lighter">Select your year
@@ -231,16 +236,9 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
-
-
-	<!-- inline scripts related to this page -->
-
-	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
+
+
 </body>
 </html>

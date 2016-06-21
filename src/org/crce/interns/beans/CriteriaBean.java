@@ -40,11 +40,11 @@ public class CriteriaBean {
 	public void setYear_of_passing(String year_of_passing) {
 		this.year_of_passing = year_of_passing;
 	}
-	public String getPlaced_students_allowed() {
-		return placed_students_allowed;
+	public String getPlaced_students_allowed() {	
+			return placed_students_allowed;
 	}
-	public void setPlaced_students_allowed(String placed_students_allowed) {
-		this.placed_students_allowed = placed_students_allowed;
+	public void setPlaced_students_allowed(String placed_students_allowed) {		
+			this.placed_students_allowed = placed_students_allowed;
 	}
 	public String getPercentage() {
 		return percentage;

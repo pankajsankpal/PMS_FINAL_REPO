@@ -22,7 +22,8 @@ public class DirectoryPathBean {
 
     String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR))+"-"+ Integer.toString(Calendar.getInstance().get(Calendar.YEAR)+1);
 
-    private final String rootContext="/home/universe/PMS/"+year;
+    //private final String rootContext="C:\\PMS\\"+year;
+    private final String rootContext="home/universe/PMS/"+year;
     private final String studentFolder=rootContext + "/Users/Student";
     private final String facultyFolder=rootContext + "/Users/Faculty";
     private final String tpoFolder = rootContext + "/Users/TPO";
@@ -40,8 +41,8 @@ public class DirectoryPathBean {
 	    
 			public String getCopyFolder() {
 				return copyFolder;
-			}
-	*/
+			}    */
+	
 	public String getCounselingReportStudentFolder() {
 		return counselingReportStudentFolder;
 	}

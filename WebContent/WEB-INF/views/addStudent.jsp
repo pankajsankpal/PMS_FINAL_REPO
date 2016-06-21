@@ -14,7 +14,13 @@ description: contains text fields to add details of student manually->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 <title>Add Student Manually </title>
-
+<style>
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-weight: bold;
+}
+</style>
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -94,11 +100,13 @@ description: contains text fields to add details of student manually->
 											<table align="center" style="margin-top: 10px; padding-right: 10px">
 												<tr>
 													<td>Roll no :</td>
-													<td><form:input path="rollno" required="true"/></td>
+													<td><form:input path="rollno" /></td>
+													<td><form:errors path="rollno" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Name :</td>
-													<td><form:input path="name" required="true"/></td>
+													<td><form:input path="name" /></td>
+													<td><form:errors path="name" cssClass="error" /></td>	
 												</tr>
 												<tr>
 													<td>Branch :</td>
@@ -108,29 +116,34 @@ description: contains text fields to add details of student manually->
 															<form:option value="IT Engineering" label="IT" />
 															<form:option value="Electronics Engineering" label="Electronics" />
 															<form:option value="Production Engineering" label="Production" />
-														</form:select></td>
+															</form:select></td>
 												</tr>
 												
 												<tr>
 													<td>Year of passing :</td>
-													<td><form:input path="year" required="true"/></td>
+													<td><form:input path="year" /></td>
+													<td><form:errors path="year" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Gender :</td>
-													<td><form:radiobutton path="gender" value="MALE" label="Male" required="true"/>
-														<form:radiobutton path="gender" value="FEMALE" label="Female" required="true"/></td>
+													<td><form:radiobutton path="gender" value="MALE" label="Male" />
+														<form:radiobutton path="gender" value="FEMALE" label="Female" /></td>
+														<td><form:errors path="gender" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Date of birth :</td>
 													<td><form:input path="dob" /></td>
+													<td><form:errors path="dob" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Mobile no :</td>
-													<td><form:input path="mobile" required="true"/></td>
+													<td><form:input path="mobile" /></td>
+													<td><form:errors path="mobile" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Email ID :</td>
-													<td><form:input path="email" required="true"/></td>
+													<td><form:input path="email" /></td>
+													<td><form:errors path="email" cssClass="error" /></td>
 												</tr>
 												<tr><td></td></tr>
 												<tr>
@@ -140,6 +153,7 @@ description: contains text fields to add details of student manually->
 												<tr>
 													<td>SSC percentage :</td>
 													<td><form:input path="ssc_per" /></td>
+													<td><form:errors path="ssc_per" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>HSC or Diploma :</td>
@@ -153,6 +167,7 @@ description: contains text fields to add details of student manually->
 												<tr>
 													<td>HSC or Diploma percentage :</td>
 													<td><form:input path="hsc_or_dip_per" /></td>
+													<td><form:errors path="hsc_or_dip_per" cssClass="error" /></td>
 												</tr>
 												<tr>
 													<td>Sem1 :</td>

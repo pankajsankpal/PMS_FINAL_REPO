@@ -21,7 +21,7 @@ description: gives the list of applied aplicants-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<c:if test="${companyname=='jpmorgan'}">
+	<c:if test="${company=='JP Morgan'}">
 		<c:set var="propercompanyname" value="JP Morgan" />
 	</c:if>
 	<c:if test="${companyname=='directi'}">
@@ -42,7 +42,7 @@ description: gives the list of applied aplicants-->
 	<c:if test="${companyname=='zs'}">
 		<c:set var="propercompanyname" value="ZS" />
 	</c:if>
-	<c:if test="${companyname=='tcs'}">
+	<c:if test="${company=='TCS'}">
 		<c:set var="propercompanyname" value="TCS" />
 	</c:if>
 

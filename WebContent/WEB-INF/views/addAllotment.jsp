@@ -110,6 +110,7 @@
 								only upto 2MB!</p>
 						</center>>
 					</c:if>
+					    
 					<table align="center" cellspacing="20" cellpadding="20">
 						<tr>
 							<td><form:input path="allotment_id" type="hidden" /></td>
@@ -128,27 +129,8 @@
 										<form:option value="${companies.key}">${companies.value}</form:option>
 									</c:forEach>
 
-									<%-- <%
-    				try{
-							Class.forName("org.postgresql.Driver").newInstance();
-							Connection connection = DriverManager.getConnection
-            				("jdbc:postgresql://localhost:5432/placementdb?user=postgres&password=root");
-
-       						Statement statement = connection.createStatement() ;
-
-       						resultset =statement.executeQuery("select company_name from job_schema.company") ;
-				%>
-				<%  while(resultset.next()){ %>
-            		<option><%= resultset.getString(1)%></option>
-        		<% } %>
-        		<%
-        		}
-        		catch(Exception e)
-        		{
-             			out.println("wrong entry"+e);
-        		}
-				%>  --%>
 								</form:select></td>
+								
 							<td><form:errors path="company_name" cssClass="error" /></td>
 						</tr>
 						<tr>
@@ -166,6 +148,8 @@
 							<td><label>Round Name</label></td>
 							<td><form:input name="round" id="round" path="round_no" /></td>
 							<td><form:errors path="round_no" cssClass="error" /></td>
+							<td><font color ="red" size="2"> ${roomError} </font></td>
+							
 
 						</tr>
 						<tr>
@@ -183,6 +167,8 @@
 							<td><label>Room number</label></td>
 							<td><form:input name="room" id="room" path="room_no" /></td>
 							<td><form:errors path="room_no" cssClass="error" /></td>
+							<td><font color ="red" size="2"> ${roomError1} </font></td>
+							
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -216,6 +202,7 @@
 							<td><form:input path="drive_date" name="date" id="date"
 									class="form-control date-picker" data-date-format="yyyy/mm/dd" /></td>
 							<td><form:errors path="drive_date" cssClass="error" /></td>
+							<td><font color ="red" size="2"> ${roomError2} </font></td>
 						</tr>
 						<tr>
 							<td><br /></td>

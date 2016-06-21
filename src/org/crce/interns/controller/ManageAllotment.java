@@ -1,6 +1,7 @@
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -63,15 +64,7 @@ public class ManageAllotment extends HttpServlet {
 	@Autowired
 	public LoginService loginService;
 
-	/*
-	 * @RequestMapping("/") public ModelAndView welcome() { return new
-	 * ModelAndView("index"); }
-	 */
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
 
 	// changes made @Crystal
 	// Method to save allotment details
@@ -80,7 +73,8 @@ public class ManageAllotment extends HttpServlet {
 			@ModelAttribute("allotmentBean") AllotmentBean allotmentBean, BindingResult result) throws Exception {
 
 		try {
-			
+			allotmentBean.setYear(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+
 			// ModelAndView model = new ModelAndView("addAllotment");
 			List<CompanyBean> companyList = manageProfileService.listCompanies();
 			Map<String, String> companyMap = new LinkedHashMap<String, String>();
@@ -92,10 +86,9 @@ public class ManageAllotment extends HttpServlet {
 			
 			
 			/*allotmentValidator.validate(allotmentBean, result);
-			int i=0;
 			if (result.hasErrors()) {
-				i++;
-				System.out.println("Binding Errors are present ..."+i);
+				
+				System.out.println("Binding Errors are present ...");
 				System.out.println(allotmentBean.getCompany_name());
 				System.out.println("Round Name: "+allotmentBean.getRoom_no());
 				System.out.println("Round no "+allotmentBean.getRound_no());
@@ -103,6 +96,35 @@ public class ManageAllotment extends HttpServlet {
 				ModelAndView model1 = new ModelAndView("addAllotment", "companies", companyMap);
 				return model1;
 			}*/
+			
+			
+			int res1,res2;
+			
+			res1=allotmentValidator.validateRound(allotmentBean.getRound_no());
+			res2=allotmentValidator.validateRoom(allotmentBean.getRoom_no());
+			
+			if(res1==0)
+			{
+				model.addObject("roomError", "Please write Round Name");
+				return model;
+			}
+			
+			
+			if(res2==0)
+			{
+				model.addObject("roomError1", "Please write Room No");
+				return model;
+			}
+			
+
+			int dateVal=allotmentValidator.validateDate(allotmentBean.getDrive_date());
+			if(dateVal==0)
+			{
+				model.addObject("roomError2", "Please mention correct drive date");
+				return model;
+			}
+			
+			
 
 			
 			try {
@@ -147,10 +169,9 @@ public class ManageAllotment extends HttpServlet {
 	 * ModelAndView("addAllotment", model); }
 	 */
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
+
+	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
 
 	// Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
@@ -172,6 +193,8 @@ public class ManageAllotment extends HttpServlet {
 			{
 				AllotmentBean allotmentBean = new AllotmentBean(); // declaring
 				Allotment allot = new Allotment();
+				
+
 				model.addAttribute("allotmentBean", allotmentBean); // adding in
 																	// model
 				Map<String, Object> model1 = new HashMap<String, Object>();
@@ -195,12 +218,12 @@ public class ManageAllotment extends HttpServlet {
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
 
-	// Method to view allotment details
+
+	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
+
+				//Method to view allotment details
 
 	@RequestMapping(value = "/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request, @ModelAttribute("command") Allotment allotmentBean,
@@ -288,11 +311,14 @@ public class ManageAllotment extends HttpServlet {
 	 * prepareListofBean(employeeService.listEmployeess())); return new
 	 * ModelAndView("addEmployee", model); }
 	 * 
+<<<<<<< HEAD
 	 */
 
 	/*
 	 * -------------------------------------------------------------------------
 	 * ----------------------
+=======
+>>>>>>> 59228cfae60e9a58558924e9a66afa10fdc75b16
 	 */
 
 	@RequestMapping("/list")
@@ -310,10 +336,6 @@ public class ManageAllotment extends HttpServlet {
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -----------------------
-	 */
 
 	@RequestMapping("/tpclist")
 	public ModelAndView tpclist() {
@@ -328,12 +350,6 @@ public class ManageAllotment extends HttpServlet {
 			return model1;
 		}
 	}
-
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
-
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
 		try {
@@ -348,10 +364,6 @@ public class ManageAllotment extends HttpServlet {
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
 
 	@RequestMapping("/dept")
 	public ModelAndView dept() {
@@ -367,10 +379,6 @@ public class ManageAllotment extends HttpServlet {
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
 
 	@RequestMapping("/stats")
 	public ModelAndView stats() {
@@ -386,10 +394,7 @@ public class ManageAllotment extends HttpServlet {
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
+
 
 	@RequestMapping("/company")
 	public ModelAndView company() {
