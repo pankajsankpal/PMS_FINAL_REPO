@@ -187,22 +187,29 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 			
 		}
 		
-		System.out.println(result.toString());
+		System.out.println("EXTRACTED RESULT="+result.toString());
 		
 		try{
 			FileWriter writer = new FileWriter(f.getFile());
 			
-			
-			for(int i=0; i< result.size(); i++){
+			int rlen = result.size();
+			for(int i=0; i< rlen; i++){
 				
-				 
+				List<String> line = result.get(i);
+				int llen = line.size();
 				
-				String val = new String(result.get(i).toString());
-				
-				String[] line = val.substring(1, val.length()-1 ).split(",");
-				
-				System.out.println(Arrays.asList(line).toString());
-				
+				for(int j=0; j< llen; j++){
+					
+					if(j!=llen-1){
+						writer.append(line.get(j));
+						writer.append(',');
+					}
+					else{
+						writer.append(line.get(j));
+						writer.append('\n');
+					}
+					
+				}
 				
 			}
 			
