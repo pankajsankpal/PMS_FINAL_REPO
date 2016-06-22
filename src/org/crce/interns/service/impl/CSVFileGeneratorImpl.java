@@ -195,8 +195,11 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 			
 			for(int i=0; i< result.size(); i++){
 				
-				String[] line = new String(result.get(i).toString()).
-						substring(1, result.get(i).size()-1 ).split(",");
+				 
+				
+				String val = new String(result.get(i).toString());
+				
+				String[] line = val.substring(1, val.length()-1 ).split(",");
 				
 				System.out.println(Arrays.asList(line).toString());
 				
