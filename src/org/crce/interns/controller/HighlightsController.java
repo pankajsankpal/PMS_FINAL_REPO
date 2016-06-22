@@ -43,8 +43,7 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private ManageApplicantsService crudService;
 	
-	@Autowired
-	private FileReader ap;
+
 	
         private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
@@ -128,7 +127,7 @@ public class HighlightsController implements ConstantValues {
 			String year = "2016";
 			
 			csvService.generateCSV(
-					ap,a,
+					a,
 					new LinkedList<List<String>>(),
 					crudService.retreiveDetails(company, year));
 			

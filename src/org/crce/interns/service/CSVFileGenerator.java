@@ -20,7 +20,7 @@ public interface CSVFileGenerator extends FileGeneratorService{
 	public void setType(String type);
 		
 	
-	public void generateCSV(FileReader f, Object bean,List<List<String>> result
+	public void generateCSV( Object bean,List<List<String>> result
 			,List<UserCompanyBean> list);
 
 }

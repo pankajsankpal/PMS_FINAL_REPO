@@ -32,6 +32,8 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 	@Autowired
 	private EligibilityDao edao;
 	
+	@Autowired
+	private FileReader ap;
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
@@ -105,7 +107,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	
-	public void generateCSV(FileReader f, Object bean, List<List<String>> result
+	public void generateCSV( Object bean, List<List<String>> result
 			,List<UserCompanyBean> list) {
 		// TODO Auto-generated method stub
 
@@ -190,7 +192,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		System.out.println("EXTRACTED RESULT="+result.toString());
 		
 		try{
-			FileWriter writer = new FileWriter(f.getFile());
+			FileWriter writer = new FileWriter(ap.getFile());
 			
 			int rlen = result.size();
 			for(int i=0; i< rlen; i++){
