@@ -116,22 +116,31 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		
 		for(UserCompanyBean i : list){
 			
-			
+			System.out.println("INSIDE FOR");
 			
 			ProfessionalProfile p = new ProfessionalProfile();
 			p.setUserName(i.getUsername());
 			p = profileDAO.getProfile(p);
+				System.out.println("p "+p.getUserName());
 			
 			PersonalProfile q = new PersonalProfile();
 			q.setUserName(i.getUsername());
 			q = profileDAO.getProfile(q);
+				System.out.println("q "+q.getUserName());
 			
 			Qualification qp = edao.getQualification(i.getUsername());
+				System.out.println("qp "+qp.getUsername());
+			
+			a.setName(q.getName());
+			t.add(a.getName());
+		
+		
 			
 			if(a.isBranch()){
 				
 				a.setBranch(p.getBranch());				
-				t.add(a.getBranch());		
+				t.add(a.getBranch());
+				
 			}
 					
 			
