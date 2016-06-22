@@ -242,7 +242,7 @@ public class AssignTPCController {
 								// STPC
 			{
 				model = new ModelAndView("assignTPC");
-				erroMesg += "A Non-Faculty user attempted to be assigned as STPC";
+				erroMesg += "A Non-Faculty user attempted to be assigned as FTPC";
 				model.addObject("erroMesg", erroMesg);
 				// return new ModelAndView("notFac");
 			} else if (a == 34) { // Already assigned STPC or FTPC user
