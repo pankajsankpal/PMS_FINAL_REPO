@@ -96,5 +96,21 @@ public class HighlightsController implements ConstantValues {
 			return new ModelAndView("500");
 		}
 	}
+	
+	
+	@RequestMapping(value = "/testCSV", method = RequestMethod.GET)
+
+	public ModelAndView testCSV(HttpServletRequest request) {
+		try {
+			
+			//profileService.listProfessionalProfile("2016");
+			
+			return new ModelAndView("list");
+		} catch (Exception e) {
+                        logger.error(e);
+			return new ModelAndView("500");
+		}
+	}
+
 
 }

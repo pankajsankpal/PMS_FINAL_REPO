@@ -4,7 +4,7 @@ public interface FileGeneratorService {
 
 	public String download();
 	
-	public String[] getParameters();
+	public String[] getParameters(Object bean);
 	
 	public void setType(String type);
 	

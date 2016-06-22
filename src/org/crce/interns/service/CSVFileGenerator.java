@@ -12,11 +12,11 @@ public interface CSVFileGenerator extends FileGeneratorService{
 	public String download();
 	
 	@Override
-	public String[] getParameters();
+	public String[] getParameters(Object bean);
 	
 	@Override
 	public void setType(String type);
 	
-	public void generateCSV(FileReader f, Object bean,List<Object> list);
+	public void generateCSV(FileReader f, Object bean,List<List<String>> list);
 
 }

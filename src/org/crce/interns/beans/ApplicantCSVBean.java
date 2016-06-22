@@ -7,7 +7,7 @@ public class ApplicantCSVBean {
 
 	private String name;
 	
-
+	
 	private String mobileNo;
 
 
