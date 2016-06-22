@@ -1,14 +1,18 @@
 package org.crce.interns.controller;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
-
+import org.crce.interns.beans.ApplicantCSVBean;
+import org.crce.interns.beans.FileReader;
 import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.AssignTPCService;
+import org.crce.interns.service.CSVFileGenerator;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.StatisticsService;
@@ -32,6 +36,9 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private AssignTPCService userService;
         
+	@Autowired
+	private CSVFileGenerator csvService;
+	
         private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
 	@RequestMapping(value = "/Statistics", method = RequestMethod.GET)
@@ -104,6 +111,15 @@ public class HighlightsController implements ConstantValues {
 		try {
 			
 			//profileService.listProfessionalProfile("2016");
+			ApplicantCSVBean a = new ApplicantCSVBean(); 
+			
+			
+			a.setBranch(true);
+			a.setMobileNo(true);
+			
+			csvService.generateCSV(
+					new FileReader(),a,
+					new LinkedList<List<String>>());
 			
 			return new ModelAndView("list");
 		} catch (Exception e) {

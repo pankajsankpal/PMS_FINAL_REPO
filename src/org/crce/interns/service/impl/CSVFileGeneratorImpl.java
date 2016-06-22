@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@Service("NfService")
+@Service("csvService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class CSVFileGeneratorImpl implements CSVFileGenerator {
 
