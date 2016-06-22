@@ -129,12 +129,12 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 	
 	public void createProfile(Job job) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(job);	
+		sessionFactory.getCurrentSession().save(job);	//change made @Crystal	
 	}
 
 	public void createProfile(Criteria criteria) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(criteria);	
+		sessionFactory.getCurrentSession().save(criteria);	//change made @Crystal	
 	}
 
 	@SuppressWarnings("unchecked")
@@ -165,7 +165,7 @@ public class ManageProfileDaoImpl implements ManageProfileDao{
 	
 	public void createProfile(Company company) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(company);			
+		sessionFactory.getCurrentSession().save(company);		//change made @Crystal	
 	}
 	
 	
