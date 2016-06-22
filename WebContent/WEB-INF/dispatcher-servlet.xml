@@ -64,6 +64,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<property name="file" value="/WEB-INF/database.xml" />
 	</bean>
 		
+		
+	<bean id="ap"
+		class="org.crce.interns.beans.FileReader">
+		<property name="file" value="classpath:resources/applicant.csv" />
+	</bean>
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

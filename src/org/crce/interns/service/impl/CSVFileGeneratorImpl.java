@@ -1,5 +1,7 @@
 package org.crce.interns.service.impl;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -187,6 +189,24 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		
 		System.out.println(result.toString());
 		
+		try{
+			FileWriter writer = new FileWriter(f.getFile());
+			
+			
+			for(int i=0; i< result.size(); i++){
+				
+				String[] line = new String(result.get(i).toString()).
+						substring(1, result.get(i).size()-1 ).split(",");
+				
+				System.out.println(Arrays.asList(line).toString());
+				
+				
+			}
+			
+		}
+		catch( IOException ioe){
+			return;
+		}
 		
 		
 	}
