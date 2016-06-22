@@ -14,6 +14,7 @@ import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.CSVFileGenerator;
 import org.crce.interns.service.ConstantValues;
+import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class HighlightsController implements ConstantValues {
         
 	@Autowired
 	private CSVFileGenerator csvService;
+		
+	@Autowired
+	private ManageApplicantsService crudService;
 	
         private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
@@ -117,9 +121,13 @@ public class HighlightsController implements ConstantValues {
 			a.setBranch(true);
 			a.setMobileNo(true);
 			
+			String company = "JP Morgan";
+			String year = "2016";
+			
 			csvService.generateCSV(
 					new FileReader(),a,
-					new LinkedList<List<String>>());
+					new LinkedList<List<String>>(),
+					crudService.retreiveDetails(company, year));
 			
 			return new ModelAndView("list");
 		} catch (Exception e) {

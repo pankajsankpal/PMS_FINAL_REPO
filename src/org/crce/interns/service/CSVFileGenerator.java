@@ -1,8 +1,10 @@
 package org.crce.interns.service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.crce.interns.beans.FileReader;
+import org.crce.interns.beans.UserCompanyBean;
 
 public interface CSVFileGenerator extends FileGeneratorService{
 	
@@ -16,7 +18,9 @@ public interface CSVFileGenerator extends FileGeneratorService{
 	
 	@Override
 	public void setType(String type);
+		
 	
-	public void generateCSV(FileReader f, Object bean,List<List<String>> list);
+	public void generateCSV(FileReader f, Object bean,List<List<String>> result
+			,List<UserCompanyBean> list);
 
 }

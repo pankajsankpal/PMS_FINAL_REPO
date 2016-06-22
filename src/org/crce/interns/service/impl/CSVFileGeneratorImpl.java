@@ -1,11 +1,20 @@
 package org.crce.interns.service.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.crce.interns.beans.ApplicantCSVBean;
 import org.crce.interns.beans.FileReader;
+import org.crce.interns.beans.UserCompanyBean;
+import org.crce.interns.dao.EligibilityDao;
+import org.crce.interns.dao.ProfileDAO;
+import org.crce.interns.model.PersonalProfile;
+import org.crce.interns.model.ProfessionalProfile;
+import org.crce.interns.model.Qualification;
 import org.crce.interns.service.CSVFileGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +24,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class CSVFileGeneratorImpl implements CSVFileGenerator {
 
+	@Autowired
+	private ProfileDAO profileDAO;
+	
+	@Autowired
+	private EligibilityDao edao;
 	
 	
 	@Override
@@ -85,15 +99,87 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 
 	}
 
+		
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	
-	public void generateCSV(FileReader f, Object bean, List<List<String>> list) {
+	public void generateCSV(FileReader f, Object bean, List<List<String>> result
+			,List<UserCompanyBean> list) {
 		// TODO Auto-generated method stub
 
+		ApplicantCSVBean a = (ApplicantCSVBean) bean;
+		List<String> t = new ArrayList<String>();		
 		String[] param = getParameters(bean);
-		System.out.println(Arrays.asList(param).toString());
+		//System.out.println(Arrays.asList(param).toString());
+		
+		result.add(Arrays.asList(param));
+		
+		for(UserCompanyBean i : list){
+			
+			
+			
+			ProfessionalProfile p = new ProfessionalProfile();
+			p.setUserName(i.getUsername());
+			p = profileDAO.getProfile(p);
+			
+			PersonalProfile q = new PersonalProfile();
+			q.setUserName(i.getUsername());
+			q = profileDAO.getProfile(q);
+			
+			Qualification qp = edao.getQualification(i.getUsername());
+			
+			if(a.isBranch()){
+				
+				a.setBranch(p.getBranch());				
+				t.add(a.getBranch());		
+			}
+					
+			
+			if(a.isEmailId()){
+				a.setEmailId(q.getEmailId());
+				t.add(a.getEmailId());
+			}
+			
+			if(a.isMobileNo()){
+				a.setMobileNo(q.getMobileNo());
+				t.add(a.getMobileNo());
+			}
+					
+			if(a.isSsc_per()){
+				a.setSsc(qp.getSsc_per());
+				t.add(a.getSsc());
+			
+			}
+					
+					
+			if(a.isHscOrDip()){
+				a.setHscOrDip(qp.getHsc_or_dip_per());
+				t.add(a.getHscOrDip());
+			}	
+					
+			if(a.isDeg()){
+				a.setCgpa(qp.getDeg_per());
+				t.add(a.getCgpa());
+			}
+			
+			
+			if(a.isCorrespondenceAddress()){
+				a.setCorrespondenceAddress(q.getCorrespondenceAddress());
+				t.add(a.getCorrespondenceAddress());
+			}
+		
+			result.add(t);
+			
+			t.clear();
+			
+		}
+		
+		System.out.println(result.toString());
+		
+		
 		
 	}
+	
+	
 
 }
