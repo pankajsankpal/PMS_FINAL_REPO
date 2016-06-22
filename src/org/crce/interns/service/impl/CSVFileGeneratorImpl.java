@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.crce.interns.beans.ApplicantCSVBean;
-import org.crce.interns.beans.FileReader;
+import org.crce.interns.beans.CSVReader;
 import org.crce.interns.beans.UserCompanyBean;
 import org.crce.interns.dao.EligibilityDao;
 import org.crce.interns.dao.ProfileDAO;
@@ -33,14 +33,15 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 	private EligibilityDao edao;
 	
 	@Autowired
-	private FileReader ap;
+	private CSVReader ap;
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	
 	public String download() {
 		// TODO Auto-generated method stub
-		return null;
+		//return "";
+		return "C:\\Users\\Dsouza\\workspace\\test4\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\PMS_new_frcrceinterns\\WEB-INF\\applicant.csv";
 	}
 
 	@Override
@@ -192,6 +193,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		System.out.println("EXTRACTED RESULT="+result.toString());
 		
 		try{
+			
 			FileWriter writer = new FileWriter(ap.getFile());
 			
 			int rlen = result.size();
@@ -212,11 +214,14 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 					}
 					
 				}
-				
+				writer.flush();
+			    
 			}
+			writer.close();
 			
 		}
 		catch( IOException ioe){
+			System.out.println("Exception="+ioe);
 			return;
 		}
 		

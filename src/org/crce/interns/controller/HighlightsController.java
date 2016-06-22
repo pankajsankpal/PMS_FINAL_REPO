@@ -1,12 +1,20 @@
 package org.crce.interns.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 import org.crce.interns.beans.ApplicantCSVBean;
 import org.crce.interns.beans.FileReader;
@@ -43,7 +51,7 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private ManageApplicantsService crudService;
 	
-
+	private static final int BUFFER_SIZE = 4096;
 	
         private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
@@ -113,7 +121,7 @@ public class HighlightsController implements ConstantValues {
 	
 	@RequestMapping(value = "/testCSV", method = RequestMethod.GET)
 
-	public ModelAndView testCSV(HttpServletRequest request) {
+	public void testCSV(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			
 			//profileService.listProfessionalProfile("2016");
@@ -131,10 +139,63 @@ public class HighlightsController implements ConstantValues {
 					new LinkedList<List<String>>(),
 					crudService.retreiveDetails(company, year));
 			
-			return new ModelAndView("list");
+			
+	        
+			ServletContext context = request.getServletContext();
+
+			File downloadFile = new File(csvService.download());
+			FileInputStream inputStream = null;
+			try {
+				inputStream = new FileInputStream(downloadFile);
+			} catch (FileNotFoundException e) {
+				//e.printStackTrace();
+	                        logger.error(e);
+			}
+			String mimeType = context.getMimeType(csvService.download());
+			
+			//System.out.println(mimeType);
+			
+			if (mimeType == null) {
+				mimeType = "application/octet-stream";
+			}
+			
+			String downloadFileName = downloadFile.getName();
+			//String ext = downloadFileName.substring(downloadFileName.lastIndexOf("."));
+			
+		//	System.out.println(downloadFileName+"==="+ext);
+			
+			response.setContentType(mimeType);
+			response.setContentLength((int) downloadFile.length());
+			
+			String headerKey = "Content-Disposition";
+			String headerValue = String.format("attachment; filename=\"%s\"",
+					downloadFileName);
+
+			//System.out.println(headerKey+"---"+headerValue);
+			
+			response.setHeader(headerKey, headerValue);
+
+			OutputStream outStream = null;
+			try {
+				byte[] buffer = new byte[BUFFER_SIZE];
+				int bytesRead = -1;
+				outStream = response.getOutputStream();
+				while ((bytesRead = inputStream.read(buffer)) != -1) {
+					outStream.write(buffer, 0, bytesRead);
+				}
+
+				inputStream.close();
+				outStream.close();
+			} catch (IOException e) {
+				//e.printStackTrace();
+	                        logger.error(e);
+			}
+
+			
+			//return new ModelAndView("list");
 		} catch (Exception e) {
                         logger.error(e);
-			return new ModelAndView("500");
+			//return new ModelAndView("500");
 		}
 	}
 
