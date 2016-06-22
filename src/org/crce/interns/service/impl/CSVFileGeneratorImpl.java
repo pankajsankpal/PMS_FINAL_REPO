@@ -108,7 +108,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		// TODO Auto-generated method stub
 
 		ApplicantCSVBean a = (ApplicantCSVBean) bean;
-		List<String> t = new ArrayList<String>();		
+				
 		String[] param = getParameters(bean);
 		//System.out.println(Arrays.asList(param).toString());
 		
@@ -116,6 +116,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		
 		for(UserCompanyBean i : list){
 			
+			List<String> t = new ArrayList<String>();
 			System.out.println("INSIDE FOR");
 			
 			ProfessionalProfile p = new ProfessionalProfile();
@@ -134,7 +135,8 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 			a.setName(q.getName());
 			t.add(a.getName());
 		
-		
+			System.out.println("name "+a.getName());
+			System.out.println("t "+t.toString());
 			
 			if(a.isBranch()){
 				
@@ -179,7 +181,7 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		
 			result.add(t);
 			
-			t.clear();
+			//t.clear();
 			
 		}
 		
