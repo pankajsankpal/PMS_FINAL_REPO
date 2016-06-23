@@ -91,7 +91,7 @@ public class AssignTPCController {
 		else {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			modelMap.put("users", userService.viewUsers());
-			return new ModelAndView("viewUserT", modelMap);
+			return new ModelAndView("viewUserA", modelMap);
 		}
 	}
 
