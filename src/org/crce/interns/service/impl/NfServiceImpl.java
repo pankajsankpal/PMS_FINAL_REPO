@@ -33,6 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("NfService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+
 public class NfServiceImpl implements NfService, ConstantValues{
 	
 	
