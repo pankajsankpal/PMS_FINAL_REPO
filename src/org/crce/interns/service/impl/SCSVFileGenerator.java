@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.crce.interns.beans.ApplicantCSVBean;
-import org.crce.interns.beans.CSVReader;
+import org.crce.interns.beans.SCSVReader;
 import org.crce.interns.beans.UserCompanyBean;
 import org.crce.interns.dao.EligibilityDao;
 import org.crce.interns.dao.ProfileDAO;
@@ -32,7 +32,7 @@ public class SCSVFileGenerator implements org.crce.interns.service.SCSVFileGener
 	private EligibilityDao edao;
 	
 	@Autowired
-	private CSVReader ap;
+	private SCSVReader bp;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
@@ -192,7 +192,7 @@ public class SCSVFileGenerator implements org.crce.interns.service.SCSVFileGener
 		
 		try{
 			
-			FileWriter writer = new FileWriter(ap.getFile());
+			FileWriter writer = new FileWriter(bp.getFile());
 			
 			int rlen = result.size();
 			for(int i=0; i< rlen; i++){
