@@ -118,7 +118,7 @@ public class HighlightsController implements ConstantValues {
 		}
 	}
 	
-	@RequestMapping(value = "/testCSV", method = RequestMethod.GET)
+	@RequestMapping(value = "/csvform", method = RequestMethod.GET)
 	public ModelAndView testCSVForm() {
 		return new ModelAndView("testCSV");
 	}
