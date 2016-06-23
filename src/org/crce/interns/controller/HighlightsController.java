@@ -137,14 +137,44 @@ public class HighlightsController implements ConstantValues {
 			
 			//String company = "JP Morgan";
 			//String year = "2016";
+			String[] columns = request.getParameterValues("columns");
 			
-			a.setBranch(request.getParameter("BRANCH"));
-			a.setEmailId(request.getParameter("EMAIL"));
-			a.setMobileNo(request.getParameter("CONTACT"));
-			a.setSsc(request.getParameter("SSC"));
-			a.setHscOrDip(request.getParameter("HSC"));
-			a.setCgpa(request.getParameter("CGPA"));
-			a.setCorrespondenceAddress(request.getParameter("CORRESPONDENCE ADDRESS"));
+			for(String i:columns){
+				switch(i){
+				
+				case "BRANCH":
+					a.setBranch(true);
+					break;
+					
+				case "EMAIL":
+					a.setEmailId(true);
+					break;
+					
+				case "CONTACT":
+					a.setMobileNo(true);
+					break;
+					
+				case "SSC":
+					a.setSsc_per(true);
+					break;
+					
+				case "HSC":
+					a.setHscOrDip(true);
+					break;
+					
+				case "CGPA":
+					a.setDeg(true);
+					break;
+					
+				case "CORRESPONDENCE ADDRESS":
+					a.setCorrespondenceAddress(true);
+					break;
+					
+				default:
+					System.out.println("NO MATCH");
+					break;
+				}
+			}
 			
 			String company = request.getParameter("companyname");			
 			String year = request.getParameter("year");
