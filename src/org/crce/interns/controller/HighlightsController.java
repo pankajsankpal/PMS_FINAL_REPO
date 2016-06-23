@@ -118,6 +118,10 @@ public class HighlightsController implements ConstantValues {
 		}
 	}
 	
+	@RequestMapping(value = "/testCSV", method = RequestMethod.GET)
+	public ModelAndView testCSVForm() {
+		return new ModelAndView("testCSV");
+	}
 	
 	@RequestMapping(value = "/testCSV", method = RequestMethod.GET)
 
@@ -128,11 +132,26 @@ public class HighlightsController implements ConstantValues {
 			ApplicantCSVBean a = new ApplicantCSVBean(); 
 			
 			
-			a.setBranch(true);
-			a.setMobileNo(true);
+			//a.setBranch(true);
+			//a.setMobileNo(true);
 			
-			String company = "JP Morgan";
-			String year = "2016";
+			//String company = "JP Morgan";
+			//String year = "2016";
+			
+			a.setBranch(request.getParameter("BRANCH"));
+			a.setEmailId(request.getParameter("EMAIL"));
+			a.setMobileNo(request.getParameter("CONTACT"));
+			a.setSsc(request.getParameter("SSC"));
+			a.setHscOrDip(request.getParameter("HSC"));
+			a.setCgpa(request.getParameter("CGPA"));
+			a.setCorrespondenceAddress(request.getParameter("CORRESPONDENCE ADDRESS"));
+			
+			String company = request.getParameter("companyname");			
+			String year = request.getParameter("year");
+			
+			
+			System.out.println(" >"+a.getBranch()+" ->"+company);
+			
 			
 			csvService.generateCSV(
 					a,
