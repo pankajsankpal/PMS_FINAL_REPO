@@ -75,7 +75,7 @@ public class AssignTPCController {
 		}
 	}
 
-	@RequestMapping(value = "/ViewUsersT", method = RequestMethod.GET) // View
+	@RequestMapping(value = "/ViewUsers", method = RequestMethod.GET) // View
 																		// Users
 																		// for
 																		// TPO
@@ -91,7 +91,7 @@ public class AssignTPCController {
 		else {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			modelMap.put("users", userService.viewUsers());
-			return new ModelAndView("viewUserT", modelMap);
+			return new ModelAndView("viewUserA", modelMap);
 		}
 	}
 
@@ -252,7 +252,7 @@ public class AssignTPCController {
 				model.addObject("erroMesg", erroMesg);
 				// return new ModelAndView("alTPC");
 			} else
-				model = new ModelAndView("redirect:/ViewUsersT");
+				model = new ModelAndView("redirect:/ViewUsers");
 
 			return model;
 		} catch (Exception e) {
@@ -346,7 +346,7 @@ public class AssignTPCController {
 				model.addObject("erroMesg", erroMesg);
 				// return new ModelAndView("notTPC");
 			} else
-				model = new ModelAndView("redirect:/ViewUsersT");
+				model = new ModelAndView("redirect:/ViewUsers");
 
 			return model;
 		} catch (Exception e) {
