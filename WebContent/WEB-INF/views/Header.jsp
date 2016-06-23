@@ -34,7 +34,7 @@
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="fa fa-graduation-cap"></i>
-							Placement Management System
+							FRCRCE Placements
 						</small>
 					</a>
 				</div>
