@@ -13,7 +13,11 @@ package org.crce.interns.controller;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.impl.DisplayListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +30,9 @@ import com.google.gson.JsonObject;
 
 @Controller
 public class DisplayListController {
+	
+	@Autowired
+	private CheckRoleService crService;
 
 	DisplayListService dsp = new DisplayListService();
 	// this method is for displaying the list of cv
@@ -36,8 +43,17 @@ public class DisplayListController {
 	 * @return
 	 */
 	@RequestMapping(value = "/displist")
-	public ModelAndView displayCVpage() {
+	public ModelAndView displayCVpage(HttpServletRequest request) {
+		
+		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
+		 
+		//new authorization
+		if(!crService.checkRole("/displist", roleId))
+			return new ModelAndView("403");
+		else{
 		return new ModelAndView("listCV");
+		}
 	}
 
 	@RequestMapping(value = "/disptemppage")
@@ -195,12 +211,22 @@ public class DisplayListController {
 		
 	}*/
 
-	//------------------------------------------------------------------------------------------------------------
+	//----Authorization to be done from here--------------------------------------------------------------------------------------------------------
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Modified by Pankaj & Melwyn
 	@RequestMapping(value = "/dispCV")
 	public @ResponseBody String d(HttpServletRequest request, @RequestParam(value = "folder") String folder) {
+		
+		
+		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
+		 
+		//new authorization
+				if(!crService.checkRole("/dispCV", roleId))
+					return "403";
+				else{
+		
 		String userName = (String) request.getSession().getAttribute("userName");
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
 		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
@@ -227,7 +253,7 @@ public class DisplayListController {
 		System.out.println(jarray.toString());
 		return jarray.toString();
 
-
+				}
 	}
 	
 	
