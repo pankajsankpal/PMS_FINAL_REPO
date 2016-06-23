@@ -60,8 +60,8 @@
 								<span class="user-info">
 
 
-									<small>Welcome</small>
 									${sessionScope.name}
+									
 
 
 								</span>

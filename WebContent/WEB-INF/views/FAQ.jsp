@@ -67,7 +67,7 @@
       					<div class="faq_question">1. What is CRCE Placements?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              					CRCE Placements is an application for the final year students of Fr.Conceicao College of Engineering (FRCRCE),Bandra(West).
+              					CRCE Placements is an application for the final year students of <b>Fr.Conceicao College of Engineering (FRCRCE), Bandra (West)</b>.
               					It is an attempt to facilitate automation in the Campus Placements process. Various events, companies, job profiles,
               					etc are available. Students can apply for different job profiles & seek their application status within seconds.
               					All functionality of the Placement council has been automated for fast & smooth functioning. You can easily track
@@ -81,7 +81,7 @@
       					<div class="faq_question">2. How do i get started?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              				We have already provided a simple guide on <a href="#">'Getting Started'</a> where we have explained all the features in easy to understand language.
+              				We have provided a simple guide on <a href="#">Getting Started</a> where we have explained all the features in easy to understand language.
               				</div>
            				</div>        
     				</div>
@@ -104,7 +104,7 @@
            				<div class="faq_answer_container">
               				<div class="faq_answer">
               				Each company associated with CRCE Placements post their Job Profile at <a href="CompaniesPage">Job Posts</a> section. Each Job Profile has
-              				specific Eligibility Criteria along with the Job Description. You can click on Apply button & get your application status within seconds.
+              				specific <b>Eligibility Criteria</b> along with the <b>Job Description</b>. You can click on Apply button & get your application status within seconds.
               				</div>
            				</div>        
     				</div>
@@ -113,8 +113,8 @@
       					<div class="faq_question">2. Why is my job application rejected ?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              				When you apply for a specific job profile, our advanced algorithm matches your Educational Qualifications with the Eligibility Criteria
-              				specified for the job profile. On occurrence of a mismatch, your application gets rejected.
+              				When you apply for a specific job profile, our advanced algorithm matches your <b>Educational Qualifications</b> with the <b>Eligibility Criteria</b>
+              				specified for the job profile. On occurrence of a <b>mismatch</b>, your application gets rejected.
 							</div>
            				</div>        
     				</div>    				
@@ -123,10 +123,10 @@
       					<div class="faq_question">3. What do I do when my application is accepted ?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              				When you apply for a specific job profile, our advanced algorithm matches your Educational Qualifications with the Eligibility Criteria
-              				specified for the job profile. On occurrence of a perfect match, your application gets accepted.
+              				When you apply for a specific job profile, our advanced algorithm matches your <b>Educational Qualifications</b> with the <b>Eligibility Criteria</b>
+              				specified for the job profile. On occurrence of a <b>perfect match</b>, your application gets accepted.
               				Your name will get added in the <a href="CompaniesPage">Job Applicants</a> list in that particular company database.
-              				All events & schedules will be available at  <a href="ViewEvents">Events</a> & <a href="viewAllotment">Fixtures</a> sections
+              				All events & schedules will be available at  <a href="ViewEvents">Events</a> & <a href="viewAllotment">Venues</a> sections
 							</div>
            				</div>        
     				</div>    				
@@ -135,9 +135,9 @@
       					<div class="faq_question">4. My job application was rejected. Can I still apply for the job ?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              				When you apply for a specific job profile, our advanced algorithm matches your Educational Qualifications with the Eligibility Criteria
-              				specified for the job profile. On occurrence of a mismatch, your application gets rejected.
-              				However, If you are passionate for the company & the job, you can contact your respective branch Student TPC members for further details              				
+              				When you apply for a specific job profile, our advanced algorithm matches your <b>Educational Qualifications</b> with the <b>Eligibility Criteria</b>
+              				specified for the job profile. On occurrence of a <b>mismatch</b>, your application gets rejected.
+              				However, If you are passionate for the company & the job, you can contact your respective branch <b>Student TPC</b> members for further details              				
 							</div>
            				</div>        
     				</div>    				
@@ -158,64 +158,68 @@
     				<div class="faq">
       					<div class="faq_question">1. How do I edit my profile?</div>
            				<div class="faq_answer_container">
-              				<div class="faq_answer">Data stored for 5 years and then personal data is deleted only. Data related for statistics are stored.</div>
+              				<div class="faq_answer">
+              				Most of the details which are displayed on your profile are based on your Student Data Bank associated with FRCRCE College. This 
+              				data is authentic & hence is already displayed on your profile. 
+              				However, all your biographic details are open for any kind of update. This option is only available to the Students.
+              				To edit your biographic details, go to <b>'Edit Profile'</b> on your <a href="viewprofile">Profile page</a>
+							</div>
            				</div>        
     				</div>    				
 <br/>    				
     				<div class="faq">
-      					<div class="faq_question">8. When attaching documents to my application, what size and format should they be?</div>
+      					<div class="faq_question">2. Why am I not being able to upload file ?</div>
            				<div class="faq_answer_container">
-              				<div class="faq_answer">The maximum size limit for each file is 2 MB. Please note you may attach up to multiple files in some web pages wherever it is necessary. 	
-													Attachments of type of files are specified in each web page.
-													Please ensure that you do not upload password-protected PDF files.
+              				<div class="faq_answer">
+              				For every file that you upload, see that you read the below precautions carefully:<br/>
+              				<b>+The maximum size limit for each file is prompted during unsuccessfull file upload.<br/></b> 	
+							<b>+Every file upload activities support only specific file format/mentioned along the upload button</br></b>
+							<b>+Please ensure that you do not upload password-protected PDF files.<br/></b>							
 							</div>
            				</div>        
     				</div>
  
   <br/>
     				<div class="faq">
-      					<div class="faq_question">11. How long is my data stored n this site?</div>
+      					<div class="faq_question">3. Who can see my profile ?</div>
            				<div class="faq_answer_container">
-              				<div class="faq_answer">Data stored for 5 years and then personal data is deleted only. Data related for statistics are stored.</div>
+              				<div class="faq_answer">
+              				Only authenticated users of CRCE Placements whose accounts are active are able to view your Profile. These users include the students
+              				& the Placement Council.
+              				</div>
            				</div>        
     				</div>
  <br/>
-    				<div class="faq">
-      					<div class="faq_question">12. Do you have further questions? </div>
-           				<div class="faq_answer_container">
-              				<div class="faq_answer">If you have further questions, you can address these to the Faculty Training Placement Coordinator (FTPC) or Student Training Placement Coordinator(STPC).
-  									If the problem is critical then FTPC and STPC will contact to Training placement officer(TPO).</div>
-           				</div>        
-    				</div>
-<br/>
 <hr>
 	    		<h3>User Experience</h3><br/>		
     				<div class="faq">
-      					<div class="faq_question">5. Why do I get see an Error Page ?</div>
+      					<div class="faq_question">1. Why do I get see an Error Page when I try to navigate?</div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
               				These error pages are shown when you either land up in the wrong page or your login has expired due to long time of 
-              				inactivity(More than 15 minutes) after you have logged in. Incase you are not able to access any link, go to the
-              				Home page & login again.
-              				NOTE:<i>If this type of pages are displayed repeatedly, We appologize for the inconvenience caused.
-              				Please <a href="ContactUs">Contact</i> us immediately & we promise to resolve the issue as soon as possible              				
+              				inactivity(More than 15 minutes) after you have logged in. In case you are not able to access any link, go to the
+              				Home page & login again.<br/>
+              				<b>NOTE: </b><i>If this type of pages are displayed repeatedly, We apologize for the inconvenience caused.
+              				Please <a href="ContactUs">Contact</a> us immediately & we promise to resolve the issue as soon as possible</i>              				
               				</div>
            				</div>        
     				</div>
 <br/>
     				<div class="faq">
-      					<div class="faq_question">10. Which browser support the application? </div>
+      					<div class="faq_question">2. Which browser support the application? </div>
            				<div class="faq_answer_container">
               				<div class="faq_answer">
-              				Our application is flexible & supports all modern Desktop, Tablet & mobile browsers.For best User Experience, we suggest : 
-							IE8 and higher
-							Firefox 3.5 and higher
-							Safari 4.0 and higher
-							Chrome 20 and higher</div>
+              				Our application is flexible & supports all modern Desktop, Tablet & mobile browsers.For best User Experience, we suggest :<br/> 
+							<b>+Internet Explorer 8 and higher<br/></b>
+							<b>+Mozilla Firefox 3.5 and higher<br/></b>
+							<b>+Apple Safari 4.0 and higher<br/></b>
+							<b>+Google Chrome 20 and higher<br/></b>
+							<b>+OperaMini 16.0 and higher<br/></b>
+							<b>+Mi Browser 7.0 and higher<br/></b>
+							<b>+UC Browser 10 and higher<br/></b>
+							</div>
            				</div>        
     				</div>
-  
- 
     				
  				</div>
  				
