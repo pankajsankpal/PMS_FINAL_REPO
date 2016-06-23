@@ -1,15 +1,28 @@
 package org.crce.interns.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.log4j.Logger;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+import org.crce.interns.beans.ApplicantCSVBean;
+import org.crce.interns.beans.FileReader;
 import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.AssignTPCService;
+import org.crce.interns.service.CSVFileGenerator;
 import org.crce.interns.service.ConstantValues;
+import org.crce.interns.service.ManageApplicantsService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +45,14 @@ public class HighlightsController implements ConstantValues {
 	@Autowired
 	private AssignTPCService userService;
         
+	@Autowired
+	private CSVFileGenerator csvService;
+		
+	@Autowired
+	private ManageApplicantsService crudService;
+	
+	private static final int BUFFER_SIZE = 4096;
+	
         private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
 	@RequestMapping(value = "/Statistics", method = RequestMethod.GET)
@@ -96,5 +117,7 @@ public class HighlightsController implements ConstantValues {
 			return new ModelAndView("500");
 		}
 	}
+
+
 
 }
