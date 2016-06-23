@@ -50,12 +50,13 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 	public String[] getParameters(Object bean) {
 		// TODO Auto-generated method stub
 		String[] param;
-		StringBuilder result= new StringBuilder("NAME");
+		StringBuilder result= new StringBuilder("NO,NAME");
 		
 		if(bean.getClass().getName().equals("org.crce.interns.beans.ApplicantCSVBean")){
 			
 			ApplicantCSVBean a = (ApplicantCSVBean) bean;
-					
+			
+			
 			
 			if(a.isBranch()){
 				result.append(",BRANCH");
@@ -122,21 +123,22 @@ public class CSVFileGeneratorImpl implements CSVFileGenerator {
 		for(UserCompanyBean i : list){
 			
 			List<String> t = new ArrayList<String>();
-			System.out.println("INSIDE FOR");
+					//System.out.println("INSIDE FOR");
 			
 			ProfessionalProfile p = new ProfessionalProfile();
 			p.setUserName(i.getUsername());
 			p = profileDAO.getProfile(p);
-				System.out.println("p "+p.getUserName());
+			//			System.out.println("p "+p.getUserName());
 			
 			PersonalProfile q = new PersonalProfile();
 			q.setUserName(i.getUsername());
 			q = profileDAO.getProfile(q);
-				System.out.println("q "+q.getUserName());
+		//				System.out.println("q "+q.getUserName());
 			
 			Qualification qp = edao.getQualification(i.getUsername());
-				System.out.println("qp "+qp.getUsername());
+					//	System.out.println("qp "+qp.getUsername());
 			
+			t.add(String.valueOf(list.indexOf(i)+1));
 			a.setName(q.getName());
 			t.add(a.getName());
 		
