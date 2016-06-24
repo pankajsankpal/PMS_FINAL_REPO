@@ -9,6 +9,7 @@ import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.QuickStatsBean;
 import org.crce.interns.beans.UserCompanyBean;
+import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SelectedApplicantsService;
 import org.crce.interns.validators.AddSelectedValidator;
@@ -39,6 +40,9 @@ public class SelectedApplicantsController {
 	@Autowired
 	@Qualifier("deleteSelectedValidator")
 	private DeleteSelectedValidator deleteSelectedValidator;
+	
+	@Autowired
+	private NfService nfService;
         
         private static final Logger logger = Logger.getLogger(SelectedApplicantsController.class.getName());
 
@@ -184,6 +188,13 @@ public class SelectedApplicantsController {
 			else{
 				System.out.println("company is................"+userBean.getCompany_name());
 				selectService.createDetails(userBean);
+				
+				if(!nfService.addNotificationForSelectedAddition(
+						userBean.getCompany_name(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForSelectedAddition");
+				}
+				
+				
 				model = new ModelAndView("add-selected-success");
 			}
 		}
@@ -239,6 +250,12 @@ public class SelectedApplicantsController {
 
 			else{
 				selectService.deleteDetails(userBean);
+				
+				if(!nfService.addNotificationForSelectedRemoval(
+						userBean.getCompany_name(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForSelectedRemoval");
+				}
+				
 				model = new ModelAndView("delete-selected-success");
 			}
 		}

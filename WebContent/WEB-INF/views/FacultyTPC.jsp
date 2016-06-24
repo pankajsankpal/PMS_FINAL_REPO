@@ -41,7 +41,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 
 						<div class="page-header">
 
-							<h3>Welcome , ${sessionScope.name} ! </h3>
+							<h3>Profile </h3>
 
 	
 							<%-- <h2>
@@ -74,6 +74,12 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														Uploads
 													</a>
 												</li>
+												<li>
+													<a href="fnotifications">
+														<i class="pink ace-icon fa fa-check bigger-120"></i>
+														Notification
+													</a>
+												</li>
 												
 
 											</ul>
@@ -92,8 +98,9 @@ description: contains tabs ->  activity ,uploads ,notification -->
 																	
 														  	<a href="AssignTPCF.html"  class="btn btn-primary btn-lg btn-block">Assign Student TPC</a> <br> <br>
 
-															<a href="searchHome"   class="btn btn-purple btn-lg btn-block">Search Students/Companies </a> <br><br>															
+																													
 															<a href="SearchApplicant"  class="btn btn-inverse btn-lg btn-block">Search Applicants </a> <br><br>
+															
 															<button data-toggle="dropdown" class="btn btn-pink btn-lg  dropdown-toggle btn-block">
 																								Send E-mail
 																<i class="ace-icon fa fa-angle-down icon-on-right"></i>
@@ -113,7 +120,7 @@ description: contains tabs ->  activity ,uploads ,notification -->
 														<div class="col-xs-12 col-sm-4 right">
 																	
 														  	<a href="RemoveTPCF.html"  class="btn btn-primary btn-lg btn-block">Remove Student Tpc </a> <br> <br>
-															<a href="ViewEvents"  class="btn btn-purple btn-lg btn-block">View Events in a month </a> <br><br>
+															
 
 															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
 															<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a>

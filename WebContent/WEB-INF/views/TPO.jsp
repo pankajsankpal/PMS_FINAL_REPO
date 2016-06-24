@@ -50,15 +50,27 @@
 							<div id="user-profile-2" class="user-profile">
 								<div class="tabbable">
 									<ul class="nav nav-tabs padding-18">
-										<li class="active"><a data-toggle="tab" href="#activity">
-												<i class="orange ace-icon fa fa-rss bigger-120"></i>
+										<li class="active">
+											<a  href="viewprofile">
+												<i class="orange ace-icon fa fa-wrench bigger-120"></i>
 												Activity
-										</a></li>	
+											</a>
+										</li>
+										
+										<li>
+											<a  href="downloads">
+												<i class="blue ace-icon fa fa-upload bigger-120"></i>
+												Uploads
+											</a>
+										</li>
 
-										<li><a href="downloads"> <i
-												class="blue ace-icon fa fa-users bigger-120"></i> Uploads
-										</a></li>
-
+										
+										<li >
+											<a href="fnotifications">
+												<i class="pink ace-icon fa fa-check bigger-120"></i>
+												Notification
+											</a>
+										</li>
 
 									</ul>
 
@@ -117,7 +129,7 @@
 												<div class="col-xs-12 col-sm-4 left">
 
 													<a href="addProfile"
-														class="btn btn-purple btn-lg btn-block">Add job
+														class="btn btn-purple btn-lg btn-block">Add Job
 														Profile </a> <br>
 													<br> <a href="getEventForm.html"
 														class="btn btn-inverse btn-lg btn-block">Add Event </a> <br>
@@ -132,13 +144,17 @@
 												<div class="col-xs-12 col-sm-4 right">
 
 													<a href="manage.html"
-														class="btn btn-purple btn-lg btn-block">Add candidate
+														class="btn btn-purple btn-lg btn-block">Job Applicants
+													</a> 
+													<br/>
+													<a href="manageselected.html"
+														class="btn btn-inverse btn-lg btn-block">Selected Applicants
 													</a> <br>
 													<br> <a href="GroupSendMail"
-														class="btn btn-inverse btn-lg btn-block">Send Group
+														class="btn btn-warning btn-lg btn-block">Send Group
 														Email </a><br>
 													<br> <a href="personalMail"
-														class="btn btn-warning btn-lg btn-block">Send Personal
+														class="btn btn-purple btn-lg btn-block">Send Personal
 														Email </a><br>
 													<br>
 												</div>

@@ -11,7 +11,7 @@ description: contain notification received by student and student tpc -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Student Notification</title>
+<title>Faculty Notification</title>
 
 <!-- page specific plugin styles -->
 
@@ -58,25 +58,26 @@ description: contain notification received by student and student tpc -->
 							<div class="show">
 									<div id="user-profile-2" class="user-profile">
 										<div class="tabbable">
+										<c:if test="${sessionScope.roleName=='FacultyTPC'}">
 											<ul class="nav nav-tabs padding-18">
 												<ul class="nav nav-tabs padding-18">
 												<li>
 													<a  href="viewprofile">
-														<i class="green ace-icon fa fa-user bigger-120"></i>
-														Profile
+														<i class="orange ace-icon fa fa-wrench bigger-120"></i>
+														Activity
 													</a>
 												</li>
 												
 												<li>
-													<a  href="displist">
-														<i class="orange ace-icon fa fa-upload bigger-120"></i>
+													<a  href="downloads">
+														<i class="blue ace-icon fa fa-upload bigger-120"></i>
 														Uploads
 													</a>
 												</li>
 
 												
 												<li  class="active">
-													<a data-toggle="tab" href="notifications">
+													<a data-toggle="tab" href="#notificatn">
 														<i class="pink ace-icon fa fa-check bigger-120"></i>
 														Notification
 													</a>
@@ -84,7 +85,7 @@ description: contain notification received by student and student tpc -->
 
 											</ul>
 											</ul>
-
+										</c:if>
 											<div class="tab-content no-border padding-24" >
 												
 												<div id="notificatn" class="tab-pane in active">
