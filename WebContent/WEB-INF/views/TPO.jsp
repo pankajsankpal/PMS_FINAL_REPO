@@ -50,15 +50,27 @@
 							<div id="user-profile-2" class="user-profile">
 								<div class="tabbable">
 									<ul class="nav nav-tabs padding-18">
-										<li class="active"><a data-toggle="tab" href="#activity">
-												<i class="orange ace-icon fa fa-rss bigger-120"></i>
+										<li class="active">
+											<a  href="viewprofile">
+												<i class="orange ace-icon fa fa-wrench bigger-120"></i>
 												Activity
-										</a></li>	
+											</a>
+										</li>
+										
+										<li>
+											<a  href="downloads">
+												<i class="blue ace-icon fa fa-upload bigger-120"></i>
+												Uploads
+											</a>
+										</li>
 
-										<li><a href="downloads"> <i
-												class="blue ace-icon fa fa-users bigger-120"></i> Uploads
-										</a></li>
-
+										
+										<li  class="">
+											<a data-toggle="tab" href="fnotificatn">
+												<i class="pink ace-icon fa fa-check bigger-120"></i>
+												Notification
+											</a>
+										</li>
 
 									</ul>
 

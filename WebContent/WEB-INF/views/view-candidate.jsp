@@ -53,7 +53,7 @@
 										<div align="center">
 											<h2>Select The Company You Want To View</h2>
 											<br>
-											<form action="viewclist.html" method="post">
+											<form action="viewclist.html" method="get">
 
 												<table>
 													<tr>

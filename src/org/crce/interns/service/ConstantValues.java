@@ -47,7 +47,7 @@ public interface ConstantValues {
 	
 	//NOTIFICATION CATEGORIES	
 	public String JOB = "JOB";
-	public String ELIGIBLE = "ELIGIBLE";
+	public String ELIGIBLE = "ELIGIBILITY";
 	public String EVENT = "EVENT";
 	public String TEST = "TEST";
 	public String COUNSELLING = "COUNSELLING";
@@ -84,6 +84,11 @@ public interface ConstantValues {
 	public String ROLE_M = "";
 	
 	public String DOWNLOAD_M = "";
+	
+	public String APPLICANTS_MSG1 = "Congratulations! Your application for";
+	public String APPLICANTS_MSG2 = "has been approved by Placement Council";
+	public String APPLICANTS_MSG3 = "Attention! Your name has been removed from the applicant list for";
+	public String APPLICANTS_MSG4 = ". For any discussion, please approach the Placement Council";
 	
 	
 	// BRANCHES
@@ -122,6 +127,8 @@ public interface ConstantValues {
 	public String EMAIL_URL = "EMAIL";
 	public String ROLE_URL = "ROLE";
 	public String DOWNLOAD_URL = "DOWNLOAD";
+	public String APPLICANTS_URL1 = "viewApplicants?companyname=";
+	public String APPLICANTS_URL2 = "&amp;year=";
 	
 }
 

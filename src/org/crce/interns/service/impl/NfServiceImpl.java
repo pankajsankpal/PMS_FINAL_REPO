@@ -77,12 +77,12 @@ public class NfServiceImpl implements NfService, ConstantValues{
 			//BeanUtils.copyProperties(source, target);
 			
 			// ALL USERS
-			if(temp.getType().equals("ALL")){
+			if(temp.getType().equals(ALL)){
 				nfBeanList.add(temp);
 			}
 			
 			// PARTICULAR USER
-			else if(temp.getType().equals("USER")){
+			else if(temp.getType().equals(USER)){
 				if(temp.getUserOrGroupId().equals(userDetailsBean.getUserName())){
 					nfBeanList.add(temp);
 				
@@ -91,7 +91,7 @@ public class NfServiceImpl implements NfService, ConstantValues{
 			
 			
 			// USER GROUP
-			else if(temp.getType().equals("GROUP")){
+			else if(temp.getType().equals(GROUP)){
 				
 				// USER BRANCH
 				if(temp.getUserOrGroupId().equals(professionalProfileBean.getBranch())){
@@ -227,5 +227,51 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		
 	}
 	
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForApplicantRemoval(String companyName,
+			String userName){
+		Notification temp = new Notification();
+		
+		temp.setType(USER);
+		temp.setCategory(ELIGIBLE);
+		temp.setMessage(APPLICANTS_MSG3+companyName+APPLICANTS_MSG4);
+		temp.setUrl(APPLICANTS_URL1+companyName+APPLICANTS_URL2);
+		temp.setUserOrGroupId(userName);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForApplicantAddition(String companyName,
+			String userName){
+		Notification temp = new Notification();
+		
+		temp.setType(USER);
+		temp.setCategory(ELIGIBLE);
+		temp.setMessage(APPLICANTS_MSG1+companyName+APPLICANTS_MSG2);
+		temp.setUrl(APPLICANTS_URL1+companyName+APPLICANTS_URL2);
+		temp.setUserOrGroupId(userName);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+
+
 	
 }

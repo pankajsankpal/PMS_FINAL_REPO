@@ -17,7 +17,7 @@ description: Sidebar, tabs turn active through jquery -->
 </script>
 <body class="skin-3 no-skin">
 
-	<div id="sidebar" class="sidebar sidebar-default">
+	<div id="sidebar" class="sidebar responsive">
 		<script type="text/javascript">
 			try {
 				ace.settings.check('sidebar', 'fixed')

@@ -38,5 +38,9 @@ public interface NfService {
 		
 	public boolean addNotificationForEvent(String companyName);
 	
-
+	public boolean addNotificationForApplicantRemoval(String companyName,String username);
+	
+	public boolean addNotificationForApplicantAddition(String companyName,String userName);
+		
+	
 }
