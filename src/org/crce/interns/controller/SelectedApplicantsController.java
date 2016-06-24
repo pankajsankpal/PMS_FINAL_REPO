@@ -195,7 +195,7 @@ public class SelectedApplicantsController {
 				}
 				
 				
-				model = new ModelAndView("redirect:/viewApplicants.html?company="+userBean.getCompany_name()+"&year=");
+				model = new ModelAndView("redirect:/viewApplicants.html?companyname="+userBean.getCompany_name()+"&year=");
 			}
 		}
 		return model;

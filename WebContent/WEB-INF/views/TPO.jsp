@@ -8,7 +8,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
 <title>TPO | HOME</title>
 
 
@@ -131,21 +135,19 @@
 												<div class="col-xs-12 col-sm-4 left">
 
 													<a href="addProfile"
-
 														class="btn btn-purple btn-lg btn-block">Add Job
-
 														Profile </a> <br>
 													<br> <a href="getEventForm.html"
 														class="btn btn-inverse btn-lg btn-block">Add Event </a> <br>
 													<br> <a href="addUser"
-														class="btn btn-warning btn-lg btn-block">Manage Users</a>
+														class="btn btn-warning btn-lg btn-block">Manage
+														Users</a>
 
 												</div>
 
 
 												&nbsp;&nbsp;
 												<div class="col-xs-12 col-sm-4 right">
-
 
 												 	<a href="manage.html"
 														class="btn btn-purple btn-lg btn-block">Job Applicants
@@ -171,7 +173,6 @@
 												</div>
 
 												
-
 											</div>
 										</div>
 										<!-- /#pictures -->
@@ -247,7 +248,7 @@
 
 
 	<!-- inline scripts related to this page -->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		jQuery(function($) {
 
 			var sampleData = initiateDemoData();//see below
@@ -410,7 +411,7 @@
 			}
 
 		})
-	</script>
+	</script> -->
 
 
 
