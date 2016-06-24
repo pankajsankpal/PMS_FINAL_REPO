@@ -50,6 +50,7 @@
 							<div id="user-profile-2" class="user-profile">
 								<div class="tabbable">
 									<ul class="nav nav-tabs padding-18">
+
 										<li class="active">
 											<a  href="viewprofile">
 												<i class="orange ace-icon fa fa-wrench bigger-120"></i>
@@ -71,6 +72,7 @@
 												Notification
 											</a>
 										</li>
+
 
 									</ul>
 
@@ -129,19 +131,21 @@
 												<div class="col-xs-12 col-sm-4 left">
 
 													<a href="addProfile"
+
 														class="btn btn-purple btn-lg btn-block">Add Job
+
 														Profile </a> <br>
 													<br> <a href="getEventForm.html"
 														class="btn btn-inverse btn-lg btn-block">Add Event </a> <br>
 													<br> <a href="addUser"
-														class="btn btn-warning btn-lg btn-block">Manage
-														Users</a>
+														class="btn btn-warning btn-lg btn-block">Manage Users</a>
 
 												</div>
 
 
 												&nbsp;&nbsp;
 												<div class="col-xs-12 col-sm-4 right">
+
 
 												 	<a href="manage.html"
 														class="btn btn-purple btn-lg btn-block">Job Applicants
@@ -167,6 +171,7 @@
 												</div>
 
 												
+
 											</div>
 										</div>
 										<!-- /#pictures -->
