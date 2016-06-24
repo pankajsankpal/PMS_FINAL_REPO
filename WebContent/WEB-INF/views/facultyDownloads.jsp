@@ -115,7 +115,7 @@
 																		Student Rollno: <input id="userID" type="text"
 																			name="userId" required><br>
 																		<br> <button class="btn btn-sm btn-success"
-																			onclick="dispFolder()"  >APPLY</button>
+																			onclick="dispFolder()"  >Submit</button>
 																	
 
 
@@ -135,6 +135,7 @@
 																</div>
 
 																<div id="folders"></div>
+																<div id="files"></div>
 															</div>
 														</div>
 													</div>
@@ -294,17 +295,17 @@
 				data:'folder='+subfolder,
 				dataType : 'json',
 				success : function(data){
-					console.log("inside subfolder...")
+					console.log("inside subfolder...");
 					console.log(data.length);
 					for (i = 0; i < data.length; i++)
 						console.log(data[i]);
 					// times = data.length;
 					// console.log("times: " + times);
-					$('#folders').text('');
+					$('#files').text('');
 					$.each(data, function() {
 						console.log("print...");
-						$('#folders').append(
-								'<li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+						$('#files').append(
+								' <li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
 									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li>'
 								);
 					});
@@ -330,8 +331,10 @@
 						$('#folders').text('');
 						$.each(data, function() {
 							console.log("print..."+this.list);
+							var folder = this.list;
+							console.log('<li><a id ="folderName" onClick="x(\''+folder+'\')">'+ this.list+'</a></li>');
 							$('#folders').append(
-									'<li><a id ="folderName" onClick="x(this.list);">'+ this.list+'</a></li>'
+									'<table> <tr><td><li><a id ="folderName" onClick="x(\''+folder+'\')">'+ this.list+'</a></li></table>'
 									);
 						});
 					}

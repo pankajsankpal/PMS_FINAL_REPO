@@ -298,7 +298,7 @@ public class DisplayListController {
 		
 		/*ModelAndView model = new ModelAndView("Folders");
 		model.addObject("list", list);*/
-
+		System.out.println("checking number....");
 		JsonArray jarray= new JsonArray();
 		for(int i=0;i<list.size();i++){
 			
