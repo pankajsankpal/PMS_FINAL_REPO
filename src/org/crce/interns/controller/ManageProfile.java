@@ -974,6 +974,70 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					}else if(companyname.equals(GOD)){
 						model.addObject("link", GOD_LINK);
 						
+					}else if(companyname.equals(INF)){
+						model.addObject("link", INF_LINK);
+						
+					}else if(companyname.equals(NSE)){
+						model.addObject("link", NSE_LINK);
+						
+					}else if(companyname.equals(QUI)){
+						model.addObject("link", QUI_LINK);
+							
+					}else if(companyname.equals(GEN)){
+						model.addObject("link", GEN_LINK);
+							
+					}else if(companyname.equals(WF)){
+						model.addObject("link", WF_LINK);
+								
+						
+					}else if(companyname.equals(IBM)){
+						model.addObject("link", IBM_LINK);		
+						
+					}else if(companyname.equals(WIP)){
+						model.addObject("link", WIP_LINK);
+						
+					}else if(companyname.equals(CSI)){
+						model.addObject("link", CSI_LINK);
+						
+					}else if(companyname.equals(MAQ)){
+						model.addObject("link", MAQ_LINK);
+							
+						
+					}else if(companyname.equals(GIT)){
+						model.addObject("link", GIT_LINK);
+							
+						
+					}else if(companyname.equals(CG)){
+						model.addObject("link", CG_LINK);
+					
+					}else if(companyname.equals(PAT)){
+						model.addObject("link", PAT_LINK);
+							
+						
+					}else if(companyname.equals(AMD)){
+						model.addObject("link", AMD_LINK);
+					
+					}else if(companyname.equals(SYN)){
+						model.addObject("link", SYN_LINK);
+					
+					}else if(companyname.equals(HSBC)){
+						model.addObject("link", HSBC_LINK);	
+					
+					}else if(companyname.equals(TM)){
+						model.addObject("link", TM_LINK);
+					
+					}else if(companyname.equals(HP)){
+						model.addObject("link", HP_LINK);
+						
+					}else if(companyname.equals(MH)){
+						model.addObject("link", MH_LINK);
+						
+					}else if(companyname.equals(MH)){
+						model.addObject("link", MH_LINK);
+						
+					}else if(companyname.equals(FB)){
+						model.addObject("link", FB_LINK);
+						
 					}else if(companyname.equals(LNT)){
 						model.addObject("link", LNT_LINK);
 						
