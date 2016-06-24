@@ -136,7 +136,7 @@ description: gives the list of applied aplicants-->
 
 											<div class="space-20"></div>
 											<div class="center">
-									<a href="javascript:history.back()" class="btn btn-grey"> <i
+									<a href="manage.html" class="btn btn-grey"> <i
 										class="ace-icon fa fa-arrow-left"></i> Go Back
 									</a> 
 								</div>

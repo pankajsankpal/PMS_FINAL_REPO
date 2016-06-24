@@ -3,11 +3,13 @@ package org.crce.interns.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.QuickStatsBean;
 import org.crce.interns.beans.UserCompanyBean;
+import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.service.SelectedApplicantsService;
 import org.crce.interns.validators.AddSelectedValidator;
@@ -38,6 +40,11 @@ public class SelectedApplicantsController {
 	@Autowired
 	@Qualifier("deleteSelectedValidator")
 	private DeleteSelectedValidator deleteSelectedValidator;
+	
+	@Autowired
+	private NfService nfService;
+        
+        private static final Logger logger = Logger.getLogger(SelectedApplicantsController.class.getName());
 
 	@RequestMapping(value = "/manageselected.html", method = RequestMethod.GET)
 	public ModelAndView gotomanagelist() {
@@ -62,9 +69,10 @@ public class SelectedApplicantsController {
 			@ModelAttribute("professionalProfileBeanList") List<ProfessionalProfileBean> professionalProfileBeanList,
 			@ModelAttribute("personalProfileBeanList") List<PersonalProfileBean> personalProfileBeanList) {
 		try{
-		ModelAndView moel;
+		
 
-		 System.out.println("inside controller"+company);
+		 //System.out.println("inside controller"+company);
+                    logger.error("inside controller"+company);
 		 
 		 ModelAndView model = new ModelAndView("JobApplicants");
 		 
@@ -77,7 +85,7 @@ public class SelectedApplicantsController {
 		 List<PersonalProfileBean> selectedPersonal=new ArrayList<PersonalProfileBean>();
 		
 	
-		 System.out.println("inside controller..........");
+		 //System.out.println("inside controller..........");
 		
 		 for(QuickStatsBean d:quickStatsList) {
 			 System.out.println(d.getUsername());
@@ -108,7 +116,8 @@ public class SelectedApplicantsController {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/viewsclist");
 			return model;
@@ -133,7 +142,8 @@ public class SelectedApplicantsController {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/manageslist");
 			return model;
@@ -148,7 +158,8 @@ public class SelectedApplicantsController {
 		addSelectedValidator.validate(userBean, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
+			//System.out.println("Binding Errors are present...");
+                        logger.error("Binding Errors are present...");
 			model = new ModelAndView("add-selected");
 		} 
 		
@@ -177,14 +188,22 @@ public class SelectedApplicantsController {
 			else{
 				System.out.println("company is................"+userBean.getCompany_name());
 				selectService.createDetails(userBean);
-				model = new ModelAndView("add-selected-success");
+				
+				if(!nfService.addNotificationForSelectedAddition(
+						userBean.getCompany_name(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForSelectedAddition");
+				}
+				
+				
+				model = new ModelAndView("redirect:/viewApplicants.html?company="+userBean.getCompany_name()+"&year=");
 			}
 		}
 		return model;
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/addselected");
 			return model;
@@ -202,7 +221,8 @@ public class SelectedApplicantsController {
 		deleteSelectedValidator.validate(userBean, bindingResult);
 		
 		if(bindingResult.hasErrors()){
-			System.out.println("Binding Errors are present...");
+			//System.out.println("Binding Errors are present...");
+                        logger.error("Binding Errors are present...");
 			model = new ModelAndView("delete-selected");
 		}
 		
@@ -230,14 +250,21 @@ public class SelectedApplicantsController {
 
 			else{
 				selectService.deleteDetails(userBean);
-				model = new ModelAndView("delete-selected-success");
+				
+				if(!nfService.addNotificationForSelectedRemoval(
+						userBean.getCompany_name(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForSelectedRemoval");
+				}
+				
+				model = new ModelAndView("redirect:/viewApplicants.html?company="+userBean.getCompany_name()+"&year=");
 			}
 		}
 		return model;
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/deleteselected");
 			return model;

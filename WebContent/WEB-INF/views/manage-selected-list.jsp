@@ -90,14 +90,14 @@
 													</tr>
 													</table>
 												<table>
-							<!-- 						<tr>
+							 						<tr>
 														<td>
 															
-																<a href="views.html">View The
-																	List Of Applied Candidates</a>
+													<!-- 			<a href="views.html">View The
+																	List Of Applied Candidates</a>   -->
 															
 														</td>
-													</tr> -->
+													</tr> 
 													</table>
 											</form>
 												
