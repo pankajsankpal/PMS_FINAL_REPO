@@ -83,12 +83,18 @@
 								<div class="tabbable">
 									<ul class="nav nav-tabs padding-18">
 										<li><a href="viewprofile"> <i
-												class="orange ace-icon fa fa-rss bigger-120"></i> Activity
+												class="orange ace-icon fa fa-wrench bigger-120"></i> Activity
 										</a></li>
 
 										<li class="active"><a href="#uploads"> <i
-												class="blue ace-icon fa fa-users bigger-120"></i> Uploads
+												class="blue ace-icon fa fa-upload bigger-120"></i> Uploads
 										</a></li>
+										<li>
+											<a href="fnotifications">
+												<i class="pink ace-icon fa fa-check bigger-120"></i>
+												Notification
+											</a>
+										</li>
 
 
 									</ul>
