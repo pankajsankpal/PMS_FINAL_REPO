@@ -415,6 +415,9 @@ import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.crce.interns.validators.CriteriaFormValidator;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -465,6 +468,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 
 	@Autowired
 	private EmailNotificationServiceImpl emailNotificationService;
+	
+	@Autowired
+	private SessionFactory sessionFactory ;
 
 /*	
 	@RequestMapping("/")
@@ -626,17 +632,42 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				else{
 					System.out.println("notification not added");
 				}
-				//emailNotificationService.sendEmailNotification(receivers, category, message);
+				
+				System.out.println("JOB ID"+jobBean.getJob_id());
+				
+				
+				
+				
+				System.out.println("Outside query 1");
+				
+				Session session = sessionFactory.openSession();
+				System.out.println("Outside query 3");
+				String hql="SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId";
+				System.out.println("Outside query 4");
+				//@SuppressWarnings("null")
+				//Query query=sessionFactory.getCurrentSession().createQuery("SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId");
+				Query query = session.createQuery(hql);
+				System.out.println("Outside query 5");
+				
+				String curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				query.setParameter("curYear",curYear);
+				query.setParameter("jobId", jobBean.getJob_id());
+				
+				//int rows = query.executeUpdate();
+				System.out.println("Outside query 3");
+				if(query.list().isEmpty())
 		
-				manageProfileService.addProfile(jobBean);
-				manageProfileService.addProfile(criteriaBean);
-				//manageProfileService.addProfile(companyBean);
+				{
+					System.out.println("Inside query");
+					manageProfileService.addProfile(jobBean);
+					manageProfileService.addProfile(criteriaBean);
+					//manageProfileService.addProfile(companyBean);
 		
 		
 				
 				
-				//List<CompanyBean> companyList = manageProfileService.listCompanies();
-			    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+					//List<CompanyBean> companyList = manageProfileService.listCompanies();
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
 			            for(CompanyBean cb : clist){
 			            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			            }
@@ -644,7 +675,20 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 			    ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
 			    model.addObject("success", 1);
 				return model;
-		
+				
+				}
+				else
+				{
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
+					for(CompanyBean cb : clist){
+						companyMap.put(cb.getCompany_id(), cb.getCompany_name());
+					}
+					ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+					model.addObject("alreadyExists", 2);
+					return model;
+					
+				}
+				
 				//ModelAndView model = new ModelAndView("addProfile");
 				//model.addObject("success", 1);
 				//return model;
