@@ -48,6 +48,9 @@ description: Sidebar, tabs turn active through jquery -->
 			<li class=" " id="FAQ"><a href="FAQ"> <i class="menu-icon
 						fa fa-question"></i> <span class="menu-text">FAQ</span>
 			</a> <b class="arrow"></b></li>
+			<li class=" " id="about_us"><a href="about_us"> <i class="menu-icon fa 
+						fa-info-circle"></i> <span class="menu-text">About Us</span>
+			</a> <b class="arrow"></b></li>
 
 		</ul>
 		<!--  End of nav list-->

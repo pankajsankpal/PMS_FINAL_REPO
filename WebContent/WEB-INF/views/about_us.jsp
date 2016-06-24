@@ -21,83 +21,361 @@
 				<div class="page-header">
 					<h1>About Us</h1>					
 				</div>
-
+				
 				<div class="row">
-					<div class="col-xs-6 col-sm-4 col-md-3">
+					<div class="col-xs-12">
+					<p class="lead">A dynamic team of young minds who came together  
+					to create Magic !</p>
+					
+					<blockquote class="pull-left">
+					<p>
+					Some nice quote
+					</p>
+					
+					</blockquote>
+					</div>
+				</div>
+				<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div>
+									<ul class="ace-thumbnails clearfix">
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Nevil Dsouza</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span>
+											</div>
+
+											
+										</li>
+										<!-- 14 done -->
+										
+										
+
+									</ul>
+								</div><!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+				
+		<div class="space-10"></div>
+				<div class="row">
+					<div class="col-xs-12">
+					<div >
 						<div class="thumbnail search-thumbnail">
 							<!-- <img class="media-object" data-src="holder.js/100px200?theme=gray" /> -->
-							<p align="center"> <i class="fa fa-group fa-5x" aria-hidden="true"></i></p>
+							<p align="center"> <i class="ace-icon fa fa-laptop fa-5x" aria-hidden="true"></i></p>
 							<div class="caption">
 								<h3 class="search-title">
-									<a href="#" class="blue"><p align="center"> UI Team</p></a>
+									<p class="blue" align="center"> UI & UX</p>
 								</h3>
-								User friendly interface was designed by the following people:
-								<ul>
-									<li>Nevil D'souza</li>
-									<li>Pankaj Sankalp</li>
-									<li>Gaurav Shinde</li>
-									<li>Lenherd Oliver</li>
-									<li>Oneil Mascarenhas</li>
+								<p>Amazing UI / UX designers</p>
+								<ul>									
+									<li>Pankaj </li>
+									<li>Gaurav </li>
+									<li>Lenherd </li>
+									<li>Oneil </li>
+									<li>Nevil </li>
+									<li>Leon </li>
+									
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4 col-md-3">
+					<!-- <div class="col-xs-6 col-sm-4 col-md-3"> -->
+					<div >
 						<div class="thumbnail search-thumbnail">
 							<!-- <img class="media-object" data-src="holder.js/100px200?theme=gray" /> -->
 							<p align="center"> <i class="fa fa-group fa-5x" aria-hidden="true"></i></p>
 							<div class="caption">
 								<h3 class="search-title">
-									<a href="#" class="blue"><p align="center">Backend Team</p></a>
+									<p class="blue" align="center">Web Devs </p>
 								</h3>
-								To support the user friendly interface we have very good back-end support done by the following people: 
+								<p>Extreme Programming Teams</p> 
 								<ul>
-									<li>Nevil D'souza</li>
-									<li>Leon D'souza</li>
-									<li>Crystal Cuthinho</li>
-									<li>Melwyn Saldhana</li>
-									<li>Cheryl Nellissery</li>
-									<li>Rashmi Srinivasan</li>
-									<li>Adarsh Gupta</li>
-									<li>Kushal Giri</li>
-									<li>Andrea Furtado</li>
-									<li>Anu Issac</li>
+									<li>Nevil | Anu</li>
+									<li>Leon | Andrea</li>
+									<li>Crystal | Cheryl</li> 
+									<li>Melwyn | Kushal</li>
+									<li>Adarsh | Rashmi</li>									
+									
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4 col-md-3">
+					
+					
+					<div class="space-5"></div>
+					
+					
+					<div >
 						<div class="thumbnail search-thumbnail">
 							<!-- <img class="media-object" data-src="holder.js/100px200?theme=gray" /> -->
-							<p align="center"> <i class="fa fa-group fa-5x" aria-hidden="true"></i></p>
+							<p align="center"> <i class="ace-icon fa fa-cloud-upload fa-5x" aria-hidden="true"></i></p>
 							<div class="caption">
 								<h3 class="search-title">
-									<a href="#" class="blue"><p align="center">CI Team</p></a>
+									<p class="blue" align="center">Dev Ops</p>
 								</h3>
-								The following people helped for continuous integration of the this web-site:
+								<p>Version Control & Continuous Integration Players</p>
 								<ul>
-									<li>Nevil D'souza</li>
-									<li>Leon D'souza</li>
-									<li>Crystal Cuthinho</li>
-									<li>Adarsh Gupta</li>
-									<li>Pankaj Sankalp</li>
-									<li>Gaurav Shinde</li>
+									<li>Nevil </li>
+									<li>Adarsh </li>
+									<li>Melwyn </li>
+									<li>Crystal</li>									
+									<li>Leon </li>									
+									<li>Pankaj </li>									
 								</ul>								
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4 col-md-3">
+					<div >
 						<div class="thumbnail search-thumbnail">
 							<!-- <img class="media-object" data-src="holder.js/100px200?theme=social" /> -->
 							<p align="center"> <i class="fa fa-user fa-5x" aria-hidden="true"></i></p>
 							<div class="caption">
 								<h3 class="search-title">
-									<a href="#" class="blue"><p align="center">Niraj</p></a>
+									<p class="blue" align="center">Mentors</p>
 								</h3>
-								<p>Thanks to our mentor,we could make this website.
-									He guided us and helped us to solve our difficulties.</p>
+								<p>Thanks to your support,we made it this far</p>
+								<ul>
+									<li>Mahesh Sharma (TPO) </li>
+									<li>Sunil Chaudhary (Incharge) </li>
+									<li>Niraj Pal (Tech Expert) </li>																		
+								</ul>	
+								
 							</div>
 						</div>
+					</div>
 					</div>
 				</div>
 				<div class="space-3"></div>					
