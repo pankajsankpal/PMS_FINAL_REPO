@@ -66,13 +66,15 @@ function doSearch(){
 
 												<table>
 													<tr>
-														<td><label class="col-sm-0">Company</label><select id="searchresult"></select>
+														<td><label class="col-sm-0">Company</label><select name="company" id="searchresult"></select>
 															<button class="btn btn-xs btn-primary" type="submit">
 																<i class="ace-icon fa fa-check bigger-110"></i> Submit
 															</button></td>
 
 													</tr>
 												</table>
+												
+												<input type="text" name="year" hidden/>
 											</form>
 
 
