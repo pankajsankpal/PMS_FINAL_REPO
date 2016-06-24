@@ -25,9 +25,9 @@ description: contains the list of all the companies -->
 
 				<jsp:directive.include file="searchheader.jsp" />
 			</div>
-			
+
 			<div class="page-content">
-				
+
 				<div class="page-header">
 					<h1>Companies</h1>
 				</div>
@@ -41,7 +41,7 @@ description: contains the list of all the companies -->
 
 								<li><a href="Company?companyname=JP Morgan"> <img
 										width="200" height="150" alt="JP Morgan"
-										src="assets/images/companies/JP Morgan.jpg"/>
+										src="assets/images/companies/JP Morgan.jpg" />
 								</a></li>
 								<li><a href="Company?companyname=Direct i"> <img
 										width="200" height="150" alt="Direct i"
@@ -51,28 +51,149 @@ description: contains the list of all the companies -->
 										width="200" height="150" alt="Morgan Stanley"
 										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Laursen & Tubro"> <img
-										width="200" height="150" alt="Laursen & Tubro"
-										src="assets/images/companies/Laursen & Tubro.jpg" />
-								</a></li>
-								<li><a href="Company?companyname=Accenture"> <img
-										width="200" height="150" alt="Accenture"
-										src="assets/images/companies/Accenture.jpg" />
-								</a></li>
-								<li><a href="Company?companyname=Tata Consultancy Services"> <img width="200"
-										height="150" alt="Tata Consultancy Services"
-										src="assets/images/companies/Tata Consultancy Services.jpg" />
-								</a></li>
-								<li><a href="Company?companyname=ZS Associates"> <img width="200"
-										height="150" alt="ZS Associates"
-										src="assets/images/companies/ZS Associates.jpg" />
-								</a></li>
 								
 								<li><a href="Company?companyname=Godrej"> <img
 										width="200" height="150" alt="Godrej"
 										src="assets/images/companies/Godrej.jpg" />
 								</a></li>
 								
+								<li><a href="Company?companyname=Laursen & Tubro"> <img
+										width="200" height="150" alt="Laursen & Tubro"
+										src="assets/images/companies/Laursen & Tubro.jpg" />
+
+										<li><a href="Company?companyname=Wipro"> <img
+												width="200" height="150" alt="Wipro"
+												src="assets/images/companies/Wipro.jpg" />
+										</a></li>
+								</a></li>
+
+								<li><a href="Company?companyname=Tata Consultancy Services">
+										<img width="200" height="150" alt="Tata Consultancy Services"
+										src="assets/images/companies/Tata Consultancy Services.jpg" />
+								</a></li>
+
+								
+
+								<li><a href="Company?companyname=ZS Associates"> <img
+										width="200" height="150" alt="ZS Associates"
+										src="assets/images/companies/ZS Associates.jpg" />
+								</a></li>
+
+								<li><a href="Company?companyname=Mahindra"> <img
+										width="200" height="150" alt="Mahindra"
+										src="assets/images/companies/Mahindra.jpg" />
+								</a></li>
+
+								
+								
+								<li><a href="Company?companyname=Accenture"> <img
+										width="200" height="150" alt="Accenture"
+										src="assets/images/companies/Accenture.jpg" />
+								</a></li>
+
+
+								<li><a href="Company?companyname=Infosys"> <img
+										width="200" height="150" alt="Infosys"
+										src="assets/images/companies/Infosys.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Patni"> <img
+										width="200" height="150" alt="Patni"
+										src="assets/images/companies/Patni.jpg" />
+								</a></li>
+								
+								
+								<li><a href="Company?companyname=Google">
+										<img width="200" height="150" alt="Google"
+										src="assets/images/companies/Google.jpg" />
+								</a></li>
+								
+								
+
+								<li><a
+									href="Company?companyname=National Stock Exchange of India">
+										<img width="200" height="150"
+										alt="National Stock Exchange of India"
+										src="assets/images/companies/National Stock Exchange of India.jpg" />
+								</a></li>
+
+								<li><a href="Company?companyname=Hewlett-Packard"> <img
+										width="200" height="150" alt="Hewlett-Packard"
+										src="assets/images/companies/Hewlett-Packard.jpg" />
+								</a></li>
+
+								<li><a href="Company?companyname=Federal Bank"> <img
+										width="200" height="150" alt="Federal Bank"
+										src="assets/images/companies/Federal Bank.jpg" />
+								</a></li>
+								
+
+								<li><a href="Company?companyname=Amdocs"> <img
+										width="200" height="150" alt="Amdocs"
+										src="assets/images/companies/Amdocs.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Capgemini"> <img
+										width="200" height="150" alt="Capgemini"
+										src="assets/images/companies/Capgemini.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Kansai Nerolac Paints">
+										<img width="200" height="150" alt="Kansai Nerolac Paints"
+										src="assets/images/companies/Kansai Nerolac Paints.jpg" />
+								</a></li>
+								
+
+								<li><a href="Company?companyname=HSBC"> <img
+										width="200" height="150" alt="HSBC"
+										src="assets/images/companies/HSBC.jpg" />
+								</a></li>
+
+								<li><a href="Company?companyname=Tech Mahindra"> <img
+										width="200" height="150" alt="Tech Mahindra"
+										src="assets/images/companies/Tech Mahindra.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=MAQ Software">
+										<img width="200" height="150" alt="MAQ Software"
+										src="assets/images/companies/MAQ Software.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Genesys">
+										<img width="200" height="150" alt="Genesys"
+										src="assets/images/companies/Genesys.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Quinnox">
+										<img width="200" height="150" alt="Quinnox"
+										src="assets/images/companies/Quinnox.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Godrej Infotech"> <img
+										width="200" height="150" alt="Godrej Infotech"
+										src="assets/images/companies/Godrej Infotech.jpg" />
+								</a></li>
+								
+								
+								<li><a href="Company?companyname=Weatherford">
+										<img width="200" height="150" alt="Weatherford"
+										src="assets/images/companies/Weatherford.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=CSI Technologies">
+										<img width="200" height="150" alt="CSI Technologies"
+										src="assets/images/companies/CSI Technologies.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=IBM">
+										<img width="200" height="150" alt="IBM"
+										src="assets/images/companies/IBM.jpg" />
+								</a></li>
+								
+								<li><a href="Company?companyname=Syntel"> <img
+										width="200" height="150" alt="Syntel"
+										src="assets/images/companies/Syntel.jpg" />
+								</a></li>
 								
 
 							</ul>
@@ -82,13 +203,13 @@ description: contains the list of all the companies -->
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-				
-						<jsp:directive.include file="scripts.jsp" />
-	<jsp:directive.include file="Footer.jsp" />
+
+				<jsp:directive.include file="scripts.jsp" />
+				<jsp:directive.include file="Footer.jsp" />
 
 
 
-				
+
 			</div>
 			<!-- /.page-content -->
 		</div>
@@ -96,7 +217,7 @@ description: contains the list of all the companies -->
 	<!-- /.main-content -->
 
 	<!-- /.page-header -->
-		
+
 
 
 	<!-- inline scripts related to this page -->
