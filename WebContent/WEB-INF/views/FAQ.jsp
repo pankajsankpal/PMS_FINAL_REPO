@@ -26,27 +26,9 @@
     padding: 0px;
 }
 </style>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
 
-<script>
- $(document).ready(function() {
- 
-    $('.faq_question').click(function() {
- 
-        if ($(this).parent().is('.open')){
-            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
-            $(this).closest('.faq').removeClass('open');
- 
-            }else{
-                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
-                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
-                $(this).closest('.faq').addClass('open');
-            }
- 
-    });
- 
-});
-</script>
+
 </head>
 <body>
 	<jsp:directive.include file="Header.jsp" />
@@ -222,16 +204,37 @@
     				</div>
     				
  				</div>
- 				
+ 				<jsp:directive.include file="scripts.jsp" />			
 				<jsp:directive.include file="Footer.jsp" />
 			</div>
 			<!-- /.page-content -->
 		</div>
 	</div>
-
+	
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 
+	<script>
+ //$(document).ready(function() {
+	 jQuery(function($) {
+		 
+	 console.log("jquery working");
+    $('.faq_question').click(function() {
+ 
+        if ($(this).parent().is('.open')){
+            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
+            $(this).closest('.faq').removeClass('open');
+ 
+            }else{
+                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
+                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
+                $(this).closest('.faq').addClass('open');
+            }
+ 
+    });
+ 
+	});
+	</script>
 	
 </body>
 </html>

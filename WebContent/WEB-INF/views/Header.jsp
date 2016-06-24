@@ -14,7 +14,7 @@
 <body onload="" class="skin-3 no-skin">
 	<jsp:directive.include file="scripts.jsp" />
 	
-	<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+	<div id="navbar" class="navbar navbar-default">
 			<script type="text/javascript">
 							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 			</script>
