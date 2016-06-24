@@ -42,5 +42,9 @@ public interface NfService {
 	
 	public boolean addNotificationForApplicantAddition(String companyName,String userName);
 		
+	public boolean addNotificationForSelectedRemoval(String companyName,String userName);
+	
+	public boolean addNotificationForSelectedAddition(String companyName,String userName);
+	
 	
 }

@@ -187,8 +187,15 @@ public class ManageApplicantsController {
 				
 			}
 			else
-				nfService.addNotificationForApplicantAddition(
-						userBean.getCompany(), userBean.getUsername());
+				
+				
+				if(!nfService.addNotificationForApplicantAddition(
+						userBean.getCompany(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForApplicantAddition");
+				}
+			
+			
+			
 			
 			model = new ModelAndView("redirect:/viewclist.html?company="+userBean.getCompany()+"&year=");
 		}
@@ -239,8 +246,12 @@ public class ManageApplicantsController {
 			}
 			else
 				
-				nfService.addNotificationForApplicantRemoval(
-						userBean.getCompany(), userBean.getUsername());
+				
+				if(!nfService.addNotificationForApplicantRemoval(
+						userBean.getCompany(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForApplicantRemoval");
+				}
+				
 				model = new ModelAndView("redirect:/viewclist.html?company="+userBean.getCompany()+"&year=");
 		}
 			return model;

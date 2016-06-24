@@ -40,6 +40,9 @@ public class NfServiceImpl implements NfService, ConstantValues{
 	@Autowired
 	private NfDAO nfDAO;
 	
+	@Autowired
+    private EmailNotificationServiceImpl emailNotificationService;
+	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void checkNf() {
 		System.out.print("inside Nf service");
@@ -241,6 +244,10 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 
 		if(nfDAO.addNotification(temp)){
+			
+			emailNotificationService.sendEmailNotification(
+					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
+					);
 			return true;
 		}
 		else{
@@ -263,6 +270,63 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 
 		if(nfDAO.addNotification(temp)){
+			emailNotificationService.sendEmailNotification(
+					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
+					);
+			
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForSelectedRemoval(String companyName,
+			String userName){
+		Notification temp = new Notification();
+		
+		temp.setType(USER);
+		temp.setCategory(SELECTED);
+		temp.setMessage(SELECTED_MSG3+companyName+SELECTED_MSG4);
+		temp.setUrl(APPLICANTS_URL1+companyName+APPLICANTS_URL2);
+		temp.setUserOrGroupId(userName);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			emailNotificationService.sendEmailNotification(
+					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
+					);
+			
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public boolean addNotificationForSelectedAddition(String companyName,
+			String userName){
+		Notification temp = new Notification();
+		
+		temp.setType(USER);
+		temp.setCategory(SELECTED);
+		temp.setMessage(SELECTED_MSG1+companyName+SELECTED_MSG2);
+		temp.setUrl(APPLICANTS_URL1+companyName+APPLICANTS_URL2);
+		temp.setUserOrGroupId(userName);		
+		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
+
+		if(nfDAO.addNotification(temp)){
+			emailNotificationService.sendEmailNotification(
+					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
+					);
+			
 			return true;
 		}
 		else{
