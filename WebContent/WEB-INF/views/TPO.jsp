@@ -65,8 +65,8 @@
 										</li>
 
 										
-										<li  class="">
-											<a data-toggle="tab" href="fnotificatn">
+										<li >
+											<a href="fnotifications">
 												<i class="pink ace-icon fa fa-check bigger-120"></i>
 												Notification
 											</a>
@@ -129,7 +129,7 @@
 												<div class="col-xs-12 col-sm-4 left">
 
 													<a href="addProfile"
-														class="btn btn-purple btn-lg btn-block">Add job
+														class="btn btn-purple btn-lg btn-block">Add Job
 														Profile </a> <br>
 													<br> <a href="getEventForm.html"
 														class="btn btn-inverse btn-lg btn-block">Add Event </a> <br>
@@ -144,13 +144,17 @@
 												<div class="col-xs-12 col-sm-4 right">
 
 													<a href="manage.html"
-														class="btn btn-purple btn-lg btn-block">Add candidate
+														class="btn btn-purple btn-lg btn-block">Job Applicants
+													</a> 
+													<br/>
+													<a href="manageselected.html"
+														class="btn btn-inverse btn-lg btn-block">Selected Applicants
 													</a> <br>
 													<br> <a href="GroupSendMail"
-														class="btn btn-inverse btn-lg btn-block">Send Group
+														class="btn btn-warning btn-lg btn-block">Send Group
 														Email </a><br>
 													<br> <a href="personalMail"
-														class="btn btn-warning btn-lg btn-block">Send Personal
+														class="btn btn-purple btn-lg btn-block">Send Personal
 														Email </a><br>
 													<br>
 												</div>

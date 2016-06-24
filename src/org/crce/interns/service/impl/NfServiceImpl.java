@@ -245,9 +245,9 @@ public class NfServiceImpl implements NfService, ConstantValues{
 
 		if(nfDAO.addNotification(temp)){
 			
-			emailNotificationService.sendEmailNotification(
+			/*emailNotificationService.sendEmailNotification(
 					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
-					);
+					);*/
 			return true;
 		}
 		else{
@@ -270,9 +270,9 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 
 		if(nfDAO.addNotification(temp)){
-			emailNotificationService.sendEmailNotification(
+			/*emailNotificationService.sendEmailNotification(
 					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
-					);
+					);*/
 			
 			return true;
 		}
@@ -297,10 +297,11 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 
 		if(nfDAO.addNotification(temp)){
+			/*
 			emailNotificationService.sendEmailNotification(
 					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
 					);
-			
+			*/
 			return true;
 		}
 		else{
@@ -323,9 +324,10 @@ public class NfServiceImpl implements NfService, ConstantValues{
 		temp.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm a").format(new Date()));
 
 		if(nfDAO.addNotification(temp)){
+			/*
 			emailNotificationService.sendEmailNotification(
 					temp.getUserOrGroupId(), temp.getCategory(), temp.getMessage()
-					);
+					);*/
 			
 			return true;
 		}
