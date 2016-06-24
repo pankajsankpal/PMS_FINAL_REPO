@@ -12,8 +12,14 @@ description: contains the list of all the companies -->
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-
+<style>
+#img {
+position:absolute;
+display: none;
+}
+</style>	
+	
+<script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -39,36 +45,36 @@ description: contains the list of all the companies -->
 							<ul class="ace-thumbnails ">
 
 
-								<li><a href="Company?companyname=JP Morgan"> <img
+								<li><a href="Company?companyname=JP Morgan" > <img  id="img1"
 										width="200" height="150" alt="JP Morgan"
-										src="assets/images/companies/JP Morgan.jpg"/>
+										src="assets/images/companies/JP Morgan.jpg"  />
 								</a></li>
-								<li><a href="Company?companyname=Direct i"> <img
+								<li><a href="Company?companyname=Direct i"> <img id="img2"
 										width="200" height="150" alt="Direct i"
 										src="assets/images/companies/Direct i.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Morgan Stanley"> <img
+								<li><a href="Company?companyname=Morgan Stanley"> <img id="img3"
 										width="200" height="150" alt="Morgan Stanley"
 										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Laursen & Tubro"> <img
+								<li><a href="Company?companyname=Laursen & Tubro"> <img id="img4"
 										width="200" height="150" alt="Laursen & Tubro"
 										src="assets/images/companies/Laursen & Tubro.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Accenture"> <img
+								<li><a href="Company?companyname=Accenture"> <img id="img5"
 										width="200" height="150" alt="Accenture"
 										src="assets/images/companies/Accenture.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Tata Consultancy Services"> <img width="200"
+								<li><a href="Company?companyname=Tata Consultancy Services"> <img  id="img6" width="200"
 										height="150" alt="Tata Consultancy Services"
 										src="assets/images/companies/Tata Consultancy Services.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=ZS Associates"> <img width="200"
-										height="150" alt="ZS Associates"
+								<li><a href="Company?companyname=ZS Associates"> <img id="img7"
+								 width="200" height="150" alt="ZS Associates"
 										src="assets/images/companies/ZS Associates.jpg" />
 								</a></li>
 								
-								<li><a href="Company?companyname=Godrej"> <img
+								<li><a href="Company?companyname=Godrej"> <img id="img8"
 										width="200" height="150" alt="Godrej"
 										src="assets/images/companies/Godrej.jpg" />
 								</a></li>
@@ -107,7 +113,46 @@ description: contains the list of all the companies -->
 
 
 
+<!-- script to fade the images onload -->
+<script type="text/javascript">
+$(document).ready(function() { 
+	
+	// $('#img'+2).fadeTo(1000, 0.2);
+	 
+		$.ajax({
+			url: 'getValuesToFed' ,
+			
+			dataType : 'json',
+			success : function(data){
+				
+				console.log(data.length);
+				for (i = 0; i < data.length; i++)
+					console.log(data[i]);
+				
+				
+				$.each(data , function(key,value){
+					
+					 console.log("key:"+key);
+					    $.each(value, function (index, data) {
+					        console.log(index, data)
+					       // console.log("data: "+ data)
+					     
+					         if(data == 0){
+					        	console.log("key+2:"+ (key+1));
+					        	  $('#img'+(key+1)).fadeTo(1000, 0.2);
+
+					        } 
+					    })
+					
+				});
+			} 
+		});
+});
+</script>
+
 	<script type="text/javascript">
+	 
+	
 		jQuery(function($) {
 			var $overflow = '';
 			var colorbox_params = {
@@ -141,7 +186,7 @@ description: contains the list of all the companies -->
 			$(document).one('ajaxloadstart.page', function(e) {
 				$('#colorbox, #cboxOverlay').remove();
 			});
-		})
+		});
 	</script>
 
 </body>
