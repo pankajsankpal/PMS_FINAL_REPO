@@ -45,17 +45,17 @@ display: none;
 							<ul class="ace-thumbnails ">
 
 
-								<li><a href="Company?companyname=JP Morgan" > <img  id="img1"
+								<li><a href="Company?companyname=JP Morgan" > <img  id="JP Morgan"
 										width="200" height="150" alt="JP Morgan"
 
 										src="assets/images/companies/JP Morgan.jpg" />
 
 								</a></li>
-								<li><a href="Company?companyname=Direct i"> <img id="img2"
+								<li><a href="Company?companyname=Direct i"> <img id="Direct i"
 										width="200" height="150" alt="Direct i"
 										src="assets/images/companies/Direct i.jpg" />
 								</a></li>
-								<li><a href="Company?companyname=Morgan Stanley"> <img id="img3"
+								<li><a href="Company?companyname=Morgan Stanley"> <img id="Morgan Stanley"
 										width="200" height="150" alt="Morgan Stanley"
 										src="assets/images/companies/Morgan Stanley.jpg" />
 								</a></li>
@@ -66,7 +66,7 @@ display: none;
 										src="assets/images/companies/Godrej.jpg" />
 								</a></li> -->
 								
-								<li><a href="Company?companyname=Laursen & Tubro"> <img id="img4"
+								<li><a href="Company?companyname=Laursen & Tubro"> <img id="Laursen & Tubro"
 
 										width="200" height="150" alt="Laursen & Tubro"
 										src="assets/images/companies/Laursen & Tubro.jpg" />
@@ -265,8 +265,9 @@ $(document).ready(function() {
 					       // console.log("data: "+ data)
 					     
 					         if(data == 0){
-					        	console.log("key+2:"+ (key+1));
-					        	  $('#img'+(key+1)).fadeTo(1000, 0.2);
+					        	console.log();
+					        	
+					        	$('#'+(key)).fadeTo(1000, 0.2);
 
 					        } 
 					    })

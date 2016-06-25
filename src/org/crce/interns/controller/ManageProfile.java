@@ -602,6 +602,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				criteriaBean.setSsc_percentage(r.get("ssc_percentage"));
 				criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 				criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
+				
+				
+				
 				/*
 				
 				jobValidator.validate(jobBean, bindingResult);

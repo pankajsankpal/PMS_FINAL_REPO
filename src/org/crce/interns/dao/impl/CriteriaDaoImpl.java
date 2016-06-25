@@ -21,8 +21,9 @@ public class CriteriaDaoImpl implements CriteriaDao {
 	
 	public void addCriteria(Criteria criteria) {
 		try{
-		System.out.println("In DAO CRITERIA");
+		System.out.println("In DAO CRITERIA "+criteria.getLast_date_to_apply());
 		System.out.println(criteria.getCgpa());
+			
 			sessionFactory.getCurrentSession().saveOrUpdate(criteria);
 			int cid=criteria.getCriteria_id();
 			System.out.println("in dao criteria after");

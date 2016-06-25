@@ -16,9 +16,13 @@
 
 package org.crce.interns.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,6 +34,7 @@ import org.crce.interns.beans.FeedbackBean;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.service.CompanyService;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.CriteriaService;
 import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.validators.CompanyFormValidator;
@@ -46,11 +51,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 @Controller
-public class CompanyController {
+public class CompanyController implements ConstantValues{
 
 	@Autowired
     CompanyFormValidator companyValidator;
@@ -170,7 +176,12 @@ public class CompanyController {
 			//int totalImg=8; //total number of images will come here..
 			int totalImg = companyList.size();
 			 
-			
+			Map<String,Integer> fader = new HashMap<String,Integer>();
+			/*
+			for(String i: cNames){
+				fader.put(i, 0);
+			}
+			*/
 			
 			for(CompanyBean c : companyList){
 				
@@ -178,15 +189,27 @@ public class CompanyController {
 					
 					if(c.getCompany_id() == cr.getCriteria_id()){
 							
-						
-						
+						//String ldta = new SimpleDateFormat("MM/dd/yyyy").format(cr.getLast_date_to_apply());
+						//String today = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
+						try{
+						 if(new Date().after(cr.getLast_date_to_apply())){
+							 fader.put(c.getCompany_name(), 0);
+						 }
+						 else{
+							 fader.put(c.getCompany_name(), 1);
+						 }
+							 
+						}
+						catch(Exception e){
+							System.out.println(e);
+						}
 					}
 				}
 				
 			}
 			
 			
-			
+		/*	
 			
 			int fadeImg;
 			JsonArray jarry= new JsonArray();
@@ -206,6 +229,10 @@ public class CompanyController {
 			//return mode;
 			System.out.println("String representation: "+ jarry.toString());
 			return jarry.toString();
+			
+			*/
+			
+			return new Gson().toJson(fader);
 		}
 	 
 }
