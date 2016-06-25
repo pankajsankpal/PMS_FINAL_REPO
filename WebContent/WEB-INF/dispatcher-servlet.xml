@@ -1,4 +1,3 @@
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -16,6 +15,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
    
 
 	<context:property-placeholder location="classpath:resources/database.properties" />
+        <context:property-placeholder location="/WEB-INF/log4j.properties" />
 	<context:annotation-config />
 	<mvc:annotation-driven />
 
@@ -64,6 +64,16 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<property name="file" value="/WEB-INF/database.xml" />
 	</bean>
 		
+		
+	<bean id="ap"
+		class="org.crce.interns.beans.CSVReader">
+		<property name="file" value="/WEB-INF/applicant.csv" />
+	</bean>
+	
+	<bean id="bp"
+		class="org.crce.interns.beans.SCSVReader">
+		<property name="file" value="/WEB-INF/applicant.scsv" />
+	</bean>
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

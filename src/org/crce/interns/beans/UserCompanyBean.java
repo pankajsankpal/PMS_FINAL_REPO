@@ -3,7 +3,6 @@ package org.crce.interns.beans;
 //import org.crce.interns.model.UserCompanyId;
 
 public class UserCompanyBean {
-//<<<<<<< HEAD
 	
 		private String username;
 				

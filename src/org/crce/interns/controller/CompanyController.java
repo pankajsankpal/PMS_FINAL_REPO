@@ -16,11 +16,17 @@
 
 package org.crce.interns.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.CriteriaBean;
+import org.crce.interns.beans.FeedbackBean;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.service.CompanyService;
@@ -34,7 +40,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 @Controller
 public class CompanyController {
@@ -47,6 +59,8 @@ public class CompanyController {
 	
 	@Autowired 
 	private CriteriaService criteriaService;
+        
+        private static final Logger logger = Logger.getLogger(CompanyController.class.getName());
 	/*
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView welcome() {
@@ -73,7 +87,8 @@ public class CompanyController {
 			
 		 }
 		 catch(Exception e){
-				System.out.println(e);
+				//System.out.println(e);
+                                logger.error(e);
 
 				ModelAndView model1=new ModelAndView("500");
 				model1.addObject("message", "Your session has timed out. Please login again");
@@ -85,12 +100,13 @@ public class CompanyController {
 		}
 	 @RequestMapping(value = "/saveCompany", method = RequestMethod.POST)
 		public ModelAndView saveCompany(  HttpServletRequest request,@ModelAttribute("companyBean") CompanyBean companyBean, 
-				BindingResult result) {
+				BindingResult result,final RedirectAttributes redirectAttributes) {
 		 
 		 try{
 		 companyValidator.validate(companyBean, result);
 			if (result.hasErrors()) {
-		System.out.println("Error in form");
+		//System.out.println("Error in form");
+                            logger.error("Error in form");
      
      return new ModelAndView("addCompany");
          }
@@ -104,13 +120,19 @@ public class CompanyController {
 
 //			return new ModelAndView("companysuccess");
 
-			return new ModelAndView("redirect:/addCompany");
-         
+			
+			redirectAttributes.addFlashAttribute("msg", "Data added successfully");
+			
+			
+			ModelAndView model1=new ModelAndView("redirect:/addCompany");
+			//model1.addObject("message", "Data added successfully ");
+			return model1;
+			
 		
 	 }
 	 catch(Exception e){
-			System.out.println(e);
-
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model1=new ModelAndView("500");
 			model1.addObject("message", "Your session has timed out. Please login again");
 	 		model1.addObject("url", "form");
@@ -120,4 +142,36 @@ public class CompanyController {
 
 
 }
+	 
+	 
+	 //////////////////////////////////////////////////////////////////////////////////////////////////////
+	 //pankaj modified following to make company images fade
+	 
+		@RequestMapping(value = "/getValuesToFed")
+		public @ResponseBody 
+			String giveImageValue() {
+			
+			System.out.println("inside values... ");
+			int totalImg=8; //total number of images will come here..
+			int fadeImg;
+			
+			JsonArray jarry= new JsonArray();
+			for(int i=0;i<totalImg;i++){
+				fadeImg=i%2;		//this is 0-1 logic for temporary purpose, here actual logic will come for the image to fade
+				System.out.println("fadeImg: "+fadeImg);
+				
+				
+				JsonObject jobj= new JsonObject();
+				jobj.addProperty("ImagesToFade", fadeImg);
+				
+				jarry.add(jobj);
+			}
+			
+			
+			
+			//return mode;
+			System.out.println("String representation: "+ jarry.toString());
+			return jarry.toString();
+		}
+	 
 }
