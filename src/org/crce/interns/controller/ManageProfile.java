@@ -451,9 +451,6 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	@Autowired
 	private ManageProfileService manageProfileService;
 
-	@Autowired
-	private CompanyService companyService;
-	
 	//@Autowired
 	//private JobValidator jobValidator;
 
@@ -615,6 +612,12 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 				criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
 				
+<<<<<<< HEAD
+=======
+				
+				
+				/*
+>>>>>>> branch 'master' of https://github.com/frcrceinterns/PMS_FINAL_REPO/
 				
 				jobValidator.validate(jobBean, bindingResult);
 				critValidator.validate(criteriaBean, bindingResult2);
