@@ -448,9 +448,6 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	@Autowired
 	private ManageProfileService manageProfileService;
 
-	@Autowired
-	private CompanyService companyService;
-	
 	//@Autowired
 	//private JobValidator jobValidator;
 

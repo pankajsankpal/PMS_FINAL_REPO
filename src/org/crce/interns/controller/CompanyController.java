@@ -31,6 +31,7 @@ import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
 import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.CriteriaService;
+import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.validators.CompanyFormValidator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,11 @@ public class CompanyController {
 	
 	@Autowired 
 	private CriteriaService criteriaService;
+	
+	@Autowired
+	private ManageProfileService manageProfileService;
+	
+	
         
         private static final Logger logger = Logger.getLogger(CompanyController.class.getName());
 	/*
@@ -148,13 +154,41 @@ public class CompanyController {
 	 //pankaj modified following to make company images fade
 	 
 		@RequestMapping(value = "/getValuesToFed")
-		public @ResponseBody 
-			String giveImageValue() {
+		public @ResponseBody String giveImageValue() {
 			
 			System.out.println("inside values... ");
-			int totalImg=8; //total number of images will come here..
-			int fadeImg;
 			
+			
+			//list of companies
+			List<CompanyBean> companyList = manageProfileService.listCompanies();
+			
+			//list of criteria
+			List<CriteriaBean> critList = criteriaService.getCriteria();
+			
+			
+			
+			//int totalImg=8; //total number of images will come here..
+			int totalImg = companyList.size();
+			 
+			
+			
+			for(CompanyBean c : companyList){
+				
+				for(CriteriaBean cr: critList){
+					
+					if(c.getCompany_id() == cr.getCriteria_id()){
+							
+						
+						
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			int fadeImg;
 			JsonArray jarry= new JsonArray();
 			for(int i=0;i<totalImg;i++){
 				fadeImg=i%2;		//this is 0-1 logic for temporary purpose, here actual logic will come for the image to fade

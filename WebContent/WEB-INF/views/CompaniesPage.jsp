@@ -282,6 +282,8 @@ $(document).ready(function() {
 	
 		jQuery(function($) {
 			var $overflow = '';
+			
+			
 			var colorbox_params = {
 				rel : 'colorbox',
 				reposition : true,

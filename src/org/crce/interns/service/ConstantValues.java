@@ -56,6 +56,10 @@ public interface ConstantValues {
 	public String IBM = "IBM";
 	public String WF = "Weatherford";
 	
+	String[] cNames = new String[]{
+			JPM,DIRECTI,MS,TCS,ACC,ZS,GOD,LNT,INF,NSE,WIP,NER,AMD,SYN,HSBC,TM,HP,MH,
+			FB,CG,PAT,GIT,MAQ,MAQ,CSI,GOG,QUI,GEN,IBM,WF
+	};
 	
 	// COMPANY ABOUT US URL
 	public String JPM_LINK = "https://www.jpmorgan.com/country/IN/EN/about";
