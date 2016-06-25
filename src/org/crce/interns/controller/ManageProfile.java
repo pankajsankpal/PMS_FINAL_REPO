@@ -416,6 +416,9 @@ import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.crce.interns.validators.CriteriaFormValidator;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -466,8 +469,14 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 
 	@Autowired
 	private EmailNotificationServiceImpl emailNotificationService;
+
         
         private static final Logger logger = Logger.getLogger(ManageProfile.class.getName());
+
+	
+	@Autowired
+	private SessionFactory sessionFactory ;
+
 
 /*	
 	@RequestMapping("/")
@@ -480,9 +489,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 
 		// Save new job profile
 	
-		@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r /*,
-				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2*/) throws Exception {
+		/*@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r ,
+				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2) throws Exception {
 		
 		try{
 			ModelAndView model;
@@ -538,15 +547,15 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				jobBean.setSkills_required(r.get("skills_required"));
 				jobBean.setDocs_required(r.get("docs_required"));
 
-				/* Modified_date cannot be added initially hence null else
+				 Modified_date cannot be added initially hence null else
 				 * error occurs during database insertion
-				 */
+				 
 				jobBean.setModified_date(null);
 		
 				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 				Date date = new Date(); 
 		
-				/** Below comments are trials for fixing the date accepting issue....ignore them*/
+				*//** Below comments are trials for fixing the date accepting issue....ignore them*//*
 		
 				//Date sdf=new Date();
 				//DateFormat sdf = new SimpleDateFormat("");
@@ -605,7 +614,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				criteriaBean.setSsc_percentage(r.get("ssc_percentage"));
 				criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 				criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
-				/*
+				
 				
 				jobValidator.validate(jobBean, bindingResult);
 				critValidator.validate(criteriaBean, bindingResult2);
@@ -626,7 +635,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				    //model.addObject("success", 1);
 					return model;
 				}
-				*/
+				
 				
 				//Set values for CompanyBean
 		
@@ -634,18 +643,18 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				//companyBean.setCompany_name(r.get("company_name"));
 				//companyBean.setCompany_address(r.get("company_address"));
 		
-				/*
+				
 				 * Since criteria_id is foreign key for company it has to be
 				 * set by fetching it from criteriaBean
-				 */
+				 
 		
 				//companyBean.setCriteria_id(criteriaBean.getCriteria_id());
 		
 				//companyBean.setCriteria(criteriaBean.getCriteria_id());
 		
-				/* @author Nevil Dsouza
+				 @author Nevil Dsouza
 				 * code for notifications
-				 */
+				 
 		
 				List<CompanyBean> clist = manageProfileService.listCompanies();
 				String companyName="";
@@ -663,26 +672,72 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				else{
 					System.out.println("notification not added");
 				}
-				//emailNotificationService.sendEmailNotification(receivers, category, message);
+				
+				System.out.println("JOB ID"+jobBean.getJob_id());
+				
+				
+				
+				
+				System.out.println("Outside query 1");
+				
+				Session session = sessionFactory.openSession();
+				System.out.println("Outside query 3");
+				String hql="SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId";
+				System.out.println("Outside query 4");
+				//@SuppressWarnings("null")
+				//Query query=sessionFactory.getCurrentSession().createQuery("SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId");
+				Query query = session.createQuery(hql);
+				System.out.println("Outside query 5");
+				
+				String curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				query.setParameter("curYear",curYear);
+				query.setParameter("jobId", jobBean.getJob_id());
+				
+				//int rows = query.executeUpdate();
+				System.out.println("Outside query 3");
+				if(query.list().isEmpty())
 		
-				manageProfileService.addProfile(jobBean);
-				manageProfileService.addProfile(criteriaBean);
-				//manageProfileService.addProfile(companyBean);
-				//List<CompanyBean> companyList = manageProfileService.listCompanies();
-			    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+
+				{
+					System.out.println("Inside query");
+					manageProfileService.addProfile(jobBean);
+					manageProfileService.addProfile(criteriaBean);
+					//manageProfileService.addProfile(companyBean);
+		
+		
+				
+				
+					//List<CompanyBean> companyList = manageProfileService.listCompanies();
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+
 			            for(CompanyBean cb : clist){
 			            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			            }
 				
 			    model = new ModelAndView("addProfile","companies",companyMap);
 			    model.addObject("success", 1);
+
+				return model;
 				
-			}
-			return model;
-			//ModelAndView model = new ModelAndView("addProfile");
+				}
+				else
+				{
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
+					for(CompanyBean cb : clist){
+						companyMap.put(cb.getCompany_id(), cb.getCompany_name());
+					}
+					ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+					model.addObject("alreadyExists", 2);
+					return model;
+					
+				}
+				
+				//ModelAndView model = new ModelAndView("addProfile");
+
 				//model.addObject("success", 1);
 				//return model;
 				//return new ModelAndView("TPO");
+		}
 		}
 		catch(Exception e){
 			//System.out.println(e);
@@ -691,7 +746,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 			model.addObject("exception", "/saveProfile");
 			return model;
 		}
-	}
+	}*/
 
 	/* ---------------------------------------------------------------------------------------------------------------- */
 		
