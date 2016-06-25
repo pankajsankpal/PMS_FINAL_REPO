@@ -163,26 +163,17 @@ public class CompanyController implements ConstantValues{
 		@RequestMapping(value = "/getValuesToFed")
 		public @ResponseBody String giveImageValue() {
 			
-			System.out.println("inside values... ");
+			System.out.println("inside fader... ");			
 			
-			
-			//list of companies
+						//list of companies
 			List<CompanyBean> companyList = manageProfileService.listCompanies();
-			System.out.println("cl "+companyList.size());
-			//list of criteria
+			//System.out.println("cl "+companyList.size());
+			
+						//list of criteria
 			List<CriteriaBean> critList = criteriaService.getCriteria();
-			System.out.println("crl "+critList.size());
-			
-			
-			//int totalImg=8; //total number of images will come here..
-			int totalImg = companyList.size();
+			//System.out.println("crl "+critList.size());
 			 
 			Map<String,Integer> fader = new HashMap<String,Integer>();
-			/*
-			for(String i: cNames){
-				fader.put(i, 0);
-			}
-			*/
 			
 			for(CompanyBean c : companyList){
 				
@@ -200,7 +191,7 @@ public class CompanyController implements ConstantValues{
 							 fader.put(c.getCompany_name(), 1);
 						 }
 						 
-						 System.out.println("fa "+c.getCompany_name()+"- "+fader.get(c.getCompany_name()));
+						 //System.out.println("fa "+c.getCompany_name()+"- "+fader.get(c.getCompany_name()));
 						}
 						catch(Exception e){
 							System.out.println(e);
@@ -211,34 +202,13 @@ public class CompanyController implements ConstantValues{
 			}
 			
 			
-		/*	
-			
-			int fadeImg;
-			JsonArray jarry= new JsonArray();
-			for(int i=0;i<totalImg;i++){
-				fadeImg=i%2;		//this is 0-1 logic for temporary purpose, here actual logic will come for the image to fade
-				System.out.println("fadeImg: "+fadeImg);
-				
-				
-				JsonObject jobj= new JsonObject();
-				jobj.addProperty("ImagesToFade", fadeImg);
-				
-				jarry.add(jobj);
-			}
-			
-			
-			
-			//return mode;
-			System.out.println("String representation: "+ jarry.toString());
-			return jarry.toString();
-			
-			*/
-			
+			/*
 			Set<String> keys = fader.keySet();
 			
 			for(String i: keys){
 				System.out.print(i+" "+fader.get(i));
 			}
+			*/
 			
 			return new Gson().toJson(fader);
 		}
