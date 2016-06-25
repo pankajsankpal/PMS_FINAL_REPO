@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -167,10 +168,10 @@ public class CompanyController implements ConstantValues{
 			
 			//list of companies
 			List<CompanyBean> companyList = manageProfileService.listCompanies();
-			
+			System.out.println("cl "+companyList.size());
 			//list of criteria
 			List<CriteriaBean> critList = criteriaService.getCriteria();
-			
+			System.out.println("crl "+critList.size());
 			
 			
 			//int totalImg=8; //total number of images will come here..
@@ -198,7 +199,8 @@ public class CompanyController implements ConstantValues{
 						 else{
 							 fader.put(c.getCompany_name(), 1);
 						 }
-							 
+						 
+						 System.out.println("fa "+c.getCompany_name()+"- "+fader.get(c.getCompany_name()));
 						}
 						catch(Exception e){
 							System.out.println(e);
@@ -231,6 +233,12 @@ public class CompanyController implements ConstantValues{
 			return jarry.toString();
 			
 			*/
+			
+			Set<String> keys = fader.keySet();
+			
+			for(String i: keys){
+				System.out.print(i+" "+fader.get(i));
+			}
 			
 			return new Gson().toJson(fader);
 		}
