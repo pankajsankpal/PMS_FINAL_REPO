@@ -21,6 +21,7 @@ import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.LoginService;
 import org.crce.interns.service.ManageAllotmentService;
 import org.crce.interns.service.ManageProfileService;
@@ -70,8 +71,9 @@ public class ManageAllotment extends HttpServlet {
 
 
 
-	// changes made @Crystal
-	// Method to save allotment details
+	//changes made @Crystal
+	//Method to save allotment details	
+	//authorization done - unauthorized call redirected to 405.jsp
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
 	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,
 			@ModelAttribute("allotmentBean") AllotmentBean allotmentBean, BindingResult result) throws Exception {
@@ -205,24 +207,22 @@ public class ManageAllotment extends HttpServlet {
 
 	// Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
-/*	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
+	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
 		
 		
-		  try {
-			  	//Authentication is commented
-			 
-			  	 
+
+		  try {			  				 			  			 
 					HttpSession session=request.getSession();
 					String roleId=(String)session.getAttribute("roleId");
 					String user=(String)session.getAttribute("userName");
 					String name=loginService.checkSR(user);
-					if(!(crService.checkRole("ManageAllotment", roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded string @Crystal
-					return new ModelAndView("403");
-					else
-			  	 
-			
-			
-			  	{
+
+					
+					//new authorization
+					if(!(crService.checkRole("/addAllotment", roleId)&&name.equals(ConstantValues.task2))) // changed hardcoded string @Crystal
+						return new ModelAndView("403");
+					else			  	 						
+					{					
 			  		AllotmentBean allotmentBean = new AllotmentBean(); // declaring
 			  		Allotment allot = new Allotment();
 			  		model.addAttribute("allotmentBean", allotmentBean); // adding in model
@@ -242,12 +242,15 @@ public class ManageAllotment extends HttpServlet {
 		  catch (Exception e) {
 			  		// TODO Auto-generated catch block
 			  		//System.out.println(e);
-                                        logger.error(e);
+                    logger.error(e);
 			  		ModelAndView model1=new ModelAndView("500");
 			  		model1.addObject("exception", "/addAllotment");
 			  		return model1;
-		  	}*/
+		  	}
+	}
 
+	//duplicate method - commented @Crystal21
+	/*
 	public ModelAndView createAllotment(HttpServletRequest request, Model model) {
 
 		try {
@@ -262,7 +265,7 @@ public class ManageAllotment extends HttpServlet {
 			 * roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded
 			 * string @Crystal return new ModelAndView("403"); else
 			 */
-
+		  /*
 			{
 				AllotmentBean allotmentBean = new AllotmentBean(); // declaring
 				Allotment allot = new Allotment();
@@ -290,42 +293,43 @@ public class ManageAllotment extends HttpServlet {
 			return model1;
 
 		}
-	}
+	}*/
 
 
 
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 
-				//Method to view allotment details
-
+	//Method to view allotment details
 	@RequestMapping(value = "/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request, @ModelAttribute("command") Allotment allotmentBean,
 			BindingResult bindingResult) {
 
 		try {
-			/*
-			 * ** //Authentication is commented
-			 * 
-			 * HttpSession session=request.getSession(); String
-			 * roleId=(String)session.getAttribute("roleId");
-			 * if(!crService.checkRole("ManageAllotment", roleId)) return new
-			 * ModelAndView("403"); else
-			 ** 
-			 */
-			
-				Map<String, Object> model = new HashMap<String, Object>();
-				model.put("allotments", prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
-				// model.put("allotments",manageAllotmentService.listAllotment(allotmentBean)
-				// );
+					//new authorization	added	 					
+					HttpSession session=request.getSession();
+					String roleId=(String)session.getAttribute("roleId");
+					
+					if(!crService.checkRole("/viewAllotment", roleId))
+						return new ModelAndView("403");
+					else
+							 
+				{
+					Map<String, Object> model = new HashMap<String, Object>();
+					model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
+					//model.put("allotments",manageAllotmentService.listAllotment(allotmentBean) );
+				
+					if (model.isEmpty()) {
+						System.out.println("Error no Model , Model is null");
+						return new ModelAndView("403");
+					}
+				
+					return new ModelAndView("viewAllotment", model);
 
-				if (model.isEmpty()) {
-					System.out.println("Error no Model , Model is null");
-					return new ModelAndView("403");
 				}
-				else{
+				/*else{
 					return new ModelAndView("viewAllotment", model); 
-				}
+				}*/
 
 			} 
 		catch (Exception e) {
@@ -399,7 +403,10 @@ public class ManageAllotment extends HttpServlet {
 
 	 */
 
-	@RequestMapping("/list")
+	
+	//these methods arent needed :|
+	//commented @Crystal
+	/*@RequestMapping("/list")
 	public ModelAndView list() {
 
 		try {
@@ -504,6 +511,6 @@ public class ManageAllotment extends HttpServlet {
 			model1.addObject("exception", "/company");
 			return model1;
 		}
-	}
+	}*/
 
 }

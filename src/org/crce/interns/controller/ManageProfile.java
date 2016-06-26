@@ -400,6 +400,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 //import org.crce.interns.beans.AllotmentBean;
@@ -468,7 +469,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	private EmailNotificationServiceImpl emailNotificationService;
 
         
-        private static final Logger logger = Logger.getLogger(ManageProfile.class.getName());
+    private static final Logger logger = Logger.getLogger(ManageProfile.class.getName());
 
 	
 	@Autowired
@@ -485,10 +486,11 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	/* -----------------------------------------------------------------------------------------------------------------  */
 
 		// Save new job profile
-	
+		//authorization done - unauthorized call redirected to 405.jsp			
 		/*@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r ,
 				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2) throws Exception {
+
 		
 		try{
 			ModelAndView model;
@@ -612,12 +614,10 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 				criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
 				
-<<<<<<< HEAD
-=======
+
 				
 				
 				/*
->>>>>>> branch 'master' of https://github.com/frcrceinterns/PMS_FINAL_REPO/
 				
 				jobValidator.validate(jobBean, bindingResult);
 				critValidator.validate(criteriaBean, bindingResult2);
@@ -756,17 +756,19 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		//Create new job profile
 		
 		@RequestMapping(value = "/addProfile", method = RequestMethod.GET)
-		public ModelAndView createProfile(Model model) {
+		public ModelAndView createProfile(Model model, HttpServletRequest request) {
 		
 			try{
 					// ProfileBean profileBean = new ProfileBean();
-					/*
+					
 					HttpSession session=request.getSession();
 					String roleId=(String)session.getAttribute("roleId");
-					if(!crService.checkRole("ManageProfile", roleId))
-					return new ModelAndView("403");
+					
+					//new authorization added
+					if(!crService.checkRole("/addProfile", roleId))
+						return new ModelAndView("403");
 					else
-					*/
+					
 					{
 						JobBean jobBean = new JobBean(); // declaring
 						CriteriaBean criteriaBean = new CriteriaBean();
@@ -819,13 +821,16 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	}
 	*/
 		
-	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ----Authorizations to be done from here!----------------------------------------------------------------------------------------------------------- */
 	
+		
+		
 	@RequestMapping(value="/viewProfile", method = RequestMethod.GET)
 	public ModelAndView listProfile(@RequestParam("year") String curYear,
 			final RedirectAttributes redirectAttributes) {
 	
 		try{
+			
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("profiles",  prepareListofBean(manageProfileService.listProfile(curYear)));
 				//return new ModelAndView("viewProfile", model);

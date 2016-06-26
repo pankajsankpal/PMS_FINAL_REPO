@@ -198,7 +198,7 @@ public class ApplicantController {
 	
 	/* -----------------------------------------------------------------------------------------------------------------------  */
 
-	
+	//authorization done - unauthorized call redirected to 405.jsp
 	@RequestMapping(value = "/SubmitCompany", method = RequestMethod.POST)
 	public ModelAndView submitCompany(@RequestParam("company") Integer company) {
 		
