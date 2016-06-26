@@ -38,6 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 
 @Controller
 public class UpdateProfileController {
@@ -48,6 +49,8 @@ public class UpdateProfileController {
 	private CheckRoleService crService;
 	@Autowired
 	private SearchService searchService;
+        
+        private static final Logger logger = Logger.getLogger(UpdateProfileController.class.getName());
 
 	// ------------------------------------------------------------------------------------------------------
 	// //
@@ -134,8 +137,8 @@ public class UpdateProfileController {
 		}
 		// }
 		catch (Exception e) {
-			System.out.println(e);
-
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -186,8 +189,8 @@ public class UpdateProfileController {
 			return model;
 			// }
 		} catch (Exception e) {
-			System.out.println(e);
-
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -251,8 +254,8 @@ public class UpdateProfileController {
 			return model;
 			// }
 		} catch (Exception e) {
-			System.out.println(e);
-
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -296,8 +299,8 @@ public class UpdateProfileController {
 
 			return model;
 		} catch (Exception e) {
-			System.out.println(e);
-
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -307,102 +310,7 @@ public class UpdateProfileController {
 
 	}
 
-	// -----------------------------------------------------------------------------------------//
-
-	// -----------------------------------------------------
-	// extra
-	/*
-	 * @RequestMapping(value="/update-password", method = RequestMethod.POST)
-	 * public ModelAndView updateUserDetails(@RequestParam("username") String
-	 * username,@RequestParam("password") String password) {
-	 * 
-	 * System.out.println("Inside Controller");
-	 * 
-	 * ModelAndView model=null;
-	 * 
-	 * 
-	 * UserDetailsBean userDetailsBean= new UserDetailsBean();
-	 * ProfessionalProfileBean professionalProfileBean=new
-	 * ProfessionalProfileBean(); PersonalProfileBean personalProfileBean=new
-	 * PersonalProfileBean();
-	 * 
-	 * 
-	 * 
-	 * 
-	 * userDetailsBean.setUserName(username);
-	 * 
-	 * professionalProfileBean.setUserName(username);
-	 * personalProfileBean.setUserName(username);
-	 * 
-	 * 
-	 * userDetailsBean = profileService.getProfile(userDetailsBean);
-	 * professionalProfileBean =
-	 * profileService.getProfile(professionalProfileBean); personalProfileBean =
-	 * profileService.getProfile(personalProfileBean);
-	 * 
-	 * 
-	 * 
-	 * userDetailsBean = profileService.updateUserDetails(userDetailsBean);
-	 * 
-	 * 
-	 * 
-	 * model = new ModelAndView("viewprofile"); model.addObject("change",true);
-	 * model.addObject("userDetails",userDetailsBean);
-	 * model.addObject("professionalProfile",professionalProfileBean);
-	 * model.addObject("personalProfile",personalProfileBean);
-	 * 
-	 * return model; }
-	 */
-	// -----------------------------------------------------
-	// extra
-	@RequestMapping(value = "/nevz-feedback", method = RequestMethod.GET)
-	public ModelAndView f(HttpServletRequest request) {
-		try {
-			System.out.println("Inside UpdateController");
-			HttpSession session = request.getSession();
-			String id = (String) session.getAttribute("userName");
-			String roleId = (String) session.getAttribute("roleId");
-			/*
-			 * if(!crService.checkRole("UpdateProfile", roleId)) return new
-			 * ModelAndView("403"); else {
-			 */
-			ModelAndView model = null;
-
-			model = new ModelAndView("FeedbackForm");
-
-			return model;
-		} catch (Exception e) {
-			return new ModelAndView("500");
-		}
-		// }
-	}
-
-	// -----------------------------------------------------
-	// extra
-	@RequestMapping(value = "/nevz-feedbacks", method = RequestMethod.GET)
-	public ModelAndView fs(HttpServletRequest request) {
-		try {
-			System.out.println("Inside Controller");
-			HttpSession session = request.getSession();
-			String id = (String) session.getAttribute("userName");
-			String roleId = (String) session.getAttribute("roleId");
-			/*
-			 * if(!crService.checkRole("UpdateProfile", roleId)) return new
-			 * ModelAndView("403"); else {
-			 */
-			ModelAndView model = null;
-
-			model = new ModelAndView("feedbacks");
-
-			return model;
-		} catch (Exception e) {
-			return new ModelAndView("500");
-		}
-		// }
-	}
-
 	// ----------------------------------------------------------------------------------------------
-
 	@RequestMapping(value = "/ajaxtest", method = RequestMethod.GET)
 	public @ResponseBody String getanswer(@RequestParam(value = "num1") int n1, @RequestParam(value = "num2") int n2) {
 		int n3 = n1 + n2;
@@ -410,7 +318,7 @@ public class UpdateProfileController {
 		return result;
 	}
 
-	// ----------------------------------------------------------------------------------------------
+
 	// ----------------------------------------------------------------------------------------------
 	// AJAX test controller method
 	@RequestMapping("/test")
@@ -438,20 +346,22 @@ public class UpdateProfileController {
 
 			return new Gson().toJson(userDetailsList);
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			// ModelAndView model=new ModelAndView("500");
 			// model.addObject("exception", "/viewprofile");
 			return "exception at /looseSearch";
 		}
 	}
-
+	// ----------------------------------------------------------------------------------------------
 	@RequestMapping("/looseSearch2")
 	public @ResponseBody String loosesearch2(@RequestParam("CHARS") String chars) {
 		try {
 
 			List<Company> companyList = new ArrayList<Company>();
 			companyList = searchService.searchCompany(chars);
-			System.out.println(companyList.size());
+			//System.out.println(companyList.size());
+                        logger.error(companyList.size());
 
 			// ObjectMapper obj= new ObjectMapper();
 
@@ -459,7 +369,8 @@ public class UpdateProfileController {
 
 			return new Gson().toJson(companyList);
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			// ModelAndView model=new ModelAndView("500");
 			// model.addObject("exception", "/viewprofile");
 			return "exception at /looseSearch2";
@@ -467,12 +378,14 @@ public class UpdateProfileController {
 
 	}
 
+	// ----------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/searchProfile", method = RequestMethod.GET)
 
 	public ModelAndView search(final RedirectAttributes redirectAttributes, @RequestParam String userName) {
 
 		try {
-			System.out.println("Inside UpdateProfile Controller");
+			//System.out.println("Inside UpdateProfile Controller");
+                        logger.error("Inside UpdateProfile Controller");
 
 			ModelAndView model = null;
 
@@ -500,7 +413,8 @@ public class UpdateProfileController {
 
 			return model;
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -509,6 +423,7 @@ public class UpdateProfileController {
 		}
 	}
 
+	// ----------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/searchStaff", method = RequestMethod.GET)
 
 	public ModelAndView searchStaff(@ModelAttribute("userDetails") final UserDetailsBean userDetailsBean,
@@ -524,7 +439,8 @@ public class UpdateProfileController {
 			return model;
 
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                    logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -534,6 +450,7 @@ public class UpdateProfileController {
 
 	}
 
+	// ----------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/searchStudent", method = RequestMethod.GET)
 
 	public ModelAndView searchStudent(@ModelAttribute("userDetails") final UserDetailsBean userDetailsBean,
@@ -549,7 +466,8 @@ public class UpdateProfileController {
 			return model;
 
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("message", "Your session has timed out. Please login again");
 			model.addObject("url", "form");
@@ -558,6 +476,18 @@ public class UpdateProfileController {
 		}
 
 	}
+	
+	// ----------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/placedStatus")
+	public @ResponseBody String placedStatus(HttpServletRequest request) {
+		
+		String u = (String) request.getSession(true).getAttribute("userName");
+		
+		
+		
+		return "";
+	}
+
 }
 
 /*

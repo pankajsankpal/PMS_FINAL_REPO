@@ -41,6 +41,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 
 @Controller
@@ -54,13 +55,15 @@ public class NfController implements ConstantValues{
 	
         @Autowired
         private EmailNotificationServiceImpl emailNotificationService;
+        
+        private static final Logger logger = Logger.getLogger(NfController.class.getName());
 
         
 	//------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/notifications", method = RequestMethod.GET)
 	public ModelAndView checkNf(HttpServletRequest request) {
 	try{
-		System.out.println("Inside NfController");
+		//System.out.println("Inside NfController");
 		//nfService.checkNf();
 		
 		String userName=(String)request.getSession(true).getAttribute("userName");
@@ -92,7 +95,51 @@ public class NfController implements ConstantValues{
 		return model;
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+                logger.error(e);
+		ModelAndView model=new ModelAndView("500");
+		model.addObject("exception", "/checkNf");
+		return model;
+	}
+	}
+	
+	@RequestMapping(value="/fnotifications", method = RequestMethod.GET)
+	public ModelAndView fcheckNf(HttpServletRequest request) {
+	try{
+		//System.out.println("Inside NfController");
+		//nfService.checkNf();
+		
+		String userName=(String)request.getSession(true).getAttribute("userName");
+		String roleId=(String)request.getSession(true).getAttribute("roleId");		
+		
+		UserDetailsBean userDetailsBean= new UserDetailsBean();			
+		ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+		PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+	
+	
+		userDetailsBean.setUserName(userName);
+		professionalProfileBean.setUserName(userName);
+		personalProfileBean.setUserName(userName);
+	
+	
+		userDetailsBean = profileService.getProfile(userDetailsBean);
+		professionalProfileBean = profileService.getProfile(professionalProfileBean);
+		personalProfileBean = profileService.getProfile(personalProfileBean);	
+	
+		List<NotificationBean> nfList = nfService.getNf(userDetailsBean, professionalProfileBean, personalProfileBean);
+		nfList = nfService.sortByDate(nfList);
+		
+		
+		ModelAndView model=null;
+		
+		model = new ModelAndView("FacNoti");
+		model.addObject("nf",nfList);
+		
+		return model;
+	}
+	catch(Exception e){
+		//System.out.println(e);
+                logger.error(e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/checkNf");
 		return model;
@@ -118,16 +165,19 @@ public class NfController implements ConstantValues{
 		model = new ModelAndView("redirect:/notifications");
 		
 		if(nfService.addNotification(add)){
-			System.out.println("notification added");
+			//System.out.println("notification added");
+                        logger.error("notification added");
 		}
 		else{
-			System.out.println("notification not added");
+			//System.out.println("notification not added");
+                        logger.error("notification not added");
 		}
 
 		return model;
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+            logger.error(e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/addNf");
 		return model;
@@ -175,7 +225,8 @@ public class NfController implements ConstantValues{
 		return new Gson().toJson(nfList);
 	}
 	catch(Exception e){
-		System.out.println(e.getLocalizedMessage());
+		//System.out.println(e.getLocalizedMessage());
+            logger.error(e.getLocalizedMessage());
 		//ModelAndView model=new ModelAndView("500");
 		//model.addObject("exception", "/viewprofile");
 		return "exception at looseNotification";
@@ -212,10 +263,12 @@ public class NfController implements ConstantValues{
 		
 		
 		if(nfService.addNotificationForJobApply(TCS, "7001")){
-			System.out.println("notification added");
+			//System.out.println("notification added");
+                        logger.error("notification added");
 		}
 		else{
-			System.out.println("notification not added");
+			//System.out.println("notification not added");
+                        logger.error("notification not added");
 		}
 		
 		nfService.checkNf();
@@ -224,7 +277,8 @@ public class NfController implements ConstantValues{
 		
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+            logger.error(e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/addNf");
 		return model;
@@ -242,10 +296,12 @@ public class NfController implements ConstantValues{
 		
 		
 		if(nfService.addNotificationForJobPost(DIRECTI)){
-			System.out.println("notification added");
+			//System.out.println("notification added");
+                    logger.error("notification added");
 		}
 		else{
-			System.out.println("notification not added");
+			//System.out.println("notification not added");
+                        logger.error("notification not added");
 		}
 		
 		nfService.checkNf();
@@ -255,7 +311,8 @@ public class NfController implements ConstantValues{
 		
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+                logger.error(e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/addNf");
 		return model;
@@ -272,10 +329,12 @@ public class NfController implements ConstantValues{
 		
 		
 		if(nfService.addNotificationForEvent(TCS)){
-			System.out.println("notification added");
+			//System.out.println("notification added");
+                    logger.error("notification added");
 		}
 		else{
-			System.out.println("notification not added");
+			//System.out.println("notification not added");
+                        logger.error("notification not added");
 		}
 		
 		nfService.checkNf();
@@ -285,7 +344,8 @@ public class NfController implements ConstantValues{
 		
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+                logger.error(e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/addNf");
 		return model;
