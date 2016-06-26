@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- 
+All notifications added will be written to database.xml file stored in server directory, and not the one in your 
+project directory.
+To check contents of database.xml file, go to :
+C:\Users\user-name\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\PMS\WEB-INF\classes\resources
+user-name : is your User folder name in your Windows PC.
+
+Still if any doubts, contact Nevil
+-->
+<root>
+    <notifications>
+        <notification>
+            <userOrGroupId>ALL</userOrGroupId>
+            <category>EVENT</category>
+            <type>ALL</type>
+            <message>A new event has been scheduled forTata Consultancy Services</message>
+            <dateTime>13-06-2016 12:54 AM</dateTime>
+            <url>ViewEvents</url>
+        </notification>
+        <notification>
+            <userOrGroupId>ALL</userOrGroupId>
+            <category>JOB</category>
+            <type>ALL</type>
+            <message>A new job has been posted for Direct i</message>
+            <dateTime>13-06-2016 12:55 AM</dateTime>
+            <url>JobPosts?companyname=Direct i</url>
+        </notification>
+    </notifications>
+</root>
