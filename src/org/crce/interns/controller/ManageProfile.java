@@ -402,6 +402,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 //import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.CriteriaBean;
@@ -416,6 +417,9 @@ import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
 import org.crce.interns.validators.CriteriaFormValidator;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -448,11 +452,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	@Autowired
 	private ManageProfileService manageProfileService;
 
-	@Autowired
-	private CompanyService companyService;
-	
 	//@Autowired
 	//private JobValidator jobValidator;
+
 	
 	@Autowired
 	private CriteriaFormValidator critValidator;
@@ -466,6 +468,14 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	@Autowired
 	private EmailNotificationServiceImpl emailNotificationService;
 
+        
+    private static final Logger logger = Logger.getLogger(ManageProfile.class.getName());
+
+	
+	@Autowired
+	private SessionFactory sessionFactory ;
+
+
 /*	
 	@RequestMapping("/")
 	public ModelAndView welcome() {
@@ -476,16 +486,56 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 	/* -----------------------------------------------------------------------------------------------------------------  */
 
 		// Save new job profile
-		//authorization done - unauthorized call redirected to 405.jsp
-		@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r /*,
-				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2*/) throws Exception {
+		//authorization done - unauthorized call redirected to 405.jsp			
+		/*@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r ,
+				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2) throws Exception {
+
 		
 		try{
-				JobBean jobBean = new JobBean();
-				CriteriaBean criteriaBean = new CriteriaBean();
-				CompanyBean companyBean = new CompanyBean();
+			ModelAndView model;
+			String errorMesg = "";
+			int a=0;
+			JobBean jobBean = new JobBean();
+			CriteriaBean criteriaBean = new CriteriaBean();
+			CompanyBean companyBean = new CompanyBean();
 
+			if(r.get("docs_required")=="")
+				a++;
+			if(r.get("job_description")=="")
+				a++;
+			if(r.get("job_category")=="")
+				a++;
+			if(r.get("skills_required")=="")
+				a++;
+			if(r.get("drive_date")=="")
+				a++;
+			if(r.get("eligible_branches")==null)
+				a++;
+			if(r.get("year_of_passing")=="")
+				a++;
+			if(r.get("last_date_to_apply")=="")
+				a++;
+			if(r.get("no_of_live_kts_allowed")=="")
+				a++;
+			if(a>0)
+			{
+			model = new ModelAndView("addProfile");
+			model.addObject("profileBean", jobBean); // adding in model
+			model.addObject("profileBean", criteriaBean);
+			
+			List<CompanyBean> companyList = manageProfileService.listCompanies();
+		    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+		            for(CompanyBean cb : companyList){
+		            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
+		            }
+		         
+		    errorMesg="Oops!You left "+a+" field/s blank.Please fill all the fields";
+			model.addObject("errorMesg",errorMesg);
+			model.addObject("companies",companyMap);
+			}
+			else
+			{
 				//Set values for JobBean
 				//jobBean.setJob_id(r.get("job_id"));
 				jobBean.setJob_id(r.get("company_id"));
@@ -496,15 +546,15 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				jobBean.setSkills_required(r.get("skills_required"));
 				jobBean.setDocs_required(r.get("docs_required"));
 
-				/* Modified_date cannot be added initially hence null else
+				 Modified_date cannot be added initially hence null else
 				 * error occurs during database insertion
-				 */
+				 
 				jobBean.setModified_date(null);
 		
 				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 				Date date = new Date(); 
 		
-				/** Below comments are trials for fixing the date accepting issue....ignore them*/
+				*//** Below comments are trials for fixing the date accepting issue....ignore them*//*
 		
 				//Date sdf=new Date();
 				//DateFormat sdf = new SimpleDateFormat("");
@@ -537,7 +587,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				//criteriaBean.setCriteria_id(Integer.parseInt(r.get("criteria_id")));
 				criteriaBean.setCriteria_id(Integer.parseInt(r.get("company_id")));
-				System.out.println(criteriaBean.getCriteria_id());
+				//System.out.println(criteriaBean.getCriteria_id());
+                                logger.error(criteriaBean.getCriteria_id());
 				
 				//criteriaBean.setEligible_branches(r.get("eligible_branches"));
 				//System.out.println(r.get("eligible_branches"));
@@ -552,7 +603,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				criteriaBean.setYear_of_passing(r.get("year_of_passing"));
 				criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
-				System.out.println("Placed :::<<"+r.get("placed_students_allowed")+">>>");
+				//System.out.println("Placed :::<<"+r.get("placed_students_allowed")+">>>");
+                                logger.error("Placed :::<<"+r.get("placed_students_allowed")+">>>");    
 				criteriaBean.setPercentage(r.get("percentage"));
 				criteriaBean.setCgpa(r.get("cgpa"));
 				criteriaBean.setNo_of_live_kts_allowed(r.get("no_of_live_kts_allowed"));
@@ -561,6 +613,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				criteriaBean.setSsc_percentage(r.get("ssc_percentage"));
 				criteriaBean.setHsc_or_dip_percentage(r.get("hsc_or_dip_percentage"));
 				criteriaBean.setLast_date_to_apply(sdf.parse(r.get("last_date_to_apply")));
+				
+
+				
 				
 				/*
 				
@@ -585,28 +640,24 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				}
 				
 				
-				*/
-				
-				
-				
 				//Set values for CompanyBean
 		
 				//companyBean.setCompany_id(Integer.parseInt(r.get("company_id")));
 				//companyBean.setCompany_name(r.get("company_name"));
 				//companyBean.setCompany_address(r.get("company_address"));
 		
-				/*
+				
 				 * Since criteria_id is foreign key for company it has to be
 				 * set by fetching it from criteriaBean
-				 */
+				 
 		
 				//companyBean.setCriteria_id(criteriaBean.getCriteria_id());
 		
 				//companyBean.setCriteria(criteriaBean.getCriteria_id());
 		
-				/* @author Nevil Dsouza
+				 @author Nevil Dsouza
 				 * code for notifications
-				 */
+				 
 		
 				List<CompanyBean> clist = manageProfileService.listCompanies();
 				String companyName="";
@@ -618,47 +669,87 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 			
 				}
 		
-				
-		
 				if(nfService.addNotificationForJobPost(companyName)){
 					System.out.println("notification added");
 				}
 				else{
 					System.out.println("notification not added");
 				}
-				//emailNotificationService.sendEmailNotification(receivers, category, message);
+				
+				System.out.println("JOB ID"+jobBean.getJob_id());
+				
+				
+				
+				
+				System.out.println("Outside query 1");
+				
+				Session session = sessionFactory.openSession();
+				System.out.println("Outside query 3");
+				String hql="SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId";
+				System.out.println("Outside query 4");
+				//@SuppressWarnings("null")
+				//Query query=sessionFactory.getCurrentSession().createQuery("SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId");
+				Query query = session.createQuery(hql);
+				System.out.println("Outside query 5");
+				
+				String curYear=Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+				query.setParameter("curYear",curYear);
+				query.setParameter("jobId", jobBean.getJob_id());
+				
+				//int rows = query.executeUpdate();
+				System.out.println("Outside query 3");
+				if(query.list().isEmpty())
 		
-				manageProfileService.addProfile(jobBean);
-				manageProfileService.addProfile(criteriaBean);
-				//manageProfileService.addProfile(companyBean);
+
+				{
+					System.out.println("Inside query");
+					manageProfileService.addProfile(jobBean);
+					manageProfileService.addProfile(criteriaBean);
+					//manageProfileService.addProfile(companyBean);
 		
 		
 				
 				
-				//List<CompanyBean> companyList = manageProfileService.listCompanies();
-			    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+					//List<CompanyBean> companyList = manageProfileService.listCompanies();
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+
 			            for(CompanyBean cb : clist){
 			            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			            }
 				
-			    ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+			    model = new ModelAndView("addProfile","companies",companyMap);
 			    model.addObject("success", 1);
+
 				return model;
-		
+				
+				}
+				else
+				{
+					Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
+					for(CompanyBean cb : clist){
+						companyMap.put(cb.getCompany_id(), cb.getCompany_name());
+					}
+					ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+					model.addObject("alreadyExists", 2);
+					return model;
+					
+				}
+				
 				//ModelAndView model = new ModelAndView("addProfile");
+
 				//model.addObject("success", 1);
 				//return model;
-				
-		
 				//return new ModelAndView("TPO");
 		}
+		}
 		catch(Exception e){
-			System.out.println(e);
+			//System.out.println(e);
+                    logger.error(e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/saveProfile");
 			return model;
 		}
-	}
+	}*/
 
 	/* ---------------------------------------------------------------------------------------------------------------- */
 		
@@ -673,7 +764,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					HttpSession session=request.getSession();
 					String roleId=(String)session.getAttribute("roleId");
 					
-					//new authorization
+					//new authorization added
 					if(!crService.checkRole("/addProfile", roleId))
 						return new ModelAndView("403");
 					else
@@ -687,7 +778,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 						model.addAttribute("profileBean", criteriaBean);
 						//model.addAttribute("profileBean", companyBean);
 		
-						System.out.println("In Profile Controller");
+						//System.out.println("In Profile Controller");
 						
 						List<CompanyBean> companyList = manageProfileService.listCompanies();
 					    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
@@ -699,7 +790,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					}
 				}
 			catch(Exception e){
-				System.out.println(e);
+				//System.out.println(e);
+                            logger.error(e);
 				ModelAndView model1=new ModelAndView("500");
 				model1.addObject("exception", "/addProfile");
 				return model1;
@@ -745,7 +837,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				return new ModelAndView("CompaniesPage", model);
 			}
 		catch(Exception e){
-				System.out.println(e);
+				//System.out.println(e);
+                                logger.error(e);
 				ModelAndView model1=new ModelAndView("500");
 				model1.addObject("exception", "/viewProfile");
 				return model1;
@@ -765,7 +858,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					return new ModelAndView("CompaniesPage");
 				}
 			catch(Exception e){
-					System.out.println(e);
+					//System.out.println(e);
+                                        logger.error(e);
 					ModelAndView model1=new ModelAndView("500");
 					model1.addObject("exception", "/CompaniesPage");
 					return model1;
@@ -805,7 +899,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 						System.out.println("Cany Name "+c.getCompany_name());
 			
 						companyMapID.put(c.getCompany_id(), c.getCompany_name());
-						System.out.println("Cany map get "+companyMapID.get(c.getCompany_id()));
+						//System.out.println("Cany map get "+companyMapID.get(c.getCompany_id()));
+                                                logger.error("Cany map get "+companyMapID.get(c.getCompany_id()));
 						companyMapName.put(c.getCompany_name(), c.getCompany_id());
 						
 						/*
@@ -821,7 +916,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 		
 					List<JobBean> jlist = manageProfileService.listJob(curYear);
-					System.out.println(jlist.size());
+					//System.out.println(jlist.size());
+                                        logger.error(jlist.size());
 					for( JobBean jb: jlist){
 							//CompanyBean cb = new CompanyBean();
 							System.out.println("Jlist job id "+jb.getJob_id());
@@ -831,7 +927,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 							//System.out.println("List job id "+jb.getJob_id());
 							int a=Integer.parseInt(jb.getJob_id());
 			
-							System.out.println(companyMapID.get(a));
+							//System.out.println(companyMapID.get(a));
+                                                        logger.error(companyMapID.get(a));
 			
 			
 							if(companyname.equalsIgnoreCase(companyMapID.get(a))){
@@ -844,7 +941,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					return model;
 			}
 			catch(Exception e){
-					System.out.println(e);
+					//System.out.println(e);
+                            logger.error(e);
 					ModelAndView model1=new ModelAndView("500");
 					model1.addObject("exception", "/JobPosts");
 					return model1;
@@ -867,8 +965,9 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				//return new ModelAndView("CompaniesPage", model);
 			}
 		catch(Exception e){
-				System.out.println(e);
-				ModelAndView model1=new ModelAndView("500");
+				//System.out.println(e);
+				logger.error(e);
+                                ModelAndView model1=new ModelAndView("500");
 				model1.addObject("exception", "/JobPosts/companyname/{companyname}");
 				return model1;
 		}
@@ -895,19 +994,23 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				
 					List<CompanyBean> clist = manageProfileService.listCompanies();
 				
-					System.out.println(clist.size());
+					//System.out.println(clist.size());
+                                        logger.error(clist.size());
 				
 				
-					System.out.println("Company Name "+companyname);
+					//System.out.println("Company Name "+companyname);
+                                        logger.error("Company Name "+companyname);
 				
 					for( CompanyBean cb: clist){
-						System.out.println("Clist company name "+cb.getCompany_name());
+						//System.out.println("Clist company name "+cb.getCompany_name());
+                                            logger.error("Clist company name "+cb.getCompany_name());
 					
 					
 					
 					if(companyname.equals(cb.getCompany_name())){
 							
-						System.out.println("inside IF"+cb.getCompany_name());
+						//System.out.println("inside IF"+cb.getCompany_name());
+                                                logger.error("inside IF"+cb.getCompany_name());
 						model.addObject("company", cb);
 						
 					}
@@ -934,6 +1037,70 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 					}else if(companyname.equals(GOD)){
 						model.addObject("link", GOD_LINK);
 						
+					}else if(companyname.equals(INF)){
+						model.addObject("link", INF_LINK);
+						
+					}else if(companyname.equals(NSE)){
+						model.addObject("link", NSE_LINK);
+						
+					}else if(companyname.equals(QUI)){
+						model.addObject("link", QUI_LINK);
+							
+					}else if(companyname.equals(GEN)){
+						model.addObject("link", GEN_LINK);
+							
+					}else if(companyname.equals(WF)){
+						model.addObject("link", WF_LINK);
+								
+						
+					}else if(companyname.equals(IBM)){
+						model.addObject("link", IBM_LINK);		
+						
+					}else if(companyname.equals(WIP)){
+						model.addObject("link", WIP_LINK);
+						
+					}else if(companyname.equals(CSI)){
+						model.addObject("link", CSI_LINK);
+						
+					}else if(companyname.equals(MAQ)){
+						model.addObject("link", MAQ_LINK);
+							
+						
+					}else if(companyname.equals(GIT)){
+						model.addObject("link", GIT_LINK);
+							
+						
+					}else if(companyname.equals(CG)){
+						model.addObject("link", CG_LINK);
+					
+					}else if(companyname.equals(PAT)){
+						model.addObject("link", PAT_LINK);
+							
+						
+					}else if(companyname.equals(AMD)){
+						model.addObject("link", AMD_LINK);
+					
+					}else if(companyname.equals(SYN)){
+						model.addObject("link", SYN_LINK);
+					
+					}else if(companyname.equals(HSBC)){
+						model.addObject("link", HSBC_LINK);	
+					
+					}else if(companyname.equals(TM)){
+						model.addObject("link", TM_LINK);
+					
+					}else if(companyname.equals(HP)){
+						model.addObject("link", HP_LINK);
+						
+					}else if(companyname.equals(MH)){
+						model.addObject("link", MH_LINK);
+						
+					}else if(companyname.equals(MH)){
+						model.addObject("link", MH_LINK);
+						
+					}else if(companyname.equals(FB)){
+						model.addObject("link", FB_LINK);
+						
 					}else if(companyname.equals(LNT)){
 						model.addObject("link", LNT_LINK);
 						
@@ -944,7 +1111,8 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				System.out.println(e);
+				//System.out.println(e);
+                                logger.error(e);
 				ModelAndView model1=new ModelAndView("500");
 				model1.addObject("exception", "/Company");
 				return model1;

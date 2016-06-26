@@ -17,6 +17,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.beans.FacultyUserBean;
 import org.crce.interns.beans.UserDetailsBean;
@@ -50,13 +51,16 @@ public class AssignTPCController {
 
 	@Autowired
 	private CheckRoleService crService;
+        
+        private static final Logger logger = Logger.getLogger(AssignTPCController.class.getName());
 
 	@RequestMapping(value = "/TPOHome", method = RequestMethod.GET) // Home Page
 																	// of TPO
 	public ModelAndView goTPOHome(HttpServletRequest request, @ModelAttribute("command") FacultyUserBean userBean,
 			BindingResult result) {
 		try {
-			System.out.println("In Controller : TPO Home Page\n");
+			//System.out.println("In Controller : TPO Home Page\n");
+                        logger.error("In Controller : TPO Home Page\n");
 
 			HttpSession session = request.getSession();
 			String roleId = (String) session.getAttribute("roleId");
@@ -67,6 +71,7 @@ public class AssignTPCController {
 			else
 				return new ModelAndView("TPO");
 		} catch (Exception e) {
+                        logger.error("Exception in /TPOHome",e);
 			return new ModelAndView("500");
 		}
 	}
@@ -76,7 +81,8 @@ public class AssignTPCController {
 																		// for
 																		// TPO
 	public ModelAndView viewUsers(HttpServletRequest request) {
-		System.out.println("In Controller: View Users by TPO");
+		//System.out.println("In Controller: View Users by TPO");
+                logger.error("In Controller: View Users by TPO");
 
 		HttpSession session = request.getSession();
 		String roleId = (String) session.getAttribute("roleId");
@@ -87,7 +93,7 @@ public class AssignTPCController {
 		else {
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			modelMap.put("users", userService.viewUsers());
-			return new ModelAndView("viewUserT", modelMap);
+			return new ModelAndView("viewUserA", modelMap);
 		}
 	}
 
@@ -98,7 +104,8 @@ public class AssignTPCController {
 																				// FTPC
 	public ModelAndView viewFacultyTasks(HttpServletRequest request) {
 		try {
-			System.out.println("In Controller: View TPC Tasks");
+			//System.out.println("In Controller: View TPC Tasks");
+                        logger.error("In Controller: View TPC Tasks");
 
 			HttpSession session = request.getSession();
 			String roleId = (String) session.getAttribute("roleId");
@@ -112,6 +119,7 @@ public class AssignTPCController {
 				return new ModelAndView("viewFacultyTasks", modelMap);
 			}
 		} catch (Exception e) {
+                        logger.error("Exception /ViewFacultyTasks ",e);
 			return new ModelAndView("500");
 		}
 	}
@@ -126,8 +134,8 @@ public class AssignTPCController {
 	public ModelAndView createUserWork(HttpServletRequest request, @ModelAttribute("command") FacultyUserBean userBean,
 			BindingResult result) {
 		try {
-			System.out.println("In Controller: Assign TPC Work\n");
-
+			//System.out.println("In Controller: Assign TPC Work\n");
+                        logger.error("In Controller: Assign TPC Work\n");
 			HttpSession session = request.getSession();
 			String roleId = (String) session.getAttribute("roleId");
 
@@ -140,6 +148,7 @@ public class AssignTPCController {
 				return new ModelAndView("insertWork", modelMap);
 			}
 		} catch (Exception e) {
+                        logger.error("Exception ",e);
 			return new ModelAndView("500");
 		}
 	}
@@ -154,8 +163,8 @@ public class AssignTPCController {
 	public ModelAndView assignTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
 			BindingResult result) {
 		try {
-			System.out.println("In Controller: Assign TPC\n");
-
+			//System.out.println("In Controller: Assign TPC\n");
+                        logger.error("In Controller Assign TPC");
 			HttpSession session = request.getSession();
 			String roleId = (String) session.getAttribute("roleId");
 
@@ -165,6 +174,7 @@ public class AssignTPCController {
 			else
 				return new ModelAndView("assignTPC");
 		} catch (Exception e) {
+                        logger.error("Exception /AssignTPC ",e);
 			return new ModelAndView("500");
 		}
 	}
@@ -177,8 +187,8 @@ public class AssignTPCController {
 	public ModelAndView removeTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
 			BindingResult result) {
 		try {
-			System.out.println("In Controller: Remove TPC\n");
-
+			//System.out.println("In Controller: Remove TPC\n");
+                        logger.error("RemoveTPC");
 			HttpSession session = request.getSession();
 			String roleId = (String) session.getAttribute("roleId");
 
@@ -188,6 +198,7 @@ public class AssignTPCController {
 			else
 				return new ModelAndView("removeTPC");
 		} catch (Exception e) {
+                        logger.error("Exception Remove TPC ",e);
 			return new ModelAndView("500");
 		}
 	}
@@ -196,7 +207,8 @@ public class AssignTPCController {
 	@RequestMapping(value = "/SubmitAssignTPC", method = RequestMethod.POST)
 	public ModelAndView submitAssignTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
 			/* @ModelAttribute("fuserBean")FacultyUserBean fuserBean, */ BindingResult bindingResult) {
-		System.out.println("In Controller: Submit Assign TPC");
+		//System.out.println("In Controller: Submit Assign TPC");
+                logger.error("In Controller: Submit Assign TPC");
 		try {
 			ModelAndView model;
 			String erroMesg = "";
@@ -205,7 +217,8 @@ public class AssignTPCController {
 			validator.validate(userBean, bindingResult);
 
 			if (bindingResult.hasErrors()) {
-				System.out.println("Binding Errors are present...");
+				//System.out.println("Binding Errors are present...");
+                                logger.error("Binding Errors are present...");
 				return new ModelAndView("assignTPC");
 			}
 
@@ -216,7 +229,8 @@ public class AssignTPCController {
 			userBean.setModifiedDate(new Date());
 
 			a = userService.assignTPC(userBean);
-			System.out.println("Value Returned from Service: " + a);
+			//System.out.println("Value Returned from Service: " + a);
+                        logger.error("Value Returned from Service: " + a);
 
 			if (a == 0)// No such user exists in UserDetails Table
 			{
@@ -235,7 +249,7 @@ public class AssignTPCController {
 								// STPC
 			{
 				model = new ModelAndView("assignTPC");
-				erroMesg += "A Non-Faculty user attempted to be assigned as STPC";
+				erroMesg += "A Non-Faculty user attempted to be assigned as FTPC";
 				model.addObject("erroMesg", erroMesg);
 				// return new ModelAndView("notFac");
 			} else if (a == 34) { // Already assigned STPC or FTPC user
@@ -249,7 +263,8 @@ public class AssignTPCController {
 
 			return model;
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error("Exception ",e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitAssignTPC");
 			return model;
@@ -260,7 +275,8 @@ public class AssignTPCController {
 
 	@RequestMapping(value = "/SubmitInsertWork", method = RequestMethod.POST)
 	public ModelAndView createWork(@ModelAttribute("command") FacultyUserBean fuserBean, BindingResult bindingResult) {
-		System.out.println("In Controller: Submit TPC Work");
+		//System.out.println("In Controller: Submit TPC Work");
+                logger.error("In Controller: Submit TPC Work");
 		try {
 			ModelAndView model;
 			String erroMesg = "";
@@ -287,7 +303,8 @@ public class AssignTPCController {
 
 			return model;
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error("Exception ",e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitInsertWork");
 			return model;
@@ -298,7 +315,8 @@ public class AssignTPCController {
 	@RequestMapping(value = "/SubmitRemoveTPC", method = RequestMethod.POST)
 	public ModelAndView submitRemoveTPC(HttpServletRequest request, @ModelAttribute("command") UserDetailsBean userBean,
 			BindingResult bindingResult) {
-		System.out.println("In Controller: Submit Remove TPC");
+		//System.out.println("In Controller: Submit Remove TPC");
+                logger.error("In Controller: Submit Remove TPC");
 		try {
 			int a;
 			ModelAndView model;
@@ -307,7 +325,8 @@ public class AssignTPCController {
 			rvmvalidator.validate(userBean, bindingResult);
 
 			if (bindingResult.hasErrors()) {
-				System.out.println("Binding Errors are present...");
+				//System.out.println("Binding Errors are present...");
+                                logger.error("Binding Errors are present...");
 				return new ModelAndView("removeTPC");
 			}
 
@@ -318,7 +337,8 @@ public class AssignTPCController {
 			userBean.setModifiedDate(new Date());
 
 			a = userService.removeTPC(userBean);
-			System.out.println("Value Returned from Service: " + a);
+			//System.out.println("Value Returned from Service: " + a);
+                        logger.error("Value Returned from Service: " + a);
 
 			if (a == 0)// No such user exists in UserDetails Table
 			{
@@ -337,7 +357,8 @@ public class AssignTPCController {
 
 			return model;
 		} catch (Exception e) {
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error("Exception ",e);
 			ModelAndView model = new ModelAndView("500");
 			model.addObject("exception", "/SubmitRemoveTPC");
 			return model;

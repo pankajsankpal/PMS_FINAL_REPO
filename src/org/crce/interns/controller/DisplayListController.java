@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.apache.log4j.Logger;
 
 @Controller
 public class DisplayListController {
@@ -36,7 +37,9 @@ public class DisplayListController {
 
 	DisplayListService dsp = new DisplayListService();
 	// this method is for displaying the list of cv
-
+        
+        private static final Logger logger = Logger.getLogger(DisplayListController.class.getName());
+        
 	/**
 	 * method simply directs to listCV.jsp
 	 * 
@@ -250,10 +253,12 @@ public class DisplayListController {
 			System.out.println("displayName : " + list.get(i));
 			jarray.add(jobj);
 		}
-		System.out.println(jarray.toString());
+		//System.out.println(jarray.toString());
+                logger.error(jarray.toString());
 		return jarray.toString();
 
 				}
+
 	}
 	
 	
@@ -283,7 +288,8 @@ public class DisplayListController {
 			indexList.add(z);
 			z++;
 		}
-		System.out.println("checking..");
+		//System.out.println("checking..");
+                logger.error("checking..");
 		request.getSession().setAttribute("folderName", folder);
 		
 		JsonArray jarray = new JsonArray();
@@ -302,7 +308,8 @@ public class DisplayListController {
 		model.addObject("indexList", indexList);
 
 		return model;*/
-		System.out.println("checking..");
+		//System.out.println("checking..");
+                logger.error("checking..");
 		return jarray.toString();
 		
 	}
@@ -318,7 +325,7 @@ public class DisplayListController {
 		
 		/*ModelAndView model = new ModelAndView("Folders");
 		model.addObject("list", list);*/
-
+		System.out.println("checking number....");
 		JsonArray jarray= new JsonArray();
 		for(int i=0;i<list.size();i++){
 			
@@ -327,9 +334,11 @@ public class DisplayListController {
 			jarray.add(jobj);
 			
 		}
-		System.out.println("list: "+ list.size());
-		
-		System.out.println("checking folders..");
+		//System.out.println("list: "+ list.size());
+		logger.error("list: "+ list.size());
+		//System.out.println("checking folders..");
+                
+                logger.error("checking folders..");
 		return jarray.toString();
 	}
 
@@ -344,8 +353,8 @@ public class DisplayListController {
 		List<String> list = new ArrayList<String>();
 		//ModelAndView model = new ModelAndView("dispfiles");
 
-		System.out.println("inside files... ");
-		
+		//System.out.println("inside files... ");
+		logger.error("inside files... ");
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
 		if(listFullName.isEmpty())
@@ -374,8 +383,10 @@ public class DisplayListController {
 		model.addObject("nameToDisplay", list);
 		model.addObject("indexList", indexList);*/
 		
-		System.out.println("files: " + listFullName);
-		System.out.println("files: " + list);
+		//System.out.println("files: " + listFullName);
+                logger.error("files: " + listFullName);
+		//System.out.println("files: " + list);
+                logger.error("files: " + list);
 
 		//return mode;
 		return jarry.toString();

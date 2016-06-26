@@ -45,7 +45,12 @@ description: contains all the validations required for every field -->
 					</h1>
 					
 					<c:if test="${success==1}">
-						<p color="blue"><h2>Profile added successfully!!</h2></p>
+						<h2><font color="blue">Profile added successfully!!</font></h2>
+					</c:if>
+					
+					<br/>
+					<c:if test="${alreadyExists==2}">
+						<h2><font color="green">This Profile has already been filled</font></h2>
 					</c:if>
 					
 					<br/>
@@ -65,8 +70,9 @@ description: contains all the validations required for every field -->
 						<i class="ace-icon fa fa-times"></i>
 					</button>
 				</div>
-						
-						
+				
+						<font size="5" color="red" face="verdana">${errorMesg}</font>
+				
 				<div class="row">
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
@@ -154,7 +160,6 @@ description: contains all the validations required for every field -->
 																</div>
 															</div>
 														</div>
-														
 														<div class="form-group">
 															<label class="col-sm-1 control-label no-padding-right"
 																for="skills">Skills Required</label>
@@ -221,6 +226,7 @@ description: contains all the validations required for every field -->
 																		class="input-group-addon"> <i
 																		class="ace-icon fa fa-calendar"></i>
 																	</span>
+													
 																</div>
 
 															</div>
@@ -276,10 +282,10 @@ description: contains all the validations required for every field -->
 																		<option value="2018">2018</option>
 																		<option value="2019">2019</option>
 																		<option value="2020">2020</option>
-																		<option value="2019">2021</option>
-																		<option value="2020">2022</option>
-																		<option value="2019">2023</option>
-																		<option value="2020">2024</option>
+																		<option value="2021">2021</option>
+																		<option value="2022">2022</option>
+																		<option value="2023">2023</option>
+																		<option value="2024">2024</option>
 																	</select>
 																</div>
 															</div>
@@ -380,16 +386,16 @@ description: contains all the validations required for every field -->
 																		class="form-control" /> <span
 																		class="input-group-addon"> <i
 																		class="ace-icon fa fa-calendar"></i>
-																	</span>
+																	</span>															
+																
 																</div>
-
 															</div>
 
 														</div>
 
 													</div>
 													<!-- /.row_1 -->
-												</div>
+												</div>	
 												<div class="col-xs-12">
 
 													<div class="row">

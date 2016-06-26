@@ -1,5 +1,3 @@
-
- 
 <!-- author: Pankaj sankpal
 description: contains fields to add a new event regarding placement drives ->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -322,6 +320,8 @@ description: contains fields to add a new event regarding placement drives ->
 
 
 
+
+
 <%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -431,5 +431,4 @@ $(document).ready(function(){
 });
 </script>
 </body>
-</html>
- --%>
+</html>--%>
