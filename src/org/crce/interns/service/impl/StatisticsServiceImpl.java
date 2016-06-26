@@ -173,25 +173,41 @@ public class StatisticsServiceImpl implements StatisticsService, ConstantValues 
 3.
 A.get details of no_applied
 get details from job_schema.applicant_company
+<<<<<<< HEAD
 This gives count(username) group by branch where branch=�Computer Engineering� company=�companyName�
+=======
+This gives count(username) group by branch where branch=�Computer Engineering� company=�companyName�
+>>>>>>> c728019207724db2fa8826f5f30b727a59ec25b8
 similarly for it,prod,elex
 
 Set the values branch,  no_applied in the table;
 
 B.get details of total_no_of_students
 get details from user_schema.professional_profile
+<<<<<<< HEAD
 This gives count(username) group by branch  where branch=�Computer Engineering�
+=======
+This gives count(username) group by branch  where branch=�Computer Engineering�
+>>>>>>> c728019207724db2fa8826f5f30b727a59ec25b8
 similarly for it,prod,elex
 
 Set the values   total_no_of_students in the table;
 
 C.no_selected
 get details from placement_statistics_schema.quick_stats
+<<<<<<< HEAD
 count(username) group by branch where branch=�Computer Engineering� company=�companyName�
 
 Set the values no_selected in the table;
 
 D. no_joined leave blank�
+=======
+count(username) group by branch where branch=�Computer Engineering� company=�companyName�
+
+Set the values no_selected in the table;
+
+D. no_joined leave blank�
+>>>>>>> c728019207724db2fa8826f5f30b727a59ec25b8
 
 E. no_dual_placed
 
@@ -307,7 +323,7 @@ Return list of beans to front end. Done (y)
 	public TotalNoOfStudents getTotalNoOfStudents(String year) {
 		return statisticsDAO.getTotalNoOfStudents(year);
 	}
-
+	
 	@Override
 	public List<QuickStats> getQuickStatsList(String year) {
 		return statisticsDAO.getQuickStatsList(year);

@@ -121,4 +121,5 @@ public class StatisticsDAOImpl implements StatisticsDAO, ConstantValues {
 		List<PlacementStats> placementStatsList = sessionFactory.getCurrentSession().createCriteria(PlacementStats.class).add(Restrictions.eq("year", year)).list();
 		return placementStatsList;
 	}
+
 }

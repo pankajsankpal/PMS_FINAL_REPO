@@ -107,6 +107,7 @@ public class HighlightsController implements ConstantValues {
 			return model;
 		} catch (Exception e) {
 			logger.error(e);
+
 			return new ModelAndView("500");
 		}
 	}
@@ -119,6 +120,7 @@ public class HighlightsController implements ConstantValues {
 			return new ModelAndView("list");
 		} catch (Exception e) {
 			logger.error(e);
+
 			return new ModelAndView("500");
 		}
 	}

@@ -24,4 +24,5 @@ public interface StatisticsService {
 	
 	public List<QuickStats> getQuickStatsList(String year);
 	public List<PlacementStats> getPlacementStatsList(String year);
+
 }
