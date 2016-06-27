@@ -42,9 +42,9 @@ public class LoginController{
    	//----------------------------------------------------------------------------------------------------------
 	
 
-	
-	@RequestMapping("/")
-
+    /*@RequestMapping("/")*/
+	@RequestMapping("/login")
+	//changed by Gaurav - made home.jsp the default page and added a link to direct to this page with mapping '\login'
 	public ModelAndView welcome() throws ParseException {
 		
 		try{
