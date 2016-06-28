@@ -17,12 +17,6 @@
 	font-weight: bold;
 }
 </style>
-<script		
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>		
-<!-- for autocomplete -->		
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>		
-<script src="assets/autocomplete/jquery.autocomplete.min.js"></script>		
-<link href="assets/autocomplete/main.css" rel="stylesheet">
 
 <script>
 	$(document)
