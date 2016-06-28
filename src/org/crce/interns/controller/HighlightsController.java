@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.crce.interns.beans.ApplicantCSVBean;
 import org.crce.interns.beans.FileReader;
+import org.crce.interns.beans.PlacementStatsBean;
 import org.crce.interns.model.TotalNoOfStudents;
 import org.crce.interns.service.AssignTPCService;
 import org.crce.interns.service.CSVFileGenerator;
@@ -44,16 +45,16 @@ public class HighlightsController implements ConstantValues {
 
 	@Autowired
 	private AssignTPCService userService;
-        
+
 	@Autowired
 	private CSVFileGenerator csvService;
-		
+
 	@Autowired
 	private ManageApplicantsService crudService;
-	
+
 	private static final int BUFFER_SIZE = 4096;
-	
-        private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
+
+	private static final Logger logger = Logger.getLogger(HighlightsController.class.getName());
 
 	@RequestMapping(value = "/Statistics", method = RequestMethod.GET)
 	public ModelAndView view(HttpServletRequest request) {
@@ -76,8 +77,12 @@ public class HighlightsController implements ConstantValues {
 	@RequestMapping(value = "/stats", method = RequestMethod.GET)
 
 	public ModelAndView stats(@RequestParam("year") String curYear, final RedirectAttributes redirectAttributes) {
-
-		return new ModelAndView("stats");
+		Map<Integer, Map<String, PlacementStatsBean>> result = statisticsService.list();
+		
+		TotalNoOfStudents total = statisticsService.getTotalNoOfStudents(curYear);
+		ModelAndView model = new ModelAndView("stats");
+		model.addObject("totalStudents", total);
+		return model;
 	}
 
 	@RequestMapping(value = "/company", method = RequestMethod.GET)
@@ -101,7 +106,8 @@ public class HighlightsController implements ConstantValues {
 
 			return model;
 		} catch (Exception e) {
-                        logger.error(e);
+			logger.error(e);
+
 			return new ModelAndView("500");
 		}
 	}
@@ -113,11 +119,10 @@ public class HighlightsController implements ConstantValues {
 			profileService.listProfessionalProfile("2016");
 			return new ModelAndView("list");
 		} catch (Exception e) {
-                        logger.error(e);
+			logger.error(e);
+
 			return new ModelAndView("500");
 		}
 	}
-
-
 
 }

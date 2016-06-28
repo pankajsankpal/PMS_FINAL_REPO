@@ -34,6 +34,7 @@ import org.crce.interns.beans.CriteriaBean;
 import org.crce.interns.beans.FeedbackBean;
 import org.crce.interns.model.Company;
 import org.crce.interns.model.Criteria;
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.CriteriaService;
@@ -63,6 +64,9 @@ public class CompanyController implements ConstantValues{
     CompanyFormValidator companyValidator;
 	
 	@Autowired
+	private CheckRoleService crService;
+	
+	@Autowired
 	private CompanyService companyService;
 	
 	@Autowired 
@@ -90,13 +94,22 @@ public class CompanyController implements ConstantValues{
 	 
 	 
 	 @RequestMapping(value = "/addCompany", method = RequestMethod.GET)
-		public ModelAndView addCompany(Model model) {
+		public ModelAndView addCompany(HttpServletRequest request, Model model) {
 		 
 		 try{
-		 CompanyBean companyBean=new CompanyBean();
-		 model.addAttribute("companyBean",companyBean);
-			System.out.println("in controller1");
-			return new ModelAndView("addCompany");
+			 
+			 HttpSession session=request.getSession();
+			 String roleId=(String)session.getAttribute("roleId");
+				
+				//new authorization
+				if(!crService.checkRole("/addCompany", roleId))
+					return new ModelAndView("403");
+				else{
+						CompanyBean companyBean=new CompanyBean();
+						model.addAttribute("companyBean",companyBean);
+						System.out.println("in controller1");
+						return new ModelAndView("addCompany");
+				}
 			
 		 }
 		 catch(Exception e){
@@ -111,6 +124,8 @@ public class CompanyController implements ConstantValues{
 			}
 
 		}
+	 
+	//authorization done - unauthorized call redirected to 405.jsp
 	 @RequestMapping(value = "/saveCompany", method = RequestMethod.POST)
 		public ModelAndView saveCompany(  HttpServletRequest request,@ModelAttribute("companyBean") CompanyBean companyBean, 
 				BindingResult result,final RedirectAttributes redirectAttributes) {

@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.crce.interns.beans.ApplicantCSVBean;
 import org.crce.interns.beans.DirectoryPathBean;
@@ -371,8 +372,17 @@ public class DownloadController extends HttpServlet {
 	}
 
 	@RequestMapping("/downloads")
-	public String StudentNotification() {
-		return "facultyDownloads";
+	public ModelAndView StudentNotification(HttpServletRequest request) {
+		
+		HttpSession session=request.getSession();
+		 String roleId=(String)session.getAttribute("roleId");
+			
+			//new authorization
+			if(!crService.checkRole("/downloads", roleId))
+				return new ModelAndView("403");
+			else{
+					return new ModelAndView("facultyDownloads");
+			}
 	}
 	
 	

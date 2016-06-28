@@ -6,27 +6,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Faculty Downloads</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Downloads</title>
 
-<!-- page specific plugin styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-<link rel="stylesheet" href="assets/css/jquery.gritter.min.css" />
-<link rel="stylesheet" href="assets/css/select2.min.css" />
-
-<link rel="stylesheet" href="assets/css/bootstrap-editable.min.css" />
-
-<link rel="stylesheet" href="assets/css/select2.min.css" />
-
-
-<!-- <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" /> -->
-<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
-
-
-<!-- page specific plugin for calander styles -->
-<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-<link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
-<script src="assets/js/ace-extra.min.js"></script>
 
 
 </head>
@@ -37,36 +21,20 @@
 	<div class="main-content">
 		<div class="main-content-inner">
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 
+				<jsp:directive.include file="searchheader.jsp" />
 
-
-				<div class="nav-search" id="nav-search">
-					<form class="form-search">
-						<span class="input-icon"> <input type="text"
-							placeholder="Search ..." class="nav-search-input"
-							id="nav-search-input" autocomplete="on" /> <i
-							class="ace-icon fa fa-search nav-search-icon"></i>
-						</span>
-					</form>
-				</div>
-				<!-- /.nav-search -->
 			</div>
 			<div class="page-content">
 				<div class="page-header">
 
 					<h1>Welcome ${sessionScope.name} to the profile page</h1>
 
-					<%-- <h2>
-								My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch with username  ${sessionScope.userName}
-							</h2> --%>
+					<%-- <h2>My name is ${sessionScope.name} , I am a
+						${sessionScope.roleName} from ${sessionScope.branch} branch with
+						username ${sessionScope.userName}</h2>
 					<br />
-
+ --%>
 
 				</div>
 				<!-- /.page-header -->
@@ -187,36 +155,7 @@
 
 
 
-										<!-- <div id="activity" class="tab-pane in active">
-													 <div class="row ">
-														
-														
-														 <br>
-													 
-														<div class="col-xs-12 col-sm-4 left">
-															
-															  <a href="addProfile"  class="btn btn-purple btn-lg btn-block">Add job Profile </a> <br><br>
-
-															<a href="getEventForm.html"  class="btn btn-inverse btn-lg btn-block">Add Event </a> <br><br>
-																<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a>
-
-														</div>
 										
-														
-														&nbsp;&nbsp;<div class="col-xs-12 col-sm-4 right" >
-														  
-														  <a href="manage.html" class="btn btn-purple btn-lg btn-block">Add/Delete candidate </a> <br><br>
-														  <a href="GroupSendMail"  class="btn btn-inverse btn-lg btn-block">Send Group Email </a><br><br>
-														  <a href="personalMail"  class="btn btn-warning btn-lg btn-block">Send Personal Email </a><br><br>
-														</div>
-														
-												<div class="col-xs-12 col-sm-8 left">
-														<a href="addUser"  class="btn btn-warning btn-lg btn-block">Manage different users of System</a> <br><br>	
-												</div>
-											</div>/#pictures
-											</div>
-								
-							 -->
 
 									</div>
 									<!-- end of tabbable -->
@@ -231,10 +170,12 @@
 
 					</div>
 					<!-- /.row -->
+					
 				</div>
 				<!-- end of page-content -->
 
-
+				<jsp:directive.include file="Footer.jsp" />
+					<jsp:directive.include file="scripts.jsp" />
 
 
 			</div>
@@ -244,8 +185,6 @@
 		<!-- main-content -->
 
 
-		<jsp:directive.include file="Footer.jsp" />
-		<jsp:directive.include file="scripts.jsp" />
 
 
 		<!-- page specific plugin scripts -->
@@ -272,17 +211,10 @@
 		<script src="assets/js/jquery.maskedinput.min.js"></script>
 
 		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
+		
 
 
-		<!-- page specific plugin scripts -->
-
-
-		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
-
+		
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
@@ -540,7 +472,8 @@
 			})
 		</script>
 
-
+		<script src="assets/js/ace-elements.min.js"></script>
+	<script src="assets/js/ace.min.js"></script>
 
 		<!--script for changing the profile image and model for buttons -->
 </body>

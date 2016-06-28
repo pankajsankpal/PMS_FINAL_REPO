@@ -102,12 +102,13 @@
 <body>
 	<div class="nav-search" id="nav-search">
 		<form class="form-search">
-			<span class="input-icon"> <input type="text"
-				placeholder="Search ..." class="nav-search-input"
+			<span class="input-icon"> <input type="text" style="height:30px; "
+				placeholder="Search ..." class=""
 				id="dynamicsearchall" /> <i
-				class="ace-icon fa fa-search nav-search-icon"></i> <input
-				class="btn btn-sm btn-primary" type="button" value="Search"
-				id="searchbutton"> <br>
+				class="ace-icon fa fa-search "></i> 
+				<input
+				class="btn btn-sm btn-primary" type="button" value="Search"  
+				id="searchbutton"/> <br>
 				<span id="notfound" style="color:red"></span>
 				<!-- <div id="notfound" style="color: red"></div> -->
 			</span>
