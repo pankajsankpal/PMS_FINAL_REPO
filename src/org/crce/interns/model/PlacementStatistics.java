@@ -14,10 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "placement_statistics", catalog = "placement_statistics_schema")
-@SecondaryTables({	
+/*@SecondaryTables({	
 	@SecondaryTable(name = "job_schema.company", pkJoinColumns = @PrimaryKeyJoinColumn(name = "company_id") ) 
 	})
-public class PlacementStatistics {
+*/public class PlacementStatistics {
 	
 
 	@Id

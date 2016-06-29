@@ -1,5 +1,6 @@
 package org.crce.interns.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,7 +10,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.beans.LoginForm;
 import org.crce.interns.beans.NotifyForm;
@@ -19,8 +22,10 @@ import org.crce.interns.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,17 +40,20 @@ public class LoginController{
         
    	@Autowired
     private DirectoryService directoryService;
+        
+        private static final Logger logger = Logger.getLogger(LoginController.class.getName()); 
     
    	//----------------------------------------------------------------------------------------------------------
 	
 
-	
-	@RequestMapping("/")
-
+    /*@RequestMapping("/")*/
+	@RequestMapping("/login")
+	//changed by Gaurav - made home.jsp the default page and added a link to direct to this page with mapping '\login'
 	public ModelAndView welcome() throws ParseException {
 		
 		try{
-				System.out.println("return model");
+				//System.out.println("return model");
+                                logger.error("Return Model : Mapping /");
                 /**
                  * Year changing logic
                  * @author Leon
@@ -76,7 +84,8 @@ public class LoginController{
                 return new ModelAndView("redirect:/form");
 		}
 		catch(Exception e){
-			System.out.println(e);
+			//System.out.println(e);
+                    logger.error("Exception in / ",e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/");
 			return model;
@@ -91,8 +100,8 @@ public class LoginController{
 
 	try
 	{
-		System.out.println("Inside Login Controller");
-
+		//System.out.println("Inside Login Controller");
+                logger.error("Inside Login Controller /form");
 		LoginForm loginForm = new LoginForm();
 		ModelAndView model=null;
 		model = new ModelAndView("Login");
@@ -102,7 +111,8 @@ public class LoginController{
 	}
 	catch(Exception e)
 	{
-		System.out.println(e);
+		//System.out.println(e);
+            logger.error("Exception in /form ",e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "loginForm");
 		return model;
@@ -113,13 +123,15 @@ public class LoginController{
 	@RequestMapping(value="/logged-out" , method = RequestMethod.GET)  
   	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
 	try{
-		System.out.println("Inside Controller");		
+		//System.out.println("Inside Controller");	
+            logger.error("Inside /logged-out");
 		ModelAndView model=null;		
 		model = new ModelAndView("redirect:/sign-out");				
 		return model;
 	}
 	catch(Exception e){
-		System.out.println(e);
+		//System.out.println(e);
+            logger.error("Exception in /logged-out ",e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/logged-out");
 		return model;
@@ -135,7 +147,8 @@ public class LoginController{
 
 	try
 	{
-		System.out.println("Inside Controller");
+		//System.out.println("Inside Controller");
+            logger.error("Inside /logged");
 		ModelAndView model=null;	
 		// get role
 		String role=loginService.checkLogin(loginForm.getUserName(),loginForm.getPassword());		
@@ -203,81 +216,38 @@ public class LoginController{
 
 	catch(Exception e)
 	{
-		System.out.println(e);
+		//System.out.println(e);
+            logger.error("Exception in /logged ",e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "Logged page");
 		return model;
 	}
-}
+	
+	
+	}
+	
+	
 	
 
    	//----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+        public @ResponseBody String searchCombined(@RequestBody String data, HttpServletRequest request,
+		HttpServletResponse response) throws IOException{
+            System.out.println("Here");
+            System.out.println("Username fetched from PHP is "+data);
+            data = data.replace("\"", "").replace("\"", "");
+            System.out.println(data.getClass());
+            HttpSession s=request.getSession(true);
+            s.setAttribute("userName", data);
+            System.out.println(s.getAttribute("userName"));
+            return "1";
+            //switchServers(s);
+            //request.getSession().getAttribute("userName", data );
+            //System.out.println(request.getParameter("userName"));
+            //System.out.println(request.toString());
+            //sssssreturn "logged";
+        }
 
-	/*
-=======
-
->>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
-	@RequestMapping(value="/notify" ,method = RequestMethod.POST)
-	public ModelAndView notifyForm(HttpServletRequest request, HttpServletResponse response,@Valid NotifyForm notify, BindingResult result,
-			Map model) 
-	{
-
-		try
-		{
-			HttpSession session=request.getSession();
-			String roleId=(String)session.getAttribute("roleId");
-			String user=(String)session.getAttribute("userName");
-			String name=loginService.checkSR(user);
-		
-		
-			if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
-				return new ModelAndView("403");
-			else
-<<<<<<< HEAD
-
-		String roleId=(String)request.getSession(true).getAttribute("roleId");
-		String user=(String)request.getSession(true).getAttribute("userName");
-		
-		String name=loginService.checkSR(user);
-		
-		
-		if(!(crService.checkRole("FacultyTPCNotify", roleId)&&name.equals("702")))
-			return new ModelAndView("403");
-		else
-		{
-			String userName=notify.getUserName();
-			int update=loginService.getStudentByid(userName);
-
-			//System.out.println("hello");
-			if(update==0)
-
-=======
->>>>>>> b80bf41979b893e4f32dd414943e384008e78f27
-			{
-				String userName=notify.getUserName();
-				int update=loginService.getStudentByid(userName);
-
-			//System.out.println("hello");
-				if(update==0)
-
-				{
-					
-						model.put("notify",notify);
-						return new ModelAndView("FacultyTPC");
-				}
-				else
-					return new ModelAndView("success");
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-			ModelAndView model1=new ModelAndView("500");
-			model1.addObject("exception", "Notify form");
-			return model1;
-		}
-	}
-	*/
 	
    	//----------------------------------------------------------------------------------------------------------
 }

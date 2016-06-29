@@ -28,7 +28,11 @@
 				</div>
 				<div class="space"></div>
 				<div class="center">
-					<form:form method="POST" action="saveCompany" modelAttribute="companyBean">  
+				<c:if test="${not empty msg}">
+			    <font size="5" color="red" face="verdana">${msg}</font>
+		         </c:if>
+	
+	<form:form method="POST" action="saveCompany" modelAttribute="companyBean">  
   					<table align="center">   
    						<tr>
    							<td><form:label path="company_name">Name of the company:&nbsp</form:label></td>
@@ -56,7 +60,7 @@
 					  	<td><br/></td>
 					  	</tr>
   						<tr>  
-        	 				<td colspan="2"><input type="submit" value="Proceed to next page" class="btn btn-info"/></td>  
+        	 				<td colspan="2"><input type="submit" value="Submit" class="btn btn-info"/></td>  
         				</tr>   
   					</table>
   	 				</form:form>

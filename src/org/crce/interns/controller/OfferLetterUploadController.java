@@ -14,11 +14,11 @@
 *
 */
 
-
 package org.crce.interns.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
@@ -41,73 +41,74 @@ public class OfferLetterUploadController {
 
 	@Autowired
 	private OfferLetterUploadService offerLetterUploadService;
-	
+
 	@Autowired
-    FileUploadValidator validator;
-	
+	FileUploadValidator validator;
+
 	@Autowired
 	private CheckRoleService crService;
-	
-	//used to navigate to OfferLetterUpload.jsp
-		@RequestMapping("offerLetterUpload")
-		public ModelAndView welcome(HttpServletRequest request) {
-			
-			HttpSession session=request.getSession();
-			String role =  (String)session.getAttribute("roleId");
+        
+        private static final Logger logger = Logger.getLogger(OfferLetterUploadController.class.getName());
 
-			/*if(!crService.checkRole("OfferLetterUpload", role))
-				return new ModelAndView("403");
-			else*/
+	// used to navigate to OfferLetterUpload.jsp
+	@RequestMapping("offerLetterUpload")
+	public ModelAndView welcome(HttpServletRequest request) {
 
-				return new ModelAndView("OfferLetterUpload");
-		}
+		HttpSession session = request.getSession();
+		String role = (String) session.getAttribute("roleId");
 
-		//used to actually upload the file
-		@RequestMapping(value = "/uploadOfferLetter", method = RequestMethod.POST)
-		public ModelAndView offerLetterUpload(HttpServletRequest request,
-				@RequestParam(required = false) CommonsMultipartFile fileUpload,  @ModelAttribute("fileUpload1") FileUpload fileUpload1,BindingResult result)
-						throws Exception {
+		//new authorization
+		 if(!crService.checkRole("offerLetterUpload", role)) 
+			 return new ModelAndView("403"); 
+		 else
+			 return new ModelAndView("OfferLetterUpload");
+	}
 
-			ModelAndView model = new ModelAndView("OfferLetterUpload");
-			
-			try {
-				
-				//fileUpload1 : this is the request parameter model attribute of FileUpload type
-				fileUpload1.setFile(fileUpload);
-				System.out.println(fileUpload1.getFile().getSize());
-				
-				validator.validate(fileUpload1, result);
-				
-				
-				//if no file is uploaded
-				if (fileUpload1.getFile().getSize() == 0) {
-					System.out.println("Error in form");
-		            
-		            return model;
-				}
-				
-				String username = (String)request.getSession(true).getAttribute("userName");
-				System.out.println("in try");
-				
-				//calls the service to actually upload the file
-				offerLetterUploadService.handleFileUpload(request, fileUpload, username);
-				
-				
-				model.addObject("success", 1);
-				
-			} catch (IncorrectFileFormatException e) {
-				System.out.println(e);
-				
-				model.addObject("error", 1);	// so that the jsp catches the error
-				
-				
-			} catch (MaxFileSizeExceededError m) {
-				System.out.println(m);
-				
-				model.addObject("error1", 1); 	// so that the jsp catches the error
-				
+	//authorization done - unauthorized call redirected to 405.jsp
+	// used to actually upload the file
+	@RequestMapping(value = "/uploadOfferLetter", method = RequestMethod.POST)
+	public ModelAndView offerLetterUpload(HttpServletRequest request,
+			@RequestParam(required = false) CommonsMultipartFile fileUpload,
+			@ModelAttribute("fileUpload1") FileUpload fileUpload1, BindingResult result) throws Exception {
+
+		ModelAndView model = new ModelAndView("OfferLetterUpload");
+
+		try {
+
+			// fileUpload1 : this is the request parameter model attribute of
+			// FileUpload type
+			fileUpload1.setFile(fileUpload);
+			//System.out.println(fileUpload1.getFile().getSize());
+
+			validator.validate(fileUpload1, result);
+
+			// if no file is uploaded
+			if (fileUpload1.getFile().getSize() == 0) {
+				System.out.println("Error in form");
+
+				return model;
 			}
-			
-			return model;
+
+			String username = (String) request.getSession(true).getAttribute("userName");
+			//System.out.println("in try");
+
+			// calls the service to actually upload the file
+			offerLetterUploadService.handleFileUpload(request, fileUpload, username);
+
+			model.addObject("success", 1);
+
+		} catch (IncorrectFileFormatException e) {
+			//System.out.println(e);
+                        logger.error(e);
+			model.addObject("error", 1); // so that the jsp catches the error
+
+		} catch (MaxFileSizeExceededError m) {
+			System.out.println(m);
+                        logger.error(m);
+			model.addObject("error1", 1); // so that the jsp catches the error
+
 		}
+
+		return model;
+	}
 }

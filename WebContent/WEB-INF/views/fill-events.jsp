@@ -1,5 +1,3 @@
-
- 
 <!-- author: Pankaj sankpal
 description: contains fields to add a new event regarding placement drives ->
 <!-- -------------------------------------------------------------------------------------------------------- -->
@@ -98,14 +96,10 @@ description: contains fields to add a new event regarding placement drives ->
 									<div class="widget-box" align="center">
 										<div class="widget-body">
 											<div class="widget-main">
-												<div align="center">
+												<div align="center" >
 													<form id="form" action="fill.html" method="post"
 														novalidate="novalidate">
-														<p>
-															Event name: <input type="text" id="test"
-																name="event_name">
-														</p>
-														<p>
+																												<p>
 															Event type: <select id="category" name="event_type">
 																<option value="none">------</option>
 																<option value="pre_placement">pre_placement</option>
@@ -183,7 +177,7 @@ description: contains fields to add a new event regarding placement drives ->
 
 
 
-														<button class="btn btn-md btn-success">Show Value</button>
+														<button class="btn btn-md btn-success">Submit</button>
 													</form>
 
 
@@ -277,7 +271,6 @@ description: contains fields to add a new event regarding placement drives ->
 			setupFormValidation : function() {
 				$("#form").validate({
 					rules : {
-						event_name : "required",
 						event_type : "required",
 						company_name : "required",
 						date : {
@@ -287,7 +280,6 @@ description: contains fields to add a new event regarding placement drives ->
 						venue : "required"
 					},
 					messages : {
-						event_name : "Please enter an event name",
 						event_type : "Please select an event type",
 						company_name : "Please enter the name of the company",
 						date : {
@@ -323,6 +315,8 @@ description: contains fields to add a new event regarding placement drives ->
 
 </body>
 </html>
+
+
 
 
 
@@ -437,5 +431,4 @@ $(document).ready(function(){
 });
 </script>
 </body>
-</html>
- --%>
+</html>--%>

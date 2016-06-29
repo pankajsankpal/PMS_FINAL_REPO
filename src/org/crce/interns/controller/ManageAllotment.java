@@ -1,6 +1,7 @@
 package org.crce.interns.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 import javax.validation.Valid;
+
 
 import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
@@ -18,6 +21,7 @@ import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
 import org.crce.interns.model.Allotment;
 import org.crce.interns.service.CheckRoleService;
+import org.crce.interns.service.ConstantValues;
 import org.crce.interns.service.LoginService;
 import org.crce.interns.service.ManageAllotmentService;
 import org.crce.interns.service.ManageProfileService;
@@ -62,25 +66,21 @@ public class ManageAllotment extends HttpServlet {
 
 	@Autowired
 	public LoginService loginService;
+        
+        private static final Logger logger = Logger.getLogger(ManageAllotment.class.getName());
 
-	/*
-	 * @RequestMapping("/") public ModelAndView welcome() { return new
-	 * ModelAndView("index"); }
-	 */
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
 
-	// changes made @Crystal
-	// Method to save allotment details
+	//changes made @Crystal
+	//Method to save allotment details	
+	//authorization done - unauthorized call redirected to 405.jsp
 	@RequestMapping(value = "/saveAllotment", method = RequestMethod.POST)
 	public ModelAndView addAllotment(HttpServletRequest request, @RequestParam CommonsMultipartFile fileUpload,
 			@ModelAttribute("allotmentBean") AllotmentBean allotmentBean, BindingResult result) throws Exception {
 
 		try {
-			
+			allotmentBean.setYear(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+
 			// ModelAndView model = new ModelAndView("addAllotment");
 			List<CompanyBean> companyList = manageProfileService.listCompanies();
 			Map<String, String> companyMap = new LinkedHashMap<String, String>();
@@ -92,10 +92,9 @@ public class ManageAllotment extends HttpServlet {
 			
 			
 			/*allotmentValidator.validate(allotmentBean, result);
-			int i=0;
 			if (result.hasErrors()) {
-				i++;
-				System.out.println("Binding Errors are present ..."+i);
+				
+				System.out.println("Binding Errors are present ...");
 				System.out.println(allotmentBean.getCompany_name());
 				System.out.println("Round Name: "+allotmentBean.getRoom_no());
 				System.out.println("Round no "+allotmentBean.getRound_no());
@@ -103,6 +102,60 @@ public class ManageAllotment extends HttpServlet {
 				ModelAndView model1 = new ModelAndView("addAllotment", "companies", companyMap);
 				return model1;
 			}*/
+			
+			
+			int res1,res2;
+			
+			res1=allotmentValidator.validateRound(allotmentBean.getRound_no());
+			res2=allotmentValidator.validateRoom(allotmentBean.getRoom_no());
+			
+
+						//System.out.println(e);
+                                                //logger.error(e);	//was throwing error- commented @Crystal
+				//		model.addObject("error", 1); //was displaying file error irrespective of situation- commented @cheryl3
+						
+
+			if(res1==0)
+			{
+				model.addObject("roomError", "Please write Round Name");
+				return model;
+			}
+
+			
+		/* This part was throwing errors, hence commented @Crystal*/	
+/*
+						//System.out.println(m);
+                                                logger.error(m);
+						model.addObject("error1", 1);
+			
+					}
+				
+				
+					return model;
+				} 
+		catch (Exception e) {
+				// TODO Auto-generated catch block
+				//System.out.println(e);
+                                logger.error(e);
+				ModelAndView model1=new ModelAndView("500");
+				model1.addObject("exception", "/saveAllotment");
+				return model1;*/
+
+			if(res2==0)
+			{
+				model.addObject("roomError1", "Please write Room No");
+				return model;
+			}
+			
+
+			int dateVal=allotmentValidator.validateDate(allotmentBean.getDrive_date());
+			if(dateVal==0)
+			{
+				model.addObject("roomError2", "Please mention correct drive date");
+				return model;
+			}
+			
+			
 
 			
 			try {
@@ -123,6 +176,7 @@ public class ManageAllotment extends HttpServlet {
 
 				System.out.println(m);
 				model.addObject("error1", 1);
+
 
 			}
 
@@ -147,13 +201,56 @@ public class ManageAllotment extends HttpServlet {
 	 * ModelAndView("addAllotment", model); }
 	 */
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
+
+	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
 
 	// Method to create a new allotment
 	@RequestMapping(value = "/addAllotment", method = RequestMethod.GET)
+	public ModelAndView createAllotment(HttpServletRequest request,Model model) {
+		
+		
+
+		  try {			  				 			  			 
+					HttpSession session=request.getSession();
+					String roleId=(String)session.getAttribute("roleId");
+					String user=(String)session.getAttribute("userName");
+					String name=loginService.checkSR(user);
+
+					
+					//new authorization
+					if(!(crService.checkRole("/addAllotment", roleId)&&name.equals(ConstantValues.task2))) // changed hardcoded string @Crystal
+						return new ModelAndView("403");
+					else			  	 						
+					{					
+			  		AllotmentBean allotmentBean = new AllotmentBean(); // declaring
+			  		Allotment allot = new Allotment();
+			  		model.addAttribute("allotmentBean", allotmentBean); // adding in model
+			  		Map<String, Object> model1 = new HashMap<String, Object>();
+			  		model1.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allot)));
+			  		
+			  		List<CompanyBean> companyList = manageProfileService.listCompanies();
+				    Map<String, String> companyMap = new LinkedHashMap<String,String>();
+				            for(CompanyBean cb : companyList){
+				            	companyMap.put(cb.getCompany_name(), cb.getCompany_name());
+				            }
+					
+					return new ModelAndView("addAllotment","companies",companyMap);
+			  		//return new ModelAndView("addAllotment");
+			  	}
+		  	} 
+		  catch (Exception e) {
+			  		// TODO Auto-generated catch block
+			  		//System.out.println(e);
+                    logger.error(e);
+			  		ModelAndView model1=new ModelAndView("500");
+			  		model1.addObject("exception", "/addAllotment");
+			  		return model1;
+		  	}
+	}
+
+	//duplicate method - commented @Crystal21
+	/*
 	public ModelAndView createAllotment(HttpServletRequest request, Model model) {
 
 		try {
@@ -168,10 +265,12 @@ public class ManageAllotment extends HttpServlet {
 			 * roleId)&&name.equals("ROOM_ALLOTMENT"))) // changed hardcoded
 			 * string @Crystal return new ModelAndView("403"); else
 			 */
-
+		  /*
 			{
 				AllotmentBean allotmentBean = new AllotmentBean(); // declaring
 				Allotment allot = new Allotment();
+				
+
 				model.addAttribute("allotmentBean", allotmentBean); // adding in
 																	// model
 				Map<String, Object> model1 = new HashMap<String, Object>();
@@ -192,50 +291,57 @@ public class ManageAllotment extends HttpServlet {
 			ModelAndView model1 = new ModelAndView("500");
 			model1.addObject("exception", "/addAllotment");
 			return model1;
+
 		}
-	}
+	}*/
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * ----------------------------------------------
-	 */
 
-	// Method to view allotment details
 
+	
+	/* -----------------------------------------------------------------------------------------------------------------------  */
+
+	//Method to view allotment details
 	@RequestMapping(value = "/viewAllotment", method = RequestMethod.GET)
 	public ModelAndView listAllotment(HttpServletRequest request, @ModelAttribute("command") Allotment allotmentBean,
 			BindingResult bindingResult) {
 
 		try {
-			/*
-			 * ** //Authentication is commented
-			 * 
-			 * HttpSession session=request.getSession(); String
-			 * roleId=(String)session.getAttribute("roleId");
-			 * if(!crService.checkRole("ManageAllotment", roleId)) return new
-			 * ModelAndView("403"); else
-			 ** 
-			 */
-			{
-				Map<String, Object> model = new HashMap<String, Object>();
-				model.put("allotments", prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
-				// model.put("allotments",manageAllotmentService.listAllotment(allotmentBean)
-				// );
+					//new authorization	added	 					
+					HttpSession session=request.getSession();
+					String roleId=(String)session.getAttribute("roleId");
+					
+					if(!crService.checkRole("/viewAllotment", roleId))
+						return new ModelAndView("403");
+					else
+							 
+				{
+					Map<String, Object> model = new HashMap<String, Object>();
+					model.put("allotments",  prepareListofBean(manageAllotmentService.listAllotment(allotmentBean)));
+					//model.put("allotments",manageAllotmentService.listAllotment(allotmentBean) );
+				
+					if (model.isEmpty()) {
+						System.out.println("Error no Model , Model is null");
+						return new ModelAndView("403");
+					}
+				
+					return new ModelAndView("viewAllotment", model);
 
-				if (model.isEmpty()) {
-					System.out.println("Error no Model , Model is null");
-					return new ModelAndView("403");
 				}
+				/*else{
+					return new ModelAndView("viewAllotment", model); 
+				}*/
 
-				return new ModelAndView("viewAllotment", model);
+			} 
+		catch (Exception e) {
+				// TODO Auto-generated catch block
+				//System.out.println(e);
+                                logger.error(e);
+				ModelAndView model1=new ModelAndView("500");
+				model1.addObject("exception", "/viewAllotment");
+				return model1;
+				
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
-			model1.addObject("exception", "/viewAllotment");
-			return model1;
-		}
+		
 	}
 
 	// Used to display information regarding allotment
@@ -288,14 +394,19 @@ public class ManageAllotment extends HttpServlet {
 	 * prepareListofBean(employeeService.listEmployeess())); return new
 	 * ModelAndView("addEmployee", model); }
 	 * 
+
 	 */
 
 	/*
 	 * -------------------------------------------------------------------------
 	 * ----------------------
+
 	 */
 
-	@RequestMapping("/list")
+	
+	//these methods arent needed :|
+	//commented @Crystal
+	/*@RequestMapping("/list")
 	public ModelAndView list() {
 
 		try {
@@ -303,17 +414,16 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("list");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/list");
 			return model1;
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -----------------------
-	 */
 
 	@RequestMapping("/tpclist")
 	public ModelAndView tpclist() {
@@ -322,18 +432,15 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("tpclist");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/tpclist");
 			return model1;
 		}
 	}
-
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
-
 	@RequestMapping("/studentlist")
 	public ModelAndView studentlist() {
 		try {
@@ -341,17 +448,16 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("studentlist");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/studentlist");
 			return model1;
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
 
 	@RequestMapping("/dept")
 	public ModelAndView dept() {
@@ -360,17 +466,16 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("dept");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/dept");
 			return model1;
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
 
 	@RequestMapping("/stats")
 	public ModelAndView stats() {
@@ -379,17 +484,17 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("stats");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/stats");
 			return model1;
 		}
 	}
 
-	/*
-	 * -------------------------------------------------------------------------
-	 * -------------------------
-	 */
+
 
 	@RequestMapping("/company")
 	public ModelAndView company() {
@@ -398,11 +503,14 @@ public class ManageAllotment extends HttpServlet {
 			return new ModelAndView("company");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println(e);
-			ModelAndView model1 = new ModelAndView("500");
+
+			//System.out.println(e);
+                        logger.error(e);
+			ModelAndView model1=new ModelAndView("500");
+
 			model1.addObject("exception", "/company");
 			return model1;
 		}
-	}
+	}*/
 
 }

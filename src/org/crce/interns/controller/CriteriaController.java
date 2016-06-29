@@ -1,7 +1,12 @@
 package org.crce.interns.controller;
 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 import org.crce.interns.beans.CriteriaBean;
 import org.crce.interns.model.Criteria;
+import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CriteriaService;
 import org.crce.interns.validators.CriteriaFormValidator;
 import org.springframework.beans.BeanUtils;
@@ -16,48 +21,71 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CriteriaController {
-	
-	@Autowired
-    CriteriaFormValidator criteriaValidator;
-	
 
 	@Autowired
+	CriteriaFormValidator criteriaValidator;
+
+	@Autowired
+	private CheckRoleService crService;
+	
+	@Autowired
 	private CriteriaService criteriaService;
-	
-	
+        
+        private static final Logger logger = Logger.getLogger(CriteriaController.class.getName());
+
 	@RequestMapping(value = "/addCriteria", method = RequestMethod.GET)
-	public ModelAndView addCriteria(Model model) {
+	public ModelAndView addCriteria(HttpServletRequest request, Model model) {
 		
-		CriteriaBean criteriaBean=new CriteriaBean();
-		model.addAttribute("criteriaBean",criteriaBean);
-		System.out.println("in controller11");
-		return new ModelAndView("addCriteria");
+		try {
+			
+			HttpSession session=request.getSession();
+			 String roleId=(String)session.getAttribute("roleId");
+				
+		//new authorization
+		if(!crService.checkRole("/addCriteria", roleId))
+			return new ModelAndView("403");
+		else{
+			CriteriaBean criteriaBean = new CriteriaBean();
+			model.addAttribute("criteriaBean", criteriaBean);
+			//System.out.println("in controller11");
+			return new ModelAndView("addCriteria");
+			}
+		} catch (Exception e) {
+                        logger.error(e);
+			return new ModelAndView("500");
+		}
 	}
-	
-	 @RequestMapping(value = "/saveCriteria", method = RequestMethod.POST)  
-	 public ModelAndView saveEmployee(@ModelAttribute("criteriaBean") CriteriaBean criteriaBean,BindingResult result) throws Exception { 
-		 
-		 criteriaValidator.validate(criteriaBean, result);
+
+	//authorization done - unauthorized call redirected to 405.jsp
+	@RequestMapping(value = "/saveCriteria", method = RequestMethod.POST)
+	public ModelAndView saveEmployee(@ModelAttribute("criteriaBean") CriteriaBean criteriaBean, BindingResult result)
+			throws Exception {
+		try {
+			criteriaValidator.validate(criteriaBean, result);
 			if (result.hasErrors()) {
-		System.out.println("Error in form");
-     
-     return new ModelAndView("addCriteria");
- }
-		 	
-																			
-		 Criteria criteria=prepareCriteriaModel(criteriaBean);
-	  criteriaService.addCriteria(criteria);  
-	  return new ModelAndView("redirect:/addCompany");  
-	  
-	   	
-	
-	 }
-	 
-	private Criteria prepareCriteriaModel(CriteriaBean criteriaBean){
-		Criteria criteria =new Criteria();
-		BeanUtils.copyProperties(criteriaBean, criteria);
-		return criteria;
+				//System.out.println("Error in form");
+                                logger.error("Error in form");
+				return new ModelAndView("addCriteria");
+			}
+
+			Criteria criteria = prepareCriteriaModel(criteriaBean);
+			criteriaService.addCriteria(criteria);
+			return new ModelAndView("redirect:/addCompany");
+		} catch (Exception e) {
+                        logger.error(e);
+			return new ModelAndView("500");
+		}
 	}
-	
+
+	private Criteria prepareCriteriaModel(CriteriaBean criteriaBean) {
+		try {
+			Criteria criteria = new Criteria();
+			BeanUtils.copyProperties(criteriaBean, criteria);
+			return criteria;
+		} catch (Exception e) {
+                        logger.error(e);
+			return new Criteria();
+		}
+	}
 
 }

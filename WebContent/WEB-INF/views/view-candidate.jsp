@@ -5,66 +5,52 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>PMS Application</title>
+<title>Applied List</title>
 
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<jsp:directive.include file="scripts.jsp" />
 
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+<script  type="text/javascript">
+function doSearch(){
+		$.getJSON("looseSearch2",
+				
+				{CHARS:''},
+				
+				function(data){
+					console.log(data);
+					$('#searchresult').text('');
+					for(var index in data){
+						$('#searchresult').append('<option name="'+data[index].company_id+'">'+data[index].company_name+'</option>');
+					}
+				});
+	}
 
-<!-- page specific plugin styles -->
-
-<!-- text fonts -->
-<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
-
-<!-- ace styles -->
-<link rel="stylesheet" href="assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
-
-
-
-
-
-<!-- inline styles related to this page -->
-
-<!-- ace settings handler -->
-<script src="assets/js/ace-extra.min.js"></script>
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
+</script>
 
 </head>
-<body>
-	<jsp:directive.include file="Header.jsp" />
+<body onLoad="doSearch();">
+<jsp:directive.include file="Header.jsp" />
 	<div class="main-content">
 		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
 
+				<jsp:directive.include file="searchheader.jsp" />
+
+			</div>
 			<div class="page-content">
-				<div class="page-header"></div>
-				<!-- /.page-header -->
+				<div class="page-header">
 
+					<h1>Welcome ${sessionScope.name} to the profile page</h1>
 
+					<%-- <h2>My name is ${sessionScope.name} , I am a
+						${sessionScope.roleName} from ${sessionScope.branch} branch with
+						username ${sessionScope.userName}</h2>
+					<br />
+ --%>
 
-				<script type="text/javascript">
-					try {
-						ace.settings.check('main-container', 'fixed')
-					} catch (e) {
-					}
-				</script>
-
-
-				<%-- <form action="viewclist.html" method="post" >
-	Company:<select name="company" >
-	<option value="JP Morgan" >JPMC</option>
-	<option value="Accenture" >Accenture</option>
-	<option value="Tata Consultancy Services" >TCS</option>
-	</select><br>
-	<input type="submit" value="submit"/> 
-</form> --%>
+				</div>
 			
 				<div class="clearfix">
 
@@ -76,30 +62,19 @@
 										<div align="center">
 											<h2>Select The Company You Want To View</h2>
 											<br>
-											<form action="viewclist.html" method="post">
+											<form action="viewclist.html" method="get">
 
 												<table>
 													<tr>
-														<td><label class="col-sm-0">Company</label><select
-															name="company">
-																<!-- <option value="jpmorgan">JP Morgan</option> -->
-																<option value="JP Morgan">JP Morgan</option>
-																<option value="Accenture">Accenture</option>
-																<!-- <option value="tcs">TCS</option> -->
-																<option value="Tata Consultancy Services">TCS</option>
-																<option value="Laursen & Tubro">L&T</option>
-																<option value="Morgan Stanley">Morgan & Stanley</option>
-																<option value="Godrej">Godrej</option>
-																<option value="Direct i">Direct-I</option>
-																<option value="ZS Associates">ZS</option>
-														</select>
-														<input name="year" hidden />
+														<td><label class="col-sm-0">Company</label><select name="company" id="searchresult"></select>
 															<button class="btn btn-xs btn-primary" type="submit">
 																<i class="ace-icon fa fa-check bigger-110"></i> Submit
 															</button></td>
 
 													</tr>
 												</table>
+												
+												<input type="text" name="year" hidden/>
 											</form>
 
 
@@ -119,19 +94,12 @@
 				</div>
 
 				<jsp:directive.include file="Footer.jsp" />
+				<jsp:directive.include file="scripts.jsp" />
 
 
 			</div>
 		</div>
 	</div>
-
-	<!-- /.main-container -->
-
-	<!--[if !IE]> -->
-	<script src="assets/js/jquery.2.1.1.min.js"></script>
-
-
-	<!-- inline scripts related to this page -->
 
 	<!-- ace scripts -->
 	<script src="assets/js/ace-elements.min.js"></script>

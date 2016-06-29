@@ -19,6 +19,7 @@ package org.crce.interns.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import org.crce.interns.exception.IncorrectFileFormatException;
 import org.crce.interns.exception.MaxFileSizeExceededError;
@@ -48,22 +49,24 @@ public class CertificateUploadController {
 	
 	@Autowired
 	private CheckRoleService crService;
+        
+        private static final Logger logger = Logger.getLogger(CertificateUploadController.class.getName());
 	
-	//used to navigate to CertificateUpload.jsp
-	
+		//used to navigate to CertificateUpload.jsp	
 		@RequestMapping("certificateUpload")
 		public ModelAndView welcome(HttpServletRequest request) {
 						
 			HttpSession session=request.getSession();
 			String role =  (String)session.getAttribute("roleId");
 
-			/*if(!crService.checkRole("CertificateUpload", role))
+			//new authorization added @Crystal
+			if(!crService.checkRole("certificateUpload", role))
 				return new ModelAndView("403");
-			else*/
-
+			else
 				return new ModelAndView("UploadCertificate");
 		}
 
+		//authorization done - unauthorized call redirected to 405.jsp
 		//used to actually upload the file
 		@RequestMapping(value = "/uploadCertificate", method = RequestMethod.POST)
 		public ModelAndView certificateUpload(HttpServletRequest request,
@@ -80,7 +83,7 @@ public class CertificateUploadController {
 				//fileUpload1 : this is the request parameter model attribute of FileUpload type
 				fileUpload1.setFile(fileUpload);
 				
-				System.out.println(fileUpload1.getFile().getSize());
+				//System.out.println(fileUpload1.getFile().getSize());
 				
 				
 				
@@ -88,13 +91,15 @@ public class CertificateUploadController {
 				
 				//if no file is uploaded
 				if (fileUpload1.getFile().getSize() == 0) {
-					System.out.println("Error in form");
+					//System.out.println("Error in form");
+                                    logger.error("Error in form");
 		            
 		            return model;
 				}
 				
 				String username = (String)request.getSession(true).getAttribute("userName");
-				System.out.println("in try");
+				//System.out.println("in try");
+                                logger.error("in try");
 				
 				//calls the service to actually upload the file
 				certificateUploadService.handleFileUpload(request, fileUpload, username);
@@ -102,13 +107,15 @@ public class CertificateUploadController {
 				
 			} catch (IncorrectFileFormatException e) {
 				
-				System.out.println(e);			
+				//System.out.println(e);			
+                            logger.error(e);			
 				model.addObject("error", 1);	// so that the jsp catches the error
 			
 				
 			} catch (MaxFileSizeExceededError m) {
 				
-				System.out.println(m);				
+				//System.out.println(m);
+                                logger.error(m);
 				model.addObject("error1", 1); 	// so that the jsp catches the error
 			
 			}

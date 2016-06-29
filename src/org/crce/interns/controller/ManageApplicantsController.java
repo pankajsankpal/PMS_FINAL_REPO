@@ -6,6 +6,7 @@ import org.crce.interns.beans.PersonalProfileBean;
 import org.crce.interns.beans.ProfessionalProfileBean;
 import org.crce.interns.beans.UserCompanyBean;
 import org.crce.interns.service.ManageApplicantsService;
+import org.crce.interns.service.NfService;
 import org.crce.interns.service.ProfileService;
 import org.crce.interns.validators.AddApplicantsValidator;
 import org.crce.interns.validators.DeleteApplicantsValidator;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Calendar;
+import org.apache.log4j.Logger;
 
 /**
 *
@@ -46,6 +48,11 @@ public class ManageApplicantsController {
 	@Qualifier("deleteApplicantsValidator")
 	private DeleteApplicantsValidator deleteApplicantsValidator;
 	
+	@Autowired
+	private NfService nfService;
+        
+        private static final Logger logger = Logger.getLogger(ManageApplicantsController.class.getName());
+	
 	@RequestMapping(value = "/manage.html", method = RequestMethod.GET)
 	public ModelAndView gotomanagelist() {
 		ModelAndView model = null;
@@ -62,13 +69,14 @@ public class ManageApplicantsController {
 
 	// @SuppressWarnings("unused")
 
-	@RequestMapping(value = "/viewclist.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/viewclist.html", method = RequestMethod.GET)
 	public ModelAndView viewcandidate(@RequestParam("company") String company,
 			@RequestParam("year") String year) {
 		try{ 
 		ModelAndView model;
 
-		 System.out.println("inside controller"+company);
+		 //System.out.println("inside controller"+company);
+                logger.error("inside controller"+company);
 		 
 		 model = new ModelAndView("candidate-list");
 		 
@@ -88,7 +96,8 @@ public class ManageApplicantsController {
 		/* ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 		 PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 */
-		 System.out.println("inside controller..........");
+		 //System.out.println("inside controller..........");
+                 logger.error("inside controller..........");
 		
 		 for(UserCompanyBean d:userBeanList) {
 			 System.out.println(d.getUsername());
@@ -112,7 +121,8 @@ public class ManageApplicantsController {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/viewclist");
 			return model;
@@ -137,7 +147,8 @@ public class ManageApplicantsController {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/managelist");
 			return model;
@@ -149,10 +160,12 @@ public class ManageApplicantsController {
 		try{
 		ModelAndView model;
 		String msg="";
+		
 		addApplicantsValidator.validate(userBean, bindingResult);
 		
 		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
+			//System.out.println("Binding Errors are present...");
+                    logger.error("Binding Errors are present...");
 			model = new ModelAndView("add-candidate");
 		} else{
 			int c=crudService.createDetails(userBean);
@@ -174,13 +187,24 @@ public class ManageApplicantsController {
 				
 			}
 			else
-			model = new ModelAndView("add-success");
+				
+				
+				if(!nfService.addNotificationForApplicantAddition(
+						userBean.getCompany(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForApplicantAddition");
+				}
+			
+			
+			
+			
+			model = new ModelAndView("redirect:/viewclist.html?company="+userBean.getCompany()+"&year=");
 		}
 		return model;
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                    logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/addcandidate");
 			return model;
@@ -196,7 +220,8 @@ public class ManageApplicantsController {
 		deleteApplicantsValidator.validate(userBean, bindingResult);
 	
 		if (bindingResult.hasErrors()) {
-			System.out.println("Binding Errors are present...");
+			//System.out.println("Binding Errors are present...");
+                        logger.error("Binding Errors are present...");
 			model = new ModelAndView("delete-candidate");
 		} else{
 			
@@ -220,13 +245,21 @@ public class ManageApplicantsController {
 				model.addObject("msg",msg);				
 			}
 			else
-				model = new ModelAndView("delete-success");
+				
+				
+				if(!nfService.addNotificationForApplicantRemoval(
+						userBean.getCompany(), userBean.getUsername())){
+					logger.error("ERROR in addNotificationForApplicantRemoval");
+				}
+				
+				model = new ModelAndView("redirect:/viewclist.html?company="+userBean.getCompany()+"&year=");
 		}
 			return model;
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/deletecandidate");
 			return model;
@@ -240,7 +273,8 @@ public class ManageApplicantsController {
 		try{ 
 		ModelAndView model;
 
-		 System.out.println("inside controller"+company);
+		 //System.out.println("inside controller"+company);
+                logger.error("inside controller"+company);
 		 
 		 model = new ModelAndView("redirect:/viewsclist.html");
 		 
@@ -259,7 +293,7 @@ public class ManageApplicantsController {
 		/* ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
 		 PersonalProfileBean personalProfileBean=new PersonalProfileBean();
 */
-		 System.out.println("inside controller..........");
+		 //System.out.println("inside controller..........");
 		
 		 for(UserCompanyBean d:userBeanList) {
 			 System.out.println(d.getUsername());
@@ -291,7 +325,8 @@ public class ManageApplicantsController {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			//System.out.println(e);
+                        logger.error(e);
 			ModelAndView model=new ModelAndView("500");
 			model.addObject("exception", "/viewclist");
 			return model;

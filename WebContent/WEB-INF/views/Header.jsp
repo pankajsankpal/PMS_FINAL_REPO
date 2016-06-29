@@ -31,22 +31,22 @@
 				</button>
 
 				<div class="navbar-header navbar-green pull-left">
-					<a href="#" class="navbar-brand">
+					<a href="viewprofile" class="navbar-brand">
 						<small>
 							<i class="fa fa-graduation-cap"></i>
-							Placement Management System
+							C R C E &nbsp;&nbsp;&nbsp;P l a c e m e n t s
+							
 						</small>
 					</a>
 				</div>
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
+
 						
-						
-						
-						<!-- Notification removed for mobile view , can be added later -->
 						<!-- <li class="blue">
-							<a href="notifications">
+							<a datatoggle="dropdown" href="notifications">
+
 
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important">8</span>
@@ -61,8 +61,8 @@
 								<span class="user-info">
 
 
-									<small>Welcome</small>
 									${sessionScope.name}
+									
 
 
 								</span>

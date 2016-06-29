@@ -28,7 +28,7 @@ public class ManageAllotmentDaoImpl implements ManageAllotmentDao{
 
 	public void createAllotment(Allotment allotment) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().save(allotment);	
+		sessionFactory.getCurrentSession().saveOrUpdate(allotment);	
 		//sessionFactory.openSession().saveOrUpdate(allotment);	
 
 	}

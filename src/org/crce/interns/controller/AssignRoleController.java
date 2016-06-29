@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import org.apache.log4j.Logger;
 
 
 import org.crce.interns.beans.AssignRoleBean;
 import org.crce.interns.model.FunctionMaster;
 import org.crce.interns.model.FunctionRole;
 import org.crce.interns.service.AssignRoleService;
-
+import org.crce.interns.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,24 +27,40 @@ import org.springframework.web.servlet.ModelAndView;
 public class AssignRoleController {
 	@Autowired
 	public AssignRoleService ars;
+        
+        private static final Logger logger = Logger.getLogger(AssignRoleController.class.getName());
+	
+	@Autowired
+	private CheckRoleService crService;
 	
 	@RequestMapping(value="/AssignRole", method = RequestMethod.GET)
 	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) {
 
 	try
 	{
+		HttpSession session=request.getSession();
+		String roleId=(String)session.getAttribute("roleId");
 
-		System.out.println("return model");
+
+		// new authorization added @Crystal
+		if(!crService.checkRole("/AssignRole", roleId))
+			return new ModelAndView("403");
+		else{
+		//System.out.println("return model");		
+        logger.error("return model /AssignRole ");
+
 		AssignRoleBean assignRole=new AssignRoleBean();
 		ModelAndView model=null;
 		model=new ModelAndView("AssignRole");
 		model.addObject("assignRole",assignRole);
 		return model;
+		}
 	}
 
 	catch(Exception e)
 	{
-		System.out.println(e);
+		//System.out.println(e);
+                logger.error("Exception in AssignRole ",e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/AssignRole");
 		return model;
@@ -57,7 +74,8 @@ public class AssignRoleController {
 			@Valid AssignRoleBean arb,BindingResult result){ 
 	try
 	{	
-		System.out.println("return model");
+		//System.out.println("return model");
+                logger.error("return model /roleAssigned");
 		HttpSession session=request.getSession();
 		String user=(String)session.getAttribute("userName");
 
@@ -79,12 +97,14 @@ public class AssignRoleController {
 		int a=ars.checkFunction(arb.getFunctionName());
 		
 		ars.assignRole(fm, fr,a);
-		System.out.println("Success");
+		//System.out.println("Success");
+                logger.error("Success in role Assigned");
 		return new ModelAndView("roleAssigned");
 	}
 	catch(Exception e)
 	{
-		System.out.println(e);
+		//System.out.println(e);
+                logger.error("Exception roleAssigned ",e);
 		ModelAndView model=new ModelAndView("500");
 		model.addObject("exception", "/RoleAssigned");
 		return model;
