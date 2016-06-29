@@ -47,7 +47,7 @@
 			</script>
 
 			<div class="navbar-container " id="navbar-container">
-				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+				<!-- <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
 
 					<span class="icon-bar"></span>
@@ -55,13 +55,14 @@
 					<span class="icon-bar"></span>
 
 					<span class="icon-bar"></span>
-				</button>
+				</button> -->
 
 				<div class="navbar-header navbar-green pull-left">
-					<a href="#" class="navbar-brand">
+					<a href="viewprofile" class="navbar-brand">
 						<small>
 							<i class="fa fa-graduation-cap"></i>
-							Placement Management System
+							C R C E &nbsp;&nbsp;&nbsp;P l a c e m e n t s
+							
 						</small>
 					</a>
 				</div>
@@ -79,7 +80,9 @@
 
 						
 
+
 						<li class="light-blue">
+
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<!--  <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />   -->
 								<span class="user-info">
@@ -110,7 +113,9 @@
 								</li>
 
 							</ul>
+
 						</li>
+
 					</ul>
 				</div>
 			</div><!-- /.navbar-container -->
@@ -176,9 +181,14 @@
 					} catch (e) {
 					}
 				</script>
-				YOU are not allowed to access this page !!!!!! <br />
-				<br /> <a href="form">Click here to login again</a>
-										</h1>
+				
+				<strong>Access denied</strong>
+				</h1>
+				 
+				<br/>
+				
+			<h4 class="smaller"><a href="form">Click here to login again</a></h4>
+										
 
 										<hr />
 										
@@ -192,20 +202,19 @@
 											<ul class="list-unstyled spaced inline bigger-110 margin-15">
 												<li>
 													<i class="ace-icon fa fa-hand-o-right blue"></i>
-													Re-check the url for typos
+											<a href="#" style="text-decoration:none">		Re-check the url for typos</a>
 												</li>
 
 												<li>
 													<i class="ace-icon fa fa-hand-o-right blue"></i>
-													Read the faq
+													<a href="FAQ" style="text-decoration:none">	Have a doubt? Read the FAQs </a>
 												</li>
 
 												<li>
 													<i class="ace-icon fa fa-hand-o-right blue"></i>
-													Tell us about it
+													<a href="ContactUs" style="text-decoration:none">Give us feedback about your experience</a>
 												</li>
-											</ul>
-										</div>
+											</ul>										</div>
 
 										<hr />
 										<div class="space"></div>
@@ -223,12 +232,13 @@
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						<jsp:directive.include file="Footer.jsp" />
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
 
 
-				<jsp:directive.include file="Footer.jsp" />
+				
 
 	<!-- basic scripts -->
 

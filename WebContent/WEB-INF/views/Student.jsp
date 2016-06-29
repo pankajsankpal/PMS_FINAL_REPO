@@ -36,13 +36,14 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 					<div class="breadcrumbs" id="breadcrumbs">
 
 				<jsp:directive.include file="searchheader.jsp" />
+				
 			</div>
 
 					<div class="page-content">
 						
 						<div class="page-header">
 							<h1>
-								Welcome , ${sessionScope.name} ! 
+								My Profile
 								
 							</h1>
 						</div><!-- /.page-header -->
@@ -97,7 +98,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 															
 															<div class="space space-4"></div>
 
-																<a href="edit"><span class="btn btn-md btn-block btn-pink">Edit Profile Data</span></a>
+																<a href="edit"><span class="btn btn-md btn-block btn-pink">Edit Profile</span></a>
 															
 														</div><!-- /.col -->
 
@@ -214,8 +215,7 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 																<div class="widget-body">
 																	<div class="widget-main padding-10">
 																		<div class="clearfix">
-																			<p> My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch .I 
-																				am a Web Technology and Coading enthusiasts
+																			<p> My name is ${sessionScope.name} , I am a  ${sessionScope.roleName} from  ${sessionScope.branch} branch .
 																			</p>
 																			<div class="hr hr-16"></div>
 																			<p>
@@ -263,13 +263,15 @@ description: contains tabs ->  profile,uploads ,notification for student -->
 						
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
+							<jsp:directive.include file="Footer.jsp" />
+<jsp:directive.include file="scripts.jsp" />
+	
+							
 						</div><!-- /.row -->
+						
 					</div><!-- /.page-content -->
 				</div>
 			
-<jsp:directive.include file="Footer.jsp" />
-<jsp:directive.include file="scripts.jsp" />
-	
 
 		
 		<!--[if lte IE 8]>

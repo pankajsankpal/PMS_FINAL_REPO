@@ -32,10 +32,11 @@ public class DisplayListService {
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
 			 String pathname = null;
+			 System.out.println("Role : " + userRole);
 			if(userRole.equals(ConstantValues.StudentName) || userRole.equals("allowed") || userRole.equals(ConstantValues.StudentTPCName))
-				pathname=dpb.getStudentFolder()+"\\"+userName+"\\"+folder;
+				pathname=dpb.getStudentFolder()+"/"+userName+"/"+folder;
 			else
-				pathname=dpb.getSystemFolder()+"\\"+folder;
+				pathname=dpb.getSystemFolder()+"/"+folder;
 			 System.out.println(pathname);
 			 File[] files= new File(pathname).listFiles();
 			 
@@ -65,7 +66,7 @@ public class DisplayListService {
 		public List<String > displayFolderlist(String id){
 			DirectoryPathBean dpb=new DirectoryPathBean();
 			 List<String> results = new ArrayList<String>();
-			 String path=dpb.getStudentFolder()+"\\" +id;
+			 String path=dpb.getStudentFolder()+"/" +id;
 			 File[] files= new File(path).listFiles();
 			 System.out.println(path);
 			 for (File file : files)

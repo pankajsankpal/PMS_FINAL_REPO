@@ -21,7 +21,7 @@ description: gives the list of applied aplicants-->
 <body>
 	<jsp:directive.include file="Header.jsp" />
 
-	<c:if test="${companyname=='jpmorgan'}">
+	<c:if test="${company=='JP Morgan'}">
 		<c:set var="propercompanyname" value="JP Morgan" />
 	</c:if>
 	<c:if test="${companyname=='directi'}">
@@ -42,7 +42,7 @@ description: gives the list of applied aplicants-->
 	<c:if test="${companyname=='zs'}">
 		<c:set var="propercompanyname" value="ZS" />
 	</c:if>
-	<c:if test="${companyname=='tcs'}">
+	<c:if test="${company=='TCS'}">
 		<c:set var="propercompanyname" value="TCS" />
 	</c:if>
 
@@ -95,8 +95,8 @@ description: gives the list of applied aplicants-->
 														class="table table-striped table-bordered table-hover">
 														<thead>
 															<tr>
-																<th>Name</th>
 																<th>Roll No</th>
+																<th>Name</th>
 																<th>Branch</th>
 
 															</tr>
@@ -136,7 +136,7 @@ description: gives the list of applied aplicants-->
 
 											<div class="space-20"></div>
 											<div class="center">
-									<a href="javascript:history.back()" class="btn btn-grey"> <i
+									<a href="manage.html" class="btn btn-grey"> <i
 										class="ace-icon fa fa-arrow-left"></i> Go Back
 									</a> 
 								</div>

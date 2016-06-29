@@ -50,7 +50,7 @@
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Placement Management System</span>
+									<span class="red">CRCE Placements</span>
 									<!-- <span class="white" id="id-text2">Application</span> -->
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; Comps Interns</h4>
@@ -64,7 +64,7 @@
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
 												<i class="ace-icon fa fa-coffee green"></i>
-												Please Enter Your Credentials
+												Enter Your Login Credentials
 											</h4>
 
 											<div class="space-6"></div>
@@ -94,10 +94,10 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
+														<!-- <label class="inline">
 															<input type="checkbox" class="ace" />
 															<span class="lbl"> Remember Me</span>
-														</label>
+														</label> -->
 
 														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>

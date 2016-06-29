@@ -45,7 +45,8 @@ public class CertificateUploadServiceImpl implements CertificateUploadService {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		
 		//get the path for saving the resume
-		String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Certificates\\";
+		String saveDirectory = directoryPathBean.getStudentFolder() + "/" + username + "/Certificates/";
+		//String saveDirectory = directoryPathBean.getStudentFolder() + "\\" + username + "\\Certificates\\";	//for windows
 		
 		String type=  request.getParameter("type");
 		final String fullPath = saveDirectory + fileUpload.getOriginalFilename();
