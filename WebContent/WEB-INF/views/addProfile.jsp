@@ -54,6 +54,10 @@ description: contains all the validations required for every field -->
 						<h2>Job Details not filled</h2>
 						</p>
 					</c:if>
+					<br />
+					<c:if test="${alreadyExists==2}">
+						<h2><font color="green">This Profile already Exists.(only only profile per company is allowed)</font></h2>
+					</c:if>
 
 
 				</div>
