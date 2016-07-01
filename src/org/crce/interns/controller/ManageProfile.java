@@ -401,9 +401,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-//import org.crce.interns.beans.AllotmentBean;
 import org.crce.interns.beans.CompanyBean;
 import org.crce.interns.beans.CriteriaBean;
 import org.crce.interns.beans.JobBean;
@@ -411,8 +411,6 @@ import org.crce.interns.model.Job;
 import org.crce.interns.service.CheckRoleService;
 import org.crce.interns.service.CompanyService;
 import org.crce.interns.service.ConstantValues;
-//import org.crce.interns.model.Allotment;
-//import org.crce.interns.beans.ProfileBean;
 import org.crce.interns.service.ManageProfileService;
 import org.crce.interns.service.NfService;
 import org.crce.interns.service.impl.EmailNotificationServiceImpl;
@@ -423,12 +421,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.lang.Character.*;
 
 /*
  * Author: Cheryl
@@ -487,54 +488,135 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 
 		// Save new job profile
 		//authorization done - unauthorized call redirected to 405.jsp			
-		/*@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+		@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
 		public ModelAndView addProfile(HttpServletRequest request,@RequestParam Map<String, String> r ,
 				@Valid JobBean jobBean,BindingResult bindingResult,@Valid CriteriaBean criteriaBean,BindingResult bindingResult2) throws Exception {
 
 		
 		try{
-			ModelAndView model;
-			String errorMesg = "";
-			int a=0;
-			JobBean jobBean = new JobBean();
-			CriteriaBean criteriaBean = new CriteriaBean();
-			CompanyBean companyBean = new CompanyBean();
-
-			if(r.get("docs_required")=="")
-				a++;
-			if(r.get("job_description")=="")
-				a++;
-			if(r.get("job_category")=="")
-				a++;
-			if(r.get("skills_required")=="")
-				a++;
-			if(r.get("drive_date")=="")
-				a++;
-			if(r.get("eligible_branches")==null)
-				a++;
-			if(r.get("year_of_passing")=="")
-				a++;
-			if(r.get("last_date_to_apply")=="")
-				a++;
-			if(r.get("no_of_live_kts_allowed")=="")
-				a++;
-			if(a>0)
-			{
-			model = new ModelAndView("addProfile");
-			model.addObject("profileBean", jobBean); // adding in model
-			model.addObject("profileBean", criteriaBean);
 			
-			List<CompanyBean> companyList = manageProfileService.listCompanies();
-		    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
-		            for(CompanyBean cb : companyList){
-		            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
-		            }
-		         
-		    errorMesg="Oops!You left "+a+" field/s blank.Please fill all the fields";
-			model.addObject("errorMesg",errorMesg);
-			model.addObject("companies",companyMap);
+			List<CompanyBean> clist = manageProfileService.listCompanies();
+			Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
+			for(CompanyBean cb : clist){
+				companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			}
-			else
+			ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+			
+			ModelAndView modelError = new ModelAndView("JobError");
+			
+			Date curDate = new Date();
+			
+			/* *************************  Validation For Job Bean   ***************************** */
+			
+			
+			if(jobBean.getDrive_date()==null || jobBean.getDrive_date().before(curDate))
+			{
+            	modelError.addObject("driveDateError", 1);
+            	return modelError;
+			}
+			
+			if(jobBean.getCtc().isEmpty())
+			{
+				modelError.addObject("ctcError", 1);
+            	return modelError;
+			}
+			
+			if(jobBean.getJob_category().isEmpty())
+			{
+				modelError.addObject("categoryError", 1);
+            	return modelError;
+			}
+			
+			if(jobBean.getDocs_required().isEmpty())	
+			{
+				modelError.addObject("docsError", 1);
+            	return modelError;
+			}
+			
+			if(jobBean.getSkills_required().isEmpty())
+			{
+				modelError.addObject("skillsError", 1);
+            	return modelError;
+			}
+			
+			
+			/* *************************  Validation For Criteria Bean   ***************************** */
+
+			if(criteriaBean.getEligible_branches()==null)			
+			{
+				modelError.addObject("branchError", 1);
+            	return modelError;
+			}
+			
+			if(criteriaBean.getYear_of_passing().isEmpty())
+			{
+				modelError.addObject("passError", 1);
+            	return modelError;
+			}
+			
+			
+			try {
+				double cgpa = Double.parseDouble(criteriaBean.getCgpa());
+			} 
+			catch (NumberFormatException e ) {
+				modelError.addObject("cgpaError", 1);
+            	return modelError;
+			}
+			if(criteriaBean.getCgpa().isEmpty())
+			{
+				modelError.addObject("cgpaError", 1);
+            	return modelError;
+			}
+			
+			
+			try {
+				double hsc = Double.parseDouble(criteriaBean.getHsc_or_dip_percentage());
+			} 
+			catch (NumberFormatException e ) {
+				modelError.addObject("hscError", 1);
+            	return modelError;
+			}
+			if(criteriaBean.getHsc_or_dip_percentage().isEmpty())
+			{
+				modelError.addObject("hscError", 1);
+            	return modelError;
+			}
+			
+			
+			try {
+				double ssc = Double.parseDouble(criteriaBean.getSsc_percentage());
+			} 
+			catch (NumberFormatException e ) {
+				modelError.addObject("sscError", 1);
+            	return modelError;
+			}
+			if(criteriaBean.getSsc_percentage().isEmpty())
+			{
+				modelError.addObject("sscError", 1);
+            	return modelError;
+			}
+			
+			
+			try {
+				double percentage = Double.parseDouble(criteriaBean.getPercentage());
+			} 
+			catch (NumberFormatException e ) {
+				modelError.addObject("percentageError", 1);
+            	return modelError;
+			}
+			if(criteriaBean.getPercentage().isEmpty())
+			{
+				modelError.addObject("percentageError", 1);
+            	return modelError;
+			}
+			
+			if(criteriaBean.getLast_date_to_apply()==null || criteriaBean.getLast_date_to_apply().after(jobBean.getDrive_date()))
+			{
+            	modelError.addObject("lastDateError", 1);
+            	return modelError;
+			}
+			
+			
 			{
 				//Set values for JobBean
 				//jobBean.setJob_id(r.get("job_id"));
@@ -546,15 +628,15 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				jobBean.setSkills_required(r.get("skills_required"));
 				jobBean.setDocs_required(r.get("docs_required"));
 
-				 Modified_date cannot be added initially hence null else
-				 * error occurs during database insertion
+				/* Modified_date cannot be added initially hence null else
+				 * error occurs during database insertion*/
 				 
 				jobBean.setModified_date(null);
 		
 				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 				Date date = new Date(); 
 		
-				*//** Below comments are trials for fixing the date accepting issue....ignore them*//*
+				/** Below comments are trials for fixing the date accepting issue....ignore them*/
 		
 				//Date sdf=new Date();
 				//DateFormat sdf = new SimpleDateFormat("");
@@ -568,6 +650,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 		
 				jobBean.setDrive_date(sdf.parse(r.get("drive_date")));
+				
 				
 				//jobBean.setCreated_by(r.get("created_by"));
 		
@@ -585,24 +668,27 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 		
 				//Set values for CriteriaBean
 		
-				//criteriaBean.setCriteria_id(Integer.parseInt(r.get("criteria_id")));
 				criteriaBean.setCriteria_id(Integer.parseInt(r.get("company_id")));
 				//System.out.println(criteriaBean.getCriteria_id());
                                 logger.error(criteriaBean.getCriteria_id());
 				
-				//criteriaBean.setEligible_branches(r.get("eligible_branches"));
-				//System.out.println(r.get("eligible_branches"));
-		
+				
 				String[] val = request.getParameterValues("eligible_branches");
 				String e="";
 				for(String i: val){
 									e=e+" , "+i;
 					}
-		
+				System.out.println("Branches: "+e);
+				
 				criteriaBean.setEligible_branches(e);
 		
 				criteriaBean.setYear_of_passing(r.get("year_of_passing"));
-				criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
+				
+				if(criteriaBean.getPlaced_students_allowed()==null)
+					criteriaBean.setPlaced_students_allowed("Not Allowed");
+				else
+					criteriaBean.setPlaced_students_allowed("Allowed");
+				//criteriaBean.setPlaced_students_allowed(r.get("placed_students_allowed"));
 				//System.out.println("Placed :::<<"+r.get("placed_students_allowed")+">>>");
                                 logger.error("Placed :::<<"+r.get("placed_students_allowed")+">>>");    
 				criteriaBean.setPercentage(r.get("percentage"));
@@ -617,49 +703,13 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 
 				
 				
-				/*
-				
-				jobValidator.validate(jobBean, bindingResult);
-				critValidator.validate(criteriaBean, bindingResult2);
-				
-				if(bindingResult.hasErrors()||bindingResult2.hasErrors())
-				{
-					if(bindingResult2.hasErrors())
-						System.out.println("Criteria has errors");
-					else
-						System.out.println("Job bean has errors");
-					List<CompanyBean> companyList = manageProfileService.listCompanies();
-				    Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
-				            for(CompanyBean cb : companyList){
-				            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
-				            }
-					
-				    ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
-				    //model.addObject("success", 1);
-					return model;
-				}
-				
-				
-				//Set values for CompanyBean
 		
-				//companyBean.setCompany_id(Integer.parseInt(r.get("company_id")));
-				//companyBean.setCompany_name(r.get("company_name"));
-				//companyBean.setCompany_address(r.get("company_address"));
 		
-				
-				 * Since criteria_id is foreign key for company it has to be
-				 * set by fetching it from criteriaBean
+				 /*@author Nevil Dsouza
+				 * code for notifications*/
 				 
 		
-				//companyBean.setCriteria_id(criteriaBean.getCriteria_id());
-		
-				//companyBean.setCriteria(criteriaBean.getCriteria_id());
-		
-				 @author Nevil Dsouza
-				 * code for notifications
-				 
-		
-				List<CompanyBean> clist = manageProfileService.listCompanies();
+				//List<CompanyBean> companyList = manageProfileService.listCompanies();
 				String companyName="";
 				int id = Integer.parseInt(jobBean.getJob_id()); 
 				for( CompanyBean cb: clist){
@@ -687,8 +737,6 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				System.out.println("Outside query 3");
 				String hql="SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId";
 				System.out.println("Outside query 4");
-				//@SuppressWarnings("null")
-				//Query query=sessionFactory.getCurrentSession().createQuery("SELECT job FROM Job job WHERE job.year = :curYear and job.job_id = :jobId");
 				Query query = session.createQuery(hql);
 				System.out.println("Outside query 5");
 				
@@ -696,50 +744,63 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 				query.setParameter("curYear",curYear);
 				query.setParameter("jobId", jobBean.getJob_id());
 				
-				//int rows = query.executeUpdate();
 				System.out.println("Outside query 3");
 				if(query.list().isEmpty())
 		
 
 				{
 					System.out.println("Inside query");
-					manageProfileService.addProfile(jobBean);
-					manageProfileService.addProfile(criteriaBean);
-					//manageProfileService.addProfile(companyBean);
-		
+					
+					/*Date curDate = new Date();
+					
+					if(jobBean.getDrive_date()==null || jobBean.getDrive_date().before(curDate))
+					{
+						
+		            	ModelAndView modelError = new ModelAndView("JobError");
+		            	modelError.addObject("driveDateError", "Please mention proper Drive Date");
+		            	return modelError;
+					}
+					
+					else*/
+					{
+						manageProfileService.addProfile(jobBean);
+						manageProfileService.addProfile(criteriaBean);
+						//manageProfileService.addProfile(companyBean);
 		
 				
-				
-					//List<CompanyBean> companyList = manageProfileService.listCompanies();
-					Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
+						/*
+						//List<CompanyBean> companyList = manageProfileService.listCompanies();
+						Map<Integer, String> companyMap = new LinkedHashMap<Integer,String>();
 
 			            for(CompanyBean cb : clist){
 			            	companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 			            }
 				
-			    model = new ModelAndView("addProfile","companies",companyMap);
-			    model.addObject("success", 1);
+			    		model = new ModelAndView("addProfile","companies",companyMap);
+						 */			    
+						model.addObject("success", 1);
 
-				return model;
+						return model;
+						
+					}
 				
 				}
 				else
 				{
+					/*
 					Map<Integer, String> companyMap = new LinkedHashMap<Integer, String>();
 					for(CompanyBean cb : clist){
 						companyMap.put(cb.getCompany_id(), cb.getCompany_name());
 					}
 					ModelAndView model = new ModelAndView("addProfile","companies",companyMap);
+					*/
+					
 					model.addObject("alreadyExists", 2);
 					return model;
 					
 				}
 				
-				//ModelAndView model = new ModelAndView("addProfile");
-
-				//model.addObject("success", 1);
-				//return model;
-				//return new ModelAndView("TPO");
+				
 		}
 		}
 		catch(Exception e){
@@ -749,7 +810,7 @@ public class ManageProfile extends HttpServlet implements ConstantValues {
 			model.addObject("exception", "/saveProfile");
 			return model;
 		}
-	}*/
+	}
 
 	/* ---------------------------------------------------------------------------------------------------------------- */
 		
