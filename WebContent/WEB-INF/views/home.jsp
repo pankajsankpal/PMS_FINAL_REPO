@@ -36,7 +36,7 @@
     
 				<div class="nav-wrapper container">
 					
-					<a target="_top"><h5 class="center-align">PLACEMENT MANAGEMENT SYSTEM</h5></a>    
+					<a target="_top"><h5 class="center-align">C R C E &nbsp;&nbsp;&nbsp;P l a c e m e n t s</h5></a>    
 				</div>
   
 			</nav>

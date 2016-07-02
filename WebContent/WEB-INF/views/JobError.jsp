@@ -1,10 +1,11 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>500 Error Page </title>
+<title>Job Errors Page </title>
 
 <meta name="description" content="404 Error Page" />
 <meta name="viewport"
@@ -173,47 +174,112 @@
 
 						<div class="error-container">
 							<div class="well">
-								<h1 class="grey lighter smaller">
+								<h2 class="red lighter smaller">
 									<span class="blue bigger-125"> <i
-										class="ace-icon fa fa-random"></i> 500
+										class="ace-icon fa fa-random"></i> DETAILS ERROR
 
-									</span><strong> Something Went Wrong </strong>
+									</span><strong> Some Input Details Are Incorrect  </strong>
 
 									
-								</h1>
+								</h2>
 
 								<hr />
-								<h3 class="lighter smaller">
+								<h3 class=" green lighter smaller">
 
-									Sorry,an unwanted error occured while displaying this page
+								<strong>
+									Please fill in the following details correctly.<br/>
+									 (click the Correct Details button below)
 									 <br /> 
-									 <i>${message}</i>
-									 <br/>
+								</strong>	 
 									  
 									<!--wasn't sure which one to keep @Crystal  -->
 									<%-- Sorry,an unwanted error occured while displaying the
-									URL:"${exception} <br /> ${message}  --%>
+									URL:"${exception} <br /> ${message} 
 
-									<a href="${url}">Let's take you back</a>
+									<a href="${url}">Let's take you back</a> --%>
 								</h3>
 
 								<div class="space"></div>
 
 								<div>
-									<h4 class="lighter smaller">Meanwhile, try one of the
-										following:</h4>
+									<!-- <h4 class="lighter smaller">Meanwhile, try one of the
+										following:</h4> -->
 
 									<ul class="list-unstyled spaced inline bigger-110 margin-15">
 
-								
-										<li><i class="ace-icon fa fa-hand-o-right blue"></i> 
-									<a href="FAQ" style="text-decoration:none">	Have a doubt? Read the FAQs </a>
+										<c:if test="${driveDateError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Drive Date cannot be blank or before current date</font>
 										</li>
+										</c:if>
 								
-										<li><i class="ace-icon fa fa-hand-o-right blue"></i> 
+										<c:if test="${ctcError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the CTC</font>
+										</li>
+										</c:if>
 										
-								<a href="ContactUs" style="text-decoration:none">		Give us feedback about your experience</a>
+										<c:if test="${categoryError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Job Category</font>
 										</li>
+										</c:if>
+										
+										<c:if test="${docsError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Documents Required</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${skillsError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Skills Required</font>
+										</li>
+										</c:if>
+										
+										<!--  Validation Messages For Criteria -->
+										
+										<c:if test="${branchError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Eligible Branches</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${passError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Year Of Passing</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${cgpaError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the CGPA</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${hscError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the HSC Percentage</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${sscError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the SSC percentage</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${percentageError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Please mention the Percentage</font>
+										</li>
+										</c:if>
+										
+										<c:if test="${lastDateError==1}">
+										<li><i class="ace-icon fa fa-hand-o-right blue"></i>
+										<font color="red" size="4">Last Date To Apply cannot be blank or after Drive Date</font>
+										</li>
+										</c:if>
 
 									<!--wasn't sure which one to keep @Crystal  -->
 										<!-- <li><i class="ace-icon fa fa-hand-o-right blue"></i> Read
@@ -229,9 +295,12 @@
 								<div class="space"></div>
 
 								<div class="center">
-									<a href="javascript:history.back()" class="btn btn-grey"> <i
-										class="ace-icon fa fa-arrow-left"></i> Go Back
+								
+									<a href="javascript:history.back()" class="btn btn-pink"> <i
+										class="ace-icon fa fa-arrow-left"></i>
+										<font size="4">  Correct Details </font>
 									</a>
+								
 								</div>
 							</div>
 						</div>
