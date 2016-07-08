@@ -45,12 +45,7 @@ description: contains all the validations required for every field -->
 					</h1>
 					
 					<c:if test="${success==1}">
-						<h2><font color="blue">Profile added successfully!!</font></h2>
-					</c:if>
-					
-					<br/>
-					<c:if test="${alreadyExists==2}">
-						<h2><font color="green">This Profile has already been filled</font></h2>
+						<p color="blue"><h2>Profile added successfully!!</h2></p>
 					</c:if>
 					
 					<br/>

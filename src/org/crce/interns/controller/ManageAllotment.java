@@ -112,7 +112,7 @@ public class ManageAllotment extends HttpServlet {
 
 						//System.out.println(e);
                                                 //logger.error(e);	//was throwing error- commented @Crystal
-						model.addObject("error", 1);
+				//		model.addObject("error", 1); //was displaying file error irrespective of situation- commented @cheryl3
 						
 
 			if(res1==0)
