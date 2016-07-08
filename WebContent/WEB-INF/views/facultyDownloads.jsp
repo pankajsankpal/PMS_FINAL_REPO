@@ -98,7 +98,6 @@
 																					
 																						</c:if> --%>
 
-
 																	<br> <br>
 																</div>
 
@@ -237,8 +236,10 @@
 					$.each(data, function() {
 						console.log("print...");
 						$('#files').append(
-								' <li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
-									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li>'
+								' <hr> </hr><table><tr><li type="disk"><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+										+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li></tr></table>'
+								/* '<ol> <li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li></ol>' */
 								);
 					});
 				}
