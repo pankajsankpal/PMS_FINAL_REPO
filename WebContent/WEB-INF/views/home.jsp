@@ -30,32 +30,49 @@
 	
 <body>
   
-		
+  	
 		<div class="navbar-fixed">
-			<nav class="black darken-4" role="navigation">
-    
-				<div class="nav-wrapper container">
-					
-					<a target="_top"><h5 class="center-align">C R C E &nbsp;&nbsp;&nbsp;P l a c e m e n t s</h5></a>    
-				</div>
+		
+			<nav class="indigo" role="navigation">
+		    <div class="nav-wrapper container">
+		      <a  target="_top" class="brand-logo"><b>C R C E &nbsp;Placements</b></a>
+		      <ul  id="nav-mobile" class="right ">
+		        <li  class="active"><a href="login" class="waves-effect waves-ripple waves-light"><i class="material-icons left">input</i>LOG IN</a></li>
+				
+		      </ul>
+		      
+		      <!-- remove follwing comment and add right hide-on-med.. class in above ul also remove 
+		      id=nav-mobile from above ul to see the different version -->
+		      
+		      <!--  <ul id="nav-mobile" class="side-nav">
+		        <li  class="active"><a href="login" class="waves-effect waves-ripple waves-light"><i class="material-icons left">input</i>LOG IN</a></li>
+		      </ul>
+		       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
+		    
+		    
+		   
+		    
+		     </div>
+		     </nav>
+		     
+		</div> 
+  	
   
-			</nav>
-  
-		</div>
+		
                 
    
-		<nav>
+	<!-- 	<nav>
     			<div class="nav-wrapper blue darken-3 hoverable">
-      				<ul id="nav-mobile" class="left hide-on-med-and-down">
+      				<ul id="nav-mobile" class="right">
         				<li class="active"><a href="login" class="waves-effect waves-ripple waves-light">LOG IN</a></li>
         				
       				</ul>
                                 
     			</div>
-  		</nav>	
+  		</nav>	 -->
 		
     
-                <div class="slider black lighten-1">
+             <div class="slider black lighten-1">
    			<ul class="slides">
      				<li>
         				<img src="assets/materializecss/images/companies.jpg"> <!-- random image -->
