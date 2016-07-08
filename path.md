@@ -15,6 +15,8 @@ Please copy paste & enter correct data in the below template
 @Crystal21
 1) AddUserServiceImpl.java- handleFileUpload()- 
 	String saveDirectory = directoryPathBean.getCsvFolder() + "/"  + timeStamp + "/";
+	AddUserDaoImpl.java
+	copyFile = new File(directoryPathBean.getCsvFolder() + "/"  + timeStamp + "/" + fileName);
 	
 2)ResumeUploadServiceImpl.java- handleFileUpload()
 	String saveDirectory = directoryPathBean.getStudentFolder() + "/" + username + "/Resume/";	
