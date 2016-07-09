@@ -1,38 +1,52 @@
-package org.crce.interns.service.impl;
+package org.crce.interns.dao.impl;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.crce.interns.beans.InternshipPlacedBean;
-import org.crce.interns.dao.HigherStudiesDao;
 import org.crce.interns.dao.InternshipPlacedDao;
+import org.crce.interns.model.Feedback;
 import org.crce.interns.model.InterestedInHigherStudies;
 import org.crce.interns.model.InternshipPlaced;
-import org.crce.interns.service.InternshipPlacedService;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
-@Service("internshipplacedService")
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Repository("internshipplacedDao")
 
-public class InternshipPlacedServiceImpl implements InternshipPlacedService {
+public class InternshipPlacedDaoImpl implements InternshipPlacedDao {
 
 	@Autowired
-	private InternshipPlacedDao hsDao;
+	private SessionFactory sessionFactory;
 	
-	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addIP(InternshipPlacedBean ihs) {
-		hsDao.addIP(ihs);
-	
-}
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	
-	public InternshipPlaced listIhs(String year) {
-		System.out.println("inside service");
-		return hsDao.listIhs(year);
+		InternshipPlaced ihss=new 	InternshipPlaced();
+		
+		BeanUtils.copyProperties(ihs,ihss);
+		System.out.println("&&&&&&"+ihss.getYear());
+		System.out.println(ihs.getYear()+"&&&&&&&");
+		sessionFactory.getCurrentSession().save(ihss);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public InternshipPlaced listIhs(String year) {
+       
+
+
+		
+		
+       List<InternshipPlaced> totalList = sessionFactory.getCurrentSession().createCriteria(InternshipPlaced.class)
+				.add(Restrictions.eq("year", year)).list();
+		System.out.println("inside dao size of list = " + totalList.size());
+
+		return  totalList.get(0);
+
+
+	}
+
+
 
 }
