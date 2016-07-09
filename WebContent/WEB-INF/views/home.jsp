@@ -35,6 +35,7 @@
 <body>
 
 
+
 	<div class="navbar">
 		<nav class="indigo">
 			<div class="nav-wrapper">
@@ -51,10 +52,12 @@
 		    <div class="nav-wrapper container">
 		      <a  target="_top" class="brand-logo"><b>C R C E &nbsp;Placements</b></a>
 		      <ul  id="nav-mobile" class="right hide-on-med">
+
 		        <li  class="active"><a href="login" class="waves-effect waves-ripple waves-light"><i class="material-icons left">input</i>LOG IN</a></li>
 				
 		      </ul>
 		      
+
 		      remove follwing comment and add right hide-on-med.. class in above ul also remove 
 		      id=nav-mobile from above ul to see the different version
 		      
@@ -62,17 +65,16 @@
 		        <li  class="active"><a href="login" class="waves-effect waves-ripple waves-light"><i class="material-icons left">input</i>LOG IN</a></li>
 		      </ul>
 		       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
 		    
 		    
 		   
 		    
 		     </div>
+
 		     </nav> -->
 
 	</div>
-
-
-
 
 
 	<!-- 	<nav>
@@ -84,6 +86,7 @@
                                 
     			</div>
   		</nav>	 -->
+
 
 
 	<div class="slider black lighten-1">
@@ -236,6 +239,7 @@
 					</h5>
 
 					<!-- <a class="blue-text text-lighten-3" href="#">FAQ</a><br>
+
                                                 <a class="blue-text text-lighten-3" href="#">About Us</a><br>
                                                 <a class="blue-text text-lighten-3" href="#">Contact Us</a><br> -->
 
