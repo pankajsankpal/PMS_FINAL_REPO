@@ -236,8 +236,8 @@
 					$.each(data, function() {
 						console.log("print...");
 						$('#files').append(
-								' <hr> </hr><table><tr><li type="disk"><a href="${pageContext.request.contextPath}/downloadResume?fileName='
-										+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li></tr></table>'
+								' <hr> </hr><table><tr><a href="${pageContext.request.contextPath}/downloadResume?fileName='
+										+this.actualFileNames+' ">'+this.nameToDisplay+'</a></tr></table>'
 								/* '<ol> <li><a href="${pageContext.request.contextPath}/downloadResume?fileName='
 									+this.actualFileNames+' ">'+this.nameToDisplay+'</a></li></ol>' */
 								);

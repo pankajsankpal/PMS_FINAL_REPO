@@ -64,12 +64,7 @@
 
                 <jsp:directive.include file="searchheader.jsp" />
 
-                <script type="text/javascript">
-                    try {
-                        ace.settings.check('breadcrumbs', 'fixed')
-                    } catch (e) {
-                    }
-                </script>
+               
 
                 
                 <!-- /.breadcrumb -->
