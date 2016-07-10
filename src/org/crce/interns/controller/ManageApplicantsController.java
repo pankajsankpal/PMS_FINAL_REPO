@@ -321,6 +321,27 @@ public class ManageApplicantsController {
 			 //model.addObject("professionalProfileBeanList",professionalProfileBeanList);
 			 //model.addObject("personalProfileBeanList",personalProfileBeanList);
 		 }
+		 if(userBeanList.isEmpty()){
+				System.out.println("testing here//////////////////////////// im here /////////");
+				 ProfessionalProfileBean professionalProfileBean=new ProfessionalProfileBean();
+				 PersonalProfileBean personalProfileBean=new PersonalProfileBean();
+				 //professionalProfileBean.setUserName("nil");
+				 //personalProfileBean.setUserName("nil");
+				 //personalProfileBean.setName("nil");
+				 //professionalProfileBean.setBranch("nil");
+				 UserCompanyBean userBean=new UserCompanyBean();
+				 //userBean.setUsername("nil");
+				 userBeanList.add(userBean);
+				 professionalProfileBeanList.add(professionalProfileBean);
+				 personalProfileBeanList.add(personalProfileBean);
+					System.out.println("testing here//////////////////////////// im here 2/////////");
+					redirectAttributes.addFlashAttribute("company", company);
+					 redirectAttributes.addFlashAttribute("year", year);
+					 redirectAttributes.addFlashAttribute("userList",userBeanList);
+					 redirectAttributes.addFlashAttribute("professionalProfileBeanList",professionalProfileBeanList);
+					 redirectAttributes.addFlashAttribute("personalProfileBeanList",personalProfileBeanList);
+			
+			}
 		 return model;
 		}
 		catch(Exception e)
