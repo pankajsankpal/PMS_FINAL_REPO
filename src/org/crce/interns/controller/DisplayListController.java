@@ -234,6 +234,9 @@ public class DisplayListController {
 		String userRole = (String) request.getSession(true).getAttribute("roleName");
 		List<String> listFullName = dsp.displayCVList(folder, userName,userRole);
 		List<String> list = new ArrayList<String>();
+		
+		request.getSession().setAttribute("userId", userName);
+		
 		int z = 0;
 		List<Integer> indexList = new ArrayList<>();
 		if(listFullName.isEmpty())

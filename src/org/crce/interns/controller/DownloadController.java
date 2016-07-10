@@ -76,11 +76,11 @@ public class DownloadController extends HttpServlet {
 	public void downloadResume(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("fileName") String fileName) {
 		try {
-			String userName = (String) request.getSession().getAttribute("userName");
+			String userId = (String) request.getSession().getAttribute("userId");
 			String role = getRole((String) request.getSession().getAttribute("roleId"));
 			String folderName = (String) request.getSession().getAttribute("folderName");
 
-			String fileToBeDownloaded = basePath + "/Users" + "/" + role + "/" + userName + "/" + folderName + "/"
+			String fileToBeDownloaded = basePath + "/Users" + "/" + "Student" + "/" + userId + "/" + folderName + "/"
 					+ fileName;
 			//System.out.println(fileToBeDownloaded);
                         logger.error(fileToBeDownloaded);
