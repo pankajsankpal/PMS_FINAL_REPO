@@ -33,6 +33,7 @@
 													function(user) {
 														x.push(user);
 														console.log(x);
+														$('#notfound').text("");
 														return {
 															value : user.name,
 															data : user.id
@@ -108,7 +109,7 @@
 				class="ace-icon fa fa-search "></i> 
 				<input
 				class="btn btn-sm btn-primary" type="button" value="Search"  
-				id="searchbutton"/> <br>
+				id="searchbutton"/> 
 				<span id="notfound" style="color:red"></span>
 				<!-- <div id="notfound" style="color: red"></div> -->
 			</span>
