@@ -77,7 +77,7 @@
 											if (userSelectId !== -1) {
 												if (type === 'user') {
 													window.location
-															.replace("/PMS_v1/searchProfile?userName="
+															.replace("${pageContext.request.contextPath}/searchProfile?userName="
 																	+ userSelectId);// ill tak to nevil tom abt ths url
 												} else {
 													if (companyName !== 'xyz')
