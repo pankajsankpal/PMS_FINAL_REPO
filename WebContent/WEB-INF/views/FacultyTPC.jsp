@@ -133,7 +133,8 @@ description: contains tabs ->  activity ,uploads ,notification -->
 			
 															<a href="counselingReportUpload"  class="btn btn-pink btn-lg btn-block">Counseling Report Upload</a> <br><br>
 															<a href="addAllotment"  class="btn btn-inverse btn-lg btn-block">Room Allotment</a><br><br>
-
+                                                            <a href="addH"   class="btn btn-purple btn-lg btn-block">Details of Students for Placement Statistics </a> <br><br>															
+                                                            
 														</div>
 														
 														<!-- <div class="col-xs-12 col-sm-8">
