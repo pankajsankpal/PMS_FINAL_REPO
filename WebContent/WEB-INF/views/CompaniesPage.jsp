@@ -66,7 +66,7 @@ display: none;
 										src="assets/images/companies/Godrej.jpg" />
 								</a></li> -->
 								
-								<li><a href="Company?companyname=Laursen & Tubro"> <img id="Laursen-Tubro"
+								<li><a href="Company?companyname=Laursen %26 Tubro"> <img id="Laursen-Tubro"
 
 										width="200" height="150" alt="Laursen & Tubro"
 										src="assets/images/companies/Laursen & Tubro.jpg" />

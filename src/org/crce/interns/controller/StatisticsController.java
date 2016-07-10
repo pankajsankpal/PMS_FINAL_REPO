@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class StatisticsController {
@@ -95,9 +96,8 @@ public class StatisticsController {
 	}
 
 	@RequestMapping(value = "/saveH", method = RequestMethod.POST)
-	public ModelAndView update(@RequestParam Map<String, String> r) {
-		ModelAndView model = new ModelAndView("redirect:/listH");
-
+	public ModelAndView update(@RequestParam Map<String, String> r,final RedirectAttributes redirectAttributes) {
+		
 		InterestedInHigherStudiesBean ihs = new InterestedInHigherStudiesBean();
 		InternshipPlacedBean ips = new InternshipPlacedBean();
 		// System.out.println(r.get("comps"));
@@ -120,6 +120,9 @@ public class StatisticsController {
 		hsservice.addHS(ihs);
 
 		ipservice.addIP(ips);
+
+		redirectAttributes.addFlashAttribute("msg", "Data added successfully..!!");
+		ModelAndView model = new ModelAndView("redirect:/addH");
 
 		return model;
 	}

@@ -41,8 +41,8 @@
 								<div>
 									<ul class="ace-thumbnails clearfix">
 										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											<a href="assets/profile/nevil.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/nevil.jpg" />
 											</a>
 
 											<div class="tags">
@@ -50,231 +50,231 @@
 													<span class="label label-info">Nevil Dsouza</span>
 												</span>
 
-												<span class="label-holder">
+												<!-- <span class="label-holder">
 													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/crystal.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/crystal.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Crystal Cuthinho</span>
 												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/leon.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/leon.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Leon Dsouza</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/melwyn.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/melwyn.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Melwyn Saldanha</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/andrea.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/andrea.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Andrea Furtado</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/anu.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/anu.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Anu Issac</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/cheryl.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/cheryl.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Cheryl Nellissery</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/rashmi.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/rashmi.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">S Rashmi</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/pankaj.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/pankaj.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Pankaj Sankalp</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/gaurav.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/gaurav.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Gaurav Shinde</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/oneil.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/oneil.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Oneil Mascarenhas</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
+											</div>
+
+											
+										</li>
+										<li>
+											<a href="assets/profile/lenherd.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/lenherd.jpg" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Lenherd Olivera</span>
+												</span>
+
+												<!-- <span class="label-holder">
+													<span class="label label-warning arrowed-in">ZNevzz</span>
+												</span> -->
 
 											</div>
 
 											
 										</li>
 										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											<a href="assets/profile/adarsh.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/adarsh.jpg" />
 											</a>
 
 											<div class="tags">
 												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
+													<span class="label label-info">Adarsh Gupta</span>
 												</span>
 
-												<span class="label-holder">
+											<!-- 	<span class="label-holder">
 													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
+												</span> -->
 											</div>
 
 											
 										</li>
 										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
+											<a href="assets/profile/kushal.jpg" title="Photo Title" data-rel="colorbox">
+												<img width="150" height="150" alt="150x150" src="assets/profile/kushal.jpg" />
 											</a>
 
 											<div class="tags">
 												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
+													<span class="label label-info">Kushal Giri</span>
 												</span>
 
-												<span class="label-holder">
+												<!-- <span class="label-holder">
 													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
-											</div>
-
-											
-										</li>
-										<li>
-											<a href="assets/images/gallery/image-1.jpg" title="Photo Title" data-rel="colorbox">
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-1.jpg" />
-											</a>
-
-											<div class="tags">
-												<span class="label-holder">
-													<span class="label label-info">Nevil Dsouza</span>
-												</span>
-
-												<span class="label-holder">
-													<span class="label label-warning arrowed-in">ZNevzz</span>
-												</span>
+												</span> -->
 											</div>
 
 											
